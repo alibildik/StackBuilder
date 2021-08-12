@@ -201,6 +201,7 @@
     <Compile Include="Helpers\Texture.cs" />
     <Compile Include="ConstraintSets\TruckConstraintSet.cs" />
     <Compile Include="Solutions\SolutionLayered.cs" />
+    <Compile Include="Solutions\SolutionMultiBlock.cs" />
     <Compile Include="UnitsManager.cs" />
   </ItemGroup>
   <ItemGroup>
