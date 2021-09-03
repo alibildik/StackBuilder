@@ -141,7 +141,7 @@
     <value>0, 0</value>
   </data>
   <data name="_treeView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 480</value>
+    <value>228, 480</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="_treeView.TabIndex" type="System.Int32, mscorlib">
@@ -171,6 +171,93 @@
   <data name="&gt;&gt;splitContainer2.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="cbUnit.Items" xml:space="preserve">
+    <value>Metric</value>
+  </data>
+  <data name="cbUnit.Items1" xml:space="preserve">
+    <value>Imperial</value>
+  </data>
+  <data name="cbUnit.Items2" xml:space="preserve">
+    <value>Metric + imperial</value>
+  </data>
+  <data name="cbUnit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 11</value>
+  </data>
+  <data name="cbUnit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="cbUnit.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbUnit.Name" xml:space="preserve">
+    <value>cbUnit</value>
+  </data>
+  <data name="&gt;&gt;cbUnit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbUnit.Parent" xml:space="preserve">
+    <value>tabPageUnits</value>
+  </data>
+  <data name="&gt;&gt;cbUnit.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lbUnit.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbUnit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbUnit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 14</value>
+  </data>
+  <data name="lbUnit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="lbUnit.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbUnit.Text" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="&gt;&gt;lbUnit.Name" xml:space="preserve">
+    <value>lbUnit</value>
+  </data>
+  <data name="&gt;&gt;lbUnit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbUnit.Parent" xml:space="preserve">
+    <value>tabPageUnits</value>
+  </data>
+  <data name="&gt;&gt;lbUnit.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageUnits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageUnits.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageUnits.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 104</value>
+  </data>
+  <data name="tabPageUnits.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageUnits.Text" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="&gt;&gt;tabPageUnits.Name" xml:space="preserve">
+    <value>tabPageUnits</value>
+  </data>
+  <data name="&gt;&gt;tabPageUnits.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageUnits.Parent" xml:space="preserve">
+    <value>tabCtrlImageParam</value>
+  </data>
+  <data name="&gt;&gt;tabPageUnits.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="cbFontSizeDetail.Location" type="System.Drawing.Point, System.Drawing">
     <value>72, 59</value>
   </data>
@@ -184,7 +271,7 @@
     <value>cbFontSizeDetail</value>
   </data>
   <data name="&gt;&gt;cbFontSizeDetail.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Reporting.ComboFontSize, treeDiM.StackBuilder.Reporting, Version=3.0.2.18, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Reporting.ComboFontSize, treeDiM.StackBuilder.Reporting, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbFontSizeDetail.Parent" xml:space="preserve">
     <value>tabPageDetail</value>
@@ -194,6 +281,9 @@
   </data>
   <data name="lbFontSizeDetail.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lbFontSizeDetail.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lbFontSizeDetail.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 62</value>
@@ -219,29 +309,11 @@
   <data name="&gt;&gt;lbFontSizeDetail.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="cbHTMLSizeDetail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>72, 31</value>
-  </data>
-  <data name="cbHTMLSizeDetail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 21</value>
-  </data>
-  <data name="cbHTMLSizeDetail.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cbHTMLSizeDetail.Name" xml:space="preserve">
-    <value>cbHTMLSizeDetail</value>
-  </data>
-  <data name="&gt;&gt;cbHTMLSizeDetail.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Reporting.ComboImgSize, treeDiM.StackBuilder.Reporting, Version=3.0.2.18, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cbHTMLSizeDetail.Parent" xml:space="preserve">
-    <value>tabPageDetail</value>
-  </data>
-  <data name="&gt;&gt;cbHTMLSizeDetail.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="lbHTMLSizeDetail.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lbHTMLSizeDetail.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lbHTMLSizeDetail.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 34</value>
@@ -265,31 +337,13 @@
     <value>tabPageDetail</value>
   </data>
   <data name="&gt;&gt;lbHTMLSizeDetail.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cbDefinitionDetail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>72, 3</value>
-  </data>
-  <data name="cbDefinitionDetail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 21</value>
-  </data>
-  <data name="cbDefinitionDetail.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cbDefinitionDetail.Name" xml:space="preserve">
-    <value>cbDefinitionDetail</value>
-  </data>
-  <data name="&gt;&gt;cbDefinitionDetail.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Reporting.ComboImageDefinition, treeDiM.StackBuilder.Reporting, Version=3.0.2.18, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cbDefinitionDetail.Parent" xml:space="preserve">
-    <value>tabPageDetail</value>
-  </data>
-  <data name="&gt;&gt;cbDefinitionDetail.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="lbDefinitionDetail.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lbDefinitionDetail.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lbDefinitionDetail.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 6</value>
@@ -313,6 +367,48 @@
     <value>tabPageDetail</value>
   </data>
   <data name="&gt;&gt;lbDefinitionDetail.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbHTMLSizeDetail.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 31</value>
+  </data>
+  <data name="cbHTMLSizeDetail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 21</value>
+  </data>
+  <data name="cbHTMLSizeDetail.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cbHTMLSizeDetail.Name" xml:space="preserve">
+    <value>cbHTMLSizeDetail</value>
+  </data>
+  <data name="&gt;&gt;cbHTMLSizeDetail.Type" xml:space="preserve">
+    <value>treeDiM.StackBuilder.Reporting.ComboImgSize, treeDiM.StackBuilder.Reporting, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbHTMLSizeDetail.Parent" xml:space="preserve">
+    <value>tabPageDetail</value>
+  </data>
+  <data name="&gt;&gt;cbHTMLSizeDetail.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cbDefinitionDetail.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 3</value>
+  </data>
+  <data name="cbDefinitionDetail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 21</value>
+  </data>
+  <data name="cbDefinitionDetail.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbDefinitionDetail.Name" xml:space="preserve">
+    <value>cbDefinitionDetail</value>
+  </data>
+  <data name="&gt;&gt;cbDefinitionDetail.Type" xml:space="preserve">
+    <value>treeDiM.StackBuilder.Reporting.ComboImageDefinition, treeDiM.StackBuilder.Reporting, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbDefinitionDetail.Parent" xml:space="preserve">
+    <value>tabPageDetail</value>
+  </data>
+  <data name="&gt;&gt;cbDefinitionDetail.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="tabPageDetail.Location" type="System.Drawing.Point, System.Drawing">
@@ -322,7 +418,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageDetail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 104</value>
+    <value>220, 104</value>
   </data>
   <data name="tabPageDetail.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -340,7 +436,7 @@
     <value>tabCtrlImageParam</value>
   </data>
   <data name="&gt;&gt;tabPageDetail.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="cbFontSizeLarge.Location" type="System.Drawing.Point, System.Drawing">
     <value>72, 59</value>
@@ -355,7 +451,7 @@
     <value>cbFontSizeLarge</value>
   </data>
   <data name="&gt;&gt;cbFontSizeLarge.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Reporting.ComboFontSize, treeDiM.StackBuilder.Reporting, Version=3.0.2.18, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Reporting.ComboFontSize, treeDiM.StackBuilder.Reporting, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbFontSizeLarge.Parent" xml:space="preserve">
     <value>tabPageLargeImg</value>
@@ -376,7 +472,7 @@
     <value>cbHTMLSizeLarge</value>
   </data>
   <data name="&gt;&gt;cbHTMLSizeLarge.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Reporting.ComboImgSize, treeDiM.StackBuilder.Reporting, Version=3.0.2.18, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Reporting.ComboImgSize, treeDiM.StackBuilder.Reporting, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbHTMLSizeLarge.Parent" xml:space="preserve">
     <value>tabPageLargeImg</value>
@@ -397,7 +493,7 @@
     <value>cbDefinitionLarge</value>
   </data>
   <data name="&gt;&gt;cbDefinitionLarge.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Reporting.ComboImageDefinition, treeDiM.StackBuilder.Reporting, Version=3.0.2.18, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Reporting.ComboImageDefinition, treeDiM.StackBuilder.Reporting, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDefinitionLarge.Parent" xml:space="preserve">
     <value>tabPageLargeImg</value>
@@ -407,6 +503,9 @@
   </data>
   <data name="lbFontSizeLarge.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lbFontSizeLarge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lbFontSizeLarge.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 62</value>
@@ -435,6 +534,9 @@
   <data name="lbHTMLSizeLarge.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lbHTMLSizeLarge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lbHTMLSizeLarge.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 34</value>
   </data>
@@ -461,6 +563,9 @@
   </data>
   <data name="lbDefinitionLarge.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lbDefinitionLarge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lbDefinitionLarge.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 6</value>
@@ -493,7 +598,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageLargeImg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 104</value>
+    <value>220, 104</value>
   </data>
   <data name="tabPageLargeImg.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -511,7 +616,85 @@
     <value>tabCtrlImageParam</value>
   </data>
   <data name="&gt;&gt;tabPageLargeImg.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="fileSelectReportTemplate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 26</value>
+  </data>
+  <data name="fileSelectReportTemplate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 20</value>
+  </data>
+  <data name="fileSelectReportTemplate.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;fileSelectReportTemplate.Name" xml:space="preserve">
+    <value>fileSelectReportTemplate</value>
+  </data>
+  <data name="&gt;&gt;fileSelectReportTemplate.Type" xml:space="preserve">
+    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;fileSelectReportTemplate.Parent" xml:space="preserve">
+    <value>tabPageReport</value>
+  </data>
+  <data name="&gt;&gt;fileSelectReportTemplate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lbReportTemplate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbReportTemplate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbReportTemplate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 10</value>
+  </data>
+  <data name="lbReportTemplate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 13</value>
+  </data>
+  <data name="lbReportTemplate.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbReportTemplate.Text" xml:space="preserve">
+    <value>Report template</value>
+  </data>
+  <data name="&gt;&gt;lbReportTemplate.Name" xml:space="preserve">
+    <value>lbReportTemplate</value>
+  </data>
+  <data name="&gt;&gt;lbReportTemplate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbReportTemplate.Parent" xml:space="preserve">
+    <value>tabPageReport</value>
+  </data>
+  <data name="&gt;&gt;lbReportTemplate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageReport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageReport.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 104</value>
+  </data>
+  <data name="tabPageReport.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageReport.Text" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="&gt;&gt;tabPageReport.Name" xml:space="preserve">
+    <value>tabPageReport</value>
+  </data>
+  <data name="&gt;&gt;tabPageReport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageReport.Parent" xml:space="preserve">
+    <value>tabCtrlImageParam</value>
+  </data>
+  <data name="&gt;&gt;tabPageReport.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="tabCtrlImageParam.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -520,7 +703,7 @@
     <value>0, 0</value>
   </data>
   <data name="tabCtrlImageParam.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 130</value>
+    <value>228, 130</value>
   </data>
   <data name="tabCtrlImageParam.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -550,7 +733,7 @@
     <value>1</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 614</value>
+    <value>228, 614</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
     <value>480</value>
@@ -592,7 +775,7 @@
     <value>20, 20</value>
   </data>
   <data name="_webBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>715, 614</value>
+    <value>652, 614</value>
   </data>
   <data name="_webBrowser.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -625,7 +808,7 @@
     <value>884, 614</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>165</value>
+    <value>228</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -942,6 +1125,9 @@
         JycnJycAAAAAAAAAAAAAAAAAAAAAAP//AAAAHwAAAA8AAIAHAACAAwAAgAEAAIAAAACAAAAAgAEAAIAB
         AACAAQAAgAEAAMABAADgAQAA8AEAAP//AAA=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Report...</value>

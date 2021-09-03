@@ -51,6 +51,10 @@ namespace treeDiM.StackBuilder.Reporting
                 cbHTMLSizeLarge.InitializeContent();
                 int iHTMLSizeLarge = Settings.Default.ImageHTMLSizeLarge;
                 cbHTMLSizeLarge.SelectedIndex = iHTMLSizeLarge >= 5 ? iHTMLSizeLarge : 5;
+                // units
+                cbUnit.SelectedIndex = Settings.Default.ImageDefinitionDetail;
+                // report template
+                fileSelectReportTemplate.FileName = Reporter.TemplatePath;
             }
             catch (Exception /*ex*/)
             {
@@ -62,6 +66,7 @@ namespace treeDiM.StackBuilder.Reporting
             cbFontSizeLarge.SelectedIndexChanged += new EventHandler(OnUpdateReport);
             cbHTMLSizeDetail.SelectedIndexChanged += new EventHandler(OnUpdateReport);
             cbHTMLSizeLarge.SelectedIndexChanged += new EventHandler(OnUpdateReport);
+            cbUnit.SelectedIndexChanged += new EventHandler(OnUpdateReport);
 
             UpdateReport();
 
@@ -119,6 +124,8 @@ namespace treeDiM.StackBuilder.Reporting
                 Reporter.SetImageSize(cbDefinitionDetail.ImageSize, cbDefinitionLarge.ImageSize);
                 Reporter.SetImageHTMLSize(cbHTMLSizeDetail.ImageSize, cbHTMLSizeLarge.ImageSize);
                 Reporter.SetFontSizeRatios(cbFontSizeDetail.FontSizeRatio, cbFontSizeLarge.FontSizeRatio);
+                Reporter.ShowMetricValues = cbUnit.SelectedIndex == 0 || cbUnit.SelectedIndex == 2;
+                Reporter.ShowImperialValues = cbUnit.SelectedIndex == 1 || cbUnit.SelectedIndex == 2;
 
                 // reporter
                 ReporterHtml reporter = new ReporterHtml(Data, ref _rnRoot, Reporter.TemplatePath, htmlFilePath);
@@ -303,8 +310,10 @@ namespace treeDiM.StackBuilder.Reporting
             UpdateReport();
             toolSBDimensions.Checked = Reporter.ShowDimensions;
         }
-        private void OnUpdateReport(object sender, EventArgs e)
+        private void OnUpdateReport(object sender, EventArgs e) => UpdateReport();
+        private void OnReportTemplateChanged(object sender, EventArgs e)
         {
+            Reporter.TemplatePath = fileSelectReportTemplate.FileName;
             UpdateReport();
         }
         #endregion
@@ -325,6 +334,7 @@ namespace treeDiM.StackBuilder.Reporting
         protected Analysis _analysis;
         protected ReportNode _rnRoot;
         protected static ILog _log = LogManager.GetLogger(typeof(FormReportDesign));
+
         #endregion
 
 

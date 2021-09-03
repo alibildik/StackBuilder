@@ -98,6 +98,17 @@ namespace treeDiM.StackBuilder.Reporting
                 return companyLogo; 
             }
         }
+        public static string ReportTemplatesDirectory
+        {
+            get
+            {
+                if (Directory.Exists(Path.GetDirectoryName(Settings.Default.TemplatePath)))
+                    return Path.GetDirectoryName(Settings.Default.TemplatePath);
+                else
+                    return Path.Combine(Assembly.GetExecutingAssembly().Location, "ReportTemplates\\");
+            }
+        }
+
         public static void SetFontSizeRatios(float fontSizeRatioDetail, float fontSizeRatioLarge)
         { FontSizeRatioDetail = fontSizeRatioDetail; FontSizeRatioLarge = fontSizeRatioLarge; }
         public static void SetImageSize(int imgSizeDetail, int imgSizeLarge)
@@ -120,8 +131,19 @@ namespace treeDiM.StackBuilder.Reporting
                 }
                 return templatePath;
             }
+            set
+            {
+                if (File.Exists(value))
+                {
+                    Settings.Default.TemplatePath = value;
+                    Settings.Default.Save();
+                }
+            }
         }
+        static public string TemplateDirectory => Path.GetDirectoryName(Settings.Default.TemplatePath);
         static public bool ShowDimensions { get; set; } = true;
+        static public bool ShowMetricValues { get; set; } = true;
+        static public bool ShowImperialValues { get; set; } = true;
         #endregion
 
         #region Private properties
@@ -504,10 +526,10 @@ namespace treeDiM.StackBuilder.Reporting
                                 AppendElementValue(xmlDoc, elemSolution, "weightLoad", UnitsManager.UnitType.UT_MASS, sol.LoadWeight);
                                 AppendElementValue(xmlDoc, elemSolution, "weightTotal", UnitsManager.UnitType.UT_MASS, sol.Weight);
                                 if (rnPalletisationResults.GetChildByName(Resources.ID_RN_LOADDIMENSIONS).Activated)
-                                    AppendElementBB(xmlDoc, elemSolution, "bboxLoad", UnitsManager.UnitType.UT_LENGTH
+                                    AppendVector3(xmlDoc, elemSolution, "bboxLoad", UnitsManager.UnitType.UT_LENGTH
                                         , new double[3] { sol.BBoxLoad.Length, sol.BBoxLoad.Width, sol.BBoxLoad.Height });
                                 if (rnPalletisationResults.GetChildByName(Resources.ID_RN_OVERALLDIMENSIONS).Activated)
-                                    AppendElementBB(xmlDoc, elemSolution, "bboxTotal", UnitsManager.UnitType.UT_LENGTH
+                                    AppendVector3(xmlDoc, elemSolution, "bboxTotal", UnitsManager.UnitType.UT_LENGTH
                                         , new double[3] { sol.BBoxGlobal.Length, sol.BBoxGlobal.Width, sol.BBoxGlobal.Height });
                                 // average load on first layer
                                 AppendElementValue(xmlDoc, elemSolution, "loadOnLowestCase", UnitsManager.UnitType.UT_MASS, sol.LoadOnLowestCase);
@@ -857,10 +879,10 @@ namespace treeDiM.StackBuilder.Reporting
 
             }
             if (rnSolution.GetChildByName(Resources.ID_RN_LOADDIMENSIONS).Activated)
-                AppendElementBB(xmlDoc, elemSolution, "bboxLoad", UnitsManager.UnitType.UT_LENGTH
+                AppendVector3(xmlDoc, elemSolution, "bboxLoad", UnitsManager.UnitType.UT_LENGTH
                     , new double[3] { sol.BBoxLoad.Length, sol.BBoxLoad.Width, sol.BBoxLoad.Height });
             if (rnSolution.GetChildByName(Resources.ID_RN_OVERALLDIMENSIONS).Activated)
-                AppendElementBB(xmlDoc, elemSolution, "bboxTotal", UnitsManager.UnitType.UT_LENGTH
+                AppendVector3(xmlDoc, elemSolution, "bboxTotal", UnitsManager.UnitType.UT_LENGTH
                     , new double[3] { sol.BBoxGlobal.Length, sol.BBoxGlobal.Width, sol.BBoxGlobal.Height });
             if (rnSolution.GetChildByName(Resources.ID_RN_VOLUMEEFFICIENCY).Activated)
                 AppendElementValue(xmlDoc, elemSolution, "efficiencyVolume", sol.VolumeEfficiency);
@@ -1012,10 +1034,10 @@ namespace treeDiM.StackBuilder.Reporting
             AppendElementValue(xmlDoc, elemSolution, "weightLoad", UnitsManager.UnitType.UT_MASS, sol.LoadWeight);
             AppendElementValue(xmlDoc, elemSolution, "weightTotal", UnitsManager.UnitType.UT_MASS, sol.Weight);
             if (rnSolution.GetChildByName(Resources.ID_RN_LOADDIMENSIONS).Activated)
-                AppendElementBB(xmlDoc, elemSolution, "bboxLoad", UnitsManager.UnitType.UT_LENGTH
+                AppendVector3(xmlDoc, elemSolution, "bboxLoad", UnitsManager.UnitType.UT_LENGTH
                     , new double[3] { sol.BBoxLoad.Length, sol.BBoxLoad.Width, sol.BBoxLoad.Height });
             if (rnSolution.GetChildByName(Resources.ID_RN_OVERALLDIMENSIONS).Activated)
-                AppendElementBB(xmlDoc, elemSolution, "bboxTotal", UnitsManager.UnitType.UT_LENGTH
+                AppendVector3(xmlDoc, elemSolution, "bboxTotal", UnitsManager.UnitType.UT_LENGTH
                     , new double[3] { sol.BBoxGlobal.Length, sol.BBoxGlobal.Width, sol.BBoxGlobal.Height });
 
 
@@ -1129,7 +1151,7 @@ namespace treeDiM.StackBuilder.Reporting
                             // count
                             AppendElementValue(xmlDoc, elemItemNumber, "count", dictNameCount[containedItemIndex]);
                             // weight
-                            AppendElementValue(xmlDoc, elemItemNumber, "weight", packable.Weight * dictNameCount[containedItemIndex]);
+                            AppendElementValue(xmlDoc, elemItemNumber, "weight", UnitsManager.UnitType.UT_MASS, packable.Weight * dictNameCount[containedItemIndex]);
                             // image
                             if (rnItemImages.Activated)
                             {
@@ -1157,10 +1179,10 @@ namespace treeDiM.StackBuilder.Reporting
                 if (rnTotalWeight.Activated)
                     AppendElementValue(xmlDoc, elemSolItem, "weightTotal", UnitsManager.UnitType.UT_MASS, sol.Weight(solItemIndex));
                 if (rnSolution.GetChildByName(Resources.ID_RN_OVERALLDIMENSIONS).Activated)
-                    AppendElementBB(xmlDoc, elemSolution, "bboxLoad", UnitsManager.UnitType.UT_LENGTH
+                    AppendVector3(xmlDoc, elemSolution, "bboxLoad", UnitsManager.UnitType.UT_LENGTH
                         , new double[3] { sol.BBoxGlobal(solItemIndex).Length, sol.BBoxGlobal(solItemIndex).Width, sol.BBoxGlobal(solItemIndex).Height });
                 if (rnSolution.GetChildByName(Resources.ID_RN_LOADDIMENSIONS).Activated)
-                    AppendElementBB(xmlDoc, elemSolution, "bboxTotal", UnitsManager.UnitType.UT_LENGTH
+                    AppendVector3(xmlDoc, elemSolution, "bboxTotal", UnitsManager.UnitType.UT_LENGTH
                         , new double[3] { sol.BBoxLoad(solItemIndex).Length, sol.BBoxLoad(solItemIndex).Width, sol.BBoxLoad(solItemIndex).Height });
 
                 ReportNode rnViews = rnSolution.GetChildByName(Resources.ID_RN_VIEWS);
@@ -1392,8 +1414,7 @@ namespace treeDiM.StackBuilder.Reporting
             // length / width / number of flats / unit thickness / unit weight / total thickness / total weight
             if (rnBundle.GetChildByName(Resources.ID_RN_DIMENSIONS).Activated)
             {
-                AppendElementValue(xmlDoc, elemBundle, "length", UnitsManager.UnitType.UT_LENGTH, bundleProp.Length);
-                AppendElementValue(xmlDoc, elemBundle, "width", UnitsManager.UnitType.UT_LENGTH, bundleProp.Width);
+                AppendElementDimension2(xmlDoc, elemBundle, "dimensions", bundleProp.Length, bundleProp.Width);
                 AppendElementValue(xmlDoc, elemBundle, "unitThickness", UnitsManager.UnitType.UT_LENGTH, bundleProp.UnitThickness);
                 AppendElementValue(xmlDoc, elemBundle, "totalThickness", UnitsManager.UnitType.UT_LENGTH, bundleProp.UnitThickness * bundleProp.NoFlats);
             }
@@ -1530,13 +1551,11 @@ namespace treeDiM.StackBuilder.Reporting
             XmlElement elemDescription = xmlDoc.CreateElement("description", ns);
             elemDescription.InnerText = palletCapProp.Description;
             elemPalletCap.AppendChild(elemDescription);
-
-            AppendElementValue(xmlDoc, elemPalletCap, "length", UnitsManager.UnitType.UT_LENGTH, palletCapProp.Length);
-            AppendElementValue(xmlDoc, elemPalletCap, "width", UnitsManager.UnitType.UT_LENGTH, palletCapProp.Width);
-            AppendElementValue(xmlDoc, elemPalletCap, "height", UnitsManager.UnitType.UT_LENGTH, palletCapProp.Height);
-            AppendElementValue(xmlDoc, elemPalletCap, "innerLength", UnitsManager.UnitType.UT_LENGTH, palletCapProp.InsideLength);
-            AppendElementValue(xmlDoc, elemPalletCap, "innerWidth", UnitsManager.UnitType.UT_LENGTH, palletCapProp.InsideWidth);
-            AppendElementValue(xmlDoc, elemPalletCap, "innerHeight", UnitsManager.UnitType.UT_LENGTH, palletCapProp.InsideHeight);
+            // outer dimensions
+            AppendElementDimension3(xmlDoc, elemPalletCap, "dimensions", palletCapProp.Length, palletCapProp.Width, palletCapProp.Height);
+            // inner dimensions
+            AppendElementDimension3(xmlDoc, elemPalletCap, "dimensionsInner", palletCapProp.InsideLength, palletCapProp.InsideWidth, palletCapProp.InsideHeight);
+            // weight
             AppendElementValue(xmlDoc, elemPalletCap, "weight", UnitsManager.UnitType.UT_MASS, palletCapProp.Weight);
             // ---
             // view_palletCap_iso
@@ -1546,7 +1565,7 @@ namespace treeDiM.StackBuilder.Reporting
             graphics.CameraPosition = Graphics3D.Corner_0;
             PalletCap palletCap = new PalletCap(0, palletCapProp, BoxPosition.Zero);
             palletCap.Draw(graphics);
-            if (Reporter.ShowDimensions)
+            if (ShowDimensions)
                 graphics.AddDimensions(new DimensionCube(palletCapProp.Length, palletCapProp.Width, palletCapProp.Height));
             graphics.Flush();
             // imageThumb
@@ -1623,11 +1642,7 @@ namespace treeDiM.StackBuilder.Reporting
             }
             // dimensions
             if (rnTruck.GetChildByName(Resources.ID_RN_DIMENSIONSINNER).Activated)
-            {
-                AppendElementValue(xmlDoc, elemTruck, "length", UnitsManager.UnitType.UT_LENGTH, truckProp.Length);
-                AppendElementValue(xmlDoc, elemTruck, "width", UnitsManager.UnitType.UT_LENGTH, truckProp.Width);
-                AppendElementValue(xmlDoc, elemTruck, "height", UnitsManager.UnitType.UT_LENGTH, truckProp.Height);
-            }
+                AppendElementDimension3(xmlDoc, elemTruck, "dimensions", truckProp.Length, truckProp.Width, truckProp.Height);
             AppendElementValue(xmlDoc, elemTruck, "admissibleLoad", UnitsManager.UnitType.UT_MASS, truckProp.AdmissibleLoadWeight);
 
             // --- build image
@@ -1662,18 +1677,10 @@ namespace treeDiM.StackBuilder.Reporting
                 CreateElement("description", caseProperties.Description, elemCase, xmlDoc, ns);
             // length / width /height
             if (rnCase.GetChildByName(Resources.ID_RN_DIMENSIONSOUTER).Activated)
-            {
-                AppendElementValue(xmlDoc, elemCase, "length", UnitsManager.UnitType.UT_LENGTH, caseProperties.Length);
-                AppendElementValue(xmlDoc, elemCase, "width", UnitsManager.UnitType.UT_LENGTH, caseProperties.Width);
-                AppendElementValue(xmlDoc, elemCase, "height", UnitsManager.UnitType.UT_LENGTH, caseProperties.Height);
-            }
+                AppendElementDimension3(xmlDoc, elemCase, "dimensions", caseProperties.Length, caseProperties.Width, caseProperties.Height);
             // innerLength / innerWidth / innerHeight
             if (rnCase.GetChildByName(Resources.ID_RN_DIMENSIONSINNER).Activated)
-            {
-                AppendElementValue(xmlDoc, elemCase, "innerLength", UnitsManager.UnitType.UT_LENGTH, caseProperties.InsideLength);
-                AppendElementValue(xmlDoc, elemCase, "innerWidth", UnitsManager.UnitType.UT_LENGTH, caseProperties.InsideWidth);
-                AppendElementValue(xmlDoc, elemCase, "innerHeight", UnitsManager.UnitType.UT_LENGTH, caseProperties.InsideHeight);
-            }
+                AppendElementDimension3(xmlDoc, elemCase, "dimensionsInner", caseProperties.InsideLength, caseProperties.InsideWidth, caseProperties.InsideHeight);
             // weight
             if (rnCase.GetChildByName(Resources.ID_RN_WEIGHT).Activated)
             {
@@ -1690,7 +1697,7 @@ namespace treeDiM.StackBuilder.Reporting
                 };
                 Box box = new Box(0, caseProperties);
                 graphics.AddBox(box);
-                if (Reporter.ShowDimensions)
+                if (ShowDimensions)
                     graphics.AddDimensions(new DimensionCube(box.Length, box.Width, box.Height));
                 graphics.Flush();
                 // ---
@@ -1719,18 +1726,10 @@ namespace treeDiM.StackBuilder.Reporting
             }
             // length / width /height
             if (rnPack.GetChildByName(Resources.ID_RN_DIMENSIONS).Activated)
-            {
-                AppendElementValue(xmlDoc, elemPack, "length", UnitsManager.UnitType.UT_LENGTH, packProperties.Length);
-                AppendElementValue(xmlDoc, elemPack, "width", UnitsManager.UnitType.UT_LENGTH, packProperties.Width);
-                AppendElementValue(xmlDoc, elemPack, "height", UnitsManager.UnitType.UT_LENGTH, packProperties.Height);
-            }
+                AppendElementDimension3(xmlDoc, elemPack, "dimensions", packProperties.Length, packProperties.Width, packProperties.Height);
             // bulge
             if (packProperties.HasBulge && rnPack.GetChildByName(Resources.ID_RN_BULGE).Activated)
-            {
-                AppendElementValue(xmlDoc, elemPack, "bulgeX", UnitsManager.UnitType.UT_LENGTH, packProperties.Bulge.X);
-                AppendElementValue(xmlDoc, elemPack, "bulgeY", UnitsManager.UnitType.UT_LENGTH, packProperties.Bulge.Y);
-                AppendElementValue(xmlDoc, elemPack, "bulgeZ", UnitsManager.UnitType.UT_LENGTH, packProperties.Bulge.Z);
-            }
+                AppendElementDimension3(xmlDoc, elemPack, "bulge", packProperties.Bulge.X, packProperties.Bulge.Y, packProperties.Bulge.Z);
             // weight
             if (rnPack.GetChildByName(Resources.ID_RN_WEIGHT).Activated)
             {
@@ -1775,18 +1774,10 @@ namespace treeDiM.StackBuilder.Reporting
                 CreateElement("description", boxProperties.Description, elemBox, xmlDoc, ns);
             // dimensions
             if (rnBox.GetChildByName(Resources.ID_RN_DIMENSIONS).Activated)
-            {
-                AppendElementValue(xmlDoc, elemBox, "length", UnitsManager.UnitType.UT_LENGTH, boxProperties.Length);
-                AppendElementValue(xmlDoc, elemBox, "width", UnitsManager.UnitType.UT_LENGTH, boxProperties.Width);
-                AppendElementValue(xmlDoc, elemBox, "height", UnitsManager.UnitType.UT_LENGTH, boxProperties.Height);
-            }
+                AppendElementDimension3(xmlDoc, elemBox, "dimensions", boxProperties.Length, boxProperties.Width, boxProperties.Height);
             // bulge
             if (boxProperties.HasBulge && rnBox.GetChildByName(Resources.ID_RN_BULGE).Activated)
-            {
-                AppendElementValue(xmlDoc, elemBox, "bulgeX", UnitsManager.UnitType.UT_LENGTH, boxProperties.Bulge.X);
-                AppendElementValue(xmlDoc, elemBox, "bulgeY", UnitsManager.UnitType.UT_LENGTH, boxProperties.Bulge.Y);
-                AppendElementValue(xmlDoc, elemBox, "bulgeZ", UnitsManager.UnitType.UT_LENGTH, boxProperties.Bulge.Z);
-            }
+                AppendElementDimension3(xmlDoc, elemBox, "bulge", boxProperties.Bulge.X, boxProperties.Bulge.Y, boxProperties.Bulge.Z);
             // weight
             if (rnBox.GetChildByName(Resources.ID_RN_WEIGHT).Activated)
             {
@@ -1827,18 +1818,10 @@ namespace treeDiM.StackBuilder.Reporting
                 CreateElement("description", bagProperties.Description, elemBox, xmlDoc, ns);
             // dimensions
             if (rnBag.GetChildByName(Resources.ID_RN_DIMENSIONS).Activated)
-            {
-                AppendElementValue(xmlDoc, elemBox, "length", UnitsManager.UnitType.UT_LENGTH, bagProperties.Length);
-                AppendElementValue(xmlDoc, elemBox, "width", UnitsManager.UnitType.UT_LENGTH, bagProperties.Width);
-                AppendElementValue(xmlDoc, elemBox, "height", UnitsManager.UnitType.UT_LENGTH, bagProperties.Height);
-            }
+                AppendElementDimension3(xmlDoc, elemBox, "dimensions", bagProperties.Length, bagProperties.Width, bagProperties.Height);
             // bulge
             if (bagProperties.HasBulge && rnBag.GetChildByName(Resources.ID_RN_BULGE).Activated)
-            {
-                AppendElementValue(xmlDoc, elemBox, "bulgeX", UnitsManager.UnitType.UT_LENGTH, bagProperties.Bulge.X);
-                AppendElementValue(xmlDoc, elemBox, "bulgeY", UnitsManager.UnitType.UT_LENGTH, bagProperties.Bulge.Y);
-                AppendElementValue(xmlDoc, elemBox, "bulgeZ", UnitsManager.UnitType.UT_LENGTH, bagProperties.Bulge.Z);
-            }
+                AppendElementDimension3(xmlDoc, elemBox, "bulge", bagProperties.Bulge.X, bagProperties.Bulge.Y, bagProperties.Bulge.Z);
             // weight
             if (rnBag.GetChildByName(Resources.ID_RN_WEIGHT).Activated)
             {
@@ -1891,6 +1874,7 @@ namespace treeDiM.StackBuilder.Reporting
             parentElt.AppendChild(elt);
             return elt;
         }
+        private static UnitsManager.UnitSystem MetricSelected => (UnitsManager.CurrentUnitSystem == UnitsManager.UnitSystem.UNIT_METRIC2) ? UnitsManager.UnitSystem.UNIT_METRIC2 : UnitsManager.UnitSystem.UNIT_METRIC1;
         private static void AppendElementValue(XmlDocument xmlDoc, XmlElement parent, string eltName, UnitsManager.UnitType unitType, OptDouble optValue)
         {
             if (optValue.Activated)
@@ -1898,58 +1882,212 @@ namespace treeDiM.StackBuilder.Reporting
                 // eltName
                 XmlElement createdElement = xmlDoc.CreateElement(eltName, xmlDoc.DocumentElement.NamespaceURI);
                 parent.AppendChild(createdElement);
-                // unit
-                XmlElement unitElement = xmlDoc.CreateElement("unit", xmlDoc.DocumentElement.NamespaceURI);
-                unitElement.InnerText = UnitsManager.UnitString(unitType);
-                createdElement.AppendChild(unitElement);
-                // value
-                XmlElement valueElement = xmlDoc.CreateElement("value", xmlDoc.DocumentElement.NamespaceURI);
-                valueElement.InnerText = string.Format(UnitsManager.UnitFormat(unitType), optValue.Value);
-                createdElement.AppendChild(valueElement);
+                if (ShowMetricValues)
+                {
+                    // unit
+                    XmlElement unitElement = xmlDoc.CreateElement("unitM", xmlDoc.DocumentElement.NamespaceURI);
+                    unitElement.InnerText = UnitsManager.UnitString(unitType, MetricSelected);
+                    createdElement.AppendChild(unitElement);
+                    // value
+                    XmlElement valueElement = xmlDoc.CreateElement("valueM", xmlDoc.DocumentElement.NamespaceURI);
+                    valueElement.InnerText = string.Format(UnitsManager.UnitFormat(unitType), UnitsManager.ConvertTo(optValue.Value, unitType, MetricSelected));
+                    createdElement.AppendChild(valueElement);
+                }
+                if (ShowImperialValues)
+                {
+                    // unit
+                    XmlElement unitElement = xmlDoc.CreateElement("unitI", xmlDoc.DocumentElement.NamespaceURI);
+                    unitElement.InnerText = UnitsManager.UnitString(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL);
+                    createdElement.AppendChild(unitElement);
+                    // value
+                    XmlElement valueElement = xmlDoc.CreateElement("valueI", xmlDoc.DocumentElement.NamespaceURI);
+                    valueElement.InnerText = string.Format(UnitsManager.UnitFormat(unitType), UnitsManager.ConvertTo(optValue.Value, unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL));
+                    createdElement.AppendChild(valueElement);
+                }
             }
         }
-        private static void AppendElementBB(XmlDocument xmlDoc, XmlElement parent, string eltName, UnitsManager.UnitType unitType, double[] eltValue)
+        private static void AppendVector3(XmlDocument xmlDoc, XmlElement parent, string eltName, UnitsManager.UnitType unitType, double[] eltValue)
         {
             // eltName
             XmlElement createdElement = xmlDoc.CreateElement(eltName, xmlDoc.DocumentElement.NamespaceURI);
             parent.AppendChild(createdElement);
-            // unit
-            XmlElement unitElement = xmlDoc.CreateElement("unit", xmlDoc.DocumentElement.NamespaceURI);
-            unitElement.InnerText = UnitsManager.UnitString(unitType);
-            createdElement.AppendChild(unitElement);
-            // v0
-            XmlElement valueElement0 = xmlDoc.CreateElement("v0", xmlDoc.DocumentElement.NamespaceURI);
-            valueElement0.InnerText = string.Format(UnitsManager.UnitFormat(unitType), eltValue[0]);
-            createdElement.AppendChild(valueElement0);
-            // v1
-            XmlElement valueElement1 = xmlDoc.CreateElement("v1", xmlDoc.DocumentElement.NamespaceURI);
-            valueElement1.InnerText = string.Format(UnitsManager.UnitFormat(unitType), eltValue[1]);
-            createdElement.AppendChild(valueElement1);
-            // v2
-            XmlElement valueElement2 = xmlDoc.CreateElement("v2", xmlDoc.DocumentElement.NamespaceURI);
-            valueElement2.InnerText = string.Format(UnitsManager.UnitFormat(unitType), eltValue[2]);
-            createdElement.AppendChild(valueElement2);
+
+            XmlElement eltUnitVector = xmlDoc.CreateElement("unitVector3", xmlDoc.DocumentElement.NamespaceURI);
+            createdElement.AppendChild(eltUnitVector);
+
+            if (ShowMetricValues)
+            {
+                // unit
+                XmlElement unitElement = xmlDoc.CreateElement("unitM", xmlDoc.DocumentElement.NamespaceURI);
+                unitElement.InnerText = UnitsManager.UnitString(unitType, MetricSelected);
+                eltUnitVector.AppendChild(unitElement);
+                // v0M
+                XmlElement valueElement0 = xmlDoc.CreateElement("v0M", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement0.InnerText = string.Format(UnitsManager.UnitFormat(unitType, MetricSelected), UnitsManager.ConvertTo(eltValue[0], unitType, MetricSelected));
+                eltUnitVector.AppendChild(valueElement0);
+                // v1M
+                XmlElement valueElement1 = xmlDoc.CreateElement("v1M", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement1.InnerText = string.Format(UnitsManager.UnitFormat(unitType, MetricSelected), UnitsManager.ConvertTo(eltValue[1], unitType, MetricSelected));
+                eltUnitVector.AppendChild(valueElement1);
+                // v2M
+                XmlElement valueElement2 = xmlDoc.CreateElement("v2M", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement2.InnerText = string.Format(UnitsManager.UnitFormat(unitType, MetricSelected),  UnitsManager.ConvertTo(eltValue[2], unitType, MetricSelected));
+                eltUnitVector.AppendChild(valueElement2);
+            }
+            if (ShowImperialValues)
+            { 
+                // unit
+                XmlElement unitElement = xmlDoc.CreateElement("unitI", xmlDoc.DocumentElement.NamespaceURI);
+                unitElement.InnerText = UnitsManager.UnitString(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL);
+                eltUnitVector.AppendChild(unitElement);
+                // v0I
+                XmlElement valueElement0 = xmlDoc.CreateElement("v0I", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement0.InnerText = string.Format(UnitsManager.UnitFormat(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL), UnitsManager.ConvertTo(eltValue[0], unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL));
+                eltUnitVector.AppendChild(valueElement0);
+                // v1I
+                XmlElement valueElement1 = xmlDoc.CreateElement("v1I", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement1.InnerText = string.Format(UnitsManager.UnitFormat(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL), UnitsManager.ConvertTo(eltValue[1], unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL));
+                eltUnitVector.AppendChild(valueElement1);
+                // v2I
+                XmlElement valueElement2 = xmlDoc.CreateElement("v2I", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement2.InnerText = string.Format(UnitsManager.UnitFormat(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL),  UnitsManager.ConvertTo(eltValue[2], unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL));
+                eltUnitVector.AppendChild(valueElement2);            
+            }
         }
+
+        private static void AppendElementDimension3(XmlDocument xmlDoc, XmlElement parent, string eltName, double length, double width, double height)
+        {
+            // unitType
+            var unitType = UnitsManager.UnitType.UT_LENGTH;
+            // eltName
+            XmlElement createdElement = xmlDoc.CreateElement(eltName, xmlDoc.DocumentElement.NamespaceURI);
+            parent.AppendChild(createdElement);
+            XmlElement eltUnitVector = xmlDoc.CreateElement("unitVector3", xmlDoc.DocumentElement.NamespaceURI);
+            createdElement.AppendChild(eltUnitVector);
+
+            if (ShowMetricValues)
+            {
+                // unit
+                XmlElement unitElement = xmlDoc.CreateElement("unitM", xmlDoc.DocumentElement.NamespaceURI);
+                unitElement.InnerText = UnitsManager.UnitString(unitType, MetricSelected);
+                eltUnitVector.AppendChild(unitElement);
+                // v0M
+                XmlElement valueElement0 = xmlDoc.CreateElement("v0M", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement0.InnerText = string.Format(UnitsManager.UnitFormat(unitType, MetricSelected), UnitsManager.ConvertTo(length, unitType, MetricSelected));
+                eltUnitVector.AppendChild(valueElement0);
+                // v1M
+                XmlElement valueElement1 = xmlDoc.CreateElement("v1M", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement1.InnerText = string.Format(UnitsManager.UnitFormat(unitType, MetricSelected), UnitsManager.ConvertTo(width, unitType, MetricSelected));
+                eltUnitVector.AppendChild(valueElement1);
+                // v2M
+                XmlElement valueElement2 = xmlDoc.CreateElement("v2M", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement2.InnerText = string.Format(UnitsManager.UnitFormat(unitType, MetricSelected), UnitsManager.ConvertTo(height, unitType, MetricSelected));
+                eltUnitVector.AppendChild(valueElement2);
+            }
+            if (ShowImperialValues)
+            {
+                // unit
+                XmlElement unitElement = xmlDoc.CreateElement("unitI", xmlDoc.DocumentElement.NamespaceURI);
+                unitElement.InnerText = UnitsManager.UnitString(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL);
+                eltUnitVector.AppendChild(unitElement);
+                // v0I
+                XmlElement valueElement0 = xmlDoc.CreateElement("v0I", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement0.InnerText = string.Format(UnitsManager.UnitFormat(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL), UnitsManager.ConvertTo(length, unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL));
+                eltUnitVector.AppendChild(valueElement0);
+                // v1I
+                XmlElement valueElement1 = xmlDoc.CreateElement("v1I", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement1.InnerText = string.Format(UnitsManager.UnitFormat(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL), UnitsManager.ConvertTo(width, unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL));
+                eltUnitVector.AppendChild(valueElement1);
+                // v2I
+                XmlElement valueElement2 = xmlDoc.CreateElement("v2I", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement2.InnerText = string.Format(UnitsManager.UnitFormat(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL), UnitsManager.ConvertTo(height, unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL));
+                eltUnitVector.AppendChild(valueElement2);
+            }
+        }
+
+        private static void AppendElementDimension2(XmlDocument xmlDoc, XmlElement parent, string eltName, double length, double width)
+        {
+            // unitType
+            var unitType = UnitsManager.UnitType.UT_LENGTH;
+
+            // eltName
+            XmlElement createdElement = xmlDoc.CreateElement(eltName, xmlDoc.DocumentElement.NamespaceURI);
+            parent.AppendChild(createdElement);
+            XmlElement eltUnitVector = xmlDoc.CreateElement("unitVector2", xmlDoc.DocumentElement.NamespaceURI);
+            createdElement.AppendChild(eltUnitVector);
+
+            if (ShowMetricValues)
+            {
+                // unit
+                XmlElement unitElement = xmlDoc.CreateElement("unitM", xmlDoc.DocumentElement.NamespaceURI);
+                unitElement.InnerText = UnitsManager.UnitString(unitType);
+                eltUnitVector.AppendChild(unitElement);
+                // v0M
+                XmlElement valueElement0 = xmlDoc.CreateElement("v0M", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement0.InnerText = string.Format(UnitsManager.UnitFormat(unitType, MetricSelected), UnitsManager.ConvertTo(length, unitType, MetricSelected));
+                eltUnitVector.AppendChild(valueElement0);
+                // v1M
+                XmlElement valueElement1 = xmlDoc.CreateElement("v1M", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement1.InnerText = string.Format(UnitsManager.UnitFormat(unitType, MetricSelected), UnitsManager.ConvertTo(width, unitType, MetricSelected));
+                eltUnitVector.AppendChild(valueElement1);
+            }
+            if (ShowImperialValues)
+            {
+                // unit
+                XmlElement unitElement = xmlDoc.CreateElement("unitI", xmlDoc.DocumentElement.NamespaceURI);
+                unitElement.InnerText = UnitsManager.UnitString(unitType);
+                eltUnitVector.AppendChild(unitElement);
+                // v0I
+                XmlElement valueElement0 = xmlDoc.CreateElement("v0I", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement0.InnerText = string.Format(UnitsManager.UnitFormat(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL), UnitsManager.ConvertTo(length, unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL));
+                eltUnitVector.AppendChild(valueElement0);
+                // v1I
+                XmlElement valueElement1 = xmlDoc.CreateElement("v1I", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement1.InnerText = string.Format(UnitsManager.UnitFormat(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL), UnitsManager.ConvertTo(width, unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL));
+                eltUnitVector.AppendChild(valueElement1);
+            }
+        }
+
         private static void AppendElementValue(XmlDocument xmlDoc, XmlElement parent, string eltName, UnitsManager.UnitType unitType, double eltValue)
         {
             // eltName
             XmlElement createdElement = xmlDoc.CreateElement(eltName, xmlDoc.DocumentElement.NamespaceURI);
             parent.AppendChild(createdElement);
-            // unit
-            XmlElement unitElement = xmlDoc.CreateElement("unit", xmlDoc.DocumentElement.NamespaceURI);
-            unitElement.InnerText = UnitsManager.UnitString(unitType);
-            createdElement.AppendChild(unitElement);
-            // value
-            XmlElement valueElement = xmlDoc.CreateElement("value", xmlDoc.DocumentElement.NamespaceURI);
-            valueElement.InnerText = string.Format(UnitsManager.UnitFormat(unitType), eltValue);
-            createdElement.AppendChild(valueElement);
+            XmlElement eltUnitValue = xmlDoc.CreateElement("unitValue", xmlDoc.DocumentElement.NamespaceURI);
+            createdElement.AppendChild(eltUnitValue);
+            if (ShowMetricValues)
+            {
+                // unit
+                XmlElement unitElement = xmlDoc.CreateElement("unitM", xmlDoc.DocumentElement.NamespaceURI);
+                unitElement.InnerText = UnitsManager.UnitString(unitType, UnitsManager.UnitSystem.UNIT_METRIC1);
+                eltUnitValue.AppendChild(unitElement);
+                // value
+                XmlElement valueElement = xmlDoc.CreateElement("valueM", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement.InnerText = string.Format(UnitsManager.UnitFormat(unitType, UnitsManager.UnitSystem.UNIT_METRIC1), UnitsManager.ConvertTo( eltValue, unitType, UnitsManager.UnitSystem.UNIT_METRIC1));
+                eltUnitValue.AppendChild(valueElement);
+            }
+            if (ShowImperialValues)
+            {
+                // unit
+                XmlElement unitElement = xmlDoc.CreateElement("unitI", xmlDoc.DocumentElement.NamespaceURI);
+                unitElement.InnerText = UnitsManager.UnitString(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL);
+                eltUnitValue.AppendChild(unitElement);
+                // value
+                XmlElement valueElement = xmlDoc.CreateElement("valueI", xmlDoc.DocumentElement.NamespaceURI);
+                valueElement.InnerText = string.Format(UnitsManager.UnitFormat(unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL), UnitsManager.ConvertTo(eltValue, unitType, UnitsManager.UnitSystem.UNIT_IMPERIAL));
+                eltUnitValue.AppendChild(valueElement);
+            }
         }
+        /// <summary>
+        /// This function used for percentages (which have no actual unit)
+        /// </summary>
         private static void AppendElementValue(XmlDocument xmlDoc, XmlElement parent, string eltName, double eltValue)
         {
             XmlElement createdElement = xmlDoc.CreateElement(eltName, xmlDoc.DocumentElement.NamespaceURI);
             createdElement.InnerText = string.Format("{0:0.#}", eltValue);
             parent.AppendChild(createdElement);
         }
+        
         private static void AppendElementValue(XmlDocument xmlDoc, XmlElement parent, string eltName, int eltValue)
         {
             XmlElement createdElement = xmlDoc.CreateElement(eltName, xmlDoc.DocumentElement.NamespaceURI);

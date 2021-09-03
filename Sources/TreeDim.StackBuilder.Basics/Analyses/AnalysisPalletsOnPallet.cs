@@ -10,12 +10,16 @@ namespace treeDiM.StackBuilder.Basics
     public class AnalysisPalletsOnPallet : Analysis
     {
         #region Constructor
-        public AnalysisPalletsOnPallet(Document doc, PalletProperties masterPallet,
+        public AnalysisPalletsOnPallet(Document doc,
+            EMasterPalletSplit masterPalletSplit, ELoadedPalletOrientation loadedPalletOrientation,
+            PalletProperties masterPallet,
             LoadedPallet loadedPallet0, LoadedPallet loadedPallet1,
             LoadedPallet loadedPallet2 = null, LoadedPallet loadedPallet3 = null)
             : base(doc)
         {
             Solution = new SolutionPalletsOnPallet() { Analysis = this };
+            MasterPalletSplit = masterPalletSplit;
+            LoadedPalletOrientation = loadedPalletOrientation;
             PalletProperties = masterPallet;
             if (null == loadedPallet2 && null == loadedPallet3)
                 SetHalfPallets(loadedPallet0, loadedPallet1);
@@ -39,6 +43,7 @@ namespace treeDiM.StackBuilder.Basics
         #region Mode
         public enum EMode { PALLET_HALF, PALLET_QUARTER }
         public EMode Mode { get; set; } = EMode.PALLET_HALF;
+        public int NoLoadedPallets => Mode == EMode.PALLET_HALF ? 2 : 4;
         public void SetHalfPallets(LoadedPallet loadedPallet0, LoadedPallet loadedPallet1)
         {
             Mode = EMode.PALLET_HALF;
@@ -124,6 +129,20 @@ namespace treeDiM.StackBuilder.Basics
         }
         #endregion
 
+        #region Enums
+        public enum EMasterPalletSplit          { HORIZONTAL, VERTICAL };
+        public enum ELoadedPalletOrientation    { DEFAULT, ROTATED };
+        #endregion
+
+        #region Public data members
+        public readonly LoadedPallet[] PalletAnalyses = new LoadedPallet[4];
+        public EMasterPalletSplit MasterPalletSplit { get; set; } = EMasterPalletSplit.VERTICAL;
+        public ELoadedPalletOrientation LoadedPalletOrientation { get; set; } = ELoadedPalletOrientation.ROTATED;
+
+        public HalfAxis.HAxis Axis0 => LoadedPalletOrientation == ELoadedPalletOrientation.DEFAULT ? HalfAxis.HAxis.AXIS_X_P : HalfAxis.HAxis.AXIS_Y_P;
+        public HalfAxis.HAxis Axis1 => LoadedPalletOrientation == ELoadedPalletOrientation.DEFAULT ? HalfAxis.HAxis.AXIS_Y_P : HalfAxis.HAxis.AXIS_X_N;
+        #endregion
+
         #region Non-public members
         protected override void RemoveItselfFromDependancies()
         {
@@ -131,7 +150,6 @@ namespace treeDiM.StackBuilder.Basics
             foreach (var p in PalletAnalyses)
                 p?.RemoveDependancy(this);
         }
-        public readonly LoadedPallet[] PalletAnalyses = new LoadedPallet[4];
         #endregion
     }
 
@@ -146,28 +164,69 @@ namespace treeDiM.StackBuilder.Basics
                 double halfLength = 0.5 * Analysis.PalletProperties.Length;
                 double halfWidth = 0.5 * Analysis.PalletProperties.Width;
                 double height = Analysis.PalletProperties.Height;
-                List<HSolElement> list = new List<HSolElement>();
+
+                HalfAxis.HAxis axis0 = Analysis.Axis0, axis1 = Analysis.Axis1;
+
+                Vector3D[] coord = new Vector3D[4];
                 switch (Analysis.Mode)
                 {
                     case AnalysisPalletsOnPallet.EMode.PALLET_HALF:
                         {
-                            HalfAxis.HAxis axis0 = HalfAxis.HAxis.AXIS_Y_P, axis1 = HalfAxis.HAxis.AXIS_X_N;
-                            list.Add(new HSolElement() { ContentType = 0, Position = new BoxPosition(new Vector3D(halfLength, 0.0, height), axis0, axis1) });
-                            list.Add(new HSolElement() { ContentType = 1, Position = new BoxPosition(new Vector3D(length, 0.0, height), axis0, axis1) });
+                            if (Analysis.MasterPalletSplit == AnalysisPalletsOnPallet.EMasterPalletSplit.HORIZONTAL
+                                && Analysis.LoadedPalletOrientation == AnalysisPalletsOnPallet.ELoadedPalletOrientation.DEFAULT)
+                            {
+                                coord[0] = new Vector3D(0.0, 0.0, height);
+                                coord[1] = new Vector3D(0.0, halfWidth, height);
+                            }
+                            else if (Analysis.MasterPalletSplit == AnalysisPalletsOnPallet.EMasterPalletSplit.HORIZONTAL
+                                && Analysis.LoadedPalletOrientation == AnalysisPalletsOnPallet.ELoadedPalletOrientation.ROTATED)
+                            {
+                                coord[0] = new Vector3D(length, 0.0, height);
+                                coord[1] = new Vector3D(length, halfWidth, height);
+                            }
+                            else if (Analysis.MasterPalletSplit == AnalysisPalletsOnPallet.EMasterPalletSplit.VERTICAL
+                                && Analysis.LoadedPalletOrientation == AnalysisPalletsOnPallet.ELoadedPalletOrientation.DEFAULT)
+                            {
+                                coord[0] = new Vector3D(0.0, 0.0, height);
+                                coord[1] = new Vector3D(halfLength, 0.0, height);
+                            }
+                            else
+                            {
+                                coord[0] = new Vector3D(halfLength, 0.0, height);
+                                coord[1] = new Vector3D(length, 0.0, height);
+                            }
                         }
                         break;
                     case AnalysisPalletsOnPallet.EMode.PALLET_QUARTER:
                         {
-                            HalfAxis.HAxis axis0 = HalfAxis.HAxis.AXIS_X_P, axis1 = HalfAxis.HAxis.AXIS_Y_P;
-                            list.Add(new HSolElement() { ContentType = 0, Position = new BoxPosition(new Vector3D(0.0, 0.0, height), axis0, axis1) });
-                            list.Add(new HSolElement() { ContentType = 1, Position = new BoxPosition(new Vector3D(halfLength, 0.0, height), axis0, axis1) });
-                            list.Add(new HSolElement() { ContentType = 2, Position = new BoxPosition(new Vector3D(0.0, halfWidth, height), axis0, axis1) });
-                            list.Add(new HSolElement() { ContentType = 3, Position = new BoxPosition(new Vector3D(halfLength, halfWidth, height), axis0, axis1) });
+                            if (Analysis.LoadedPalletOrientation == AnalysisPalletsOnPallet.ELoadedPalletOrientation.DEFAULT)
+                            {
+                                coord[0] = new Vector3D(0.0, 0.0, height);
+                                coord[1] = new Vector3D(halfLength, 0.0, height);
+                                coord[2] = new Vector3D(0.0, halfWidth, height);
+                                coord[3] = new Vector3D(halfLength, halfWidth, height);
+                            }
+                            else
+                            {
+                                coord[0] = new Vector3D(0.0, 0.0, height);
+                                coord[1] = new Vector3D(halfLength, 0.0, height);
+                                coord[2] = new Vector3D(0.0, halfWidth, height);
+                                coord[3] = new Vector3D(halfLength, halfWidth, height);
+                            }
                         }
                         break;
                     default:
                         break;
                 }
+                List<HSolElement> list = new List<HSolElement>();
+                for (int i=0; i<Analysis.NoLoadedPallets; ++i)
+                    list.Add(
+                        new HSolElement()
+                    {
+                        ContentType = i,
+                        Position = new BoxPosition(coord[i], axis0, axis1)
+                    }
+                    );
                 return list;
             }
         }

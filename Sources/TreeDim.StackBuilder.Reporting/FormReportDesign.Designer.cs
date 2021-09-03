@@ -33,20 +33,19 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this._treeView = new System.Windows.Forms.TreeView();
             this.tabCtrlImageParam = new System.Windows.Forms.TabControl();
+            this.tabPageUnits = new System.Windows.Forms.TabPage();
+            this.cbUnit = new System.Windows.Forms.ComboBox();
+            this.lbUnit = new System.Windows.Forms.Label();
             this.tabPageDetail = new System.Windows.Forms.TabPage();
-            this.cbFontSizeDetail = new treeDiM.StackBuilder.Reporting.ComboFontSize();
             this.lbFontSizeDetail = new System.Windows.Forms.Label();
-            this.cbHTMLSizeDetail = new treeDiM.StackBuilder.Reporting.ComboImgSize();
             this.lbHTMLSizeDetail = new System.Windows.Forms.Label();
-            this.cbDefinitionDetail = new treeDiM.StackBuilder.Reporting.ComboImageDefinition();
             this.lbDefinitionDetail = new System.Windows.Forms.Label();
             this.tabPageLargeImg = new System.Windows.Forms.TabPage();
-            this.cbFontSizeLarge = new treeDiM.StackBuilder.Reporting.ComboFontSize();
-            this.cbHTMLSizeLarge = new treeDiM.StackBuilder.Reporting.ComboImgSize();
-            this.cbDefinitionLarge = new treeDiM.StackBuilder.Reporting.ComboImageDefinition();
             this.lbFontSizeLarge = new System.Windows.Forms.Label();
             this.lbHTMLSizeLarge = new System.Windows.Forms.Label();
             this.lbDefinitionLarge = new System.Windows.Forms.Label();
+            this.tabPageReport = new System.Windows.Forms.TabPage();
+            this.lbReportTemplate = new System.Windows.Forms.Label();
             this._webBrowser = new System.Windows.Forms.WebBrowser();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabelDef = new System.Windows.Forms.ToolStripStatusLabel();
@@ -58,6 +57,13 @@
             this.toolSBReportPrint = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolSBDimensions = new System.Windows.Forms.ToolStripButton();
+            this.cbFontSizeDetail = new treeDiM.StackBuilder.Reporting.ComboFontSize();
+            this.cbHTMLSizeDetail = new treeDiM.StackBuilder.Reporting.ComboImgSize();
+            this.cbDefinitionDetail = new treeDiM.StackBuilder.Reporting.ComboImageDefinition();
+            this.cbFontSizeLarge = new treeDiM.StackBuilder.Reporting.ComboFontSize();
+            this.cbHTMLSizeLarge = new treeDiM.StackBuilder.Reporting.ComboImgSize();
+            this.cbDefinitionLarge = new treeDiM.StackBuilder.Reporting.ComboImageDefinition();
+            this.fileSelectReportTemplate = new treeDiM.UserControls.FileSelect();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -67,8 +73,10 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.tabCtrlImageParam.SuspendLayout();
+            this.tabPageUnits.SuspendLayout();
             this.tabPageDetail.SuspendLayout();
             this.tabPageLargeImg.SuspendLayout();
+            this.tabPageReport.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -107,55 +115,59 @@
             // 
             // tabCtrlImageParam
             // 
+            this.tabCtrlImageParam.Controls.Add(this.tabPageUnits);
             this.tabCtrlImageParam.Controls.Add(this.tabPageDetail);
             this.tabCtrlImageParam.Controls.Add(this.tabPageLargeImg);
+            this.tabCtrlImageParam.Controls.Add(this.tabPageReport);
             resources.ApplyResources(this.tabCtrlImageParam, "tabCtrlImageParam");
             this.tabCtrlImageParam.Name = "tabCtrlImageParam";
             this.tabCtrlImageParam.SelectedIndex = 0;
+            // 
+            // tabPageUnits
+            // 
+            this.tabPageUnits.Controls.Add(this.cbUnit);
+            this.tabPageUnits.Controls.Add(this.lbUnit);
+            resources.ApplyResources(this.tabPageUnits, "tabPageUnits");
+            this.tabPageUnits.Name = "tabPageUnits";
+            this.tabPageUnits.UseVisualStyleBackColor = true;
+            // 
+            // cbUnit
+            // 
+            this.cbUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUnit.FormattingEnabled = true;
+            this.cbUnit.Items.AddRange(new object[] {
+            resources.GetString("cbUnit.Items"),
+            resources.GetString("cbUnit.Items1"),
+            resources.GetString("cbUnit.Items2")});
+            resources.ApplyResources(this.cbUnit, "cbUnit");
+            this.cbUnit.Name = "cbUnit";
+            // 
+            // lbUnit
+            // 
+            resources.ApplyResources(this.lbUnit, "lbUnit");
+            this.lbUnit.Name = "lbUnit";
             // 
             // tabPageDetail
             // 
             this.tabPageDetail.Controls.Add(this.cbFontSizeDetail);
             this.tabPageDetail.Controls.Add(this.lbFontSizeDetail);
-            this.tabPageDetail.Controls.Add(this.cbHTMLSizeDetail);
             this.tabPageDetail.Controls.Add(this.lbHTMLSizeDetail);
-            this.tabPageDetail.Controls.Add(this.cbDefinitionDetail);
             this.tabPageDetail.Controls.Add(this.lbDefinitionDetail);
+            this.tabPageDetail.Controls.Add(this.cbHTMLSizeDetail);
+            this.tabPageDetail.Controls.Add(this.cbDefinitionDetail);
             resources.ApplyResources(this.tabPageDetail, "tabPageDetail");
             this.tabPageDetail.Name = "tabPageDetail";
             this.tabPageDetail.UseVisualStyleBackColor = true;
-            // 
-            // cbFontSizeDetail
-            // 
-            this.cbFontSizeDetail.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFontSizeDetail.FontSizeRatio = 0.01F;
-            this.cbFontSizeDetail.FormattingEnabled = true;
-            resources.ApplyResources(this.cbFontSizeDetail, "cbFontSizeDetail");
-            this.cbFontSizeDetail.Name = "cbFontSizeDetail";
             // 
             // lbFontSizeDetail
             // 
             resources.ApplyResources(this.lbFontSizeDetail, "lbFontSizeDetail");
             this.lbFontSizeDetail.Name = "lbFontSizeDetail";
             // 
-            // cbHTMLSizeDetail
-            // 
-            this.cbHTMLSizeDetail.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbHTMLSizeDetail.FormattingEnabled = true;
-            resources.ApplyResources(this.cbHTMLSizeDetail, "cbHTMLSizeDetail");
-            this.cbHTMLSizeDetail.Name = "cbHTMLSizeDetail";
-            // 
             // lbHTMLSizeDetail
             // 
             resources.ApplyResources(this.lbHTMLSizeDetail, "lbHTMLSizeDetail");
             this.lbHTMLSizeDetail.Name = "lbHTMLSizeDetail";
-            // 
-            // cbDefinitionDetail
-            // 
-            this.cbDefinitionDetail.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDefinitionDetail.FormattingEnabled = true;
-            resources.ApplyResources(this.cbDefinitionDetail, "cbDefinitionDetail");
-            this.cbDefinitionDetail.Name = "cbDefinitionDetail";
             // 
             // lbDefinitionDetail
             // 
@@ -174,28 +186,6 @@
             this.tabPageLargeImg.Name = "tabPageLargeImg";
             this.tabPageLargeImg.UseVisualStyleBackColor = true;
             // 
-            // cbFontSizeLarge
-            // 
-            this.cbFontSizeLarge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFontSizeLarge.FontSizeRatio = 0.01F;
-            this.cbFontSizeLarge.FormattingEnabled = true;
-            resources.ApplyResources(this.cbFontSizeLarge, "cbFontSizeLarge");
-            this.cbFontSizeLarge.Name = "cbFontSizeLarge";
-            // 
-            // cbHTMLSizeLarge
-            // 
-            this.cbHTMLSizeLarge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbHTMLSizeLarge.FormattingEnabled = true;
-            resources.ApplyResources(this.cbHTMLSizeLarge, "cbHTMLSizeLarge");
-            this.cbHTMLSizeLarge.Name = "cbHTMLSizeLarge";
-            // 
-            // cbDefinitionLarge
-            // 
-            this.cbDefinitionLarge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDefinitionLarge.FormattingEnabled = true;
-            resources.ApplyResources(this.cbDefinitionLarge, "cbDefinitionLarge");
-            this.cbDefinitionLarge.Name = "cbDefinitionLarge";
-            // 
             // lbFontSizeLarge
             // 
             resources.ApplyResources(this.lbFontSizeLarge, "lbFontSizeLarge");
@@ -210,6 +200,19 @@
             // 
             resources.ApplyResources(this.lbDefinitionLarge, "lbDefinitionLarge");
             this.lbDefinitionLarge.Name = "lbDefinitionLarge";
+            // 
+            // tabPageReport
+            // 
+            this.tabPageReport.Controls.Add(this.fileSelectReportTemplate);
+            this.tabPageReport.Controls.Add(this.lbReportTemplate);
+            resources.ApplyResources(this.tabPageReport, "tabPageReport");
+            this.tabPageReport.Name = "tabPageReport";
+            this.tabPageReport.UseVisualStyleBackColor = true;
+            // 
+            // lbReportTemplate
+            // 
+            resources.ApplyResources(this.lbReportTemplate, "lbReportTemplate");
+            this.lbReportTemplate.Name = "lbReportTemplate";
             // 
             // _webBrowser
             // 
@@ -286,6 +289,57 @@
             this.toolSBDimensions.Name = "toolSBDimensions";
             this.toolSBDimensions.Click += new System.EventHandler(this.OnShowDimensions);
             // 
+            // cbFontSizeDetail
+            // 
+            this.cbFontSizeDetail.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFontSizeDetail.FontSizeRatio = 0.01F;
+            this.cbFontSizeDetail.FormattingEnabled = true;
+            resources.ApplyResources(this.cbFontSizeDetail, "cbFontSizeDetail");
+            this.cbFontSizeDetail.Name = "cbFontSizeDetail";
+            // 
+            // cbHTMLSizeDetail
+            // 
+            this.cbHTMLSizeDetail.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbHTMLSizeDetail.FormattingEnabled = true;
+            resources.ApplyResources(this.cbHTMLSizeDetail, "cbHTMLSizeDetail");
+            this.cbHTMLSizeDetail.Name = "cbHTMLSizeDetail";
+            // 
+            // cbDefinitionDetail
+            // 
+            this.cbDefinitionDetail.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDefinitionDetail.FormattingEnabled = true;
+            resources.ApplyResources(this.cbDefinitionDetail, "cbDefinitionDetail");
+            this.cbDefinitionDetail.Name = "cbDefinitionDetail";
+            // 
+            // cbFontSizeLarge
+            // 
+            this.cbFontSizeLarge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFontSizeLarge.FontSizeRatio = 0.01F;
+            this.cbFontSizeLarge.FormattingEnabled = true;
+            resources.ApplyResources(this.cbFontSizeLarge, "cbFontSizeLarge");
+            this.cbFontSizeLarge.Name = "cbFontSizeLarge";
+            // 
+            // cbHTMLSizeLarge
+            // 
+            this.cbHTMLSizeLarge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbHTMLSizeLarge.FormattingEnabled = true;
+            resources.ApplyResources(this.cbHTMLSizeLarge, "cbHTMLSizeLarge");
+            this.cbHTMLSizeLarge.Name = "cbHTMLSizeLarge";
+            // 
+            // cbDefinitionLarge
+            // 
+            this.cbDefinitionLarge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDefinitionLarge.FormattingEnabled = true;
+            resources.ApplyResources(this.cbDefinitionLarge, "cbDefinitionLarge");
+            this.cbDefinitionLarge.Name = "cbDefinitionLarge";
+            // 
+            // fileSelectReportTemplate
+            // 
+            this.fileSelectReportTemplate.Filter = "eXtensible Stylesheet Language (*.xsl)|*.xsl";
+            resources.ApplyResources(this.fileSelectReportTemplate, "fileSelectReportTemplate");
+            this.fileSelectReportTemplate.Name = "fileSelectReportTemplate";
+            this.fileSelectReportTemplate.FileNameChanged += new System.EventHandler(this.OnReportTemplateChanged);
+            // 
             // FormReportDesign
             // 
             resources.ApplyResources(this, "$this");
@@ -307,10 +361,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.tabCtrlImageParam.ResumeLayout(false);
+            this.tabPageUnits.ResumeLayout(false);
+            this.tabPageUnits.PerformLayout();
             this.tabPageDetail.ResumeLayout(false);
             this.tabPageDetail.PerformLayout();
             this.tabPageLargeImg.ResumeLayout(false);
             this.tabPageLargeImg.PerformLayout();
+            this.tabPageReport.ResumeLayout(false);
+            this.tabPageReport.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);
@@ -351,5 +409,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolSBReportPrint;
         private System.Windows.Forms.ToolStripButton toolSBReportPDF;
+        private System.Windows.Forms.TabPage tabPageUnits;
+        private System.Windows.Forms.ComboBox cbUnit;
+        private System.Windows.Forms.Label lbUnit;
+        private System.Windows.Forms.TabPage tabPageReport;
+        private System.Windows.Forms.Label lbReportTemplate;
+        private UserControls.FileSelect fileSelectReportTemplate;
     }
 }

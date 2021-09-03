@@ -10,9 +10,7 @@
     <xs:sequence>
       <xs:element name="name" type="xs:string"/>
       <xs:element name="description" type="xs:string"/>
-      <xs:element name="length" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="width" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="height" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
+      <xs:element name="dimensions" minOccurs="0" maxOccurs="1" type="rpt:value3WUnit"/>
       <xs:element name="weight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="netWeight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="admissibleLoadOnTop" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
@@ -25,9 +23,7 @@
     <xs:sequence>
       <xs:element name="name" type="xs:string"/>
       <xs:element name="description" type="xs:string"/>
-      <xs:element name="length" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="width" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="height" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
+      <xs:element name="dimensions" minOccurs="0" maxOccurs="1" type="rpt:value3WUnit"/>
       <xs:element name="weight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="netWeight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="admissibleLoadOnTop" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
@@ -40,9 +36,8 @@
     <xs:sequence>
       <xs:element name="name" type="xs:string"/>
       <xs:element name="description" minOccurs="0" maxOccurs="1" type="xs:string"/>
-      <xs:element name="length" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="width" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="height" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
+      <xs:element name="dimensions" minOccurs="0" maxOccurs="1" type="rpt:value3WUnit"/>
+      <xs:element name="dimensionsInner" minOccurs="0" maxOccurs="1" type="rpt:value3WUnit"/>
       <xs:element name="weight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="netWeight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="admissibleLoadOnTop" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
@@ -55,8 +50,7 @@
     <xs:sequence>
       <xs:element name="name" type="xs:string"/>
       <xs:element name="description" type="xs:string"/>
-      <xs:element name="length" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="width" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
+      <xs:element name="dimensions" minOccurs="0" maxOccurs="1" type="rpt:value2WUnit"/>
       <xs:element name="numberOfFlats" type="xs:string"/>
       <xs:element name="unitThickness" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="unitWeight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
@@ -71,12 +65,8 @@
     <xs:sequence>
       <xs:element name="name" type="xs:string"/>
       <xs:element name="description" type="xs:string"/>
-      <xs:element name="length" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="width" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="height" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="innerLength" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="innerWidth" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="innerHeight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
+      <xs:element name="dimensions" minOccurs="0" maxOccurs="1" type="rpt:value3WUnit"/>
+      <xs:element name="dimensionsInner" minOccurs="0" maxOccurs="1" type="rpt:value3WUnit"/>
       <xs:element name="weight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="admissibleLoadOnTop" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="imageThumbSize" minOccurs="0" maxOccurs="1" type="rpt:imageThumbSize"/>
@@ -89,9 +79,7 @@
       <xs:element name="name" type="xs:string"/>
       <xs:element name="description" type="xs:string"/>
       <xs:element name="arrangement" type="xs:string"/>
-      <xs:element name="length" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="width" minOccurs="0" maxOccurs="1" type ="rpt:valueWUnit"/>
-      <xs:element name="height" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
+      <xs:element name="dimensions" minOccurs="0" maxOccurs="1" type="rpt:value3WUnit"/>
       <xs:element name="netWeight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="wrapperWeight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="trayWeight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
@@ -105,9 +93,7 @@
     <xs:sequence>
       <xs:element name="name" type="xs:string"/>
       <xs:element name="description" minOccurs="0" maxOccurs="1" type="xs:string"/>
-      <xs:element name="length" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="width"  minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
-      <xs:element name="height" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
+      <xs:element name="dimensions" minOccurs="0" maxOccurs="1" type="rpt:value3WUnit"/>
       <xs:element name="weight" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="admissibleLoad" minOccurs="0" maxOccurs="1" type="rpt:valueWUnit"/>
       <xs:element name="type" type="xs:string"/>
@@ -206,18 +192,36 @@
   <!--VALUE WITH UNIT : BEG-->
   <xs:complexType name="valueWUnit">
     <xs:sequence>
-      <xs:element name="unit" type="xs:string"/>
-      <xs:element name="value" type="xs:string"/>
+      <xs:element name="unitM" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="valueM" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="unitI" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="valueI" type="xs:string" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   <!--VALUE WITH UNIT : END-->
+  <!--VALUE2 WITH UNIT : BEGIN-->
+  <xs:complexType name="value2WUnit">
+    <xs:sequence>
+      <xs:element name="unitM" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="v0M" type="xs:double" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="v1M" type="xs:double" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="unitI" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="v0I" type="xs:double" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="v1I" type="xs:double" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--VALUE2 WITH UNIT : END-->
   <!--VALUE3 WITH UNIT : BEGIN-->
   <xs:complexType name="value3WUnit">
     <xs:sequence>
-      <xs:element name="unit" type="xs:string"/>
-      <xs:element name="v0" type="xs:double"/>
-      <xs:element name="v1" type="xs:double"/>
-      <xs:element name="v2" type="xs:double"/>
+      <xs:element name="unitM" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="v0M" type="xs:double" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="v1M" type="xs:double" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="v2M" type="xs:double" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="unitI" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="v0I" type="xs:double" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="v1I" type="xs:double" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="v2I" type="xs:double" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   <!--VALUE3 WITH UNIT : END-->

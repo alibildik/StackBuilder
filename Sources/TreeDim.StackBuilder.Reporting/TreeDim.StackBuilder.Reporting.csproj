@@ -72,6 +72,9 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="treeDiM.UserControls">
+      <HintPath>..\treeDiM.UserControls\bin\Release\treeDiM.UserControls.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WkHtmlToXSharp.Win32">
       <HintPath>..\ThirdPartyAssemblies\WkHtmlToXSharp.Win32.dll</HintPath>
@@ -154,6 +157,7 @@
     <Content Include="ReportTemplates\SVE.xml" />
     <None Include="ReportTemplates\ReportTemplateHtml.xsl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <Content Include="ReportTemplates\ReportTemplateHtml_INTEX.xsl">
       <SubType>Designer</SubType>
@@ -278,10 +282,10 @@
       <Version>15.0.4797.1003</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Web.WebView2">
-      <Version>1.0.864.35</Version>
+      <Version>1.0.902.49</Version>
     </PackageReference>
     <PackageReference Include="NuGet.Build.Tasks.Pack">
-      <Version>5.10.0</Version>
+      <Version>5.11.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

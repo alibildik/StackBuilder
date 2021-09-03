@@ -48,6 +48,9 @@ namespace treeDiM.StackBuilder.Desktop
             cbInputPallet2.Initialize(_document, this, null);
             cbInputPallet3.Initialize(_document, this, null);
             cbInputPallet4.Initialize(_document, this, null);
+            // MasterPallet
+            cbMasterSplit.SelectedIndex = 0;
+            cbPalletOrientation.SelectedIndex = 0;
 
             rbHalf.Checked = true;
         }
@@ -70,6 +73,7 @@ namespace treeDiM.StackBuilder.Desktop
                 {
                     _item = _document.CreateNewAnalysisPalletsOnPallet(
                         ItemName, ItemDescription
+                        , MasterPalletSplit, LoadedPalletOrientation
                         , MasterPallet
                         , LoadedPallet0
                         , LoadedPallet1
@@ -115,8 +119,78 @@ namespace treeDiM.StackBuilder.Desktop
             bool quarter = rbQuarter.Checked;
             lbInputPallet3.Visible = quarter;
             lbInputPallet4.Visible = quarter;
-            cbInputPallet3.Visible = quarter;
-            cbInputPallet4.Visible = quarter;
+        }
+        private void OnLoadedPalletChanged(object sender, EventArgs e)
+        {
+            double masterLength = MasterPallet.Length;
+            double masterWidth = MasterPallet.Width;
+
+            double loadedLength = LoadedPallet0.Length;
+            double loadedWidth = LoadedPallet0.Width;
+            int indexSplit = -1;
+            int indexOrientation = -1;
+
+            switch (Mode)
+            {
+                case 0:
+                    {
+                        double[] diff = new double[4];
+                        diff[0] = Math.Abs(masterLength - loadedLength) + Math.Abs(masterWidth - 2.0 * loadedWidth);
+                        diff[1] = Math.Abs(masterLength - loadedWidth) + Math.Abs(masterWidth - 2.0 * loadedLength);
+                        diff[2] = Math.Abs(masterLength - 2.0 * loadedLength) + Math.Abs(masterWidth - loadedWidth);
+                        diff[3] = Math.Abs(masterLength - 2.0 * loadedWidth) + Math.Abs(masterWidth - loadedLength);
+
+                        int minIndex = -1;
+                        double minValue = double.MaxValue;
+                        for (int i = 0; i < 4; ++i)
+                        {
+                            if (diff[i] < minValue)
+                            {
+                                minIndex = i;
+                                minValue = diff[i];
+                            }
+                        }
+                        switch (minIndex)
+                        {
+                            case 0: indexSplit = 0; indexOrientation = 0; break;
+                            case 1: indexSplit = 0; indexOrientation = 1; break;
+                            case 2: indexSplit = 1; indexOrientation = 0; break;
+                            case 3: indexSplit = 1; indexOrientation = 1; break;
+                            default: break;
+                                
+                        }
+                    }
+                    break;
+                case 1:
+                    {
+                        double[] diff = new double[2];
+                        diff[0] = Math.Abs(masterLength - 2.0 * loadedLength) + Math.Abs(masterWidth - 2.0 * loadedWidth);
+                        diff[0] = Math.Abs(masterLength - 2.0 * loadedWidth) + Math.Abs(masterWidth - 2.0 * loadedLength);
+
+                        int minIndex = -1;
+                        double minValue = double.MaxValue;
+                        for (int i = 0; i < 2; ++i)
+                        {
+                            if (diff[i] < minValue)
+                            {
+                                minIndex = i;
+                                minValue = diff[i];
+                            }
+                        }
+                        switch (minIndex)
+                        {
+                            case 0: indexOrientation = 0; break;
+                            case 1: indexOrientation = 1; break;
+                            default: break;
+                        }
+                    }
+                    break;
+                default: break;
+            }
+            cbMasterSplit.SelectedIndex = indexSplit;
+            cbPalletOrientation.SelectedIndex = indexOrientation;
+
+            OnInputChanged(sender, e);
         }
         private void OnInputChanged(object sender, EventArgs e)
         {
@@ -130,7 +204,10 @@ namespace treeDiM.StackBuilder.Desktop
             if (null == MasterPallet || null == LoadedPallet0 || null == LoadedPallet1)
                 return;
 
-            var analysis = new AnalysisPalletsOnPallet(null, MasterPallet,
+            var analysis = new AnalysisPalletsOnPallet(null,
+                MasterPalletSplit,
+                LoadedPalletOrientation,
+                MasterPallet,
                 LoadedPallet0,
                 LoadedPallet1,
                 1 == Mode ? LoadedPallet2 : null,
@@ -150,6 +227,9 @@ namespace treeDiM.StackBuilder.Desktop
         private LoadedPallet LoadedPallet2 => cbInputPallet3.SelectedType as LoadedPallet;
         private LoadedPallet LoadedPallet3 => cbInputPallet4.SelectedType as LoadedPallet;
         private int Mode => rbHalf.Checked ? 0 : 1;
+        private AnalysisPalletsOnPallet.EMasterPalletSplit MasterPalletSplit => (AnalysisPalletsOnPallet.EMasterPalletSplit)cbMasterSplit.SelectedIndex;
+        private AnalysisPalletsOnPallet.ELoadedPalletOrientation LoadedPalletOrientation => (AnalysisPalletsOnPallet.ELoadedPalletOrientation)cbPalletOrientation.SelectedIndex;
+
         #endregion
 
         #region Data members

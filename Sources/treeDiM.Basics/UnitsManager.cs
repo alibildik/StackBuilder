@@ -53,194 +53,162 @@ namespace treeDiM.Basics
         #endregion
 
         #region Current unit system 
-        public static UnitSystem CurrentUnitSystem
-        {
-            get { return Instance._currentUnitSystem; }
-            set { Instance._currentUnitSystem = value; }
-        }
+        public static UnitSystem CurrentUnitSystem { get; set; }
         #endregion
 
         #region Unit strings
         /// <summary>
         /// Length unit string
         /// </summary>
-        public static string LengthUnitString
+        public static string LengthUnitString => LengthUnitStringMethod(CurrentUnitSystem);
+        public static string LengthUnitStringMethod(UnitSystem unitSystem)
         {
-            get
+            switch (unitSystem)
             {
-                switch (Instance._currentUnitSystem)
-                {
-                    case UnitSystem.UNIT_METRIC1: return "mm";
-                    case UnitSystem.UNIT_METRIC2: return "cm";
-                    case UnitSystem.UNIT_IMPERIAL: return "in";
-                    case UnitSystem.UNIT_US: return "in";
-                    default: throw new Exception("Invalid unit system!");
-                }
+                case UnitSystem.UNIT_METRIC1: return "mm";
+                case UnitSystem.UNIT_METRIC2: return "cm";
+                case UnitSystem.UNIT_IMPERIAL: return "in";
+                case UnitSystem.UNIT_US: return "in";
+                default: throw new Exception("Invalid unit system!");
             }
         }
         /// <summary>
         /// Weight unit string
         /// </summary>
-        public static string MassUnitString
+        public static string MassUnitString => MassUnitStringMethod(CurrentUnitSystem);
+        public static string MassUnitStringMethod(UnitSystem unitSystem)
         {
-            get
+            switch (unitSystem)
             {
-                switch (Instance._currentUnitSystem)
-                {
-                    case UnitSystem.UNIT_METRIC1: return "kg";
-                    case UnitSystem.UNIT_METRIC2: return "kg";
-                    case UnitSystem.UNIT_IMPERIAL: return "lb";
-                    case UnitSystem.UNIT_US: return "lb";
-                    default: throw new Exception("Invalid unit system!");
-                }
+                case UnitSystem.UNIT_METRIC1: return "kg";
+                case UnitSystem.UNIT_METRIC2: return "kg";
+                case UnitSystem.UNIT_IMPERIAL: return "lb";
+                case UnitSystem.UNIT_US: return "lb";
+                default: throw new Exception("Invalid unit system!");
             }
         }
+
         /// <summary>
         /// Volume unit string
         /// </summary>
-        public static string VolumeUnitString
+        public static string VolumeUnitString => VolumeUnitStringMethod(CurrentUnitSystem);
+        public static string VolumeUnitStringMethod(UnitSystem unitSystem)
         {
-            get
+            switch (unitSystem)
             {
-                switch (Instance._currentUnitSystem)
-                {
-                    case UnitSystem.UNIT_METRIC1: return "l";
-                    case UnitSystem.UNIT_METRIC2: return "l";
-                    case UnitSystem.UNIT_IMPERIAL: return "in³";
-                    case UnitSystem.UNIT_US: return "in³";
-                    default: throw new Exception("Invalid unit system!");
-                }
+                case UnitSystem.UNIT_METRIC1: return "l";
+                case UnitSystem.UNIT_METRIC2: return "l";
+                case UnitSystem.UNIT_IMPERIAL: return "in³";
+                case UnitSystem.UNIT_US: return "in³";
+                default: throw new Exception("Invalid unit system!");
             }
         }
 
-        public static string SurfaceMassUnitString
+        public static string SurfaceMassUnitString => SurfaceMassUnitStringMethod(CurrentUnitSystem);
+        public static string SurfaceMassUnitStringMethod(UnitSystem unitSystem)
         {
-            get
+            switch (unitSystem)
             {
-                switch (Instance._currentUnitSystem)
-                {
-                    case UnitSystem.UNIT_METRIC1: return "kg/m²";
-                    case UnitSystem.UNIT_METRIC2: return "kg/m²";
-                    case UnitSystem.UNIT_IMPERIAL: return "lb/in²";
-                    case UnitSystem.UNIT_US: return "lb/in²";
-                    default: throw new Exception("Invalid unit system!");
-                }
+                case UnitSystem.UNIT_METRIC1: return "kg/m²";
+                case UnitSystem.UNIT_METRIC2: return "kg/m²";
+                case UnitSystem.UNIT_IMPERIAL: return "lb/in²";
+                case UnitSystem.UNIT_US: return "lb/in²";
+                default: throw new Exception("Invalid unit system!");
+            }
+        }
+        public static string ForceUnitString => ForceUnitStringMethod(CurrentUnitSystem);
+        public static string ForceUnitStringMethod(UnitSystem unitSystem)
+        {
+            switch (unitSystem)
+            {
+                case UnitSystem.UNIT_METRIC1: return "daN";
+                case UnitSystem.UNIT_METRIC2: return "daN";
+                case UnitSystem.UNIT_IMPERIAL: return "daN";
+                case UnitSystem.UNIT_US: return "daN";
+                default: throw new Exception("Invalid unit system!");
             }
         }
 
-        public static string ForceUnitString
+        public static string LinearForceUnitString => LinearForceUnitStringMethod(CurrentUnitSystem);
+        public static string LinearForceUnitStringMethod(UnitSystem unitSystem)
         {
-            get
+            switch (unitSystem)
             {
-                switch (Instance._currentUnitSystem)
-                {
-                    case UnitSystem.UNIT_METRIC1: return "daN";
-                    case UnitSystem.UNIT_METRIC2: return "daN";
-                    case UnitSystem.UNIT_IMPERIAL: return "daN";
-                    case UnitSystem.UNIT_US: return "daN";
-                    default: throw new Exception("Invalid unit system!");
-                }
+                case UnitSystem.UNIT_METRIC1: return "N/m";
+                case UnitSystem.UNIT_METRIC2: return "N/m";
+                case UnitSystem.UNIT_IMPERIAL: return "N/in";
+                case UnitSystem.UNIT_US: return "N/in";
+                default: throw new Exception("Invalid unit system!");
             }
         }
-        public static string LinearForceUnitString
+        public static string LinearMassUnitString => LinearMassUnitStringMethod(CurrentUnitSystem);
+        public static string LinearMassUnitStringMethod(UnitSystem unitSystem)
         {
-            get
+            switch (unitSystem)
             {
-                switch (Instance._currentUnitSystem)
-                {
-                    case UnitSystem.UNIT_METRIC1: return "N/m";
-                    case UnitSystem.UNIT_METRIC2: return "N/m";
-                    case UnitSystem.UNIT_IMPERIAL: return "N/in";
-                    case UnitSystem.UNIT_US: return "N/in";
-                    default: throw new Exception("Invalid unit system!");
-                }
+                case UnitSystem.UNIT_METRIC1: return "kg/m";
+                case UnitSystem.UNIT_METRIC2: return "kg/m";
+                case UnitSystem.UNIT_IMPERIAL: return "lb/in";
+                case UnitSystem.UNIT_US: return "lb/in";
+                default: throw new Exception("Invalid unit system!");
             }
         }
-        public static string LinearMassUnitString
+        public static string StiffnessUnitString => StiffnessUnitStringMethod(CurrentUnitSystem);
+        public static string StiffnessUnitStringMethod(UnitSystem unitSystem)
         {
-            get
+            switch (unitSystem)
             {
-                switch (Instance._currentUnitSystem)
-                { 
-                    case UnitSystem.UNIT_METRIC1: return "kg/m";
-                    case UnitSystem.UNIT_METRIC2: return "kg/m";
-                    case UnitSystem.UNIT_IMPERIAL: return "lb/in";
-                    case UnitSystem.UNIT_US: return "lb/in";
-                    default: throw new Exception("Invalid unit system!");                }
+                case UnitSystem.UNIT_METRIC1: return "N.m";
+                case UnitSystem.UNIT_METRIC2: return "N.m";
+                case UnitSystem.UNIT_IMPERIAL: return "N.m";
+                case UnitSystem.UNIT_US: return "N.m";
+                default: throw new Exception("Invalid unit system!");
             }
         }
-
-        public static string StiffnessUnitString
-        {
-            get
-            {
-                switch (Instance._currentUnitSystem)
-                {
-                    case UnitSystem.UNIT_METRIC1: return "N.m";
-                    case UnitSystem.UNIT_METRIC2: return "N.m";
-                    case UnitSystem.UNIT_IMPERIAL: return "N.m";
-                    case UnitSystem.UNIT_US: return "N.m";
-                    default: throw new Exception("Invalid unit system!");
-                }
-            }
-        }
-        public static string SystemUnitString
-        {
-            get
-            {
-                return string.Format("{0}, {1}", LengthUnitString, MassUnitString);
-            }
-        }
+        public static string SystemUnitString => string.Format("{0}, {1}", LengthUnitString, MassUnitString);
         #endregion
 
         #region Format strings
-        public static string LengthFormatString
+        public static string LengthFormatString => LengthFormatStringMethod(CurrentUnitSystem);
+        public static string LengthFormatStringMethod(UnitSystem unitSystem)
         {
-            get
+            switch (unitSystem)
             {
-                switch (Instance._currentUnitSystem)
-                {
-                    case UnitSystem.UNIT_METRIC1: return "{0:0.#}";
-                    case UnitSystem.UNIT_METRIC2: return "{0:0.#}";
-                    case UnitSystem.UNIT_IMPERIAL: return "{0:0.###}";
-                    case UnitSystem.UNIT_US: return "{0:0.###}";
-                    default: throw new Exception("Invalid unit system!");
-                }
+                case UnitSystem.UNIT_METRIC1: return "{0:0.#}";
+                case UnitSystem.UNIT_METRIC2: return "{0:0.#}";
+                case UnitSystem.UNIT_IMPERIAL: return "{0:0.###}";
+                case UnitSystem.UNIT_US: return "{0:0.###}";
+                default: throw new Exception("Invalid unit system!");
             }
         }
-        public static string MassFormatString
+        public static string MassFormatString => MassFormatStringMethod(CurrentUnitSystem);
+        public static string MassFormatStringMethod(UnitSystem unitSystem)
         {
-            get
+            switch (unitSystem)
             {
-                switch (Instance._currentUnitSystem)
-                {
-                    case UnitSystem.UNIT_METRIC1: return "{0:0.###}";
-                    case UnitSystem.UNIT_METRIC2: return "{0:0.###}";
-                    case UnitSystem.UNIT_IMPERIAL: return "{0:0.###}";
-                    case UnitSystem.UNIT_US: return "{0:0.###}";
-                    default: throw new Exception("Invalid unit system!");
-                }
+                case UnitSystem.UNIT_METRIC1: return "{0:0.###}";
+                case UnitSystem.UNIT_METRIC2: return "{0:0.###}";
+                case UnitSystem.UNIT_IMPERIAL: return "{0:0.###}";
+                case UnitSystem.UNIT_US: return "{0:0.###}";
+                default: throw new Exception("Invalid unit system!");
             }
         }
-        public static string VolumeFormatString
+        public static string VolumeFormatString => VolumeFormatStringMethod(CurrentUnitSystem);
+        public static string VolumeFormatStringMethod(UnitSystem unitSystem)
         {
-            get
+            switch (unitSystem)
             {
-                switch (Instance._currentUnitSystem)
-                {
-                    case UnitSystem.UNIT_METRIC1: return "{0:0.###}";
-                    case UnitSystem.UNIT_METRIC2: return "{0:0.###}";
-                    case UnitSystem.UNIT_IMPERIAL: return "{0:0.###}";
-                    case UnitSystem.UNIT_US: return "{0:0.###}";
-                    default: throw new Exception("Invalid unit system!");
-                }
+                case UnitSystem.UNIT_METRIC1: return "{0:0.###}";
+                case UnitSystem.UNIT_METRIC2: return "{0:0.###}";
+                case UnitSystem.UNIT_IMPERIAL: return "{0:0.###}";
+                case UnitSystem.UNIT_US: return "{0:0.###}";
+                default: throw new Exception("Invalid unit system!");
             }
         }
-        public static string SurfaceMassFormatString
+        public static string SurfaceMassFormatString => SurfaceMassFormatStringMethod(CurrentUnitSystem);
+        public static string SurfaceMassFormatStringMethod(UnitSystem unitSystem)
         {
-            get
-            {
-                switch (Instance._currentUnitSystem)
+                switch (unitSystem)
                 {
                     case UnitSystem.UNIT_METRIC1: return "{0:0.###}";
                     case UnitSystem.UNIT_METRIC2: return "{0:0.###}";
@@ -248,13 +216,11 @@ namespace treeDiM.Basics
                     case UnitSystem.UNIT_US: return "{0:0.###}";
                     default: throw new Exception("Invalid unit system!");
                 }
-            }
         }
-        public static string ForceFormatString
+        public static string ForceFormatString => ForceFormatStringMethod(CurrentUnitSystem);
+        public static string ForceFormatStringMethod(UnitSystem unitSystem)
         {
-            get
-            {
-                switch (Instance._currentUnitSystem)
+                switch (unitSystem)
                 {
                     case UnitSystem.UNIT_METRIC1: return "{0:0.###}";
                     case UnitSystem.UNIT_METRIC2: return "{0:0.###}";
@@ -262,27 +228,23 @@ namespace treeDiM.Basics
                     case UnitSystem.UNIT_US: return "{0:0.###}";
                     default: throw new Exception("Invalid unit system!");
                 }
-            }
         }
-        public static string LinearMassFormatString
+        public static string LinearMassFormatString => LinearMassFormatStringMethod(CurrentUnitSystem);
+        public static string LinearMassFormatStringMethod(UnitSystem unitSystem)
         {
-            get
-            {
-                switch (Instance._currentUnitSystem)
+                switch (unitSystem)
                 {
                     case UnitSystem.UNIT_METRIC1: return "{0:0.###}";
                     case UnitSystem.UNIT_METRIC2: return "{0:0.###}";
                     case UnitSystem.UNIT_IMPERIAL: return "{0:0.###}";
                     case UnitSystem.UNIT_US: return "{0:0.###}";
                     default: throw new Exception("Invalid unit system!");
-                }
             }
         }
-        public static string LinearForceFormatString
+        public static string LinearForceFormatString => LinearForceFormatStringMethod(CurrentUnitSystem);
+        public static string LinearForceFormatStringMethod(UnitSystem unitSystem)
         {
-            get
-            {
-                switch (Instance._currentUnitSystem)
+                switch (unitSystem)
                 {
                     case UnitSystem.UNIT_METRIC1: return "{0:0.###}";
                     case UnitSystem.UNIT_METRIC2: return "{0.0.###}";
@@ -290,20 +252,17 @@ namespace treeDiM.Basics
                     case UnitSystem.UNIT_US: return "{0:0.###}";
                     default: throw new Exception("Invalid unit system!");
                 }
-            }
         }
-        public static string StiffnessFormatString
+        public static string StiffnessFormatString => StiffnessFormatStringMethod(CurrentUnitSystem);
+        public static string StiffnessFormatStringMethod(UnitSystem unitSystem)
         {
-            get
+            switch (unitSystem)
             {
-                switch (Instance._currentUnitSystem)
-                {
-                    case UnitSystem.UNIT_METRIC1: return "{0:0.###}";
-                    case UnitSystem.UNIT_METRIC2: return "{0.0.###}";
-                    case UnitSystem.UNIT_IMPERIAL: return "{0:0.###}";
-                    case UnitSystem.UNIT_US: return "{0:0.###}";
-                    default: throw new Exception("Invalid unit system!");
-                }
+                case UnitSystem.UNIT_METRIC1: return "{0:0.###}";
+                case UnitSystem.UNIT_METRIC2: return "{0.0.###}";
+                case UnitSystem.UNIT_IMPERIAL: return "{0:0.###}";
+                case UnitSystem.UNIT_US: return "{0:0.###}";
+                default: throw new Exception("Invalid unit system!");
             }
         }
         #endregion
@@ -313,12 +272,12 @@ namespace treeDiM.Basics
         {
             get
             {
-                switch (Instance._currentUnitSystem)
+                switch (CurrentUnitSystem)
                 {
-                    case UnitSystem.UNIT_METRIC1:   return 1; 
-                    case UnitSystem.UNIT_METRIC2:   return 1;
-                    case UnitSystem.UNIT_IMPERIAL:  return 2;
-                    case UnitSystem.UNIT_US:        return 2;
+                    case UnitSystem.UNIT_METRIC1: return 1;
+                    case UnitSystem.UNIT_METRIC2: return 1;
+                    case UnitSystem.UNIT_IMPERIAL: return 2;
+                    case UnitSystem.UNIT_US: return 2;
                     default: throw new Exception("Invalid unit system!");
                 }
             }
@@ -327,7 +286,7 @@ namespace treeDiM.Basics
         {
             get
             {
-                switch (Instance._currentUnitSystem)
+                switch (CurrentUnitSystem)
                 {
                     case UnitSystem.UNIT_METRIC1: return 3;
                     case UnitSystem.UNIT_METRIC2: return 3;
@@ -348,7 +307,6 @@ namespace treeDiM.Basics
 
         #region Data members
         private static UnitsManager _instance;
-        private UnitSystem _currentUnitSystem;
         #endregion
 
         #region UI string transformations
@@ -367,19 +325,35 @@ namespace treeDiM.Basics
                 default: return string.Empty;
             }
         }
-        static public string UnitFormat(UnitType ut)
+        static public string UnitString(UnitType ut, UnitSystem us)
         {
             switch (ut)
-            { 
-                case UnitType.UT_LENGTH: return LengthFormatString;
-                case UnitType.UT_MASS: return MassFormatString;
-                case UnitType.UT_VOLUME: return VolumeFormatString;
-                case UnitType.UT_SURFACEMASS: return SurfaceMassFormatString;
-                case UnitType.UT_FORCE: return ForceFormatString;
-                case UnitType.UT_LINEARFORCE: return LinearForceFormatString;
-                case UnitType.UT_LINEARMASS: return LinearMassFormatString;
-                case UnitType.UT_STIFFNESS: return StiffnessFormatString;
-                default: return string.Empty;            
+            {
+                case UnitType.UT_LENGTH: return LengthUnitStringMethod(us);
+                case UnitType.UT_MASS: return MassUnitStringMethod(us);
+                case UnitType.UT_VOLUME: return VolumeUnitStringMethod(us);
+                case UnitType.UT_SURFACEMASS: return SurfaceMassUnitStringMethod(us);
+                case UnitType.UT_FORCE: return ForceUnitStringMethod(us);
+                case UnitType.UT_LINEARFORCE: return LinearForceUnitStringMethod(us);
+                case UnitType.UT_LINEARMASS: return LinearMassUnitStringMethod(us);
+                case UnitType.UT_STIFFNESS: return StiffnessUnitStringMethod(us);
+                default: return string.Empty;
+            }
+        }
+        static public string UnitFormat(UnitType ut) => UnitFormat(ut, CurrentUnitSystem);
+        static public string UnitFormat(UnitType ut, UnitSystem us)
+        {
+            switch (ut)
+            {
+                case UnitType.UT_LENGTH: return LengthFormatStringMethod(us);
+                case UnitType.UT_MASS: return MassFormatStringMethod(us);
+                case UnitType.UT_VOLUME: return VolumeFormatStringMethod(us);
+                case UnitType.UT_SURFACEMASS: return SurfaceMassFormatStringMethod(us);
+                case UnitType.UT_FORCE: return ForceFormatStringMethod(us);
+                case UnitType.UT_LINEARFORCE: return LinearForceFormatStringMethod(us);
+                case UnitType.UT_LINEARMASS: return LinearMassFormatStringMethod(us);
+                case UnitType.UT_STIFFNESS: return StiffnessFormatStringMethod(us);
+                default: return string.Empty;
             }
         }
         static public int NoDecimals(UnitType ut)
@@ -399,7 +373,7 @@ namespace treeDiM.Basics
             }
         }
         static public string ReplaceUnitStrings(string s)
-        { 
+        {
             string sText = s;
             sText = sText.Replace("uLength", LengthUnitString);
             sText = sText.Replace("uMass", MassUnitString);
@@ -411,7 +385,7 @@ namespace treeDiM.Basics
             return sText;
         }
         public static void AdaptUnitLabels(Control c)
-        { 
+        {
             foreach (Control ctrl in c.Controls)
             {
                 if (ctrl is Label lb)
@@ -442,7 +416,7 @@ namespace treeDiM.Basics
                     case UnitSystem.UNIT_METRIC2: return 1.0E-04; //cm² to m²
                     case UnitSystem.UNIT_IMPERIAL: return 1.0; // in² to in²
                     case UnitSystem.UNIT_US: return 1.0; // in² to in²
-                    default: throw new Exception("Invalid unit system!");                    
+                    default: throw new Exception("Invalid unit system!");
                 }
             }
         }
@@ -493,66 +467,52 @@ namespace treeDiM.Basics
                 default: throw new Exception("Invalid unit system!");
             }
         }
+
+        public static double ConvertTo(double value, UnitType unitType, UnitSystem unitSystem)
+        {
+            switch (unitType)
+            {
+                case UnitType.UT_LENGTH: return ConvertLengthTo(value, unitSystem);
+                case UnitType.UT_MASS: return ConvertMassTo(value, unitSystem);
+                default: throw new Exception("Unexpected unit type!");
+            }        
+        }
         public static double ConvertLengthTo(double value, UnitSystem unitSystem)
         {
-            if (unitSystem == CurrentUnitSystem)
-                return value;
-            else
-            {
-                StandardMeasure<Length> measure = new StandardMeasure<Length>(value, LengthUnitFromUnitSystem(CurrentUnitSystem));
-                return measure.GetAmount(LengthUnitFromUnitSystem(unitSystem));
-            }       
+            if (unitSystem == CurrentUnitSystem) return value;
+            StandardMeasure<Length> measure = new StandardMeasure<Length>(value, LengthUnitFromUnitSystem(CurrentUnitSystem));
+            return measure.GetAmount(LengthUnitFromUnitSystem(unitSystem));
         }
         public static double ConvertLengthFrom(double value, UnitSystem unitSystem)
         {
-            if (unitSystem == CurrentUnitSystem)
-                return value;
-            else
-            {
-                StandardMeasure<Length> measure = new StandardMeasure<Length>(value, LengthUnitFromUnitSystem(unitSystem));
-                return measure.GetAmount(LengthUnitFromUnitSystem(CurrentUnitSystem));
-            }
+            if (unitSystem == CurrentUnitSystem) return value;
+            StandardMeasure<Length> measure = new StandardMeasure<Length>(value, LengthUnitFromUnitSystem(unitSystem));
+            return measure.GetAmount(LengthUnitFromUnitSystem(CurrentUnitSystem));
         }
         public static double ConvertMassTo(double value, UnitSystem unitSystem)
         {
-            if (unitSystem == CurrentUnitSystem)
-                return value;
-            else
-            {
-                StandardMeasure<Mass> measure = new StandardMeasure<Mass>(value, MassUnitFromUnitSystem(CurrentUnitSystem));
-                return measure.GetAmount(MassUnitFromUnitSystem(unitSystem));
-            }
+            if (unitSystem == CurrentUnitSystem) return value;
+            StandardMeasure<Mass> measure = new StandardMeasure<Mass>(value, MassUnitFromUnitSystem(CurrentUnitSystem));
+            return measure.GetAmount(MassUnitFromUnitSystem(unitSystem));
         }
         public static double ConvertMassFrom(double value, UnitSystem unitSystem)
         {
-            if (unitSystem == CurrentUnitSystem)
-                return value;
-            else
-            {
-                StandardMeasure<Mass> measure = new StandardMeasure<Mass>(value, MassUnitFromUnitSystem(unitSystem));
-                return measure.GetAmount(MassUnitFromUnitSystem(CurrentUnitSystem));
-            }       
+            if (unitSystem == CurrentUnitSystem) return value;
+            StandardMeasure<Mass> measure = new StandardMeasure<Mass>(value, MassUnitFromUnitSystem(unitSystem));
+            return measure.GetAmount(MassUnitFromUnitSystem(CurrentUnitSystem));
         }
         public static double ConvertSurfaceMassFrom(double value, UnitSystem unitSystem)
         {
-            if (unitSystem == CurrentUnitSystem)
-                return value;
-            else
-            {
-                StandardMeasure<SurfaceDensity> measure = new StandardMeasure<SurfaceDensity>(value, SurfaceMassUnitFromUnitSystem(unitSystem));
-                return measure.GetAmount(SurfaceMassUnitFromUnitSystem(CurrentUnitSystem));
-            }
+            if (unitSystem == CurrentUnitSystem) return value;
+            StandardMeasure<SurfaceDensity> measure = new StandardMeasure<SurfaceDensity>(value, SurfaceMassUnitFromUnitSystem(unitSystem));
+            return measure.GetAmount(SurfaceMassUnitFromUnitSystem(CurrentUnitSystem));
         }
         public static double ConvertLinearMassFrom(double value, UnitSystem unitSystem)
         {
-            if (unitSystem == CurrentUnitSystem)
-                return value;
-            else
-            {
-                StandardMeasure<Mass> measure = new StandardMeasure<Mass>(value, MassUnitFromUnitSystem(CurrentUnitSystem));
-                StandardMeasure<Length> measureLength = new StandardMeasure<Length>(value, LengthUnitFromUnitSystem(CurrentUnitSystem));
-                return measure.GetAmount(MassUnitFromUnitSystem(unitSystem));
-            }
+            if (unitSystem == CurrentUnitSystem) return value;
+            StandardMeasure<Mass> measure = new StandardMeasure<Mass>(value, MassUnitFromUnitSystem(CurrentUnitSystem));
+            StandardMeasure<Length> measureLength = new StandardMeasure<Length>(value, LengthUnitFromUnitSystem(CurrentUnitSystem));
+            return measure.GetAmount(MassUnitFromUnitSystem(unitSystem));
         }
         #endregion
     }

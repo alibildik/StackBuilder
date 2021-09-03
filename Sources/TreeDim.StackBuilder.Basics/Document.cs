@@ -735,11 +735,14 @@ namespace treeDiM.StackBuilder.Basics
         }
         public Analysis CreateNewAnalysisPalletsOnPallet(
             string name, string description,
+            AnalysisPalletsOnPallet.EMasterPalletSplit masterPalletSplit, AnalysisPalletsOnPallet.ELoadedPalletOrientation loadedPalletOrientation,
             PalletProperties masterPallet,
             LoadedPallet loadedPallet0, LoadedPallet loadedPallet1,
             LoadedPallet loadedPallet2, LoadedPallet loadedPallet3)
         {
-            AnalysisPalletsOnPallet analysis = new AnalysisPalletsOnPallet(this, masterPallet,
+            AnalysisPalletsOnPallet analysis = new AnalysisPalletsOnPallet(this,
+                masterPalletSplit, loadedPalletOrientation,
+                masterPallet,
                 loadedPallet0,
                 loadedPallet1,
                 loadedPallet2,
@@ -2156,8 +2159,16 @@ namespace treeDiM.StackBuilder.Basics
                 if (eltAnalysis.HasAttribute("Pallet3"))
                     pallet3 = GetContentByGuid(Guid.Parse(eltAnalysis.Attributes["Pallet3"].Value)) as LoadedPallet;
 
+                AnalysisPalletsOnPallet.EMasterPalletSplit masterPalletSplit = AnalysisPalletsOnPallet.EMasterPalletSplit.HORIZONTAL;
+                if (eltAnalysis.HasAttribute("MasterPalletSplit"))
+                    masterPalletSplit = (AnalysisPalletsOnPallet.EMasterPalletSplit)int.Parse(eltAnalysis.Attributes["MasterPalletSplit"].Value);
+                AnalysisPalletsOnPallet.ELoadedPalletOrientation loadedPalletOrientation = AnalysisPalletsOnPallet.ELoadedPalletOrientation.DEFAULT;
+                if (eltAnalysis.HasAttribute("LoadedPalletOrientation"))
+                    masterPalletSplit = (AnalysisPalletsOnPallet.EMasterPalletSplit)int.Parse(eltAnalysis.Attributes["LoadedPalletOrientation"].Value);
+
                 var analysis = CreateNewAnalysisPalletsOnPallet(
                     sName, sDescription,
+                    masterPalletSplit, loadedPalletOrientation,
                     palletProperties, pallet0, pallet1, pallet2, pallet3) as AnalysisPalletsOnPallet;
                 if (!string.IsNullOrEmpty(sId))
                     analysis.ID.IGuid = Guid.Parse(sId);
@@ -3898,6 +3909,15 @@ namespace treeDiM.StackBuilder.Basics
             XmlAttribute analysisContainerId = xmlDoc.CreateAttribute("ContainerId");
             analysisContainerId.Value = analysis.Container.ID.IGuid.ToString();
             xmlAnalysisElt.Attributes.Append(analysisContainerId);
+            // masterPalletSplit
+            XmlAttribute masterPalletSplit = xmlDoc.CreateAttribute("MasterPalletSplit");
+            masterPalletSplit.Value = $"{(int)analysis.MasterPalletSplit}";
+            xmlAnalysisElt.Attributes.Append(masterPalletSplit);
+            // loadedPalletOrientation
+            XmlAttribute loadedPalletOrientation = xmlDoc.CreateAttribute("LoadedPalletOrientation");
+            loadedPalletOrientation.Value = $"{(int)analysis.LoadedPalletOrientation}";
+            xmlAnalysisElt.Attributes.Append(loadedPalletOrientation);
+
             // loaded pallets
             for (int i = 0; i < 4; ++i)
             {
