@@ -16,7 +16,7 @@ namespace Sharp3D.Boxologic
         private List<Layer> layers = new List<Layer>();
         private Scrappad scrapfirst, smallestz;
         private Scrappad trash;
-        private Dictionary<int, KeyValuePair<int,decimal>> best_iterations = new Dictionary<int, KeyValuePair<int,decimal>>();
+        private Dictionary<int, KeyValuePair<int, decimal>> best_iterations = new Dictionary<int, KeyValuePair<int, decimal>>();
 
         private bool packing = true, layerdone = false, evened = false;
         private int best_variant;
@@ -53,9 +53,13 @@ namespace Sharp3D.Boxologic
                         new BoxInfo()
                         {
                             ID = bi.ID,
-                            Dim1 = bi.Boxx, Dim2 = bi.Boxy, Dim3 = bi.Boxz,
+                            Dim1 = bi.Boxx,
+                            Dim2 = bi.Boxy,
+                            Dim3 = bi.Boxz,
                             N = bi.N,
-                            AllowX = bi.AllowX, AllowY = bi.AllowY, AllowZ = bi.AllowZ
+                            AllowX = bi.AllowX,
+                            AllowY = bi.AllowY,
+                            AllowZ = bi.AllowZ
                         }
                         );
             }
@@ -202,78 +206,77 @@ namespace Sharp3D.Boxologic
         public void Execute_iterations(int variant)
         {
             bool hundredpercent = false;
-                best_solution_volume = 0;
-                number_of_iterations = 0;
+            best_solution_volume = 0;
+            number_of_iterations = 0;
 
-                // initialize pallet
-                pallet.Variant = variant;
-                // LISTS ALL POSSIBLE LAYER HEIGHTS BY GIVING A WEIGHT VALUE TO EACH OF THEM.
-                List_candidate_layers(variant);
-
-                int iLayerIndex = 0, itelayer = 0;
-                foreach (Layer l in layers)
+            // initialize pallet
+            pallet.Variant = variant;
+            // LISTS ALL POSSIBLE LAYER HEIGHTS BY GIVING A WEIGHT VALUE TO EACH OF THEM.
+            List_candidate_layers(variant);
+            int iLayerIndex = 0;
+            foreach (Layer l in layers)
+            {
+                ++number_of_iterations;
+                double elapsed_time = (DateTime.Now - TimeStart).TotalSeconds;
+                if (Debug)
                 {
-                    ++number_of_iterations;
-                    double elapsed_time = (DateTime.Now - TimeStart).TotalSeconds;
-                    if (Debug)
-                    {
-                        Console.WriteLine(
-                            $"VARIANT: {variant,5:#####}; ITERATION (TOTAL): {number_of_iterations,5:#####}; BEST SO FAR: {pallet_volume_used_percentage:0.000}; TIME: {elapsed_time:0.00}");
-                    }
-                    packedvolume = 0;
-                    packedy = 0;
-                    packing = true;
-                    layerThickness = l.LayerDim;
-                    itelayer = iLayerIndex++;
-                    remainpy = pallet.Pallet_y;
-                    remainpz = pallet.Pallet_z;
-                    packednumbox = 0;
-                    foreach (BoxInfo bi in boxList)
-                        bi.Is_packed = false;
+                    Console.WriteLine(
+                        $"VARIANT: {variant,5:#####}; ITERATION (TOTAL): {number_of_iterations,5:#####}; BEST SO FAR: {pallet_volume_used_percentage:0.000}; TIME: {elapsed_time:0.00}");
+                }
+                packedvolume = 0;
+                packedy = 0;
+                packing = true;
+                layerThickness = l.LayerDim;
+                int itelayer = iLayerIndex++;
+                remainpy = pallet.Pallet_y;
+                remainpz = pallet.Pallet_z;
+                packednumbox = 0;
+                foreach (BoxInfo bi in boxList)
+                    bi.Is_packed = false;
 
-                    // ### BEGIN DO-WHILE
-                    do
+                // ### BEGIN DO-WHILE
+                do
+                {
+                    layerinlayer = 0;
+                    layerdone = false;
+                    Pack_layer(variant, false, ref hundredpercent);
+                    packedy += layerThickness;
+                    remainpy = pallet.Pallet_y - packedy;
+                    if (0 != layerinlayer)
                     {
-                        layerinlayer = 0;
+                        prepackedy = packedy;
+                        preremainpy = remainpy;
+                        remainpy = layerThickness - prelayer;
+                        packedy = packedy - layerThickness + prelayer;
+                        remainpz = lilz;
+                        layerThickness = layerinlayer;
                         layerdone = false;
                         Pack_layer(variant, false, ref hundredpercent);
-                        packedy += layerThickness;
-                        remainpy = pallet.Pallet_y - packedy;
-                        if (0 != layerinlayer)
-                        {
-                            prepackedy = packedy;
-                            preremainpy = remainpy;
-                            remainpy = layerThickness - prelayer;
-                            packedy = packedy - layerThickness + prelayer;
-                            remainpz = lilz;
-                            layerThickness = layerinlayer;
-                            layerdone = false;
-                            Pack_layer(variant, false, ref hundredpercent);
-                            packedy = prepackedy;
-                            remainpy = preremainpy;
-                            remainpz = pallet.Pallet_z;
-                        }
-                        Find_layer(remainpy, pallet);
+                        packedy = prepackedy;
+                        remainpy = preremainpy;
+                        remainpz = pallet.Pallet_z;
                     }
-                    while (packing);
-                    // END DO-WHILE
-
-                    decimal best_solution_volume2 = 0;
-                    if (best_iterations.ContainsKey(variant))
-                        best_solution_volume2 = best_iterations[variant].Value;
-
-                    if (packedvolume >= best_solution_volume2)
-                    {
-                        best_solution_volume = packedvolume;
-                        best_variant = variant;
-                        best_iteration = itelayer;
-                        number_packed_boxes = packednumbox;
-
-                        best_iterations[variant] = new KeyValuePair<int, decimal>(itelayer, packedvolume);
-                    }
-                    if (hundredpercent) break;
-                    pallet_volume_used_percentage = (double)best_solution_volume * 100 / (double)pallet.Vol;
+                    Find_layer(remainpy, pallet);
                 }
+                while (packing);
+                // END DO-WHILE
+
+                decimal best_solution_volume2 = 0;
+                if (best_iterations.ContainsKey(variant))
+                    best_solution_volume2 = best_iterations[variant].Value;
+
+                if (packedvolume >= best_solution_volume2)
+                {
+                    best_solution_volume = packedvolume;
+                    best_variant = variant;
+                    best_iteration = itelayer;
+                    number_packed_boxes = packednumbox;
+
+                    best_iterations[variant] = new KeyValuePair<int, decimal>(itelayer, packedvolume);
+                }
+                if (hundredpercent) break;
+                pallet_volume_used_percentage = (double)best_solution_volume * 100 / (double)pallet.Vol;
+            }
         }
         #endregion
         #region List_candidate_layers (DONE)
@@ -733,7 +736,7 @@ namespace Sharp3D.Boxologic
             , decimal bboxi, decimal bboxx, decimal bboxy, decimal bboxz)
         {
             evened = false;
-            if (boxi >= 0 && 0 != boxx * boxy *boxz)
+            if (boxi >= 0 && 0 != boxx * boxy * boxz)
             {
                 cboxi = boxi;
                 cboxx = boxx;
@@ -862,7 +865,7 @@ namespace Sharp3D.Boxologic
                     return;
                 BoxInfo bi = boxList[x];
                 // 1 2 3
-                if ( (variant == 1 && bi.AllowZ) 
+                if ((variant == 1 && bi.AllowZ)
                     || (variant == 2 && bi.AllowX)
                     || (variant == 3 && bi.AllowX)
                     || (variant == 4 && bi.AllowZ)
@@ -880,7 +883,7 @@ namespace Sharp3D.Boxologic
                         continue;
                 }
                 // 1 3 2
-                if ( (variant == 1 && bi.AllowY)
+                if ((variant == 1 && bi.AllowY)
                     || (variant == 2 && bi.AllowX)
                     || (variant == 3 && bi.AllowX)
                     || (variant == 4 && bi.AllowY)
@@ -894,9 +897,9 @@ namespace Sharp3D.Boxologic
                         , ref boxi, ref boxx, ref boxy, ref boxz
                         , ref bboxi, ref bboxx, ref bboxy, ref bboxz);
                 }
-                
+
                 // 2 1 3
-                if ( (variant == 1 &&  bi.AllowZ)
+                if ((variant == 1 && bi.AllowZ)
                     || (variant == 2 && bi.AllowY)
                     || (variant == 3 && bi.AllowY)
                     || (variant == 4 && bi.AllowZ)
@@ -909,9 +912,9 @@ namespace Sharp3D.Boxologic
                         , ref bbfx, ref bbfy, ref bbfz
                         , ref boxi, ref boxx, ref boxy, ref boxz
                         , ref bboxi, ref bboxx, ref bboxy, ref bboxz);
-                }                
+                }
                 // 2 3 1
-                if ( (variant == 1 && bi.AllowX)
+                if ((variant == 1 && bi.AllowX)
                     || (variant == 2 && bi.AllowY)
                     || (variant == 3 && bi.AllowY)
                     || (variant == 4 && bi.AllowX)
@@ -926,7 +929,7 @@ namespace Sharp3D.Boxologic
                         , ref bboxi, ref bboxx, ref bboxy, ref bboxz);
                 }
                 // 3 1 2
-                if ( (variant == 1 &&  bi.AllowY)
+                if ((variant == 1 && bi.AllowY)
                     || (variant == 2 && bi.AllowZ)
                     || (variant == 3 && bi.AllowZ)
                     || (variant == 4 && bi.AllowY)
@@ -941,7 +944,7 @@ namespace Sharp3D.Boxologic
                         , ref bboxi, ref bboxx, ref bboxy, ref bboxz);
                 }
                 // 3 2 1
-                if ( (variant == 1 && bi.AllowX)
+                if ((variant == 1 && bi.AllowX)
                     || (variant == 2 && bi.AllowZ)
                     || (variant == 3 && bi.AllowZ)
                     || (variant == 4 && bi.AllowX)
@@ -954,7 +957,7 @@ namespace Sharp3D.Boxologic
                         , ref bbfx, ref bbfy, ref bbfz
                         , ref boxi, ref boxx, ref boxy, ref boxz
                         , ref bboxi, ref bboxx, ref bboxy, ref bboxz);
-                }                
+                }
             }
             CheckFound(ref cboxi, ref cboxx, ref cboxy, ref cboxz
                 , boxi, boxx, boxy, boxz
