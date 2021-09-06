@@ -199,7 +199,7 @@ namespace treeDiM.StackBuilder.Desktop
                 CellBackColorAlternate viewNormal = new CellBackColorAlternate(Color.LightBlue, Color.White);
                 // set first row
                 gridSolutions.BorderStyle = BorderStyle.FixedSingle;
-                gridSolutions.ColumnsCount = 5;
+                gridSolutions.ColumnsCount = 6;
                 gridSolutions.FixedRows = 1;
 
                 // header
@@ -209,6 +209,7 @@ namespace treeDiM.StackBuilder.Desktop
                 gridSolutions[0, ++iCol] = new SourceGrid.Cells.ColumnHeader(Properties.Resources.ID_LOADEDCASES) { View = viewColumnHeader };
                 gridSolutions[0, ++iCol] = new SourceGrid.Cells.ColumnHeader(Properties.Resources.ID_NUMBEROFPALLETS) { View = viewColumnHeader };
                 gridSolutions[0, ++iCol] = new SourceGrid.Cells.ColumnHeader(Properties.Resources.ID_LOADEDVOLUMEPERCENTAGE) { View = viewColumnHeader };
+                gridSolutions[0, ++iCol] = new SourceGrid.Cells.ColumnHeader(Properties.Resources.ID_ALGORITHM) { View = viewColumnHeader };
 
                 // solutions
                 int iIndex = 0;
@@ -223,6 +224,7 @@ namespace treeDiM.StackBuilder.Desktop
                     gridSolutions[iIndex, ++iCol] = new SourceGrid.Cells.Cell(sol.LoadedCasesCountString) { View = viewNormal };
                     gridSolutions[iIndex, ++iCol] = new SourceGrid.Cells.Cell(sol.SolItemCount) { View = viewNormal };
                     gridSolutions[iIndex, ++iCol] = new SourceGrid.Cells.Cell(sol.LoadedVolumePercentage) { View = viewNormal };
+                    gridSolutions[iIndex, ++iCol] = new SourceGrid.Cells.Cell(sol.Algorithm) { View = viewNormal };
                 }
 
                 gridSolutions.AutoSizeCells();
