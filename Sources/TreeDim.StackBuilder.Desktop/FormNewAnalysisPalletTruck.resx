@@ -400,7 +400,7 @@
     <value>Maximum number of pallets</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxNoPallets.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptInt, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptInt, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxNoPallets.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -427,7 +427,7 @@
     <value>Minimum distance load/roof</value>
   </data>
   <data name="&gt;&gt;uCtrlMinDistanceLoadRoof.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlMinDistanceLoadRoof.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -451,7 +451,7 @@
     <value>Minimum distance load/wall</value>
   </data>
   <data name="&gt;&gt;uCtrlMinDistanceLoadWall.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlMinDistanceLoadWall.ZOrder" xml:space="preserve">
     <value>2</value>

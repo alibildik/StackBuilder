@@ -243,7 +243,7 @@
     <value>fileSelectExcel</value>
   </data>
   <data name="&gt;&gt;fileSelectExcel.Type" xml:space="preserve">
-    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fileSelectExcel.Parent" xml:space="preserve">
     <value>gbInput</value>
@@ -268,7 +268,7 @@
     <value>graphCtrlPallet</value>
   </data>
   <data name="&gt;&gt;graphCtrlPallet.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Graphics3DControl, treeDiM.StackBuilder.Graphics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Graphics3DControl, treeDiM.StackBuilder.Graphics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;graphCtrlPallet.Parent" xml:space="preserve">
     <value>gbInput</value>
@@ -292,7 +292,7 @@
     <value>uCtrlPalletDimensions</value>
   </data>
   <data name="&gt;&gt;uCtrlPalletDimensions.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlPalletDimensions.Parent" xml:space="preserve">
     <value>tabPallet</value>
@@ -349,7 +349,7 @@
     <value>uCtrlMaximumPalletHeight</value>
   </data>
   <data name="&gt;&gt;uCtrlMaximumPalletHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlMaximumPalletHeight.Parent" xml:space="preserve">
     <value>tabPallet</value>
@@ -448,7 +448,7 @@
     <value>uCtrlTruckDimensions</value>
   </data>
   <data name="&gt;&gt;uCtrlTruckDimensions.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlTruckDimensions.Parent" xml:space="preserve">
     <value>tabContainer</value>
@@ -700,7 +700,7 @@
     <value>fsOutputExcelFile</value>
   </data>
   <data name="&gt;&gt;fsOutputExcelFile.Type" xml:space="preserve">
-    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fsOutputExcelFile.Parent" xml:space="preserve">
     <value>gbOutput</value>

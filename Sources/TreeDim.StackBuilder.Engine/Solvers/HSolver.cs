@@ -169,9 +169,9 @@ namespace treeDiM.StackBuilder.Engine
                                 Boxx = (decimal)b.Length,
                                 Boxy = (decimal)b.Width,
                                 Boxz = (decimal)b.Height,
-                                AllowX = false,//ci.AllowOrientX,
-                                AllowY = false,//ci.AllowOrientY,
-                                AllowZ = true,//ci.AllowOrientZ,
+                                AllowX = ci.AllowOrientX,
+                                AllowY = ci.AllowOrientY,
+                                AllowZ = ci.AllowOrientZ,
                                 N = 1,
                                 Order = ci.PriorityLevel
                             }
@@ -183,10 +183,12 @@ namespace treeDiM.StackBuilder.Engine
             // solve
             var bl = new Boxlogic() { OutputFilePath = string.Empty };
             var solArray = new SolutionArray();
-            bl.Run(variant, boxItems.ToArray(), (decimal)dimContainer.X, (decimal)dimContainer.Y, (decimal)dimContainer.Z, ref solArray);
+            bl.Run(boxItems.ToArray(), (decimal)dimContainer.X, (decimal)dimContainer.Y, (decimal)dimContainer.Z, ref solArray);
             if (solArray.Solutions.Count == 0) return;
             foreach (var solution in solArray.Solutions)
             {
+                if (solution.Variant != variant)
+                    continue;
                 HSolItem hSolItem = hSol.CreateSolItem();
                 Transform3D transform = Transform3D.Identity;
                 switch (solution.Variant)

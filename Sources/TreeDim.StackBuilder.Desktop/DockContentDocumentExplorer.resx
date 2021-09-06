@@ -2886,7 +2886,7 @@
     <value>1</value>
   </data>
   <data name="&gt;&gt;_documentTreeView.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Desktop.AnalysisTreeView, treeDiM.StackBuilder.Desktop, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Desktop.AnalysisTreeView, treeDiM.StackBuilder.Desktop, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="_documentTreeView.SelectedImageIndex" type="System.Int32, mscorlib">
     <value>0</value>

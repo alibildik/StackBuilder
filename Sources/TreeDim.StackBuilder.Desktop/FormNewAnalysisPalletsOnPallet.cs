@@ -43,16 +43,19 @@ namespace treeDiM.StackBuilder.Desktop
             // graphics3D control
             graphCtrl.DrawingContainer = this;
             // list of pallets
-            cbDestinationPallet.Initialize(_document, this, null);
-            cbInputPallet1.Initialize(_document, this, null);
-            cbInputPallet2.Initialize(_document, this, null);
-            cbInputPallet3.Initialize(_document, this, null);
-            cbInputPallet4.Initialize(_document, this, null);
-            // MasterPallet
-            cbMasterSplit.SelectedIndex = 0;
-            cbPalletOrientation.SelectedIndex = 0;
+            cbDestinationPallet.Initialize(_document, this, AnalysisCast?.PalletProperties);
+            cbInputPallet1.Initialize(_document, this, AnalysisCast?.PalletAnalyses[0]);
+            cbInputPallet2.Initialize(_document, this, AnalysisCast?.PalletAnalyses[1]);
+            cbInputPallet3.Initialize(_document, this, AnalysisCast?.PalletAnalyses[2]);
+            cbInputPallet4.Initialize(_document, this, AnalysisCast?.PalletAnalyses[3]);
 
-            rbHalf.Checked = true;
+            rbHalf.Checked = _item != null ? (AnalysisCast.NoLoadedPallets == 2) : true;
+
+            // MasterPallet
+            cbMasterSplit.SelectedIndex = AnalysisCast != null ? (int)AnalysisCast.MasterPalletSplit : 0;
+            cbPalletOrientation.SelectedIndex = AnalysisCast != null ? (int)AnalysisCast.LoadedPalletOrientation : 0;
+
+            OnLoadedPalletChanged(this, e);
         }
         protected override void OnClosing(CancelEventArgs e)
         {
@@ -109,8 +112,7 @@ namespace treeDiM.StackBuilder.Desktop
         #endregion
 
         #region Public properties
-        public AnalysisPalletsOnPallet AnalysisCast
-        { get => _item as AnalysisPalletsOnPallet;  }
+        public AnalysisPalletsOnPallet AnalysisCast => _item as AnalysisPalletsOnPallet;
         #endregion
 
         #region Handlers

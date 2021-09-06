@@ -175,7 +175,7 @@
     <value>uCtrlOverhang</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Parent" xml:space="preserve">
     <value>splitContainerHoriz.Panel1</value>
@@ -223,7 +223,7 @@
     <value>uCtrlCaseWeight</value>
   </data>
   <data name="&gt;&gt;uCtrlCaseWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlCaseWeight.Parent" xml:space="preserve">
     <value>splitContainerHoriz.Panel1</value>
@@ -337,7 +337,7 @@
     <value>uCtrlCaseDimensions</value>
   </data>
   <data name="&gt;&gt;uCtrlCaseDimensions.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlCaseDimensions.Parent" xml:space="preserve">
     <value>splitContainerHoriz.Panel1</value>
@@ -490,7 +490,7 @@
     <value>uCtrlNoLayers</value>
   </data>
   <data name="&gt;&gt;uCtrlNoLayers.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlInt, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlInt, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlNoLayers.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>

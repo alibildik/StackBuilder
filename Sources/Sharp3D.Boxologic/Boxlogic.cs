@@ -1103,13 +1103,7 @@ namespace Sharp3D.Boxologic
                     sol.ItemsUnpacked.Add(bi.ToSolItem(best_variant));
             }
             solArray.Solutions.Add(sol);
-            /*
-            foreach (BoxInfo bi in boxList)
-            {
-                if (bi.Is_packed)
-                    bi.WriteToFile(fso, best_variant, best_iteration);
-            }
-            */
+
             if (Debug)
             {
                 Console.WriteLine($"ELAPSED TIME                       : Almost {elapsed_time:0.000} s");

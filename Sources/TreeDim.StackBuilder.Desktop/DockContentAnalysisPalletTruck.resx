@@ -259,7 +259,7 @@
     <value>uCtrlMaxNoPallets</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxNoPallets.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptInt, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptInt, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxNoPallets.Parent" xml:space="preserve">
     <value>splitContainerHoriz.Panel2</value>

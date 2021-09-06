@@ -508,7 +508,7 @@
     <value>Dimensions</value>
   </data>
   <data name="&gt;&gt;uCtrlInnerDimensions.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlInnerDimensions.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -535,7 +535,7 @@
     <value>Admissible load weight</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxLoadWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxLoadWeight.ZOrder" xml:space="preserve">
     <value>0</value>

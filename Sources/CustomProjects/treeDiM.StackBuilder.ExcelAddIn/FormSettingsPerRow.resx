@@ -697,7 +697,7 @@
     <value>uCtrlMinDimensions</value>
   </data>
   <data name="&gt;&gt;uCtrlMinDimensions.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.34, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlMinDimensions.Parent" xml:space="preserve">
     <value>gpConditions</value>
