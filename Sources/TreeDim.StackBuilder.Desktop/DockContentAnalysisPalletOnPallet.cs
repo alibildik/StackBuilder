@@ -88,7 +88,6 @@ namespace treeDiM.StackBuilder.Desktop
                 }
             }
         }
-
         private void FillGrid()
         {
             // clear grid
@@ -136,7 +135,7 @@ namespace treeDiM.StackBuilder.Desktop
                 // total weight
                 gridSolution.Rows.Insert(++iRow);
                 gridSolution[iRow, 0] = new SourceGrid.Cells.RowHeader(
-                    string.Format(Resources.ID_LOADWEIGHT_WU, UnitsManager.MassUnitString)) { View = vPropValue };
+                    string.Format(Resources.ID_TOTALWEIGHT_WU, UnitsManager.MassUnitString)) { View = vPropValue };
                 gridSolution[iRow, 1] = new SourceGrid.Cells.Cell(string.Format(CultureInfo.InvariantCulture, "{0:0.#}", Analysis.Solution.Weight)
                     );
                 // load weight

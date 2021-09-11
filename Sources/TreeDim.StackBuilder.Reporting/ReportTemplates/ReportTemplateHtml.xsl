@@ -168,7 +168,9 @@
     <xsl:if test="valueM">
       <xsl:value-of select="valueM"/> (<xsl:value-of select="unitM"/>)
     </xsl:if>
-    <br/>
+    <xsl:if test="(v0M!='' and v0I!='')">
+      <br/>
+    </xsl:if>
     <xsl:if test="valueI">
       <xsl:value-of select="valueI"/> (<xsl:value-of select="unitI"/>)
     </xsl:if>
@@ -177,7 +179,9 @@
     <xsl:if test="v0M">
       <xsl:value-of select="v0M"/> x <xsl:value-of select="v1M"/> (<xsl:value-of select="unitM"/>)
     </xsl:if>
-    <br/>
+    <xsl:if test="(v0M!='' and v0I!='')">
+      <br/>
+    </xsl:if>
     <xsl:if test="v0I">
       <xsl:value-of select="v0I"/> x <xsl:value-of select="v1I"/> (<xsl:value-of select="unitI"/>)
     </xsl:if>
@@ -192,10 +196,7 @@
     <xsl:if test="v0I">
       <xsl:value-of select="v0I"/> x <xsl:value-of select="v1I"/> x <xsl:value-of select="v2I"/>  (<xsl:value-of select="unitI"/>)
     </xsl:if>    
-  </xsl:template> 
-
-
-  
+  </xsl:template>  
   <!--#### HANALYSIS ####-->
   <xsl:template match="hAnalysis">
     <h2>
@@ -832,7 +833,7 @@
             </b>
           </td>
           <td class="style3" colspan="3">
-            <xsl:apply-templates select="bboxTotal/unitVector3"/>)
+            <xsl:apply-templates select="bboxTotal/unitVector3"/>
           </td>
         </tr>
       </xsl:if>

@@ -1099,7 +1099,7 @@ namespace treeDiM.StackBuilder.Basics
         public bool CanCreateAnalysisCaseTruck => Boxes.Any() && Trucks.Any();
         public bool CanCreateAnalysisCylinderTruck => Trucks.Any() && Cylinders.Any();
         public bool CanCreateOptiCasePallet => Boxes.Any() && Pallets.Any();
-        public bool CanCreateOptiPack => Boxes.Any() && Bags.Any() && Pallets.Any();
+        public bool CanCreateOptiPack => (Boxes.Any() || Bags.Any()) && Pallets.Any();
         public bool CanCreateOptiMulticase => Bundles.Any() || Boxes.Any() && CasesWInsideDims.Any();
         #endregion
 

@@ -83,6 +83,16 @@ namespace treeDiM.StackBuilder.Desktop
                         , 1 == Mode ? LoadedPallet2 : null
                         , 1 == Mode ? LoadedPallet3 : null);
                 }
+                else
+                {
+                    analysis.ID.SetNameDesc(ItemName, ItemDescription);
+                    analysis.LoadedPalletOrientation = LoadedPalletOrientation;
+                    analysis.MasterPalletSplit = MasterPalletSplit;
+                    if (0 == Mode)
+                        analysis.SetHalfPallets(LoadedPallet0, LoadedPallet1);
+                    else
+                        analysis.SetQuarterPallets(LoadedPallet0, LoadedPallet1, LoadedPallet2, LoadedPallet3);
+                }
             }
             catch (Exception ex)
             {
@@ -207,8 +217,7 @@ namespace treeDiM.StackBuilder.Desktop
                 return;
 
             var analysis = new AnalysisPalletsOnPallet(null,
-                MasterPalletSplit,
-                LoadedPalletOrientation,
+                MasterPalletSplit, LoadedPalletOrientation,
                 MasterPallet,
                 LoadedPallet0,
                 LoadedPallet1,

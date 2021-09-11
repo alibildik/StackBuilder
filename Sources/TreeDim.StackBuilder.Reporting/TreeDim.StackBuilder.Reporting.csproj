@@ -153,6 +153,9 @@
     <Content Include="ReportTemplates\FRA.xml" />
     <Content Include="ReportTemplates\ITA.xml" />
     <Content Include="ReportTemplates\JPN.xml" />
+    <Content Include="ReportTemplates\ReportTemplateHtml_MENASHA.xsl">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="ReportTemplates\ReportTemplatesHtml_MAPASPONTEX.xsl" />
     <Content Include="ReportTemplates\SVE.xml" />
     <None Include="ReportTemplates\ReportTemplateHtml.xsl">

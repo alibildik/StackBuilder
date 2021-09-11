@@ -1267,14 +1267,12 @@ namespace treeDiM.StackBuilder.Reporting
             }
             if (rnPallet.GetChildByName(Resources.ID_RN_DIMENSIONS).Activated)
             {
-                AppendElementValue(xmlDoc, elemPallet, "length", UnitsManager.UnitType.UT_LENGTH, palletProp.Length);
-                AppendElementValue(xmlDoc, elemPallet, "width", UnitsManager.UnitType.UT_LENGTH, palletProp.Width);
-                AppendElementValue(xmlDoc, elemPallet, "height", UnitsManager.UnitType.UT_LENGTH, palletProp.Height);
+                AppendVector3(xmlDoc, elemPallet, "dimensions", UnitsManager.UnitType.UT_LENGTH, new double[3] { palletProp.Length, palletProp.Width, palletProp.Height });
             }
             if (rnPallet.GetChildByName(Resources.ID_RN_WEIGHT).Activated)
             {
                 AppendElementValue(xmlDoc, elemPallet, "weight", UnitsManager.UnitType.UT_MASS, palletProp.Weight);
-                AppendElementValue(xmlDoc, elemPallet, "admissibleLoad", UnitsManager.UnitType.UT_MASS, palletProp.AdmissibleLoadWeight);
+                //AppendElementValue(xmlDoc, elemPallet, "admissibleLoad", UnitsManager.UnitType.UT_MASS, palletProp.AdmissibleLoadWeight);
             }
             // type
             XmlElement elemType = xmlDoc.CreateElement("type", ns);
