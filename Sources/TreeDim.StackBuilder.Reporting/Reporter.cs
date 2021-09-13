@@ -209,6 +209,8 @@ namespace treeDiM.StackBuilder.Reporting
             // write resulting array to HDD, show process information
             using (FileStream fs = new FileStream(absOutputFilePath, FileMode.Create))
                 fs.Write(wordDoc, 0, wordDoc.Length);
+            // copy additional images
+            CopyAdditionalImages();
         }
 
         private bool TryAndGetLanguageFile(string absReportTemplatePath, string threeLetterLanguageAbbrev)
@@ -1849,8 +1851,8 @@ namespace treeDiM.StackBuilder.Reporting
         }
         #endregion
 
-            #region Helpers
-            private static XmlElement CreateElement(string eltName, string innerValue, XmlElement parentElt, XmlDocument xmlDoc, string ns)
+        #region Helpers
+        private static XmlElement CreateElement(string eltName, string innerValue, XmlElement parentElt, XmlDocument xmlDoc, string ns)
         {
             XmlElement elt = xmlDoc.CreateElement(eltName, ns);
             if (!string.IsNullOrEmpty(innerValue))
@@ -2133,6 +2135,22 @@ namespace treeDiM.StackBuilder.Reporting
         #endregion
 
         #region Deleting methods
+        public void CopyAdditionalImages()
+        {
+            string additionalImagesDir = Path.ChangeExtension(TemplatePath, "").Trim('.') + "_images";
+            // Get the subdirectories for the specified directory.
+            DirectoryInfo dir = new DirectoryInfo(additionalImagesDir);
+            if (dir.Exists)
+            {
+                // Get the files in the directory and copy them to the new location.
+                FileInfo[] files = dir.GetFiles();
+                foreach (FileInfo file in files)
+                {
+                    string tempPath = Path.Combine(ImageDirectory, file.Name);
+                    file.CopyTo(tempPath, true);
+                }
+            }
+        }
         public void DeleteImageDirectory()
         {
             try { Directory.Delete(ImageDirectory, true); }
@@ -2156,12 +2174,14 @@ namespace treeDiM.StackBuilder.Reporting
 
             var schemas = new XmlSchemaSet();
             schemas.Add(schema);
-            var settings = new XmlReaderSettings();
-            settings.ValidationType = ValidationType.Schema;
-            settings.Schemas = schemas;
-            settings.ValidationFlags =
+            var settings = new XmlReaderSettings
+            {
+                ValidationType = ValidationType.Schema,
+                Schemas = schemas,
+                ValidationFlags =
                 XmlSchemaValidationFlags.ProcessIdentityConstraints |
-                XmlSchemaValidationFlags.ReportValidationWarnings;
+                XmlSchemaValidationFlags.ReportValidationWarnings
+            };
             settings.ValidationEventHandler += ValidationEventHandler;
 
             using (var validationReader = XmlReader.Create(documentToValidate, settings))

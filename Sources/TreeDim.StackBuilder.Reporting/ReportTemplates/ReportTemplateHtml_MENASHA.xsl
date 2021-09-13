@@ -73,7 +73,7 @@
       </head>
       <body>
         <p class="MsoNormal" style='margin-bottom:15.8pt'>
-          <img width='566' height='74' src="ImageFiles_MENASHA/image001.jpg"/>
+          <img width='566' height='74' src="Images/image001.jpg"/>
         </p>
         <table class="style3" cellpadding="2">
           <tr>
@@ -119,19 +119,19 @@
               (Leave blank if testing is required)
             </td>
             <td>
-              <img width='36' height='36' src="ImageFiles_MENASHA/image003.gif" align="left" hspace="12"/>
+              <img width='36' height='36' src="Images/image003.gif" align="left" hspace="12"/>
             </td>
             <td>Warehouse</td>
             <td>
-              <img width='36' height='36' src="ImageFiles_MENASHA/image003.gif" align="left" hspace="12"/>
+              <img width='36' height='36' src="Images/image003.gif" align="left" hspace="12"/>
             </td>
             <td>Truck</td>
             <td>
-              <img width='36' height='36' src="ImageFiles_MENASHA/image003.gif" align="left" hspace="12"/>
+              <img width='36' height='36' src="Images/image003.gif" align="left" hspace="12"/>
             </td>
             <td>Do not stack</td>
             <td>
-              <img width='36' height='36' src="ImageFiles_MENASHA/image003.gif" align="left" hspace="12"/>
+              <img width='36' height='36' src="Images/image003.gif" align="left" hspace="12"/>
             </td>
             <td>TBD</td>
           </tr>

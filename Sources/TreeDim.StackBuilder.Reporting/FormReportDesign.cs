@@ -129,6 +129,7 @@ namespace treeDiM.StackBuilder.Reporting
 
                 // reporter
                 ReporterHtml reporter = new ReporterHtml(Data, ref _rnRoot, Reporter.TemplatePath, htmlFilePath);
+
                 // display html
                 _webBrowser.Navigate(htmlFilePath, string.Empty, null, string.Empty);
                 // update tree view
