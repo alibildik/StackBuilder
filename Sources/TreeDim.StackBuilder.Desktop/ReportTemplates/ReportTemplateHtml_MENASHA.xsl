@@ -218,20 +218,6 @@
   <!-- solution -->
   <xsl:template match="solution">
     <xsl:apply-templates select="item"/>
-    <xsl:if test="noLayersAndNoCases">
-      <tr>
-        <td class="style2" colspan="1">
-          <b>
-            <xsl:value-of select="$loc/str[@name='Layers x Cases']"/>
-          </b>
-        </td>
-        <td class="style3" colspan="3">
-          <xsl:value-of select="noLayersAndNoCases"/>
-        </td>
-      </tr>
-    </xsl:if>
-    <tr>      
-    </tr>
     <tr>
       <td>
         <b>Load</b>
@@ -368,7 +354,7 @@
     <xsl:if test="valueM">
       <xsl:value-of select="valueM"/> (<xsl:value-of select="unitM"/>)
     </xsl:if>
-    <xsl:if test="((normalize-space(valueM)!='') and (normalize-space(valueI)!=''))">
+    <xsl:if test="(v0M!='' and v0I!='')">
       <br/>
     </xsl:if>
     <xsl:if test="valueI">

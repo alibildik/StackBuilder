@@ -743,7 +743,6 @@
           </td>
         </tr>
       </xsl:if>
-      
       <xsl:if test="efficiencyVolume">
         <tr>
           <td class="style2" colspan="1">
@@ -1340,7 +1339,7 @@
       <tr>
         <td class="style2" colspan="1">
           <b>
-            <xsl:value-of select="$loc/str[@name='Length']"/>
+            <xsl:value-of select="$loc/str[@name='Dimensions']"/>
           </b>
         </td>
         <td class="style3" colspan="1">
@@ -1636,9 +1635,11 @@
             <xsl:apply-templates select="dimensions/unitVector3"/>
           </td>
         </xsl:if>
-        <td rowspan="5" colspan="2" align="middle">
-          <xsl:apply-templates select="imageThumbSize"/>
-        </td>
+        <xsl:if test="imageThumbSize">
+          <td rowspan="3" colspan="2" align="middle">
+            <xsl:apply-templates select="imageThumbSize"/>
+          </td>
+        </xsl:if>
       </tr>
       <xsl:if test="weight">
         <tr>
@@ -1952,6 +1953,7 @@
       <xsl:value-of select="$loc/str[@name='Pallet cap']"/>
     </h3>
     <table class="style1" cellpadding="4">
+      <xsl:if test="name">
       <tr>
         <td class="style2">
           <b>
@@ -1959,9 +1961,11 @@
           </b>
         </td>
         <td class="style3" colspan="3">
-          <xsl:value-of select="name"></xsl:value-of>
+          <xsl:value-of select="name"/>
         </td>
       </tr>
+      </xsl:if>
+      <xsl:if test="description">
       <tr>
         <td class="style2">
           <b>
@@ -1972,6 +1976,8 @@
           <xsl:value-of select="description"></xsl:value-of>
         </td>
       </tr>
+      </xsl:if>
+      <xsl:if test="dimensions">
       <tr>
         <td class="style2" colspan="1">
           <b>
@@ -1983,6 +1989,8 @@
         </td>
         <td/>
       </tr>
+      </xsl:if>
+      <xsl:if test="innerDimensions">
       <tr>
         <td class="style2" colspan="1">
           <b>
@@ -1994,7 +2002,9 @@
         </td>
         <td/>
       </tr>
+      </xsl:if>
       <tr>
+        <xsl:if test="weight">
         <td class="style2" colspan="1">
           <b>
             <xsl:value-of select="$loc/str[@name='Weight']"/>
@@ -2003,9 +2013,12 @@
         <td class="style3" colspan="1">
           <xsl:apply-templates select="weight/unitValue"/>
         </td>
-        <td colspan="2" align="middle">
-          <xsl:apply-templates select="imageThumbSize"/>
-        </td>
+        </xsl:if>
+        <xsl:if test="imageThumbSize">
+          <td colspan="2" align="middle">
+            <xsl:apply-templates select="imageThumbSize"/>
+          </td>
+        </xsl:if>
       </tr>
     </table>
   </xsl:template>
@@ -2015,36 +2028,42 @@
       <xsl:value-of select="$loc/str[@name='Pallet film']"/>
     </h3>
     <table class="style1"  cellpadding="4">
-      <tr>
+      <xsl:if test="name">
+        <tr>
+          <td class="style2" colspan="1">
+            <b>
+              <xsl:value-of select="$loc/str[@name='Name']"/>
+            </b>
+          </td>
+          <td class="style3" colspan="3">
+            <xsl:value-of select="name"></xsl:value-of>
+          </td>
+        </tr>
+      </xsl:if>
+      <xsl:if test="description">
+        <tr>
+          <td class="style2" colspan="1">
+            <b>
+              <xsl:value-of select="$loc/str[@name='Description']"/>
+            </b>
+          </td>
+          <td class="style3" colspan="3">
+            <xsl:value-of select="description"></xsl:value-of>
+          </td>
+        </tr>
+      </xsl:if>
+      <xsl:if test="numberOfTurns">
         <td class="style2" colspan="1">
           <b>
-            <xsl:value-of select="$loc/str[@name='Name']"/>
+            <xsl:value-of select="$loc/str[@name='NumberOfTurns']"/>
           </b>
         </td>
         <td class="style3" colspan="3">
-          <xsl:value-of select="name"></xsl:value-of>
+          <xsl:value-of select="numberOfTurns"></xsl:value-of>
         </td>
-      </tr>
-      <tr>
-        <td class="style2" colspan="1">
-          <b>
-            <xsl:value-of select="$loc/str[@name='Description']"/>
-          </b>
-        </td>
-        <td class="style3" colspan="3">
-          <xsl:value-of select="description"></xsl:value-of>
-        </td>
-      </tr>
-      <td class="style2" colspan="1">
-        <b>
-          <xsl:value-of select="$loc/str[@name='NumberOfTurns']"/>
-        </b>
-      </td>
-      <td class="style3" colspan="3">
-        <xsl:value-of select="numberOfTurns"></xsl:value-of>
-      </td>
-      <tr>
-      </tr>
+        <tr>
+        </tr>
+      </xsl:if>
     </table>
   </xsl:template>
   <!--#### BUNDLE ####-->
@@ -2053,6 +2072,7 @@
       <xsl:value-of select="$loc/str[@name='Bundle']"/>
     </h3>
     <table class="style1">
+      <xsl:if test="name">
       <tr>
         <td class="style2">
           <b>
@@ -2063,6 +2083,8 @@
           <xsl:value-of select="name"></xsl:value-of>
         </td>
       </tr>
+      </xsl:if>
+      <xsl:if test="description">
       <tr>
         <td class="style2">
           <b>
@@ -2073,6 +2095,8 @@
           <xsl:value-of select="description"></xsl:value-of>
         </td>
       </tr>
+      </xsl:if>
+      <xsl:if test="dimensions">
       <tr>
         <td class="style2">
           <strong>
@@ -2086,6 +2110,8 @@
           <xsl:apply-templates select="imageThumbSize"/>
         </td>
       </tr>
+      </xsl:if>
+      <xsl:if test="numberOfFlats">
       <tr>
         <td class="style2">
           <b>
@@ -2096,6 +2122,8 @@
           <xsl:value-of select="numberOfFlats"></xsl:value-of>
         </td>
       </tr>
+      </xsl:if>
+      <xsl:if test="unitThickness">
       <tr>
         <td class="style2">
           <b>
@@ -2106,6 +2134,8 @@
           <xsl:apply-templates select="unitThickness/unitValue"/>
         </td>
       </tr>
+      </xsl:if>
+      <xsl:if test="unitWeight">
       <tr>
         <td class="style2">
           <b>
@@ -2116,6 +2146,8 @@
           <xsl:apply-templates select="unitWeight/unitValue"/>
         </td>
       </tr>
+      </xsl:if>
+      <xsl:if test="totalThickness">
       <tr>
         <td class="style3">
           <b>
@@ -2126,6 +2158,8 @@
           <xsl:apply-templates select="totalThickness/unitValue"/>
         </td>
       </tr>
+      </xsl:if>
+      <xsl:if test="weightTotal">
       <tr>
         <td class="style3">
           <b>
@@ -2136,6 +2170,7 @@
           <xsl:apply-templates select="weightTotal/unitValue"/>
         </td>
       </tr>
+      </xsl:if>
     </table>
   </xsl:template>
   <!--#### TRUCK ####-->
@@ -2144,6 +2179,7 @@
       <xsl:value-of select="$loc/str[@name='Truck']"/>
     </h3>
     <table class="style1" cellpadding="3">
+      <xsl:if test="name">
       <tr>
         <td class="style2">
           <b>
@@ -2154,6 +2190,8 @@
           <xsl:value-of select="name"></xsl:value-of>
         </td>
       </tr>
+      </xsl:if>
+      <xsl:if test="description">
       <tr>
         <td class="style2">
           <b>
@@ -2164,6 +2202,8 @@
           <xsl:value-of select="description"></xsl:value-of>
         </td>
       </tr>
+      </xsl:if>
+      <xsl:if test="dimensions">
       <tr>
         <td class="style2">
           <b>
@@ -2177,6 +2217,8 @@
           <xsl:apply-templates select="imageThumbSize"/>
         </td>
       </tr>
+      </xsl:if>
+      <xsl:if test="admissibleLoad">
       <tr>
         <td class="style2">
           <b>
@@ -2187,6 +2229,7 @@
           <xsl:apply-templates select="admissibleLoad/unitValue"/>
         </td>
       </tr>
+      </xsl:if>
     </table>
   </xsl:template>
 </xsl:stylesheet>

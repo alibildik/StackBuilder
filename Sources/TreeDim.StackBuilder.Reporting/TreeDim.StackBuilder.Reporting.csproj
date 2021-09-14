@@ -72,9 +72,6 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="treeDiM.UserControls">
-      <HintPath>..\treeDiM.UserControls\bin\Release\treeDiM.UserControls.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WkHtmlToXSharp.Win32">
       <HintPath>..\ThirdPartyAssemblies\WkHtmlToXSharp.Win32.dll</HintPath>
@@ -144,6 +141,10 @@
     <ProjectReference Include="..\TreeDim.StackBuilder.Graphic\treeDiM.StackBuilder.Graphics.csproj">
       <Project>{2AD4C04C-5B8A-4E69-9B1C-402CB86860A7}</Project>
       <Name>treeDiM.StackBuilder.Graphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\treeDiM.UserControls\treeDiM.UserControls.csproj">
+      <Project>{d75634e3-34aa-4418-a6b6-3647bff90606}</Project>
+      <Name>treeDiM.UserControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

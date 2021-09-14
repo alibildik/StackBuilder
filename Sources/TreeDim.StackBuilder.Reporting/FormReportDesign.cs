@@ -52,7 +52,7 @@ namespace treeDiM.StackBuilder.Reporting
                 int iHTMLSizeLarge = Settings.Default.ImageHTMLSizeLarge;
                 cbHTMLSizeLarge.SelectedIndex = iHTMLSizeLarge >= 5 ? iHTMLSizeLarge : 5;
                 // units
-                cbUnit.SelectedIndex = Settings.Default.ImageDefinitionDetail;
+                cbUnit.SelectedIndex = Settings.Default.Units;
                 // report template
                 fileSelectReportTemplate.FileName = Reporter.TemplatePath;
             }
@@ -85,6 +85,8 @@ namespace treeDiM.StackBuilder.Reporting
             // image layout
             Settings.Default.ImageHTMLSizeDetail = cbHTMLSizeDetail.SelectedIndex;
             Settings.Default.ImageHTMLSizeLarge = cbHTMLSizeLarge.SelectedIndex;
+            // units
+            Settings.Default.Units = cbUnit.SelectedIndex;
             // toolbar show dimension
             Settings.Default.ShowDimensions = toolSBDimensions.Checked;
             Settings.Default.Save();
@@ -335,9 +337,6 @@ namespace treeDiM.StackBuilder.Reporting
         protected Analysis _analysis;
         protected ReportNode _rnRoot;
         protected static ILog _log = LogManager.GetLogger(typeof(FormReportDesign));
-
         #endregion
-
-
     }
 }
