@@ -20,10 +20,7 @@ namespace treeDiM.StackBuilder.Reporting
         public float Bottom { get { return _bottom > 0.0f ? _bottom : 0.0f; } }
         public float Left { get { return _left > 0.0f ? _left : 0.0f; } }
         public float Right { get { return _right > 0.0f ? _right : 0.0f; } }
-        private float _top = 10.0f
-            , _bottom = 10.0f
-            , _right = 10.0f
-            , _left = 10.0f;
+        private float _top = 10.0f, _bottom = 10.0f, _right = 10.0f, _left = 10.0f;
     }
     #endregion
     #region ReporterMSWord
@@ -60,8 +57,10 @@ namespace treeDiM.StackBuilder.Reporting
             string htmlFilePath = Path.ChangeExtension(absOutputFilePath, "html");
             BuildAnalysisReport(inputData, ref rnRoot, absTemplatePath, htmlFilePath);
             // opens word
-            Application wordApp = new Application();
-            wordApp.Visible = true;
+            Application wordApp = new Application
+            {
+                Visible = true
+            };
             Document wordDoc = wordApp.Documents.Open(htmlFilePath, false, true, NoEncodingDialog: true);
             // embed pictures (unlinking images)
             for (int i = 1; i <= wordDoc.InlineShapes.Count; ++i)
@@ -96,7 +95,6 @@ namespace treeDiM.StackBuilder.Reporting
            }
         }
         #endregion
-
         #region Override Reporter
         public override bool WriteNamespace => false;
         public override bool WriteImageFiles => true;

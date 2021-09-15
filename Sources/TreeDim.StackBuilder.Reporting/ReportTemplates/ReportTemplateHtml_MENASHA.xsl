@@ -1,11 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" ?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:param name="lang"/>
   <!-- param set in command line -->
   <xsl:variable name="loc" select="document(concat( $lang, '.xml'), .)/strings"/>
-
-  <xsl:output method="xml" indent="yes"/>
-
+  <xsl:output method="html" indent="yes"/>
   <xsl:template match="report">
     <html>
       <head>
@@ -71,9 +69,10 @@
           }
         </style>
       </head>
+      <!-- HEADER -->
       <body>
-        <p class="MsoNormal" style='margin-bottom:15.8pt'>
-          <img width='566' height='74' src="Images/image001.jpg"/>
+        <p>
+          <img width="566" height="74" src="images\image001.jpg"/>
         </p>
         <table class="style3" cellpadding="2">
           <tr>
@@ -97,7 +96,7 @@
         </table>
         <xsl:apply-templates select="analysis"/>
         <xsl:apply-templates select="analysisPalletsOnPallet"/>
-        <table class='style3' colspan='1'>
+        <table class="style3" colspan="1">
           <tr>
             <td>
               <xsl:text>MENASHA</xsl:text>
@@ -112,26 +111,26 @@
             </td>
           </tr>
         </table>
-        <table class='style3' colspan='9'>
+        <table class="style3" colspan="9">
           <tr>
             <td>
               Pallet can be double stacked
               (Leave blank if testing is required)
             </td>
             <td>
-              <img width='36' height='36' src="Images/image003.gif" align="left" hspace="12"/>
+              <img width="36" height="36" src="images\image003.gif" align="left" hspace="12"/>
             </td>
             <td>Warehouse</td>
             <td>
-              <img width='36' height='36' src="Images/image003.gif" align="left" hspace="12"/>
+              <img width="36" height="36" src="images\image003.gif" align="left" hspace="12"/>
             </td>
             <td>Truck</td>
             <td>
-              <img width='36' height='36' src="Images/image003.gif" align="left" hspace="12"/>
+              <img width="36" height="36" src="images\image003.gif" align="left" hspace="12"/>
             </td>
             <td>Do not stack</td>
             <td>
-              <img width='36' height='36' src="Images/image003.gif" align="left" hspace="12"/>
+              <img width="36" height="36" src="images\image003.gif" align="left" hspace="12"/>
             </td>
             <td>TBD</td>
           </tr>
@@ -154,8 +153,6 @@
       <xsl:apply-templates select="solutionPalletsOnPallet"/>
     </table>
   </xsl:template>
-  
-  
   <!--#### BOX ####-->
   <xsl:template match="box">
     <tr>

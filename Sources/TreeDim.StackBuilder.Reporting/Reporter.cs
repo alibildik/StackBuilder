@@ -171,7 +171,7 @@ namespace treeDiM.StackBuilder.Reporting
             string absOutputFilePath = ToAbsolute(outputFilePath);
             string absReportTemplatePath = ToAbsolute(reportTemplatePath);
             // create directory if needed
-            ImageDirectory = Path.Combine(Path.GetDirectoryName(absOutputFilePath), "Images");
+            ImageDirectory = Path.Combine(Path.GetDirectoryName(absOutputFilePath), "images");
             if (WriteImageFiles && !Directory.Exists(ImageDirectory))
                 Directory.CreateDirectory(ImageDirectory); 
             // create xml data file + XmlTextReader

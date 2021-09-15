@@ -168,7 +168,7 @@
     <xsl:if test="valueM">
       <xsl:value-of select="valueM"/> (<xsl:value-of select="unitM"/>)
     </xsl:if>
-    <xsl:if test="(v0M!='' and v0I!='')">
+    <xsl:if test="(valueM!='' and valueI!='')">
       <br/>
     </xsl:if>
     <xsl:if test="valueI">
