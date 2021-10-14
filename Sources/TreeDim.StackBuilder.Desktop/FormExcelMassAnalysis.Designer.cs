@@ -69,6 +69,7 @@ namespace treeDiM.StackBuilder.Desktop
             this.lbSheet = new System.Windows.Forms.Label();
             this.cbSheets = new System.Windows.Forms.ComboBox();
             this.bnDownloadSampleSheet = new System.Windows.Forms.Button();
+            this.chkbAllowCombinations = new System.Windows.Forms.CheckBox();
             this.gbPallet.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.gbInputColumns.SuspendLayout();
@@ -92,6 +93,7 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // gbPallet
             // 
+            this.gbPallet.Controls.Add(this.chkbAllowCombinations);
             this.gbPallet.Controls.Add(this.chkbOnlyZOrientation);
             this.gbPallet.Controls.Add(this.uCtrlOverhang);
             this.gbPallet.Controls.Add(this.uCtrlMaxPalletHeight);
@@ -364,6 +366,12 @@ namespace treeDiM.StackBuilder.Desktop
             this.bnDownloadSampleSheet.UseVisualStyleBackColor = true;
             this.bnDownloadSampleSheet.Click += new System.EventHandler(this.OnDownloadSampleSheet);
             // 
+            // chkbAllowCombinations
+            // 
+            resources.ApplyResources(this.chkbAllowCombinations, "chkbAllowCombinations");
+            this.chkbAllowCombinations.Name = "chkbAllowCombinations";
+            this.chkbAllowCombinations.UseVisualStyleBackColor = true;
+            // 
             // FormExcelMassAnalysis
             // 
             resources.ApplyResources(this, "$this");
@@ -439,5 +447,6 @@ namespace treeDiM.StackBuilder.Desktop
         private System.Windows.Forms.Label lbSheet;
         private System.Windows.Forms.ComboBox cbSheets;
         private System.Windows.Forms.Button bnDownloadSampleSheet;
+        private System.Windows.Forms.CheckBox chkbAllowCombinations;
     }
 }

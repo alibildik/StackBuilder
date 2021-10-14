@@ -247,6 +247,25 @@
   <data name="toolStripButtonNew.Text" xml:space="preserve">
     <value>New cardboard quality...</value>
   </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="toolStripButtonUploadCardboardQualities.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABDSURBVDhPY6ApOHz48H8ok3QA0gzDUCHiAbJmkg3BphmG
+        oUpwA2ya0DFUKWFAliZkMGoAFQygL0B2LikYqp0SwMAAAEjTuwl6Djx5AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripButtonUploadCardboardQualities.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>White</value>
+  </data>
+  <data name="toolStripButtonUploadCardboardQualities.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonUploadCardboardQualities.Text" xml:space="preserve">
+    <value>Upload all default cardboardQuality...</value>
+  </data>
   <data name="toolStripMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -287,6 +306,18 @@
     <value>toolStripButtonNew</value>
   </data>
   <data name="&gt;&gt;toolStripButtonNew.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonUploadCardboardQualities.Name" xml:space="preserve">
+    <value>toolStripButtonUploadCardboardQualities</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonUploadCardboardQualities.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

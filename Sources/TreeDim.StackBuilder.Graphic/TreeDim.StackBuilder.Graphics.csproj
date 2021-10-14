@@ -383,6 +383,12 @@
       <Version>1.0.3</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FacingHide.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FacingShow.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release "$(SolutionDir)Signfile.bat" $(TargetPath)</PostBuildEvent>

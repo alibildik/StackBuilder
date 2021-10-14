@@ -1283,12 +1283,12 @@ namespace treeDiM.StackBuilder.Basics
             OptDouble optNetWeight = LoadOptDouble(eltBoxProperties, "NetWeight", UnitsManager.UnitType.UT_MASS);
             string sCAType = eltBoxProperties.HasAttribute("CAType") ? eltBoxProperties.Attributes["CAType"].Value : string.Empty;
 
-
             Color[] colors = new Color[6];
             List<Pair<HalfAxis.HAxis, Texture>> listTexture = new List<Pair<HalfAxis.HAxis,Texture>>();
             bool hasTape = false;
             double tapeWidth = 0.0;
             Color tapeColor = Color.Black;
+            bool facingMark = false;
             StrapperSet strapperSet = new StrapperSet();
             strapperSet.SetDimension(length, width, height);
             foreach (XmlNode node in eltBoxProperties.ChildNodes)
@@ -1302,6 +1302,9 @@ namespace treeDiM.StackBuilder.Basics
                     hasTape = LoadTape(childElt, out tapeWidth, out tapeColor);
                 else if (string.Equals(node.Name, "StrapperSet", StringComparison.CurrentCultureIgnoreCase))
                     LoadStrapperSet(childElt, ref strapperSet);
+                else if (string.Equals(node.Name, "FacingMark", StringComparison.CurrentCultureIgnoreCase))
+                    LoadFacingMark(childElt, ref facingMark);
+
             }
 
             bool isCase = hasInsideDimensions || hasTape;
@@ -1642,6 +1645,19 @@ namespace treeDiM.StackBuilder.Basics
                 tapeWidth = Convert.ToDouble(eltTape.Attributes["TapeWidth"].Value, CultureInfo.InvariantCulture);
                 string sColorArgb = eltTape.Attributes["TapeColor"].Value;
                 tapeColor = Color.FromArgb(Convert.ToInt32(sColorArgb));
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.ToString());
+                return false;
+            }
+            return true;
+        }
+        private bool LoadFacingMark(XmlElement eltFacingMark, ref bool facingMark)
+        {
+            try
+            {
+                facingMark = Convert.ToBoolean(eltFacingMark.Attributes["Visible"].Value);
             }
             catch (Exception ex)
             {

@@ -160,7 +160,6 @@
             this.menuStripMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="gbStopCriterions.Text" xml:space="preserve">
-    <value>Critères de fin</value>
-  </data>
   <data name="uCtrlOptMaxNumber.Text" xml:space="preserve">
     <value>Nombre maximum</value>
   </data>
@@ -129,18 +126,46 @@
   <data name="uCtrlMaxPalletHeight.Text" xml:space="preserve">
     <value>Hauteur maximale</value>
   </data>
-  <data name="tabPagePalletCorners.Text" xml:space="preserve">
-    <value>Cornières</value>
+  <data name="gbStopCriterions.Text" xml:space="preserve">
+    <value>Critères de fin</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ctrlStrapperSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="ctrlStrapperSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>455, 81</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabPageStrappers.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageStrappers.Text" xml:space="preserve">
+    <value>Cerclage</value>
+  </data>
   <data name="chkbPalletCorners.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 17</value>
   </data>
   <data name="chkbPalletCorners.Text" xml:space="preserve">
     <value>Cornières</value>
   </data>
-  <data name="tabPagePalletCap.Text" xml:space="preserve">
-    <value>Coiffe</value>
+  <data name="tabPagePalletCorners.Text" xml:space="preserve">
+    <value>Cornières</value>
+  </data>
+  <data name="chkbPalletCornersTopY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 17</value>
+  </data>
+  <data name="chkbPalletCornersTopY.Text" xml:space="preserve">
+    <value>Cornière palette (largeur)</value>
+  </data>
+  <data name="chkbPalletCornersTopX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 17</value>
+  </data>
+  <data name="chkbPalletCornersTopX.Text" xml:space="preserve">
+    <value>Cornière palette (longueur)</value>
+  </data>
+  <data name="tabPagePalletCornersTop.Text" xml:space="preserve">
+    <value>Cornières sommet</value>
   </data>
   <data name="chkbPalletCap.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 17</value>
@@ -148,8 +173,11 @@
   <data name="chkbPalletCap.Text" xml:space="preserve">
     <value>Coiffe</value>
   </data>
-  <data name="tabPagePalletFilm.Text" xml:space="preserve">
-    <value>Film palettisation</value>
+  <data name="tabPagePalletCap.Text" xml:space="preserve">
+    <value>Coiffe</value>
+  </data>
+  <data name="uCtrlPalletFilmCovering.Text" xml:space="preserve">
+    <value>Couverture film de palette</value>
   </data>
   <data name="chkbPalletFilm.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 17</value>
@@ -157,15 +185,80 @@
   <data name="chkbPalletFilm.Text" xml:space="preserve">
     <value>Film palettisation</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tabPageStrappers.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="tabPagePalletFilm.Text" xml:space="preserve">
+    <value>Film</value>
   </data>
-  <data name="tabPageStrappers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 87</value>
+  <data name="bnAdd.Text" xml:space="preserve">
+    <value>Ajouter</value>
   </data>
-  <data name="tabPageStrappers.Text" xml:space="preserve">
-    <value>Strappers</value>
+  <data name="tabPagePalletLabels.Text" xml:space="preserve">
+    <value>Étiquettes</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items1" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items2" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items3" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items4" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items5" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items6" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items7" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items8" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items9" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items10" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items11" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items12" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items13" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items14" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items15" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items16" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items17" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items18" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbPalletSleeveColor.Items19" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="chkbPalletSleeve.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 17</value>
+  </data>
+  <data name="chkbPalletSleeve.Text" xml:space="preserve">
+    <value>Manchon</value>
+  </data>
+  <data name="tabPagePalletSleeve.Text" xml:space="preserve">
+    <value>Manchon</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -297,86 +390,5 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Analyse caisse/palette...</value>
-  </data>
-  <data name="chkbPalletCornersTop.Text" xml:space="preserve">
-    <value>Cornières</value>
-  </data>
-  <data name="tabPagePalletCornersTop.Text" xml:space="preserve">
-    <value>Pallet coins Top</value>
-  </data>
-  <data name="chkbPalletCornersTopY.Text" xml:space="preserve">
-    <value>Cornière palette (largeur)</value>
-  </data>
-  <data name="bnAdd.Text" xml:space="preserve">
-    <value>Ajouter</value>
-  </data>
-  <data name="chkbPalletCornersTopX.Text" xml:space="preserve">
-    <value>Cornière palette (longueur)</value>
-  </data>
-  <data name="uCtrlPalletFilmCovering.Text" xml:space="preserve">
-    <value>Couverture film de palette</value>
-  </data>
-  <data name="tabPagePalletLabels.Text" xml:space="preserve">
-    <value>Étiquettes</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items1" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items2" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items3" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items4" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items5" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items6" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items7" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items8" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items9" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items10" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items11" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items12" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items13" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="chkbPalletSleeve.Text" xml:space="preserve">
-    <value>Manchon</value>
-  </data>
-  <data name="tabPagePalletSleeve.Text" xml:space="preserve">
-    <value>Manchon</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items14" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items15" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items16" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbPalletSleeveColor.Items17" xml:space="preserve">
-    <value>Couleur</value>
   </data>
 </root>

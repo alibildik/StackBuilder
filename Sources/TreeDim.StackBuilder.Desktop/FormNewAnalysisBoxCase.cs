@@ -27,12 +27,10 @@ namespace treeDiM.StackBuilder.Desktop
             InitializeComponent();
         }
         #endregion
-
         #region FormNewBase overrides
         public override string ItemDefaultName
         { get { return Resources.ID_ANALYSIS; } }
         #endregion
-
         #region Form override
         protected override void OnLoad(EventArgs e)
         {
@@ -70,14 +68,11 @@ namespace treeDiM.StackBuilder.Desktop
             Settings.Default.AllowVerticalX = uCtrlCaseOrientation.AllowedOrientations[0];
             Settings.Default.AllowVerticalY = uCtrlCaseOrientation.AllowedOrientations[1];
             Settings.Default.AllowVerticalZ = uCtrlCaseOrientation.AllowedOrientations[2];
-
             if (uCtrlOptMaximumWeight.Value.Activated)
                 Settings.Default.MaximumCaseWeight = uCtrlOptMaximumWeight.Value.Value;
-
             Settings.Default.KeepBestSolutions = checkBoxBestLayersOnly.Checked;
         }
         #endregion
-
         #region FormNewAnalysis override
         public override void OnNext()
         {
@@ -159,7 +154,6 @@ namespace treeDiM.StackBuilder.Desktop
             }
         }
         #endregion
-
         #region IItemBaseFilter implementation
         public bool Accept(Control ctrl, ItemBase itemBase)
         {
@@ -183,7 +177,6 @@ namespace treeDiM.StackBuilder.Desktop
             return false;
         }
         #endregion
-
         #region Private properties
         private Packable SelectedBoxProperties
         {
@@ -198,7 +191,6 @@ namespace treeDiM.StackBuilder.Desktop
             get { return _item as AnalysisBoxCase; }
         }
         #endregion
-
         #region Event handlers
         private void OnBoxChanged(object sender, EventArgs e)
         {
@@ -252,7 +244,6 @@ namespace treeDiM.StackBuilder.Desktop
             }
         }
         #endregion
-
         #region Helpers
         private ConstraintSetBoxCase BuildConstraintSet()
         { 
@@ -264,7 +255,6 @@ namespace treeDiM.StackBuilder.Desktop
             return constraintSet;        
         }
         #endregion
-
         #region Data members
         static readonly ILog _log = LogManager.GetLogger(typeof(FormNewAnalysisBoxCase));
         #endregion

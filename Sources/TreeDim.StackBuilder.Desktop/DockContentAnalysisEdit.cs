@@ -400,20 +400,31 @@ namespace treeDiM.StackBuilder.Desktop
         {
             FormMain.GenerateExport(_analysis, string.Empty);
         }
-        private void OnExport3D(object sender, EventArgs e)
+
+        private void OnExportOBJ(object sender, EventArgs e) => OnExport3D("obj");
+        private void OnExportGLB(object sender, EventArgs e) => OnExport3D("glb");
+        private void OnExport3D(string fileExt)
         {
-            var form = new SaveFileDialog()
+            try
             {
-                Filter = "Binary GL Transmission Format (*.glb)|*.glb",
-                DefaultExt = "glb",
-                FileName = $"{_analysis.Name}.glb"
-            };
-            if (DialogResult.OK == form.ShowDialog())
+                var form = new SaveFileDialog()
+                {
+                    Filter = "Binary GL Transmission Format (*.glb)|*.glb|Wavefront Object3D (*obj)|*.obj",
+                    DefaultExt = fileExt,
+                    FileName = $"{_analysis.Name}.{fileExt}"
+                };
+                if (DialogResult.OK == form.ShowDialog())
+                {
+                    var exporter = new Exporters.ExporterGLB();
+                    exporter.Export(_analysis, form.FileName);
+                }
+            }
+            catch (Exception ex)
             {
-                var exporter = new Exporters.ExporterGLB();
-                exporter.Export(_analysis, form.FileName);
+                _log.Error(ex.ToString());
             }
         }
+
         #endregion
 
         #region Layer controls

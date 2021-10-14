@@ -34,6 +34,8 @@
             this.bnExit = new System.Windows.Forms.Button();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonNew = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonUploadCardboardQualities = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerVertical)).BeginInit();
             this.splitContainerVertical.Panel1.SuspendLayout();
             this.splitContainerVertical.Panel2.SuspendLayout();
@@ -75,7 +77,9 @@
             // 
             this.toolStripMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonNew});
+            this.toolStripButtonNew,
+            this.toolStripSeparator1,
+            this.toolStripButtonUploadCardboardQualities});
             resources.ApplyResources(this.toolStripMain, "toolStripMain");
             this.toolStripMain.Name = "toolStripMain";
             // 
@@ -85,6 +89,18 @@
             resources.ApplyResources(this.toolStripButtonNew, "toolStripButtonNew");
             this.toolStripButtonNew.Name = "toolStripButtonNew";
             this.toolStripButtonNew.Click += new System.EventHandler(this.OnNewCardboardQuality);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // toolStripButtonUploadCardboardQualities
+            // 
+            this.toolStripButtonUploadCardboardQualities.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.toolStripButtonUploadCardboardQualities, "toolStripButtonUploadCardboardQualities");
+            this.toolStripButtonUploadCardboardQualities.Name = "toolStripButtonUploadCardboardQualities";
+            this.toolStripButtonUploadCardboardQualities.Click += new System.EventHandler(this.OnUploadDefaultCardboardQualities);
             // 
             // FormCardboardQualityList
             // 
@@ -116,5 +132,7 @@
         private System.Windows.Forms.SplitContainer splitContainerVertical;
         private System.Windows.Forms.Button bnExit;
         private SourceGrid.Grid grid;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonUploadCardboardQualities;
     }
 }

@@ -353,5 +353,8 @@
     <Setting Name="MassExcelTestSheetURL" Type="System.String" Scope="Application">
       <Value Profile="(Default)">http://www.plmpack.com/stackbuilder/download/StackBuilderCalculator.xlsx</Value>
     </Setting>
+    <Setting Name="AllowCombinations" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

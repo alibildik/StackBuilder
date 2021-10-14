@@ -124,6 +124,12 @@
   <data name="CotationShow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CotationShow.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FacingHide" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FacingHide.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FacingShow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FacingShow.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ID_CANNOTADD" xml:space="preserve">
     <value>Can not insert box/case at default location.</value>
   </data>

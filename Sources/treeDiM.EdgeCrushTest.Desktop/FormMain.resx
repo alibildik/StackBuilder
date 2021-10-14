@@ -117,13 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>984, 749</value>
+  </data>
   <data name="menuStripMain.Text" xml:space="preserve">
     <value>Main menu stip</value>
   </data>
   <data name="&gt;&gt;toolStripMIMode1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="toolStripMIMode1.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 22</value>
   </data>
@@ -138,6 +141,9 @@
   </data>
   <data name="menuStripMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>984, 24</value>
+  </data>
+  <data name="dockPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
   </data>
   <data name="&gt;&gt;toolStripMIAbout.Name" xml:space="preserve">
     <value>toolStripMIAbout</value>
@@ -164,7 +170,7 @@
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dockPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuStripMain.TabIndex" type="System.Int32, mscorlib">
@@ -185,6 +191,9 @@
   <data name="toolStripMIMode1.Text" xml:space="preserve">
     <value>BCT-&gt;Pallet height</value>
   </data>
+  <data name="toolStripMIMode.Text" xml:space="preserve">
+    <value>Mode</value>
+  </data>
   <data name="toolStripMILogConsole.Text" xml:space="preserve">
     <value>Show log console</value>
   </data>
@@ -197,6 +206,9 @@
   </data>
   <data name="&gt;&gt;toolStripMIData.Name" xml:space="preserve">
     <value>toolStripMIData</value>
+  </data>
+  <data name="&gt;&gt;tsMI_UploadDefaultData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStripMIHelp.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 20</value>
@@ -232,10 +244,13 @@
     <value>Edit pallet list...</value>
   </data>
   <data name="&gt;&gt;menuStripMain.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;toolStripMILogConsole.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tsMI_UploadDefaultData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 22</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -383,14 +398,11 @@
   <data name="$this.Text" xml:space="preserve">
     <value>PLMPack PackStress</value>
   </data>
-  <data name="toolStripMIMode.Text" xml:space="preserve">
-    <value>Mode</value>
+  <data name="&gt;&gt;dockPanel.Type" xml:space="preserve">
+    <value>WeifenLuo.WinFormsUI.Docking.DockPanel, WeifenLuo.WinFormsUI.Docking, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481</value>
   </data>
   <data name="&gt;&gt;editMaterialListToolStripMenuItem.Name" xml:space="preserve">
     <value>editMaterialListToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;dockPanel.Type" xml:space="preserve">
-    <value>WeifenLuo.WinFormsUI.Docking.DockPanel, WeifenLuo.WinFormsUI.Docking, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481</value>
   </data>
   <data name="toolStripMIFile.Text" xml:space="preserve">
     <value>File</value>
@@ -400,6 +412,12 @@
   </data>
   <data name="toolStripMIMode2.Text" xml:space="preserve">
     <value>Applied force -&gt; Best ECT</value>
+  </data>
+  <data name="&gt;&gt;tsMI_UploadDefaultData.Name" xml:space="preserve">
+    <value>tsMI_UploadDefaultData</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 6</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 22</value>
@@ -431,14 +449,14 @@
   <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="dockPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
   </data>
   <data name="&gt;&gt;toolStripMILogConsole.Name" xml:space="preserve">
     <value>toolStripMILogConsole</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>984, 749</value>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormMain</value>
@@ -458,14 +476,14 @@
   <data name="dockPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>fr</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="timerMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>152, 17</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>fr</value>
   </metadata>
   <metadata name="menuStripMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

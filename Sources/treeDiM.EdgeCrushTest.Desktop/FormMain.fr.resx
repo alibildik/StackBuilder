@@ -312,10 +312,4 @@
         AACgAQAAsAEAAKN4AAD3fQAA9/0AAPf9AAA=
 </value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>PLMPack PackStress</value>
-  </data>
-  <data name="toolStripMIMode.Text" xml:space="preserve">
-    <value>Mode</value>
-  </data>
 </root>

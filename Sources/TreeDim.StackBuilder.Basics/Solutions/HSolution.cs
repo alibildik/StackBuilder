@@ -46,13 +46,7 @@ namespace treeDiM.StackBuilder.Basics
             }
         }
         public int UnloadedCasesCount => UnloadedElts.ToList().Count;
-        public double LoadedVolumePercentage
-        {
-            get
-            {
-                return 100.0;
-            }
-        }
+        public double LoadedVolumePercentage => 100.0;
         public bool HasSolItems => hSolItems.Count > 0;
         public int SolItemCount => hSolItems.Count;
         public HSolItem SolItem(int itemIndex) => hSolItems[itemIndex];
@@ -101,13 +95,12 @@ namespace treeDiM.StackBuilder.Basics
                 bbox.Extend(solElt.Position.BBox(analysis.ContentTypeByIndex(solElt.ContentType).OuterDimensions));
             return bbox;
         }
-        public void Recenter(HSolution hSol, Vector3D dims)
+        public void Recenter(HSolution hSol, Vector3D dims, Vector2D overhang)
         {
             BBox3D bbox = BBox(hSol);
-            Vector3D offset = new Vector3D((0.5 * dims.X - bbox.Center.X),  (0.5 *dims.Y - bbox.Center.Y), 0.0);
-
-            foreach (var solElt in ContainedElements)
-                solElt.Position = solElt.Position.Transform(Transform3D.Translation(offset));
+            Vector3D offset = new Vector3D((0.5 * dims.X - bbox.Center.X - overhang.X),  (0.5 *dims.Y - bbox.Center.Y - overhang.Y), 0.0);
+            foreach (var solElt in hSolElt)
+                solElt.Position = solElt.Position.Transform( Transform3D.Translation(offset) );
         }
         public double LoadWeight(HSolution sol)
         {

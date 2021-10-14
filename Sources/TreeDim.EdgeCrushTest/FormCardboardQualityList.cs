@@ -212,10 +212,17 @@ namespace treeDiM.EdgeCrushTest
                 FillGrid();
             }
         }
+        private void OnUploadDefaultCardboardQualities(object sender, EventArgs e)
+        {
+            CardboardQualityAccessor.Instance.UploadAllDefaultCardboardQualities();
+            FillGrid();
+        }
         #endregion
 
         #region Data members
         private static readonly ILog _log = LogManager.GetLogger(typeof(FormCardboardQualityList));
         #endregion
+
+
     }
 }

@@ -35,33 +35,33 @@
             this.uCtrlDimensionsInner = new treeDiM.Basics.UCtrlOptTriDouble();
             this.uCtrlDimensionsOuter = new treeDiM.Basics.UCtrlTriDouble();
             this.cbFace = new System.Windows.Forms.ComboBox();
-            this.cbColor = new OfficePickers.ColorPicker.ComboBoxColorPicker();
             this.gbFaceColor = new System.Windows.Forms.GroupBox();
             this.btBitmaps = new System.Windows.Forms.Button();
             this.chkAllFaces = new System.Windows.Forms.CheckBox();
+            this.cbColor = new OfficePickers.ColorPicker.ComboBoxColorPicker();
             this.gbWeight = new System.Windows.Forms.GroupBox();
             this.uCtrlMaxWeight = new treeDiM.Basics.UCtrlOptDouble();
             this.vcWeight = new treeDiM.Basics.UCtrlDouble();
             this.uCtrlNetWeight = new treeDiM.Basics.UCtrlOptDouble();
-            this.graphCtrl = new treeDiM.StackBuilder.Graphics.Graphics3DControl();
-            this.uCtrlTapeWidth = new treeDiM.Basics.UCtrlOptDouble();
-            this.cbTapeColor = new OfficePickers.ColorPicker.ComboBoxColorPicker();
             this.lbTapeColor = new System.Windows.Forms.Label();
             this.bnSaveToDB = new System.Windows.Forms.Button();
             this.tabCtrl = new System.Windows.Forms.TabControl();
             this.tabPageTape = new System.Windows.Forms.TabPage();
+            this.cbTapeColor = new OfficePickers.ColorPicker.ComboBoxColorPicker();
+            this.uCtrlTapeWidth = new treeDiM.Basics.UCtrlOptDouble();
             this.tabPageStrappers = new System.Windows.Forms.TabPage();
             this.ctrlStrapperSet = new treeDiM.StackBuilder.Basics.Controls.CtrlStrapperSet();
             this.tabPageBulge = new System.Windows.Forms.TabPage();
             this.uCtrlOptBulge = new treeDiM.Basics.UCtrlOptTriDouble();
+            this.graphCtrl = new treeDiM.StackBuilder.Graphics.Graphics3DControl();
             this.gbDimensions.SuspendLayout();
             this.gbFaceColor.SuspendLayout();
             this.gbWeight.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.graphCtrl)).BeginInit();
             this.tabCtrl.SuspendLayout();
             this.tabPageTape.SuspendLayout();
             this.tabPageStrappers.SuspendLayout();
             this.tabPageBulge.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.graphCtrl)).BeginInit();
             this.SuspendLayout();
             // 
             // bnOk
@@ -71,6 +71,14 @@
             // bnCancel
             // 
             resources.ApplyResources(this.bnCancel, "bnCancel");
+            // 
+            // lbName
+            // 
+            resources.ApplyResources(this.lbName, "lbName");
+            // 
+            // lbDescription
+            // 
+            resources.ApplyResources(this.lbDescription, "lbDescription");
             // 
             // tbDescription
             // 
@@ -140,6 +148,31 @@
             resources.ApplyResources(this.cbFace, "cbFace");
             this.cbFace.Name = "cbFace";
             this.cbFace.SelectedIndexChanged += new System.EventHandler(this.OnSelectedFaceChanged);
+            // 
+            // gbFaceColor
+            // 
+            this.gbFaceColor.Controls.Add(this.btBitmaps);
+            this.gbFaceColor.Controls.Add(this.chkAllFaces);
+            this.gbFaceColor.Controls.Add(this.cbColor);
+            this.gbFaceColor.Controls.Add(this.cbFace);
+            this.gbFaceColor.Controls.Add(this.lbFace);
+            resources.ApplyResources(this.gbFaceColor, "gbFaceColor");
+            this.gbFaceColor.Name = "gbFaceColor";
+            this.gbFaceColor.TabStop = false;
+            // 
+            // btBitmaps
+            // 
+            resources.ApplyResources(this.btBitmaps, "btBitmaps");
+            this.btBitmaps.Name = "btBitmaps";
+            this.btBitmaps.UseVisualStyleBackColor = true;
+            this.btBitmaps.Click += new System.EventHandler(this.OnEditTextures);
+            // 
+            // chkAllFaces
+            // 
+            resources.ApplyResources(this.chkAllFaces, "chkAllFaces");
+            this.chkAllFaces.Name = "chkAllFaces";
+            this.chkAllFaces.UseVisualStyleBackColor = true;
+            this.chkAllFaces.CheckedChanged += new System.EventHandler(this.OnAllFacesColorCheckedChanged);
             // 
             // cbColor
             // 
@@ -282,34 +315,15 @@
             resources.GetString("cbColor.Items129"),
             resources.GetString("cbColor.Items130"),
             resources.GetString("cbColor.Items131"),
-            resources.GetString("cbColor.Items132")});
+            resources.GetString("cbColor.Items132"),
+            resources.GetString("cbColor.Items133"),
+            resources.GetString("cbColor.Items134"),
+            resources.GetString("cbColor.Items135"),
+            resources.GetString("cbColor.Items136"),
+            resources.GetString("cbColor.Items137"),
+            resources.GetString("cbColor.Items138")});
             this.cbColor.Name = "cbColor";
             this.cbColor.SelectedColorChanged += new System.EventHandler(this.OnFaceColorChanged);
-            // 
-            // gbFaceColor
-            // 
-            this.gbFaceColor.Controls.Add(this.btBitmaps);
-            this.gbFaceColor.Controls.Add(this.chkAllFaces);
-            this.gbFaceColor.Controls.Add(this.cbColor);
-            this.gbFaceColor.Controls.Add(this.cbFace);
-            this.gbFaceColor.Controls.Add(this.lbFace);
-            resources.ApplyResources(this.gbFaceColor, "gbFaceColor");
-            this.gbFaceColor.Name = "gbFaceColor";
-            this.gbFaceColor.TabStop = false;
-            // 
-            // btBitmaps
-            // 
-            resources.ApplyResources(this.btBitmaps, "btBitmaps");
-            this.btBitmaps.Name = "btBitmaps";
-            this.btBitmaps.UseVisualStyleBackColor = true;
-            this.btBitmaps.Click += new System.EventHandler(this.OnEditTextures);
-            // 
-            // chkAllFaces
-            // 
-            resources.ApplyResources(this.chkAllFaces, "chkAllFaces");
-            this.chkAllFaces.Name = "chkAllFaces";
-            this.chkAllFaces.UseVisualStyleBackColor = true;
-            this.chkAllFaces.CheckedChanged += new System.EventHandler(this.OnAllFacesColorCheckedChanged);
             // 
             // gbWeight
             // 
@@ -361,25 +375,35 @@
             this.uCtrlNetWeight.Unit = treeDiM.Basics.UnitsManager.UnitType.UT_MASS;
             this.uCtrlNetWeight.ValueChanged += new treeDiM.Basics.UCtrlOptDouble.ValueChangedDelegate(this.OnBoxPropertyChanged);
             // 
-            // graphCtrl
+            // lbTapeColor
             // 
-            resources.ApplyResources(this.graphCtrl, "graphCtrl");
-            this.graphCtrl.AngleHoriz = 45D;
-            this.graphCtrl.Name = "graphCtrl";
-            this.graphCtrl.TabStop = false;
-            this.graphCtrl.Viewer = null;
+            resources.ApplyResources(this.lbTapeColor, "lbTapeColor");
+            this.lbTapeColor.Name = "lbTapeColor";
             // 
-            // uCtrlTapeWidth
+            // bnSaveToDB
             // 
-            resources.ApplyResources(this.uCtrlTapeWidth, "uCtrlTapeWidth");
-            this.uCtrlTapeWidth.Minimum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            -2147483648});
-            this.uCtrlTapeWidth.Name = "uCtrlTapeWidth";
-            this.uCtrlTapeWidth.Unit = treeDiM.Basics.UnitsManager.UnitType.UT_LENGTH;
-            this.uCtrlTapeWidth.ValueChanged += new treeDiM.Basics.UCtrlOptDouble.ValueChangedDelegate(this.OnTapeWidthChecked);
+            resources.ApplyResources(this.bnSaveToDB, "bnSaveToDB");
+            this.bnSaveToDB.Name = "bnSaveToDB";
+            this.bnSaveToDB.UseVisualStyleBackColor = true;
+            this.bnSaveToDB.Click += new System.EventHandler(this.OnSaveToDatabase);
+            // 
+            // tabCtrl
+            // 
+            this.tabCtrl.Controls.Add(this.tabPageTape);
+            this.tabCtrl.Controls.Add(this.tabPageStrappers);
+            this.tabCtrl.Controls.Add(this.tabPageBulge);
+            resources.ApplyResources(this.tabCtrl, "tabCtrl");
+            this.tabCtrl.Name = "tabCtrl";
+            this.tabCtrl.SelectedIndex = 0;
+            // 
+            // tabPageTape
+            // 
+            this.tabPageTape.Controls.Add(this.cbTapeColor);
+            this.tabPageTape.Controls.Add(this.uCtrlTapeWidth);
+            this.tabPageTape.Controls.Add(this.lbTapeColor);
+            resources.ApplyResources(this.tabPageTape, "tabPageTape");
+            this.tabPageTape.Name = "tabPageTape";
+            this.tabPageTape.UseVisualStyleBackColor = true;
             // 
             // cbTapeColor
             // 
@@ -523,39 +547,27 @@
             resources.GetString("cbTapeColor.Items130"),
             resources.GetString("cbTapeColor.Items131"),
             resources.GetString("cbTapeColor.Items132"),
-            resources.GetString("cbTapeColor.Items133")});
+            resources.GetString("cbTapeColor.Items133"),
+            resources.GetString("cbTapeColor.Items134"),
+            resources.GetString("cbTapeColor.Items135"),
+            resources.GetString("cbTapeColor.Items136"),
+            resources.GetString("cbTapeColor.Items137"),
+            resources.GetString("cbTapeColor.Items138"),
+            resources.GetString("cbTapeColor.Items139")});
             this.cbTapeColor.Name = "cbTapeColor";
             this.cbTapeColor.SelectedColorChanged += new System.EventHandler(this.OnFaceColorChanged);
             // 
-            // lbTapeColor
+            // uCtrlTapeWidth
             // 
-            resources.ApplyResources(this.lbTapeColor, "lbTapeColor");
-            this.lbTapeColor.Name = "lbTapeColor";
-            // 
-            // bnSaveToDB
-            // 
-            resources.ApplyResources(this.bnSaveToDB, "bnSaveToDB");
-            this.bnSaveToDB.Name = "bnSaveToDB";
-            this.bnSaveToDB.UseVisualStyleBackColor = true;
-            this.bnSaveToDB.Click += new System.EventHandler(this.OnSaveToDatabase);
-            // 
-            // tabCtrl
-            // 
-            this.tabCtrl.Controls.Add(this.tabPageTape);
-            this.tabCtrl.Controls.Add(this.tabPageStrappers);
-            this.tabCtrl.Controls.Add(this.tabPageBulge);
-            resources.ApplyResources(this.tabCtrl, "tabCtrl");
-            this.tabCtrl.Name = "tabCtrl";
-            this.tabCtrl.SelectedIndex = 0;
-            // 
-            // tabPageTape
-            // 
-            this.tabPageTape.Controls.Add(this.cbTapeColor);
-            this.tabPageTape.Controls.Add(this.uCtrlTapeWidth);
-            this.tabPageTape.Controls.Add(this.lbTapeColor);
-            resources.ApplyResources(this.tabPageTape, "tabPageTape");
-            this.tabPageTape.Name = "tabPageTape";
-            this.tabPageTape.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.uCtrlTapeWidth, "uCtrlTapeWidth");
+            this.uCtrlTapeWidth.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
+            this.uCtrlTapeWidth.Name = "uCtrlTapeWidth";
+            this.uCtrlTapeWidth.Unit = treeDiM.Basics.UnitsManager.UnitType.UT_LENGTH;
+            this.uCtrlTapeWidth.ValueChanged += new treeDiM.Basics.UCtrlOptDouble.ValueChangedDelegate(this.OnTapeWidthChecked);
             // 
             // tabPageStrappers
             // 
@@ -594,6 +606,14 @@
             this.uCtrlOptBulge.Y = 0D;
             this.uCtrlOptBulge.Z = 0D;
             // 
+            // graphCtrl
+            // 
+            resources.ApplyResources(this.graphCtrl, "graphCtrl");
+            this.graphCtrl.AngleHoriz = 225D;
+            this.graphCtrl.Name = "graphCtrl";
+            this.graphCtrl.TabStop = false;
+            this.graphCtrl.Viewer = null;
+            // 
             // FormNewBox
             // 
             resources.ApplyResources(this, "$this");
@@ -623,12 +643,12 @@
             this.gbFaceColor.ResumeLayout(false);
             this.gbFaceColor.PerformLayout();
             this.gbWeight.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.graphCtrl)).EndInit();
             this.tabCtrl.ResumeLayout(false);
             this.tabPageTape.ResumeLayout(false);
             this.tabPageTape.PerformLayout();
             this.tabPageStrappers.ResumeLayout(false);
             this.tabPageBulge.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.graphCtrl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

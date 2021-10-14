@@ -19,6 +19,9 @@ namespace treeDiM.StackBuilder.Engine
         {
             // dim container + offset
             Vector3D dimContainer = analysis.DimContainer(0), offset = analysis.Offset(0);
+            Vector2D overhang = Vector2D.Zero;
+            if (analysis.ConstraintSet is HConstraintSetPallet constraintSetPallet)
+                overhang = constraintSetPallet.Overhang;
             // content items
             List<ContentItem> contentItems = new List<ContentItem>(analysis.Content);
             // solutions
@@ -71,6 +74,7 @@ namespace treeDiM.StackBuilder.Engine
                         CuboidToSolItem(contentItems, offset, cuboid, out int index, out BoxPosition pos);
                         hSolItem.InsertContainedElt(index, pos);
                     }
+                    hSolItem.Recenter(sol, dimContainer, overhang);
                 }
                 solutions.Add(sol);
             }
@@ -124,7 +128,7 @@ namespace treeDiM.StackBuilder.Engine
                     BoxInfoToSolItem(dict1, contentItems, offset, item, transform, out int index, out BoxPosition pos);
                     hSolItem.InsertContainedElt(index, pos.Adjusted(new Vector3D((double)item.DimX, (double)item.DimY, (double)item.DimZ)));
                 }
-                hSolItem.Recenter(sol, dimContainer);
+                hSolItem.Recenter(sol, dimContainer, overhang);
                 solutions.Add(sol);
 
                 // ----
@@ -144,14 +148,14 @@ namespace treeDiM.StackBuilder.Engine
                     ci.Number -= 1;
                 }
 
-                RunBoxologic(solution.Variant, sol, dimContainer, offset, contentItemsClone);
+                RunBoxologic(solution.Variant, sol, dimContainer, overhang, offset, contentItemsClone);
                 // ---
             }
             // *** BoxoLogic : end
 
             return solutions;
         }
-        private void RunBoxologic(int variant, HSolution hSol, Vector3D dimContainer, Vector3D offset, List<ContentItem> contentItems)
+        private void RunBoxologic(int variant, HSolution hSol, Vector3D dimContainer, Vector2D overhang, Vector3D offset, List<ContentItem> contentItems)
         {
             var dict2 = new Dictionary<BProperties, uint>();
             // ContentItem -> BoxItem
@@ -205,7 +209,7 @@ namespace treeDiM.StackBuilder.Engine
                     BoxInfoToSolItem(dict2, contentItems, offset, item, transform, out int index, out BoxPosition pos);
                     hSolItem.InsertContainedElt(index, pos.Adjusted(new Vector3D((double)item.DimX, (double)item.DimY, (double)item.DimZ)));
                 }
-                hSolItem.Recenter(hSol, dimContainer);
+                hSolItem.Recenter(hSol, dimContainer, overhang);
 
                 var contentItemsClone = new List<ContentItem>();
                 foreach (var ci in contentItems)
@@ -222,7 +226,7 @@ namespace treeDiM.StackBuilder.Engine
                 int iCount = contentItemsClone.Sum(c => (int)c.Number);
 
                 if (iCount > 0)
-                    RunBoxologic(variant, hSol, dimContainer, offset, contentItemsClone);
+                    RunBoxologic(variant, hSol, dimContainer, overhang, offset, contentItemsClone);
             }
         }
 

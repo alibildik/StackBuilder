@@ -54,10 +54,10 @@
             this.uCtrlTrayHeight = new treeDiM.Basics.UCtrlDouble();
             this.tabStrappers = new System.Windows.Forms.TabPage();
             this.ctrlStrapperSet = new treeDiM.StackBuilder.Basics.Controls.CtrlStrapperSet();
-            this.lbCylLayoutType = new System.Windows.Forms.Label();
-            this.cbCylLayoutType = new System.Windows.Forms.ComboBox();
             this.tabPageBulge = new System.Windows.Forms.TabPage();
             this.uCtrlOptBulge = new treeDiM.Basics.UCtrlOptTriDouble();
+            this.lbCylLayoutType = new System.Windows.Forms.Label();
+            this.cbCylLayoutType = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.graphCtrl)).BeginInit();
             this.tabCtrl.SuspendLayout();
             this.tabWrapper.SuspendLayout();
@@ -73,6 +73,18 @@
             // bnCancel
             // 
             resources.ApplyResources(this.bnCancel, "bnCancel");
+            // 
+            // lbName
+            // 
+            resources.ApplyResources(this.lbName, "lbName");
+            // 
+            // lbDescription
+            // 
+            resources.ApplyResources(this.lbDescription, "lbDescription");
+            // 
+            // tbName
+            // 
+            resources.ApplyResources(this.tbName, "tbName");
             // 
             // tbDescription
             // 
@@ -92,9 +104,9 @@
             // 
             // cbInnerPackable
             // 
+            resources.ApplyResources(this.cbInnerPackable, "cbInnerPackable");
             this.cbInnerPackable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInnerPackable.FormattingEnabled = true;
-            resources.ApplyResources(this.cbInnerPackable, "cbInnerPackable");
             this.cbInnerPackable.Name = "cbInnerPackable";
             this.cbInnerPackable.SelectedIndexChanged += new System.EventHandler(this.OnContentChanged);
             // 
@@ -105,6 +117,7 @@
             // 
             // cbDir
             // 
+            resources.ApplyResources(this.cbDir, "cbDir");
             this.cbDir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDir.FormattingEnabled = true;
             this.cbDir.Items.AddRange(new object[] {
@@ -114,7 +127,6 @@
             resources.GetString("cbDir.Items3"),
             resources.GetString("cbDir.Items4"),
             resources.GetString("cbDir.Items5")});
-            resources.ApplyResources(this.cbDir, "cbDir");
             this.cbDir.Name = "cbDir";
             this.cbDir.SelectedIndexChanged += new System.EventHandler(this.OnPackChanged);
             // 
@@ -154,13 +166,13 @@
             // 
             // cbType
             // 
+            resources.ApplyResources(this.cbType, "cbType");
             this.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbType.FormattingEnabled = true;
             this.cbType.Items.AddRange(new object[] {
             resources.GetString("cbType.Items"),
             resources.GetString("cbType.Items1"),
             resources.GetString("cbType.Items2")});
-            resources.ApplyResources(this.cbType, "cbType");
             this.cbType.Name = "cbType";
             this.cbType.SelectedIndexChanged += new System.EventHandler(this.OnWrapperTypeChanged);
             // 
@@ -205,13 +217,13 @@
             // 
             // cbWrapperColor
             // 
+            resources.ApplyResources(this.cbWrapperColor, "cbWrapperColor");
             this.cbWrapperColor.Color = System.Drawing.Color.LightGray;
             this.cbWrapperColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbWrapperColor.DropDownHeight = 1;
             this.cbWrapperColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWrapperColor.DropDownWidth = 1;
             this.cbWrapperColor.FormattingEnabled = true;
-            resources.ApplyResources(this.cbWrapperColor, "cbWrapperColor");
             this.cbWrapperColor.Items.AddRange(new object[] {
             resources.GetString("cbWrapperColor.Items"),
             resources.GetString("cbWrapperColor.Items1"),
@@ -257,7 +269,9 @@
             resources.GetString("cbWrapperColor.Items41"),
             resources.GetString("cbWrapperColor.Items42"),
             resources.GetString("cbWrapperColor.Items43"),
-            resources.GetString("cbWrapperColor.Items44")});
+            resources.GetString("cbWrapperColor.Items44"),
+            resources.GetString("cbWrapperColor.Items45"),
+            resources.GetString("cbWrapperColor.Items46")});
             this.cbWrapperColor.Name = "cbWrapperColor";
             this.cbWrapperColor.SelectedColorChanged += new System.EventHandler(this.OnPackChanged);
             // 
@@ -273,6 +287,7 @@
             // 
             // tabWrapper
             // 
+            resources.ApplyResources(this.tabWrapper, "tabWrapper");
             this.tabWrapper.Controls.Add(this.chkbWrapper);
             this.tabWrapper.Controls.Add(this.uCtrlWrapperWalls);
             this.tabWrapper.Controls.Add(this.cbWrapperColor);
@@ -280,7 +295,6 @@
             this.tabWrapper.Controls.Add(this.uCtrlWrapperWeight);
             this.tabWrapper.Controls.Add(this.uCtrlWrapperThickness);
             this.tabWrapper.Controls.Add(this.cbType);
-            resources.ApplyResources(this.tabWrapper, "tabWrapper");
             this.tabWrapper.Name = "tabWrapper";
             this.tabWrapper.UseVisualStyleBackColor = true;
             // 
@@ -293,13 +307,13 @@
             // 
             // tabTray
             // 
+            resources.ApplyResources(this.tabTray, "tabTray");
             this.tabTray.Controls.Add(this.uCtrlTrayWalls);
             this.tabTray.Controls.Add(this.uCtrlTrayUnitThickness);
             this.tabTray.Controls.Add(this.uCtrlTrayWeight);
             this.tabTray.Controls.Add(this.chkbTray);
             this.tabTray.Controls.Add(this.cbTrayColor);
             this.tabTray.Controls.Add(this.uCtrlTrayHeight);
-            resources.ApplyResources(this.tabTray, "tabTray");
             this.tabTray.Name = "tabTray";
             this.tabTray.UseVisualStyleBackColor = true;
             // 
@@ -355,13 +369,13 @@
             // 
             // cbTrayColor
             // 
+            resources.ApplyResources(this.cbTrayColor, "cbTrayColor");
             this.cbTrayColor.Color = System.Drawing.Color.LightGray;
             this.cbTrayColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbTrayColor.DropDownHeight = 1;
             this.cbTrayColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTrayColor.DropDownWidth = 1;
             this.cbTrayColor.FormattingEnabled = true;
-            resources.ApplyResources(this.cbTrayColor, "cbTrayColor");
             this.cbTrayColor.Items.AddRange(new object[] {
             resources.GetString("cbTrayColor.Items"),
             resources.GetString("cbTrayColor.Items1"),
@@ -409,7 +423,9 @@
             resources.GetString("cbTrayColor.Items43"),
             resources.GetString("cbTrayColor.Items44"),
             resources.GetString("cbTrayColor.Items45"),
-            resources.GetString("cbTrayColor.Items46")});
+            resources.GetString("cbTrayColor.Items46"),
+            resources.GetString("cbTrayColor.Items47"),
+            resources.GetString("cbTrayColor.Items48")});
             this.cbTrayColor.Name = "cbTrayColor";
             this.cbTrayColor.SelectedColorChanged += new System.EventHandler(this.OnPackChanged);
             // 
@@ -432,8 +448,8 @@
             // 
             // tabStrappers
             // 
-            this.tabStrappers.Controls.Add(this.ctrlStrapperSet);
             resources.ApplyResources(this.tabStrappers, "tabStrappers");
+            this.tabStrappers.Controls.Add(this.ctrlStrapperSet);
             this.tabStrappers.Name = "tabStrappers";
             this.tabStrappers.UseVisualStyleBackColor = true;
             // 
@@ -445,35 +461,17 @@
             this.ctrlStrapperSet.StrapperSet = null;
             this.ctrlStrapperSet.ValueChanged += new treeDiM.StackBuilder.Basics.Controls.CtrlStrapperSet.OnValueChanged(this.OnPackChanged);
             // 
-            // lbCylLayoutType
-            // 
-            resources.ApplyResources(this.lbCylLayoutType, "lbCylLayoutType");
-            this.lbCylLayoutType.Name = "lbCylLayoutType";
-            // 
-            // cbCylLayoutType
-            // 
-            this.cbCylLayoutType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCylLayoutType.FormattingEnabled = true;
-            this.cbCylLayoutType.Items.AddRange(new object[] {
-            resources.GetString("cbCylLayoutType.Items"),
-            resources.GetString("cbCylLayoutType.Items1"),
-            resources.GetString("cbCylLayoutType.Items2"),
-            resources.GetString("cbCylLayoutType.Items3")});
-            resources.ApplyResources(this.cbCylLayoutType, "cbCylLayoutType");
-            this.cbCylLayoutType.Name = "cbCylLayoutType";
-            this.cbCylLayoutType.SelectedIndexChanged += new System.EventHandler(this.OnPackChanged);
-            // 
             // tabPageBulge
             // 
-            this.tabPageBulge.Controls.Add(this.uCtrlOptBulge);
             resources.ApplyResources(this.tabPageBulge, "tabPageBulge");
+            this.tabPageBulge.Controls.Add(this.uCtrlOptBulge);
             this.tabPageBulge.Name = "tabPageBulge";
             this.tabPageBulge.UseVisualStyleBackColor = true;
             // 
             // uCtrlOptBulge
             // 
-            this.uCtrlOptBulge.Checked = false;
             resources.ApplyResources(this.uCtrlOptBulge, "uCtrlOptBulge");
+            this.uCtrlOptBulge.Checked = false;
             this.uCtrlOptBulge.Minimum = new decimal(new int[] {
             0,
             0,
@@ -484,6 +482,24 @@
             this.uCtrlOptBulge.X = 0D;
             this.uCtrlOptBulge.Y = 0D;
             this.uCtrlOptBulge.Z = 0D;
+            // 
+            // lbCylLayoutType
+            // 
+            resources.ApplyResources(this.lbCylLayoutType, "lbCylLayoutType");
+            this.lbCylLayoutType.Name = "lbCylLayoutType";
+            // 
+            // cbCylLayoutType
+            // 
+            resources.ApplyResources(this.cbCylLayoutType, "cbCylLayoutType");
+            this.cbCylLayoutType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCylLayoutType.FormattingEnabled = true;
+            this.cbCylLayoutType.Items.AddRange(new object[] {
+            resources.GetString("cbCylLayoutType.Items"),
+            resources.GetString("cbCylLayoutType.Items1"),
+            resources.GetString("cbCylLayoutType.Items2"),
+            resources.GetString("cbCylLayoutType.Items3")});
+            this.cbCylLayoutType.Name = "cbCylLayoutType";
+            this.cbCylLayoutType.SelectedIndexChanged += new System.EventHandler(this.OnPackChanged);
             // 
             // FormNewPack
             // 

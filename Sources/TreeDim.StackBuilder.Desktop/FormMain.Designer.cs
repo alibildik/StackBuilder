@@ -1033,9 +1033,9 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.toolStripStandard);
             this.Controls.Add(this.menuStripMain);
-            this.Controls.Add(this.dockPanel);
             this.IsMdiContainer = true;
             this.Name = "FormMain";
             this.menuStripMain.ResumeLayout(false);

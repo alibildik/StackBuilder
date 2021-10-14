@@ -169,6 +169,7 @@ namespace treeDiM.StackBuilder.Graphics
         public bool ShowTape => TapeWidth.Activated;
         public OptDouble TapeWidth { get; set; }
         public Color TapeColor { get; set; }
+        public bool FacingMark { get; set; } = false;
         public bool ShowOrientationMark { get; set; } = false;
         public Color OrientationMarkColor { get; set; } = Color.White;
         public Vector3D[] TapePoints
@@ -186,6 +187,39 @@ namespace treeDiM.StackBuilder.Graphics
                 return points;
             }
         }
+        public Vector3D[] FacingPointsTop
+        {
+            get
+            {
+                Vector3D lengthAxis = LengthAxis;
+                Vector3D widthAxis = WidthAxis;
+                Vector3D vZ = Dimensions.Z * HeightAxis;
+                
+                double facing = UnitsManager.ConvertLengthFrom(Properties.Settings.Default.FacingDimension, UnitsManager.UnitSystem.UNIT_METRIC1);
+                var points = new Vector3D[4];
+                points[0] = Position + 0.5 * (Dimensions.X - facing) * lengthAxis + vZ;
+                points[1] = Position + 0.5 * (Dimensions.X + facing) * lengthAxis + vZ;
+                points[2] = Position + 0.5 * (Dimensions.X + facing) * lengthAxis + facing * widthAxis + vZ;
+                points[3] = Position + 0.5 * (Dimensions.X - facing) * lengthAxis + facing * widthAxis + vZ;
+                return points;
+            }
+        }
+        public Vector3D[] FacingPointsRight
+        {
+            get
+            {
+                Vector3D lengthAxis = LengthAxis;
+                Vector3D heightAxis = HeightAxis;
+                double facing = UnitsManager.ConvertLengthFrom(Properties.Settings.Default.FacingDimension, UnitsManager.UnitSystem.UNIT_METRIC1);
+                var points = new Vector3D[4];
+                points[0] = Position + 0.5 * (Dimensions.X - facing) * lengthAxis + (Dimensions.Z - facing) * heightAxis;
+                points[1] = Position + 0.5 * (Dimensions.X + facing) * lengthAxis + (Dimensions.Z - facing) * heightAxis;
+                points[2] = Position + 0.5 * (Dimensions.X + facing) * lengthAxis + Dimensions.Z * heightAxis;
+                points[3] = Position + 0.5 * (Dimensions.X - facing) * lengthAxis + Dimensions.Z * heightAxis;
+                return points;
+            }
+        }
+
         public Face[] StrapperFaces
         {
             get
@@ -494,6 +528,13 @@ namespace treeDiM.StackBuilder.Graphics
                 for (int j = 1; j < pts.Length; ++j)
                     g.DrawLine(penBlack, pts[j - 1], pts[j]);
                 g.DrawLine(penBlack, pts[pts.Length - 1], pts[0]);
+            }
+            if (ShowTape && graphics.ShowFacing)
+            {
+                if (faces[5].IsVisible(viewDir))
+                    g.FillPolygon(new SolidBrush(faces[5].ColorGraph(graphics, Color.Red)), graphics.TransformPoint(FacingPointsTop));
+                if (faces[2].IsVisible(viewDir))
+                    g.FillPolygon(new SolidBrush(faces[2].ColorGraph(graphics, Color.Red)), graphics.TransformPoint(FacingPointsRight));
             }
             // draw strappers
             foreach (var sf in StrapperFaces)

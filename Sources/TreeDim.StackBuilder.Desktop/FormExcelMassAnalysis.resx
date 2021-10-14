@@ -180,6 +180,33 @@
   <data name="&gt;&gt;bnCancel.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="chkbAllowCombinations.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkbAllowCombinations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>449, 70</value>
+  </data>
+  <data name="chkbAllowCombinations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 17</value>
+  </data>
+  <data name="chkbAllowCombinations.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="chkbAllowCombinations.Text" xml:space="preserve">
+    <value>Allow combinations</value>
+  </data>
+  <data name="&gt;&gt;chkbAllowCombinations.Name" xml:space="preserve">
+    <value>chkbAllowCombinations</value>
+  </data>
+  <data name="&gt;&gt;chkbAllowCombinations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkbAllowCombinations.Parent" xml:space="preserve">
+    <value>gbPallet</value>
+  </data>
+  <data name="&gt;&gt;chkbAllowCombinations.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="chkbOnlyZOrientation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -208,7 +235,7 @@
     <value>gbPallet</value>
   </data>
   <data name="&gt;&gt;chkbOnlyZOrientation.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="uCtrlOverhang.Location" type="System.Drawing.Point, System.Drawing">
     <value>208, 43</value>
@@ -226,13 +253,13 @@
     <value>uCtrlOverhang</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.38, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Parent" xml:space="preserve">
     <value>gbPallet</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="uCtrlMaxPalletHeight.Location" type="System.Drawing.Point, System.Drawing">
     <value>208, 17</value>
@@ -253,13 +280,13 @@
     <value>uCtrlMaxPalletHeight</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.38, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.Parent" xml:space="preserve">
     <value>gbPallet</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lbPallets.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 17</value>
@@ -280,7 +307,7 @@
     <value>gbPallet</value>
   </data>
   <data name="&gt;&gt;lbPallets.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="gbPallet.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 272</value>
@@ -319,7 +346,7 @@
     <value>fileSelectExcel</value>
   </data>
   <data name="&gt;&gt;fileSelectExcel.Type" xml:space="preserve">
-    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.38, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fileSelectExcel.Parent" xml:space="preserve">
     <value>$this</value>

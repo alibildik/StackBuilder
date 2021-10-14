@@ -52,6 +52,7 @@ namespace treeDiM.EdgeCrushTest
             return qualities.Select(q => q.Profile).Distinct().ToList();
         }
         public string UserName { get; set; }
+        public abstract void UploadAllDefaultCardboardQualities();
         #endregion
         #region Singleton
         public static CardboardQualityAccessor Instance
@@ -166,6 +167,27 @@ namespace treeDiM.EdgeCrushTest
                 _log.Error(ex.ToString());
             }
             _listQualities = null;
+        }
+
+        public override void UploadAllDefaultCardboardQualities()
+        {
+            if (CardboardQualityList.LoadFromFile(Properties.Settings.Default.CardboardQualityDBFile, out CardboardQualityList cardboardQualityList))
+            {
+                using (WCFClient wcfClient = new WCFClient())
+                {
+                    foreach (var cardboardQuality in cardboardQualityList.CardboardQuality)
+                    {
+                        try
+                        {
+                            wcfClient.Client.CreateNewCardboardQuality(cardboardQuality.Name, cardboardQuality.Profile, cardboardQuality.Thickness, cardboardQuality.ECT, cardboardQuality.RigidityDX, cardboardQuality.RigidityDY);
+                        }
+                        catch (Exception ex)
+                        {
+                            _log.Error(ex.ToString());
+                        }
+                    }
+                }
+            }
         }
         #region Data members
         private static ILog _log = LogManager.GetLogger(typeof(CardboardQualityAccessorWCF));

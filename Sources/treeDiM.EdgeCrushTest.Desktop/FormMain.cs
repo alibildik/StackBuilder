@@ -24,6 +24,11 @@ namespace treeDiM.EdgeCrushTest.Desktop
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            // Set DockPanel properties
+            var theme = new VS2015BlueTheme();
+            dockPanel.Theme = theme;
+
             if (AssemblyConf == "debug")
                 OnShowLogConsole(this, null);
             
@@ -159,6 +164,7 @@ namespace treeDiM.EdgeCrushTest.Desktop
         #region Data members
         private static ILog _log = LogManager.GetLogger(typeof(FormMain));
         private DockContentLogConsole _logConsole;
+
         #endregion
 
 

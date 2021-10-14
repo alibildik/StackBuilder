@@ -47,5 +47,8 @@
     <Setting Name="MatStiffnessY" Type="System.Double" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
+    <Setting Name="CardboardQualityDBFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\GitHub\StackBuilder\Sources\TreeDim.EdgeCrushTest\CardboardQualityData\CardboardQualityData.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -118,92 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Text" xml:space="preserve">
-    <value>Créer un nouveau fardeau...</value>
+  <data name="bnOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>705, 10</value>
   </data>
-  <data name="cbColor.Items10" xml:space="preserve">
-    <value>Couleur</value>
+  <data name="bnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>705, 38</value>
   </data>
-  <data name="cbColor.Items11" xml:space="preserve">
-    <value>Couleur</value>
+  <data name="tbDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>584, 20</value>
   </data>
-  <data name="cbColor.Items12" xml:space="preserve">
-    <value>Couleur</value>
+  <data name="graphCtrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>363, 209</value>
   </data>
-  <data name="cbColor.Items13" xml:space="preserve">
-    <value>Couleur</value>
+  <data name="lbContent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 13</value>
   </data>
-  <data name="cbColor.Items14" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items15" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items16" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items17" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items18" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items19" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items2" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items20" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items21" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items22" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items23" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items24" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items25" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items26" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items27" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items28" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items3" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items35" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbColor.Items4" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items5" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items6" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items7" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items8" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbColor.Items9" xml:space="preserve">
-    <value>Couleur</value>
+  <data name="lbContent.Text" xml:space="preserve">
+    <value>Contenu</value>
   </data>
   <data name="cbDir.Items1" xml:space="preserve">
     <value>X +</value>
@@ -214,6 +145,18 @@
   <data name="cbDir.Items5" xml:space="preserve">
     <value>Z +</value>
   </data>
+  <data name="uCtrlOuterDimensions.Text" xml:space="preserve">
+    <value>Dimensions ext.</value>
+  </data>
+  <data name="uCtrlLayout.Text" xml:space="preserve">
+    <value>Arrangement</value>
+  </data>
+  <data name="uCtrlWrapperWalls.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 20</value>
+  </data>
+  <data name="uCtrlWrapperWalls.Text" xml:space="preserve">
+    <value>Nombre de murs</value>
+  </data>
   <data name="cbType.Items" xml:space="preserve">
     <value>Polyethylène</value>
   </data>
@@ -223,61 +166,19 @@
   <data name="cbType.Items2" xml:space="preserve">
     <value>Carton</value>
   </data>
-  <data name="lbBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
+  <data name="uCtrlWrapperWeight.Text" xml:space="preserve">
+    <value>Poids</value>
   </data>
-  <data name="lbBox.Text" xml:space="preserve">
-    <value>Etui / UC</value>
+  <data name="uCtrlWrapperThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>262, 20</value>
+  </data>
+  <data name="uCtrlWrapperThickness.Text" xml:space="preserve">
+    <value>Epaisseur</value>
   </data>
   <data name="lbWrapperColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 13</value>
   </data>
   <data name="lbWrapperColor.Text" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="uCtrlHeight.Text" xml:space="preserve">
-    <value>Hauteur</value>
-  </data>
-  <data name="uCtrlLayout.Text" xml:space="preserve">
-    <value>Arrangement</value>
-  </data>
-  <data name="uCtrlOuterDimensions.Text" xml:space="preserve">
-    <value>Dimensions ext.</value>
-  </data>
-  <data name="uCtrlThickness.Text" xml:space="preserve">
-    <value>Epaisseur</value>
-  </data>
-  <data name="uCtrlWalls.Text" xml:space="preserve">
-    <value>Nombre de murs</value>
-  </data>
-  <data name="uCtrlWeight.Text" xml:space="preserve">
-    <value>Poids</value>
-  </data>
-  <data name="lbContent.Text" xml:space="preserve">
-    <value>Contenu</value>
-  </data>
-  <data name="lbDir.Text" xml:space="preserve">
-    <value>Direction</value>
-  </data>
-  <data name="cbDir.Items" xml:space="preserve">
-    <value>X-</value>
-  </data>
-  <data name="cbDir.Items2" xml:space="preserve">
-    <value>Y-</value>
-  </data>
-  <data name="cbDir.Items4" xml:space="preserve">
-    <value>Z-</value>
-  </data>
-  <data name="uCtrlWrapperWalls.Text" xml:space="preserve">
-    <value>Nombre de murs</value>
-  </data>
-  <data name="uCtrlWrapperWeight.Text" xml:space="preserve">
-    <value>Poids</value>
-  </data>
-  <data name="uCtrlWrapperThickness.Text" xml:space="preserve">
-    <value>Epaisseur</value>
-  </data>
-  <data name="cbWrapperColor.Items" xml:space="preserve">
     <value>Couleur</value>
   </data>
   <data name="cbWrapperColor.Items1" xml:space="preserve">
@@ -406,11 +307,32 @@
   <data name="cbWrapperColor.Items42" xml:space="preserve">
     <value>Couleur</value>
   </data>
-  <data name="chkbWrapper.Text" xml:space="preserve">
-    <value>Wrapper</value>
+  <data name="cbWrapperColor.Items43" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbWrapperColor.Items44" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbWrapperColor.Items45" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="tabCtrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>777, 107</value>
+  </data>
+  <data name="tabWrapper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>769, 81</value>
   </data>
   <data name="tabWrapper.Text" xml:space="preserve">
-    <value>Wrapper</value>
+    <value>Emballage</value>
+  </data>
+  <data name="chkbWrapper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 17</value>
+  </data>
+  <data name="chkbWrapper.Text" xml:space="preserve">
+    <value>Emballage</value>
+  </data>
+  <data name="tabTray.Text" xml:space="preserve">
+    <value>Plateau</value>
   </data>
   <data name="uCtrlTrayWalls.Text" xml:space="preserve">
     <value>Nombre de murs</value>
@@ -421,11 +343,11 @@
   <data name="uCtrlTrayWeight.Text" xml:space="preserve">
     <value>Poids</value>
   </data>
+  <data name="chkbTray.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 17</value>
+  </data>
   <data name="chkbTray.Text" xml:space="preserve">
     <value>Plateau</value>
-  </data>
-  <data name="cbTrayColor.Items" xml:space="preserve">
-    <value>Couleur</value>
   </data>
   <data name="cbTrayColor.Items1" xml:space="preserve">
     <value>Couleur</value>
@@ -559,17 +481,38 @@
   <data name="cbTrayColor.Items44" xml:space="preserve">
     <value>Couleur</value>
   </data>
+  <data name="cbTrayColor.Items45" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbTrayColor.Items46" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="cbTrayColor.Items47" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
   <data name="uCtrlTrayHeight.Text" xml:space="preserve">
     <value>Hauteur</value>
   </data>
-  <data name="tabTray.Text" xml:space="preserve">
-    <value>Plateau</value>
+  <data name="tabStrappers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>769, 81</value>
   </data>
   <data name="tabStrappers.Text" xml:space="preserve">
-    <value>Strappers</value>
+    <value>Cerclages</value>
+  </data>
+  <data name="ctrlStrapperSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>761, 74</value>
+  </data>
+  <data name="tabPageBulge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>769, 81</value>
+  </data>
+  <data name="tabPageBulge.Text" xml:space="preserve">
+    <value>Renflement</value>
+  </data>
+  <data name="lbCylLayoutType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
   </data>
   <data name="lbCylLayoutType.Text" xml:space="preserve">
-    <value>Type de mise en page</value>
+    <value>Disposition</value>
   </data>
   <data name="cbCylLayoutType.Items" xml:space="preserve">
     <value>Aligné</value>
@@ -583,25 +526,13 @@
   <data name="cbCylLayoutType.Items3" xml:space="preserve">
     <value>Décalé 1</value>
   </data>
-  <data name="cbColor.Items" xml:space="preserve">
-    <value>Couleur</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>784, 411</value>
   </data>
-  <data name="cbColor.Items1" xml:space="preserve">
-    <value>Couleur</value>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 400</value>
   </data>
-  <data name="cbTrayColor.Items45" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="chkbTransparent.Text" xml:space="preserve">
-    <value>Transparent</value>
-  </data>
-  <data name="cbWrapperColor.Items43" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbWrapperColor.Items44" xml:space="preserve">
-    <value>Couleur</value>
-  </data>
-  <data name="cbTrayColor.Items46" xml:space="preserve">
-    <value>Couleur</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Créer un nouveau fardeau...</value>
   </data>
 </root>

@@ -81,6 +81,26 @@ namespace treeDiM.StackBuilder.Graphics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FacingHide {
+            get {
+                object obj = ResourceManager.GetObject("FacingHide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FacingShow {
+            get {
+                object obj = ResourceManager.GetObject("FacingShow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Can not insert box/case at default location..
         /// </summary>
         internal static string ID_CANNOTADD {

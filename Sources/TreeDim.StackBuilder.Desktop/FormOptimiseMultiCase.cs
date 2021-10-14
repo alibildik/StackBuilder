@@ -50,6 +50,8 @@ namespace treeDiM.StackBuilder.Desktop
             uCtrlCaseDimensionsMax.X = Settings.Default.MaxCaseDimX;
             uCtrlCaseDimensionsMax.Y = Settings.Default.MaxCaseDimY;
             uCtrlCaseDimensionsMax.Z = Settings.Default.MaxCaseDimZ;
+            chkbAllowCombinations.Checked = Settings.Default.AllowCombinations;
+
             // fill list of cases
             OnFillListCases(this, null);
             // Mode
@@ -60,7 +62,6 @@ namespace treeDiM.StackBuilder.Desktop
         protected override void OnClosing(CancelEventArgs e)
         {
  	        base.OnClosing(e);
-
             Settings.Default.MinCaseDimChecked = uCtrlCaseDimensionsMin.Checked;
             Settings.Default.MinCaseDimX = uCtrlCaseDimensionsMin.X;
             Settings.Default.MinCaseDimY = uCtrlCaseDimensionsMin.Y;
@@ -69,6 +70,7 @@ namespace treeDiM.StackBuilder.Desktop
             Settings.Default.MaxCaseDimX = uCtrlCaseDimensionsMax.X;
             Settings.Default.MaxCaseDimY = uCtrlCaseDimensionsMax.Y;
             Settings.Default.MaxCaseDimZ = uCtrlCaseDimensionsMax.Z;
+            Settings.Default.AllowCombinations = chkbAllowCombinations.Checked;
         }
         #endregion
         #region Status toolstrip updating
@@ -280,7 +282,7 @@ namespace treeDiM.StackBuilder.Desktop
                                 constraintSet.SetMaxNumber(uCtrlNumberPerCase.Value.Value);
                             // build solver + get analyses
                             SolverBoxCase solver = new SolverBoxCase(packable, caseProperties, constraintSet);
-                            var listAnalyses = solver.BuildAnalyses(false);
+                            var listAnalyses = solver.BuildAnalyses(chkbAllowCombinations.Checked);
                             foreach (var analysis in listAnalyses)
                             {
                                 if ((-1 == expectedCount) || (expectedCount == analysis.Solution.ItemCount))

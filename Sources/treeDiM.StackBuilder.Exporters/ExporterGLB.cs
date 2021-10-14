@@ -11,6 +11,7 @@ using SharpGLTF.Geometry.VertexTypes;
 using SharpGLTF.Materials;
 using SharpGLTF.Scenes;
 using SharpGLTF.Schema2;
+
 using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Graphics;
 #endregion
@@ -18,7 +19,7 @@ using treeDiM.StackBuilder.Graphics;
 namespace treeDiM.StackBuilder.Exporters
 {
     using VPOS = VertexPosition;
-    using PRIMITIVE = PrimitiveBuilder<MaterialBuilder, VertexPosition, VertexEmpty/*VertexTexture1*/, VertexEmpty>;
+    using PRIMITIVE = PrimitiveBuilder<MaterialBuilder, VertexPosition, VertexEmpty, VertexEmpty>;
 
     #region ExporterGLB
     public class ExporterGLB : Exporter
@@ -103,14 +104,19 @@ namespace treeDiM.StackBuilder.Exporters
             }
             // save model
             var model = scene.ToGltf2();
-            model.Save(filePath);
+            var fileExtension = Path.GetExtension(filePath).Trim('.');
+            switch (fileExtension)
+            {
+                case "glb": model.SaveGLB(filePath); break;
+                case "obj": model.SaveAsWavefront(filePath); break;
+                default: new System.Exception($"Unexpected file extension : {fileExtension}"); break;
+            }
         }
 
         public override void Export(RobotPreparation robotPreparation, ref Stream stream)
         {
         }
         #endregion
-
 
         #region Helpers
         private Matrix4x4 BoxPositionToMatrix4x4(BoxPosition boxPosition)
@@ -290,7 +296,8 @@ namespace treeDiM.StackBuilder.Exporters
             {
                 MaterialBuilder materialColor = new MaterialBuilder()
                     .WithDoubleSide(true)
-                    .WithChannelParam(KnownChannel.BaseColor, ColorToVector4(colorFaces[i < 6 ? i : 5]));
+                    .WithChannelParam(KnownChannel.BaseColor,
+                    ColorToVector4(colorFaces[i < 6 ? i : 5]));
                 /*
                 if (i == 1)
                 {

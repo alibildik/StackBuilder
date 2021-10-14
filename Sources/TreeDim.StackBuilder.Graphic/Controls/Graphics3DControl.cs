@@ -44,6 +44,8 @@ namespace treeDiM.StackBuilder.Graphics
             SetDoubleBuffered();
             // toolbar event
             ButtonPressed += OnButtonPressed;
+            // facing
+            ShowFacing = Properties.Settings.Default.ShowFacing;
         }
         #endregion
 
@@ -85,9 +87,10 @@ namespace treeDiM.StackBuilder.Graphics
         public IDrawingContainer DrawingContainer { set; private get; }
         public Viewer Viewer { get; set; }
         protected bool ShowDimensions { get; set; } = true;
+        protected bool ShowFacing { get; set; } = false;
         private bool Dragging { get; set; } = false;
         public bool ShowToolBar { get; private set; } = false;
-        public double AngleHoriz { get; set; } = 45.0;
+        public double AngleHoriz { get; set; } = 45.0 + 180.0;
         private double AngleVert { get; set; } = 45.0;
         #endregion
 
@@ -112,6 +115,7 @@ namespace treeDiM.StackBuilder.Graphics
                 // show images
                 graphics.ShowTextures = true;
                 graphics.ShowDimensions = ShowDimensions;
+                graphics.ShowFacing = ShowFacing;
                 graphics.FontSizeRatio = 10.0f / (float)Size.Height;
 
                 if (null != DrawingContainer)
@@ -242,7 +246,7 @@ namespace treeDiM.StackBuilder.Graphics
         }
         public static int ToolbarButtonIndex(Point pt)
         {
-            for (int i = 0; i < 10; ++i)
+            for (int i = 0; i < 11; ++i)
             {
                 Rectangle rect = new Rectangle(i * _toolbarButtonOffset, 0, _toolbarButtonOffset, 16);
                 if (rect.Contains(pt))
@@ -262,10 +266,8 @@ namespace treeDiM.StackBuilder.Graphics
             g.DrawImage(Properties.Resources.View90, new Point(offsetIcon += _toolbarButtonOffset, 1));
             g.DrawImage(Properties.Resources.View180, new Point(offsetIcon += _toolbarButtonOffset, 1));
             g.DrawImage(Properties.Resources.View270, new Point(offsetIcon += _toolbarButtonOffset, 1));
-            if (ShowDimensions)
-                g.DrawImage(Properties.Resources.CotationHide, new Point(offsetIcon += _toolbarButtonOffset, 1));
-            else
-                g.DrawImage(Properties.Resources.CotationShow, new Point(offsetIcon += _toolbarButtonOffset, 1));
+            g.DrawImage(ShowFacing ? Properties.Resources.FacingHide : Properties.Resources.FacingShow, new Point(offsetIcon += _toolbarButtonOffset, 1));
+            g.DrawImage(ShowDimensions ? Properties.Resources.CotationHide : Properties.Resources.CotationShow, new Point(offsetIcon += _toolbarButtonOffset, 1));
         }
         private void OnButtonPressed(int iIndex)
         {
@@ -281,7 +283,8 @@ namespace treeDiM.StackBuilder.Graphics
                 case 6: AngleHoriz = 45.0 + 90.0; AngleVert = 45.0; break;
                 case 7: AngleHoriz = 45.0 + 180.0; AngleVert = 45.0; break;
                 case 8: AngleHoriz = 45.0 + 270.0; AngleVert = 45.0; break;
-                case 9: ShowDimensions = !ShowDimensions; break;
+                case 9: ShowFacing = !ShowFacing; break;
+                case 10: ShowDimensions = !ShowDimensions; break;
                 default: break;
             }
             Invalidate();

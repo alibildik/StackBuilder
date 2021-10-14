@@ -51,6 +51,7 @@ namespace treeDiM.StackBuilder.Desktop
                         Settings.Default.AllowVerticalY,
                         Settings.Default.AllowVerticalZ
                     };
+
                 uCtrlMaximumHeight.Value = Settings.Default.MaximumPalletHeight;
                 uCtrlOptMaximumWeight.Value = new OptDouble(false, Settings.Default.MaximumPalletWeight);
                 uCtrlOptMaxNumber.Value = new OptInt(false, 1000);

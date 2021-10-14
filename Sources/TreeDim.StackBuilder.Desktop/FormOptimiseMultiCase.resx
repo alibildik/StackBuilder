@@ -118,160 +118,118 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainerHoriz.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="splitContainerHoriz.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="splitContainerHoriz.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>126, 17</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="chkbAllowCombinations.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>684, 661</value>
+  <data name="chkbAllowCombinations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 175</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>650, 700</value>
+  <data name="chkbAllowCombinations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 17</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormOptimiseMultiCase</value>
+  <data name="chkbAllowCombinations.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Try and fill a list of case...</value>
+  <data name="chkbAllowCombinations.Text" xml:space="preserve">
+    <value>Allow combinations of layers</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;chkbAllowCombinations.Name" xml:space="preserve">
+    <value>chkbAllowCombinations</value>
   </data>
-  <data name="bnClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="&gt;&gt;chkbAllowCombinations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="bnClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>606, 5</value>
-  </data>
-  <data name="&gt;&gt;bnClose.Name" xml:space="preserve">
-    <value>bnClose</value>
-  </data>
-  <data name="&gt;&gt;bnClose.Parent" xml:space="preserve">
+  <data name="&gt;&gt;chkbAllowCombinations.Parent" xml:space="preserve">
     <value>splitContainerHoriz.Panel1</value>
   </data>
-  <data name="bnClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="bnClose.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;chkbAllowCombinations.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="bnClose.Text" xml:space="preserve">
-    <value>Close</value>
+  <data name="uCtrlNumberPerCase.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 149</value>
   </data>
-  <data name="&gt;&gt;bnClose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="uCtrlNumberPerCase.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
   </data>
-  <data name="&gt;&gt;bnClose.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="uCtrlNumberPerCase.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 20</value>
   </data>
-  <data name="bnCreateAnalysis.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+  <data name="uCtrlNumberPerCase.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
-  <data name="bnCreateAnalysis.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="uCtrlNumberPerCase.Text" xml:space="preserve">
+    <value>Number per case</value>
   </data>
-  <data name="bnCreateAnalysis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>555, 181</value>
+  <data name="&gt;&gt;uCtrlNumberPerCase.Name" xml:space="preserve">
+    <value>uCtrlNumberPerCase</value>
   </data>
-  <data name="&gt;&gt;bnCreateAnalysis.Name" xml:space="preserve">
-    <value>bnCreateAnalysis</value>
+  <data name="&gt;&gt;uCtrlNumberPerCase.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlOptInt, treeDiM.Basics, Version=3.0.2.38, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;bnCreateAnalysis.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel2</value>
-  </data>
-  <data name="bnCreateAnalysis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 23</value>
-  </data>
-  <data name="bnCreateAnalysis.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="bnCreateAnalysis.Text" xml:space="preserve">
-    <value>Create analysis</value>
-  </data>
-  <data name="&gt;&gt;bnCreateAnalysis.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bnCreateAnalysis.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cbBoxes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 5</value>
-  </data>
-  <data name="&gt;&gt;cbBoxes.Name" xml:space="preserve">
-    <value>cbBoxes</value>
-  </data>
-  <data name="&gt;&gt;cbBoxes.Parent" xml:space="preserve">
+  <data name="&gt;&gt;uCtrlNumberPerCase.Parent" xml:space="preserve">
     <value>splitContainerHoriz.Panel1</value>
   </data>
-  <data name="cbBoxes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 21</value>
+  <data name="&gt;&gt;uCtrlNumberPerCase.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="cbBoxes.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="uCtrlCaseDimensionsMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>321, 60</value>
   </data>
-  <data name="&gt;&gt;cbBoxes.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+  <data name="uCtrlCaseDimensionsMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>360, 20</value>
   </data>
-  <data name="&gt;&gt;cbBoxes.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="uCtrlCaseDimensionsMax.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
-  <data name="chklbCases.Location" type="System.Drawing.Point, System.Drawing">
-    <value>392, 89</value>
+  <data name="uCtrlCaseDimensionsMax.Text" xml:space="preserve">
+    <value>Max. case dimensions</value>
   </data>
-  <data name="&gt;&gt;chklbCases.Name" xml:space="preserve">
-    <value>chklbCases</value>
+  <data name="&gt;&gt;uCtrlCaseDimensionsMax.Name" xml:space="preserve">
+    <value>uCtrlCaseDimensionsMax</value>
   </data>
-  <data name="&gt;&gt;chklbCases.Parent" xml:space="preserve">
+  <data name="&gt;&gt;uCtrlCaseDimensionsMax.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.38, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrlCaseDimensionsMax.Parent" xml:space="preserve">
     <value>splitContainerHoriz.Panel1</value>
   </data>
-  <data name="chklbCases.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 94</value>
+  <data name="&gt;&gt;uCtrlCaseDimensionsMax.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="chklbCases.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="uCtrlCaseDimensionsMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>321, 33</value>
   </data>
-  <data name="&gt;&gt;chklbCases.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="uCtrlCaseDimensionsMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>360, 20</value>
   </data>
-  <data name="&gt;&gt;chklbCases.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="uCtrlCaseDimensionsMin.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="graphCtrl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="uCtrlCaseDimensionsMin.Text" xml:space="preserve">
+    <value>Min. case dimensions</value>
   </data>
-  <data name="graphCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 3</value>
+  <data name="&gt;&gt;uCtrlCaseDimensionsMin.Name" xml:space="preserve">
+    <value>uCtrlCaseDimensionsMin</value>
   </data>
-  <data name="&gt;&gt;graphCtrl.Name" xml:space="preserve">
-    <value>graphCtrl</value>
+  <data name="&gt;&gt;uCtrlCaseDimensionsMin.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.38, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;graphCtrl.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel2</value>
+  <data name="&gt;&gt;uCtrlCaseDimensionsMin.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
   </data>
-  <data name="graphCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 152</value>
-  </data>
-  <data name="graphCtrl.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;graphCtrl.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Graphics3DControl, treeDiM.StackBuilder.Graphics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;graphCtrl.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;uCtrlCaseDimensionsMin.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="gridSolutions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -282,23 +240,266 @@
   <data name="gridSolutions.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 216</value>
   </data>
-  <data name="&gt;&gt;gridSolutions.Name" xml:space="preserve">
-    <value>gridSolutions</value>
-  </data>
-  <data name="&gt;&gt;gridSolutions.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
   <data name="gridSolutions.Size" type="System.Drawing.Size, System.Drawing">
     <value>684, 213</value>
   </data>
   <data name="gridSolutions.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
+  <data name="&gt;&gt;gridSolutions.Name" xml:space="preserve">
+    <value>gridSolutions</value>
+  </data>
   <data name="&gt;&gt;gridSolutions.Type" xml:space="preserve">
     <value>SourceGrid.Grid, SourceGrid, Version=4.40.4580.29115, Culture=neutral, PublicKeyToken=df6f5e538749e85d</value>
   </data>
+  <data name="&gt;&gt;gridSolutions.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
   <data name="&gt;&gt;gridSolutions.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cbBoxes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>70, 5</value>
+  </data>
+  <data name="cbBoxes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 21</value>
+  </data>
+  <data name="cbBoxes.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;cbBoxes.Name" xml:space="preserve">
+    <value>cbBoxes</value>
+  </data>
+  <data name="&gt;&gt;cbBoxes.Type" xml:space="preserve">
+    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.38, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbBoxes.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;cbBoxes.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="uCtrlCaseOrient.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 32</value>
+  </data>
+  <data name="uCtrlCaseOrient.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 111</value>
+  </data>
+  <data name="uCtrlCaseOrient.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;uCtrlCaseOrient.Name" xml:space="preserve">
+    <value>uCtrlCaseOrient</value>
+  </data>
+  <data name="&gt;&gt;uCtrlCaseOrient.Type" xml:space="preserve">
+    <value>treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation, treeDiM.StackBuilder.Graphics, Version=3.0.2.38, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrlCaseOrient.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;uCtrlCaseOrient.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="chklbCases.Location" type="System.Drawing.Point, System.Drawing">
+    <value>392, 89</value>
+  </data>
+  <data name="chklbCases.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 94</value>
+  </data>
+  <data name="chklbCases.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;chklbCases.Name" xml:space="preserve">
+    <value>chklbCases</value>
+  </data>
+  <data name="&gt;&gt;chklbCases.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chklbCases.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;chklbCases.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="bnClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="bnClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bnClose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>606, 5</value>
+  </data>
+  <data name="bnClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="bnClose.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="bnClose.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="&gt;&gt;bnClose.Name" xml:space="preserve">
+    <value>bnClose</value>
+  </data>
+  <data name="&gt;&gt;bnClose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnClose.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;bnClose.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lbCases.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCases.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCases.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 89</value>
+  </data>
+  <data name="lbCases.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="lbCases.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="lbCases.Text" xml:space="preserve">
+    <value>Cases</value>
+  </data>
+  <data name="&gt;&gt;lbCases.Name" xml:space="preserve">
+    <value>lbCases</value>
+  </data>
+  <data name="&gt;&gt;lbCases.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCases.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;lbCases.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="lbBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 5</value>
+  </data>
+  <data name="lbBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 13</value>
+  </data>
+  <data name="lbBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lbBox.Text" xml:space="preserve">
+    <value>Box</value>
+  </data>
+  <data name="&gt;&gt;lbBox.Name" xml:space="preserve">
+    <value>lbBox</value>
+  </data>
+  <data name="&gt;&gt;lbBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbBox.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;lbBox.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Panel1.Name" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Panel1.Parent" xml:space="preserve">
+    <value>splitContainerHoriz</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="bnCreateAnalysis.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="bnCreateAnalysis.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bnCreateAnalysis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>555, 181</value>
+  </data>
+  <data name="bnCreateAnalysis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 23</value>
+  </data>
+  <data name="bnCreateAnalysis.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="bnCreateAnalysis.Text" xml:space="preserve">
+    <value>Create analysis</value>
+  </data>
+  <data name="&gt;&gt;bnCreateAnalysis.Name" xml:space="preserve">
+    <value>bnCreateAnalysis</value>
+  </data>
+  <data name="&gt;&gt;bnCreateAnalysis.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnCreateAnalysis.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel2</value>
+  </data>
+  <data name="&gt;&gt;bnCreateAnalysis.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbAnalysisDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="tbAnalysisDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>125, 182</value>
+  </data>
+  <data name="tbAnalysisDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>424, 20</value>
+  </data>
+  <data name="tbAnalysisDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;tbAnalysisDescription.Name" xml:space="preserve">
+    <value>tbAnalysisDescription</value>
+  </data>
+  <data name="&gt;&gt;tbAnalysisDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbAnalysisDescription.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel2</value>
+  </data>
+  <data name="&gt;&gt;tbAnalysisDescription.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tbAnalysisName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="tbAnalysisName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>125, 158</value>
+  </data>
+  <data name="tbAnalysisName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 20</value>
+  </data>
+  <data name="tbAnalysisName.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;tbAnalysisName.Name" xml:space="preserve">
+    <value>tbAnalysisName</value>
+  </data>
+  <data name="&gt;&gt;tbAnalysisName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbAnalysisName.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel2</value>
+  </data>
+  <data name="&gt;&gt;tbAnalysisName.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="lbAnalysisDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -312,12 +513,6 @@
   <data name="lbAnalysisDescription.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 186</value>
   </data>
-  <data name="&gt;&gt;lbAnalysisDescription.Name" xml:space="preserve">
-    <value>lbAnalysisDescription</value>
-  </data>
-  <data name="&gt;&gt;lbAnalysisDescription.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel2</value>
-  </data>
   <data name="lbAnalysisDescription.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 13</value>
   </data>
@@ -327,8 +522,14 @@
   <data name="lbAnalysisDescription.Text" xml:space="preserve">
     <value>Analysis description</value>
   </data>
+  <data name="&gt;&gt;lbAnalysisDescription.Name" xml:space="preserve">
+    <value>lbAnalysisDescription</value>
+  </data>
   <data name="&gt;&gt;lbAnalysisDescription.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbAnalysisDescription.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel2</value>
   </data>
   <data name="&gt;&gt;lbAnalysisDescription.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -345,12 +546,6 @@
   <data name="lbAnalysisName.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 162</value>
   </data>
-  <data name="&gt;&gt;lbAnalysisName.Name" xml:space="preserve">
-    <value>lbAnalysisName</value>
-  </data>
-  <data name="&gt;&gt;lbAnalysisName.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel2</value>
-  </data>
   <data name="lbAnalysisName.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 13</value>
   </data>
@@ -360,134 +555,53 @@
   <data name="lbAnalysisName.Text" xml:space="preserve">
     <value>Analysis name</value>
   </data>
+  <data name="&gt;&gt;lbAnalysisName.Name" xml:space="preserve">
+    <value>lbAnalysisName</value>
+  </data>
   <data name="&gt;&gt;lbAnalysisName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbAnalysisName.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel2</value>
   </data>
   <data name="&gt;&gt;lbAnalysisName.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="lbBox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="graphCtrl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="lbBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="graphCtrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
   </data>
-  <data name="lbBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 5</value>
+  <data name="graphCtrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>684, 152</value>
   </data>
-  <data name="&gt;&gt;lbBox.Name" xml:space="preserve">
-    <value>lbBox</value>
+  <data name="graphCtrl.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="&gt;&gt;lbBox.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
+  <data name="&gt;&gt;graphCtrl.Name" xml:space="preserve">
+    <value>graphCtrl</value>
   </data>
-  <data name="lbBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 13</value>
+  <data name="&gt;&gt;graphCtrl.Type" xml:space="preserve">
+    <value>treeDiM.StackBuilder.Graphics.Graphics3DControl, treeDiM.StackBuilder.Graphics, Version=3.0.2.38, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="lbBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="lbBox.Text" xml:space="preserve">
-    <value>Box</value>
-  </data>
-  <data name="&gt;&gt;lbBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbBox.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="lbCases.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbCases.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lbCases.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 89</value>
-  </data>
-  <data name="&gt;&gt;lbCases.Name" xml:space="preserve">
-    <value>lbCases</value>
-  </data>
-  <data name="&gt;&gt;lbCases.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="lbCases.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
-  </data>
-  <data name="lbCases.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="lbCases.Text" xml:space="preserve">
-    <value>Cases</value>
-  </data>
-  <data name="&gt;&gt;lbCases.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCases.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="splitContainerHoriz.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="splitContainerHoriz.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Name" xml:space="preserve">
-    <value>splitContainerHoriz</value>
-  </data>
-  <data name="splitContainerHoriz.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
-    <value>Horizontal</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel1.Name" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel1.Parent" xml:space="preserve">
-    <value>splitContainerHoriz</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel2.Name" xml:space="preserve">
+  <data name="&gt;&gt;graphCtrl.Parent" xml:space="preserve">
     <value>splitContainerHoriz.Panel2</value>
   </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel2.Parent" xml:space="preserve">
-    <value>splitContainerHoriz</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="splitContainerHoriz.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 661</value>
-  </data>
-  <data name="splitContainerHoriz.SplitterDistance" type="System.Int32, mscorlib">
-    <value>429</value>
-  </data>
-  <data name="splitContainerHoriz.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;graphCtrl.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;splitContainerHoriz.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="toolStripStatusLabelDef.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
   </data>
-  <data name="&gt;&gt;splitContainerHoriz.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="toolStripStatusLabelDef.Text" xml:space="preserve">
+    <value>statusLabel</value>
   </data>
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 206</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
-    <value>statusStrip</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel2</value>
   </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>684, 22</value>
@@ -498,59 +612,74 @@
   <data name="statusStrip.Text" xml:space="preserve">
     <value>statusStrip1</value>
   </data>
+  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
   <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
     <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel2</value>
   </data>
   <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="tbAnalysisDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="tbAnalysisDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 182</value>
-  </data>
-  <data name="&gt;&gt;tbAnalysisDescription.Name" xml:space="preserve">
-    <value>tbAnalysisDescription</value>
-  </data>
-  <data name="&gt;&gt;tbAnalysisDescription.Parent" xml:space="preserve">
+  <data name="&gt;&gt;splitContainerHoriz.Panel2.Name" xml:space="preserve">
     <value>splitContainerHoriz.Panel2</value>
   </data>
-  <data name="tbAnalysisDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>424, 20</value>
+  <data name="&gt;&gt;splitContainerHoriz.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tbAnalysisDescription.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+  <data name="&gt;&gt;splitContainerHoriz.Panel2.Parent" xml:space="preserve">
+    <value>splitContainerHoriz</value>
   </data>
-  <data name="&gt;&gt;tbAnalysisDescription.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbAnalysisDescription.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;splitContainerHoriz.Panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tbAnalysisName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
+  <data name="splitContainerHoriz.Size" type="System.Drawing.Size, System.Drawing">
+    <value>684, 661</value>
   </data>
-  <data name="tbAnalysisName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 158</value>
+  <data name="splitContainerHoriz.SplitterDistance" type="System.Int32, mscorlib">
+    <value>429</value>
   </data>
-  <data name="&gt;&gt;tbAnalysisName.Name" xml:space="preserve">
-    <value>tbAnalysisName</value>
+  <data name="splitContainerHoriz.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;tbAnalysisName.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel2</value>
+  <data name="&gt;&gt;splitContainerHoriz.Name" xml:space="preserve">
+    <value>splitContainerHoriz</value>
   </data>
-  <data name="tbAnalysisName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 20</value>
+  <data name="&gt;&gt;splitContainerHoriz.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tbAnalysisName.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="&gt;&gt;splitContainerHoriz.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;tbAnalysisName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;splitContainerHoriz.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;tbAnalysisName.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <metadata name="timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>126, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>684, 661</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>650, 700</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Try and fill a list of case...</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabelDef.Name" xml:space="preserve">
+    <value>toolStripStatusLabelDef</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabelDef.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;timer.Name" xml:space="preserve">
     <value>timer</value>
@@ -558,112 +687,10 @@
   <data name="&gt;&gt;timer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabelDef.Name" xml:space="preserve">
-    <value>toolStripStatusLabelDef</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormOptimiseMultiCase</value>
   </data>
-  <data name="toolStripStatusLabelDef.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
-  </data>
-  <data name="toolStripStatusLabelDef.Text" xml:space="preserve">
-    <value>statusLabel</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabelDef.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="uCtrlCaseDimensionsMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 60</value>
-  </data>
-  <data name="&gt;&gt;uCtrlCaseDimensionsMax.Name" xml:space="preserve">
-    <value>uCtrlCaseDimensionsMax</value>
-  </data>
-  <data name="&gt;&gt;uCtrlCaseDimensionsMax.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="uCtrlCaseDimensionsMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 20</value>
-  </data>
-  <data name="uCtrlCaseDimensionsMax.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="uCtrlCaseDimensionsMax.Text" xml:space="preserve">
-    <value>Max. case dimensions</value>
-  </data>
-  <data name="&gt;&gt;uCtrlCaseDimensionsMax.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlCaseDimensionsMax.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="uCtrlCaseDimensionsMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 33</value>
-  </data>
-  <data name="&gt;&gt;uCtrlCaseDimensionsMin.Name" xml:space="preserve">
-    <value>uCtrlCaseDimensionsMin</value>
-  </data>
-  <data name="&gt;&gt;uCtrlCaseDimensionsMin.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="uCtrlCaseDimensionsMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 20</value>
-  </data>
-  <data name="uCtrlCaseDimensionsMin.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="uCtrlCaseDimensionsMin.Text" xml:space="preserve">
-    <value>Min. case dimensions</value>
-  </data>
-  <data name="&gt;&gt;uCtrlCaseDimensionsMin.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlCaseDimensionsMin.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="uCtrlCaseOrient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 32</value>
-  </data>
-  <data name="&gt;&gt;uCtrlCaseOrient.Name" xml:space="preserve">
-    <value>uCtrlCaseOrient</value>
-  </data>
-  <data name="&gt;&gt;uCtrlCaseOrient.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="uCtrlCaseOrient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 111</value>
-  </data>
-  <data name="uCtrlCaseOrient.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;uCtrlCaseOrient.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation, treeDiM.StackBuilder.Graphics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlCaseOrient.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="uCtrlNumberPerCase.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 149</value>
-  </data>
-  <data name="uCtrlNumberPerCase.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="&gt;&gt;uCtrlNumberPerCase.Name" xml:space="preserve">
-    <value>uCtrlNumberPerCase</value>
-  </data>
-  <data name="&gt;&gt;uCtrlNumberPerCase.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="uCtrlNumberPerCase.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 20</value>
-  </data>
-  <data name="uCtrlNumberPerCase.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="uCtrlNumberPerCase.Text" xml:space="preserve">
-    <value>Number per case</value>
-  </data>
-  <data name="&gt;&gt;uCtrlNumberPerCase.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptInt, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlNumberPerCase.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

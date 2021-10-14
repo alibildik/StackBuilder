@@ -117,1255 +117,1174 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lbWrapperColor.Text" xml:space="preserve">
+    <value>Color</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bnOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>625, 10</value>
-  </data>
-  <data name="&gt;&gt;bnOk.Name" xml:space="preserve">
-    <value>bnOk</value>
-  </data>
-  <data name="&gt;&gt;bnOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bnOk.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;bnOk.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="bnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>625, 38</value>
-  </data>
-  <data name="&gt;&gt;bnCancel.Name" xml:space="preserve">
-    <value>bnCancel</value>
-  </data>
-  <data name="&gt;&gt;bnCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bnCancel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;bnCancel.ZOrder" xml:space="preserve">
-    <value>14</value>
+  <data name="tbDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>504, 20</value>
   </data>
   <data name="&gt;&gt;lbName.Name" xml:space="preserve">
     <value>lbName</value>
   </data>
-  <data name="&gt;&gt;lbName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="uCtrlTrayHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 20</value>
   </data>
-  <data name="&gt;&gt;lbName.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;uCtrlLayout.Name" xml:space="preserve">
+    <value>uCtrlLayout</value>
   </data>
-  <data name="&gt;&gt;lbName.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;lbDescription.Name" xml:space="preserve">
-    <value>lbDescription</value>
-  </data>
-  <data name="&gt;&gt;lbDescription.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbDescription.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lbDescription.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;tbName.Name" xml:space="preserve">
-    <value>tbName</value>
-  </data>
-  <data name="&gt;&gt;tbName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbName.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tbName.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="tbDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>504, 20</value>
-  </data>
-  <data name="&gt;&gt;tbDescription.Name" xml:space="preserve">
-    <value>tbDescription</value>
-  </data>
-  <data name="&gt;&gt;tbDescription.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbDescription.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tbDescription.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="cbTrayColor.Items7" xml:space="preserve">
+    <value>Color</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="graphCtrl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="graphCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>417, 65</value>
-  </data>
-  <data name="graphCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 209</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="graphCtrl.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;graphCtrl.Name" xml:space="preserve">
-    <value>graphCtrl</value>
-  </data>
-  <data name="&gt;&gt;graphCtrl.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Graphics3DControl, treeDiM.StackBuilder.Graphics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;graphCtrl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;graphCtrl.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="lbContent.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbCylLayoutType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbContent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 69</value>
-  </data>
-  <data name="lbContent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
-  </data>
-  <data name="lbContent.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="lbContent.Text" xml:space="preserve">
-    <value>Content</value>
-  </data>
-  <data name="&gt;&gt;lbContent.Name" xml:space="preserve">
-    <value>lbContent</value>
-  </data>
-  <data name="&gt;&gt;lbContent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbContent.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbCylLayoutType.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;lbContent.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="cbInnerPackable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 65</value>
-  </data>
-  <data name="cbInnerPackable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 21</value>
-  </data>
-  <data name="cbInnerPackable.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;cbInnerPackable.Name" xml:space="preserve">
-    <value>cbInnerPackable</value>
-  </data>
-  <data name="&gt;&gt;cbInnerPackable.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cbInnerPackable.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cbInnerPackable.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="lbDir.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbDir.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 97</value>
-  </data>
-  <data name="lbDir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 13</value>
-  </data>
-  <data name="lbDir.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="lbDir.Text" xml:space="preserve">
-    <value>Direction</value>
-  </data>
-  <data name="&gt;&gt;lbDir.Name" xml:space="preserve">
-    <value>lbDir</value>
-  </data>
-  <data name="&gt;&gt;lbDir.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbDir.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lbDir.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="cbDir.Items" xml:space="preserve">
-    <value>X-</value>
-  </data>
-  <data name="cbDir.Items1" xml:space="preserve">
-    <value>X+</value>
-  </data>
-  <data name="cbDir.Items2" xml:space="preserve">
-    <value>Y-</value>
-  </data>
-  <data name="cbDir.Items3" xml:space="preserve">
-    <value>Y+</value>
-  </data>
-  <data name="cbDir.Items4" xml:space="preserve">
-    <value>Z-</value>
-  </data>
-  <data name="cbDir.Items5" xml:space="preserve">
-    <value>Z+</value>
-  </data>
-  <data name="cbDir.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 93</value>
-  </data>
-  <data name="cbDir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 21</value>
-  </data>
-  <data name="cbDir.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;cbDir.Name" xml:space="preserve">
-    <value>cbDir</value>
-  </data>
-  <data name="&gt;&gt;cbDir.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbDir.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cbDir.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="uCtrlOuterDimensions.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="uCtrlOuterDimensions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 252</value>
-  </data>
-  <data name="uCtrlOuterDimensions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>327, 22</value>
-  </data>
-  <data name="uCtrlOuterDimensions.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="uCtrlOuterDimensions.Text" xml:space="preserve">
-    <value>Outer dimensions</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOuterDimensions.Name" xml:space="preserve">
-    <value>uCtrlOuterDimensions</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOuterDimensions.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOuterDimensions.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOuterDimensions.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="uCtrlLayout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 151</value>
-  </data>
-  <data name="uCtrlLayout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 20</value>
-  </data>
-  <data name="uCtrlLayout.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="uCtrlLayout.Text" xml:space="preserve">
-    <value>Layout</value>
-  </data>
-  <data name="&gt;&gt;uCtrlLayout.Name" xml:space="preserve">
-    <value>uCtrlLayout</value>
-  </data>
-  <data name="&gt;&gt;uCtrlLayout.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlLayout.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;uCtrlLayout.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="uCtrlWrapperWalls.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="uCtrlWrapperWalls.Location" type="System.Drawing.Point, System.Drawing">
-    <value>410, 6</value>
-  </data>
-  <data name="uCtrlWrapperWalls.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 20</value>
-  </data>
-  <data name="uCtrlWrapperWalls.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="uCtrlWrapperWalls.Text" xml:space="preserve">
-    <value>Number of walls</value>
-  </data>
-  <data name="&gt;&gt;uCtrlWrapperWalls.Name" xml:space="preserve">
-    <value>uCtrlWrapperWalls</value>
-  </data>
-  <data name="&gt;&gt;uCtrlWrapperWalls.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlWrapperWalls.Parent" xml:space="preserve">
-    <value>tabWrapper</value>
-  </data>
-  <data name="&gt;&gt;uCtrlWrapperWalls.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cbType.Items" xml:space="preserve">
-    <value>Polyethylene</value>
-  </data>
-  <data name="cbType.Items1" xml:space="preserve">
-    <value>Paper</value>
-  </data>
-  <data name="cbType.Items2" xml:space="preserve">
-    <value>Cardboard</value>
-  </data>
-  <data name="cbType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 6</value>
-  </data>
-  <data name="cbType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="cbType.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;cbType.Name" xml:space="preserve">
-    <value>cbType</value>
-  </data>
-  <data name="&gt;&gt;cbType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbType.Parent" xml:space="preserve">
-    <value>tabWrapper</value>
-  </data>
-  <data name="&gt;&gt;cbType.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="uCtrlWrapperWeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 31</value>
-  </data>
-  <data name="uCtrlWrapperWeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="uCtrlWrapperWeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 20</value>
+  <data name="cbTrayColor.Items31" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>704, 411</value>
   </data>
   <data name="uCtrlWrapperWeight.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="uCtrlWrapperWeight.Text" xml:space="preserve">
-    <value>Weight</value>
+  <data name="&gt;&gt;cbType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;uCtrlWrapperWeight.Name" xml:space="preserve">
-    <value>uCtrlWrapperWeight</value>
-  </data>
-  <data name="&gt;&gt;uCtrlWrapperWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlWrapperWeight.Parent" xml:space="preserve">
-    <value>tabWrapper</value>
-  </data>
-  <data name="&gt;&gt;uCtrlWrapperWeight.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="uCtrlWrapperThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>410, 31</value>
-  </data>
-  <data name="uCtrlWrapperThickness.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="uCtrlWrapperThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 20</value>
-  </data>
-  <data name="uCtrlWrapperThickness.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="uCtrlWrapperThickness.Text" xml:space="preserve">
-    <value>Thickness</value>
-  </data>
-  <data name="&gt;&gt;uCtrlWrapperThickness.Name" xml:space="preserve">
-    <value>uCtrlWrapperThickness</value>
-  </data>
-  <data name="&gt;&gt;uCtrlWrapperThickness.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlWrapperThickness.Parent" xml:space="preserve">
-    <value>tabWrapper</value>
-  </data>
-  <data name="&gt;&gt;uCtrlWrapperThickness.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="lbWrapperColor.AutoSize" type="System.Boolean, mscorlib">
+  <data name="chkbTray.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbWrapperColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 34</value>
-  </data>
-  <data name="lbWrapperColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 13</value>
-  </data>
-  <data name="lbWrapperColor.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="lbWrapperColor.Text" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="&gt;&gt;lbWrapperColor.Name" xml:space="preserve">
-    <value>lbWrapperColor</value>
-  </data>
-  <data name="&gt;&gt;lbWrapperColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbWrapperColor.Parent" xml:space="preserve">
-    <value>tabWrapper</value>
+  <data name="&gt;&gt;cbType.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;lbWrapperColor.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="cbWrapperColor.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cbWrapperColor.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="cbWrapperColor.Items" xml:space="preserve">
+  <data name="cbTrayColor.Items46" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbWrapperColor.Items1" xml:space="preserve">
-    <value>Color</value>
+  <data name="&gt;&gt;cbTrayColor.Type" xml:space="preserve">
+    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="cbWrapperColor.Items2" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items3" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items4" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items5" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items6" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items7" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items8" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items9" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items10" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items11" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items12" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items13" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items14" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items15" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items16" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items17" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items18" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items19" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items20" xml:space="preserve">
+  <data name="cbWrapperColor.Items31" xml:space="preserve">
     <value>Color</value>
   </data>
   <data name="cbWrapperColor.Items21" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbWrapperColor.Items22" xml:space="preserve">
+  <data name="cbWrapperColor.Items11" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbWrapperColor.Items23" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items24" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items25" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items26" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items27" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items28" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items29" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items30" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items31" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items32" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items33" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items34" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items35" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items36" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items37" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items38" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items39" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items40" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items41" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items42" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items43" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Items44" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbWrapperColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 31</value>
-  </data>
-  <data name="cbWrapperColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 22</value>
-  </data>
-  <data name="cbWrapperColor.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cbWrapperColor.Name" xml:space="preserve">
-    <value>cbWrapperColor</value>
-  </data>
-  <data name="&gt;&gt;cbWrapperColor.Type" xml:space="preserve">
-    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cbWrapperColor.Parent" xml:space="preserve">
-    <value>tabWrapper</value>
-  </data>
-  <data name="&gt;&gt;cbWrapperColor.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabCtrl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;chkbWrapper.Name" xml:space="preserve">
-    <value>chkbWrapper</value>
-  </data>
-  <data name="&gt;&gt;chkbWrapper.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkbWrapper.Parent" xml:space="preserve">
-    <value>tabWrapper</value>
-  </data>
-  <data name="&gt;&gt;chkbWrapper.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabWrapper.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabWrapper.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabWrapper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>689, 81</value>
-  </data>
-  <data name="tabWrapper.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabWrapper.Text" xml:space="preserve">
-    <value>Wrapper</value>
-  </data>
-  <data name="&gt;&gt;tabWrapper.Name" xml:space="preserve">
-    <value>tabWrapper</value>
-  </data>
-  <data name="&gt;&gt;tabWrapper.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabWrapper.Parent" xml:space="preserve">
-    <value>tabCtrl</value>
-  </data>
-  <data name="&gt;&gt;tabWrapper.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWalls.Name" xml:space="preserve">
-    <value>uCtrlTrayWalls</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWalls.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWalls.Parent" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWalls.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayUnitThickness.Name" xml:space="preserve">
-    <value>uCtrlTrayUnitThickness</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayUnitThickness.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayUnitThickness.Parent" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayUnitThickness.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWeight.Name" xml:space="preserve">
-    <value>uCtrlTrayWeight</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWeight.Parent" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWeight.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;chkbTray.Name" xml:space="preserve">
-    <value>chkbTray</value>
-  </data>
-  <data name="&gt;&gt;chkbTray.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkbTray.Parent" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;chkbTray.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cbTrayColor.Name" xml:space="preserve">
-    <value>cbTrayColor</value>
-  </data>
-  <data name="&gt;&gt;cbTrayColor.Type" xml:space="preserve">
-    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cbTrayColor.Parent" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;cbTrayColor.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayHeight.Name" xml:space="preserve">
-    <value>uCtrlTrayHeight</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayHeight.Parent" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayHeight.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="tabTray.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabTray.Size" type="System.Drawing.Size, System.Drawing">
-    <value>689, 81</value>
-  </data>
-  <data name="tabTray.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabTray.Text" xml:space="preserve">
-    <value>Tray</value>
-  </data>
-  <data name="&gt;&gt;tabTray.Name" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;tabTray.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabTray.Parent" xml:space="preserve">
-    <value>tabCtrl</value>
-  </data>
-  <data name="&gt;&gt;tabTray.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ctrlStrapperSet.Name" xml:space="preserve">
-    <value>ctrlStrapperSet</value>
-  </data>
-  <data name="&gt;&gt;ctrlStrapperSet.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Basics.Controls.CtrlStrapperSet, treeDiM.StackBuilder.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ctrlStrapperSet.Parent" xml:space="preserve">
-    <value>tabStrappers</value>
-  </data>
-  <data name="&gt;&gt;ctrlStrapperSet.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabStrappers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabStrappers.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabStrappers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>689, 81</value>
-  </data>
-  <data name="tabStrappers.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabStrappers.Text" xml:space="preserve">
-    <value>Strappers</value>
-  </data>
-  <data name="&gt;&gt;tabStrappers.Name" xml:space="preserve">
-    <value>tabStrappers</value>
-  </data>
-  <data name="&gt;&gt;tabStrappers.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabStrappers.Parent" xml:space="preserve">
-    <value>tabCtrl</value>
-  </data>
-  <data name="&gt;&gt;tabStrappers.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="uCtrlOptBulge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 5</value>
-  </data>
-  <data name="uCtrlOptBulge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>340, 20</value>
-  </data>
-  <data name="uCtrlOptBulge.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="uCtrlOptBulge.Text" xml:space="preserve">
-    <value>Bulge</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptBulge.Name" xml:space="preserve">
-    <value>uCtrlOptBulge</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptBulge.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptBulge.Parent" xml:space="preserve">
-    <value>tabPageBulge</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptBulge.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageBulge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageBulge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>689, 81</value>
-  </data>
-  <data name="tabPageBulge.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tabPageBulge.Text" xml:space="preserve">
-    <value>Bulge</value>
-  </data>
-  <data name="&gt;&gt;tabPageBulge.Name" xml:space="preserve">
-    <value>tabPageBulge</value>
-  </data>
-  <data name="&gt;&gt;tabPageBulge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageBulge.Parent" xml:space="preserve">
-    <value>tabCtrl</value>
-  </data>
-  <data name="&gt;&gt;tabPageBulge.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 280</value>
+  <data name="&gt;&gt;graphCtrl.Type" xml:space="preserve">
+    <value>treeDiM.StackBuilder.Graphics.Graphics3DControl, treeDiM.StackBuilder.Graphics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tabCtrl.Size" type="System.Drawing.Size, System.Drawing">
     <value>697, 107</value>
   </data>
-  <data name="tabCtrl.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;tabCtrl.Name" xml:space="preserve">
-    <value>tabCtrl</value>
-  </data>
-  <data name="&gt;&gt;tabCtrl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabCtrl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabCtrl.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="chkbWrapper.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkbWrapper.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 8</value>
-  </data>
-  <data name="chkbWrapper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 17</value>
-  </data>
-  <data name="chkbWrapper.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="chkbWrapper.Text" xml:space="preserve">
-    <value>Wrapper</value>
-  </data>
-  <data name="&gt;&gt;chkbWrapper.Name" xml:space="preserve">
-    <value>chkbWrapper</value>
-  </data>
-  <data name="&gt;&gt;chkbWrapper.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkbWrapper.Parent" xml:space="preserve">
-    <value>tabWrapper</value>
-  </data>
-  <data name="&gt;&gt;chkbWrapper.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="uCtrlTrayWalls.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="uCtrlTrayWalls.Location" type="System.Drawing.Point, System.Drawing">
-    <value>410, 6</value>
-  </data>
-  <data name="uCtrlTrayWalls.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 20</value>
-  </data>
-  <data name="uCtrlTrayWalls.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="uCtrlTrayWalls.Text" xml:space="preserve">
-    <value>Number of walls</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWalls.Name" xml:space="preserve">
-    <value>uCtrlTrayWalls</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWalls.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWalls.Parent" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWalls.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="uCtrlTrayUnitThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>410, 31</value>
-  </data>
-  <data name="uCtrlTrayUnitThickness.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="uCtrlTrayUnitThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 20</value>
-  </data>
-  <data name="uCtrlTrayUnitThickness.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="uCtrlTrayUnitThickness.Text" xml:space="preserve">
-    <value>Thickness</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayUnitThickness.Name" xml:space="preserve">
-    <value>uCtrlTrayUnitThickness</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayUnitThickness.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayUnitThickness.Parent" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayUnitThickness.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="uCtrlTrayWeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 55</value>
-  </data>
-  <data name="uCtrlTrayWeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="uCtrlTrayWeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 20</value>
-  </data>
-  <data name="uCtrlTrayWeight.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="uCtrlTrayWeight.Text" xml:space="preserve">
-    <value>Weight</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWeight.Name" xml:space="preserve">
-    <value>uCtrlTrayWeight</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWeight.Parent" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayWeight.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="chkbTray.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkbTray.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 6</value>
-  </data>
-  <data name="chkbTray.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 17</value>
-  </data>
-  <data name="chkbTray.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="chkbTray.Text" xml:space="preserve">
-    <value>Tray</value>
-  </data>
-  <data name="&gt;&gt;chkbTray.Name" xml:space="preserve">
-    <value>chkbTray</value>
-  </data>
-  <data name="&gt;&gt;chkbTray.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkbTray.Parent" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;chkbTray.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cbTrayColor.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cbTrayColor.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="cbTrayColor.Items" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items1" xml:space="preserve">
+  <data name="cbWrapperColor.Items41" xml:space="preserve">
     <value>Color</value>
   </data>
   <data name="cbTrayColor.Items2" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items3" xml:space="preserve">
+  <data name="cbTrayColor.Items" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items4" xml:space="preserve">
-    <value>Color</value>
+  <data name="&gt;&gt;uCtrlOptBulge.Parent" xml:space="preserve">
+    <value>tabPageBulge</value>
   </data>
-  <data name="cbTrayColor.Items5" xml:space="preserve">
-    <value>Color</value>
+  <data name="ctrlStrapperSet.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="cbTrayColor.Items6" xml:space="preserve">
-    <value>Color</value>
+  <data name="&gt;&gt;tabWrapper.Parent" xml:space="preserve">
+    <value>tabCtrl</value>
   </data>
-  <data name="cbTrayColor.Items7" xml:space="preserve">
-    <value>Color</value>
+  <data name="cbCylLayoutType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 121</value>
   </data>
-  <data name="cbTrayColor.Items8" xml:space="preserve">
-    <value>Color</value>
+  <data name="cbWrapperColor.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="cbTrayColor.Items9" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items10" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items11" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items12" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items13" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items14" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items15" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items16" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items17" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items18" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items19" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items20" xml:space="preserve">
-    <value>Color</value>
+  <data name="cbInnerPackable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 21</value>
   </data>
   <data name="cbTrayColor.Items21" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items22" xml:space="preserve">
+  <data name="ctrlStrapperSet.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbWrapperColor.Parent" xml:space="preserve">
+    <value>tabWrapper</value>
+  </data>
+  <data name="&gt;&gt;lbDir.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;uCtrlOuterDimensions.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="cbTrayColor.Items16" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items23" xml:space="preserve">
+  <data name="cbTrayColor.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cbInnerPackable.Name" xml:space="preserve">
+    <value>cbInnerPackable</value>
+  </data>
+  <data name="&gt;&gt;uCtrlWrapperWalls.Parent" xml:space="preserve">
+    <value>tabWrapper</value>
+  </data>
+  <data name="cbWrapperColor.Items32" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items24" xml:space="preserve">
+  <data name="cbWrapperColor.Items22" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items25" xml:space="preserve">
+  <data name="cbWrapperColor.Items12" xml:space="preserve">
     <value>Color</value>
+  </data>
+  <data name="&gt;&gt;uCtrlWrapperWeight.Parent" xml:space="preserve">
+    <value>tabWrapper</value>
+  </data>
+  <data name="cbWrapperColor.Items42" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="uCtrlOptBulge.Text" xml:space="preserve">
+    <value>Bulge</value>
+  </data>
+  <data name="cbWrapperColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 31</value>
+  </data>
+  <data name="&gt;&gt;tabTray.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lbContent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="cbTrayColor.Items38" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;tabCtrl.Name" xml:space="preserve">
+    <value>tabCtrl</value>
+  </data>
+  <data name="&gt;&gt;cbWrapperColor.Type" xml:space="preserve">
+    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="cbWrapperColor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Create new pack...</value>
+  </data>
+  <data name="&gt;&gt;tabCtrl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkbWrapper.Name" xml:space="preserve">
+    <value>chkbWrapper</value>
+  </data>
+  <data name="&gt;&gt;bnCancel.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;ctrlStrapperSet.Type" xml:space="preserve">
+    <value>treeDiM.StackBuilder.Basics.Controls.CtrlStrapperSet, treeDiM.StackBuilder.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="uCtrlWrapperWalls.Text" xml:space="preserve">
+    <value>Number of walls</value>
   </data>
   <data name="cbTrayColor.Items26" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items27" xml:space="preserve">
+  <data name="lbCylLayoutType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 124</value>
+  </data>
+  <data name="uCtrlOptBulge.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cbTrayColor.Items47" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items28" xml:space="preserve">
+  <data name="&gt;&gt;uCtrlWrapperWalls.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbCylLayoutType.Items2" xml:space="preserve">
+    <value>Staggered -1</value>
+  </data>
+  <data name="&gt;&gt;chkbTray.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="uCtrlLayout.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="uCtrlTrayWalls.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="bnOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>625, 10</value>
+  </data>
+  <data name="&gt;&gt;bnCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bnCancel.Name" xml:space="preserve">
+    <value>bnCancel</value>
+  </data>
+  <data name="&gt;&gt;lbContent.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;lbName.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;tabCtrl.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbTrayColor.ItemHeight" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="cbWrapperColor.Items43" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items29" xml:space="preserve">
+  <data name="uCtrlWrapperThickness.Text" xml:space="preserve">
+    <value>Thickness</value>
+  </data>
+  <data name="&gt;&gt;bnOk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabWrapper.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbTrayColor.Items9" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items30" xml:space="preserve">
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="cbTrayColor.Items13" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items31" xml:space="preserve">
+  <data name="&gt;&gt;uCtrlTrayHeight.Parent" xml:space="preserve">
+    <value>tabTray</value>
+  </data>
+  <data name="cbWrapperColor.Items38" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayHeight.Name" xml:space="preserve">
+    <value>uCtrlTrayHeight</value>
+  </data>
+  <data name="cbWrapperColor.Items18" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;tbDescription.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbDescription.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="cbTrayColor.Items17" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="uCtrlWrapperWalls.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 20</value>
+  </data>
+  <data name="cbTrayColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 22</value>
+  </data>
+  <data name="uCtrlWrapperWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 20</value>
+  </data>
+  <data name="&gt;&gt;tbDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbDescription.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;ctrlStrapperSet.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="uCtrlTrayWeight.Text" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="bnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>625, 38</value>
+  </data>
+  <data name="&gt;&gt;chkbTray.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbType.Items2" xml:space="preserve">
+    <value>Cardboard</value>
+  </data>
+  <data name="&gt;&gt;chkbWrapper.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbType.Items1" xml:space="preserve">
+    <value>Paper</value>
+  </data>
+  <data name="cbTrayColor.Items39" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbTrayColor.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>treeDiM.StackBuilder.Desktop.FormNewBase, treeDiM.StackBuilder.Desktop, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="tabTray.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabWrapper.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="&gt;&gt;uCtrlWrapperWeight.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cbTrayColor.Items41" xml:space="preserve">
     <value>Color</value>
   </data>
   <data name="cbTrayColor.Items32" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items33" xml:space="preserve">
+  <data name="&gt;&gt;cbType.Parent" xml:space="preserve">
+    <value>tabWrapper</value>
+  </data>
+  <data name="uCtrlTrayWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 55</value>
+  </data>
+  <data name="cbWrapperColor.Items20" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items34" xml:space="preserve">
+  <data name="&gt;&gt;tabStrappers.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbWrapperColor.Items25" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items35" xml:space="preserve">
+  <data name="cbWrapperColor.Items15" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items36" xml:space="preserve">
+  <data name="cbWrapperColor.Items45" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items37" xml:space="preserve">
+  <data name="cbTrayColor.Items27" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items38" xml:space="preserve">
+  <data name="&gt;&gt;cbCylLayoutType.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabStrappers.Parent" xml:space="preserve">
+    <value>tabCtrl</value>
+  </data>
+  <data name="cbWrapperColor.Items46" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items39" xml:space="preserve">
+  <data name="uCtrlTrayHeight.Text" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="&gt;&gt;chkbTray.Parent" xml:space="preserve">
+    <value>tabTray</value>
+  </data>
+  <data name="cbTrayColor.Items4" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items40" xml:space="preserve">
+  <data name="&gt;&gt;cbTrayColor.Parent" xml:space="preserve">
+    <value>tabTray</value>
+  </data>
+  <data name="uCtrlTrayUnitThickness.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="&gt;&gt;lbDir.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageBulge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabStrappers.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="uCtrlOuterDimensions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>327, 22</value>
+  </data>
+  <data name="cbType.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tabCtrl.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;tbName.Name" xml:space="preserve">
+    <value>tbName</value>
+  </data>
+  <data name="cbWrapperColor.Items27" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items41" xml:space="preserve">
+  <data name="lbDir.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 97</value>
+  </data>
+  <data name="&gt;&gt;uCtrlWrapperWalls.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbCylLayoutType.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabWrapper.Text" xml:space="preserve">
+    <value>Wrapper</value>
+  </data>
+  <data name="&gt;&gt;bnOk.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;chkbWrapper.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbWrapperColor.Items36" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items42" xml:space="preserve">
+  <data name="cbWrapperColor.Items26" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items16" xml:space="preserve">
     <value>Color</value>
   </data>
   <data name="cbTrayColor.Items43" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items44" xml:space="preserve">
+  <data name="tabCtrl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;tabPageBulge.Parent" xml:space="preserve">
+    <value>tabCtrl</value>
+  </data>
+  <data name="cbType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="tabTray.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cbDir.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 21</value>
+  </data>
+  <data name="cbTrayColor.Items1" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="cbTrayColor.Items45" xml:space="preserve">
+  <data name="cbTrayColor.Items14" xml:space="preserve">
     <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Items46" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="cbTrayColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 4</value>
-  </data>
-  <data name="cbTrayColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 22</value>
-  </data>
-  <data name="cbTrayColor.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;cbTrayColor.Name" xml:space="preserve">
-    <value>cbTrayColor</value>
-  </data>
-  <data name="&gt;&gt;cbTrayColor.Type" xml:space="preserve">
-    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cbTrayColor.Parent" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;cbTrayColor.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="uCtrlTrayHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 31</value>
-  </data>
-  <data name="uCtrlTrayHeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="uCtrlTrayHeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 20</value>
-  </data>
-  <data name="uCtrlTrayHeight.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="uCtrlTrayHeight.Text" xml:space="preserve">
-    <value>Height</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayHeight.Name" xml:space="preserve">
-    <value>uCtrlTrayHeight</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayHeight.Parent" xml:space="preserve">
-    <value>tabTray</value>
-  </data>
-  <data name="&gt;&gt;uCtrlTrayHeight.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="ctrlStrapperSet.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="ctrlStrapperSet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
-  </data>
-  <data name="ctrlStrapperSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>681, 74</value>
-  </data>
-  <data name="ctrlStrapperSet.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ctrlStrapperSet.Name" xml:space="preserve">
-    <value>ctrlStrapperSet</value>
-  </data>
-  <data name="&gt;&gt;ctrlStrapperSet.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Basics.Controls.CtrlStrapperSet, treeDiM.StackBuilder.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ctrlStrapperSet.Parent" xml:space="preserve">
-    <value>tabStrappers</value>
-  </data>
-  <data name="&gt;&gt;ctrlStrapperSet.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lbCylLayoutType.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbCylLayoutType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 124</value>
-  </data>
-  <data name="lbCylLayoutType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
-  </data>
-  <data name="lbCylLayoutType.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
   </data>
   <data name="lbCylLayoutType.Text" xml:space="preserve">
     <value>Layout type</value>
   </data>
-  <data name="&gt;&gt;lbCylLayoutType.Name" xml:space="preserve">
-    <value>lbCylLayoutType</value>
+  <data name="uCtrlOptBulge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 5</value>
   </data>
-  <data name="&gt;&gt;lbCylLayoutType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="uCtrlWrapperThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 20</value>
   </data>
-  <data name="&gt;&gt;lbCylLayoutType.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;tabStrappers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbCylLayoutType.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;graphCtrl.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;uCtrlLayout.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="cbCylLayoutType.Items" xml:space="preserve">
     <value>Aligned</value>
   </data>
-  <data name="cbCylLayoutType.Items1" xml:space="preserve">
-    <value>Staggered regular</value>
+  <data name="&gt;&gt;tbName.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="cbCylLayoutType.Items2" xml:space="preserve">
-    <value>Staggered -1</value>
+  <data name="lbDir.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="cbCylLayoutType.Items3" xml:space="preserve">
-    <value>Staggered +1</value>
+  <data name="&gt;&gt;cbTrayColor.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="cbCylLayoutType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 121</value>
+  <data name="cbTrayColor.Items20" xml:space="preserve">
+    <value>Color</value>
   </data>
-  <data name="cbCylLayoutType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 21</value>
+  <data name="&gt;&gt;tbDescription.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="cbDir.Items5" xml:space="preserve">
+    <value>Z+</value>
+  </data>
+  <data name="uCtrlWrapperThickness.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lbWrapperColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbWrapperColor.Items23" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items13" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbInnerPackable.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="cbTrayColor.Items23" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items33" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;cbDir.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="tabPageBulge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="&gt;&gt;ctrlStrapperSet.Parent" xml:space="preserve">
+    <value>tabStrappers</value>
+  </data>
+  <data name="cbTrayColor.Items24" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="chkbWrapper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 17</value>
+  </data>
+  <data name="cbDir.Items4" xml:space="preserve">
+    <value>Z-</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayWalls.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lbCylLayoutType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="cbCylLayoutType.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
-  <data name="&gt;&gt;cbCylLayoutType.Name" xml:space="preserve">
-    <value>cbCylLayoutType</value>
+  <data name="cbTrayColor.Items45" xml:space="preserve">
+    <value>Color</value>
   </data>
-  <data name="&gt;&gt;cbCylLayoutType.Type" xml:space="preserve">
+  <data name="&gt;&gt;cbDir.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbCylLayoutType.Parent" xml:space="preserve">
+  <data name="cbTrayColor.Items36" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="lbWrapperColor.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="graphCtrl.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tabTray.Name" xml:space="preserve">
+    <value>tabTray</value>
+  </data>
+  <data name="graphCtrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>417, 65</value>
+  </data>
+  <data name="cbCylLayoutType.Items3" xml:space="preserve">
+    <value>Staggered +1</value>
+  </data>
+  <data name="&gt;&gt;graphCtrl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;cbCylLayoutType.ZOrder" xml:space="preserve">
+  <data name="uCtrlTrayWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 20</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayUnitThickness.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbTrayColor.Items10" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbDir.Items2" xml:space="preserve">
+    <value>Y-</value>
+  </data>
+  <data name="uCtrlWrapperWalls.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="cbDir.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 93</value>
+  </data>
+  <data name="&gt;&gt;cbInnerPackable.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="chkbTray.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="uCtrlLayout.Text" xml:space="preserve">
+    <value>Layout</value>
+  </data>
+  <data name="tabTray.Size" type="System.Drawing.Size, System.Drawing">
+    <value>689, 81</value>
+  </data>
+  <data name="&gt;&gt;lbDir.Name" xml:space="preserve">
+    <value>lbDir</value>
+  </data>
+  <data name="&gt;&gt;uCtrlLayout.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkbWrapper.Parent" xml:space="preserve">
+    <value>tabWrapper</value>
+  </data>
+  <data name="lbContent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 69</value>
+  </data>
+  <data name="cbWrapperColor.ItemHeight" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="cbDir.Items1" xml:space="preserve">
+    <value>X+</value>
+  </data>
+  <data name="cbWrapperColor.Items29" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items19" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;graphCtrl.Name" xml:space="preserve">
+    <value>graphCtrl</value>
+  </data>
+  <data name="&gt;&gt;cbType.Name" xml:space="preserve">
+    <value>cbType</value>
+  </data>
+  <data name="uCtrlWrapperWalls.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="chkbWrapper.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="uCtrlOuterDimensions.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="lbContent.Text" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="&gt;&gt;tabStrappers.Name" xml:space="preserve">
+    <value>tabStrappers</value>
+  </data>
+  <data name="cbTrayColor.Items8" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="tabWrapper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>689, 81</value>
+  </data>
+  <data name="&gt;&gt;uCtrlWrapperWalls.Name" xml:space="preserve">
+    <value>uCtrlWrapperWalls</value>
+  </data>
+  <data name="uCtrlWrapperThickness.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="cbWrapperColor.Items" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="uCtrlTrayWeight.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="cbTrayColor.Items25" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="lbDir.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="lbWrapperColor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabWrapper.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="lbCylLayoutType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="uCtrlTrayWalls.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 20</value>
+  </data>
+  <data name="&gt;&gt;lbContent.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="cbType.Items" xml:space="preserve">
+    <value>Polyethylene</value>
+  </data>
+  <data name="cbTrayColor.Items40" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="uCtrlOuterDimensions.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>704, 411</value>
+  <data name="cbTrayColor.Items37" xml:space="preserve">
+    <value>Color</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Create new pack...</value>
+  <data name="&gt;&gt;cbWrapperColor.Name" xml:space="preserve">
+    <value>cbWrapperColor</value>
+  </data>
+  <data name="&gt;&gt;lbDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbTrayColor.Name" xml:space="preserve">
+    <value>cbTrayColor</value>
+  </data>
+  <data name="lbDir.Text" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="cbTrayColor.Items5" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="chkbWrapper.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 8</value>
+  </data>
+  <data name="cbTrayColor.Items44" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;lbWrapperColor.Parent" xml:space="preserve">
+    <value>tabWrapper</value>
+  </data>
+  <data name="&gt;&gt;lbDescription.Name" xml:space="preserve">
+    <value>lbDescription</value>
+  </data>
+  <data name="&gt;&gt;uCtrlWrapperWeight.Name" xml:space="preserve">
+    <value>uCtrlWrapperWeight</value>
+  </data>
+  <data name="tabTray.Text" xml:space="preserve">
+    <value>Tray</value>
+  </data>
+  <data name="&gt;&gt;lbCylLayoutType.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbWrapperColor.Items28" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbTrayColor.Items11" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;cbInnerPackable.Type" xml:space="preserve">
+    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tabTray.Parent" xml:space="preserve">
+    <value>tabCtrl</value>
+  </data>
+  <data name="&gt;&gt;lbCylLayoutType.Name" xml:space="preserve">
+    <value>lbCylLayoutType</value>
+  </data>
+  <data name="&gt;&gt;uCtrlOptBulge.Name" xml:space="preserve">
+    <value>uCtrlOptBulge</value>
+  </data>
+  <data name="uCtrlTrayWalls.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormNewPack</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Desktop.FormNewBase, treeDiM.StackBuilder.Desktop, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+  <data name="tabStrappers.Text" xml:space="preserve">
+    <value>Strappers</value>
   </data>
+  <data name="&gt;&gt;uCtrlOuterDimensions.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tbName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbWrapperColor.Items37" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbInnerPackable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 65</value>
+  </data>
+  <data name="cbWrapperColor.Items17" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;cbWrapperColor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;uCtrlWrapperThickness.Parent" xml:space="preserve">
+    <value>tabWrapper</value>
+  </data>
+  <data name="lbContent.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="cbTrayColor.Items6" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;tabPageBulge.Name" xml:space="preserve">
+    <value>tabPageBulge</value>
+  </data>
+  <data name="&gt;&gt;cbCylLayoutType.Name" xml:space="preserve">
+    <value>cbCylLayoutType</value>
+  </data>
+  <data name="&gt;&gt;cbDir.Name" xml:space="preserve">
+    <value>cbDir</value>
+  </data>
+  <data name="&gt;&gt;chkbTray.Name" xml:space="preserve">
+    <value>chkbTray</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayWeight.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrlLayout.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrlWrapperThickness.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;lbContent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbDir.Items" xml:space="preserve">
+    <value>X-</value>
+  </data>
+  <data name="uCtrlTrayWeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="cbWrapperColor.Items9" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items8" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items3" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items2" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items1" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items30" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items7" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items6" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items5" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items4" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="uCtrlTrayUnitThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 31</value>
+  </data>
+  <data name="uCtrlTrayHeight.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="uCtrlTrayHeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="uCtrlLayout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 20</value>
+  </data>
+  <data name="lbDir.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="cbTrayColor.Items3" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;tabWrapper.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbTrayColor.Items34" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="uCtrlTrayUnitThickness.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;tbDescription.Name" xml:space="preserve">
+    <value>tbDescription</value>
+  </data>
+  <data name="lbCylLayoutType.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="tabPageBulge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>689, 81</value>
+  </data>
+  <data name="chkbWrapper.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="cbDir.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;cbDir.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;lbWrapperColor.Name" xml:space="preserve">
+    <value>lbWrapperColor</value>
+  </data>
+  <data name="&gt;&gt;tabWrapper.Name" xml:space="preserve">
+    <value>tabWrapper</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayUnitThickness.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrlOuterDimensions.Name" xml:space="preserve">
+    <value>uCtrlOuterDimensions</value>
+  </data>
+  <data name="chkbTray.Text" xml:space="preserve">
+    <value>Tray</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayWalls.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageBulge.Text" xml:space="preserve">
+    <value>Bulge</value>
+  </data>
+  <data name="cbType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 6</value>
+  </data>
+  <data name="tabPageBulge.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;uCtrlOuterDimensions.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="cbTrayColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 4</value>
+  </data>
+  <data name="uCtrlTrayWalls.Text" xml:space="preserve">
+    <value>Number of walls</value>
+  </data>
+  <data name="cbTrayColor.Items15" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbTrayColor.Items28" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="tabStrappers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayWalls.Name" xml:space="preserve">
+    <value>uCtrlTrayWalls</value>
+  </data>
+  <data name="chkbWrapper.Text" xml:space="preserve">
+    <value>Wrapper</value>
+  </data>
+  <data name="&gt;&gt;uCtrlOptBulge.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lbName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbTrayColor.Items33" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 22</value>
+  </data>
+  <data name="&gt;&gt;ctrlStrapperSet.Name" xml:space="preserve">
+    <value>ctrlStrapperSet</value>
+  </data>
+  <data name="uCtrlTrayWalls.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 6</value>
+  </data>
+  <data name="uCtrlOuterDimensions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 252</value>
+  </data>
+  <data name="&gt;&gt;uCtrlOptBulge.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayWeight.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbTrayColor.Items42" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayUnitThickness.Name" xml:space="preserve">
+    <value>uCtrlTrayUnitThickness</value>
+  </data>
+  <data name="&gt;&gt;tabCtrl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbInnerPackable.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tabPageBulge.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbTrayColor.Items18" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;tbName.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;uCtrlWrapperThickness.Name" xml:space="preserve">
+    <value>uCtrlWrapperThickness</value>
+  </data>
+  <data name="uCtrlWrapperWeight.Text" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="graphCtrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>283, 209</value>
+  </data>
+  <data name="uCtrlTrayUnitThickness.Text" xml:space="preserve">
+    <value>Thickness</value>
+  </data>
+  <data name="uCtrlWrapperWeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="cbTrayColor.Items30" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="lbContent.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;lbContent.Name" xml:space="preserve">
+    <value>lbContent</value>
+  </data>
+  <data name="&gt;&gt;tabTray.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="uCtrlWrapperThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 31</value>
+  </data>
+  <data name="ctrlStrapperSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 4</value>
+  </data>
+  <data name="cbTrayColor.Items19" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbCylLayoutType.Items1" xml:space="preserve">
+    <value>Staggered regular</value>
+  </data>
+  <data name="cbTrayColor.Items35" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayWeight.Parent" xml:space="preserve">
+    <value>tabTray</value>
+  </data>
+  <data name="lbWrapperColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 34</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayWeight.Name" xml:space="preserve">
+    <value>uCtrlTrayWeight</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayHeight.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cbWrapperColor.Items40" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;bnOk.Name" xml:space="preserve">
+    <value>bnOk</value>
+  </data>
+  <data name="&gt;&gt;lbDir.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="cbWrapperColor.Items39" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayUnitThickness.Parent" xml:space="preserve">
+    <value>tabTray</value>
+  </data>
+  <data name="uCtrlOuterDimensions.Text" xml:space="preserve">
+    <value>Outer dimensions</value>
+  </data>
+  <data name="tabStrappers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>689, 81</value>
+  </data>
+  <data name="chkbTray.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 17</value>
+  </data>
+  <data name="tabCtrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 280</value>
+  </data>
+  <data name="uCtrlTrayUnitThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 20</value>
+  </data>
+  <data name="uCtrlLayout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 151</value>
+  </data>
+  <data name="&gt;&gt;uCtrlWrapperThickness.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayWalls.Parent" xml:space="preserve">
+    <value>tabTray</value>
+  </data>
+  <data name="uCtrlOptBulge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>340, 20</value>
+  </data>
+  <data name="&gt;&gt;uCtrlTrayHeight.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="cbTrayColor.Items29" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;cbCylLayoutType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnOk.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="cbTrayColor.Items48" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="uCtrlWrapperWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 31</value>
+  </data>
+  <data name="chkbTray.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 6</value>
+  </data>
+  <data name="uCtrlTrayHeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 31</value>
+  </data>
+  <data name="&gt;&gt;uCtrlWrapperWeight.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="lbWrapperColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="cbTrayColor.Items22" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbTrayColor.Items12" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items35" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items10" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="uCtrlWrapperWalls.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 6</value>
+  </data>
+  <data name="&gt;&gt;lbName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="cbWrapperColor.Items34" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items24" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbWrapperColor.Items14" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="cbCylLayoutType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 21</value>
+  </data>
+  <data name="cbDir.Items3" xml:space="preserve">
+    <value>Y+</value>
+  </data>
+  <data name="ctrlStrapperSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>681, 74</value>
+  </data>
+  <data name="cbWrapperColor.Items44" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="tabWrapper.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabStrappers.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>fr</value>
+  </metadata>
 </root>

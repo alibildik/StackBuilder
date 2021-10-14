@@ -46,10 +46,11 @@
             this.toolStripButtonReport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonExport = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonExportGLB = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonExportOBJ = new System.Windows.Forms.ToolStripButton();
             this.toolStripSepExport3D = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonScreenShot = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHoriz)).BeginInit();
             this.splitContainerHoriz.Panel1.SuspendLayout();
             this.splitContainerHoriz.Panel2.SuspendLayout();
@@ -174,6 +175,7 @@
             this.toolStripButtonExport,
             this.toolStripSeparator3,
             this.toolStripButtonExportGLB,
+            this.toolStripButtonExportOBJ,
             this.toolStripSepExport3D,
             this.toolStripButtonScreenShot});
             resources.ApplyResources(this.toolStripAnalysis, "toolStripAnalysis");
@@ -210,12 +212,24 @@
             this.toolStripButtonExport.Name = "toolStripButtonExport";
             this.toolStripButtonExport.Click += new System.EventHandler(this.OnGenerateExport);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
             // toolStripButtonExportGLB
             // 
             this.toolStripButtonExportGLB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.toolStripButtonExportGLB, "toolStripButtonExportGLB");
             this.toolStripButtonExportGLB.Name = "toolStripButtonExportGLB";
-            this.toolStripButtonExportGLB.Click += new System.EventHandler(this.OnExport3D);
+            this.toolStripButtonExportGLB.Click += new System.EventHandler(this.OnExportGLB);
+            // 
+            // toolStripButtonExportOBJ
+            // 
+            this.toolStripButtonExportOBJ.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.toolStripButtonExportOBJ, "toolStripButtonExportOBJ");
+            this.toolStripButtonExportOBJ.Name = "toolStripButtonExportOBJ";
+            this.toolStripButtonExportOBJ.Click += new System.EventHandler(this.OnExportOBJ);
             // 
             // toolStripSepExport3D
             // 
@@ -228,11 +242,6 @@
             resources.ApplyResources(this.toolStripButtonScreenShot, "toolStripButtonScreenShot");
             this.toolStripButtonScreenShot.Name = "toolStripButtonScreenShot";
             this.toolStripButtonScreenShot.Click += new System.EventHandler(this.OnScreenShot);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // DockContentAnalysisEdit
             // 
@@ -284,5 +293,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonScreenShot;
         private System.Windows.Forms.ToolStripButton toolStripButtonExportGLB;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolStripButtonExportOBJ;
     }
 }

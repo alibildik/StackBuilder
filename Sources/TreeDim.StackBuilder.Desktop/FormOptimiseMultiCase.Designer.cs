@@ -50,6 +50,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelDef = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.chkbAllowCombinations = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHoriz)).BeginInit();
             this.splitContainerHoriz.Panel1.SuspendLayout();
             this.splitContainerHoriz.Panel2.SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             // splitContainerHoriz.Panel1
             // 
+            this.splitContainerHoriz.Panel1.Controls.Add(this.chkbAllowCombinations);
             this.splitContainerHoriz.Panel1.Controls.Add(this.uCtrlNumberPerCase);
             this.splitContainerHoriz.Panel1.Controls.Add(this.uCtrlCaseDimensionsMax);
             this.splitContainerHoriz.Panel1.Controls.Add(this.uCtrlCaseDimensionsMin);
@@ -208,6 +210,7 @@
             // graphCtrl
             // 
             resources.ApplyResources(this.graphCtrl, "graphCtrl");
+            this.graphCtrl.AngleHoriz = 45D;
             this.graphCtrl.Name = "graphCtrl";
             this.graphCtrl.Viewer = null;
             // 
@@ -227,6 +230,13 @@
             // 
             this.timer.Interval = 3000;
             this.timer.Tick += new System.EventHandler(this.OnTimerTick);
+            // 
+            // chkbAllowCombinations
+            // 
+            resources.ApplyResources(this.chkbAllowCombinations, "chkbAllowCombinations");
+            this.chkbAllowCombinations.Name = "chkbAllowCombinations";
+            this.chkbAllowCombinations.UseVisualStyleBackColor = true;
+            this.chkbAllowCombinations.CheckedChanged += new System.EventHandler(this.OnConstraintsChanged);
             // 
             // FormOptimiseMultiCase
             // 
@@ -274,5 +284,6 @@
         private treeDiM.Basics.UCtrlOptTriDouble uCtrlCaseDimensionsMin;
         private treeDiM.Basics.UCtrlOptInt uCtrlNumberPerCase;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.CheckBox chkbAllowCombinations;
     }
 }

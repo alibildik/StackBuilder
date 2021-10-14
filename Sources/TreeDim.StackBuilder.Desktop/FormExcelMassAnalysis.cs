@@ -63,7 +63,6 @@ namespace treeDiM.StackBuilder.Desktop
             UpdateStatus(this, null);
         }
         #endregion
-
         #region Load sheets
         private void OnFilePathChanged(object sender, EventArgs e)
         {
@@ -92,7 +91,6 @@ namespace treeDiM.StackBuilder.Desktop
             UpdateStatus(sender, e);
         }
         #endregion
-
         #region Pallet listbox
         private void FillPalletList()
         {
@@ -127,7 +125,6 @@ namespace treeDiM.StackBuilder.Desktop
             }
         }
         #endregion
-
         #region Computation
         private void OnCompute(object sender, EventArgs e)
         {
@@ -262,17 +259,19 @@ namespace treeDiM.StackBuilder.Desktop
                                 && null != xlSheet.Range[colWeight + iRow, colWeight + iRow].Value)
                                 weight = (double)xlSheet.Range[colWeight + iRow, colWeight + iRow].Value;
                             // compute stacking
-                            int stackCount = 0, layerCount = 0, byLayerCount = 0;
+                            int stackCount = 0, layerCount = 0;
                             double palletLength = 0.0, palletWidth = 0.0, palletHeight = 0.0;
                             double loadLength = 0.0, loadWidth = 0.0, loadHeight = 0.0;
                             double loadWeight = 0.0, totalPalletWeight = 0.0, stackEfficiency = 0.0;
                             string stackImagePath = string.Empty;
+                            string noLayersPerNoCasesString = string.Empty;
                             // generate result
                             GenerateResult(name, description
                                 , length, width, height, weight
                                 , palletProperties, Overhang
+                                , AllowCombinations
                                 , ref stackCount
-                                , ref layerCount, ref byLayerCount
+                                , ref layerCount, ref noLayersPerNoCasesString
                                 , ref loadWeight, ref totalPalletWeight
                                 , ref palletLength, ref palletWidth, ref palletHeight
                                 , ref loadLength, ref loadWidth, ref loadHeight
@@ -283,7 +282,7 @@ namespace treeDiM.StackBuilder.Desktop
                             countCell.Value = stackCount;
                             // insert layer count
                             var layerCountCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
-                            layerCountCell.Value = $"{layerCount} x {byLayerCount}";
+                            layerCountCell.Value = $"{noLayersPerNoCasesString}";
                             // insert load dimensions
                             var loadDimCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
                             loadDimCell.Value = $"{loadLength}x{loadWidth}x{loadHeight}";
@@ -356,8 +355,9 @@ namespace treeDiM.StackBuilder.Desktop
             string name, string description
             , double length, double width, double height, double? weight
             , PalletProperties palletProperties, Vector2D overhang
+            , bool allowCombinations
             , ref int stackCount
-            , ref int layerCount, ref int byLayerCount
+            , ref int layerCount, ref string noLayersPerNoCasesString
             , ref double loadWeight, ref double totalWeight
             , ref double palletLength, ref double palletWidth, ref double palletHeight
             , ref double loadLength, ref double loadWidth, ref double loadHeight
@@ -398,8 +398,29 @@ namespace treeDiM.StackBuilder.Desktop
             constraintSet.SetMaxHeight(new OptDouble(true, MaxPalletHeight));
             constraintSet.Overhang = overhang;
 
-            SolverCasePallet solver = new SolverCasePallet(bProperties, palletProperties, constraintSet);
-            List<AnalysisLayered> analyzes = solver.BuildAnalyses(false);
+
+            List<AnalysisLayered> analyzes = new List<AnalysisLayered>();
+            if (!allowCombinations)
+            {
+                SolverCasePallet solver = new SolverCasePallet(bProperties, palletProperties, constraintSet);
+                analyzes = solver.BuildAnalyses(false);
+            }
+            else
+            {
+                List<KeyValuePair<LayerEncap, int>> listLayers = new List<KeyValuePair<LayerEncap, int>>();
+                LayerSolver.GetBestCombination(
+                    bProperties.OuterDimensions,
+                    Vector3D.Zero,
+                    palletProperties.GetStackingDimensions(constraintSet),
+                    constraintSet,
+                    ref listLayers);
+
+                AnalysisCasePallet analysis = new AnalysisCasePallet(bProperties, palletProperties, constraintSet);
+                analysis.ID.SetNameDesc(name, description);
+                analysis.AddSolution(listLayers);
+                analyzes.Add(analysis);
+            }
+
             if (analyzes.Count > 0)
             {
                 var analysis = analyzes[0];
@@ -411,8 +432,7 @@ namespace treeDiM.StackBuilder.Desktop
                 if (analysis.Solution is SolutionLayered solutionLayered)
                 {
                     layerCount = solutionLayered.LayerCount;
-                    if (solutionLayered.Layers.Count > 0)
-                        byLayerCount = solutionLayered.Layers[0].BoxCount;
+                    noLayersPerNoCasesString = solutionLayered.NoLayersPerNoCasesString;
 
                     palletLength = solutionLayered.BBoxGlobal.Length;
                     palletWidth = solutionLayered.BBoxGlobal.Width;
@@ -438,8 +458,6 @@ namespace treeDiM.StackBuilder.Desktop
                             $"Report_{analysis.Content.Name}_on_{analysis.Container.Name}"), "pdf");
 
                         var rnRoot = new ReportNode(Resources.ID_REPORT);
-                        var margins = new Margins();
-                        //Reporter reporter = new ReporterMSWord(inputData, ref rnRoot, Settings.Default.ReportTemplatePath/*Reporter.TemplatePath*/, outputFilePath, margins);
                         Reporter.SetFontSizeRatios(0.015F, 0.05F);
                         Reporter reporter = new ReporterPDF(inputData, ref rnRoot, Reporter.TemplatePath, outputFilePath);
                     }
@@ -469,6 +487,7 @@ namespace treeDiM.StackBuilder.Desktop
             GenerateReport = Settings.Default.MassExcelGenerateReportsInFolder;
             DirectoryPathImages = Settings.Default.MassExcelImageFolderPath;
             DirectoryPathReports = Settings.Default.MassExcelReportFolderPath;
+            AllowCombinations = Settings.Default.AllowCombinations;
         }
         private void SaveSettings()
         {
@@ -484,9 +503,9 @@ namespace treeDiM.StackBuilder.Desktop
             Settings.Default.MassExcelGenerateReportsInFolder = GenerateReport;
             Settings.Default.MassExcelImageFolderPath = DirectoryPathImages;
             Settings.Default.MassExcelReportFolderPath = DirectoryPathReports;
+            Settings.Default.AllowCombinations = AllowCombinations;
         }
         #endregion
-
         #region Status
         private void UpdateStatus(object sender, EventArgs e)
         {
@@ -546,8 +565,12 @@ namespace treeDiM.StackBuilder.Desktop
         private string ColumnLetterOutputStart => cbOutputStart.SelectedItem.ToString();
         private int MaxNumberRowFree { get; set; } = 5;
         private readonly double LargestDimensionMinimum = 10.0;
+        private bool AllowCombinations
+        {
+            get => chkbAllowCombinations.Checked;
+            set => chkbAllowCombinations.Checked = value;
+        }
         #endregion
-
         #region Event handlers
         private void OnGenerateImagesInFolderChanged(object sender, EventArgs e)
         {
@@ -592,45 +615,30 @@ namespace treeDiM.StackBuilder.Desktop
             catch (Exception ex) { _log.Error(ex.Message); }
         }
         #endregion
-
+        #region Logging
         protected ILog _log = LogManager.GetLogger(typeof(FormExcelMassAnalysis));
+        #endregion
     }
-
+    #region ExcelHelpers
     internal class ExcelHelpers
     {
         public static double ReadDouble(string name, Excel.Worksheet worksheet, string cellName)
         {
-            try
-            {
-                return (double)worksheet.Range[cellName, cellName].Value;
-            }
-            catch (Exception ex)
-            {
-                throw new ExceptionCellReading(name, cellName, ex.Message);
-            }
+            try { return (double)worksheet.Range[cellName, cellName].Value; }
+            catch (Exception ex) { throw new ExceptionCellReading(name, cellName, ex.Message); }
         }
         public static string ReadString(string name, Excel.Worksheet worksheet, string cellName)
         {
-            try
-            {
-                return worksheet.Range[cellName, cellName].Value.ToString();
-            }
-            catch (Exception ex)
-            {
-                throw new ExceptionCellReading(name, cellName, ex.Message);
-            }
+            try { return worksheet.Range[cellName, cellName].Value.ToString(); }
+            catch (Exception ex) { throw new ExceptionCellReading(name, cellName, ex.Message); }
         }
-
         public static void FillComboWithColumnName(ComboBox cb)
         {
             cb.Items.Clear();
             char[] az = Enumerable.Range('A', 'Z' - 'A' + 1).Select(i => (char)i).ToArray();
             foreach (var c in az)
-            {
                 cb.Items.Add(c.ToString());
-            }
         }
-
         public static string ColumnIndexToColumnLetter(int colIndex)
         {
             var div = colIndex;
@@ -657,9 +665,22 @@ namespace treeDiM.StackBuilder.Desktop
             return sum;
         }
     }
-
+    #endregion
+    #region ExceptionCellReading
     internal class ExceptionCellReading : Exception
     {
+        public ExceptionCellReading()
+            : base()
+        {
+        }
+        public ExceptionCellReading(string message)
+            : base(message)
+        {
+        }
+        public ExceptionCellReading(string message, Exception innerException)
+            : base(message, innerException)
+        {
+        }
         public ExceptionCellReading(string vName, string cellName, string sMessage)
             : base(sMessage)
         {
@@ -668,7 +689,7 @@ namespace treeDiM.StackBuilder.Desktop
         }
         public string VName { get; set; }
         public string CellName { get; set; }
-        public override string Message { get { return string.Format("{0} expected in cell {1}", VName, CellName); } }
+        public override string Message => $"{VName} expected in cell {CellName}";
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -677,4 +698,5 @@ namespace treeDiM.StackBuilder.Desktop
             return sb.ToString();
         }
     }
+    #endregion
 }
