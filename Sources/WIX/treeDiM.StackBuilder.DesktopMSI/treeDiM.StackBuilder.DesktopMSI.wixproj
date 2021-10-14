@@ -28,6 +28,12 @@
     <Content Include="..\treeDiM.StackBuilder.DesktopMSM\CommonConfig.wxi">
       <Link>CommonConfig.wxi</Link>
     </Content>
+    <None Include="AutoUpdater.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ChangeLog.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Config.wxi" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +57,10 @@
   </Target>
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release "$(SolutionDir)Signfile.bat" "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>copy "$(ProjectDir)AutoUpdater.xml" "$(TargetDir)"
+copy "$(ProjectDir)ChangeLog.html" "$(TargetDir)"</PreBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.

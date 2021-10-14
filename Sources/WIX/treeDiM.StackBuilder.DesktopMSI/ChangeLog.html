@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>PLMPack StackBuilder</title>
+</head>
+<body>
+	<h1>Version 3.0.2.40</h1>
+	<ul>
+		<li>Added "Facing" for boxes.</li>
+		<li>Corrected some issues with heterogeneous stacking</li>
+		<li>Corrected installer bug by changing Sharp3DBinPacking.dll number to force upgrade.</li>
+		<li>Added WaveFront obj 3D export.</li>
+	</ul>
+	<h1>Version 3.0.2.39</h1>
+	<ul>
+		<li>Added multiple layer directions in mass Excel calculation and box/case optimisations</li>
+	</ul>
+	<h1>Version 3.0.2.38</h1>
+	<ul>
+		<li>Corrected minor issue in report templates.</li>
+	</ul>
+	<h1>Version 3.0.2.37</h1>
+	<ul>
+		<li>Added MENASHA report template.</li>
+	</ul>
+	<h1>Version 3.0.2.36</h1>
+	<ul>
+		<li>Updated some NuGets to prevent startup crash...</li>
+	</ul>
+	<h1>Version 3.0.2.35</h1>
+	<ul>
+		<li>Modified pallets on pallet analysis so that it handles all master pallet splitting directions. Until now it would only work with EUR6 on EUR2.</li>
+		<li>Heavily modified report generation so that it can display both metric and imperial value/unit on a single report.</li>
+		<li>Repaired heterogeneous stacking algorithms, that were broken in earlier versions</li>
+	</ul>
+	<h1>Version 3.0.2.34</h1>
+	<ul>
+		<li>Corrected some issues with heterogeneous stacking by reverting to previous code.</li>
+	</ul>
+	<h1>Version 3.0.2.33</h1>
+	<ul>
+		<li>Updated dutch language resources.</li>
+		<li>Corrected bug occuring in pallet/truck loading.</li>
+		<li>Bags now usable in packs.</li>
+		<li>Added load+total pallet dimensions in Excel mass calculation tool.</li>
+	</ul>
+	<h1>Version 3.0.2.32</h1>
+	<ul>
+		<li>Updated language resources</li>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/166">#166</a></li>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/168">#168</a></li>
+		<li>Corrected issue with Mass Excel computation.</li>
+	</ul>
+	<h1>Version 3.0.2.31</h1>
+	<ul>
+		<li>Added top pallet interlayer feature.</li>
+		<li>Corrected minor issue in FM Logistic export.</li>
+		<li>Corrected several issue in Excel sheet processor.</li>
+	</ul>
+	<h1>Version 3.0.2.30</h1>
+	<ul>
+		<li>Corrected issue with heterogeneous case/truck analysis.</li>
+	</ul>
+	<h1>Version 3.0.2.28</h1>
+	<ul>
+		<li>Added pallets on pallet analysis feature.</li>
+		<li>Added export for FM Logistic robots.</li>
+		<li>Added Excel sheet mass calculation feature.</li>
+	</ul>
+	<h1>Version 3.0.2.27</h1>
+	<ul>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/130">#130</a>: xml export was broken.</li>
+	</ul>
+	<h1>Version 3.0.2.26</h1>
+	<ul>
+		<li>Moved download to https://www.treedim.com/DL/StackBuilder/StackBuilder_MSI.msi</li>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/130">#130</a></li>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/166">#166</a></li>
+		<li>Issue with project summary export to MS Excel.</li>
+	</ul>
+	<h1>Version 3.0.2.25</h1>
+	<ul>
+		<li>Corrected issues in dll numbering (treeDiM.Basics.dll version would remain stuck at 3.0.1.0)</li>
+	</ul>
+	<h1>Version 3.0.2.24</h1>
+	<ul>
+		<li>Corrected issue with case/pallet grid.</li>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/158">#158</a></li>
+	</ul>
+	<h1>Version 3.0.2.23</h1>
+	<ul>
+		<li>Corrected issue with small screens.</li>
+		<li>Attempt to correct issue with word report generation.</li>
+	</ul>
+	<h1>Version 3.0.2.22</h1>
+	<ul>
+		<li>Added button to modify previously edited layer in layer editor</li>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/154">#154</a></li>
+		<li>Now relying on .NET framework 4.8</li>
+		<li>Updated INTEX plugin</li>
+	</ul>
+	<h1>Version 3.0.2.21</h1>
+	<ul>
+		<li>Corrected minor issue with box / case mismatch.</li>
+		<li>Now saving FilmPalletTopCovering value</li>
+	</ul>
+	<h1>Version 3.0.2.20</h1>
+	<ul>
+		<li>Corrected issue regarding inner dimensions / net weight of cases.</li>
+		<li>Corrected issue with saving/restoring pallet label weight</li>
+		<li>Corrected issue with application shortcut icons</li>
+		<li>Corrected issues with menu names in french language</li>
+	</ul>
+	<h1>Version 3.0.2.19</h1>
+	<ul>
+		<li>Pallet film weight and pallet label weight are now correctly saved in stb file.</li>
+		<li>Corrected bug that appeared in heterogeneous loading content grid. Thanks to Karim for pointing this out.</li>
+	</ul>
+	<h1>Version 3.0.2.18</h1>
+	<ul>
+		<li>Corrected issue with interlayers weight that was not taken into account when computing total weight.</li>
+		<li>Corrected Pallet film form that would not display pallet film weight</li>
+		<li>Cylinder/Pallet analysis now supports using bottles.</li>
+	</ul>
+	<h1>Version 3.0.2.17</h1>
+	<ul>
+		<li>Corrected some issues with pallet labels.</li>
+		<li>Corrected issues with items weight when editing properties.</li>
+	</ul>
+	<h1>Version 3.0.2.16</h1>
+	<ul>
+		<li>Added pallet label (unfinished)</li>
+		<li>Added pallet sleeve</li>
+		<li>Corrected some issues regarding total weight computation.</li>
+		<li>Pallet layer edition: Arrow keys + R can be used to move a case.</li>
+	</ul>
+	<h1>Version 3.0.2.15</h1>
+	<ul>
+		<li>Export: Now sorting cases in increasing order of distance to layer corner.</li>
+		<li>Reporting: Added an option to prevent deletion of report images when generating MS Word report.</li>
+		<li>Added bag types.</li>
+		<li>Corrected bug in layer editor that would prevent showing bottle packs.</li>
+	</ul>
+	<h1>Version 3.0.2.14</h1>
+	<ul>
+		<li>Corrected minor issue with bottles and bottle packs.</li>
+		<li>Corrected issue with pack and analysis case/pallet toolbar activation.</li>
+	</ul>
+	<h1>Version 3.0.2.13</h1>
+	<ul>
+		<li>Corrected bug (wrong file filter in italian resources).</li>
+	</ul>
+	<h1>Version 3.0.2.12</h1>
+	<ul>
+		<li>Corrected issue with "Find best pack" feature that would always add a tray.</li>
+		<li>Added screenshot feature to all analysis browsing forms.</li>
+		<li>Tried to solve issue with html to pdf report conversion.</li>
+	</ul>
+	<h1>Version 3.0.2.11</h1>
+	<ul>
+		<li>All interlayers would be drawn before packs, which would result in some issues.</li>
+		<li>Interlayer combo box in analysis docking form will update when an interlayer is added in the document.</li>
+		<li>Heterogeneous stacking: maximum number of cases increased to 10000 (used to be 1000).</li>		
+	</ul>
+	<h1>Version 3.0.2.10</h1>
+	<ul>
+		<li>Modified pack object so that it also allows grouping cylinders and bottles.</li>
+		<li>Corrected bug in cylinder/pallet analysis serialization.</li>
+		<li>Corrected some issues with dock pane menus.</li>
+	</ul>
+	<h1>Version 3.0.2.9</h1>
+	<ul>
+		<li>Corrected bug that would prevent saving cylinder/pallet analyses.</li>
+		<li>Corrected issue with pallet strappers and truck loading.</li>
+		<li>Implemented bottle to be used for case stacking and later pack stacking.</li>
+	</ul>
+	<h1>Version 3.0.2.7</h1>
+	<ul>
+		<li>Small issue regarding dimensions of loaded case.</li>
+	</ul>
+	<h1>Version 3.0.2.6</h1>
+	<ul>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/53">#53</a></li>
+	</ul>
+	<h1>Version 3.0.2.5</h1>
+	<ul>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/143">#143</a></li>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/144">#144</a></li>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/145">#145</a></li>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/147">#147</a></li>		
+	</ul>
+	<h1>Version 3.0.2.4</h1>
+	<ul>
+		<li>Corrected issue in horizontal cylinder layout.</li>
+	</ul>	
+    <h1>Version 3.0.2.3</h1>
+	<ul>
+		<li>Corrected issue that would occur when adding interlayers on an existing project.</li>
+		<li>Updated italian resource strings.</li>
+	</ul>
+	<h1>Version 3.0.2.2</h1>
+	<ul>
+		<li>Implemented horizontal cylinder pallet and truck analyses.</li>
+		<li>Corrected some issues regarding some layer possibilities that were filtered out.</li>
+		<li>Repaired option for single layer pallet/truck stacking.</li>
+		<li>Now pointing to version 3.0 help manual that still need work.</li>
+	</ul>
+	<h1>Version 3.0.2.1</h1>
+	<ul>
+		<li>First version with <b>'Premium'</b> features enabled.</li>
+		<li>Added manual editing for layers (Premium).</li>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/138">#138</a></li>
+	</ul>
+	<h1>Version 3.0.1.1</h1>
+	<ul>
+		<li>Added missing file for export project summary tool to Excel.</li>
+		<li>Implemented multi-threaded "find best case" loading.</li>
+		<li>Updated BCT computations.</li>
+		<li>Issue <a href="https://github.com/treeDiM/StackBuilder/issues/132">#132</a>, <a href="https://github.com/treeDiM/StackBuilder/issues/133">#133</a> and <a href="https://github.com/treeDiM/StackBuilder/issues/134">#134</a></li>
+	</ul>
+	<h1>Version 3.0.1.0</h1>
+	<ul>
+		<li>Finished tool that export project summary to Excel.</li>
+		<li>Corrected issue in installer that would prevent installing a new version as a major upgrade.</li>
+	</ul>
+	<h1>Version 3.0.0.99</h1>
+	<ul>
+		<li>Added tool to export analyses project summary to Excel?</li>
+		<li>Corrected bug in Excel importer.</li>
+	</ul>
+	<h1>Version 3.0.0.98</h1>
+	<ul>
+		<li>Added BCT computation feature.</li>
+		<li>Corrected small issue in cylinder bounding box.</li>
+	</ul>
+	<h1>Version 3.0.0.96</h1>
+	<ul>
+		<li>Corrected bug regarding usage of cylinder loaded case as content of pallet analysis.</li>
+		<li>Bug pointed out by Geoff Cooper.</li>
+	</ul>
+	<h1>Version 3.0.0.95</h1>
+	<ul>
+		<li>Added search feature in database. User can now filter out items by typing a string and pressing button 'Search'.</li>
+	</ul>
+    	<h1>Version 3.0.0.94</h1>
+	<ul>
+		<li>Heterogeneous loading now support orientation of cases.</li>
+		<li>Default number of each item now set to 0</li>
+	</ul>
+	<h1>Version 3.0.0.93</h1>
+	<ul>
+		<li>Corrected issue with html to pdf conversion.</li>
+	</ul>
+	<h1>Version 3.0.0.91</h1>
+	<ul>
+		<li>Corrected issue with ReportTemplates that were missing. The software can now generate reports.</li>		
+	</ul>
+	<h1>Version 3.0.0.85</h1>
+	<ul>
+        	<li>Created MSI installer to replace ClickOnce installation,</li>
+        	<li>Changed Splash screen,</li>
+        	<li>Introduced library <a href="https://github.com/ravibpatel/AutoUpdater.NET">AutoUpdater.NET</a> to load future software updates,</li>
+    	</ul>
+</body>
+</html>
