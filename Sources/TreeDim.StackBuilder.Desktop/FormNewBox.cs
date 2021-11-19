@@ -143,6 +143,8 @@ namespace treeDiM.StackBuilder.Desktop
                 ctrlStrapperSet.StrapperSet = StrapperSet;
                 // bulge
                 Bulge = boxProperties.Bulge;
+                // facing mark
+                Facing = boxProperties.Facing;
 
                 // disable Ok button
                 UpdateStatus(string.Empty);
@@ -267,6 +269,14 @@ namespace treeDiM.StackBuilder.Desktop
         {
             get => cbTapeColor.Color;
             set => cbTapeColor.Color = value; 
+        }
+        /// <summary>
+        /// Facing Mark
+        /// </summary>
+        public int Facing
+        {
+            get => cbFacing.SelectedIndex - 1;
+            set => cbFacing.SelectedIndex = value + 1;
         }
         /// <summary>
         /// Bulge
@@ -429,7 +439,11 @@ namespace treeDiM.StackBuilder.Desktop
             lbTapeColor.Enabled = isActivated;
             cbTapeColor.Enabled = isActivated;
             graphCtrl.Invalidate();
-        }      
+        }
+        private void OnFacingChanged(object sender, EventArgs e)
+        {
+            graphCtrl.Invalidate();
+        }
         #endregion
 
         #region Helpers
@@ -478,7 +492,8 @@ namespace treeDiM.StackBuilder.Desktop
                 TextureList = _textures,
                 TapeWidth = TapeWidth,
                 TapeColor = TapeColor,
-                StrapperSet = StrapperSet
+                StrapperSet = StrapperSet,
+                Facing = Facing
             };
             boxProperties.SetAllColors(_faceColors);
             graphics.AddBox(new Box(0, boxProperties));

@@ -1,6 +1,5 @@
 ﻿#region Using directives
 using System;
-using System.IO;
 using System.Text;
 using System.Globalization;
 
@@ -11,7 +10,7 @@ using treeDiM.StackBuilder.Basics;
 
 namespace treeDiM.StackBuilder.Exporters
 {
-    public class ExporterCSV_FMLogistic : Exporter
+    public class ExporterCSV_FMLogistic : ExporterRobot
     {
         #region Constructor
         public ExporterCSV_FMLogistic()
@@ -24,10 +23,11 @@ namespace treeDiM.StackBuilder.Exporters
         public override string Extension => "csv";
         public override string Filter => "Comma Separated Values (*.csv) |*.csv";
         public override bool ShowSelectorCoordinateMode => false;
-        public override bool HandlesRobotPreparation => true;
+        public override bool UseRobotPreparation => true;
+        public override System.Drawing.Bitmap BrandLogo => Properties.Resources.FM_Logistic;
         public override int MaxLayerIndexExporter(AnalysisLayered analysis) => Math.Min(analysis.SolutionLay.LayerCount, 2);
 
-        public override void Export(AnalysisLayered analysis, ref Stream stream)
+        public override void Export(AnalysisLayered analysis, NumberFormatInfo nfi, ref StringBuilder sb)
         {
             var sol = analysis.SolutionLay;
             var layers = sol.Layers;
@@ -35,24 +35,23 @@ namespace treeDiM.StackBuilder.Exporters
 
             int caseNumber = 1;
 
-            var csv = new StringBuilder();
             // case dimension
             Vector3D caseDim = analysis.ContentDimensions;
-            csv.AppendLine($"{caseNumber},{(int)caseDim.X},{(int)caseDim.Y},{(int)caseDim.Z}");
+            sb.AppendLine($"{caseNumber},{(int)caseDim.X},{(int)caseDim.Y},{(int)caseDim.Z}");
             // number of layers; number of drops
             int noDrops = sol.SolutionItems.Count;
-            csv.AppendLine($"{sol.SolutionItems.Count},{noDrops}");
+            sb.AppendLine($"{sol.SolutionItems.Count},{noDrops}");
             // interlayers
             int iLayer = 0;
             int xInterlayer = (int)(pallet.Length / 2);
             int yInterlayer = (int)(pallet.Width / 2);
             foreach (var solItem in sol.SolutionItems)
             {
-                csv.AppendLine($"{iLayer + 1},{xInterlayer},{yInterlayer},{(solItem.HasInterlayer ? 1 : 0)},{solItem.InterlayerIndex}");
+                sb.AppendLine($"{iLayer + 1},{xInterlayer},{yInterlayer},{(solItem.HasInterlayer ? 1 : 0)},{solItem.InterlayerIndex}");
                 ++iLayer;
             }
             bool topInterlayer = analysis is AnalysisCasePallet analysisCasePallet && analysisCasePallet.HasTopInterlayer;
-            csv.AppendLine($"{iLayer + 1},{xInterlayer},{yInterlayer},{(topInterlayer ? 1 : 0)},{1}");
+            sb.AppendLine($"{iLayer + 1},{xInterlayer},{yInterlayer},{(topInterlayer ? 1 : 0)},{1}");
 
             // 1 line per drop in the 2 first layer
             int iLine = 1;
@@ -68,37 +67,28 @@ namespace treeDiM.StackBuilder.Exporters
                         int orientation = ConvertPositionAngleToPositionIndex(bPos);
                         int blockType = 1;
 
-                        csv.AppendLine($"{iLine},{(int)vPos.X},{(int)vPos.Y},{(int)vPos.Z},{orientation},{caseNumber},{blockType}");
+                        sb.AppendLine($"{iLine},{(int)vPos.X},{(int)vPos.Y},{(int)vPos.Z},{orientation},{caseNumber},{blockType}");
                         ++iLine;
                     }
                     ++actualLayer;
                 }
                 ++iLayer;
             }
-
-            // write to stream
-            var writer = new StreamWriter(stream);
-            writer.Write(csv.ToString());
-            writer.Flush();
-            stream.Position = 0;
         }
-        public override void Export(RobotPreparation robotPreparation, ref Stream stream)
+        public override void Export(RobotPreparation robotPreparation, NumberFormatInfo nfi, ref StringBuilder sb)
         {
             int caseNumber = 1;
-            if (null == robotPreparation) return;
-
-            // string builder
-            var csv = new StringBuilder();
+ 
             // case dimensions (X;Y;Z)
             var caseDim = robotPreparation.ContentDimensions;
-            csv.AppendLine($"{caseNumber},{(int)caseDim.X},{(int)caseDim.Y},{(int)caseDim.Z}");
+            sb.AppendLine($"{caseNumber},{(int)caseDim.X},{(int)caseDim.Y},{(int)caseDim.Z}");
             // number of layers; number of drops
-            csv.AppendLine($"{robotPreparation.LayerCount},{robotPreparation.DropCount}");
+            sb.AppendLine($"{robotPreparation.LayerCount},{robotPreparation.DropCount}");
             // interlayers (layer index;X;Y;0/1;index interlayer)
             int iLayer = 1;
             Vector3D palletDim = robotPreparation.PalletDimensions;
             foreach (var indexInterlayer in robotPreparation.ListInterlayerIndexes)
-                csv.AppendLine($"{iLayer++},{(int)(0.5f * palletDim.X)},{(int)(0.5f * palletDim.Y)},{(indexInterlayer != -1 ? 1 : 0)},{indexInterlayer}");
+                sb.AppendLine($"{iLayer++},{(int)(0.5f * palletDim.X)},{(int)(0.5f * palletDim.Y)},{(indexInterlayer != -1 ? 1 : 0)},{indexInterlayer}");
 
             // 1 line per block in the 2 first layer
             // get Layer 0
@@ -115,15 +105,10 @@ namespace treeDiM.StackBuilder.Exporters
                         Vector3D vPos = ConvertPosition(drop.BoxPositionMain, drop.Dimensions);
                         int blockType = drop.PackDirection == RobotDrop.PackDir.LENGTH ? 1 : 0;
 
-                        csv.AppendLine($"{iLine},{(int)vPos.X},{(int)vPos.Y},{(int)vPos.Z},{orientation},{drop.Number},{blockType}");
+                        sb.AppendLine($"{iLine},{(int)vPos.X},{(int)vPos.Y},{(int)vPos.Z},{orientation},{drop.Number},{blockType}");
                     }
                 }
             }
-            // write to stream
-            var writer = new StreamWriter(stream);
-            writer.Write(csv.ToString());
-            writer.Flush();
-            stream.Position = 0;
         }
         #endregion
         #region Static members

@@ -23,13 +23,8 @@ namespace treeDiM.StackBuilder.Desktop
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            textEditorControl.SetFoldingStrategy("XML");
 
-            if (string.IsNullOrEmpty(FormatName))
-                FormatName = Properties.Settings.Default.ExportFormatName;
-
-            int iFormat = cbFileFormat.FindStringExact(FormatName);
-            cbFileFormat.SelectedIndex = iFormat > -1 ? iFormat : 0;
+            FillFormatComboBox();
             cbCoordinates.SelectedIndex = Properties.Settings.Default.ExportCoordinatesMode;
 
             if (Analysis is AnalysisCasePallet analysisCasePallet)
@@ -39,6 +34,23 @@ namespace treeDiM.StackBuilder.Desktop
             }
             // fill combo layer types
             FillLayerComboBox();
+            OnExportFormatChanged(this, e);
+        }
+
+        private void FillFormatComboBox()
+        {
+            // fill combo box with available exporters
+            cbFileFormat.Items.Clear();
+            foreach (var exporter in ExporterRobot.GetRobotExporters())
+                cbFileFormat.Items.Add(exporter.Name);
+            // select depending on FormatName
+            int iSel = cbFileFormat.Items.Count - 1;
+            if (iSel > 0)
+            { 
+                int iFormat = cbFileFormat.FindStringExact(FormatName);
+                iSel = iFormat != -1 ? iFormat : 0;                
+            }
+            cbFileFormat.SelectedIndex = iSel;
         }
 
         private void FillLayerComboBox()
@@ -78,9 +90,9 @@ namespace treeDiM.StackBuilder.Desktop
             try
             {
                 Stream stream = new MemoryStream();
-                var exporter = ExporterFactory.GetExporterByName(cbFileFormat.SelectedItem.ToString());
-                exporter.PositionCoordinateMode = cbCoordinates.SelectedIndex == 1 ? Exporter.CoordinateMode.CM_COG : Exporter.CoordinateMode.CM_CORNER;
-                if (exporter.HandlesRobotPreparation)
+                var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString()) as ExporterRobot;
+                exporter.PositionCoordinateMode = cbCoordinates.SelectedIndex == 1 ? ExporterRobot.CoordinateMode.CM_COG : ExporterRobot.CoordinateMode.CM_CORNER;
+                if (exporter.UseRobotPreparation)
                     exporter.Export(RobotPreparation, ref stream);
                 else
                     exporter.Export(Analysis, ref stream);
@@ -103,9 +115,8 @@ namespace treeDiM.StackBuilder.Desktop
             {
 
                 Stream stream = new MemoryStream();
-                var exporter = ExporterFactory.GetExporterByName(cbFileFormat.SelectedItem.ToString());
+                var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString()) as ExporterRobot;
                 exporter.Export(RobotPreparation, ref stream);
-
                 // to text edit control
                 using (StreamReader reader = new StreamReader(stream))
                     textEditorControl.Text = reader.ReadToEnd();
@@ -119,14 +130,22 @@ namespace treeDiM.StackBuilder.Desktop
         #region EventHandler
         private void OnExportFormatChanged(object sender, EventArgs e)
         {
-            if (null == CurrentExporter) return;
+            if (null == CurrentExporter)
+            {
 
-            layerEditor.Visible = CurrentExporter.HandlesRobotPreparation;
-            lbLayers.Visible = CurrentExporter.HandlesRobotPreparation;
-            cbLayers.Visible = CurrentExporter.HandlesRobotPreparation;
+                return;
+            }
+
+            // save format 
+            FormatName = CurrentExporter.Name;
+
+            layerEditor.Visible = CurrentExporter.UseRobotPreparation;
+            lbLayers.Visible = CurrentExporter.UseRobotPreparation;
+            cbLayers.Visible = CurrentExporter.UseRobotPreparation;
 
             lbCoordinates.Visible = CurrentExporter.ShowSelectorCoordinateMode;
             cbCoordinates.Visible = CurrentExporter.ShowSelectorCoordinateMode;
+
 
             try
             {
@@ -163,13 +182,17 @@ namespace treeDiM.StackBuilder.Desktop
         }
         #endregion
         #region Public properties
-        private Exporter CurrentExporter => ExporterFactory.GetExporterByName(cbFileFormat.SelectedItem.ToString());
+        private ExporterRobot CurrentExporter => ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());
         private int SelectedFormatIndex => cbFileFormat.SelectedIndex;
         private string SelectedFormatString => cbFileFormat.SelectedItem.ToString();
         #endregion
         #region Data members
         protected ILog _log = LogManager.GetLogger(typeof(FormExporter));
-        public string FormatName { get; set; }
+        private string FormatName
+        {
+            get => Properties.Settings.Default.ExportFormatName;
+            set => Properties.Settings.Default.ExportFormatName = value;
+        }
         public AnalysisLayered Analysis { get; set; }
         public RobotPreparation RobotPreparation { get; set; }
         #endregion

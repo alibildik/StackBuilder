@@ -60,8 +60,10 @@
     <Compile Include="Exceptions.cs" />
     <Compile Include="collada_schema_1_4.cs" />
     <Compile Include="Exporter.cs" />
+    <Compile Include="Exporter3D.cs" />
     <Compile Include="ExporterCollada.cs" />
     <Compile Include="ExporterCSV.cs" />
+    <Compile Include="ExporterCSV_ABB_France.cs" />
     <Compile Include="ExporterCSV_TechBSA.cs" />
     <Compile Include="ExporterCSV_FMLogistic.cs" />
     <Compile Include="ExporterGLB.cs" />
@@ -69,11 +71,17 @@
     <Compile Include="ExporterXML.cs" />
     <Compile Include="JSONSerialization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ExporterRobot.cs" />
     <Compile Include="StackBuilderXMLExport.cs">
       <DependentUpon>StackBuilderXMLExport.xsd</DependentUpon>
     </Compile>
@@ -126,6 +134,25 @@
     <PackageReference Include="System.Text.Json">
       <Version>5.0.2</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ABB_France.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BSA_Technology.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FM_Logistic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\treeDiM.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

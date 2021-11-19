@@ -10,7 +10,7 @@ using treeDiM.StackBuilder.Basics;
 
 namespace treeDiM.StackBuilder.Exporters
 {
-    public class ExporterCSV : Exporter
+    public class ExporterCSV : ExporterRobot
     {
         #region Static members
         public static string FormatName => "csv (default)";
@@ -20,18 +20,9 @@ namespace treeDiM.StackBuilder.Exporters
         public override string Name => FormatName;
         public override string Extension => "csv";
         public override string Filter => "Comma Separated Values (*.csv)|*.csv";
-        public override void Export(AnalysisLayered analysis, ref Stream stream)
+        public override System.Drawing.Bitmap BrandLogo => Properties.Resources.treeDiM;
+        public override void Export(AnalysisLayered analysis, NumberFormatInfo nfi, ref StringBuilder sb)
         {
-            // number formatting
-            NumberFormatInfo nfi = new NumberFormatInfo
-            {
-                NumberDecimalSeparator = ".",
-                NumberGroupSeparator = "",
-                NumberDecimalDigits = 1
-            };
-
-            // initialize csv file
-            var csv = new StringBuilder();
             SolutionLayered sol = analysis.SolutionLay;
             var layers = sol.Layers;
             foreach (ILayer layer in layers)
@@ -42,7 +33,7 @@ namespace treeDiM.StackBuilder.Exporters
                     foreach (BoxPosition bPosition in layerBox)
                     {
                         Vector3D pos = ConvertPosition(bPosition, analysis.ContentDimensions);
-                        csv.AppendLine(
+                        sb.AppendLine(
                             $"1;" +
                             $"{pos.X.ToString("0,0.0", nfi)};" +
                             $"{pos.Y.ToString("0,0.0", nfi)};" +
@@ -56,7 +47,7 @@ namespace treeDiM.StackBuilder.Exporters
                     layerCyl.Sort(analysis.Content, Layer3DCyl.SortType.DIST_CENTER);
                     foreach (Vector3D vPos in layerCyl)
                     {
-                        csv.AppendLine(
+                        sb.AppendLine(
                             $"1;" +
                             $"{vPos.X.ToString("0,0.0", nfi)};" +
                             $"{vPos.Y.ToString("0,0.0", nfi)};" +
@@ -73,7 +64,7 @@ namespace treeDiM.StackBuilder.Exporters
                             , interlayerPos.ZLow),
                             HalfAxis.HAxis.AXIS_X_P, HalfAxis.HAxis.AXIS_Y_P);
                     Vector3D pos = ConvertPosition(bPosition, interlayerProp.Dimensions);
-                    csv.AppendLine(
+                    sb.AppendLine(
                         $"{interlayerPos.TypeId + 1};" +
                         $"{pos.X.ToString("0,0.0", nfi)};" +
                         $"{pos.Y.ToString("0,0.0", nfi)};" +
@@ -81,13 +72,9 @@ namespace treeDiM.StackBuilder.Exporters
                         );
                 }
             }
-            var writer = new StreamWriter(stream);
-            writer.Write(csv.ToString());
-            writer.Flush();
-            stream.Position = 0;
         }
 
-        public override void Export(RobotPreparation robotPreparation, ref Stream stream)
+        public override void Export(RobotPreparation robotPreparation, NumberFormatInfo nfi, ref StringBuilder sb)
         {
         }
     }

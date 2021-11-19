@@ -47,6 +47,8 @@
             this.bnSaveToDB = new System.Windows.Forms.Button();
             this.tabCtrl = new System.Windows.Forms.TabControl();
             this.tabPageTape = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbFacing = new System.Windows.Forms.ComboBox();
             this.cbTapeColor = new OfficePickers.ColorPicker.ComboBoxColorPicker();
             this.uCtrlTapeWidth = new treeDiM.Basics.UCtrlOptDouble();
             this.tabPageStrappers = new System.Windows.Forms.TabPage();
@@ -321,7 +323,12 @@
             resources.GetString("cbColor.Items135"),
             resources.GetString("cbColor.Items136"),
             resources.GetString("cbColor.Items137"),
-            resources.GetString("cbColor.Items138")});
+            resources.GetString("cbColor.Items138"),
+            resources.GetString("cbColor.Items139"),
+            resources.GetString("cbColor.Items140"),
+            resources.GetString("cbColor.Items141"),
+            resources.GetString("cbColor.Items142"),
+            resources.GetString("cbColor.Items143")});
             this.cbColor.Name = "cbColor";
             this.cbColor.SelectedColorChanged += new System.EventHandler(this.OnFaceColorChanged);
             // 
@@ -398,12 +405,33 @@
             // 
             // tabPageTape
             // 
+            this.tabPageTape.Controls.Add(this.label1);
+            this.tabPageTape.Controls.Add(this.cbFacing);
             this.tabPageTape.Controls.Add(this.cbTapeColor);
             this.tabPageTape.Controls.Add(this.uCtrlTapeWidth);
             this.tabPageTape.Controls.Add(this.lbTapeColor);
             resources.ApplyResources(this.tabPageTape, "tabPageTape");
             this.tabPageTape.Name = "tabPageTape";
             this.tabPageTape.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // cbFacing
+            // 
+            this.cbFacing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFacing.FormattingEnabled = true;
+            this.cbFacing.Items.AddRange(new object[] {
+            resources.GetString("cbFacing.Items"),
+            resources.GetString("cbFacing.Items1"),
+            resources.GetString("cbFacing.Items2"),
+            resources.GetString("cbFacing.Items3"),
+            resources.GetString("cbFacing.Items4")});
+            resources.ApplyResources(this.cbFacing, "cbFacing");
+            this.cbFacing.Name = "cbFacing";
+            this.cbFacing.SelectedIndexChanged += new System.EventHandler(this.OnFacingChanged);
             // 
             // cbTapeColor
             // 
@@ -553,7 +581,12 @@
             resources.GetString("cbTapeColor.Items136"),
             resources.GetString("cbTapeColor.Items137"),
             resources.GetString("cbTapeColor.Items138"),
-            resources.GetString("cbTapeColor.Items139")});
+            resources.GetString("cbTapeColor.Items139"),
+            resources.GetString("cbTapeColor.Items140"),
+            resources.GetString("cbTapeColor.Items141"),
+            resources.GetString("cbTapeColor.Items142"),
+            resources.GetString("cbTapeColor.Items143"),
+            resources.GetString("cbTapeColor.Items144")});
             this.cbTapeColor.Name = "cbTapeColor";
             this.cbTapeColor.SelectedColorChanged += new System.EventHandler(this.OnFaceColorChanged);
             // 
@@ -680,5 +713,7 @@
         private System.Windows.Forms.Label lbWarningBoxCaseAnalysis;
         private System.Windows.Forms.TabPage tabPageBulge;
         private treeDiM.Basics.UCtrlOptTriDouble uCtrlOptBulge;
+        private System.Windows.Forms.ComboBox cbFacing;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -385,7 +385,7 @@ namespace treeDiM.StackBuilder.Basics
         }
         #endregion
         #region Data members
-        private AnalysisCasePallet Analysis { get; set; }
+        public AnalysisCasePallet Analysis { get; protected set; }
         public List<RobotLayer> LayerTypes { get; set; } = new List<RobotLayer>();
         public List<int> ListInterlayerIndexes = new List<int>();
         public List<int> ListLayerIndexes = new List<int>();

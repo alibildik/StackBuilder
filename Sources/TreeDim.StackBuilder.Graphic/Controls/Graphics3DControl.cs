@@ -87,7 +87,7 @@ namespace treeDiM.StackBuilder.Graphics
         public IDrawingContainer DrawingContainer { set; private get; }
         public Viewer Viewer { get; set; }
         protected bool ShowDimensions { get; set; } = true;
-        protected bool ShowFacing { get; set; } = false;
+        protected bool ShowFacing { get; set; } = true;
         private bool Dragging { get; set; } = false;
         public bool ShowToolBar { get; private set; } = false;
         public double AngleHoriz { get; set; } = 45.0 + 180.0;

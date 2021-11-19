@@ -14,7 +14,7 @@ namespace treeDiM.StackBuilder.Graphics
         {
             Dimensions = dim;
         }
-        public void Draw(Graphics2D graphics, IEnumerable<Box> boxes, bool selected, bool annotate)
+        public void Draw(Graphics2D graphics, IEnumerable<Box> boxes, bool selected, string text)
         {
             graphics.NumberOfViews = 1;
             graphics.Clear(selected ? Color.LightBlue : Color.White);
@@ -23,16 +23,12 @@ namespace treeDiM.StackBuilder.Graphics
             graphics.DrawRectangle(Vector2D.Zero, Dimensions, Color.Black);
 
             foreach (var b in boxes)
-            {
                 b.Draw(graphics);
-            }
 
             // annotate thumbnail
-            if (annotate)
-                Annotate(graphics.Graphics, graphics.Size);
-
+            ThumbnailMarker.Annotate(graphics.Graphics, graphics.Size, text);
         }
-        public void Draw(Graphics3D graphics, IEnumerable<Box> boxes, bool selected, bool annotate)
+        public void Draw(Graphics3D graphics, IEnumerable<Box> boxes, bool selected, string text)
         {
             graphics.BackgroundColor = selected ? Color.LightBlue : Color.White;
             graphics.CameraPosition = Graphics3D.Corner_0;
@@ -40,24 +36,11 @@ namespace treeDiM.StackBuilder.Graphics
             foreach (var box in boxes)
                 graphics.AddBox(box);
             graphics.Flush();
-            if (annotate)
-                Annotate(graphics.Graphics, graphics.Size);
-        }
-
-        private void Annotate(System.Drawing.Graphics g, Size s)
-        {
-            Font tFont = new Font("Arial", FontSize);
-            StringFormat sf = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Far };
-            string annotation = $"{LayerNumber}";
-            Size txtSize = g.MeasureString(annotation, tFont).ToSize();
-            g.FillRectangle(new SolidBrush(Color.Black), new Rectangle(s.Width - txtSize.Width - 2, s.Height - txtSize.Height - 2, txtSize.Width + 2, txtSize.Height + 2));
-            g.DrawString(annotation, tFont, new SolidBrush(Color.White), new Point(s.Width - 3, s.Height - 3), sf);
+            ThumbnailMarker.Annotate(graphics.Graphics, graphics.Size, text);
         }
 
         public void Dispose() {}
 
         public Vector2D Dimensions { get; set; }
-        public int LayerNumber { get; set; }
-        public static int FontSize { get; set; } = 9;
     }
 }

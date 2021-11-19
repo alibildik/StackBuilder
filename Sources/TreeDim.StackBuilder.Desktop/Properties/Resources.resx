@@ -250,6 +250,9 @@
   <data name="ID_ALGORITHM" xml:space="preserve">
     <value>Algorithm</value>
   </data>
+  <data name="ID_ALL" xml:space="preserve">
+    <value>All</value>
+  </data>
   <data name="ID_ALLOWALIGNEDORALTERNATELAYERS" xml:space="preserve">
     <value>Allow aligned and/or alternate layers</value>
   </data>

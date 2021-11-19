@@ -68,9 +68,5 @@ namespace treeDiM.StackBuilder.Exporters
             string filePath = string.Empty;
             File.WriteAllText( filePath, JsonConvert.SerializeObject(rootObj) );
         }
-
-        public override void Export(RobotPreparation robotPreparation, ref Stream stream)
-        {
-        }
     }
 }

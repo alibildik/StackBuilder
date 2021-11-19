@@ -81,6 +81,8 @@ namespace treeDiM.StackBuilder.Graphics
                         // tape
                         TapeWidth = boxProperties.TapeWidth;
                         TapeColor = boxProperties.TapeColor;
+                        // facing
+                        Facing = boxProperties.Facing;
                     }
                 }
                 if (packable is PackableBrickNamed packableBrickNamed)
@@ -169,7 +171,7 @@ namespace treeDiM.StackBuilder.Graphics
         public bool ShowTape => TapeWidth.Activated;
         public OptDouble TapeWidth { get; set; }
         public Color TapeColor { get; set; }
-        public bool FacingMark { get; set; } = false;
+        public int Facing { get; set; } = -1;
         public bool ShowOrientationMark { get; set; } = false;
         public Color OrientationMarkColor { get; set; } = Color.White;
         public Vector3D[] TapePoints
@@ -187,39 +189,63 @@ namespace treeDiM.StackBuilder.Graphics
                 return points;
             }
         }
-        public Vector3D[] FacingPointsTop
+        private Vector3D[] FacingPointsTop
         {
             get
             {
-                Vector3D lengthAxis = LengthAxis;
-                Vector3D widthAxis = WidthAxis;
-                Vector3D vZ = Dimensions.Z * HeightAxis;
-                
-                double facing = UnitsManager.ConvertLengthFrom(Properties.Settings.Default.FacingDimension, UnitsManager.UnitSystem.UNIT_METRIC1);
-                var points = new Vector3D[4];
-                points[0] = Position + 0.5 * (Dimensions.X - facing) * lengthAxis + vZ;
-                points[1] = Position + 0.5 * (Dimensions.X + facing) * lengthAxis + vZ;
-                points[2] = Position + 0.5 * (Dimensions.X + facing) * lengthAxis + facing * widthAxis + vZ;
-                points[3] = Position + 0.5 * (Dimensions.X - facing) * lengthAxis + facing * widthAxis + vZ;
-                return points;
-            }
-        }
-        public Vector3D[] FacingPointsRight
-        {
-            get
-            {
-                Vector3D lengthAxis = LengthAxis;
-                Vector3D heightAxis = HeightAxis;
-                double facing = UnitsManager.ConvertLengthFrom(Properties.Settings.Default.FacingDimension, UnitsManager.UnitSystem.UNIT_METRIC1);
-                var points = new Vector3D[4];
-                points[0] = Position + 0.5 * (Dimensions.X - facing) * lengthAxis + (Dimensions.Z - facing) * heightAxis;
-                points[1] = Position + 0.5 * (Dimensions.X + facing) * lengthAxis + (Dimensions.Z - facing) * heightAxis;
-                points[2] = Position + 0.5 * (Dimensions.X + facing) * lengthAxis + Dimensions.Z * heightAxis;
-                points[3] = Position + 0.5 * (Dimensions.X - facing) * lengthAxis + Dimensions.Z * heightAxis;
-                return points;
+                switch (Facing)
+                {
+                    case 0: return SquarePoints(LengthAxis, WidthAxis);
+                    case 1: return SquarePoints(WidthAxis, -LengthAxis);
+                    case 2: return SquarePoints(-LengthAxis, -WidthAxis);
+                    case 3: return SquarePoints(-WidthAxis, LengthAxis);
+                    default: return Enumerable.Repeat(Vector3D.Zero, 4).ToArray();
+                }
             }
         }
 
+        private Vector3D[] FacingPointsSide
+        {
+            get
+            {
+                switch (Facing)
+                {
+                    case 0: return SquarePoints(-LengthAxis, -HeightAxis);
+                    case 1: return SquarePoints(-WidthAxis, -HeightAxis);
+                    case 2: return SquarePoints(LengthAxis, -HeightAxis);
+                    case 3: return SquarePoints(WidthAxis, -HeightAxis);
+                    default:  return Enumerable.Repeat(Vector3D.Zero, 4).ToArray();
+                }
+            }
+        }
+        private Vector3D FacingPos
+        {
+            get
+            {
+                Vector3D zPos = Position + 0.5 * Dimensions.X * LengthAxis + 0.5 * Dimensions.Y * WidthAxis + Dimensions.Z * HeightAxis;
+                Vector3D dimX = 0.5 * Dimensions.X * LengthAxis;
+                Vector3D dimY = 0.5 * Dimensions.Y * WidthAxis;
+                switch (Facing)
+                {
+                    case 0: return zPos        - dimY;
+                    case 1: return zPos + dimX ;
+                    case 2: return zPos        + dimY;
+                    case 3: return zPos - dimX ;
+                    default: return zPos;
+                }
+            }
+        }
+        private Vector3D[] SquarePoints(Vector3D xAxis, Vector3D yAxis)
+        {
+            Vector3D pt = FacingPos;
+            double facing = UnitsManager.ConvertLengthFrom(Properties.Settings.Default.FacingDimension, UnitsManager.UnitSystem.UNIT_METRIC1);
+            var points = new Vector3D[4];
+            points[0] = pt - 0.5 * facing * xAxis;
+            points[1] = pt + 0.5 * facing * xAxis;
+            points[2] = pt + 0.5 * facing * xAxis + facing * yAxis;
+            points[3] = pt - 0.5 * facing * xAxis + facing * yAxis;
+            return points;
+        }
         public Face[] StrapperFaces
         {
             get
@@ -529,12 +555,12 @@ namespace treeDiM.StackBuilder.Graphics
                     g.DrawLine(penBlack, pts[j - 1], pts[j]);
                 g.DrawLine(penBlack, pts[pts.Length - 1], pts[0]);
             }
-            if (ShowTape && graphics.ShowFacing)
+            if (-1 != Facing && graphics.ShowFacing)
             {
                 if (faces[5].IsVisible(viewDir))
                     g.FillPolygon(new SolidBrush(faces[5].ColorGraph(graphics, Color.Red)), graphics.TransformPoint(FacingPointsTop));
-                if (faces[2].IsVisible(viewDir))
-                    g.FillPolygon(new SolidBrush(faces[2].ColorGraph(graphics, Color.Red)), graphics.TransformPoint(FacingPointsRight));
+                if (FacingFace.IsVisible(viewDir))
+                    g.FillPolygon(new SolidBrush(faces[2].ColorGraph(graphics, Color.Red)), graphics.TransformPoint(FacingPointsSide));
             }
             // draw strappers
             foreach (var sf in StrapperFaces)
@@ -588,6 +614,21 @@ namespace treeDiM.StackBuilder.Graphics
         }
         #endregion
         #region Private helpers
+        private Face FacingFace
+        {
+            get
+            {
+                switch (Facing)
+                {
+                    case -1: return null;
+                    case 0: return Faces[2];
+                    case 1: return Faces[1];
+                    case 2: return Faces[3];
+                    case 3: return Faces[0];
+                    default: return null;
+                }
+            }
+        }
         private BProperties PackableToBProperties(Packable packable)
         {
             if (packable is BProperties)

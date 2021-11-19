@@ -14,12 +14,13 @@ namespace treeDiM.StackBuilder.Graphics
             IEnumerable<Box> boxes,
             Vector3D crateDimensions, Color crateColor,
             bool selected, bool showOuterDimensions,
-            Size size)
+            Size size,
+            string text)
         {
             var graphics = new Graphics3DImage(size) { MarginPercentage = 0.05 };
             graphics.SetViewport(-500.0f, -500.0f, 500.0f, 500.0f);
             using (var viewer = new ViewerHLayeredCrate(crateDimensions, crateColor))
-                viewer.Draw(graphics, boxes, selected, showOuterDimensions);
+                viewer.Draw(graphics, boxes, selected, showOuterDimensions, text);
             return graphics.Bitmap;
         }
         #endregion
@@ -32,13 +33,14 @@ namespace treeDiM.StackBuilder.Graphics
             IEnumerable<BoxExplicitDir> boxes,
             Vector3D crateDimensions, Color crateColor,
             bool selected, bool showOuterDimensions,
-            Size size
+            Size size,
+            string text
             )
         {
             var graphics = new Graphics3DImage(size) { MarginPercentage = 0.05 };
             graphics.SetViewport(-500.0f, -500.0f, 500.0f, 500.0f);
             using (var viewer = new ViewerNonLayeredCrate(crateDimensions, crateColor))
-                viewer.Draw(graphics, boxes, selected, showOuterDimensions);
+                viewer.Draw(graphics, boxes, selected, showOuterDimensions, text);
             return graphics.Bitmap;
         }
         #endregion

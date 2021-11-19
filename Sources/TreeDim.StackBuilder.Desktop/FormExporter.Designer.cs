@@ -43,6 +43,11 @@
             this.layerEditor = new treeDiM.StackBuilder.Graphics.Graphics2DRobotDropEditor();
             this.textEditorControl = new ICSharpCode.TextEditor.TextEditorControlEx();
             this.saveExportFile = new System.Windows.Forms.SaveFileDialog();
+            this.tabCtrlFeatures = new System.Windows.Forms.TabControl();
+            this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.tabPageLayerPrep = new System.Windows.Forms.TabPage();
+            this.tabPageAngles = new System.Windows.Forms.TabPage();
+            this.pbBrandLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHoriz)).BeginInit();
             this.splitContainerHoriz.Panel1.SuspendLayout();
             this.splitContainerHoriz.Panel2.SuspendLayout();
@@ -55,6 +60,10 @@
             this.splitContainerLayer.Panel1.SuspendLayout();
             this.splitContainerLayer.Panel2.SuspendLayout();
             this.splitContainerLayer.SuspendLayout();
+            this.tabCtrlFeatures.SuspendLayout();
+            this.tabPageSettings.SuspendLayout();
+            this.tabPageLayerPrep.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBrandLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerHoriz
@@ -66,24 +75,23 @@
             // 
             // splitContainerHoriz.Panel1
             // 
+            this.splitContainerHoriz.Panel1.Controls.Add(this.pbBrandLogo);
             this.splitContainerHoriz.Panel1.Controls.Add(this.bnSave);
             this.splitContainerHoriz.Panel1.Controls.Add(this.bnClose);
-            this.splitContainerHoriz.Panel1.Controls.Add(this.cbCoordinates);
-            this.splitContainerHoriz.Panel1.Controls.Add(this.lbCoordinates);
             this.splitContainerHoriz.Panel1.Controls.Add(this.lbFormat);
             this.splitContainerHoriz.Panel1.Controls.Add(this.cbFileFormat);
             // 
             // splitContainerHoriz.Panel2
             // 
             this.splitContainerHoriz.Panel2.Controls.Add(this.splitContainer1);
-            this.splitContainerHoriz.Size = new System.Drawing.Size(800, 450);
-            this.splitContainerHoriz.SplitterDistance = 75;
+            this.splitContainerHoriz.Size = new System.Drawing.Size(800, 594);
+            this.splitContainerHoriz.SplitterDistance = 120;
             this.splitContainerHoriz.TabIndex = 0;
             // 
             // bnSave
             // 
             this.bnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bnSave.Location = new System.Drawing.Point(713, 38);
+            this.bnSave.Location = new System.Drawing.Point(713, 37);
             this.bnSave.Name = "bnSave";
             this.bnSave.Size = new System.Drawing.Size(75, 23);
             this.bnSave.TabIndex = 5;
@@ -109,7 +117,7 @@
             this.cbCoordinates.Items.AddRange(new object[] {
             "Case corner",
             "Case center"});
-            this.cbCoordinates.Location = new System.Drawing.Point(342, 10);
+            this.cbCoordinates.Location = new System.Drawing.Point(91, 6);
             this.cbCoordinates.Name = "cbCoordinates";
             this.cbCoordinates.Size = new System.Drawing.Size(140, 21);
             this.cbCoordinates.TabIndex = 3;
@@ -118,7 +126,7 @@
             // lbCoordinates
             // 
             this.lbCoordinates.AutoSize = true;
-            this.lbCoordinates.Location = new System.Drawing.Point(256, 13);
+            this.lbCoordinates.Location = new System.Drawing.Point(5, 9);
             this.lbCoordinates.Name = "lbCoordinates";
             this.lbCoordinates.Size = new System.Drawing.Size(63, 13);
             this.lbCoordinates.TabIndex = 2;
@@ -137,11 +145,6 @@
             // 
             this.cbFileFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFileFormat.FormattingEnabled = true;
-            this.cbFileFormat.Items.AddRange(new object[] {
-            "xml",
-            "csv (default)",
-            "csv (TechnologyBSA)",
-            "csv (FM Logistic)"});
             this.cbFileFormat.Location = new System.Drawing.Point(91, 10);
             this.cbFileFormat.Name = "cbFileFormat";
             this.cbFileFormat.Size = new System.Drawing.Size(140, 21);
@@ -156,12 +159,12 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.splitContainerLayer);
+            this.splitContainer1.Panel1.Controls.Add(this.tabCtrlFeatures);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.textEditorControl);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 371);
+            this.splitContainer1.Size = new System.Drawing.Size(800, 470);
             this.splitContainer1.SplitterDistance = 380;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -170,7 +173,7 @@
             this.splitContainerLayer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerLayer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerLayer.IsSplitterFixed = true;
-            this.splitContainerLayer.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerLayer.Location = new System.Drawing.Point(3, 3);
             this.splitContainerLayer.Name = "splitContainerLayer";
             this.splitContainerLayer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -182,7 +185,7 @@
             // splitContainerLayer.Panel2
             // 
             this.splitContainerLayer.Panel2.Controls.Add(this.layerEditor);
-            this.splitContainerLayer.Size = new System.Drawing.Size(380, 371);
+            this.splitContainerLayer.Size = new System.Drawing.Size(366, 438);
             this.splitContainerLayer.SplitterDistance = 35;
             this.splitContainerLayer.TabIndex = 3;
             // 
@@ -190,7 +193,7 @@
             // 
             this.cbLayers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLayers.FormattingEnabled = true;
-            this.cbLayers.Location = new System.Drawing.Point(91, 8);
+            this.cbLayers.Location = new System.Drawing.Point(84, 6);
             this.cbLayers.Name = "cbLayers";
             this.cbLayers.Size = new System.Drawing.Size(140, 21);
             this.cbLayers.TabIndex = 1;
@@ -198,7 +201,7 @@
             // lbLayers
             // 
             this.lbLayers.AutoSize = true;
-            this.lbLayers.Location = new System.Drawing.Point(5, 11);
+            this.lbLayers.Location = new System.Drawing.Point(3, 9);
             this.lbLayers.Name = "lbLayers";
             this.lbLayers.Size = new System.Drawing.Size(38, 13);
             this.lbLayers.TabIndex = 2;
@@ -210,26 +213,78 @@
             this.layerEditor.Layer = null;
             this.layerEditor.Location = new System.Drawing.Point(0, 0);
             this.layerEditor.Name = "layerEditor";
-            this.layerEditor.Size = new System.Drawing.Size(380, 332);
+            this.layerEditor.Size = new System.Drawing.Size(366, 399);
             this.layerEditor.TabIndex = 0;
             // 
             // textEditorControl
             // 
             this.textEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textEditorControl.EnableFolding = false;
+            this.textEditorControl.FoldingStrategy = "XML";
             this.textEditorControl.Font = new System.Drawing.Font("Courier New", 10F);
             this.textEditorControl.Location = new System.Drawing.Point(0, 0);
             this.textEditorControl.Name = "textEditorControl";
-            this.textEditorControl.Size = new System.Drawing.Size(416, 371);
+            this.textEditorControl.Size = new System.Drawing.Size(416, 470);
             this.textEditorControl.SyntaxHighlighting = "XML";
             this.textEditorControl.TabIndex = 0;
+            // 
+            // tabCtrlFeatures
+            // 
+            this.tabCtrlFeatures.Controls.Add(this.tabPageSettings);
+            this.tabCtrlFeatures.Controls.Add(this.tabPageAngles);
+            this.tabCtrlFeatures.Controls.Add(this.tabPageLayerPrep);
+            this.tabCtrlFeatures.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabCtrlFeatures.Location = new System.Drawing.Point(0, 0);
+            this.tabCtrlFeatures.Name = "tabCtrlFeatures";
+            this.tabCtrlFeatures.SelectedIndex = 0;
+            this.tabCtrlFeatures.Size = new System.Drawing.Size(380, 470);
+            this.tabCtrlFeatures.TabIndex = 4;
+            // 
+            // tabPageSettings
+            // 
+            this.tabPageSettings.Controls.Add(this.cbCoordinates);
+            this.tabPageSettings.Controls.Add(this.lbCoordinates);
+            this.tabPageSettings.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSettings.Name = "tabPageSettings";
+            this.tabPageSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSettings.Size = new System.Drawing.Size(372, 444);
+            this.tabPageSettings.TabIndex = 0;
+            this.tabPageSettings.Text = "Settings";
+            this.tabPageSettings.UseVisualStyleBackColor = true;
+            // 
+            // tabPageLayerPrep
+            // 
+            this.tabPageLayerPrep.Controls.Add(this.splitContainerLayer);
+            this.tabPageLayerPrep.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLayerPrep.Name = "tabPageLayerPrep";
+            this.tabPageLayerPrep.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLayerPrep.Size = new System.Drawing.Size(372, 444);
+            this.tabPageLayerPrep.TabIndex = 1;
+            this.tabPageLayerPrep.Text = "Layer preparation";
+            this.tabPageLayerPrep.UseVisualStyleBackColor = true;
+            // 
+            // tabPageAngles
+            // 
+            this.tabPageAngles.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAngles.Name = "tabPageAngles";
+            this.tabPageAngles.Size = new System.Drawing.Size(372, 444);
+            this.tabPageAngles.TabIndex = 2;
+            this.tabPageAngles.Text = "Conveyor & Gripper angles";
+            this.tabPageAngles.UseVisualStyleBackColor = true;
+            // 
+            // pbBrandLogo
+            // 
+            this.pbBrandLogo.Location = new System.Drawing.Point(238, 6);
+            this.pbBrandLogo.Name = "pbBrandLogo";
+            this.pbBrandLogo.Size = new System.Drawing.Size(100, 100);
+            this.pbBrandLogo.TabIndex = 6;
+            this.pbBrandLogo.TabStop = false;
             // 
             // FormExporter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bnClose;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 594);
             this.Controls.Add(this.splitContainerHoriz);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -252,6 +307,11 @@
             this.splitContainerLayer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerLayer)).EndInit();
             this.splitContainerLayer.ResumeLayout(false);
+            this.tabCtrlFeatures.ResumeLayout(false);
+            this.tabPageSettings.ResumeLayout(false);
+            this.tabPageSettings.PerformLayout();
+            this.tabPageLayerPrep.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbBrandLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -272,5 +332,10 @@
         private System.Windows.Forms.SplitContainer splitContainerLayer;
         private System.Windows.Forms.Label lbLayers;
         private System.Windows.Forms.ComboBox cbLayers;
+        private System.Windows.Forms.TabControl tabCtrlFeatures;
+        private System.Windows.Forms.TabPage tabPageSettings;
+        private System.Windows.Forms.TabPage tabPageLayerPrep;
+        private System.Windows.Forms.PictureBox pbBrandLogo;
+        private System.Windows.Forms.TabPage tabPageAngles;
     }
 }

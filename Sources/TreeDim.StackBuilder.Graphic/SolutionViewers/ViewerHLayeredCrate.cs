@@ -21,7 +21,7 @@ namespace treeDiM.StackBuilder.Graphics
         }
         #endregion
         #region Drawing
-        public void Draw(Graphics3D graphics, IEnumerable<Box> boxes, bool selected, bool showOuterDimensions)
+        public void Draw(Graphics3D graphics, IEnumerable<Box> boxes, bool selected, bool showOuterDimensions, string text)
         {
             graphics.BackgroundColor = selected ? Color.LightBlue : Color.White;
             graphics.CameraPosition = Graphics3D.Corner_0;
@@ -40,6 +40,8 @@ namespace treeDiM.StackBuilder.Graphics
                 graphics.AddDimensions(new DimensionCube(Dimensions));
 
             graphics.Flush();
+            // add marker ?
+            ThumbnailMarker.Annotate(graphics.Graphics, graphics.Size, text);
         }
         #endregion
         #region IDisposable
@@ -61,10 +63,10 @@ namespace treeDiM.StackBuilder.Graphics
         }
         #endregion
         #region Drawing
-        public void Draw(Graphics3D graphics, IEnumerable<BoxExplicitDir> boxes, bool selected, bool showOuterDimensions)
+        public void Draw(Graphics3D graphics, IEnumerable<BoxExplicitDir> boxes, bool selected, bool showOuterDimensions, string text)
         {
             graphics.BackgroundColor = selected ? Color.LightBlue : Color.White;
-            graphics.CameraPosition = Graphics3D.Corner_0;
+            graphics.CameraPosition = Graphics3D.Corner_180;
             // draw case (inside)
             Case crate = new Case(0, Dimensions, Dimensions, CrateColor);
             crate.DrawInside(graphics, Transform3D.Identity);
@@ -79,6 +81,9 @@ namespace treeDiM.StackBuilder.Graphics
                 graphics.AddDimensions(new DimensionCube(Dimensions));
 
             graphics.Flush();
+
+            // add marker ?
+            ThumbnailMarker.Annotate(graphics.Graphics, graphics.Size, text);
         }
         #endregion
         #region IDisposable

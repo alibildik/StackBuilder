@@ -656,6 +656,12 @@
     <Compile Include="OptionPanels\FormOptionsSettings.Designer.cs">
       <DependentUpon>FormOptionsSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="OptionPanels\OptionPanelRobot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OptionPanels\OptionPanelRobot.Designer.cs">
+      <DependentUpon>OptionPanelRobot.cs</DependentUpon>
+    </Compile>
     <Compile Include="OptionPanels\OptionPanelUnits.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -3264,6 +3270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OptionPanels\OptionPanelReporting.zh.resx">
       <DependentUpon>OptionPanelReporting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionPanels\OptionPanelRobot.resx">
+      <DependentUpon>OptionPanelRobot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OptionPanels\OptionPanelUnits.de.resx">
       <DependentUpon>OptionPanelUnits.cs</DependentUpon>

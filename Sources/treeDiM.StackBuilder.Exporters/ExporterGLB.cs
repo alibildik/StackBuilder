@@ -22,7 +22,7 @@ namespace treeDiM.StackBuilder.Exporters
     using PRIMITIVE = PrimitiveBuilder<MaterialBuilder, VertexPosition, VertexEmpty, VertexEmpty>;
 
     #region ExporterGLB
-    public class ExporterGLB : Exporter
+    public class ExporterGLB : Exporter3D
     {
         #region Static members
         public static string FormatName => "glb";
@@ -111,10 +111,6 @@ namespace treeDiM.StackBuilder.Exporters
                 case "obj": model.SaveAsWavefront(filePath); break;
                 default: new System.Exception($"Unexpected file extension : {fileExtension}"); break;
             }
-        }
-
-        public override void Export(RobotPreparation robotPreparation, ref Stream stream)
-        {
         }
         #endregion
 

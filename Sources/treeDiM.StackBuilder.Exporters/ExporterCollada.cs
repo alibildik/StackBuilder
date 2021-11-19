@@ -29,7 +29,7 @@ namespace treeDiM.StackBuilder.Exporters
     #endregion
 
     #region Exporter
-    public class ExporterCollada : Exporter
+    public class ExporterCollada : Exporter3D
     {
         #region Static members
         public static string FormatName => "dae";
@@ -296,9 +296,6 @@ namespace treeDiM.StackBuilder.Exporters
             model.Save(filePath);
             model.Save(System.IO.Path.ChangeExtension(filePath, "xml"));
             */
-        }
-        public override void Export(RobotPreparation robotPreparation, ref Stream stream)
-        { 
         }
         #endregion
 

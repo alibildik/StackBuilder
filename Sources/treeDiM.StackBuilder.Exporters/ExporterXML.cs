@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Xml.Serialization;
+using System.Globalization;
 
 using Sharp3D.Math.Core;
 
@@ -15,7 +16,7 @@ namespace treeDiM.StackBuilder.Exporters
     /// This uses classes generated from xml schema StackBuilderXMLExport.xsd
     /// Command line is: xsd /c /namespace:stb /language:CS StackBuilderXMLExport.xsd
     /// </summary>
-    public class ExporterXML: Exporter
+    public class ExporterXML: ExporterRobot
     {
         #region Static members
         public static string FormatName => "xml";
@@ -25,6 +26,7 @@ namespace treeDiM.StackBuilder.Exporters
         public override string Name => FormatName;
         public override string Filter => "eXchange Markup Language (*.xml)|*.xml";
         public override string Extension => "xml";
+        public override System.Drawing.Bitmap BrandLogo => Properties.Resources.treeDiM;
         public override void Export(AnalysisLayered analysis, ref Stream stream)
         {
             SolutionLayered sol = analysis.SolutionLay;
@@ -68,9 +70,11 @@ namespace treeDiM.StackBuilder.Exporters
             stream.Flush();
             stream.Seek(0, SeekOrigin.Begin);
         }
-        public override void Export(RobotPreparation robotPreparation, ref Stream stream)
+        public override void Export(AnalysisLayered analysis, NumberFormatInfo nfi, ref StringBuilder sb)
         {
-            
+        }
+        public override void Export(RobotPreparation robotPreparation, NumberFormatInfo nfi, ref StringBuilder sb)
+        {
         }
         #region Helpers
         private units CurrentUnit

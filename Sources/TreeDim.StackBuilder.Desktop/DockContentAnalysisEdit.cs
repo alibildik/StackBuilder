@@ -398,7 +398,7 @@ namespace treeDiM.StackBuilder.Desktop
         }
         private void OnGenerateExport(object sender, EventArgs e)
         {
-            FormMain.GenerateExport(_analysis, string.Empty);
+            FormMain.GenerateExport(_analysis);
         }
 
         private void OnExportOBJ(object sender, EventArgs e) => OnExport3D("obj");

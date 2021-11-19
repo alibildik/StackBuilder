@@ -313,10 +313,12 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
                     null, "palletCap", "", palletDim.X, palletDim.Y, 1, palletDim.X, palletDim.Y, 0.0, 0.0, Color.LightYellow);
 
             // export
-            var exporter = ExporterFactory.GetExporterByName("csv (TechnologyBSA)");
-            exporter.PositionCoordinateMode = Exporter.CoordinateMode.CM_COG;
+            var exporter = ExporterFactory.GetExporterByName("csv (TechnologyBSA)") as ExporterRobot;
+            exporter.PositionCoordinateMode = ExporterRobot.CoordinateMode.CM_COG;
             Stream stream = new MemoryStream();
-            exporter.ExportIndexed(analysis, layerDesignMode, ref stream);
+            if (exporter is ExporterCSV_TechBSA exporterTechBSA)
+                exporterTechBSA.LayerDesignMode = layerDesignMode;
+            exporter.Export(analysis, ref stream);
             // save stream to file
             using (var br = new BinaryReader(stream))
                 fileBytes = br.ReadBytes((int)stream.Length);

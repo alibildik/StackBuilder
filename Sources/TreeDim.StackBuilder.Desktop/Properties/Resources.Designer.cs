@@ -475,6 +475,15 @@ namespace treeDiM.StackBuilder.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        internal static string ID_ALL {
+            get {
+                return ResourceManager.GetString("ID_ALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Allow aligned and/or alternate layers.
         /// </summary>
         internal static string ID_ALLOWALIGNEDORALTERNATELAYERS {

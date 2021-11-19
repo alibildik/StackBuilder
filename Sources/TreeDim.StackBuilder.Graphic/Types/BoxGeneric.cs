@@ -255,12 +255,12 @@ namespace treeDiM.StackBuilder.Graphics
                 points[7] = position + Dimensions.Z * heightAxis + Dimensions.Y * widthAxis;
 
                 var faces = new Face[6];
-                faces[0] = new Face(PickId, new Vector3D[] { points[3], points[0], points[4], points[7] }, ColorFace(0), Color.Black, "BOX", false); // AXIS_X_N
-                faces[1] = new Face(PickId, new Vector3D[] { points[1], points[2], points[6], points[5] }, ColorFace(1), Color.Black, "BOX", false); // AXIS_X_P
-                faces[2] = new Face(PickId, new Vector3D[] { points[0], points[1], points[5], points[4] }, ColorFace(2), Color.Black, "BOX", false); // AXIS_Y_N
-                faces[3] = new Face(PickId, new Vector3D[] { points[2], points[3], points[7], points[6] }, ColorFace(3), Color.Black, "BOX", false); // AXIS_Y_P
-                faces[4] = new Face(PickId, new Vector3D[] { points[3], points[2], points[1], points[0] }, ColorFace(4), Color.Black, "BOX", false); // AXIS_Z_N
-                faces[5] = new Face(PickId, new Vector3D[] { points[4], points[5], points[6], points[7] }, ColorFace(5), Color.Black, "BOX", false); // AXIS_Z_P
+                faces[0] = new Face(PickId, new Vector3D[] { points[3], points[0], points[4], points[7] }, ColorFace(0), Color.Black, "BOX", false); // AXIS_X_N <-> left
+                faces[1] = new Face(PickId, new Vector3D[] { points[1], points[2], points[6], points[5] }, ColorFace(1), Color.Black, "BOX", false); // AXIS_X_P <-> right
+                faces[2] = new Face(PickId, new Vector3D[] { points[0], points[1], points[5], points[4] }, ColorFace(2), Color.Black, "BOX", false); // AXIS_Y_N <-> front
+                faces[3] = new Face(PickId, new Vector3D[] { points[2], points[3], points[7], points[6] }, ColorFace(3), Color.Black, "BOX", false); // AXIS_Y_P <-> back
+                faces[4] = new Face(PickId, new Vector3D[] { points[3], points[2], points[1], points[0] }, ColorFace(4), Color.Black, "BOX", false); // AXIS_Z_N <-> bottom
+                faces[5] = new Face(PickId, new Vector3D[] { points[4], points[5], points[6], points[7] }, ColorFace(5), Color.Black, "BOX", false); // AXIS_Z_P <-> top
                 return faces;
             }
         }

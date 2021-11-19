@@ -24,7 +24,7 @@ namespace treeDiM.StackBuilder.Graphics
             graphics.Flush();
 
             if (annotate)
-                Annotate(graphics.Graphics, graphics.Size, height);
+                ThumbnailMarker.Annotate(graphics.Graphics, graphics.Size, $"{Layout.Positions.Count}");
         }
 
         #region Implement IDisposable
@@ -33,23 +33,8 @@ namespace treeDiM.StackBuilder.Graphics
         }
         #endregion
 
-        #region Private methods
-        private void Annotate(System.Drawing.Graphics g, Size s, double height)
-        {
-            // *** Annotate : begin ***
-            string annotation = $"{Layout.Positions.Count}";
-            Font tfont = new Font("Arial", FontSize);
-            Size txtSize = g.MeasureString(annotation, tfont).ToSize();
-            StringFormat sf = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Far };
-            g.FillRectangle(new SolidBrush(Color.Black), new Rectangle(s.Width - txtSize.Width - 2, s.Height - txtSize.Height - 2, txtSize.Width + 2, txtSize.Height + 2));
-            g.DrawString(annotation, tfont, new SolidBrush(Color.White), new Point(s.Width - 3, s.Height - 3), sf);
-            // *** Annotate : end ***
-
-        }
-        #endregion
         #region Data members
         private HCylLayout Layout { get; set; }
-        private static int FontSize { get; set; } = 9;
         #endregion
     }
 }

@@ -262,7 +262,20 @@ namespace treeDiM.StackBuilder.Basics
         // Tape properties
         public OptDouble TapeWidth { get; set; } = OptDouble.Zero;
         public Color TapeColor { get; set; }
-
+        // Facing properties
+        //
+        //  ------- 2 -------
+        //  |               |
+        //  3               1
+        //  |               |
+        //  ------- 0 -------
+        //
+        //  -1 => no facing shown
+        //   0 => front
+        //   1 => right
+        //   2 => back
+        //   3 => left
+        public int Facing { get; set; }
         public override bool IsBundle => false;
         protected override string TypeName => IsCase ? Properties.Resources.ID_NAMECASE : Properties.Resources.ID_NAMEBOX;
 

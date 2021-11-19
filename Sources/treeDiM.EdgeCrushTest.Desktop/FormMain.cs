@@ -15,9 +15,7 @@ namespace treeDiM.EdgeCrushTest.Desktop
         #region Constructor
         public FormMain()
         {
-            InitializeComponent();
-
- 
+            InitializeComponent(); 
         }
         #endregion
         #region Form override

@@ -17,6 +17,7 @@ namespace treeDiM.StackBuilder.Desktop
             Panels.Add(new OptionPanelLayerListCtrl());
             Panels.Add(new OptionPanelDebugging());
             Panels.Add(new OptionPanelPlugins());
+            Panels.Add(new OptionPanelRobot());
         }
     }
 }

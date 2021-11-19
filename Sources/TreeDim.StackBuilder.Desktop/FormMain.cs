@@ -649,11 +649,11 @@ namespace treeDiM.StackBuilder.Desktop
                 _log.Error(ex.ToString()); Program.SendCrashReport(ex);
             }
         }
-        public static void GenerateExport(AnalysisLayered analysis, string formatName)
+        public static void GenerateExport(AnalysisLayered analysis)
         {
             try
             {
-                FormExporter form = new FormExporter() { Analysis = analysis, FormatName = formatName };
+                FormExporter form = new FormExporter() { Analysis = analysis };
                 if (DialogResult.OK == form.ShowDialog()) { }
             }
             catch (Exception ex)

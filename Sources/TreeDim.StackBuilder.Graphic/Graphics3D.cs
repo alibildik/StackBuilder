@@ -153,7 +153,7 @@ namespace treeDiM.StackBuilder.Graphics
         /// <summary>
         /// boolean to show or hide facing
         /// </summary>
-        public bool ShowFacing { get; set; } = false;
+        public bool ShowFacing { get; set; } = true;
         /// <summary>
         /// gets or sets boxel order status
         /// If set to true the boxel order will be used when drawing box layers

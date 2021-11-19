@@ -66,7 +66,7 @@ namespace treeDiM.StackBuilder.Graphics
             }
             // annotate thumbnail
             if (annotate)
-                Annotate(graphics.Graphics, graphics.Size, height);
+                ThumbnailMarker.Annotate(graphics.Graphics, graphics.Size, $"{Layer.Count}*{Layer.NoLayers(height)}={Layer.CountInHeight(height)}");
         }
         public void Draw(Graphics3D graphics, Packable packable, double height, bool selected, bool annotate)
         {
@@ -103,29 +103,12 @@ namespace treeDiM.StackBuilder.Graphics
             graphics.Flush();
             // annotate thumbnail
             if (annotate)
-                Annotate(graphics.Graphics, graphics.Size, height);
+                ThumbnailMarker.Annotate(graphics.Graphics, graphics.Size, $"{Layer.Count}*{Layer.NoLayers(height)}={Layer.CountInHeight(height)}");
         }
         #endregion
 
-        #region Private methods
-        private void Annotate(System.Drawing.Graphics g, Size s, double height)
-        {
-            // *** Annotate : begin ***
-            if (height > 0)
-            {
-                string annotation = $"{Layer.Count}*{Layer.NoLayers(height)}={Layer.CountInHeight(height)}";
-                Font tfont = new Font("Arial", FontSize);
-                StringFormat sf = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Far };
-                Size txtSize = g.MeasureString(annotation, tfont).ToSize();
-                g.FillRectangle(new SolidBrush(Color.Black), new Rectangle(s.Width - txtSize.Width - 2, s.Height - txtSize.Height - 2, txtSize.Width + 2, txtSize.Height + 2));
-                g.DrawString(annotation, tfont, new SolidBrush(Color.White), new Point(s.Width - 3, s.Height - 3), sf);
-            }
-            // *** Annotate : end ***
-        }
-
-        public void Dispose()
-        {
-        }
+        #region IDisposable implementation
+        public void Dispose() {}
         #endregion
     }
 }

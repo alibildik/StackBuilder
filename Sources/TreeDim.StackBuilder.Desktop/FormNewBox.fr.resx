@@ -151,9 +151,6 @@
   <data name="cbFace.Items5" xml:space="preserve">
     <value>Dessus</value>
   </data>
-  <data name="gbFaceColor.Text" xml:space="preserve">
-    <value>Couleurs face</value>
-  </data>
   <data name="btBitmaps.Text" xml:space="preserve">
     <value>Images...</value>
   </data>
@@ -162,9 +159,6 @@
   </data>
   <data name="chkAllFaces.Text" xml:space="preserve">
     <value>Toutes les faces sont de la même couleur</value>
-  </data>
-  <data name="cbColor.Items3" xml:space="preserve">
-    <value>Couleur</value>
   </data>
   <data name="cbColor.Items4" xml:space="preserve">
     <value>Couleur</value>
@@ -547,7 +541,7 @@
   <data name="cbColor.Items130" xml:space="preserve">
     <value>Couleur</value>
   </data>
-  <data name="cbColor.Items132" xml:space="preserve">
+  <data name="cbColor.Items131" xml:space="preserve">
     <value>Couleur</value>
   </data>
   <data name="cbColor.Items133" xml:space="preserve">
@@ -559,8 +553,11 @@
   <data name="cbColor.Items135" xml:space="preserve">
     <value>Couleur</value>
   </data>
-  <data name="gbWeight.Text" xml:space="preserve">
-    <value>Poids</value>
+  <data name="cbColor.Items136" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="gbFaceColor.Text" xml:space="preserve">
+    <value>Couleurs face</value>
   </data>
   <data name="uCtrlMaxWeight.Text" xml:space="preserve">
     <value>Masse maximale</value>
@@ -571,6 +568,9 @@
   <data name="uCtrlNetWeight.Text" xml:space="preserve">
     <value>Poids net</value>
   </data>
+  <data name="gbWeight.Text" xml:space="preserve">
+    <value>Poids</value>
+  </data>
   <data name="lbTapeColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 13</value>
   </data>
@@ -580,11 +580,9 @@
   <data name="bnSaveToDB.Text" xml:space="preserve">
     <value>&gt; Envoi vers BDD</value>
   </data>
-  <data name="tabPageTape.Text" xml:space="preserve">
-    <value>Ruban</value>
-  </data>
-  <data name="cbTapeColor.Items3" xml:space="preserve">
-    <value>Couleur</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="cbTapeColor.Items4" xml:space="preserve">
     <value>Couleur</value>
@@ -970,7 +968,7 @@
   <data name="cbTapeColor.Items131" xml:space="preserve">
     <value>Couleur</value>
   </data>
-  <data name="cbTapeColor.Items133" xml:space="preserve">
+  <data name="cbTapeColor.Items132" xml:space="preserve">
     <value>Couleur</value>
   </data>
   <data name="cbTapeColor.Items134" xml:space="preserve">
@@ -982,17 +980,29 @@
   <data name="cbTapeColor.Items136" xml:space="preserve">
     <value>Couleur</value>
   </data>
+  <data name="cbTapeColor.Items137" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
   <data name="cbTapeColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 5</value>
+    <value>152, 27</value>
+  </data>
+  <data name="uCtrlTapeWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 21</value>
   </data>
   <data name="uCtrlTapeWidth.Text" xml:space="preserve">
     <value>Largeur ruban</value>
+  </data>
+  <data name="tabPageTape.Text" xml:space="preserve">
+    <value>Ruban</value>
   </data>
   <data name="tabPageStrappers.Text" xml:space="preserve">
     <value>Cerclages</value>
   </data>
   <data name="tabPageBulge.Text" xml:space="preserve">
     <value>Renflement</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Définir un nouvel étui / une nouvelle caisse...</value>
