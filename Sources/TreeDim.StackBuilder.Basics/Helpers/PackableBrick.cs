@@ -60,7 +60,34 @@ namespace treeDiM.StackBuilder.Basics
         }
 
         public double[] Dimensions => new double[] { Length, Width, Height };
-
+        // Facing properties
+        //
+        //  ------- 2 -------
+        //  |               |
+        //  3               1
+        //  |               |
+        //  ------- 0 -------
+        //
+        //  -1 => no facing shown
+        //   0 => front
+        //   1 => right
+        //   2 => back
+        //   3 => left
+        public int Facing { get; set; } = -1;
+        public int FacingAngle
+        {
+            get
+            {
+                switch (Facing)
+                {
+                    case 0: return 0;
+                    case 1: return 90;
+                    case 2: return 180;
+                    case 3: return 270;
+                    default: return 0;
+                }
+            }
+        }
         public override string ToString()
         {
             StringBuilder sBuilder = new StringBuilder();

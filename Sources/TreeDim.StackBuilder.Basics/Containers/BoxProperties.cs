@@ -26,7 +26,6 @@ namespace treeDiM.StackBuilder.Basics
             _length = 0.0; _width = 0.0; _height = 0.0;
             HasInsideDimensions = true;
         }
-
         /// <summary>
         /// Constructor 2
         /// </summary>
@@ -42,7 +41,6 @@ namespace treeDiM.StackBuilder.Basics
             _height = height;
             HasInsideDimensions = false;
         }
-
         public BoxProperties(Document document, double length, double width, double height, double weight, Color color)
             : base(document)
         {
@@ -55,7 +53,6 @@ namespace treeDiM.StackBuilder.Basics
             TapeWidth = new OptDouble(true, 50.0);
             HasInsideDimensions = false;
         }
-
         public BoxProperties(Document document, double[] dimensions)
             : base(document)
         {
@@ -65,7 +62,6 @@ namespace treeDiM.StackBuilder.Basics
             HasInsideDimensions = false;
 
         }
-
         /// <summary>
         /// Constructor 3
         /// </summary>
@@ -89,9 +85,7 @@ namespace treeDiM.StackBuilder.Basics
             _insideHeight = insideHeight;
             HasInsideDimensions = true;
         }
-
         public override bool IsCase => HasInsideDimensions || TapeWidth.Activated;
-
         // Dimensions
         public override double Height => _height;
         public void SetHeight(double height)
@@ -99,7 +93,6 @@ namespace treeDiM.StackBuilder.Basics
             _height = height;
             Modify();
         }
-
         // InsideDimensions
         public bool HasInsideDimensions { get; set; }
         public double InsideLength
@@ -198,7 +191,6 @@ namespace treeDiM.StackBuilder.Basics
         {
             return _colors[(int)axis];
         }
-
         public override Color[] Colors => _colors;
         public void SetColor(HalfAxis.HAxis axis, Color color)
         {
@@ -262,25 +254,9 @@ namespace treeDiM.StackBuilder.Basics
         // Tape properties
         public OptDouble TapeWidth { get; set; } = OptDouble.Zero;
         public Color TapeColor { get; set; }
-        // Facing properties
-        //
-        //  ------- 2 -------
-        //  |               |
-        //  3               1
-        //  |               |
-        //  ------- 0 -------
-        //
-        //  -1 => no facing shown
-        //   0 => front
-        //   1 => right
-        //   2 => back
-        //   3 => left
-        public int Facing { get; set; }
         public override bool IsBundle => false;
         protected override string TypeName => IsCase ? Properties.Resources.ID_NAMECASE : Properties.Resources.ID_NAMEBOX;
-
         public CreatedAsType CAType { get; set; } = CreatedAsType.Case;
-
 
         #region Non-Public Members
         private double _height;

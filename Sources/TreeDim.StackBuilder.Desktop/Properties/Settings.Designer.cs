@@ -1399,5 +1399,17 @@ namespace treeDiM.StackBuilder.Desktop.Properties {
                 this["AllowCombinations"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("(30.0,30.0,30.0)")]
+        public string DockingOffsets {
+            get {
+                return ((string)(this["DockingOffsets"]));
+            }
+            set {
+                this["DockingOffsets"] = value;
+            }
+        }
     }
 }

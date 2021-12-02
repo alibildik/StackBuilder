@@ -48,7 +48,7 @@ namespace treeDiM.StackBuilder.BestCaseFinder
             this.cbItem = new System.Windows.Forms.ComboBox();
             this.lbItem = new System.Windows.Forms.Label();
             this.bnSelect = new System.Windows.Forms.Button();
-            this.uCtrlCaseOrientation1 = new treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation();
+            this.uCtrlCaseOrientation1 = new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation();
             this.gridSolutions = new SourceGrid.Grid();
             this.pbSolution = new System.Windows.Forms.PictureBox();
             this.lbSelectedCase = new System.Windows.Forms.Label();
@@ -353,7 +353,7 @@ namespace treeDiM.StackBuilder.BestCaseFinder
         private System.Windows.Forms.ComboBox cbItem;
         private System.Windows.Forms.Label lbItem;
         private System.Windows.Forms.Button bnSelect;
-        private Graphics.uCtrlCaseOrientation uCtrlCaseOrientation1;
+        private Graphics.UCtrlCaseOrientation uCtrlCaseOrientation1;
         private System.Windows.Forms.Label lbEfficiency;
         private System.Windows.Forms.Label lbNumberOfItems;
         private System.Windows.Forms.Label lbSelectedCase;

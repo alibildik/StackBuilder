@@ -11,6 +11,7 @@ using Sharp3D.Math.Core;
 using treeDiM.Basics;
 using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Graphics;
+using treeDiM.StackBuilder.Exporters;
 using treeDiM.StackBuilder.Desktop.Properties;
 
 using treeDiM.PLMPack.DBClient;
@@ -56,6 +57,7 @@ namespace treeDiM.StackBuilder.Desktop
                             uCtrlDimensionsOuter.ValueY - UnitsManager.ConvertLengthFrom(6.0, UnitsManager.UnitSystem.UNIT_METRIC1),
                             uCtrlDimensionsOuter.ValueZ - UnitsManager.ConvertLengthFrom(6.0, UnitsManager.UnitSystem.UNIT_METRIC1));
                         uCtrlTapeWidth.Value = new OptDouble(true, UnitsManager.ConvertLengthFrom(50, UnitsManager.UnitSystem.UNIT_METRIC1));
+                        Facing = string.IsNullOrEmpty(ExporterRobot.DefaultName) ? -1 : 0;
                         break;
                     case Mode.BOX:
                         tbName.Text = _document.GetValidNewTypeName(Resources.ID_BOX);
@@ -68,6 +70,7 @@ namespace treeDiM.StackBuilder.Desktop
                             uCtrlDimensionsOuter.ValueZ - UnitsManager.ConvertLengthFrom(6.0, UnitsManager.UnitSystem.UNIT_METRIC1));
                         uCtrlDimensionsInner.Checked = false;
                         uCtrlTapeWidth.Value = new OptDouble(false, UnitsManager.ConvertLengthFrom(10, UnitsManager.UnitSystem.UNIT_METRIC1));
+                        Facing = -1;
                         break;
                     default:
                         break;
@@ -145,7 +148,6 @@ namespace treeDiM.StackBuilder.Desktop
                 Bulge = boxProperties.Bulge;
                 // facing mark
                 Facing = boxProperties.Facing;
-
                 // disable Ok button
                 UpdateStatus(string.Empty);
             }

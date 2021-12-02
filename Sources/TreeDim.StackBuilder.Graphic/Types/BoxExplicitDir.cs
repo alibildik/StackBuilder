@@ -68,48 +68,48 @@ namespace treeDiM.StackBuilder.Graphics
                         // |         |
                         // 3 ------- 0
                         //
-                        new Triangle(PickId, points[0], true, points[4], false, points[3], true, Colors[0]),
-                        new Triangle(PickId, points[3], false, points[4], true, points[7], true, Colors[0]),
+                        new Triangle(PickId, points[0], true, points[4], false, points[3], true, Colors[0], Color.Black),
+                        new Triangle(PickId, points[3], false, points[4], true, points[7], true, Colors[0], Color.Black),
                         // XP
                         //
                         // 5 ------- 6
                         // |         |
                         // 1 ------- 2
                         //
-                        new Triangle(PickId, points[1], true, points[2], false, points[5], true, Colors[1]),
-                        new Triangle(PickId, points[5], false, points[2], true, points[6], true, Colors[1]),
+                        new Triangle(PickId, points[1], true, points[2], false, points[5], true, Colors[1], Color.Black),
+                        new Triangle(PickId, points[5], false, points[2], true, points[6], true, Colors[1], Color.Black),
                         // YN
                         //
                         // 4 -------- 5
                         // |          |
                         // 0 -------- 1
                         //
-                        new Triangle(PickId, points[0], true, points[1], false, points[4], true, Colors[2]),
-                        new Triangle(PickId, points[4], false, points[1], true, points[5], true, Colors[2]),
+                        new Triangle(PickId, points[0], true, points[1], false, points[4], true, Colors[2], Color.Black),
+                        new Triangle(PickId, points[4], false, points[1], true, points[5], true, Colors[2], Color.Black),
                         // YP
                         //
                         // 6 -------- 7
                         // |          | 
                         // 2 -------- 3
                         //
-                        new Triangle(PickId, points[7], true, points[6], true, points[2], false, Colors[3]),
-                        new Triangle(PickId, points[7], false, points[2], true, points[3], true, Colors[3]),
+                        new Triangle(PickId, points[7], true, points[6], true, points[2], false, Colors[3], Color.Black),
+                        new Triangle(PickId, points[7], false, points[2], true, points[3], true, Colors[3], Color.Black),
                         // ZN
                         //
                         // 3 -------- 2
                         // |          | 
                         // 0 -------- 1
                         //
-                        new Triangle(PickId, points[0], true, points[3], false, points[1], true, Colors[4]),
-                        new Triangle(PickId, points[1], false, points[3], true, points[2], true, Colors[4]),
+                        new Triangle(PickId, points[0], true, points[3], false, points[1], true, Colors[4], Color.Black),
+                        new Triangle(PickId, points[1], false, points[3], true, points[2], true, Colors[4], Color.Black),
                         // ZP
                         //
                         // 7-----------6
                         // |           |
                         // 4-----------5
 
-                        new Triangle(PickId, points[4], true, points[5], true, points[6], false, Colors[5]),
-                        new Triangle(PickId, points[4], false, points[6], true, points[7], true, Colors[5])
+                        new Triangle(PickId, points[4], true, points[5], true, points[6], false, Colors[5], Color.Black),
+                        new Triangle(PickId, points[4], false, points[6], true, points[7], true, Colors[5], Color.Black)
                 };
             }
         }

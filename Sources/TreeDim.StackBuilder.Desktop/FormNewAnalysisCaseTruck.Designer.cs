@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNewAnalysisCaseTruck));
             this.cbCases = new treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered();
             this.lbBox = new System.Windows.Forms.Label();
-            this.uCtrlCaseOrientation = new treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation();
+            this.uCtrlCaseOrientation = new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation();
             this.lbSelect = new System.Windows.Forms.Label();
             this.uCtrlLayerList = new treeDiM.StackBuilder.Graphics.UCtrlLayerList();
             this.checkBoxBestLayersOnly = new System.Windows.Forms.CheckBox();
@@ -78,7 +78,7 @@
         false,
         true};
             this.uCtrlCaseOrientation.Name = "uCtrlCaseOrientation";
-            this.uCtrlCaseOrientation.CheckedChanged += new treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation.CheckChanged(this.OnInputChanged);
+            this.uCtrlCaseOrientation.CheckedChanged += new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation.CheckChanged(this.OnInputChanged);
             // 
             // lbSelect
             // 
@@ -174,7 +174,7 @@
 
         private Graphics.Controls.CCtrlComboFiltered cbCases;
         private System.Windows.Forms.Label lbBox;
-        private Graphics.uCtrlCaseOrientation uCtrlCaseOrientation;
+        private Graphics.UCtrlCaseOrientation uCtrlCaseOrientation;
         private System.Windows.Forms.Label lbSelect;
         private Graphics.UCtrlLayerList uCtrlLayerList;
         private System.Windows.Forms.CheckBox checkBoxBestLayersOnly;

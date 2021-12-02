@@ -1,7 +1,10 @@
 ﻿#region Using directives
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+
+using Sharp3D.Math.Core;
 #endregion
 
 namespace treeDiM.StackBuilder.Graphics
@@ -12,6 +15,16 @@ namespace treeDiM.StackBuilder.Graphics
         public Graphics3DImage(Size size)
         {
             Bitmap = new Bitmap(size.Width, size.Height);        
+        }
+        public Graphics3DImage(Size size, double angle, double cameraDistance)
+        {
+            Bitmap = new Bitmap(size.Width, size.Height);
+            CameraPosition = new Vector3D(
+                    Math.Cos(angle * Math.PI / 180.0) * Math.Sqrt(2.0) * cameraDistance
+                    , Math.Sin(angle * Math.PI / 180.0) * Math.Sqrt(2.0) * cameraDistance
+                    , cameraDistance);
+            Target = Vector3D.Zero;
+            SetViewport(-500.0f, -500.0f, 500.0f, 500.0f);
         }
         #endregion
 

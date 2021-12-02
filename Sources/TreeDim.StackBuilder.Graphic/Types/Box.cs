@@ -135,6 +135,8 @@ namespace treeDiM.StackBuilder.Graphics
             }
             if (packable is PackableBrickNamed packableBrickNamed)
                 StrapperList = new List<PalletStrapper>(packableBrickNamed.StrapperSet.Strappers);
+            // facing ?
+            Facing = packable.Facing;
         }
         public Box(uint pickId, InterlayerProperties interlayerProperties)
             : base(pickId, interlayerProperties.Length, interlayerProperties.Width, interlayerProperties.Thickness, BoxPosition.Zero)
@@ -172,7 +174,6 @@ namespace treeDiM.StackBuilder.Graphics
         public OptDouble TapeWidth { get; set; }
         public Color TapeColor { get; set; }
         public int Facing { get; set; } = -1;
-        public bool ShowOrientationMark { get; set; } = false;
         public Color OrientationMarkColor { get; set; } = Color.White;
         public Vector3D[] TapePoints
         {
@@ -318,40 +319,40 @@ namespace treeDiM.StackBuilder.Graphics
                         // |         |
                         // 3 ------- 0
                         //
-                        new Triangle(PickId, points[0], true, points[4], false, points[3], true, Colors[0]),
-                        new Triangle(PickId, points[3], false, points[4], true, points[7], true, Colors[0]),
+                        new Triangle(PickId, points[0], true, points[4], false, points[3], true, Colors[0], Color.Black),
+                        new Triangle(PickId, points[3], false, points[4], true, points[7], true, Colors[0], Color.Black),
                         // XP
                         //
                         // 5 ------- 6
                         // |         |
                         // 1 ------- 2
                         //
-                        new Triangle(PickId, points[1], true, points[2], false, points[5], true, Colors[1]),
-                        new Triangle(PickId, points[5], false, points[2], true, points[6], true, Colors[1]),
+                        new Triangle(PickId, points[1], true, points[2], false, points[5], true, Colors[1], Color.Black),
+                        new Triangle(PickId, points[5], false, points[2], true, points[6], true, Colors[1], Color.Black),
                         // YN
                         //
                         // 4 -------- 5
                         // |          |
                         // 0 -------- 1
                         //
-                        new Triangle(PickId, points[0], true, points[1], false, points[4], true, Colors[2]),
-                        new Triangle(PickId, points[4], false, points[1], true, points[5], true, Colors[2]),
+                        new Triangle(PickId, points[0], true, points[1], false, points[4], true, Colors[2], Color.Black),
+                        new Triangle(PickId, points[4], false, points[1], true, points[5], true, Colors[2], Color.Black),
                         // YP
                         //
                         // 6 -------- 7
                         // |          | 
                         // 2 -------- 3
                         //
-                        new Triangle(PickId, points[7], true, points[6], true, points[2], false, Colors[3]),
-                        new Triangle(PickId, points[7], false, points[2], true, points[3], true, Colors[3]),
+                        new Triangle(PickId, points[7], true, points[6], true, points[2], false, Colors[3], Color.Black),
+                        new Triangle(PickId, points[7], false, points[2], true, points[3], true, Colors[3], Color.Black),
                         // ZN
                         //
                         // 3 -------- 2
                         // |          | 
                         // 0 -------- 1
                         //
-                        new Triangle(PickId, points[0], true, points[3], false, points[1], true, Colors[4]),
-                        new Triangle(PickId, points[1], false, points[3], true, points[2], true, Colors[4]),
+                        new Triangle(PickId, points[0], true, points[3], false, points[1], true, Colors[4], Color.Black),
+                        new Triangle(PickId, points[1], false, points[3], true, points[2], true, Colors[4], Color.Black),
                         // ZP
                         //
                         // 7-----------6
@@ -362,29 +363,29 @@ namespace treeDiM.StackBuilder.Graphics
                         // |           |
                         // 4-----------5
 
-                        new Triangle(PickId, points[4], true, points[5], false, tapePoints[0], true, Colors[5]),
-                        new Triangle(PickId, tapePoints[0], false, points[5], true, tapePoints[1], true, Colors[5]),
-                        new Triangle(PickId, tapePoints[0], true, tapePoints[1], true, tapePoints[2], false, TapeColor),
-                        new Triangle(PickId, tapePoints[0], false, tapePoints[2], true, tapePoints[3], true, TapeColor),
-                        new Triangle(PickId, tapePoints[3], true, tapePoints[2], true, points[6], false, Colors[5]),
-                        new Triangle(PickId, tapePoints[3], false, points[6], true, points[7], true, Colors[5])
+                        new Triangle(PickId, points[4], true, points[5], false, tapePoints[0], true, Colors[5], Color.Black),
+                        new Triangle(PickId, tapePoints[0], false, points[5], true, tapePoints[1], true, Colors[5], Color.Black),
+                        new Triangle(PickId, tapePoints[0], true, tapePoints[1], true, tapePoints[2], false, TapeColor, Color.Black),
+                        new Triangle(PickId, tapePoints[0], false, tapePoints[2], true, tapePoints[3], true, TapeColor, Color.Black),
+                        new Triangle(PickId, tapePoints[3], true, tapePoints[2], true, points[6], false, Colors[5], Color.Black),
+                        new Triangle(PickId, tapePoints[3], false, points[6], true, points[7], true, Colors[5], Color.Black)
                     };
                 }
                 else
                     return new Triangle[]
                     {
-                        new Triangle(PickId, points[0], true, points[4], false, points[3], true, Colors[0]),
-                        new Triangle(PickId, points[3], false, points[4], true, points[7], true, Colors[0]),
-                        new Triangle(PickId, points[1], true, points[2], false, points[5], true, Colors[1]),
-                        new Triangle(PickId, points[5], false, points[2], true, points[6], true, Colors[1]),
-                        new Triangle(PickId, points[0], true, points[1], false, points[4], true, Colors[2]),
-                        new Triangle(PickId, points[4], false, points[1], true, points[5], true, Colors[2]),
-                        new Triangle(PickId, points[7], true, points[6], true, points[2], false, Colors[3]),
-                        new Triangle(PickId, points[7], false, points[2], true, points[3], true, Colors[3]),
-                        new Triangle(PickId, points[0], true, points[3], false, points[1], true, Colors[4]),
-                        new Triangle(PickId, points[1], false, points[3], true, points[2], true, Colors[4]),
-                        new Triangle(PickId, points[4], true, points[5], false, points[7], true, Colors[5]),
-                        new Triangle(PickId, points[7], false, points[5], true, points[6], true, Colors[5])
+                        new Triangle(PickId, points[0], true, points[4], false, points[3], true, Colors[0], Color.Black),
+                        new Triangle(PickId, points[3], false, points[4], true, points[7], true, Colors[0], Color.Black),
+                        new Triangle(PickId, points[1], true, points[2], false, points[5], true, Colors[1], Color.Black),
+                        new Triangle(PickId, points[5], false, points[2], true, points[6], true, Colors[1], Color.Black),
+                        new Triangle(PickId, points[0], true, points[1], false, points[4], true, Colors[2], Color.Black),
+                        new Triangle(PickId, points[4], false, points[1], true, points[5], true, Colors[2], Color.Black),
+                        new Triangle(PickId, points[7], true, points[6], true, points[2], false, Colors[3], Color.Black),
+                        new Triangle(PickId, points[7], false, points[2], true, points[3], true, Colors[3], Color.Black),
+                        new Triangle(PickId, points[0], true, points[3], false, points[1], true, Colors[4], Color.Black),
+                        new Triangle(PickId, points[1], false, points[3], true, points[2], true, Colors[4], Color.Black),
+                        new Triangle(PickId, points[4], true, points[5], false, points[7], true, Colors[5], Color.Black),
+                        new Triangle(PickId, points[7], false, points[5], true, points[6], true, Colors[5], Color.Black)
                     };
             }
         }
@@ -475,16 +476,9 @@ namespace treeDiM.StackBuilder.Graphics
                 g.FillPolygon(brushTape, ptsTape);
                 g.DrawPolygon(penPath, ptsTape);
             }
-            // orientation mark
-            if (ShowOrientationMark)
-            {
-                Pen penPathOrientationMark = new Pen(new SolidBrush(OrientationMarkColor), 5.0F);
-                Vector3D pt0 = TopFace.Points[0];
-                Vector3D pt1 = TopFace.Points[1];
-                double offset = 0.1 * (pt1 - pt0).GetLength();
-                Point[] ptsOrientMark = graphics.TransformPoint(new Vector3D[] { pt0 + new Vector3D(offset, offset, 0.0), pt1 + new Vector3D(-offset, offset, 0.0) });
-                g.DrawLine(penPathOrientationMark, ptsOrientMark[0], ptsOrientMark[1]);
-            }
+            // facing
+            if (-1 != Facing)
+                g.FillPolygon(new SolidBrush(Color.Red), graphics.TransformPoint(FacingPointsTop));
         }
         public override void Draw(Graphics3D graphics)
         {

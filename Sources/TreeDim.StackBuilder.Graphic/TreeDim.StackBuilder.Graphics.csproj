@@ -110,6 +110,12 @@
     <Compile Include="Controls\UCtrlCaseOrientationSimple.Designer.cs">
       <DependentUpon>UCtrlCaseOrientationSimple.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UCtrlConveyorSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UCtrlConveyorSettings.Designer.cs">
+      <DependentUpon>UCtrlConveyorSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UCtrlHCylLayoutList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +152,7 @@
     <Compile Include="SolutionViewers\ViewerSolutionPalletsOnPallet.cs" />
     <Compile Include="ThumbnailMarker.cs" />
     <Compile Include="Triangle.cs" />
+    <Compile Include="Types\Arrow.cs" />
     <Compile Include="Types\Bottle.cs" />
     <Compile Include="Types\BoxExplicitDir.cs" />
     <Compile Include="Types\BoxGeneric.cs" />
@@ -170,6 +177,7 @@
     <Compile Include="Ray.cs" />
     <Compile Include="SolutionViewers\ViewerLayer.cs" />
     <Compile Include="SolutionViewers\ViewerSolution.cs" />
+    <Compile Include="Types\FrameRef.cs" />
     <Compile Include="Types\Pack.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -297,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCtrlCaseOrientationSimple.resx">
       <DependentUpon>UCtrlCaseOrientationSimple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UCtrlConveyorSettings.resx">
+      <DependentUpon>UCtrlConveyorSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCtrlHCylLayoutList.resx">
       <DependentUpon>UCtrlHCylLayoutList.cs</DependentUpon>

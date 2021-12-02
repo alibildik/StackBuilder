@@ -80,8 +80,8 @@ namespace treeDiM.StackBuilder.Desktop
             // update button OK
             bnOk.Enabled = string.IsNullOrEmpty(message);
             // update status bar
-            toolStripStatusLabelDef.ForeColor = string.IsNullOrEmpty(message) ? Color.Black : Color.Red;
-            toolStripStatusLabelDef.Text = string.IsNullOrEmpty(message) ? Resources.ID_READY : message;
+            statusLabel.ForeColor = string.IsNullOrEmpty(message) ? Color.Black : Color.Red;
+            statusLabel.Text = string.IsNullOrEmpty(message) ? Resources.ID_READY : message;
         }
         #endregion
 

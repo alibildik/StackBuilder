@@ -1,11 +1,5 @@
 ﻿#region Using directives
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 using treeDiM.StackBuilder.Basics;
@@ -13,10 +7,10 @@ using treeDiM.StackBuilder.Basics;
 
 namespace treeDiM.StackBuilder.Graphics
 {
-    public partial class uCtrlCaseOrientation : UserControl
+    public partial class UCtrlCaseOrientation : UserControl
     {
         #region Constructor
-        public uCtrlCaseOrientation()
+        public UCtrlCaseOrientation()
         {
             InitializeComponent();
         }

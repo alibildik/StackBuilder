@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.IO;
 
 using log4net;
+using Sharp3D.Math.Core;
 
 using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Exporters;
@@ -26,17 +27,19 @@ namespace treeDiM.StackBuilder.Desktop
 
             FillFormatComboBox();
             cbCoordinates.SelectedIndex = Properties.Settings.Default.ExportCoordinatesMode;
+            try { DockingOffsets = Vector3D.Parse(Properties.Settings.Default.DockingOffsets); } catch (Exception /*ex*/) { }
 
             if (Analysis is AnalysisCasePallet analysisCasePallet)
             {
-                RobotPreparation = new RobotPreparation(Analysis as AnalysisCasePallet);
+                RobotPreparation = new RobotPreparation(analysisCasePallet);
                 RobotPreparation.LayerModified += RobotPreparationModified;
+
+                uCtrlConveyorSettings.BoxProperties = analysisCasePallet.Content as PackableBrick;
             }
             // fill combo layer types
             FillLayerComboBox();
             OnExportFormatChanged(this, e);
         }
-
         private void FillFormatComboBox()
         {
             // fill combo box with available exporters
@@ -52,7 +55,6 @@ namespace treeDiM.StackBuilder.Desktop
             }
             cbFileFormat.SelectedIndex = iSel;
         }
-
         private void FillLayerComboBox()
         { 
             for (int i = 0; i < RobotPreparation.LayerTypes.Count; ++i)
@@ -75,6 +77,7 @@ namespace treeDiM.StackBuilder.Desktop
 
             Properties.Settings.Default.ExportFormatName = cbFileFormat.SelectedItem.ToString();
             Properties.Settings.Default.ExportCoordinatesMode = cbCoordinates.SelectedIndex;
+            Properties.Settings.Default.DockingOffsets = DockingOffsets.ToString();
             Properties.Settings.Default.Save();
         }
         protected override bool ProcessDialogKey(Keys keyData)
@@ -87,11 +90,18 @@ namespace treeDiM.StackBuilder.Desktop
         #region Compute
         private void Recompute()
         {
+            // sanity check
+            if (null == RobotPreparation) return;
             try
             {
                 Stream stream = new MemoryStream();
-                var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString()) as ExporterRobot;
+                var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());
                 exporter.PositionCoordinateMode = cbCoordinates.SelectedIndex == 1 ? ExporterRobot.CoordinateMode.CM_COG : ExporterRobot.CoordinateMode.CM_CORNER;
+
+                RobotPreparation.AngleItem = uCtrlConveyorSettings.AngleCase;
+                RobotPreparation.AngleGrabber = uCtrlConveyorSettings.AngleGrabber;
+                RobotPreparation.DockingOffsets = DockingOffsets;
+
                 if (exporter.UseRobotPreparation)
                     exporter.Export(RobotPreparation, ref stream);
                 else
@@ -106,7 +116,6 @@ namespace treeDiM.StackBuilder.Desktop
                 _log.Error(ex.Message);
             }
         }
-
         private void RobotPreparationModified()
         {
             if (null == RobotPreparation)
@@ -115,7 +124,7 @@ namespace treeDiM.StackBuilder.Desktop
             {
 
                 Stream stream = new MemoryStream();
-                var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString()) as ExporterRobot;
+                var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());
                 exporter.Export(RobotPreparation, ref stream);
                 // to text edit control
                 using (StreamReader reader = new StreamReader(stream))
@@ -130,26 +139,27 @@ namespace treeDiM.StackBuilder.Desktop
         #region EventHandler
         private void OnExportFormatChanged(object sender, EventArgs e)
         {
-            if (null == CurrentExporter)
-            {
+            if (DesignMode) return;
+            if (null == CurrentExporter) return;
 
-                return;
-            }
-
+            pbBrandLogo.Image = CurrentExporter.BrandLogo;
+            
             // save format 
             FormatName = CurrentExporter.Name;
-
-            layerEditor.Visible = CurrentExporter.UseRobotPreparation;
-            lbLayers.Visible = CurrentExporter.UseRobotPreparation;
-            cbLayers.Visible = CurrentExporter.UseRobotPreparation;
-
-            lbCoordinates.Visible = CurrentExporter.ShowSelectorCoordinateMode;
-            cbCoordinates.Visible = CurrentExporter.ShowSelectorCoordinateMode;
-
-
+            tabCtrlFeatures.TabPages.Clear();
+            
+            if (CurrentExporter.UseCoordinateSelector)
+                tabCtrlFeatures.TabPages.Add(tabPageSettings);
+            if (CurrentExporter.UseAngleSelector)
+                tabCtrlFeatures.TabPages.Add(tabPageAngles);
+            if (CurrentExporter.UseRobotPreparation)
+                tabCtrlFeatures.TabPages.Add(tabPageLayerPrep);
+            if (CurrentExporter.UseDockingOffsets)
+                tabCtrlFeatures.TabPages.Add(tabPageDockingOffsets);
+                        
             try
             {
-                // set folding strategy to XML ?
+                // set folding strategy to XML ? *** either XML or CS ***
                 if (string.Equals(CurrentExporter.Extension, "xml", StringComparison.InvariantCultureIgnoreCase))
                 {
                     textEditorControl.FoldingStrategy = "XML";
@@ -181,22 +191,25 @@ namespace treeDiM.StackBuilder.Desktop
             catch (Exception ex) { _log.Error(ex.ToString()); }
         }
         #endregion
-        #region Public properties
+        #region Private properties
         private ExporterRobot CurrentExporter => ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());
         private int SelectedFormatIndex => cbFileFormat.SelectedIndex;
         private string SelectedFormatString => cbFileFormat.SelectedItem.ToString();
-        #endregion
-        #region Data members
-        protected ILog _log = LogManager.GetLogger(typeof(FormExporter));
         private string FormatName
         {
             get => Properties.Settings.Default.ExportFormatName;
             set => Properties.Settings.Default.ExportFormatName = value;
         }
+        private Vector3D DockingOffsets
+        {
+            get => uCtrlDockingOffset.Value;
+            set => uCtrlDockingOffset.Value = value;
+        }
+        #endregion
+        #region Data members
+        protected ILog _log = LogManager.GetLogger(typeof(FormExporter));
         public AnalysisLayered Analysis { get; set; }
         public RobotPreparation RobotPreparation { get; set; }
         #endregion
-
-
     }
 }

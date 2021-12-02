@@ -172,7 +172,7 @@
     <value>Color</value>
   </data>
   <data name="&gt;&gt;cbTrayColor.Type" xml:space="preserve">
-    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbWrapperColor.Items31" xml:space="preserve">
     <value>Color</value>
@@ -184,7 +184,7 @@
     <value>Color</value>
   </data>
   <data name="&gt;&gt;graphCtrl.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Graphics3DControl, treeDiM.StackBuilder.Graphics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Graphics3DControl, treeDiM.StackBuilder.Graphics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tabCtrl.Size" type="System.Drawing.Size, System.Drawing">
     <value>697, 107</value>
@@ -229,7 +229,7 @@
     <value>6</value>
   </data>
   <data name="&gt;&gt;uCtrlOuterDimensions.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbTrayColor.Items16" xml:space="preserve">
     <value>Color</value>
@@ -277,7 +277,7 @@
     <value>tabCtrl</value>
   </data>
   <data name="&gt;&gt;cbWrapperColor.Type" xml:space="preserve">
-    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbWrapperColor.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -295,7 +295,7 @@
     <value>14</value>
   </data>
   <data name="&gt;&gt;ctrlStrapperSet.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Basics.Controls.CtrlStrapperSet, treeDiM.StackBuilder.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Basics.Controls.CtrlStrapperSet, treeDiM.StackBuilder.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="uCtrlWrapperWalls.Text" xml:space="preserve">
     <value>Number of walls</value>
@@ -433,7 +433,7 @@
     <value>13</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Desktop.FormNewBase, treeDiM.StackBuilder.Desktop, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Desktop.FormNewBase, treeDiM.StackBuilder.Desktop, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tabTray.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -526,7 +526,7 @@
     <value>16, 97</value>
   </data>
   <data name="&gt;&gt;uCtrlWrapperWalls.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbCylLayoutType.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -652,7 +652,7 @@
     <value>Z-</value>
   </data>
   <data name="&gt;&gt;uCtrlTrayWalls.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lbCylLayoutType.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -856,7 +856,7 @@
     <value>Color</value>
   </data>
   <data name="&gt;&gt;cbInnerPackable.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabTray.Parent" xml:space="preserve">
     <value>tabCtrl</value>
@@ -916,10 +916,10 @@
     <value>chkbTray</value>
   </data>
   <data name="&gt;&gt;uCtrlTrayWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlLayout.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlWrapperThickness.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -1018,7 +1018,7 @@
     <value>tabWrapper</value>
   </data>
   <data name="&gt;&gt;uCtrlTrayUnitThickness.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlOuterDimensions.Name" xml:space="preserve">
     <value>uCtrlOuterDimensions</value>
@@ -1063,7 +1063,7 @@
     <value>Wrapper</value>
   </data>
   <data name="&gt;&gt;uCtrlOptBulge.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lbName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1198,7 +1198,7 @@
     <value>16, 151</value>
   </data>
   <data name="&gt;&gt;uCtrlWrapperThickness.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlTrayWalls.Parent" xml:space="preserve">
     <value>tabTray</value>
@@ -1207,7 +1207,7 @@
     <value>340, 20</value>
   </data>
   <data name="&gt;&gt;uCtrlTrayHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbTrayColor.Items29" xml:space="preserve">
     <value>Color</value>
@@ -1231,7 +1231,7 @@
     <value>5, 31</value>
   </data>
   <data name="&gt;&gt;uCtrlWrapperWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.40, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="lbWrapperColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 13</value>

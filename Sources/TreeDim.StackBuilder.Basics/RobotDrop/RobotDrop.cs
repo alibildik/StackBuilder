@@ -13,6 +13,7 @@ namespace treeDiM.StackBuilder.Basics
     {
         #region Enums
         public enum PackDir { LENGTH, WIDTH };
+        public enum NeighbourDir { RIGHT, TOP, LEFT, BOTTOM}
         #endregion
         #region Constructor
         public RobotDrop(RobotLayer parent) { Parent = parent; }
@@ -24,11 +25,26 @@ namespace treeDiM.StackBuilder.Basics
                     (PackDirection == PackDir.LENGTH ? Number : 1) * SingleWidth,
                     SingleHeight
                     );
-        public Vector3D Center =>
+        public Vector3D Center3D =>
             BoxPositionMain.Position
                     + 0.5 * Dimensions.X * HalfAxis.ToVector3D(BoxPositionMain.DirectionLength)
                     + 0.5 * Dimensions.Y * HalfAxis.ToVector3D(BoxPositionMain.DirectionWidth)
                     + 0.5 * Dimensions.Z * Vector3D.CrossProduct(HalfAxis.ToVector3D(BoxPositionMain.DirectionLength), HalfAxis.ToVector3D(BoxPositionMain.DirectionWidth));
+        public Vector2D Center2D => new Vector2D(BoxPositionMain.Position.X, BoxPositionMain.Position.Y) + 0.5 * (Length * VLength + Width * VWidth);
+        public int RawAngle
+        {
+            get
+            {
+                switch (BoxPositionMain.DirectionLength)
+                {
+                    case HalfAxis.HAxis.AXIS_X_P: return 0;
+                    case HalfAxis.HAxis.AXIS_Y_P: return 90;
+                    case HalfAxis.HAxis.AXIS_X_N: return 180;
+                    case HalfAxis.HAxis.AXIS_Y_N: return 270;
+                    default: return 0;
+                }
+            }
+        }
         public bool IsSingle => Number == 1;
         public double SingleLength => Content.Length;
         public double SingleWidth => Content.Width;
@@ -67,6 +83,7 @@ namespace treeDiM.StackBuilder.Basics
                 return new Vector2D[] { pos, pos + vi, pos + vi + vj, pos + vj, pos };
             }
         }
+
         #endregion
         #region Static merge methods
         public static RobotDrop Merge2(RobotLayer layer, RobotDrop rd1, RobotDrop rd2)
@@ -163,7 +180,7 @@ namespace treeDiM.StackBuilder.Basics
         #region Helpers
         private Vector2D DiffCenter(RobotDrop rd)
         {
-            var diffCenter3 = Center - rd.Center;
+            var diffCenter3 = Center3D - rd.Center3D;
             return new Vector2D(diffCenter3.X, diffCenter3.Y);
         }
         private bool IsRelAbove(RobotDrop rd) => VectorNearlyEqual(DiffCenter(rd), rd.TopVector, 0.1 * SingleWidth);
@@ -202,6 +219,92 @@ namespace treeDiM.StackBuilder.Basics
                 return new Vector2D(vWidth3.X, vWidth3.Y);
             }
         }
+        private double MinX => Contour.Select(pt => pt.X).Min();
+        private double MinY => Contour.Select(pt => pt.Y).Min();
+        private double MaxX => Contour.Select(pt => pt.X).Max();
+        private double MaxY => Contour.Select(pt => pt.Y).Max();
+        private Vector2D PtMin => new Vector2D(MinX, MinY);
+        private Vector2D PtMax => new Vector2D(MaxX, MaxY);
+        private bool IsPointInside(Vector2D pt) => MinX <= pt.X && pt.X <= MaxX && MinY <= pt.Y && pt.Y <= MaxY;
+        private Vector2D Pos2D => new Vector2D(BoxPositionMain.Position.X, BoxPositionMain.Position.Y);
+        private Vector2D RightMiddle
+        {
+            get
+            {
+                switch (BoxPositionMain.DirectionLength)
+                {
+                    case HalfAxis.HAxis.AXIS_X_P: return Pos2D + Length * VLength + 0.5 * Width * VWidth;
+                    case HalfAxis.HAxis.AXIS_Y_P: return Pos2D + 0.5 * Length * VLength;
+                    case HalfAxis.HAxis.AXIS_X_N: return Pos2D + 0.5 * Width * VWidth;
+                    case HalfAxis.HAxis.AXIS_Y_N: return Pos2D + 0.5 * Length * VLength + Width * VWidth;
+                    default: return Pos2D;
+                }
+            }
+        }
+        private Vector2D TopMiddle
+        {
+            get
+            {
+                switch (BoxPositionMain.DirectionLength)
+                {
+                    case HalfAxis.HAxis.AXIS_X_P: return Pos2D + 0.5 * Length * VLength + Width * VWidth;
+                    case HalfAxis.HAxis.AXIS_Y_P: return Pos2D + Length * VLength + 0.5 * Width * VWidth;
+                    case HalfAxis.HAxis.AXIS_X_N: return Pos2D + 0.5 * Length * VLength;
+                    case HalfAxis.HAxis.AXIS_Y_N: return Pos2D + 0.5 * Width * VWidth;
+                    default: return Pos2D;
+                }
+            }
+        }
+        private Vector2D LeftMiddle
+        {
+            get
+            {
+                switch (BoxPositionMain.DirectionLength)
+                {
+                    case HalfAxis.HAxis.AXIS_X_P: return Pos2D + 0.5 * Width * VWidth;
+                    case HalfAxis.HAxis.AXIS_Y_P: return Pos2D + 0.5 * Length * VLength + Width * VWidth;
+                    case HalfAxis.HAxis.AXIS_X_N: return Pos2D + Length * VLength + 0.5 * Width * VWidth;
+                    case HalfAxis.HAxis.AXIS_Y_N: return Pos2D + 0.5 * Length * VLength;
+                    default: return Pos2D;
+                }
+            }
+        }
+        private Vector2D BottomMiddle
+        {
+            get
+            {
+                switch (BoxPositionMain.DirectionLength)
+                {
+                    case HalfAxis.HAxis.AXIS_X_P: return Pos2D + 0.5 * Length * VLength;
+                    case HalfAxis.HAxis.AXIS_Y_P: return Pos2D + 0.5 * Width * VWidth;
+                    case HalfAxis.HAxis.AXIS_X_N: return Pos2D + 0.5 * Length * VLength + Width * VWidth;
+                    case HalfAxis.HAxis.AXIS_Y_N: return Pos2D + Length * VLength + 0.5 * Width * VWidth;
+                    default: return Pos2D;
+                }
+            }
+        }
+        public bool HasNeighbour(NeighbourDir dir, double dist)
+        {
+            Vector2D ptDir = GetNeighbourPoint(dir, dist);
+            int id = -1;
+            var listDrop = Parent.Drops.Where(d => d.IsPointInside(ptDir)).ToList();
+            if (listDrop.Count > 0 && listDrop.First().ID < ID)
+                id = listDrop.First().ID;
+            return id != -1;
+        }
+        private Vector2D GetNeighbourPoint(NeighbourDir dir, double dist)
+        {
+            switch (dir)
+            {
+                case NeighbourDir.RIGHT: return OuterPt(RightMiddle, dist);
+                case NeighbourDir.TOP: return OuterPt(TopMiddle, dist);
+                case NeighbourDir.LEFT: return OuterPt(LeftMiddle, dist);
+                case NeighbourDir.BOTTOM: return OuterPt(BottomMiddle, dist);
+                default: return Center2D;
+            }
+        }
+        private Vector2D UnitVector(Vector2D pt0, Vector2D pt1) => (pt1 - pt0) / (pt1 - pt0).GetLength();
+        private Vector2D OuterPt(Vector2D pt, double dist) => pt + dist * UnitVector(Center2D, pt);
         #endregion
         #region Data members
         public int ID { get; set; }
@@ -289,8 +392,8 @@ namespace treeDiM.StackBuilder.Basics
             Array.Sort(arrIndexes);
             Array.Reverse(arrIndexes);
 
-            Drops.RemoveAt(arrIndexes[0]);
-            Drops.RemoveAt(arrIndexes[1]);
+            for (int i=0; i<number; ++i)
+                Drops.RemoveAt(arrIndexes[i]);
 
             AutomaticRenumber();
             Parent.Update();
@@ -344,13 +447,59 @@ namespace treeDiM.StackBuilder.Basics
         }
         #endregion
         #region Public accessors
-        public RobotLayer GetLayer(int index)
+        public int NumberOfLayers => Analysis.SolutionLay.LayerCount;
+        public RobotLayer GetLayerType(int index)
         {
             if (index >= ListLayerIndexes.Count)
                 return null;
             RobotLayer layer =  LayerTypes[ListLayerIndexes[index]];
             layer.SortByID();
             return layer;
+        }
+        public void GetLayers(out List<RobotLayer> layers, out List<int> interlayers)
+        {
+            var sol = Analysis.SolutionLay;
+            layers = new List<RobotLayer>();
+            interlayers = new List<int>();
+
+            int iLayer = 0;
+            double zLayer = Analysis.Offset.Z;
+            foreach (var solItem in sol.SolutionItems)
+            {
+                var currentLayer = sol.LayerTypes[solItem.IndexLayer];
+                // intelayer
+                if (solItem.HasInterlayer)
+                {
+                    interlayers.Add(solItem.InterlayerIndex);
+                    var interlayer = Analysis.Interlayer(solItem.InterlayerIndex);
+                    zLayer += interlayer.Thickness;
+                }
+                else
+                    interlayers.Add(-1);
+
+                // robot layer
+                RobotLayer editedLayer = LayerTypes[ListLayerIndexes[iLayer]];
+                editedLayer.SortByID();
+                RobotLayer robotLayer = new RobotLayer(this, iLayer);
+
+                foreach (var drop in editedLayer.Drops)
+                {
+                    var bPos = drop.BoxPositionMain;
+                    var v = bPos.Position;
+
+                    robotLayer.Drops.Add(
+                        new RobotDrop(robotLayer)
+                        {
+                            ID = drop.ID,
+                            BoxPositionMain = new BoxPosition( new Vector3D(v.X, v.Y, zLayer), bPos.DirectionLength, bPos.DirectionWidth),
+                            Number = drop.Number,
+                            PackDirection = drop.PackDirection
+                        }
+                        );
+                }
+                layers.Add(robotLayer);
+                zLayer += currentLayer.LayerHeight;
+            }
         }
         public Vector2D MinPoint { get { Analysis.GetPtMinMax(out Vector2D ptMin, out Vector2D ptMax); return ptMin; } }
         public Vector2D MaxPoint { get { Analysis.GetPtMinMax(out Vector2D ptMin, out Vector2D ptMax); return ptMax; } }
@@ -375,6 +524,28 @@ namespace treeDiM.StackBuilder.Basics
                 return dropCount;
             }
         }
+        public int NumberOfPlaceCycles
+        {
+            get
+            {
+                int cycleCount = 0;
+                var sol = Analysis.SolutionLay;
+                foreach (var solItem in sol.SolutionItems)
+                {
+                    var layer = LayerTypes[solItem.IndexLayer];
+                    cycleCount += layer.Drops.Count;
+                    cycleCount += solItem.HasInterlayer ? 1 : 0;
+                }
+                return cycleCount;
+            }
+        }
+        /// <summary>
+        /// Grabber angle
+        /// </summary>
+        public int AngleGrabber { get; set; }
+        public int AngleItem { get; set; }
+        public int FacingAngle => (Analysis.Content as PackableBrick).FacingAngle;
+        public Vector3D DockingOffsets { get; set; } = new Vector3D(30.0, 30.0, 40.0);
         #endregion
         #region Delegate / Event / Event triggering
         public delegate void DelegateLayerModified();

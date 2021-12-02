@@ -72,6 +72,7 @@ namespace treeDiM.StackBuilder.Basics
             }
             return maxDistance;
         }
+        public bool IsZOriented => DirectionHeight.IsOneOf(HalfAxis.HAxis.AXIS_Z_N, HalfAxis.HAxis.AXIS_Z_P);
         #endregion
 
         #region Static properties
@@ -99,6 +100,12 @@ namespace treeDiM.StackBuilder.Basics
             Vector3D v = Position;
             v += dim.X * HalfAxis.ToVector3D(DirectionLength) + dim.Y * HalfAxis.ToVector3D(DirectionWidth);
             return new BoxPosition(v, HalfAxis.Opposite(DirectionLength), HalfAxis.Opposite(DirectionWidth));
+        }
+        public void RotateThisZ180(Vector3D dim)
+        {
+            Position += dim.X * HalfAxis.ToVector3D(DirectionLength) + dim.Y * HalfAxis.ToVector3D(DirectionWidth);
+            DirectionLength = HalfAxis.Opposite(DirectionLength);
+            DirectionWidth = HalfAxis.Opposite(DirectionWidth);
         }
         #endregion
 
@@ -260,6 +267,87 @@ namespace treeDiM.StackBuilder.Basics
             }
             else
                 return false;
+            return true;
+        }
+        public void FlipFacingOutside(int facing, Vector3D dimBox, Vector2D dimContainer)
+        {
+            // sanity check
+            if (!DirectionHeight.IsOneOf(HalfAxis.HAxis.AXIS_Z_N, HalfAxis.HAxis.AXIS_Z_P))
+                return;
+
+            Vector3D posFacing = Vector3D.Zero;
+            HalfAxis.HAxis hAxis = HalfAxis.HAxis.AXIS_X_P;
+            GetFacingPosition(dimBox, facing, false, ref posFacing, ref hAxis);
+            Vector3D posFacingOpposite = Vector3D.Zero;
+            HalfAxis.HAxis hAxisOpposite = HalfAxis.HAxis.AXIS_X_P;
+            GetFacingPosition(dimBox, facing, true, ref posFacingOpposite, ref hAxisOpposite);
+
+            if (hAxis == HalfAxis.HAxis.AXIS_X_P || hAxis == HalfAxis.HAxis.AXIS_X_N)
+            {
+                double distBorder = Math.Min(Math.Abs(posFacing.Y - 0.0), Math.Abs(dimContainer.Y - posFacing.Y));
+                double distBorderOpposite = Math.Min(Math.Abs(posFacingOpposite.Y - 0.0), Math.Abs(dimContainer.Y - posFacingOpposite.Y));
+                if (distBorderOpposite < distBorder) RotateThisZ180(dimBox);
+            }
+            else if (hAxis == HalfAxis.HAxis.AXIS_Y_P || hAxis == HalfAxis.HAxis.AXIS_Y_N)
+            {
+                double distBorder = Math.Min(Math.Abs(posFacing.X - 0.0), Math.Abs(dimContainer.X - posFacing.X));
+                double distBorderOpposite = Math.Min(Math.Abs(posFacingOpposite.X - 0.0), Math.Abs(dimContainer.X - posFacingOpposite.X));
+                if (distBorderOpposite < distBorder) RotateThisZ180(dimBox);
+            }
+        }
+        private bool GetFacingPosition(Vector3D dims, int facing, bool opposite, ref Vector3D posFacing, ref HalfAxis.HAxis hAxis)
+        {
+            if (DirectionHeight != HalfAxis.HAxis.AXIS_Z_P && DirectionHeight != HalfAxis.HAxis.AXIS_Z_N)
+                return false;
+            posFacing = Position + dims.Z * Vector3D.ZAxis;
+            if (!opposite)
+            {
+                switch (facing)
+                {
+                    case 0:
+                        posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(DirectionLength);
+                        hAxis = DirectionLength;
+                        break;
+                    case 1:
+                        posFacing += dims.X * HalfAxis.ToVector3D(DirectionLength) + 0.5 * dims.Y * HalfAxis.ToVector3D(DirectionWidth);
+                        hAxis = DirectionWidth;
+                        break;
+                    case 2:
+                        posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(DirectionLength) + dims.Y * HalfAxis.ToVector3D(DirectionWidth);
+                        hAxis = HalfAxis.Opposite(DirectionLength);
+                        break;
+                    case 3:
+                        posFacing += 0.5 * dims.Y * HalfAxis.ToVector3D(DirectionWidth);
+                        hAxis = HalfAxis.Opposite(DirectionWidth);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                switch (facing)
+                {
+                    case 0:
+                        posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(DirectionLength) + dims.Y * HalfAxis.ToVector3D(DirectionWidth);
+                        hAxis = HalfAxis.Opposite(DirectionLength);
+                        break;
+                    case 1:
+                        posFacing += 0.5 * dims.Y * HalfAxis.ToVector3D(DirectionWidth);
+                        hAxis = HalfAxis.Opposite(DirectionWidth);
+                        break;
+                    case 2:
+                        posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(DirectionLength);
+                        hAxis = DirectionLength;
+                        break;
+                    case 3:
+                        posFacing += dims.X * HalfAxis.ToVector3D(DirectionLength) + 0.5 * dims.Y * HalfAxis.ToVector3D(DirectionWidth);
+                        hAxis = DirectionWidth;
+                        break;
+                    default:
+                        break;
+                }
+            }
             return true;
         }
         #endregion

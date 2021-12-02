@@ -14,7 +14,6 @@ namespace treeDiM.StackBuilder.Exporters
 {
     public abstract class ExporterRobot : Exporter
     {
-        public virtual bool UseRobotPreparation { get; } = false;
         public virtual void Export(RobotPreparation robotPreparation, ref Stream stream)
         {
             // sanity check
@@ -59,8 +58,10 @@ namespace treeDiM.StackBuilder.Exporters
         public virtual int MaxLayerIndexExporter(AnalysisLayered analysis) => analysis.SolutionLay.LayerCount;
 
         public abstract System.Drawing.Bitmap BrandLogo { get; }
-
-        public virtual bool ShowSelectorCoordinateMode { get; } = true;
+        public virtual bool UseRobotPreparation { get; } = false;
+        public virtual bool UseCoordinateSelector { get; } = false;
+        public virtual bool UseAngleSelector { get; } = false;
+        public virtual bool UseDockingOffsets { get; } = false;
         public CoordinateMode PositionCoordinateMode { get; set; } = CoordinateMode.CM_CORNER;
         public enum CoordinateMode { CM_CORNER, CM_COG };
 

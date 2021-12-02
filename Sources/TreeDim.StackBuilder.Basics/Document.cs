@@ -907,57 +907,6 @@ namespace treeDiM.StackBuilder.Basics
         #endregion
 
         #region Legacy analyses instantiation method
-        /// <summary>
-        /// Creates a new analysis in this document + compute solutions
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="description"></param>
-        /// <param name="box"></param>
-        /// <param name="pallet"></param>
-        /// <param name="interlayer"></param>
-        /// <param name="constraintSet"></param>
-        /// <param name="solver">Node : analysis creation requires a solver</param>
-        /// <returns>An analysis</returns>
-        public Analysis CreateNewCasePalletAnalysis(
-            string name, string description
-            , BProperties box, PalletProperties pallet
-            , InterlayerProperties interlayer, InterlayerProperties interlayerAntiSlip
-            , PalletCornerProperties palletCorners, PalletCapProperties palletCap, PalletFilmProperties palletFilm
-            , PalletConstraintSet constraintSet
-            , ILayerSolver solver)
-        {
-            ConstraintSetCasePallet constraintSetNew = new ConstraintSetCasePallet();
-            constraintSetNew.SetMaxHeight( new OptDouble(true, constraintSet.MaximumHeight) );
-            constraintSetNew.OptMaxWeight = new OptDouble(constraintSet.UseMaximumPalletWeight, constraintSet.MaximumPalletWeight);
-            constraintSetNew.Overhang = new Vector2D(constraintSet.OverhangX, constraintSet.OverhangY);
-            
-            List<InterlayerProperties> listInterlayers = new List<InterlayerProperties>();
-            if (null != interlayerAntiSlip)
-                listInterlayers.Add(interlayerAntiSlip);
-            if (null != interlayer)
-                listInterlayers.Add(interlayer);
-
-            List<LayerEncap> layerEncaps = new List<LayerEncap>();
-            if (null != solver)
-            {
-                List<Layer2DBrickImp> layers = solver.BuildLayers(
-                    box.OuterDimensions
-                    , box.Bulge
-                    , new Vector2D(pallet.Length + constraintSetNew.Overhang.X, pallet.Width + constraintSetNew.Overhang.Y), pallet.Height
-                    , constraintSetNew
-                    , true);
-                if (layers.Count > 0)
-                    layerEncaps.Add(new LayerEncap(layers[0].LayerDescriptor));
-            }
-
-            Analysis analysis = CreateNewAnalysisCasePallet(name, description, box, pallet
-                , listInterlayers, palletCorners, palletCap, palletFilm
-                , constraintSetNew, layerEncaps);
-
-            Modify();
-            return analysis;
-        }
-
         public Analysis CreateNewPackPalletAnalysis(
             string name, string description
             , PackProperties pack, PalletProperties pallet
@@ -1288,7 +1237,6 @@ namespace treeDiM.StackBuilder.Basics
             bool hasTape = false;
             double tapeWidth = 0.0;
             Color tapeColor = Color.Black;
-            bool facingMark = false;
             StrapperSet strapperSet = new StrapperSet();
             strapperSet.SetDimension(length, width, height);
             foreach (XmlNode node in eltBoxProperties.ChildNodes)
@@ -1302,10 +1250,11 @@ namespace treeDiM.StackBuilder.Basics
                     hasTape = LoadTape(childElt, out tapeWidth, out tapeColor);
                 else if (string.Equals(node.Name, "StrapperSet", StringComparison.CurrentCultureIgnoreCase))
                     LoadStrapperSet(childElt, ref strapperSet);
-                else if (string.Equals(node.Name, "FacingMark", StringComparison.CurrentCultureIgnoreCase))
-                    LoadFacingMark(childElt, ref facingMark);
-
             }
+            int facing = -1;
+            if (eltBoxProperties.HasAttribute("Facing"))
+                facing = int.Parse(eltBoxProperties.Attributes["Facing"].Value);
+
 
             bool isCase = hasInsideDimensions || hasTape;
             if (!string.IsNullOrEmpty(sCAType))
@@ -1351,6 +1300,8 @@ namespace treeDiM.StackBuilder.Basics
             boxProperties.HasInsideDimensions = hasInsideDimensions;
             // bulge
             boxProperties.Bulge = bulge;
+            // facing
+            boxProperties.Facing = facing;
         }
 
         private void LoadBagProperties(XmlElement eltBagProperties)
@@ -1645,19 +1596,6 @@ namespace treeDiM.StackBuilder.Basics
                 tapeWidth = Convert.ToDouble(eltTape.Attributes["TapeWidth"].Value, CultureInfo.InvariantCulture);
                 string sColorArgb = eltTape.Attributes["TapeColor"].Value;
                 tapeColor = Color.FromArgb(Convert.ToInt32(sColorArgb));
-            }
-            catch (Exception ex)
-            {
-                _log.Error(ex.ToString());
-                return false;
-            }
-            return true;
-        }
-        private bool LoadFacingMark(XmlElement eltFacingMark, ref bool facingMark)
-        {
-            try
-            {
-                facingMark = Convert.ToBoolean(eltFacingMark.Attributes["Visible"].Value);
             }
             catch (Exception ex)
             {
@@ -2933,6 +2871,10 @@ namespace treeDiM.StackBuilder.Basics
             }
             // strappers
             SaveStrappers(boxProperties.StrapperSet, eltBoxProperties, xmlDoc);
+            // Facing
+            XmlAttribute facingAttribute = xmlDoc.CreateAttribute("Facing");
+            facingAttribute.Value = $"{boxProperties.Facing}";
+            eltBoxProperties.Attributes.Append(facingAttribute);
         }
         public void Save(BagProperties bagProperties, XmlElement parentElement, XmlDocument xmlDoc)
         {

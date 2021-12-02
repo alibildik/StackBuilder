@@ -40,7 +40,7 @@
             this.lbDateCreated = new System.Windows.Forms.Label();
             this.tbDateCreated = new System.Windows.Forms.TextBox();
             this.statusStripDef = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelDef = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripDef.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,17 +102,17 @@
             // 
             // statusStripDef
             // 
-            resources.ApplyResources(this.statusStripDef, "statusStripDef");
             this.statusStripDef.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelDef});
+            this.statusLabel});
+            resources.ApplyResources(this.statusStripDef, "statusStripDef");
             this.statusStripDef.Name = "statusStripDef";
             this.statusStripDef.SizingGrip = false;
             // 
-            // toolStripStatusLabelDef
+            // statusLabel
             // 
-            resources.ApplyResources(this.toolStripStatusLabelDef, "toolStripStatusLabelDef");
-            this.toolStripStatusLabelDef.ForeColor = System.Drawing.Color.Red;
-            this.toolStripStatusLabelDef.Name = "toolStripStatusLabelDef";
+            this.statusLabel.ForeColor = System.Drawing.Color.Red;
+            this.statusLabel.Name = "statusLabel";
+            resources.ApplyResources(this.statusLabel, "statusLabel");
             // 
             // FormNewDocument
             // 
@@ -156,6 +156,6 @@
         private System.Windows.Forms.Label lbDateCreated;
         private System.Windows.Forms.TextBox tbDateCreated;
         private System.Windows.Forms.StatusStrip statusStripDef;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDef;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
     }
 }

@@ -30,7 +30,7 @@
         {
             this.bnCompute = new System.Windows.Forms.Button();
             this.uCtrlLayerList = new treeDiM.StackBuilder.Graphics.UCtrlLayerList();
-            this.uCtrlCaseOrientation = new treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation();
+            this.uCtrlCaseOrientation = new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation();
             this.SuspendLayout();
             // 
             // bnCompute
@@ -84,6 +84,6 @@
 
         private System.Windows.Forms.Button bnCompute;
         private Graphics.UCtrlLayerList uCtrlLayerList;
-        private Graphics.uCtrlCaseOrientation uCtrlCaseOrientation;
+        private Graphics.UCtrlCaseOrientation uCtrlCaseOrientation;
     }
 }

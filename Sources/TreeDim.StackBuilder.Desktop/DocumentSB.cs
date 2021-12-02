@@ -150,6 +150,7 @@ namespace treeDiM.StackBuilder.Desktop
                     boxProperties.Bulge = form.Bulge;
                     boxProperties.SetNetWeight(form.NetWeight);
                     boxProperties.TextureList = form.TextureList;
+                    boxProperties.Facing = form.Facing;
                 }
             }
         }
@@ -172,6 +173,7 @@ namespace treeDiM.StackBuilder.Desktop
                     boxProperties.TapeWidth = form.TapeWidth;
                     boxProperties.TextureList = form.TextureList;
                     boxProperties.StrapperSet = form.StrapperSet;
+                    boxProperties.Facing = form.Facing;
                  }
             }
         }

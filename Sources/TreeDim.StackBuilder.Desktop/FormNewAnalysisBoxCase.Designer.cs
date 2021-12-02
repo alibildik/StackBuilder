@@ -35,7 +35,7 @@
             this.cbCases = new treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered();
             this.cbBoxes = new treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered();
             this.uCtrlLayerList = new treeDiM.StackBuilder.Graphics.UCtrlLayerList();
-            this.uCtrlCaseOrientation = new treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation();
+            this.uCtrlCaseOrientation = new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation();
             this.tabControlConstraints = new System.Windows.Forms.TabControl();
             this.tabPageStopCriterions = new System.Windows.Forms.TabPage();
             this.uCtrlOptMaxNumber = new treeDiM.Basics.UCtrlOptInt();
@@ -102,7 +102,7 @@
         true};
             resources.ApplyResources(this.uCtrlCaseOrientation, "uCtrlCaseOrientation");
             this.uCtrlCaseOrientation.Name = "uCtrlCaseOrientation";
-            this.uCtrlCaseOrientation.CheckedChanged += new treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation.CheckChanged(this.OnInputChanged);
+            this.uCtrlCaseOrientation.CheckedChanged += new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation.CheckChanged(this.OnInputChanged);
             // 
             // tabControlConstraints
             // 
@@ -179,7 +179,7 @@
 
         #endregion
 
-        private Graphics.uCtrlCaseOrientation uCtrlCaseOrientation;
+        private Graphics.UCtrlCaseOrientation uCtrlCaseOrientation;
         private Graphics.UCtrlLayerList uCtrlLayerList;
         private Graphics.Controls.CCtrlComboFiltered cbBoxes;
         private Graphics.Controls.CCtrlComboFiltered cbCases;

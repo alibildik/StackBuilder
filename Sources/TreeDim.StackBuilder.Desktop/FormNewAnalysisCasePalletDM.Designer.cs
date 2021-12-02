@@ -42,7 +42,7 @@
             this.tabPageLayerFilters = new System.Windows.Forms.TabPage();
             this.uCtrlOptMaximumLayerWeight = new treeDiM.Basics.UCtrlOptDouble();
             this.uCtrlOptMaximumSpace = new treeDiM.Basics.UCtrlOptDouble();
-            this.uCtrlCaseOrientation = new treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation();
+            this.uCtrlCaseOrientation = new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation();
             this.cbPallets = new treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered();
             this.cbCases = new treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered();
             this.lbPallet = new System.Windows.Forms.Label();
@@ -261,7 +261,7 @@
             this.uCtrlCaseOrientation.Name = "uCtrlCaseOrientation";
             this.uCtrlCaseOrientation.Size = new System.Drawing.Size(292, 110);
             this.uCtrlCaseOrientation.TabIndex = 25;
-            this.uCtrlCaseOrientation.CheckedChanged += new treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation.CheckChanged(this.OnInputChanged);
+            this.uCtrlCaseOrientation.CheckedChanged += new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation.CheckChanged(this.OnInputChanged);
             // 
             // cbPallets
             // 
@@ -408,7 +408,7 @@
         private Graphics.Controls.CCtrlComboFiltered cbCases;
         private System.Windows.Forms.Label lbPallet;
         private System.Windows.Forms.Label lbBox;
-        private Graphics.uCtrlCaseOrientation uCtrlCaseOrientation;
+        private Graphics.UCtrlCaseOrientation uCtrlCaseOrientation;
         private System.Windows.Forms.TabControl tabCtrlConstraints;
         private System.Windows.Forms.TabPage tabPageStopCriterions;
         private treeDiM.Basics.UCtrlOptDouble uCtrlOptMaximumWeight;

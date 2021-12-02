@@ -36,7 +36,7 @@
             this.uCtrlCaseDimensionsMin = new treeDiM.Basics.UCtrlOptTriDouble();
             this.gridSolutions = new SourceGrid.Grid();
             this.cbBoxes = new treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered();
-            this.uCtrlCaseOrient = new treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation();
+            this.uCtrlCaseOrient = new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation();
             this.chklbCases = new System.Windows.Forms.CheckedListBox();
             this.bnClose = new System.Windows.Forms.Button();
             this.lbCases = new System.Windows.Forms.Label();
@@ -153,7 +153,7 @@
         true};
             resources.ApplyResources(this.uCtrlCaseOrient, "uCtrlCaseOrient");
             this.uCtrlCaseOrient.Name = "uCtrlCaseOrient";
-            this.uCtrlCaseOrient.CheckedChanged += new treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation.CheckChanged(this.OnConstraintsChanged);
+            this.uCtrlCaseOrient.CheckedChanged += new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation.CheckChanged(this.OnConstraintsChanged);
             // 
             // chklbCases
             // 
@@ -269,7 +269,7 @@
         private System.Windows.Forms.Label lbCases;
         private System.Windows.Forms.CheckedListBox chklbCases;
         private System.Windows.Forms.SplitContainer splitContainerHoriz;
-        private Graphics.uCtrlCaseOrientation uCtrlCaseOrient;
+        private Graphics.UCtrlCaseOrientation uCtrlCaseOrient;
         private Graphics.Controls.CCtrlComboFiltered cbBoxes;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDef;

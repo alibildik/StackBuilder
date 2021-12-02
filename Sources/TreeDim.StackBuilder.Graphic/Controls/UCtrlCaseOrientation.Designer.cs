@@ -1,6 +1,6 @@
 ﻿namespace treeDiM.StackBuilder.Graphics
 {
-    partial class uCtrlCaseOrientation
+    partial class UCtrlCaseOrientation
     {
         /// <summary> 
         /// Required designer variable.

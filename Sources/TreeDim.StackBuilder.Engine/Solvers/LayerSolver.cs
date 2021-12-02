@@ -55,6 +55,8 @@ namespace treeDiM.StackBuilder.Engine
                                 continue;
                             if (!constraintSet.OptMaxHeight.Activated || (layer.CountInHeight(constraintSet.OptMaxHeight.Value - offsetZ) > 0))
                                 listLayers0.Add(layer);
+                            // flip facing outside
+                            FlipFacingOutside(ref layer, Facing, dimBox, dimContainer);
                         }
                         catch (Exception ex)
                         {
@@ -87,6 +89,18 @@ namespace treeDiM.StackBuilder.Engine
                 listLayers0.Sort(new LayerComparerCount(constraintSet, offsetZ));
 
             return listLayers0;
+        }
+        private void FlipFacingOutside(ref Layer2DBrickImp layer, int facing, Vector3D dimBox, Vector2D dimContainer)
+        {
+            if (-1 != facing && layer.IsZOriented)
+            {
+                for (int iPos = 0; iPos < layer.Positions.Count; ++iPos)
+                {
+                    var bPos = (BoxPosition)layer.Positions[iPos].Clone();
+                    bPos.FlipFacingOutside(facing, dimBox, dimContainer);
+                    layer.Positions[iPos] = bPos;
+                }
+            }
         }
         public List<ILayer2D> BuildLayers(
             Packable packable, Vector2D dimContainer,
@@ -128,6 +142,8 @@ namespace treeDiM.StackBuilder.Engine
                                 if (0 == layer.Count)
                                     continue;
                                 listLayers0.Add(layer);
+                                // flip if needed
+                                FlipFacingOutside(ref layer, packableBrick.Facing, packableBrick.OuterDimensions, dimContainer);
                             }
                             catch (Exception ex)
                             {
@@ -152,9 +168,9 @@ namespace treeDiM.StackBuilder.Engine
                         try
                         {
                             var layer = new Layer2DCylImp(cylinder.RadiusOuter, cylinder.Height, dimContainer, iSwapped == 1) { PatternName = pattern.Name };
-                            if (!pattern.GetLayerDimensions(layer as Layer2DCylImp, out double actualLength, out double actualWidth))
+                            if (!pattern.GetLayerDimensions(layer, out double actualLength, out double actualWidth))
                                 continue;
-                            pattern.GenerateLayer(layer as Layer2DCylImp, actualLength, actualWidth);
+                            pattern.GenerateLayer(layer, actualLength, actualWidth);
                             if (0 == layer.Count)
                                 continue;
                             listLayers0.Add(layer);
@@ -195,7 +211,7 @@ namespace treeDiM.StackBuilder.Engine
         }
         public Layer2DBrickImp BuildLayer(Vector3D dimBox, Vector2D dimContainer, LayerDescBox layerDesc, double minSpace)
         {
-            LayerDescBox layerDescBox = layerDesc as LayerDescBox;
+            LayerDescBox layerDescBox = layerDesc;
             // instantiate layer
             var layer = new Layer2DBrickImp(dimBox, Vector3D.Zero, dimContainer, layerDescBox.PatternName, layerDescBox.AxisOrtho, layerDesc.Swapped)
             {
@@ -212,7 +228,6 @@ namespace treeDiM.StackBuilder.Engine
                 , actualWidth);
             return layer;
         }
-
         public ILayer2D BuildLayer(Packable packable, Vector2D dimContainer, LayerDesc layerDesc, double minSpace)
         {
             ILayer2D layer = null;
@@ -231,6 +246,9 @@ namespace treeDiM.StackBuilder.Engine
                         layer as Layer2DBrickImp
                         , actualLength
                         , actualWidth);
+
+                    Layer2DBrickImp layerImp = layer as Layer2DBrickImp;
+                    FlipFacingOutside(ref layerImp, packableBrick.Facing, packableBrick.OuterDimensions, dimContainer);
                 }
                 return layer;
             }
@@ -252,7 +270,6 @@ namespace treeDiM.StackBuilder.Engine
             }
             return layer;
         }
-
         public ILayer2D BuildLayer(Packable packable, Vector2D dimContainer, LayerDesc layerDesc, Vector2D actualDimensions, double minSpace)
         {
             ILayer2D layer = null;
@@ -285,9 +302,10 @@ namespace treeDiM.StackBuilder.Engine
                 , layer.Swapped ? actualDimensions.Y : actualDimensions.X
                 , layer.Swapped ? actualDimensions.X : actualDimensions.Y
                 );
+            if (layer is Layer2DBrickImp layerImp && packable is PackableBrick packableB)
+                FlipFacingOutside(ref layerImp, packableB.Facing, packableB.OuterDimensions, dimContainer);
             return layer;
         }
-
         public Layer2DBrickImp BuildLayer(Vector3D dimBox, Vector3D bulge, Vector2D dimContainer, LayerDescBox layerDesc, Vector2D actualDimensions, double minSpace)
         {
             // instantiate layer
@@ -302,6 +320,8 @@ namespace treeDiM.StackBuilder.Engine
                 layer
                 , layer.Swapped ? actualDimensions.Y : actualDimensions.X
                 , layer.Swapped ? actualDimensions.X : actualDimensions.Y);
+
+            FlipFacingOutside(ref layer, Facing, dimBox, dimContainer);
             return layer;
         }
         /// <summary>
@@ -355,7 +375,6 @@ namespace treeDiM.StackBuilder.Engine
             }
             return true;
         }
-
         public static bool GetBestCombination(Vector3D dimBox, Vector3D bulge, Vector3D dimContainer
             , ConstraintSetAbstract constraintSet
             , ref List<KeyValuePair<LayerEncap, int>> listLayer)
@@ -466,7 +485,6 @@ namespace treeDiM.StackBuilder.Engine
                 listLayer.Add(new KeyValuePair<LayerEncap, int>(layDescs[indexJMax], noJMax));
             return true;
         }
-
         public List<Layer2DCylImp> BuildLayers(
             double radius, double height
             , Vector2D dimContainer
@@ -510,8 +528,65 @@ namespace treeDiM.StackBuilder.Engine
             }
             return listLayers0;
         }
-
+        #region Helpers
+        private bool GetFacingPosition(BoxPosition bPos, Vector3D dims, int iFacing, bool opposite, ref Vector3D posFacing, ref HalfAxis.HAxis hAxis)
+        {
+            if (bPos.DirectionHeight != HalfAxis.HAxis.AXIS_Z_P)
+                return false;
+            posFacing = bPos.Position + dims.Z * Vector3D.ZAxis;
+            if (!opposite)
+            {
+                switch (iFacing)
+                {
+                    case 0:
+                        posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(bPos.DirectionLength);
+                        hAxis = bPos.DirectionLength;
+                        break;
+                    case 1:
+                        posFacing += dims.X * HalfAxis.ToVector3D(bPos.DirectionLength) + 0.5 * dims.Y * HalfAxis.ToVector3D(bPos.DirectionWidth);
+                        hAxis = bPos.DirectionWidth;
+                        break;
+                    case 2:
+                        posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(bPos.DirectionLength) + dims.Y * HalfAxis.ToVector3D(bPos.DirectionWidth);
+                        hAxis = HalfAxis.Opposite(bPos.DirectionLength);
+                        break;
+                    case 3:
+                        posFacing += 0.5 * dims.Y * HalfAxis.ToVector3D(bPos.DirectionWidth);
+                        hAxis = HalfAxis.Opposite(bPos.DirectionWidth);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                switch (iFacing)
+                {
+                    case 0:
+                        posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(bPos.DirectionLength) + dims.Y * HalfAxis.ToVector3D(bPos.DirectionWidth);
+                        hAxis = HalfAxis.Opposite(bPos.DirectionLength);
+                        break;
+                    case 1:
+                        posFacing += 0.5 * dims.Y * HalfAxis.ToVector3D(bPos.DirectionWidth);
+                        hAxis = HalfAxis.Opposite(bPos.DirectionWidth);
+                        break;
+                    case 2:
+                        posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(bPos.DirectionLength);
+                        hAxis = bPos.DirectionLength;
+                        break;
+                    case 3:
+                        posFacing += dims.X * HalfAxis.ToVector3D(bPos.DirectionLength) + 0.5 * dims.Y * HalfAxis.ToVector3D(bPos.DirectionWidth);
+                        hAxis = bPos.DirectionWidth;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return true;
+        }
+        #endregion
         #region Non-Public Members
+        public int Facing { get; set; } = -1;
         protected static readonly ILog _log = LogManager.GetLogger(typeof(LayerSolver));
         #endregion
     }

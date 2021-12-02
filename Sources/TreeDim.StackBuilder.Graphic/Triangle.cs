@@ -19,18 +19,20 @@ namespace treeDiM.StackBuilder.Graphics
                 DrawPath[i] = drawPath[i];
             }
         }
-        public Triangle(uint pickId, Vector3D pt0, Vector3D pt1, Vector3D pt2, Color colorFill)
+        public Triangle(uint pickId, Vector3D pt0, Vector3D pt1, Vector3D pt2, Color colorFill, Color colorPath)
         {
             PickId = pickId;
             Points[0] = pt0; Points[1] = pt1; Points[2] = pt2;
             ColorFill = colorFill;
+            ColorPath = colorPath;
         }
-        public Triangle(uint pickId, Vector3D pt0, bool e0, Vector3D pt1, bool e1, Vector3D pt2, bool e2, Color colorFill)
+        public Triangle(uint pickId, Vector3D pt0, bool e0, Vector3D pt1, bool e1, Vector3D pt2, bool e2, Color colorFill, Color colorPath)
         {
             PickId = pickId;
             Points[0] = pt0; Points[1] = pt1; Points[2] = pt2;
             DrawPath[0] = e0; DrawPath[1] = e1; DrawPath[2] = e2;
             ColorFill = colorFill;
+            ColorPath = colorPath;
         }
         public Vector3D Center
         {

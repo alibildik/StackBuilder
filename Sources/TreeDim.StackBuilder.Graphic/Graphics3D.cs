@@ -53,9 +53,15 @@ namespace treeDiM.StackBuilder.Graphics
         /// </summary>
         private List<Face> _facesBackground = new List<Face>();
         /// <summary>
+        /// triangle in the background
+        /// </summary>
+        private List<Triangle> _trianglesBackground = new List<Triangle>();
+        /// <summary>
         /// dimensions cube
         /// </summary>
         private List<DimensionCube> Dimensions { get; set; } = new List<DimensionCube>();
+        private List<FrameRef> FrameRefs { get; set; } = new List<FrameRef>();
+
         private const double _cameraDistance = 100000.0;
         private static Vector3D XAxisPrev { get; set; } = Vector3D.Zero;
 
@@ -291,6 +297,10 @@ namespace treeDiM.StackBuilder.Graphics
         {
             _facesBackground.Add(face);
         }
+        public void AddTriangleBackground(Triangle triangle)
+        {
+            _trianglesBackground.Add(triangle);
+        }
         /// <summary>
         /// add face
         /// </summary>
@@ -309,11 +319,14 @@ namespace treeDiM.StackBuilder.Graphics
         {
             ListImageInst.Add(new ImageInst(pickId, content, vDimensions, boxPosition));
         }
-
         public void AddCylinder(Cyl cylinder) => Cylinders.Add(cylinder);
         public void AddDimensions(DimensionCube dimensionCube)
         {
             Dimensions.Add(dimensionCube);
+        }
+        public void AddFrameRef(FrameRef frameRef)
+        {
+            FrameRefs.Add(frameRef);
         }
         public void AddLabel(PalletLabel palletLabel)
         {
@@ -374,13 +387,14 @@ namespace treeDiM.StackBuilder.Graphics
             // draw background segments
             foreach (Segment s in SegmentsBackground)
                 Draw(s);
-            // draw background faces
+            // -- draw background faces
             foreach (Face face in _facesBackground)
                 Draw(face, FaceDir.FRONT);
-            // draw all faces using solid / transparency
+            foreach (Triangle tr in _trianglesBackground)
+                Draw(tr, FaceDir.FRONT);
+            // -- draw all faces using solid / transparency
             foreach (Face face in Faces)
                 Draw(face, FaceDir.BACK);
-            // draw triangles
             foreach (Triangle tr in Triangles)
                 Draw(tr, FaceDir.FRONT);
 
@@ -509,6 +523,9 @@ namespace treeDiM.StackBuilder.Graphics
                 foreach (var qc in Dimensions)
                     qc.Draw(this);
             }
+            // draw frame refs
+            foreach (var fr in FrameRefs)
+                fr.Draw(this);
         }
 
         public Transform3D GetCurrentTransformation()
@@ -551,6 +568,10 @@ namespace treeDiM.StackBuilder.Graphics
                     foreach (DimensionCube dimCube in Dimensions)
                         foreach (Vector3D pt in dimCube.DrawingPoints(this))
                            bbox.Extend( world2eye.transform(pt) );
+                    // frame refs
+                    foreach (var frameRef in FrameRefs)
+                        foreach (var pt in frameRef.Points)
+                            bbox.Extend(world2eye.transform(pt));
                     // image inst
                     foreach (var imageInst in ListImageInst)
                         bbox.Extend(world2eye.transform(imageInst.PointBase));

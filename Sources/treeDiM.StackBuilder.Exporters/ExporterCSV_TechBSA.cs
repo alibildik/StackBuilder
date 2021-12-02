@@ -27,7 +27,7 @@ namespace treeDiM.StackBuilder.Exporters
         public override string Name => FormatName;
         public override string Filter => "Comma Separated Values (*.csv) |*.csv";
         public override string Extension => "csv";
-        public override bool ShowSelectorCoordinateMode => false;
+        public override bool UseCoordinateSelector => false;
         public override System.Drawing.Bitmap BrandLogo => Properties.Resources.BSA_Technology;
         public override void Export(AnalysisLayered analysis, NumberFormatInfo nfi, ref StringBuilder sb)
         {
@@ -136,7 +136,6 @@ namespace treeDiM.StackBuilder.Exporters
             sb.AppendLine($"Program:StackBuilder;Program:StackBuilder.LayerDesignMode;INT;{LayerDesignMode}");
         }
         #endregion
-
         #region Import methods
         public static void Import(Stream csvStream,
             ref List<BoxPositionIndexed> boxPositions,
@@ -276,12 +275,10 @@ namespace treeDiM.StackBuilder.Exporters
         {
         }
         #endregion
-
         #region Specific properties
         private int MaximumNumberOfCases => 400;
         private int MaximumNumberOfInterlayers => 40;
         #endregion
-
         #region Helpers
         private static string Bool2string(bool b) => b ? "TRUE" : "FALSE";
         private static bool String2Bool(string s) =>

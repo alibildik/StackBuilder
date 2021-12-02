@@ -192,6 +192,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "treeDiM.StackBuilder.BestCa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "treeDiM.StackBuilder.Engine.Multiblock.Test", "Test\treeDiM.StackBuilder.Engine.Multiblock.Test\treeDiM.StackBuilder.Engine.Multiblock.Test.csproj", "{03DC93B0-96F3-46D6-891F-BE42AD2E87E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "treeDiM.StackBuilder.Graphics.TestUCtrlConveyorSettings", "Test\treeDiM.StackBuilder.Graphics.TestUCtrlConveyorSettings\treeDiM.StackBuilder.Graphics.TestUCtrlConveyorSettings.csproj", "{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1538,6 +1540,30 @@ Global
 		{03DC93B0-96F3-46D6-891F-BE42AD2E87E2}.Release|x64.Build.0 = Release|Any CPU
 		{03DC93B0-96F3-46D6-891F-BE42AD2E87E2}.Release|x86.ActiveCfg = Release|Any CPU
 		{03DC93B0-96F3-46D6-891F-BE42AD2E87E2}.Release|x86.Build.0 = Release|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Debug|ARM.Build.0 = Debug|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Debug|x64.Build.0 = Debug|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Debug|x86.Build.0 = Debug|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Release|ARM.ActiveCfg = Release|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Release|ARM.Build.0 = Release|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Release|ARM64.Build.0 = Release|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Release|x64.ActiveCfg = Release|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Release|x64.Build.0 = Release|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Release|x86.ActiveCfg = Release|Any CPU
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1589,13 +1615,14 @@ Global
 		{64E9F23B-98AC-465C-BE53-4E518D348731} = {7C541C76-20F1-40D8-A683-29062638D9B9}
 		{2EC3713E-943D-4FE7-8864-8EED16231CF5} = {6A9F4A88-DE9C-4EAB-9659-197FF7DFF6AD}
 		{03DC93B0-96F3-46D6-891F-BE42AD2E87E2} = {36E4D3C5-28FD-46B9-8763-C3316F67C6BE}
+		{DA30A6DC-F37E-49B6-B72A-9C3954EFD450} = {36E4D3C5-28FD-46B9-8763-C3316F67C6BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_PrefixTranslations = False
-		RESX_AutoCreateNewLanguageFiles = True
-		SolutionGuid = {A8385DDB-1893-4CF8-83DF-F57C7AB7069B}
-		RESX_ConfirmAddLanguageFile = False
-		RESX_ExcelExportMode = SingleSheet
 		RESX_NeutralResourcesLanguage = en-001
+		RESX_ExcelExportMode = SingleSheet
+		RESX_ConfirmAddLanguageFile = False
+		SolutionGuid = {A8385DDB-1893-4CF8-83DF-F57C7AB7069B}
+		RESX_AutoCreateNewLanguageFiles = True
+		RESX_PrefixTranslations = False
 	EndGlobalSection
 EndGlobal

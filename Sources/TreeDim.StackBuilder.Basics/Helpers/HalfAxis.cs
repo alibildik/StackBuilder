@@ -1,10 +1,20 @@
 ﻿#region Using directives
 using System;
 using Sharp3D.Math.Core;
+
+using System.Collections.Generic;
+using System.Linq;
 #endregion
 
 namespace treeDiM.StackBuilder.Basics
 {
+    public static class EnumExtensions
+    {
+        public static bool IsOneOf(this Enum enumeration, params Enum[] enums)
+        {
+            return enums.Contains(enumeration);
+        }
+    }
     public class HalfAxis
     {
         #region Values

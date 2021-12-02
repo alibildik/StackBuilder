@@ -112,6 +112,7 @@ namespace treeDiM.StackBuilder.Basics
             if (Bulge.Z > 0)
                 vecBulge += 0.5 * Bulge.Z * HalfAxis.ToVector3D(bposAdj.DirectionHeight);
             bposAdj.Position += vecBulge;
+
             // add position
             Add(bposAdj);
         }

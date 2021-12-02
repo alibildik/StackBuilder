@@ -5,6 +5,7 @@ using System.Text;
 
 namespace treeDiM.StackBuilder.Basics
 {
+    /*
     /// <summary>
     /// Gathers a set of constraint to be used while computing solutions
     /// </summary>
@@ -13,7 +14,6 @@ namespace treeDiM.StackBuilder.Basics
         public PalletConstraintSet()
         {
         }
-
         public bool IsValid
         {
             get
@@ -44,7 +44,6 @@ namespace treeDiM.StackBuilder.Basics
 
         public bool AllowAlignedLayers { get; set; } = false;
         public bool AllowAlternateLayers { get; set; } = true;
-
         public bool UseMaximumNumberOfCases { get; set; }
         public bool UseMaximumHeight { get; set; }
         public bool UseMaximumPalletWeight { get; set; }
@@ -147,6 +146,6 @@ namespace treeDiM.StackBuilder.Basics
         private int _noSolutionsKept;
 
         #endregion
-
     }
+    */
 }

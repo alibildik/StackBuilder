@@ -36,7 +36,7 @@
             this.gbCase = new System.Windows.Forms.GroupBox();
             this.uCtrlCase = new treeDiM.StackBuilder.GUIExtension.UCtrlCase();
             this.uCtrlBundle = new treeDiM.StackBuilder.GUIExtension.UCtrlBundle();
-            this.uCtrlCaseOrientation = new treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation();
+            this.uCtrlCaseOrientation = new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation();
             this.gpPallet = new System.Windows.Forms.GroupBox();
             this.uCtrlOverhang = new treeDiM.Basics.UCtrlDualDouble();
             this.graphCtrlPallet = new treeDiM.StackBuilder.Graphics.Graphics3DControl();
@@ -138,7 +138,7 @@
             this.uCtrlCaseOrientation.Name = "uCtrlCaseOrientation";
             this.uCtrlCaseOrientation.Size = new System.Drawing.Size(280, 110);
             this.uCtrlCaseOrientation.TabIndex = 2;
-            this.uCtrlCaseOrientation.CheckedChanged += new treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation.CheckChanged(this.OnInputChanged);
+            this.uCtrlCaseOrientation.CheckedChanged += new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation.CheckChanged(this.OnInputChanged);
             // 
             // gpPallet
             // 
@@ -288,7 +288,7 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDef;
         private System.Windows.Forms.GroupBox gbCase;
-        private Graphics.uCtrlCaseOrientation uCtrlCaseOrientation;
+        private Graphics.UCtrlCaseOrientation uCtrlCaseOrientation;
         private System.Windows.Forms.GroupBox gpPallet;
         private System.Windows.Forms.Label lbPallets;
         private System.Windows.Forms.GroupBox gpConstraintSet;

@@ -21,16 +21,11 @@ namespace treeDiM.StackBuilder.Graphics
             Points[0] = pt0; Points[1] = pt1; Color = color;
         }
         #endregion
-
         #region Public properties
         public Color Color { get; set; } = Color.Black;
         public Vector3D[] Points { get; } = new Vector3D[2];
         public uint PickingId { get; } = 0;
         #endregion
-
-        #region Public methods
-        #endregion
-
         #region Object override
         public override string ToString()
         {
@@ -50,7 +45,6 @@ namespace treeDiM.StackBuilder.Graphics
         #region Private members
         private static readonly double eps = 0.0001;
         #endregion
-
         #region Constructor
         public Face(uint pickId, Vector3D[] vertices,
             string partName = "", bool isSolid = true)
@@ -95,7 +89,6 @@ namespace treeDiM.StackBuilder.Graphics
             IsSolid = isSolid;
         }
         #endregion
-
         #region Public properties
         /// <summary>
         /// The center point of the face
@@ -154,7 +147,6 @@ namespace treeDiM.StackBuilder.Graphics
         /// Bitmap
         /// </summary>
         public List<Texture> Textures { set; get; } = new List<Texture>();
-
         public void ExtractFaceBitmap(double dimX, double dimY, int bmpWidth, string filename)
         {
             // extract bitmap
@@ -190,7 +182,6 @@ namespace treeDiM.StackBuilder.Graphics
                 bmp.Save(filename);
             }
         }
-
         public Vector3D[] PointsImage(Texture texture)
         {
             double cosAngle = Math.Cos(texture.Angle * Math.PI / 180.0);
@@ -211,7 +202,6 @@ namespace treeDiM.StackBuilder.Graphics
             return pts;
         }
         #endregion
-
         #region Public methods
         /// <summary>
         /// Gives point placement relative to face
@@ -232,19 +222,16 @@ namespace treeDiM.StackBuilder.Graphics
             else
                 return -1; // int
         }
-
         public bool IsVisible(Graphics3D graphics) => Vector3D.DotProduct(graphics.ViewDirection, Normal) < 0.0;
         public bool IsVisible(Vector3D viewDir) => Vector3D.DotProduct(viewDir, Normal) < 0.0;
         public bool PointIsBehind(Vector3D pt, Vector3D viewDir)
         {
             return (Vector3D.DotProduct(pt - Center, Normal) * Vector3D.DotProduct(viewDir, Normal)) > eps;
         }
-
         public bool PointIsInFront(Vector3D pt, Vector3D viewDir)
         {
             return (Vector3D.DotProduct(pt - Center, Normal) * Vector3D.DotProduct(viewDir, Normal)) < eps;
         }
-
         public bool RayIntersect(Ray ray, out Vector3D ptInter)
         {
             ptInter = Vector3D.Zero;
@@ -265,7 +252,6 @@ namespace treeDiM.StackBuilder.Graphics
             else
                 return false;
         }
-
         public bool IntersectTriangle(Ray ray, Vector3D pt0, Vector3D pt1, Vector3D pt2, out double u, out double v)
         {
             u = 0.0; v = 0.0;
@@ -313,18 +299,16 @@ namespace treeDiM.StackBuilder.Graphics
             return faceNew;
         }
         #endregion
-
         #region Object override
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(string.Format("Face => PickId : {0} Points : ", PickingId));
+            sb.Append($"Face => PickId : {PickingId} Points : ");
             foreach (Vector3D point in Points)
                 sb.Append(point.ToString());
             return sb.ToString();
         }
         #endregion
-
         #region Data members
         /// <summary>
         /// fill color of face
@@ -357,10 +341,9 @@ namespace treeDiM.StackBuilder.Graphics
         /// <param name="transform">Transform</param>
         public FaceComparison(Transform3D transform)
         {
-            _transform = transform;
+            Transform = transform;
         }
         #endregion
-
         #region Implementation IComparer
         /// <summary>
         /// Implementation of IComparer
@@ -385,9 +368,9 @@ namespace treeDiM.StackBuilder.Graphics
                     return 1;
                 else if (f1.Center.Z == f2.Center.Z)
                 {
-                    if (_transform.transform(f1.Center).Z < _transform.transform(f2.Center).Z)
+                    if (Transform.transform(f1.Center).Z < Transform.transform(f2.Center).Z)
                         return 1;
-                    else if (_transform.transform(f1.Center).Z == _transform.transform(f2.Center).Z)
+                    else if (Transform.transform(f1.Center).Z == Transform.transform(f2.Center).Z)
                         return 0;
                     else
                         return -1;
@@ -397,9 +380,9 @@ namespace treeDiM.StackBuilder.Graphics
             }
             else if (1 == mode) // use barycenter distance to eye only
             {
-                if (_transform.transform(f1.Center).Z < _transform.transform(f2.Center).Z)
+                if (Transform.transform(f1.Center).Z < Transform.transform(f2.Center).Z)
                     return 1;
-                else if (_transform.transform(f1.Center).Z == _transform.transform(f2.Center).Z)
+                else if (Transform.transform(f1.Center).Z == Transform.transform(f2.Center).Z)
                     return 0;
                 else
                     return -1;
@@ -408,9 +391,9 @@ namespace treeDiM.StackBuilder.Graphics
             {
                 double length1 = 0.0, length2 = 0.0;
                 foreach (Vector3D pt in f1.Points)
-                    length1 += _transform.transform(pt).Z;
+                    length1 += Transform.transform(pt).Z;
                 foreach (Vector3D pt in f2.Points)
-                    length2 += _transform.transform(pt).Z;
+                    length2 += Transform.transform(pt).Z;
 
                 if (length1 < length2)
                     return 1;
@@ -421,9 +404,8 @@ namespace treeDiM.StackBuilder.Graphics
             }
         }
         #endregion
-
         #region Data members
-        Transform3D _transform;
+        public Transform3D Transform { get; set; }
         #endregion
     }
     #endregion

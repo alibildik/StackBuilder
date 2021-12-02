@@ -46,7 +46,7 @@ namespace treeDiM.StackBuilder.Graphics
                 if (content is PackProperties pack)
                     b = new Pack(pickId++, pack, new BoxPosition(v));
                 else if (content is PackableBrick brick)
-                    b = new Box(pickId++, brick, new BoxPosition(v)) { ShowOrientationMark = true };
+                    b = new Box(pickId++, brick, new BoxPosition(v));
                 else
                     return null;
                 b.Draw(graphics);

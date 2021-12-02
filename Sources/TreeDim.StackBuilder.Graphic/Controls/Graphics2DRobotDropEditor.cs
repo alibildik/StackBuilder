@@ -51,7 +51,7 @@ namespace treeDiM.StackBuilder.Graphics
             base.OnPaint(e);
             try
             {
-                Graphics = new Graphics2DForm(this, e.Graphics);
+                Graphics = new Graphics2DForm(this, e.Graphics) { };
                 if (null == Layer) return;
                 Vector2D margin = new Vector2D(0.0, 100.0);
                 Graphics.SetViewport(Layer.MinPoint - margin, Layer.MaxPoint + margin);
@@ -75,7 +75,7 @@ namespace treeDiM.StackBuilder.Graphics
                 if (drop.Content is PackProperties pack)
                     b = new Pack(0, pack, drop.InnerBoxPosition(index));
                 else
-                    b = new Box(0, drop.Content, drop.InnerBoxPosition(index));
+                    b = new Box(0, drop.Content, drop.InnerBoxPosition(index)) { Facing = drop.Content.Facing };
                 b.Draw(Graphics);
             }
             // draw drop boundary
@@ -83,7 +83,7 @@ namespace treeDiM.StackBuilder.Graphics
 
             // draw 
             if (showID && drop.ID >= 0)
-                Graphics.DrawText($"{drop.ID}", FontSizeID, new Vector2D(drop.Center.X, drop.Center.Y));
+                Graphics.DrawText($"{drop.ID}", FontSizeID, new Vector2D(drop.Center3D.X, drop.Center3D.Y));
         }
         #endregion
         #region Mouse event handlers
@@ -217,11 +217,8 @@ namespace treeDiM.StackBuilder.Graphics
         protected ILog _log = LogManager.GetLogger(typeof(Graphics2DRobotDropEditor));
         private State _currentState;
         #endregion
-
         #region Delegate and event
         #endregion
-
-
     }
 
     #region State
@@ -289,6 +286,8 @@ namespace treeDiM.StackBuilder.Graphics
                 if (0 == ClickCount) return "Click first case...";
                 else if (1 == ClickCount) return "Click second case...";
                 else if (2 == ClickCount) return "Click third case...";
+                else if (3 == ClickCount) return "Click fourth case...";
+                else if (4 == ClickCount) return "Click fifth case...";
                 else return "";
             }
         }

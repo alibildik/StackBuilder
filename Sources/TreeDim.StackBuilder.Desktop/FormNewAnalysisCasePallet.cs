@@ -232,6 +232,15 @@ namespace treeDiM.StackBuilder.Desktop
                 return;
             // compute
             LayerSolver solver = new LayerSolver();
+            solver.Facing = packable.Facing;
+            List<Layer2DBrickImp> layers = solver.BuildLayers(
+                packable.OuterDimensions
+                , packable.Bulge
+                , new Vector2D(palletProperties.Length + 2.0 * uCtrlOverhang.ValueX, palletProperties.Width + 2.0 * uCtrlOverhang.ValueY)
+                , palletProperties.Height
+                , BuildConstraintSet()
+                , checkBoxBestLayersOnly.Checked);
+            /*
             List<Layer2DBrickImp> layers = solver.BuildLayers(
                 packable.OuterDimensions
                 , packable.Bulge
@@ -239,6 +248,7 @@ namespace treeDiM.StackBuilder.Desktop
                 , palletProperties.Height
                 , BuildConstraintSet()
                 , checkBoxBestLayersOnly.Checked);
+            */
             // update control
             uCtrlLayerList.Packable = packable;
             uCtrlLayerList.ContainerHeight = uCtrlMaximumHeight.Value - palletProperties.Height;

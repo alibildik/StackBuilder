@@ -126,8 +126,8 @@ namespace treeDiM.StackBuilder.Graphics
                         // here positive, pivot and negative are ready
                         Vector3D ptInter = Vector3D.Zero;
                         TestLine(t.Points[positive], t.Points[negative], ref ptInter);                        
-                        t1.Add(new Triangle(t.PickId, t.Points[positive], t.EdgeDrawn(positive, negative), ptInter, false, t.Points[pivot], t.EdgeDrawn(pivot, positive), t.ColorFill));
-                        t2.Add(new Triangle(t.PickId, t.Points[negative], t.EdgeDrawn(negative, pivot), t.Points[pivot], false, ptInter, t.EdgeDrawn(positive, negative), t.ColorFill));
+                        t1.Add(new Triangle(t.PickId, t.Points[positive], t.EdgeDrawn(positive, negative), ptInter, false, t.Points[pivot], t.EdgeDrawn(pivot, positive), t.ColorFill, t.ColorPath));
+                        t2.Add(new Triangle(t.PickId, t.Points[negative], t.EdgeDrawn(negative, pivot), t.Points[pivot], false, ptInter, t.EdgeDrawn(positive, negative), t.ColorFill, t.ColorPath));
                         return 2;
                     }
                     else
@@ -149,9 +149,9 @@ namespace treeDiM.StackBuilder.Graphics
                         Vector3D ptInter1 = Vector3D.Zero, ptInter2 = Vector3D.Zero;
                         TestLine(t.Points[negative1], t.Points[positive], ref ptInter1);
                         TestLine(t.Points[negative2], t.Points[positive], ref ptInter2);
-                        Triangle t11 = new Triangle(t.PickId, t.Points[positive], t.EdgeDrawn(positive, negative1), ptInter1, false, ptInter2, t.EdgeDrawn(negative2, positive), t.ColorFill);
-                        Triangle t21 = new Triangle(t.PickId, t.Points[negative2], t.EdgeDrawn(negative2, positive), ptInter2, false, ptInter1, false, t.ColorFill);
-                        Triangle t22 = new Triangle(t.PickId, t.Points[negative2], false, ptInter1, t.EdgeDrawn(positive, negative1), t.Points[negative1], t.EdgeDrawn(negative1, negative2), t.ColorFill);
+                        Triangle t11 = new Triangle(t.PickId, t.Points[positive], t.EdgeDrawn(positive, negative1), ptInter1, false, ptInter2, t.EdgeDrawn(negative2, positive), t.ColorFill, t.ColorPath);
+                        Triangle t21 = new Triangle(t.PickId, t.Points[negative2], t.EdgeDrawn(negative2, positive), ptInter2, false, ptInter1, false, t.ColorFill, t.ColorPath);
+                        Triangle t22 = new Triangle(t.PickId, t.Points[negative2], false, ptInter1, t.EdgeDrawn(positive, negative1), t.Points[negative1], t.EdgeDrawn(negative1, negative2), t.ColorFill, t.ColorPath);
 
                         if (!t11.IsFlat)
                             t1.Add(AlignNormal(t11, normal));
@@ -175,9 +175,9 @@ namespace treeDiM.StackBuilder.Graphics
                         Vector3D ptInter1 = Vector3D.Zero, ptInter2 = Vector3D.Zero;
                         TestLine(t.Points[positive1], t.Points[negative], ref ptInter1);
                         TestLine(t.Points[positive2], t.Points[negative], ref ptInter2);
-                        Triangle t11 = new Triangle(t.PickId, t.Points[positive1], t.EdgeDrawn(positive1, negative), ptInter1, false, ptInter2, false, t.ColorFill);
-                        Triangle t12 = new Triangle(t.PickId, t.Points[positive1], false, ptInter2, t.EdgeDrawn(negative, positive2), t.Points[positive2], t.EdgeDrawn(positive2, positive1), t.ColorFill);
-                        Triangle t21 = new Triangle(t.PickId, t.Points[negative], t.EdgeDrawn(negative, positive2), ptInter2, false, ptInter1, t.EdgeDrawn(positive1, negative), t.ColorFill);
+                        Triangle t11 = new Triangle(t.PickId, t.Points[positive1], t.EdgeDrawn(positive1, negative), ptInter1, false, ptInter2, false, t.ColorFill, t.ColorPath);
+                        Triangle t12 = new Triangle(t.PickId, t.Points[positive1], false, ptInter2, t.EdgeDrawn(negative, positive2), t.Points[positive2], t.EdgeDrawn(positive2, positive1), t.ColorFill, t.ColorPath);
+                        Triangle t21 = new Triangle(t.PickId, t.Points[negative], t.EdgeDrawn(negative, positive2), ptInter2, false, ptInter1, t.EdgeDrawn(positive1, negative), t.ColorFill, t.ColorPath);
 
                         if (!t11.IsFlat)
                             t1.Add(AlignNormal(t11, normal));

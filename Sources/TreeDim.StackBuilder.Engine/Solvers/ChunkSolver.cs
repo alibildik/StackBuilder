@@ -125,6 +125,7 @@ namespace treeDiM.StackBuilder.Engine
             if (!pattern.GetLayerDimensionsChecked(layer, out double actualLength, out double actualWidth))
                 return false;
             pattern.GenerateLayer(layer, actualLength, actualWidth);
+
             boxPositions = layer.Positions;
             return true;        
         }

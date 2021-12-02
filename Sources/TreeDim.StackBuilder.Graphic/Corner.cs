@@ -52,14 +52,14 @@ namespace treeDiM.StackBuilder.Graphics
         {
             get
             {
-                //     |1
-                //    5---4
-                //    |   |  |2
-                //    |   |  |3
-                //|0  |   0 ----- 2
-                //    |           |  |4
-                //    1 --------- 3
-                //         |5 
+                //
+                //   5---4
+                //   |   |
+                //   |   |
+                //   |   0 ----- 2
+                //   |           |
+                //   1 --------- 3
+                //
                 //
                 //   11--10
                 //   |   |
@@ -207,7 +207,6 @@ namespace treeDiM.StackBuilder.Graphics
 
             if (Math.Abs(Vector3D.DotProduct(faces[4].Normal, graphics.ViewDirection)) < 1.0E-3)
                 graphics.AddFace(faces[7]);
-
         }
         #endregion
     }

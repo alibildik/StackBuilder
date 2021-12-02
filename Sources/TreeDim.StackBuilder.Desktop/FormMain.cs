@@ -398,6 +398,7 @@ namespace treeDiM.StackBuilder.Desktop
                         box.TapeWidth = form.TapeWidth;
                         box.TapeColor = form.TapeColor;
                         box.StrapperSet = form.StrapperSet;
+                        box.Facing = form.Facing;
                         box.EndUpdate();
                         doc.Modify();
                     }

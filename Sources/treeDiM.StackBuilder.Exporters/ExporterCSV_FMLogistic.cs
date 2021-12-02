@@ -22,7 +22,7 @@ namespace treeDiM.StackBuilder.Exporters
         public override string Name => FormatName;
         public override string Extension => "csv";
         public override string Filter => "Comma Separated Values (*.csv) |*.csv";
-        public override bool ShowSelectorCoordinateMode => false;
+        public override bool UseCoordinateSelector => false;
         public override bool UseRobotPreparation => true;
         public override System.Drawing.Bitmap BrandLogo => Properties.Resources.FM_Logistic;
         public override int MaxLayerIndexExporter(AnalysisLayered analysis) => Math.Min(analysis.SolutionLay.LayerCount, 2);
@@ -95,7 +95,7 @@ namespace treeDiM.StackBuilder.Exporters
             int iLine = 1;
             for (int i = 0; i < 2; ++i)
             {
-                RobotLayer robotLayer = robotPreparation.GetLayer(i);
+                RobotLayer robotLayer = robotPreparation.GetLayerType(i);
                 if (null != robotLayer)
                 {
                     foreach (var drop in robotLayer.Drops)

@@ -120,10 +120,8 @@ namespace treeDiM.StackBuilder.Desktop
             // base implementation
             if (base.Accept(ctrl, itemBase)) return true;
             // interlayer
-            InterlayerProperties interlayer = itemBase as InterlayerProperties;
-            if (ctrl == cbTopInterlayer && null != interlayer)
+            if (ctrl == cbTopInterlayer && itemBase is InterlayerProperties interlayer)
                 return _analysis.AllowInterlayer(interlayer);
-
             return false;
         }
 
@@ -540,8 +538,10 @@ namespace treeDiM.StackBuilder.Desktop
                         gridLabels.Rows.Insert(++iRow);
                         iCol = 0;
                         // name                        
-                        gridLabels[iRow, iCol] = new SourceGrid.Cells.Cell(pli.PalletLabelProperties.Name);
-                        gridLabels[iRow, iCol].Tag = pli.PalletLabelProperties;
+                        gridLabels[iRow, iCol] = new SourceGrid.Cells.Cell(pli.PalletLabelProperties.Name)
+                        {
+                            Tag = pli.PalletLabelProperties
+                        };
                         // pallet side
                         SourceGrid.Cells.Editors.ComboBox cbPalletSide = new SourceGrid.Cells.Editors.ComboBox(typeof(string), new string[] { "X+", "X-", "Y+", "Y-" }, false);
                         cbPalletSide.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.SingleClick | SourceGrid.EditableMode.AnyKey;

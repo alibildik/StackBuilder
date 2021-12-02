@@ -356,5 +356,8 @@
     <Setting Name="AllowCombinations" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="DockingOffsets" Type="System.String" Scope="User">
+      <Value Profile="(Default)">(30.0,30.0,30.0)</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

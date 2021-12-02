@@ -20,7 +20,6 @@ namespace treeDiM.StackBuilder.Basics
             AxisOrtho = axisOrtho;
         }
         #endregion
-
         #region ILayer2D implementation
         public virtual string PatternName { get; private set; } = string.Empty;
         public virtual string Name { get; private set; }
@@ -47,10 +46,10 @@ namespace treeDiM.StackBuilder.Basics
             }
         }
         #endregion
-
         #region Layer2DBrick specific
         public HalfAxis.HAxis AxisOrtho { get; private set; } = HalfAxis.HAxis.AXIS_Z_P;
         public HalfAxis.HAxis VerticalAxisProp => VerticalAxis(AxisOrtho);
+        public bool IsZOriented => VerticalAxisProp.IsOneOf(HalfAxis.HAxis.AXIS_Z_P, HalfAxis.HAxis.AXIS_Z_N);
         public int VerticalDirection => HalfAxis.Direction(VerticalAxisProp);
         public virtual double BoxLength
         {
@@ -161,7 +160,6 @@ namespace treeDiM.StackBuilder.Basics
             }        
         }
         #endregion
-
         #region Data members
         protected List<BoxPosition> _listBoxPosition = new List<BoxPosition>();
         #endregion
