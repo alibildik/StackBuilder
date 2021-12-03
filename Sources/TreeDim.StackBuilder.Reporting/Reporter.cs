@@ -2150,6 +2150,8 @@ namespace treeDiM.StackBuilder.Reporting
                     file.CopyTo(tempPath, true);
                 }
             }
+            else
+                _log.Error($"Directory {additionalImagesDir} does not exist.");
         }
         public void DeleteImageDirectory()
         {
