@@ -127,7 +127,7 @@
     <value>splitContainerHoriz.Panel1</value>
   </data>
   <data name="&gt;&gt;cbTopInterlayer.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.43, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cbPalletLabels.Size" type="System.Drawing.Size, System.Drawing">
@@ -164,7 +164,7 @@
     <value>Color</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.43, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlPalletFilmCovering.Name" xml:space="preserve">
     <value>uCtrlPalletFilmCovering</value>
@@ -213,13 +213,13 @@
     <value>2, 70</value>
   </data>
   <data name="&gt;&gt;uCtrlOptMaxNumber.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptInt, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptInt, treeDiM.Basics, Version=3.0.2.43, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;chkbPalletCorners.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;uCtrlPalletFilmCovering.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.43, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="chkbPalletCornersTopX.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -256,7 +256,7 @@
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;ctrlStrapperSet.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Basics.Controls.CtrlStrapperSet, treeDiM.StackBuilder.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Basics.Controls.CtrlStrapperSet, treeDiM.StackBuilder.Basics, Version=3.0.2.43, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbPalletFilm.Location" type="System.Drawing.Point, System.Drawing">
     <value>130, 7</value>
@@ -292,7 +292,7 @@
     <value>Pallet corners Top</value>
   </data>
   <data name="&gt;&gt;cbPalletSleeveColor.Type" xml:space="preserve">
-    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
+    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.43, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="chkbTopInterlayer.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -409,7 +409,7 @@
     <value>343, 87</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Desktop.DockContentAnalysisEdit, treeDiM.StackBuilder.Desktop, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Desktop.DockContentAnalysisEdit, treeDiM.StackBuilder.Desktop, Version=3.0.2.43, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbPalletSleeveColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 22</value>
@@ -864,7 +864,7 @@
     <value>461, 87</value>
   </data>
   <data name="&gt;&gt;cbInterlayer.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.43, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="chkbPalletCornersTopX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1047,7 +1047,7 @@
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;graphCtrlSolution.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Graphics3DControl, treeDiM.StackBuilder.Graphics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Graphics3DControl, treeDiM.StackBuilder.Graphics, Version=3.0.2.43, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;chkbPalletCap.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1092,7 +1092,7 @@
     <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;uCtrlOptMaximumWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.42, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.43, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="ctrlStrapperSet.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

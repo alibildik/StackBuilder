@@ -131,7 +131,7 @@ namespace treeDiM.StackBuilder.Graphics
             Brush brushSolid = new SolidBrush(color);
             Graphics.FillEllipse(brushSolid, rectButton);
         }
-        public void DrawText(string sText, int size, Vector2D v)
+        public void DrawText(string sText, int size, Vector2D v, Color color)
         {
             Point[] pt = TransformPoint(new Vector2D[] { v });
             Point pt0 = pt[0];
@@ -140,7 +140,7 @@ namespace treeDiM.StackBuilder.Graphics
             pt0.X -= (int)sizeString.Width/2;
             pt0.Y -= (int)sizeString.Height/2;
 
-            Graphics.DrawString(sText, font, new SolidBrush(Color.Red), pt0);
+            Graphics.DrawString(sText, font, new SolidBrush(color), pt0);
         }
         public void DrawText(string sText, int size)
         {

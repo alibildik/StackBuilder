@@ -108,6 +108,7 @@ namespace treeDiM.StackBuilder.Graphics
                     cameraDistance * Math.Cos(angleHorizRad) * Math.Cos(angleVertRad)
                     , cameraDistance * Math.Sin(angleHorizRad) * Math.Cos(angleVertRad)
                     , cameraDistance * Math.Sin(angleVertRad));
+
                 // set camera target
                 graphics.Target = Vector3D.Zero;
                 // set viewport (not actually needed)

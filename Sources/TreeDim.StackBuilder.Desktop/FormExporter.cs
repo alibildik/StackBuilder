@@ -25,6 +25,10 @@ namespace treeDiM.StackBuilder.Desktop
         {
             base.OnLoad(e);
 
+            // set folding strategy to XML ? *** either XML or CS ***
+            textEditorControl.FoldingStrategy = "XML";
+            textEditorControl.SetHighlighting("XML");
+
             FillFormatComboBox();
             cbCoordinates.SelectedIndex = Properties.Settings.Default.ExportCoordinatesMode;
             try { DockingOffsets = Vector3D.Parse(Properties.Settings.Default.DockingOffsets); } catch (Exception /*ex*/) { }
@@ -33,8 +37,10 @@ namespace treeDiM.StackBuilder.Desktop
             {
                 RobotPreparation = new RobotPreparation(analysisCasePallet);
                 RobotPreparation.LayerModified += RobotPreparationModified;
-
                 uCtrlConveyorSettings.BoxProperties = analysisCasePallet.Content as PackableBrick;
+                uCtrlConveyorSettings.ValueChanged += OnInputChanged;
+
+
             }
             // fill combo layer types
             FillLayerComboBox();
@@ -94,26 +100,32 @@ namespace treeDiM.StackBuilder.Desktop
             if (null == RobotPreparation) return;
             try
             {
-                Stream stream = new MemoryStream();
-                var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());
-                exporter.PositionCoordinateMode = cbCoordinates.SelectedIndex == 1 ? ExporterRobot.CoordinateMode.CM_COG : ExporterRobot.CoordinateMode.CM_CORNER;
-
                 RobotPreparation.AngleItem = uCtrlConveyorSettings.AngleCase;
                 RobotPreparation.AngleGrabber = uCtrlConveyorSettings.AngleGrabber;
                 RobotPreparation.DockingOffsets = DockingOffsets;
 
+                var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());
                 if (exporter.UseRobotPreparation)
-                    exporter.Export(RobotPreparation, ref stream);
+                    RobotPreparationModified();
                 else
+                {
+                    Stream stream = new MemoryStream();
+                    exporter.PositionCoordinateMode = cbCoordinates.SelectedIndex == 1 ? ExporterRobot.CoordinateMode.CM_COG : ExporterRobot.CoordinateMode.CM_CORNER;
                     exporter.Export(Analysis, ref stream);
 
-                // to text edit control
-                using (StreamReader reader = new StreamReader(stream))
-                    textEditorControl.Text = reader.ReadToEnd();
+                    // to text edit control
+                    using (StreamReader reader = new StreamReader(stream))
+                        textEditorControl.Text = reader.ReadToEnd();
+                }
+                textEditorControl.Update();
             }
             catch (Exception ex)
             {
                 _log.Error(ex.Message);
+            }
+            finally
+            {
+                _log.Info(textEditorControl.Text);
             }
         }
         private void RobotPreparationModified()
@@ -127,8 +139,8 @@ namespace treeDiM.StackBuilder.Desktop
                 var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());
                 exporter.Export(RobotPreparation, ref stream);
                 // to text edit control
-                using (StreamReader reader = new StreamReader(stream))
-                    textEditorControl.Text = reader.ReadToEnd();
+                StreamReader reader = new StreamReader(stream);
+                textEditorControl.Text = reader.ReadToEnd();
             }
             catch (Exception ex)
             {
@@ -147,7 +159,6 @@ namespace treeDiM.StackBuilder.Desktop
             // save format 
             FormatName = CurrentExporter.Name;
             tabCtrlFeatures.TabPages.Clear();
-            
             if (CurrentExporter.UseCoordinateSelector)
                 tabCtrlFeatures.TabPages.Add(tabPageSettings);
             if (CurrentExporter.UseAngleSelector)
@@ -156,18 +167,7 @@ namespace treeDiM.StackBuilder.Desktop
                 tabCtrlFeatures.TabPages.Add(tabPageLayerPrep);
             if (CurrentExporter.UseDockingOffsets)
                 tabCtrlFeatures.TabPages.Add(tabPageDockingOffsets);
-                        
-            try
-            {
-                // set folding strategy to XML ? *** either XML or CS ***
-                if (string.Equals(CurrentExporter.Extension, "xml", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    textEditorControl.FoldingStrategy = "XML";
-                    textEditorControl.SetHighlighting("XML");
-                }
-            }
-            catch (Exception ex) { _log.Error(ex.ToString()); }
-
+ 
             OnInputChanged(sender, e);
         }
         private void OnInputChanged(object sender, EventArgs e)

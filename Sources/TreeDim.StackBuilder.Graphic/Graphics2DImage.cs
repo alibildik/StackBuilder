@@ -19,20 +19,11 @@ namespace treeDiM.StackBuilder.Graphics
         }
         #endregion
         #region Graphics2D abstract method implementation
-        public override Size Size
-        {
-            get { return Bitmap.Size; }
-        }
-        public override System.Drawing.Graphics Graphics
-        {
-            get { return System.Drawing.Graphics.FromImage(Bitmap); }
-        }
+        public override Size Size => Bitmap.Size;
+        public override System.Drawing.Graphics Graphics => System.Drawing.Graphics.FromImage(Bitmap);
         #endregion
         #region Public methods
-        public void SaveAs(string filename)
-        {
-            Bitmap.Save(filename, ImageFormat.Bmp);
-        }
+        public void SaveAs(string filename) => Bitmap.Save(filename, ImageFormat.Bmp);
         #endregion
         #region Public properties
         public Bitmap Bitmap { get; }
@@ -54,7 +45,6 @@ namespace treeDiM.StackBuilder.Graphics
         public override Size Size => Ctrl.Size;
         public override System.Drawing.Graphics Graphics => Graph;
         #endregion
-
         #region Public properties
         public Control Ctrl { get; set; }
         public System.Drawing.Graphics Graph { get; set; }

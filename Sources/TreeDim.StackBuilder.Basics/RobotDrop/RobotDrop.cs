@@ -456,11 +456,11 @@ namespace treeDiM.StackBuilder.Basics
             layer.SortByID();
             return layer;
         }
-        public void GetLayers(out List<RobotLayer> layers, out List<int> interlayers)
+        public void GetLayers(out List<RobotLayer> layers, out List<Pair<int,double>> interlayers)
         {
             var sol = Analysis.SolutionLay;
             layers = new List<RobotLayer>();
-            interlayers = new List<int>();
+            interlayers = new List<Pair<int,double>>();
 
             int iLayer = 0;
             double zLayer = Analysis.Offset.Z;
@@ -470,12 +470,12 @@ namespace treeDiM.StackBuilder.Basics
                 // intelayer
                 if (solItem.HasInterlayer)
                 {
-                    interlayers.Add(solItem.InterlayerIndex);
                     var interlayer = Analysis.Interlayer(solItem.InterlayerIndex);
+                    interlayers.Add(new Pair<int,double>(solItem.InterlayerIndex, zLayer + interlayer.Thickness));
                     zLayer += interlayer.Thickness;
                 }
                 else
-                    interlayers.Add(-1);
+                    interlayers.Add(new Pair<int, double>(-1,0.0) );
 
                 // robot layer
                 RobotLayer editedLayer = LayerTypes[ListLayerIndexes[iLayer]];
@@ -544,7 +544,7 @@ namespace treeDiM.StackBuilder.Basics
         /// </summary>
         public int AngleGrabber { get; set; }
         public int AngleItem { get; set; }
-        public int FacingAngle => (Analysis.Content as PackableBrick).FacingAngle;
+        public int Facing => (Analysis.Content as PackableBrick).Facing;
         public Vector3D DockingOffsets { get; set; } = new Vector3D(30.0, 30.0, 40.0);
         #endregion
         #region Delegate / Event / Event triggering

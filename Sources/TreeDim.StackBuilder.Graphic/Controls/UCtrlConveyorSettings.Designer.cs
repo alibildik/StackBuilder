@@ -29,14 +29,13 @@ namespace treeDiM.StackBuilder.Graphics.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbConveyor = new System.Windows.Forms.PictureBox();
+            this.graph3DConveyor = new Graphics3DConveyor();
             this.lbCaseOrientConveyor = new System.Windows.Forms.Label();
             this.nudCaseAngle = new System.Windows.Forms.NumericUpDown();
             this.lbMaxNumber = new System.Windows.Forms.Label();
             this.nudMaxNumber = new System.Windows.Forms.NumericUpDown();
             this.lbGripperAngle = new System.Windows.Forms.Label();
             this.nudGrabberAngle = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.pbConveyor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCaseAngle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGrabberAngle)).BeginInit();
@@ -44,15 +43,14 @@ namespace treeDiM.StackBuilder.Graphics.Controls
             // 
             // pbConveyor
             // 
-            this.pbConveyor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.graph3DConveyor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbConveyor.Location = new System.Drawing.Point(4, 4);
-            this.pbConveyor.Name = "pbConveyor";
-            this.pbConveyor.Size = new System.Drawing.Size(293, 219);
-            this.pbConveyor.TabIndex = 0;
-            this.pbConveyor.TabStop = false;
-            this.pbConveyor.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
+            this.graph3DConveyor.Location = new System.Drawing.Point(4, 4);
+            this.graph3DConveyor.Name = "pbConveyor";
+            this.graph3DConveyor.Size = new System.Drawing.Size(293, 219);
+            this.graph3DConveyor.TabIndex = 0;
+            this.graph3DConveyor.TabStop = false;
             // 
             // lbCaseOrientConveyor
             // 
@@ -156,10 +154,9 @@ namespace treeDiM.StackBuilder.Graphics.Controls
             this.Controls.Add(this.lbMaxNumber);
             this.Controls.Add(this.nudCaseAngle);
             this.Controls.Add(this.lbCaseOrientConveyor);
-            this.Controls.Add(this.pbConveyor);
+            this.Controls.Add(this.graph3DConveyor);
             this.Name = "UCtrlConveyorSettings";
             this.Size = new System.Drawing.Size(300, 300);
-            ((System.ComponentModel.ISupportInitialize)(this.pbConveyor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCaseAngle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGrabberAngle)).EndInit();
@@ -170,7 +167,7 @@ namespace treeDiM.StackBuilder.Graphics.Controls
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pbConveyor;
+        private Graphics3DConveyor graph3DConveyor;
         private System.Windows.Forms.Label lbCaseOrientConveyor;
         private System.Windows.Forms.NumericUpDown nudCaseAngle;
         private System.Windows.Forms.Label lbMaxNumber;

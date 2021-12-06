@@ -6,6 +6,7 @@ using System.Drawing;
 using log4net;
 using Sharp3D.Math.Core;
 
+using treeDiM.Basics;
 using treeDiM.StackBuilder.Basics;
 #endregion
 
@@ -51,15 +52,27 @@ namespace treeDiM.StackBuilder.Graphics
             base.OnPaint(e);
             try
             {
+                double marginY = UnitsManager.ConvertLengthFrom(100.0, UnitsManager.UnitSystem.UNIT_METRIC1);
+                double frameRefLength = UnitsManager.ConvertLengthFrom(400.0, UnitsManager.UnitSystem.UNIT_METRIC1);
+
                 Graphics = new Graphics2DForm(this, e.Graphics) { };
                 if (null == Layer) return;
-                Vector2D margin = new Vector2D(0.0, 100.0);
+                Vector2D margin = new Vector2D(0.0, marginY);
                 Graphics.SetViewport(Layer.MinPoint - margin, Layer.MaxPoint + margin);
                 // draw layer boundary rectangle
                 Graphics.DrawRectangle(Layer.MinPoint, Layer.MaxPoint, Color.OrangeRed);
                 // draw all drops
                 foreach (var drop in Layer.Drops)
                     DrawDrop(drop, CurrentState.ShowIDs, CurrentState.ShowSelected(drop), CurrentState.ShowAllowed(drop));
+                // draw frameref
+                FrameRef frameRef = new FrameRef(0)
+                {
+                    Position = new Vector3D(-0.5 * marginY, -0.5 * marginY, 0.0),
+                    Length = frameRefLength,
+                    LengthAxis = HalfAxis.HAxis.AXIS_X_P,
+                    WidthAxis = HalfAxis.HAxis.AXIS_Y_P
+                };
+                frameRef.Draw(Graphics);
             }
             catch (Exception ex)
             {
@@ -83,7 +96,7 @@ namespace treeDiM.StackBuilder.Graphics
 
             // draw 
             if (showID && drop.ID >= 0)
-                Graphics.DrawText($"{drop.ID}", FontSizeID, new Vector2D(drop.Center3D.X, drop.Center3D.Y));
+                Graphics.DrawText($"{drop.ID}", FontSizeID, new Vector2D(drop.Center3D.X, drop.Center3D.Y), Color.Red);
         }
         #endregion
         #region Mouse event handlers

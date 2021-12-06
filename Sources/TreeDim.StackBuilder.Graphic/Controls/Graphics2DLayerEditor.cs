@@ -24,7 +24,6 @@ namespace treeDiM.StackBuilder.Graphics
 
             // double buffering
             SetDoubleBuffered();
-
             SetStyle(ControlStyles.Selectable, true);
             TabStop = true;
         }

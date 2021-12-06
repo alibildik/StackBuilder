@@ -97,6 +97,12 @@
     <Compile Include="Controls\Graphics2DRobotDropEditor.Designer.cs">
       <DependentUpon>Graphics2DRobotDropEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Graphics3DConveyor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Graphics3DConveyor.Designer.cs">
+      <DependentUpon>Graphics3DConveyor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ItemBaseWrapper.cs" />
     <Compile Include="Controls\UCtrlCaseOrientation.cs">
       <SubType>UserControl</SubType>

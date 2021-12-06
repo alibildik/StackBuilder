@@ -30,35 +30,7 @@ namespace treeDiM.StackBuilder.Exporters
         public override Bitmap BrandLogo => Properties.Resources.ABB_France;
         public override void Export(AnalysisLayered analysis, NumberFormatInfo nfi, ref StringBuilder sb)
         {
-            try
-            {
-                var analysisCasePallet = analysis as AnalysisCasePallet;
-                var sol = analysis.SolutionLay;
-                var pal = analysisCasePallet.PalletProperties;
-                sb.AppendLine("START;");
-                sb.AppendLine($"ExportVersion;{ExportVersion};");
-                sb.AppendLine($"Config;[{sol.LayerCount},{sol.InterlayerCount},{sol.ItemCount},{sol.ItemCount + sol.InterlayerCount}];");
-                sb.AppendLine($"Pallet;[[{pal.Length},{pal.Width},{pal.Height}],{pal.Weight}];");
-
-                foreach (var layer in sol.Layers)
-                {
-                    if (layer is InterlayerPos interlayerPos)
-                    {
-                        sb.AppendLine($"Interlayer;[[]];");
-                    }
-                    else if (layer is Layer3DBox layerBox)
-                    { 
-                        foreach (var bPos in layerBox)
-                            sb.AppendLine($"Box;[[]];");
-                    }
-                }
-
-                sb.AppendLine("END;");
-            }
-            catch (Exception ex)
-            {
-                _log.Error(ex.Message);
-            }
+            throw new NotImplementedException($"Direct analysis export not implemented with {FormatName}.");
         }
         public override void Export(RobotPreparation robotPreparation, NumberFormatInfo nfi, ref StringBuilder sb)
         {
@@ -70,36 +42,43 @@ namespace treeDiM.StackBuilder.Exporters
                 var boxDim = analysis.Content.OuterDimensions;
                 var weight = analysis.Content.Weight;
                 var cog = Vector3D.Zero;
+                var cogInterlayer = Vector3D.Zero;
 
                 sb.AppendLine("START;");
                 sb.AppendLine($"ExportVersion;{ExportVersion};");
                 sb.AppendLine($"Config;[{sol.LayerCount},{sol.InterlayerCount},{sol.ItemCount},{robotPreparation.NumberOfPlaceCycles}];");
                 sb.AppendLine($"Pallet;[[{pal.Length},{pal.Width},{pal.Height}],{pal.Weight}];");
 
-                robotPreparation.GetLayers(out List<RobotLayer> robotLayers, out List<int> interlayers);
+                robotPreparation.GetLayers(out List<RobotLayer> robotLayers, out List<Pair<int, double>> interlayers);
                 for (int iLayer = 0; iLayer < robotPreparation.NumberOfLayers; ++iLayer)
                 {
                     // interlayer
-                    if (-1 != interlayers[iLayer])
+                    if (-1 != interlayers[iLayer].first)
                     {
-                        sb.AppendLine($"Interlayer;[[]];");
+                        var interlayerProp = analysis.Interlayers[interlayers[iLayer].first];
+                        var vPos = new Vector3D(pal.Length/2, pal.Width/2, interlayers[iLayer].second);
+                        // item name
+                        string itemName = "Interlayer";
+                        // item pick setting
+                        string itemPickSettings = $"[[{interlayerProp.Length},{interlayerProp.Width}, {interlayerProp.Thickness}],{interlayerProp.Weight},[{cogInterlayer.X},{cogInterlayer.Y},{cogInterlayer.Z}],0,0,0]";
+                        // place settings
+                        string placeSettings = $"[1, [{vPos.X},{vPos.Y},{vPos.Z}],0,[0,0,{robotPreparation.DockingOffsets.Z}]]";
+                        sb.AppendLine($"{itemName};{itemPickSettings};{placeSettings};");
                     }
-                    // 
+                    // layer boxes
                     var robotLayer = robotLayers[iLayer];
                     foreach (var robotDrop in robotLayer.Drops)
                     {
                         // item name
                         string itemName = "Box";
                         // item pick setting
-                        string itemPickSettings = $"[[{boxDim.X},{boxDim.Y},{boxDim.Z}],{weight},[{cog.X},{cog.Y},{cog.Z}],{robotPreparation.AngleGrabber},{robotPreparation.AngleItem},{robotPreparation.FacingAngle}]";
+                        string itemPickSettings = $"[[{boxDim.X},{boxDim.Y},{boxDim.Z}],{weight},[{cog.X},{cog.Y},{cog.Z}],{robotPreparation.AngleGrabber},{robotPreparation.AngleItem},{robotPreparation.Facing}]";
                         // place settings
                         Vector3D vPos = robotDrop.Center3D;
                         int angle = Modulo360(robotDrop.RawAngle + robotPreparation.AngleGrabber + robotPreparation.AngleItem);
                         double dockingX = DockingDistanceX(robotDrop, robotPreparation.DockingOffsets.X);
                         double dockingY = DockingDistanceY(robotDrop, robotPreparation.DockingOffsets.Y);
-
                         string placeSettings = $"[{robotDrop.Number},[{vPos.X},{vPos.Y},{vPos.Z}],{angle},[{dockingX},{dockingY},{robotPreparation.DockingOffsets.Z}]]";
-
                         sb.AppendLine($"{itemName};{itemPickSettings};{placeSettings};");
                     }
                 }
