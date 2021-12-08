@@ -1,18 +1,63 @@
 <?xml version="1.0" ?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    <xsl:param name="lang" />
-    <!-- param set in command line -->
-    <xsl:variable name="loc" select="document(concat( $lang, '.xml'), .)/strings" />
-    <xsl:output method="html" indent="yes" />
-    <xsl:template match="report">
-        <html>
-        <head>
-            <title>
-                <xsl:value-of select="name"></xsl:value-of>
-                <xsl:value-of select="$loc/str[@name='report']"/>
-            </title>
-            <style>
-                <!--
+	<xsl:param name="lang" />
+	<!-- param set in command line -->
+	<xsl:variable name="loc" select="document(concat( $lang, '.xml'), .)/strings" />
+	<xsl:output method="html" indent="yes" />
+	<xsl:template match="report">
+		<html>
+			<head>
+				<title>
+					<xsl:value-of select="name"></xsl:value-of>
+					<xsl:value-of select="$loc/str[@name='report']"/>
+				</title>
+				<style type="text/css">
+					.style1
+					{
+					color:blue;
+					}
+					.style2
+					{
+					width: 50mm;
+					color:black;
+					font-family:Arial;
+					font-size:10px;
+					}
+					.style3
+					{
+					color:black;
+					font-family:Arial;
+					font-size:10px;
+					}
+					body
+					{
+					font-family:Arial;
+					font-size:10px;
+					margin: 5%;
+					width: 90%;
+					padding: 0;
+					}
+					h1
+					{
+					color:black;
+					font-size:20px;
+					font-family:Arial;
+					width:200mm
+					}
+					h2
+					{
+					color:red;
+					font-size:16px;
+					font-family:Arial;
+					}
+					h3
+					{
+					color:blue;
+					font-size:12px;
+					font-family:Arial;
+					}
+
+					<!--
                 /* Font Definitions */
                 @font-face {
                     font-family: "Cambria Math";
@@ -49,108 +94,117 @@
                     page: WordSection1;
                 }
                 -->
-            </style>
 
-        </head>
+				</style>
 
-        <body lang="FR" style='word-wrap: break-word'>
+			</head>
 
-            <div class="WordSection1">
-                <p class="MsoNormal" style='margin-top: 0cm; margin-right: 800pt; margin-bottom: 0cm; margin-left: -72.0pt'>
-                   
-                </p>
-                <table class="TableGrid" border="0" cellspacing="0" cellpadding="0" width="1026" style='width: 600pt; margin-left: 0pt; border-collapse: collapse'>
-                     <tr style='height: 391.55pt'>
-                        <td width="600" colspan="4" valign="top" style='width: 600pt; border: solid black 1.0pt; border-bottom: none; padding: 0cm 0cm 0cm 3.15pt; height: 800pt'>
-                            <p class="MsoNormal" style='margin-top: 0cm; margin-right: -.1pt; margin-bottom: 0cm; margin-left: 8.55pt'>
-								<xsl:apply-templates select="analysis" />
-                            </p>
-                        </td>
-                    </tr>
-                    <tr style='height: 33.35pt'>
-                        <td width="506" rowspan="5" valign="bottom" style='width: 379.2pt; border: solid black 1.0pt; border-top: none; padding: 0cm 0cm 0cm 3.15pt; height: 33.35pt'>
-                            <p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 2.1pt'>
-                                <span style='font-size: 8.0pt; line-height: 107%; font-family: "Times New Roman",serif'>This drawing belongs to DESJARDIN and cannot be transferred to anyone without DESJARDIN authorization.
-                                </span>
-                            </p>
-                            <p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 2.1pt'>
-                                <span style='font-size: 8.0pt; line-height: 107%; font-family: "Times New Roman",serif'>Les poids sont donnes a titre indicatif avec +/-5%. 
-                                </span>
-                            </p>
-                        </td>
-                        <td width="521" colspan="3" style='width: 390.6pt; border: solid black 1.0pt; border-left: none; padding: 0cm 0cm 0cm 3.15pt; height: 33.35pt'>
-                            <p class="MsoNormal" align="center" style='margin-top: 0cm; margin-right: 5.7pt; margin-bottom: 0cm; margin-left: 0cm; text-align: center'>
-                                <span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>PLAN DE PALETTISATION
-                                </span>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr style='height: 23.8pt'>
-                        <td width="347" colspan="2" rowspan="3" valign="top" style='width: 260.4pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
-                            <p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 7.05pt'>
-                                <img width="327" height="77" src="images\logo_DESJARDIN.gif"/>
-                            </p>
-                        </td>
-                        <td width="174" style='width: 130.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
-                            <p class="MsoNormal" style='margin-bottom: 0cm'>
-                                <span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>Drawned by:
-                                </span>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr style='height: 23.8pt'>
-                        <td width="174" style='width: 130.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
-                            <p class="MsoNormal" style='margin-bottom: 0cm'>
-                                <span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>Checked by:
-                                </span>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr style='height: 22.15pt'>
-                        <td width="174" style='width: 130.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 22.15pt'>
-                            <p class="MsoNormal" style='margin-bottom: 0cm'>
-                                <span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>Date:
-                                </span>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr style='height: 28.4pt'>
-                        <td width="173" style='width: 130.1pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
-                            <p class="MsoNormal" align="center" style='margin-top: 0cm; margin-right: 3.2pt; margin-bottom: 0cm; margin-left: 0cm; text-align: center'>
-                                <span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>PAPER FORMAT: A4
-                                </span>
-                            </p>
-                        </td>
-                        <td width="174" style='width: 130.35pt; border: solid black 1.0pt; border-left: none; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
-                            <p class="MsoNormal" style='margin-bottom: 0cm'>
-                                <span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>Ref.:
-                                </span>
-                            </p>
-                        </td>
-                        <td width="174" valign="top" style='width: 130.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
-                            <p class="MsoNormal" align="center" style='margin-top: 0cm; margin-right: 3.15pt; margin-bottom: 0cm; margin-left: 0cm; text-align: center'>
-                                <span style='font-size: 18.0pt; line-height: 107%; font-family: "Times New Roman",serif'>1/1
-                                </span>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr height="0">
-                        <td width="506" style='border: none'></td>
-                        <td width="173" style='border: none'></td>
-                        <td width="174" style='border: none'></td>
-                        <td width="174" style='border: none'></td>
-                    </tr>
-                </table>
-           </div>
-        </body>
-        </html>
-    </xsl:template>
-    <xsl:template match="analysis">
-    <xsl:apply-templates select="box"/>
-    <xsl:apply-templates select="pallet"/>
-    <xsl:apply-templates select="constraintSet"/>
-    <xsl:apply-templates select="solution"/>
-   </xsl:template>
+			<body lang="FR" style='word-wrap: break-word'>
+
+				<div class="WordSection1">
+					<p class="MsoNormal" style='margin-top: 0cm; margin-right: 800pt; margin-bottom: 0cm; margin-left: -72.0pt'>
+
+					</p>
+					<table class="TableGrid" border="0" cellspacing="0" cellpadding="0" width="1026" style='width: 600pt; margin-left: 0pt; border-collapse: collapse'>
+						<tr style='height: 391.55pt'>
+							<td width="600" colspan="4" valign="top" style='width: 600pt; border: solid black 1.0pt; border-bottom: none; padding: 0cm 0cm 0cm 3.15pt; height: 800pt'>
+								<p class="MsoNormal" style='margin-top: 0cm; margin-right: -.1pt; margin-bottom: 0cm; margin-left: 8.55pt'>
+									<xsl:apply-templates select="analysis" />
+								</p>
+							</td>
+						</tr>
+						<tr style='height: 33.35pt'>
+							<td width="506" rowspan="5" valign="bottom" style='width: 379.2pt; border: solid black 1.0pt; border-top: none; padding: 0cm 0cm 0cm 3.15pt; height: 33.35pt'>
+								<p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 2.1pt'>
+									<span style='font-size: 8.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+										This drawing belongs to DESJARDIN and cannot be transferred to anyone without DESJARDIN authorization.
+									</span>
+								</p>
+								<p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 2.1pt'>
+									<span style='font-size: 8.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+										Les poids sont donnes a titre indicatif avec +/-5%.
+									</span>
+								</p>
+							</td>
+							<td width="521" colspan="3" style='width: 390.6pt; border: solid black 1.0pt; border-left: none; padding: 0cm 0cm 0cm 3.15pt; height: 33.35pt'>
+								<p class="MsoNormal" align="center" style='margin-top: 0cm; margin-right: 5.7pt; margin-bottom: 0cm; margin-left: 0cm; text-align: center'>
+									<span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+										PLAN DE PALETTISATION
+									</span>
+								</p>
+							</td>
+						</tr>
+						<tr style='height: 23.8pt'>
+							<td width="347" colspan="2" rowspan="3" valign="top" style='width: 260.4pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
+								<p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 7.05pt'>
+									<img width="327" height="77" src="images\logo_DESJARDIN.gif"/>
+								</p>
+							</td>
+							<td width="174" style='width: 130.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
+								<p class="MsoNormal" style='margin-bottom: 0cm'>
+									<span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+										Drawned by:
+									</span>
+								</p>
+							</td>
+						</tr>
+						<tr style='height: 23.8pt'>
+							<td width="174" style='width: 130.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
+								<p class="MsoNormal" style='margin-bottom: 0cm'>
+									<span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+										Checked by:
+									</span>
+								</p>
+							</td>
+						</tr>
+						<tr style='height: 22.15pt'>
+							<td width="174" style='width: 130.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 22.15pt'>
+								<p class="MsoNormal" style='margin-bottom: 0cm'>
+									<span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+										Date:
+									</span>
+								</p>
+							</td>
+						</tr>
+						<tr style='height: 28.4pt'>
+							<td width="173" style='width: 130.1pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
+								<p class="MsoNormal" align="center" style='margin-top: 0cm; margin-right: 3.2pt; margin-bottom: 0cm; margin-left: 0cm; text-align: center'>
+									<span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+										PAPER FORMAT: A4
+									</span>
+								</p>
+							</td>
+							<td width="174" style='width: 130.35pt; border: solid black 1.0pt; border-left: none; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
+								<p class="MsoNormal" style='margin-bottom: 0cm'>
+									<span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+										Ref.:
+									</span>
+								</p>
+							</td>
+							<td width="174" valign="top" style='width: 130.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
+								<p class="MsoNormal" align="center" style='margin-top: 0cm; margin-right: 3.15pt; margin-bottom: 0cm; margin-left: 0cm; text-align: center'>
+									<span style='font-size: 18.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+										1/1
+									</span>
+								</p>
+							</td>
+						</tr>
+						<tr height="0">
+							<td width="506" style='border: none'></td>
+							<td width="173" style='border: none'></td>
+							<td width="174" style='border: none'></td>
+							<td width="174" style='border: none'></td>
+						</tr>
+					</table>
+				</div>
+			</body>
+		</html>
+	</xsl:template>
+	<xsl:template match="analysis">
+		<xsl:apply-templates select="box"/>
+		<xsl:apply-templates select="pallet"/>
+		<xsl:apply-templates select="solution"/>
+	</xsl:template>
 	<xsl:template match="unitValue">
 		<xsl:if test="valueM">
 			<xsl:value-of select="valueM"/> (<xsl:value-of select="unitM"/>)
@@ -259,103 +313,11 @@
 			<xsl:value-of select="$loc/str[@name='Solution']"/>
 		</h3>
 		<table class="style1">
-			<xsl:apply-templates select="item"/>
-			<xsl:if test="noLayersAndNoCases">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Layers x Cases']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:value-of select="noLayersAndNoCases"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="noInterlayers">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Number of interlayers']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:value-of select="noInterlayers"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="netWeight">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Net weight']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:apply-templates select="netWeight/unitValue"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="weightLoad">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Load weight']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:apply-templates select="weightLoad/unitValue"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="bboxLoad">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Load dimensions']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:apply-templates select="bboxLoad/unitVector3"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="weightTotal">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Weight']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:apply-templates select="weightTotal/unitValue"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="bboxTotal">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Overall dimensions']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:apply-templates select="bboxTotal/unitVector3"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="efficiencyVolume">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Volume efficiency']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:value-of select="efficiencyVolume"/>
-					</td>
-				</tr>
-			</xsl:if>
+			<tr>
+				<td colspan="4" align="middle">
+					<xsl:apply-templates select="view_solution_iso"/>
+				</td>
+			</tr>
 			<tr>
 				<td align="middle" colspan="1">
 					<xsl:apply-templates select="view_solution_front"/>
@@ -370,11 +332,64 @@
 					<xsl:apply-templates select="view_solution_back"/>
 				</td>
 			</tr>
-			<tr>
-				<td colspan="4" align="middle">
-					<xsl:apply-templates select="view_solution_iso"/>
-				</td>
-			</tr>
+		</table>
+		<h3>
+			Couche(s)
+		</h3>
+
+		<table>
+			<xsl:apply-templates select="item"/>
+			<xsl:if test="noLayersAndNoCases">
+				<tr>
+					<td class="style2" colspan="1">
+						<b>Nb de couches x Caisses par couche</b>
+					</td>
+					<td class="style3" colspan="3">
+						<xsl:value-of select="noLayersAndNoCases"/>
+					</td>
+				</tr>
+			</xsl:if>
+			<xsl:if test="weightLoad">
+				<tr>
+					<td class="style2" colspan="1">
+						<b>Masse totale des cartons</b>
+					</td>
+					<td class="style3" colspan="3">
+						<xsl:apply-templates select="weightLoad/unitValue"/>
+					</td>
+				</tr>
+			</xsl:if>
+			<xsl:if test="bboxLoad">
+				<tr>
+					<td class="style2" colspan="1">
+						<b>Dimension chargement</b>
+					</td>
+					<td class="style3" colspan="3">
+						<xsl:apply-templates select="bboxLoad/unitVector3"/>
+					</td>
+				</tr>
+			</xsl:if>
+			<xsl:if test="weightTotal">
+				<tr>
+					<td class="style2" colspan="1">
+						<b>Masse totale</b>
+					</td>
+					<td class="style3" colspan="3">
+						<xsl:apply-templates select="weightTotal/unitValue"/>
+					</td>
+				</tr>
+			</xsl:if>
+			<xsl:if test="bboxTotal">
+				<tr>
+					<td class="style2" colspan="1">
+						<b>Dimensions hors tout</b>
+					</td>
+					<td class="style3" colspan="3">
+						<xsl:apply-templates select="bboxTotal/unitVector3"/>
+					</td>
+				</tr>
+			</xsl:if>
+
 		</table>
 		<xsl:apply-templates select="layers"/>
 	</xsl:template>
@@ -384,59 +399,12 @@
 			<xsl:value-of select="$loc/str[@name='Solution']"/>
 		</h3>
 		<table class="style1">
+
 			<tr>
-				<td>
-					<xsl:apply-templates select="item"/>
+				<td colspan="4" align="middle">
+					<xsl:apply-templates select="view_solution_iso"/>
 				</td>
 			</tr>
-			<xsl:if test="weightLoad">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Load weight']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:apply-templates select="weightLoad/unitValue"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="bboxLoad">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Load dimensions']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:apply-templates select="bboxLoad/unitVector3"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="weightTotal">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Weight']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:apply-templates select="weightTotal/unitValue"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="bboxTotal">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Overall dimensions']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:apply-templates select="bboxTotal/unitVector3"/>
-					</td>
-				</tr>
-			</xsl:if>
 			<tr>
 				<td align="middle" colspan="1">
 					<xsl:apply-templates select="view_solution_front"/>
@@ -451,11 +419,53 @@
 					<xsl:apply-templates select="view_solution_back"/>
 				</td>
 			</tr>
+		</table>
+		<table>
 			<tr>
-				<td colspan="4" align="middle">
-					<xsl:apply-templates select="view_solution_iso"/>
+				<td>
+					<xsl:apply-templates select="item"/>
 				</td>
 			</tr>
+			<xsl:if test="weightLoad">
+				<tr>
+					<td class="style2" colspan="1">
+						<b>Masse totale des cartons</b>
+					</td>
+					<td class="style3" colspan="3">
+						<xsl:apply-templates select="weightLoad/unitValue"/>
+					</td>
+				</tr>
+			</xsl:if>
+			<xsl:if test="bboxLoad">
+				<tr>
+					<td class="style2" colspan="1">
+						<b>Dimensions chargement</b>
+					</td>
+					<td class="style3" colspan="3">
+						<xsl:apply-templates select="bboxLoad/unitVector3"/>
+					</td>
+				</tr>
+			</xsl:if>
+			<xsl:if test="weightTotal">
+				<tr>
+					<td class="style2" colspan="1">
+						<b>Masse totale des cartons</b>
+					</td>
+					<td class="style3" colspan="3">
+						<xsl:apply-templates select="weightTotal/unitValue"/>
+					</td>
+				</tr>
+			</xsl:if>
+			<xsl:if test="bboxTotal">
+				<tr>
+					<td class="style2" colspan="1">
+						<b>Dimensions hors-tout</b>
+					</td>
+					<td class="style3" colspan="3">
+						<xsl:apply-templates select="bboxTotal/unitVector3"/>
+					</td>
+				</tr>
+			</xsl:if>
 		</table>
 	</xsl:template>
 	<!--#### view_layer ####-->
@@ -532,141 +542,93 @@
 			</xsl:attribute>
 		</img>
 	</xsl:template>
+	<!--#### ITEM ####-->
+	<xsl:template match="item">
+		<tr>
+			<td class="style2" colspan="1">
+				<b>
+					<xsl:value-of select="name"/>
+				</b>
+			</td>
+			<td class="style3" colspan="1">
+				<xsl:value-of select="value"/>
+			</td>
+		</tr>
+	</xsl:template>
 	<!--#### LAYERS ####-->
 	<xsl:template match="layers">
-		<h3>
-			<xsl:value-of select="$loc/str[@name='Layer(s)']"/>
-		</h3>
-		<xsl:apply-templates select="layer"/>
-	</xsl:template>
-	<!--#### LAYER ####-->
-	<xsl:template match="layer">
-		<table class="style1" cellpadding="3">
-			<tr>
-				<td class="style2" colspan="1">
-					<b>
-						<xsl:value-of select="$loc/str[@name='Layer Indexes']"/>
-					</b>
-				</td>
-				<td class="style3" colspan="1">
-					<xsl:value-of select="layerIndexes"/>
-				</td>
-				<td rowspan="5" align="middle">
-					<xsl:apply-templates select="imageThumbSize"/>
-				</td>
-			</tr>
-			<xsl:apply-templates select="item"/>
-			<xsl:if test="layerDimensions">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Dimensions']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="1">
-						<xsl:apply-templates select="layerDimensions/unitVector2"/>/>)
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="layerWeight">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Weight']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="1">
-						<xsl:apply-templates select="layerWeight/unitValue"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="netWeight">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Net weight']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="1">
-						<xsl:apply-templates select="layerNetWeight/unitValue"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="layerSpaces">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Spaces']"/>
-						</b>
-					</td>
-					<td class="style3" colspace="1">
-						<xsl:apply-templates select="layerSpaces/unitValue"/>
-					</td>
-				</tr>
-			</xsl:if>
+		<table>
+			<tbody>
+				<xsl:apply-templates select="layer[position() mod 2 = 1]" mode="row"/>
+			</tbody>
 		</table>
 	</xsl:template>
+
+	<xsl:template match="layer" mode="row">
+		<tr>
+			<!-- apply current and next layer -->
+			<xsl:apply-templates
+                select="self::layer | following-sibling::layer[1]"  mode="cell" />
+		</tr>
+	</xsl:template>
+	<!--#### LAYER ####-->
+	<xsl:template match="layer" mode="cell">
+		<td class="style2">
+			<table class="style1" cellpadding="1" >
+				<tr>
+					<td class="style2" colspan="1">
+						<b>Couche(s):</b>
+					</td>
+					<td class="style3" colspan="1">
+						<xsl:value-of select="layerIndexes"/>
+					</td>
+					<td class="style3" colspan="1"/>
+				</tr>
+				<tr>
+					<td colspan="2" align="middle">
+						<xsl:apply-templates select="imageThumbSize"/>
+					</td>
+					<td class="style3" colspan="1"/>
+				</tr>
+			</table>
+		</td>
+		<!-- re-apply in case this is the last layer -->
+		<xsl:apply-templates select="self::layer" mode="last" />
+	</xsl:template>
+
+	<!-- the last, if and only if it is uneven -->
+	<xsl:template match="layer[last()][position() mod 2 = 1]" mode="last">
+		<td class="style2"></td>
+	</xsl:template>
+
+	<!-- ignore other layers that are not last -->
+	<xsl:template match="node()" mode="last" />
+
 	<!--#### CASE ####-->
 	<xsl:template match="case">
-		<h3>Case</h3>
+		<h3>Carton</h3>
 		<table class="style1" cellpadding="3">
 			<tr>
-				<td class="style2" colspan="1">
-					<b>
-						<xsl:value-of select="$loc/str[@name='Name']"/>
-					</b>
-				</td>
+				<td class="style2" colspan="1">Nom</td>
 				<td class="style3" colspan="2">
 					<xsl:value-of select="name"/>
 				</td>
-			</tr>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="2">
-						<xsl:value-of select="description"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<tr>
-				<td class="style2" colspan="1">
-					<b>
-						<xsl:value-of select="$loc/str[@name='Dimensions']"/>
-					</b>
-				</td>
-				<td class="style3" colspan="1">
-					<xsl:apply-templates select="dimensions/unitVector3"/>
-				</td>
-				<td rowspan="5" align="middle">
+				<td rowspan="3" align="middle">
 					<xsl:apply-templates select="imageThumbSize"/>
 				</td>
 			</tr>
 			<tr>
-				<td class="style2">
-					<b>
-						<xsl:value-of select="$loc/str[@name='Weight']"/>
-					</b>
+				<td class="style2" colspan="1">Dimensions</td>
+				<td class="style3" colspan="1">
+					<xsl:apply-templates select="dimensions/unitVector3"/>
 				</td>
+			</tr>
+			<tr>
+				<td class="style2">Poid d'un carton</td>
 				<td class="style3" colspan="1">
 					<xsl:apply-templates select="weight/unitValue"/>
 				</td>
 			</tr>
-			<xsl:if test="admissibleLoad">
-				<tr>
-					<td class="style2">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Admissible load on top']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="1">
-						<xsl:apply-templates select="admissibleLoad/unitValue"/>
-					</td>
-				</tr>
-			</xsl:if>
 		</table>
 	</xsl:template>
 	<!--#### PACK ####-->
@@ -685,18 +647,6 @@
 					<xsl:value-of select="name"/>
 				</td>
 			</tr>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:value-of select="description"/>
-					</td>
-				</tr>
-			</xsl:if>
 			<tr>
 				<td class="style2" colspan="1">
 					<b>
@@ -768,18 +718,6 @@
 					<xsl:value-of select="name"></xsl:value-of>
 				</td>
 			</tr>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:value-of select="description"></xsl:value-of>
-					</td>
-				</tr>
-			</xsl:if>
 			<xsl:if test="diameter">
 				<tr>
 					<td class="style2" colspan="1">
@@ -837,18 +775,6 @@
 					<xsl:value-of select="name"></xsl:value-of>
 				</td>
 			</tr>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:value-of select="description"></xsl:value-of>
-					</td>
-				</tr>
-			</xsl:if>
 			<tr>
 				<xsl:if test="dimensions">
 					<td class="style2" colspan="1">
@@ -894,103 +820,56 @@
 	</xsl:template>
 	<!--#### PALLET ####-->
 	<xsl:template match="pallet">
-		<h3>
-			<xsl:value-of select="$loc/str[@name='Pallet']"/>
-		</h3>
+		<h3>Palette</h3>
 		<table class="style1" cellpadding="4">
 			<tr>
 				<td class="style2" colspan="1">
-					<b>
-						<xsl:value-of select="$loc/str[@name='Name']"/>
-					</b>
+					<b>Nom</b>
 				</td>
-				<td class="style3" colspan="3">
-					<xsl:value-of select="name"></xsl:value-of>
+				<td class="style3" colspan="1">
+					<xsl:value-of select="name"/>
 				</td>
-			</tr>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:value-of select="description"></xsl:value-of>
-					</td>
-				</tr>
-			</xsl:if>
-			<tr>
-				<xsl:if test="dimensions">
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Dimensions']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="1">
-						<xsl:apply-templates select="dimensions/unitVector3"/>
-					</td>
-				</xsl:if>
 				<xsl:if test="imageThumbSize">
 					<td rowspan="3" colspan="2" align="middle">
 						<xsl:apply-templates select="imageThumbSize"/>
 					</td>
 				</xsl:if>
 			</tr>
-			<xsl:if test="weight">
-				<tr>
+			<tr>
+				<td class="style2" colspan="1">
+					<b>Description</b>
+				</td>
+				<td class="style3" colspan="1">
+					<xsl:value-of select="description"/>
+				</td>
+			</tr>
+			<tr>
+				<xsl:if test="dimensions">
 					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Weight']"/>
-						</b>
+						<b>Dimensions</b>
 					</td>
 					<td class="style3" colspan="1">
-						<xsl:apply-templates select="weight/unitValue"/>
+						<xsl:apply-templates select="dimensions/unitVector3"/>
 					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="admissibleLoad">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Admissible load weight']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="1">
-						<xsl:apply-templates select="admissibleLoad/unitValue"/>
-					</td>
-				</tr>
-			</xsl:if>
+				</xsl:if>
+			</tr>
 		</table>
 	</xsl:template>
 	<!--#### BOX ####-->
 	<xsl:template match="box">
-		<h3>
-			<xsl:value-of select="$loc/str[@name='Box']"/>
-		</h3>
+		<h3>Carton</h3>
 		<table class="style1">
 			<tr>
 				<td class="style2" colspan="1">
-					<b>
-						<xsl:value-of select="$loc/str[@name='Name']"/>
-					</b>
+					<b>Nom</b>
 				</td>
-				<td class="style3" colspan="2">
+				<td class="style3" colspan="1">
 					<xsl:value-of select="name"></xsl:value-of>
 				</td>
+				<td rowspan="4" colspan="2" align="middle">
+					<xsl:apply-templates select="imageThumbSize"/>
+				</td>
 			</tr>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="2">
-						<xsl:value-of select="description"></xsl:value-of>
-					</td>
-				</tr>
-			</xsl:if>
 			<tr>
 				<xsl:if test="dimensions">
 					<td class="style2" colspan="1">
@@ -1002,31 +881,16 @@
 						<xsl:apply-templates select="dimensions/unitVector3"/>
 					</td>
 				</xsl:if>
-				<td rowspan="4" align="middle">
-					<xsl:apply-templates select="imageThumbSize"/>
-				</td>
 			</tr>
 			<xsl:if test="weight">
 				<tr>
-					<td class="style2">
+					<td class="style2" colspan="1">
 						<b>
-							<xsl:value-of select="$loc/str[@name='Weight']"/>
+							Poids d'un carton
 						</b>
 					</td>
 					<td class="style3" colspan="1">
 						<xsl:apply-templates select="weight/unitValue"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="netWeight">
-				<tr>
-					<td class="style2">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Net weight']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="1">
-						<xsl:apply-templates select="netWeight/unitValue"/>
 					</td>
 				</tr>
 			</xsl:if>
@@ -1048,18 +912,6 @@
 					<xsl:value-of select="name"/>
 				</td>
 			</tr>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="2">
-						<xsl:value-of select="description"/>
-					</td>
-				</tr>
-			</xsl:if>
 			<tr>
 				<xsl:if test="dimensions">
 					<td class="style2" colspan="1">
@@ -1117,18 +969,6 @@
 					<xsl:value-of select="name"></xsl:value-of>
 				</td>
 			</tr>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="2">
-						<xsl:value-of select="description"></xsl:value-of>
-					</td>
-				</tr>
-			</xsl:if>
 			<tr>
 				<xsl:if test="dimensions">
 					<td class="style2">
@@ -1186,18 +1026,6 @@
 					<xsl:value-of select="name"></xsl:value-of>
 				</td>
 			</tr>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="2">
-						<xsl:value-of select="description"></xsl:value-of>
-					</td>
-				</tr>
-			</xsl:if>
 			<tr>
 				<td class="style2 " colspan="1">
 					<b>
@@ -1258,18 +1086,6 @@
 					</td>
 					<td class="style3" colspan="3">
 						<xsl:value-of select="name"/>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:value-of select="description"></xsl:value-of>
 					</td>
 				</tr>
 			</xsl:if>
@@ -1336,18 +1152,6 @@
 					</td>
 				</tr>
 			</xsl:if>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:value-of select="description"></xsl:value-of>
-					</td>
-				</tr>
-			</xsl:if>
 			<xsl:if test="numberOfTurns">
 				<td class="style2" colspan="1">
 					<b>
@@ -1377,18 +1181,6 @@
 					</td>
 					<td class="style3" colspan="3">
 						<xsl:value-of select="name"></xsl:value-of>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:value-of select="description"></xsl:value-of>
 					</td>
 				</tr>
 			</xsl:if>
@@ -1484,18 +1276,6 @@
 					</td>
 					<td class="style3" colspan="2">
 						<xsl:value-of select="name"></xsl:value-of>
-					</td>
-				</tr>
-			</xsl:if>
-			<xsl:if test="description">
-				<tr>
-					<td class="style2">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Description']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="2">
-						<xsl:value-of select="description"></xsl:value-of>
 					</td>
 				</tr>
 			</xsl:if>
