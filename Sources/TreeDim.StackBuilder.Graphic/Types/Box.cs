@@ -173,7 +173,7 @@ namespace treeDiM.StackBuilder.Graphics
         public bool ShowTape => TapeWidth.Activated;
         public OptDouble TapeWidth { get; set; }
         public Color TapeColor { get; set; }
-        public int Facing { get; set; } = -1;
+        public int Facing { get; set; } = 0;
         public Color OrientationMarkColor { get; set; } = Color.White;
         public Vector3D[] TapePoints
         {
@@ -196,10 +196,10 @@ namespace treeDiM.StackBuilder.Graphics
             {
                 switch (Facing)
                 {
-                    case 0: return SquarePoints(LengthAxis, WidthAxis);
-                    case 1: return SquarePoints(WidthAxis, -LengthAxis);
-                    case 2: return SquarePoints(-LengthAxis, -WidthAxis);
-                    case 3: return SquarePoints(-WidthAxis, LengthAxis);
+                    case 1: return SquarePoints(LengthAxis, WidthAxis);
+                    case 2: return SquarePoints(WidthAxis, -LengthAxis);
+                    case 3: return SquarePoints(-LengthAxis, -WidthAxis);
+                    case 4: return SquarePoints(-WidthAxis, LengthAxis);
                     default: return Enumerable.Repeat(Vector3D.Zero, 4).ToArray();
                 }
             }
@@ -211,10 +211,10 @@ namespace treeDiM.StackBuilder.Graphics
             {
                 switch (Facing)
                 {
-                    case 0: return SquarePoints(-LengthAxis, -HeightAxis);
-                    case 1: return SquarePoints(-WidthAxis, -HeightAxis);
-                    case 2: return SquarePoints(LengthAxis, -HeightAxis);
-                    case 3: return SquarePoints(WidthAxis, -HeightAxis);
+                    case 1: return SquarePoints(-LengthAxis, -HeightAxis);
+                    case 2: return SquarePoints(-WidthAxis, -HeightAxis);
+                    case 3: return SquarePoints(LengthAxis, -HeightAxis);
+                    case 4: return SquarePoints(WidthAxis, -HeightAxis);
                     default:  return Enumerable.Repeat(Vector3D.Zero, 4).ToArray();
                 }
             }
@@ -228,10 +228,10 @@ namespace treeDiM.StackBuilder.Graphics
                 Vector3D dimY = 0.5 * Dimensions.Y * WidthAxis;
                 switch (Facing)
                 {
-                    case 0: return zPos        - dimY;
-                    case 1: return zPos + dimX ;
-                    case 2: return zPos        + dimY;
-                    case 3: return zPos - dimX ;
+                    case 1: return zPos        - dimY;
+                    case 2: return zPos + dimX ;
+                    case 3: return zPos        + dimY;
+                    case 4: return zPos - dimX ;
                     default: return zPos;
                 }
             }
@@ -549,7 +549,7 @@ namespace treeDiM.StackBuilder.Graphics
                     g.DrawLine(penBlack, pts[j - 1], pts[j]);
                 g.DrawLine(penBlack, pts[pts.Length - 1], pts[0]);
             }
-            if (-1 != Facing && graphics.ShowFacing)
+            if (null != FacingFace && graphics.ShowFacing)
             {
                 if (faces[5].IsVisible(viewDir))
                     g.FillPolygon(new SolidBrush(faces[5].ColorGraph(graphics, Color.Red)), graphics.TransformPoint(FacingPointsTop));
@@ -614,11 +614,10 @@ namespace treeDiM.StackBuilder.Graphics
             {
                 switch (Facing)
                 {
-                    case -1: return null;
-                    case 0: return Faces[2];
-                    case 1: return Faces[1];
-                    case 2: return Faces[3];
-                    case 3: return Faces[0];
+                    case 1: return Faces[2];
+                    case 2: return Faces[1];
+                    case 3: return Faces[3];
+                    case 4: return Faces[0];
                     default: return null;
                 }
             }

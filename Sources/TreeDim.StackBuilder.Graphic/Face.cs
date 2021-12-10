@@ -353,7 +353,7 @@ namespace treeDiM.StackBuilder.Graphics
         /// <returns>integer "f1>f2 => 1", "f1<f2 => -1", "f1==f2 => 0"  </returns>
         public int Compare(Face f1, Face f2)
         {
-            string[] endParts = { "SLEEVE", "LABEL", "FILM", "STRAPPER"};
+            string[] endParts = { "BELT", "ARROW", "SLEEVE", "LABEL", "FILM", "STRAPPER"};
             int indexPart1 = Array.IndexOf(endParts, f1.PartName);
             int indexPart2 = Array.IndexOf(endParts, f2.PartName);
 

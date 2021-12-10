@@ -13,6 +13,7 @@ using treeDiM.StackBuilder.Engine;
 using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Graphics.Controls;
 using treeDiM.StackBuilder.Desktop.Properties;
+using treeDiM.StackBuilder.Exporters;
 #endregion
 
 namespace treeDiM.StackBuilder.Desktop
@@ -45,12 +46,10 @@ namespace treeDiM.StackBuilder.Desktop
                 tbName.Text = _document.GetValidNewAnalysisName(ItemDefaultName);
                 tbDescription.Text = tbName.Text;
 
-                uCtrlCaseOrientation.AllowedOrientations = new bool[]
-                    {
-                        Settings.Default.AllowVerticalX,
-                        Settings.Default.AllowVerticalY,
-                        Settings.Default.AllowVerticalZ
-                    };
+                if (string.IsNullOrEmpty(ExporterRobot.DefaultName))
+                    uCtrlCaseOrientation.AllowedOrientations = new bool[] { Settings.Default.AllowVerticalX, Settings.Default.AllowVerticalY, Settings.Default.AllowVerticalZ };
+                else
+                    uCtrlCaseOrientation.AllowedOrientations = new bool[] { false, false, true };
 
                 uCtrlMaximumHeight.Value = Settings.Default.MaximumPalletHeight;
                 uCtrlOptMaximumWeight.Value = new OptDouble(false, Settings.Default.MaximumPalletWeight);

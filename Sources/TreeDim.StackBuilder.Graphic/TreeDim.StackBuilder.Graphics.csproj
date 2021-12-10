@@ -312,6 +312,9 @@
     <EmbeddedResource Include="Controls\UCtrlCaseOrientationSimple.resx">
       <DependentUpon>UCtrlCaseOrientationSimple.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UCtrlConveyorSettings.fr.resx">
+      <DependentUpon>UCtrlConveyorSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCtrlConveyorSettings.resx">
       <DependentUpon>UCtrlConveyorSettings.cs</DependentUpon>
     </EmbeddedResource>

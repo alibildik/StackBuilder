@@ -94,9 +94,9 @@ namespace treeDiM.StackBuilder.Graphics
         public override void DrawBegin(Graphics3D graphics)
         {
             if (Vector3D.DotProduct(Faces[0].Normal, graphics.ViewDirection) >= 0.0)
-                graphics.AddFaceBackground(Faces[0]);
+                graphics.AddFace(Faces[0]);
             if (Vector3D.DotProduct(Triangles[0].Normal, graphics.ViewDirection) >= 0.0)
-                graphics.AddTriangleBackground(Triangles[0]);
+                graphics.AddTriangle(Triangles[0]);
         }
         public override void DrawEnd(Graphics3D graphics)
         {

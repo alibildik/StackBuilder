@@ -795,6 +795,27 @@ namespace treeDiM.StackBuilder.Basics
                 return interlayerCount;
             }
         }
+        public List<Pair<InterlayerProperties, int>> InterlayerCounts
+        {
+            get
+            {
+                var list = new List<Pair<InterlayerProperties, int>>();
+
+                var groups =
+                    from sol in _solutionItems
+                        group sol by sol.InterlayerIndex into g
+                        select new
+                        {
+                            InterlayerIndex = g.Key,
+                            Count = g.Count()
+                        };
+
+                foreach (var g in groups)
+                    if (-1 != g.InterlayerIndex)
+                        list.Add(new Pair<InterlayerProperties, int>(AnalysisCast.Interlayer(g.InterlayerIndex), g.Count));
+                return list;
+            }
+        }
         public override int ItemCount
         {
             get

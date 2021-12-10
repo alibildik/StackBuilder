@@ -1216,6 +1216,7 @@ namespace treeDiM.StackBuilder.Basics
             double length = UnitsManager.ConvertLengthFrom(Convert.ToDouble(eltBoxProperties.Attributes["Length"].Value, CultureInfo.InvariantCulture), UnitSystem);
             double width = UnitsManager.ConvertLengthFrom(Convert.ToDouble(eltBoxProperties.Attributes["Width"].Value, CultureInfo.InvariantCulture), UnitSystem);
             double height = UnitsManager.ConvertLengthFrom(Convert.ToDouble(eltBoxProperties.Attributes["Height"].Value, CultureInfo.InvariantCulture), UnitSystem);
+            Vector3D cog = eltBoxProperties.HasAttribute("COG") ? UnitsManagerEx.ConvertLengthFrom(Vector3D.Parse(eltBoxProperties.Attributes["COG"].Value), UnitSystem) : new Vector3D(0.5 * length, 0.5 * width, 0.5 * height);
             string sInsideLength = string.Empty, sInsideWidth = string.Empty, sInsideHeight = string.Empty;
             bool hasInsideDimensions = false;
             if (eltBoxProperties.HasAttribute("InsideLength"))
@@ -1251,7 +1252,7 @@ namespace treeDiM.StackBuilder.Basics
                 else if (string.Equals(node.Name, "StrapperSet", StringComparison.CurrentCultureIgnoreCase))
                     LoadStrapperSet(childElt, ref strapperSet);
             }
-            int facing = -1;
+            int facing = 0;
             if (eltBoxProperties.HasAttribute("Facing"))
                 facing = int.Parse(eltBoxProperties.Attributes["Facing"].Value);
 
@@ -1302,6 +1303,8 @@ namespace treeDiM.StackBuilder.Basics
             boxProperties.Bulge = bulge;
             // facing
             boxProperties.Facing = facing;
+            // cog
+            boxProperties.SetCOG(cog);
         }
 
         private void LoadBagProperties(XmlElement eltBagProperties)
@@ -2875,6 +2878,10 @@ namespace treeDiM.StackBuilder.Basics
             XmlAttribute facingAttribute = xmlDoc.CreateAttribute("Facing");
             facingAttribute.Value = $"{boxProperties.Facing}";
             eltBoxProperties.Attributes.Append(facingAttribute);
+            // COG
+            XmlAttribute cogAttribute = xmlDoc.CreateAttribute("COG");
+            cogAttribute.Value = boxProperties.COG.ToString();
+            eltBoxProperties.Attributes.Append(cogAttribute);
         }
         public void Save(BagProperties bagProperties, XmlElement parentElement, XmlDocument xmlDoc)
         {

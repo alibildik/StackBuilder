@@ -304,19 +304,19 @@ namespace treeDiM.StackBuilder.Basics
             {
                 switch (facing)
                 {
-                    case 0:
+                    case 1:
                         posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(DirectionLength);
                         hAxis = DirectionLength;
                         break;
-                    case 1:
+                    case 2:
                         posFacing += dims.X * HalfAxis.ToVector3D(DirectionLength) + 0.5 * dims.Y * HalfAxis.ToVector3D(DirectionWidth);
                         hAxis = DirectionWidth;
                         break;
-                    case 2:
+                    case 3:
                         posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(DirectionLength) + dims.Y * HalfAxis.ToVector3D(DirectionWidth);
                         hAxis = HalfAxis.Opposite(DirectionLength);
                         break;
-                    case 3:
+                    case 4:
                         posFacing += 0.5 * dims.Y * HalfAxis.ToVector3D(DirectionWidth);
                         hAxis = HalfAxis.Opposite(DirectionWidth);
                         break;
@@ -328,19 +328,19 @@ namespace treeDiM.StackBuilder.Basics
             {
                 switch (facing)
                 {
-                    case 0:
+                    case 1:
                         posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(DirectionLength) + dims.Y * HalfAxis.ToVector3D(DirectionWidth);
                         hAxis = HalfAxis.Opposite(DirectionLength);
                         break;
-                    case 1:
+                    case 2:
                         posFacing += 0.5 * dims.Y * HalfAxis.ToVector3D(DirectionWidth);
                         hAxis = HalfAxis.Opposite(DirectionWidth);
                         break;
-                    case 2:
+                    case 3:
                         posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(DirectionLength);
                         hAxis = DirectionLength;
                         break;
-                    case 3:
+                    case 4:
                         posFacing += dims.X * HalfAxis.ToVector3D(DirectionLength) + 0.5 * dims.Y * HalfAxis.ToVector3D(DirectionWidth);
                         hAxis = DirectionWidth;
                         break;

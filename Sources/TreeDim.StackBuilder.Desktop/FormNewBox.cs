@@ -56,8 +56,9 @@ namespace treeDiM.StackBuilder.Desktop
                             uCtrlDimensionsOuter.ValueX - UnitsManager.ConvertLengthFrom(6.0, UnitsManager.UnitSystem.UNIT_METRIC1),
                             uCtrlDimensionsOuter.ValueY - UnitsManager.ConvertLengthFrom(6.0, UnitsManager.UnitSystem.UNIT_METRIC1),
                             uCtrlDimensionsOuter.ValueZ - UnitsManager.ConvertLengthFrom(6.0, UnitsManager.UnitSystem.UNIT_METRIC1));
+                        uCtrlCOG.Value = 0.5 * uCtrlDimensionsOuter.Value;
                         uCtrlTapeWidth.Value = new OptDouble(true, UnitsManager.ConvertLengthFrom(50, UnitsManager.UnitSystem.UNIT_METRIC1));
-                        Facing = string.IsNullOrEmpty(ExporterRobot.DefaultName) ? -1 : 0;
+                        Facing = string.IsNullOrEmpty(ExporterRobot.DefaultName) ? 0 : 1;
                         break;
                     case Mode.BOX:
                         tbName.Text = _document.GetValidNewTypeName(Resources.ID_BOX);
@@ -68,9 +69,11 @@ namespace treeDiM.StackBuilder.Desktop
                             uCtrlDimensionsOuter.ValueX - UnitsManager.ConvertLengthFrom(6.0, UnitsManager.UnitSystem.UNIT_METRIC1),
                             uCtrlDimensionsOuter.ValueY - UnitsManager.ConvertLengthFrom(6.0, UnitsManager.UnitSystem.UNIT_METRIC1),
                             uCtrlDimensionsOuter.ValueZ - UnitsManager.ConvertLengthFrom(6.0, UnitsManager.UnitSystem.UNIT_METRIC1));
+                        uCtrlCOG.Visible = false;
                         uCtrlDimensionsInner.Checked = false;
+                        uCtrlCOG.Value = 0.5 * uCtrlDimensionsOuter.Value;
                         uCtrlTapeWidth.Value = new OptDouble(false, UnitsManager.ConvertLengthFrom(10, UnitsManager.UnitSystem.UNIT_METRIC1));
-                        Facing = -1;
+                        Facing = 0;
                         break;
                     default:
                         break;
@@ -127,6 +130,8 @@ namespace treeDiM.StackBuilder.Desktop
                 uCtrlDimensionsOuter.ValueZ = boxProperties.Height;
                 uCtrlDimensionsInner.Value = new Vector3D(boxProperties.InsideLength, boxProperties.InsideWidth, boxProperties.InsideHeight);
                 uCtrlDimensionsInner.Checked = boxProperties.HasInsideDimensions;
+                // COG
+                COG = boxProperties.COG;
                 // weight
                 vcWeight.Value = boxProperties.Weight;
                 // net weight
@@ -236,6 +241,11 @@ namespace treeDiM.StackBuilder.Desktop
             get => vcWeight.Value; 
             set => vcWeight.Value = value; 
         }
+        public Vector3D COG
+        {
+            get => uCtrlCOG.Value;
+            set => uCtrlCOG.Value = value;
+        }
         /// <summary>
         /// Colors
         /// </summary>
@@ -277,8 +287,8 @@ namespace treeDiM.StackBuilder.Desktop
         /// </summary>
         public int Facing
         {
-            get => cbFacing.SelectedIndex - 1;
-            set => cbFacing.SelectedIndex = value + 1;
+            get => cbFacing.SelectedIndex;
+            set => cbFacing.SelectedIndex = value;
         }
         /// <summary>
         /// Bulge
@@ -342,6 +352,9 @@ namespace treeDiM.StackBuilder.Desktop
                     InsideLength = BoxLength - _thicknessLength;
                     InsideWidth = BoxWidth - _thicknessWidth;
                     InsideHeight = BoxHeight - _thicknessHeight;
+
+                    // update COG
+                    COG = new Vector3D(0.5 * BoxLength, 0.5 * BoxWidth, 0.5 * BoxHeight);
                 }
                 if (sender is UCtrlOptTriDouble uCtrlDimIn && uCtrlDimensionsInner == uCtrlDimIn)
                 {
@@ -352,6 +365,7 @@ namespace treeDiM.StackBuilder.Desktop
                     if (BoxHeight <= InsideHeight)
                         BoxHeight = InsideHeight + _thicknessHeight;
 
+                    // update strapper set
                     StrapperSet.SetDimension(BoxLength, BoxWidth, BoxHeight);
                 }
                 uCtrlNetWeight.Enabled = !uCtrlDimensionsInner.Checked;

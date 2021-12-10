@@ -23,6 +23,7 @@ namespace treeDiM.StackBuilder.Basics
         public abstract OptDouble NetWeight { get; }
         public abstract double Volume { get; }
         public abstract Vector3D OuterDimensions { get; }
+        public virtual Vector3D COG => 0.5 * OuterDimensions;
         public virtual bool IsCase => false;
         public virtual bool IsPallet => false;
         public virtual bool IsTruck => false;

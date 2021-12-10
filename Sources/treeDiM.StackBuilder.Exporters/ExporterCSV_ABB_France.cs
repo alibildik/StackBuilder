@@ -41,7 +41,7 @@ namespace treeDiM.StackBuilder.Exporters
                 var pal = analysis.PalletProperties;
                 var boxDim = analysis.Content.OuterDimensions;
                 var weight = analysis.Content.Weight;
-                var cog = Vector3D.Zero;
+                var cog = analysis.Content.COG;
                 var cogInterlayer = Vector3D.Zero;
 
                 sb.AppendLine("START;");
@@ -60,25 +60,44 @@ namespace treeDiM.StackBuilder.Exporters
                         // item name
                         string itemName = "Interlayer";
                         // item pick setting
-                        string itemPickSettings = $"[[{interlayerProp.Length},{interlayerProp.Width}, {interlayerProp.Thickness}],{interlayerProp.Weight},[{cogInterlayer.X},{cogInterlayer.Y},{cogInterlayer.Z}],0,0,0]";
+                        string itemPickSettings = string.Format(
+                            CultureInfo.InvariantCulture,
+                            "[[{0},{1},{2}],{3},[{4},{5},{6}],0,0,0]",
+                            interlayerProp.Length, interlayerProp.Width, interlayerProp.Thickness, interlayerProp.Weight, cogInterlayer.X, cogInterlayer.Y, cogInterlayer.Z);
                         // place settings
-                        string placeSettings = $"[1, [{vPos.X},{vPos.Y},{vPos.Z}],0,[0,0,{robotPreparation.DockingOffsets.Z}]]";
+                        int number = 1;
+                        int angle = 0;
+                        double dockingX = 0.0;
+                        double dockingY = 0.0;
+                        string placeSettings = string.Format(
+                            CultureInfo.InvariantCulture,
+                            "[{0},[{1},{2},{3}],{0},[{4},{5},{6}]]",
+                            number, vPos.X, vPos.Y, vPos.Z, angle, dockingX, dockingY, robotPreparation.DockingOffsets.Z);
+                        // append interlayer line
                         sb.AppendLine($"{itemName};{itemPickSettings};{placeSettings};");
                     }
-                    // layer boxes
+                    // layer drops
                     var robotLayer = robotLayers[iLayer];
                     foreach (var robotDrop in robotLayer.Drops)
                     {
                         // item name
                         string itemName = "Box";
                         // item pick setting
-                        string itemPickSettings = $"[[{boxDim.X},{boxDim.Y},{boxDim.Z}],{weight},[{cog.X},{cog.Y},{cog.Z}],{robotPreparation.AngleGrabber},{robotPreparation.AngleItem},{robotPreparation.Facing}]";
+                        string itemPickSettings = string.Format(
+                            CultureInfo.InvariantCulture,
+                            "[[{0},{1},{2}],{3},[{4},{5},{6}],{7},{8},{9}]",
+                            boxDim.X, boxDim.Y, boxDim.Z, weight, cog.X, cog.Y, cog.Z, robotPreparation.AngleGrabber, robotPreparation.AngleItem, robotPreparation.Facing
+                            );
                         // place settings
                         Vector3D vPos = robotDrop.Center3D;
-                        int angle = Modulo360(robotDrop.RawAngle + robotPreparation.AngleGrabber + robotPreparation.AngleItem);
+                        int angle = Modulo360(robotDrop.RawAngle + robotPreparation.AngleGrabber - robotPreparation.AngleItem);
                         double dockingX = DockingDistanceX(robotDrop, robotPreparation.DockingOffsets.X);
                         double dockingY = DockingDistanceY(robotDrop, robotPreparation.DockingOffsets.Y);
-                        string placeSettings = $"[{robotDrop.Number},[{vPos.X},{vPos.Y},{vPos.Z}],{angle},[{dockingX},{dockingY},{robotPreparation.DockingOffsets.Z}]]";
+                        string placeSettings = string.Format(
+                            CultureInfo.InvariantCulture,
+                            "[{0},[{1},{2},{3}],{4},[{5},{6},{7}]]",
+                            robotDrop.Number, vPos.X, vPos.Y, robotDrop.TopHeight, angle, dockingX, dockingY, robotPreparation.DockingOffsets.Z);
+                        // append drop line
                         sb.AppendLine($"{itemName};{itemPickSettings};{placeSettings};");
                     }
                 }

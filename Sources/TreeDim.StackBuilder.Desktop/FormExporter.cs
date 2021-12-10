@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using System.IO;
+using System.Linq;
 
 using log4net;
 using Sharp3D.Math.Core;
@@ -39,8 +40,6 @@ namespace treeDiM.StackBuilder.Desktop
                 RobotPreparation.LayerModified += RobotPreparationModified;
                 uCtrlConveyorSettings.BoxProperties = analysisCasePallet.Content as PackableBrick;
                 uCtrlConveyorSettings.ValueChanged += OnInputChanged;
-
-
             }
             // fill combo layer types
             FillLayerComboBox();
@@ -62,9 +61,18 @@ namespace treeDiM.StackBuilder.Desktop
             cbFileFormat.SelectedIndex = iSel;
         }
         private void FillLayerComboBox()
-        { 
+        {
             for (int i = 0; i < RobotPreparation.LayerTypes.Count; ++i)
-                cbLayers.Items.Add($"{i+1}");
+            {
+                // get layer indexes
+                var list = RobotPreparation.ListLayerIndexes;
+                // list of occurrence of index
+                var result = Enumerable.Range(0, list.Count)
+                     .Where(v => list[v] == i)
+                     .ToList();
+                // join list values & insert 
+                cbLayers.Items.Add(string.Join(";", result));
+            }
             cbLayers.SelectedIndexChanged += OnSelectedLayerChanged;
             if (RobotPreparation.LayerTypes.Count > 0)
                 cbLayers.SelectedIndex = 0;
@@ -114,18 +122,16 @@ namespace treeDiM.StackBuilder.Desktop
                     exporter.Export(Analysis, ref stream);
 
                     // to text edit control
-                    using (StreamReader reader = new StreamReader(stream))
+                    using (var reader = new StreamReader(stream))
+                    {
                         textEditorControl.Text = reader.ReadToEnd();
+                    }
                 }
                 textEditorControl.Update();
             }
             catch (Exception ex)
             {
                 _log.Error(ex.Message);
-            }
-            finally
-            {
-                _log.Info(textEditorControl.Text);
             }
         }
         private void RobotPreparationModified()

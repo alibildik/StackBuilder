@@ -1,12 +1,6 @@
 ﻿#region Using directives
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Sharp3D.Math.Core;
@@ -55,6 +49,7 @@ namespace treeDiM.StackBuilder.Graphics
             double beltLength = 2 * offsetBelt + (MaxDropNumber + 1) * Packable.Length;
             double beltWidth = 2 * offsetBelt + Packable.Width;
 
+            // belt
             var beltFace = new Face(
                 0,
                 new Vector3D[]
@@ -71,6 +66,27 @@ namespace treeDiM.StackBuilder.Graphics
                 ColorFill = Color.LightGray
             };
             graphics.AddFace(beltFace);
+            // arrow
+            var arrow = new Arrow(1)
+            {
+                Length = Packable.Length,
+                Width = 0.2 * Packable.Length,
+                ColorFill = Color.OrangeRed,
+                ColorPath = Color.OrangeRed,
+                Position = new Vector3D(beltLength - 1.25 * offsetBelt, 0.0, 0.0),
+                LengthAxis = HalfAxis.HAxis.AXIS_X_N,
+                WidthAxis = HalfAxis.HAxis.AXIS_Y_N
+            };
+            arrow.Draw(graphics);
+            // frame referential
+            var frameRef = new FrameRef(2)
+            {
+                Length = Packable.Length,
+                Position = new Vector3D(-offsetBelt, -0.5 * beltWidth, 0.0),
+                LengthAxis = HalfAxis.HAxis.AXIS_X_P,
+                WidthAxis = HalfAxis.HAxis.AXIS_Y_P
+            };
+            graphics.AddFrameRef(frameRef);
 
             HalfAxis.HAxis axis0 = HalfAxis.HAxis.AXIS_X_P, axis1 = HalfAxis.HAxis.AXIS_Y_P;
             double xStep = 0.0;
@@ -100,33 +116,11 @@ namespace treeDiM.StackBuilder.Graphics
                 default: break;
             }
 
-            double x = xOffset;
             for (int i = 0; i < MaxDropNumber; ++i)
             {
                 graphics.AddBox(
-                    new Box(0, Packable, new BoxPosition(new Vector3D(x, yOffset, 0.0), axis0, axis1)));
-                x += xStep;
+                    new Box(0, Packable, new BoxPosition(new Vector3D(xOffset + (MaxDropNumber - i - 1) * xStep, yOffset, 0.0), axis0, axis1)));
             }
-
-            // draw arrow
-            var arrow = new Arrow(1)
-            {
-                Length = Packable.Length,
-                Width = 0.2 * Packable.Length,
-                ColorFill = Color.OrangeRed,
-                ColorPath = Color.OrangeRed,
-                Position = new Vector3D(beltLength - Packable.Length - 1.25 * offsetBelt, 0.0, 0.0)
-            };
-            arrow.DrawEnd(graphics);
-
-            var frameRef = new FrameRef(2)
-            {
-                Length = Packable.Length,
-                Position = new Vector3D(-offsetBelt, -0.5 * beltWidth, 0.0),
-                LengthAxis = HalfAxis.HAxis.AXIS_X_P,
-                WidthAxis = HalfAxis.HAxis.AXIS_Y_P
-            };
-            graphics.AddFrameRef(frameRef);
             graphics.Flush();
         }
         #region Double buffering
@@ -143,7 +137,7 @@ namespace treeDiM.StackBuilder.Graphics
         #endregion
 
         #region Data members
-        public double AngleHoriz { get; set; } =275;
+        public double AngleHoriz { get; set; } = 95;
         private double AngleVert { get; set; } = 45.0;
         public int MaxDropNumber { get; set; }
         public int CaseAngle { get; set; }

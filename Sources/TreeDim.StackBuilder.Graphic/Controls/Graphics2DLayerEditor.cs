@@ -9,6 +9,7 @@ using System.ComponentModel;
 using Sharp3D.Math.Core;
 using log4net;
 
+using treeDiM.Basics;
 using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Graphics.Properties;
 #endregion
@@ -88,6 +89,18 @@ namespace treeDiM.StackBuilder.Graphics
                 }
                 Graphics.DrawRectangle(Vector2D.Zero, Layer.DimContainer, Color.OrangeRed);
 
+                // draw frameref
+                double marginY = UnitsManager.ConvertLengthFrom(100.0, UnitsManager.UnitSystem.UNIT_METRIC1);
+                double frameRefLength = UnitsManager.ConvertLengthFrom(400.0, UnitsManager.UnitSystem.UNIT_METRIC1);
+                FrameRef frameRef = new FrameRef(0)
+                {
+                    Position = new Vector3D(-0.5 * marginY, -0.5 * marginY, 0.0),
+                    Length = frameRefLength,
+                    LengthAxis = HalfAxis.HAxis.AXIS_X_P,
+                    WidthAxis = HalfAxis.HAxis.AXIS_Y_P
+                };
+                frameRef.Draw(Graphics);
+
                 if (-1 != SelectedIndex)
                 {
                     var bp = Layer.Positions[SelectedIndex];
@@ -101,6 +114,8 @@ namespace treeDiM.StackBuilder.Graphics
 
                     ArrowButtons.Clear();
                     Vector2D ptCenter = new Vector2D(boxSelected.Center.X, boxSelected.Center.Y);
+
+
 
                     // draw translation arrows
                     for (int i = 0; i < 4; ++i)
@@ -171,7 +186,6 @@ namespace treeDiM.StackBuilder.Graphics
                 if (initialIndex != SelectedIndex)
                     SelectionChanged();
             }
-
             UpdateArrows();
             Invalidate();
         }

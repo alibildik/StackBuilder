@@ -314,16 +314,21 @@ namespace treeDiM.StackBuilder.Desktop
                 gridSolution.Rows.Insert(++iRow);
                 gridSolution[iRow, 0] = new ColumnHeaderSolution(Resources.ID_PALLET) { ColumnSpan = 1 };
                 gridSolution[iRow, 1] = new ColumnHeaderSolution(string.Empty) { ColumnSpan = 1 };
+
                 // layer #
                 gridSolution.Rows.Insert(++iRow);
                 gridSolution[iRow, 0] = new SourceGrid.Cells.RowHeader(Resources.ID_LAYERNUMBER) { View = vPropValue };
                 gridSolution[iRow, 1] = new SourceGrid.Cells.Cell(_solution.LayerCount);
-                // interlayer #
-                if (_solution.InterlayerCount > 0)
+                // pallet
+                gridSolution.Rows.Insert(++iRow);
+                gridSolution[iRow, 0] = new SourceGrid.Cells.RowHeader($"{Resources.ID_PALLET} ({Analysis.Container.Name})") { View = vPropValue };
+                gridSolution[iRow, 1] = new SourceGrid.Cells.Cell(1);
+                // interlayers #
+                foreach (var interPair in _solution.InterlayerCounts)
                 {
                     gridSolution.Rows.Insert(++iRow);
-                    gridSolution[iRow, 0] = new SourceGrid.Cells.RowHeader(Resources.ID_INTERLAYERNUMBER) { View = vPropValue };
-                    gridSolution[iRow, 1] = new SourceGrid.Cells.Cell(_solution.InterlayerCount);
+                    gridSolution[iRow, 0] = new SourceGrid.Cells.RowHeader($"{Resources.ID_INTERLAYER} ({interPair.first.Name})") { View = vPropValue };
+                    gridSolution[iRow, 1] = new SourceGrid.Cells.Cell(interPair.second);
                 }
                 // *** Item # (Recursive count)
                 RecurInsertContent(ref iRow, _analysis.Content, _solution.ItemCount);

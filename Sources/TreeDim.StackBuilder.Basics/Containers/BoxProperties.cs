@@ -40,6 +40,7 @@ namespace treeDiM.StackBuilder.Basics
             _width = width;
             _height = height;
             HasInsideDimensions = false;
+            SetCOG(0.5*length, 0.5*width, 0.5*height);
         }
         public BoxProperties(Document document, double length, double width, double height, double weight, Color color)
             : base(document)
@@ -52,6 +53,7 @@ namespace treeDiM.StackBuilder.Basics
             TapeColor = Color.White;
             TapeWidth = new OptDouble(true, 50.0);
             HasInsideDimensions = false;
+            SetCOG(0.5*length, 0.5*width, 0.5*height);
         }
         public BoxProperties(Document document, double[] dimensions)
             : base(document)
@@ -60,7 +62,7 @@ namespace treeDiM.StackBuilder.Basics
             _width = dimensions[1];
             _height = dimensions[2];
             HasInsideDimensions = false;
-
+            SetCOG(0.5*_length, 0.5*_width, 0.5*_height);
         }
         /// <summary>
         /// Constructor 3
@@ -84,6 +86,7 @@ namespace treeDiM.StackBuilder.Basics
             _insideWidth = insideWidth;
             _insideHeight = insideHeight;
             HasInsideDimensions = true;
+            SetCOG(0.5 * length, 0.5 * width, 0.5 * height);
         }
         public override bool IsCase => HasInsideDimensions || TapeWidth.Activated;
         // Dimensions
@@ -124,6 +127,7 @@ namespace treeDiM.StackBuilder.Basics
         }
         public double InsideVolume => InsideLength * InsideWidth * InsideHeight;
         public virtual Vector3D InsideDimensions => new Vector3D(InsideLength, InsideWidth, InsideHeight);
+        public override Vector3D COG => _cog;
         public virtual double[] OuterDimensionsArray => new double[] { _length, _width, _height };
         public virtual double[] InsideDimensionsArray => new double[] { InsideLength, InsideWidth, InsideHeight };
         public virtual BBox3D BoundingBox => new BBox3D(0.0, 0.0, 0.0, _length, _width, _height);
@@ -257,6 +261,8 @@ namespace treeDiM.StackBuilder.Basics
         public override bool IsBundle => false;
         protected override string TypeName => IsCase ? Properties.Resources.ID_NAMECASE : Properties.Resources.ID_NAMEBOX;
         public CreatedAsType CAType { get; set; } = CreatedAsType.Case;
+        public void SetCOG(Vector3D cog) => _cog = cog;
+        public void SetCOG(double xCOG, double yCOG, double zCOG) => _cog = new Vector3D(xCOG, yCOG, zCOG);
 
         #region Non-Public Members
         private double _height;
@@ -264,6 +270,7 @@ namespace treeDiM.StackBuilder.Basics
         private Color[] _colors = new Color[6];
         private List<Pair<HalfAxis.HAxis, Texture>> _textures = new List<Pair<HalfAxis.HAxis, Texture>>();
         private OptDouble _maxWeight;
+        private Vector3D _cog { get; set; }
         #endregion
 
         #region Enum

@@ -51,6 +51,7 @@ namespace treeDiM.StackBuilder.Basics
         public double SingleHeight => Content.Height;
         public double Length => (PackDirection == PackDir.LENGTH ? 1 : Number) * SingleLength;
         public double Width => (PackDirection == PackDir.WIDTH ? 1 : Number) * SingleWidth;
+        public double TopHeight => BoxPositionMain.Position.Z + Parent.LayerThickness;
         #endregion
         #region Public methods
         public BoxPosition InnerBoxPosition(int index)
@@ -415,6 +416,7 @@ namespace treeDiM.StackBuilder.Basics
         #endregion
         #region Data members
         public List<RobotDrop> Drops { get; set; } = new List<RobotDrop>();
+        public double LayerThickness { get; set; }
         #endregion
         #region Enums
         public enum enuCornerPoint { LOWERLEFT, LOWERRIGHT, UPPERRIGHT, UPPERLEFT }
@@ -463,11 +465,11 @@ namespace treeDiM.StackBuilder.Basics
             interlayers = new List<Pair<int,double>>();
 
             int iLayer = 0;
-            double zLayer = Analysis.Offset.Z;
+            double zLayer = 0;
             foreach (var solItem in sol.SolutionItems)
             {
                 var currentLayer = sol.LayerTypes[solItem.IndexLayer];
-                // intelayer
+                // 1. interlayer
                 if (solItem.HasInterlayer)
                 {
                     var interlayer = Analysis.Interlayer(solItem.InterlayerIndex);
@@ -477,10 +479,10 @@ namespace treeDiM.StackBuilder.Basics
                 else
                     interlayers.Add(new Pair<int, double>(-1,0.0) );
 
-                // robot layer
+                // 2.robot layer
                 RobotLayer editedLayer = LayerTypes[ListLayerIndexes[iLayer]];
                 editedLayer.SortByID();
-                RobotLayer robotLayer = new RobotLayer(this, iLayer);
+                RobotLayer robotLayer = new RobotLayer(this, iLayer) { LayerThickness = currentLayer.LayerHeight };
 
                 foreach (var drop in editedLayer.Drops)
                 {
@@ -498,7 +500,10 @@ namespace treeDiM.StackBuilder.Basics
                         );
                 }
                 layers.Add(robotLayer);
+                // increase z by layer thickness
                 zLayer += currentLayer.LayerHeight;
+                // change layer index
+                ++iLayer;
             }
         }
         public Vector2D MinPoint { get { Analysis.GetPtMinMax(out Vector2D ptMin, out Vector2D ptMax); return ptMin; } }

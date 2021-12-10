@@ -56,6 +56,7 @@
             this.tabPageBulge = new System.Windows.Forms.TabPage();
             this.uCtrlOptBulge = new treeDiM.Basics.UCtrlOptTriDouble();
             this.graphCtrl = new treeDiM.StackBuilder.Graphics.Graphics3DControl();
+            this.uCtrlCOG = new treeDiM.Basics.UCtrlTriDouble();
             this.gbDimensions.SuspendLayout();
             this.gbFaceColor.SuspendLayout();
             this.gbWeight.SuspendLayout();
@@ -328,12 +329,14 @@
             resources.GetString("cbColor.Items140"),
             resources.GetString("cbColor.Items141"),
             resources.GetString("cbColor.Items142"),
-            resources.GetString("cbColor.Items143")});
+            resources.GetString("cbColor.Items143"),
+            resources.GetString("cbColor.Items144")});
             this.cbColor.Name = "cbColor";
             this.cbColor.SelectedColorChanged += new System.EventHandler(this.OnFaceColorChanged);
             // 
             // gbWeight
             // 
+            this.gbWeight.Controls.Add(this.uCtrlCOG);
             this.gbWeight.Controls.Add(this.uCtrlMaxWeight);
             this.gbWeight.Controls.Add(this.vcWeight);
             this.gbWeight.Controls.Add(this.uCtrlNetWeight);
@@ -586,7 +589,8 @@
             resources.GetString("cbTapeColor.Items141"),
             resources.GetString("cbTapeColor.Items142"),
             resources.GetString("cbTapeColor.Items143"),
-            resources.GetString("cbTapeColor.Items144")});
+            resources.GetString("cbTapeColor.Items144"),
+            resources.GetString("cbTapeColor.Items145")});
             this.cbTapeColor.Name = "cbTapeColor";
             this.cbTapeColor.SelectedColorChanged += new System.EventHandler(this.OnFaceColorChanged);
             // 
@@ -646,6 +650,20 @@
             this.graphCtrl.Name = "graphCtrl";
             this.graphCtrl.TabStop = false;
             this.graphCtrl.Viewer = null;
+            // 
+            // uCtrlCOG
+            // 
+            resources.ApplyResources(this.uCtrlCOG, "uCtrlCOG");
+            this.uCtrlCOG.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.uCtrlCOG.Name = "uCtrlCOG";
+            this.uCtrlCOG.Unit = treeDiM.Basics.UnitsManager.UnitType.UT_LENGTH;
+            this.uCtrlCOG.ValueX = 0D;
+            this.uCtrlCOG.ValueY = 0D;
+            this.uCtrlCOG.ValueZ = 0D;
             // 
             // FormNewBox
             // 
@@ -715,5 +733,6 @@
         private treeDiM.Basics.UCtrlOptTriDouble uCtrlOptBulge;
         private System.Windows.Forms.ComboBox cbFacing;
         private System.Windows.Forms.Label label1;
+        private treeDiM.Basics.UCtrlTriDouble uCtrlCOG;
     }
 }
