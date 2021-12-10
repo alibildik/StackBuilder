@@ -93,22 +93,22 @@ namespace treeDiM.StackBuilder.Graphics
             double xOffset = 0.0, yOffset = 0.0;
             switch (CaseAngle)
             {
-                case 0:
+                case 180:
                     axis0 = HalfAxis.HAxis.AXIS_X_P; axis1 = HalfAxis.HAxis.AXIS_Y_P;
                     xStep = Packable.Length;
                     xOffset = 0.0; yOffset = -0.5 * Packable.Width;
                     break;
-                case 90:
+                case 270:
                     axis0 = HalfAxis.HAxis.AXIS_Y_P; axis1 = HalfAxis.HAxis.AXIS_X_N;
                     xStep = Packable.Width;
                     xOffset = Packable.Width; yOffset = -0.5 * Packable.Length;
                     break;
-                case 180:
+                case 0:
                     axis0 = HalfAxis.HAxis.AXIS_X_N; axis1 = HalfAxis.HAxis.AXIS_Y_N;
                     xStep = Packable.Length;
                     xOffset = Packable.Length; yOffset = 0.5 * Packable.Width;
                     break;
-                case 270:
+                case 90:
                     axis0 = HalfAxis.HAxis.AXIS_Y_N; axis1 = HalfAxis.HAxis.AXIS_X_P;
                     xStep = Packable.Width;
                     xOffset = 0.0; yOffset = 0.5 * Packable.Length;

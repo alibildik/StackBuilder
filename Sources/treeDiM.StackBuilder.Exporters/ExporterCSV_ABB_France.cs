@@ -90,7 +90,7 @@ namespace treeDiM.StackBuilder.Exporters
                             );
                         // place settings
                         Vector3D vPos = robotDrop.Center3D;
-                        int angle = Modulo360(robotDrop.RawAngle + robotPreparation.AngleGrabber - robotPreparation.AngleItem);
+                        int angle = Modulo360(robotDrop.RawAngle - robotPreparation.AngleItem);
                         double dockingX = DockingDistanceX(robotDrop, robotPreparation.DockingOffsets.X);
                         double dockingY = DockingDistanceY(robotDrop, robotPreparation.DockingOffsets.Y);
                         string placeSettings = string.Format(

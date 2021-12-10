@@ -2449,8 +2449,10 @@ namespace treeDiM.StackBuilder.Basics
                 OptMaxWeight = LoadOptDouble(eltConstraintSet, "MaximumWeight", UnitsManager.UnitType.UT_MASS),
                 OptMaxNumber = LoadOptInt(eltConstraintSet, "MaximumNumberOfItems"),
                 Overhang = LoadVectorLength(eltConstraintSet, "Overhang"),
-                MinimumSpace = LoadOptDouble(eltConstraintSet, "MinSpace", UnitsManager.UnitType.UT_LENGTH)
+                MinimumSpace = LoadOptDouble(eltConstraintSet, "MinSpace", UnitsManager.UnitType.UT_LENGTH),
+                AllowedOrientationsString = eltConstraintSet.HasAttribute("Orientations") ? eltConstraintSet.Attributes["Orientations"].Value : "0,0,1"
             };
+
             constraintSet.SetMaxHeight(LoadOptDouble(eltConstraintSet, "MaximumPalletHeight", UnitsManager.UnitType.UT_LENGTH));
             constraintSet.PalletFilmTurns = LoadInt(eltConstraintSet, "PalletFilmTurns");
             return constraintSet;
@@ -3763,7 +3765,7 @@ namespace treeDiM.StackBuilder.Basics
             // allowed orientation
             XmlAttribute attOrientations = xmlDoc.CreateAttribute("Orientations");
             attOrientations.Value = constraintSet.AllowedOrientationsString;
-            xmlAnalysisElt.Attributes.Append(attOrientations);
+            eltContraintSet.Attributes.Append(attOrientations);
             // maximum weight
             XmlAttribute attMaximumWeight = xmlDoc.CreateAttribute("MaximumWeight");
             attMaximumWeight.Value = constraintSet.OptMaxWeight.ToString();
@@ -4031,7 +4033,6 @@ namespace treeDiM.StackBuilder.Basics
                 attNumber.Value = ci.Number.ToString();
                 eltCI.Attributes.Append(attNumber);
                 // set content items
-                var orientations = ci.AllowedOrientations;
                 var attOrientations = xmlDoc.CreateAttribute("Orientations");
                 attOrientations.Value = string.Join(",", ci.AllowedOrientations);
                 eltCI.Attributes.Append(attOrientations);

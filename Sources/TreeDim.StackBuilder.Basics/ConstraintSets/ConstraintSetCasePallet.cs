@@ -29,7 +29,7 @@ namespace treeDiM.StackBuilder.Basics
                 {
                     _axesAllowed[0] = int.Parse(m.Result("${x}")) == 1;
                     _axesAllowed[1] = int.Parse(m.Result("${y}")) == 1;
-                    _axesAllowed[1] = int.Parse(m.Result("${z}")) == 1;
+                    _axesAllowed[2] = int.Parse(m.Result("${z}")) == 1;
                 }
             }
         }

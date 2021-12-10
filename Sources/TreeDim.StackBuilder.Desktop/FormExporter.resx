@@ -468,7 +468,7 @@
     <value>True</value>
   </data>
   <data name="&gt;&gt;layerEditor.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Graphics2DRobotDropEditor, treeDiM.StackBuilder.Graphics, Version=3.0.2.44, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Graphics2DRobotDropEditor, treeDiM.StackBuilder.Graphics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbFileFormat.Location" type="System.Drawing.Point, System.Drawing">
     <value>91, 10</value>
@@ -579,7 +579,7 @@
     <value>4</value>
   </data>
   <data name="&gt;&gt;uCtrlDockingOffset.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.44, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pbBrandLogo.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -843,7 +843,7 @@
     <value>1</value>
   </data>
   <data name="&gt;&gt;uCtrlConveyorSettings.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.UCtrlConveyorSettings, treeDiM.StackBuilder.Graphics, Version=3.0.2.44, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Controls.UCtrlConveyorSettings, treeDiM.StackBuilder.Graphics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tabPageSettings.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
