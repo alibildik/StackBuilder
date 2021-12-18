@@ -183,7 +183,7 @@
     <value>cbPallets</value>
   </data>
   <data name="&gt;&gt;cbPallets.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbPallets.Parent" xml:space="preserve">
     <value>$this</value>
@@ -204,7 +204,7 @@
     <value>cbCases</value>
   </data>
   <data name="&gt;&gt;cbCases.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered, treeDiM.StackBuilder.Graphics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbCases.Parent" xml:space="preserve">
     <value>$this</value>
@@ -259,7 +259,7 @@
     <value>uCtrlOverhang</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Parent" xml:space="preserve">
     <value>tabPageOverhang</value>
@@ -316,7 +316,7 @@
     <value>uCtrlLayerList</value>
   </data>
   <data name="&gt;&gt;uCtrlLayerList.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.UCtrlLayerList, treeDiM.StackBuilder.Graphics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.UCtrlLayerList, treeDiM.StackBuilder.Graphics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlLayerList.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -394,7 +394,7 @@
     <value>uCtrlCaseOrientation</value>
   </data>
   <data name="&gt;&gt;uCtrlCaseOrientation.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.uCtrlCaseOrientation, treeDiM.StackBuilder.Graphics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation, treeDiM.StackBuilder.Graphics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlCaseOrientation.Parent" xml:space="preserve">
     <value>$this</value>
@@ -402,68 +402,26 @@
   <data name="&gt;&gt;uCtrlCaseOrientation.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;tabPageStopCriterions.Name" xml:space="preserve">
-    <value>tabPageStopCriterions</value>
+  <data name="uCtrlOptMaxNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 57</value>
   </data>
-  <data name="&gt;&gt;tabPageStopCriterions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="uCtrlOptMaxNumber.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
   </data>
-  <data name="&gt;&gt;tabPageStopCriterions.Parent" xml:space="preserve">
-    <value>tabCtrlConstraints</value>
+  <data name="uCtrlOptMaxNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>349, 20</value>
   </data>
-  <data name="&gt;&gt;tabPageStopCriterions.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="uCtrlOptMaxNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
   </data>
-  <data name="&gt;&gt;tabPageOverhang.Name" xml:space="preserve">
-    <value>tabPageOverhang</value>
-  </data>
-  <data name="&gt;&gt;tabPageOverhang.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageOverhang.Parent" xml:space="preserve">
-    <value>tabCtrlConstraints</value>
-  </data>
-  <data name="&gt;&gt;tabPageOverhang.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabPageSpaces.Name" xml:space="preserve">
-    <value>tabPageSpaces</value>
-  </data>
-  <data name="&gt;&gt;tabPageSpaces.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageSpaces.Parent" xml:space="preserve">
-    <value>tabCtrlConstraints</value>
-  </data>
-  <data name="&gt;&gt;tabPageSpaces.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabCtrlConstraints.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 93</value>
-  </data>
-  <data name="tabCtrlConstraints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>468, 110</value>
-  </data>
-  <data name="tabCtrlConstraints.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="&gt;&gt;tabCtrlConstraints.Name" xml:space="preserve">
-    <value>tabCtrlConstraints</value>
-  </data>
-  <data name="&gt;&gt;tabCtrlConstraints.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabCtrlConstraints.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabCtrlConstraints.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="uCtrlOptMaxNumber.Text" xml:space="preserve">
+    <value>Maximum number</value>
   </data>
   <data name="&gt;&gt;uCtrlOptMaxNumber.Name" xml:space="preserve">
     <value>uCtrlOptMaxNumber</value>
   </data>
   <data name="&gt;&gt;uCtrlOptMaxNumber.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptInt, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptInt, treeDiM.Basics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlOptMaxNumber.Parent" xml:space="preserve">
     <value>tabPageStopCriterions</value>
@@ -471,11 +429,26 @@
   <data name="&gt;&gt;uCtrlOptMaxNumber.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="uCtrlOptMaximumWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 33</value>
+  </data>
+  <data name="uCtrlOptMaximumWeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="uCtrlOptMaximumWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>349, 20</value>
+  </data>
+  <data name="uCtrlOptMaximumWeight.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="uCtrlOptMaximumWeight.Text" xml:space="preserve">
+    <value>Maximum pallet weight</value>
+  </data>
   <data name="&gt;&gt;uCtrlOptMaximumWeight.Name" xml:space="preserve">
     <value>uCtrlOptMaximumWeight</value>
   </data>
   <data name="&gt;&gt;uCtrlOptMaximumWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlOptMaximumWeight.Parent" xml:space="preserve">
     <value>tabPageStopCriterions</value>
@@ -483,11 +456,26 @@
   <data name="&gt;&gt;uCtrlOptMaximumWeight.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="uCtrlMaximumHeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 9</value>
+  </data>
+  <data name="uCtrlMaximumHeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="uCtrlMaximumHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>349, 20</value>
+  </data>
+  <data name="uCtrlMaximumHeight.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="uCtrlMaximumHeight.Text" xml:space="preserve">
+    <value>Maximum pallet height</value>
+  </data>
   <data name="&gt;&gt;uCtrlMaximumHeight.Name" xml:space="preserve">
     <value>uCtrlMaximumHeight</value>
   </data>
   <data name="&gt;&gt;uCtrlMaximumHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlMaximumHeight.Parent" xml:space="preserve">
     <value>tabPageStopCriterions</value>
@@ -522,87 +510,6 @@
   <data name="&gt;&gt;tabPageStopCriterions.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="uCtrlOptMaxNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 57</value>
-  </data>
-  <data name="uCtrlOptMaxNumber.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="uCtrlOptMaxNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>349, 20</value>
-  </data>
-  <data name="uCtrlOptMaxNumber.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="uCtrlOptMaxNumber.Text" xml:space="preserve">
-    <value>Maximum number</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptMaxNumber.Name" xml:space="preserve">
-    <value>uCtrlOptMaxNumber</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptMaxNumber.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptInt, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptMaxNumber.Parent" xml:space="preserve">
-    <value>tabPageStopCriterions</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptMaxNumber.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="uCtrlOptMaximumWeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 33</value>
-  </data>
-  <data name="uCtrlOptMaximumWeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="uCtrlOptMaximumWeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>349, 20</value>
-  </data>
-  <data name="uCtrlOptMaximumWeight.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="uCtrlOptMaximumWeight.Text" xml:space="preserve">
-    <value>Maximum pallet weight</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptMaximumWeight.Name" xml:space="preserve">
-    <value>uCtrlOptMaximumWeight</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptMaximumWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptMaximumWeight.Parent" xml:space="preserve">
-    <value>tabPageStopCriterions</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptMaximumWeight.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="uCtrlMaximumHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 9</value>
-  </data>
-  <data name="uCtrlMaximumHeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="uCtrlMaximumHeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>349, 20</value>
-  </data>
-  <data name="uCtrlMaximumHeight.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="uCtrlMaximumHeight.Text" xml:space="preserve">
-    <value>Maximum pallet height</value>
-  </data>
-  <data name="&gt;&gt;uCtrlMaximumHeight.Name" xml:space="preserve">
-    <value>uCtrlMaximumHeight</value>
-  </data>
-  <data name="&gt;&gt;uCtrlMaximumHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlMaximumHeight.Parent" xml:space="preserve">
-    <value>tabPageStopCriterions</value>
-  </data>
-  <data name="&gt;&gt;uCtrlMaximumHeight.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="tabPageOverhang.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
@@ -630,11 +537,26 @@
   <data name="&gt;&gt;tabPageOverhang.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="uCtrlOptSpace.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 7</value>
+  </data>
+  <data name="uCtrlOptSpace.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>200, 20</value>
+  </data>
+  <data name="uCtrlOptSpace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 20</value>
+  </data>
+  <data name="uCtrlOptSpace.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="uCtrlOptSpace.Text" xml:space="preserve">
+    <value>Space</value>
+  </data>
   <data name="&gt;&gt;uCtrlOptSpace.Name" xml:space="preserve">
     <value>uCtrlOptSpace</value>
   </data>
   <data name="&gt;&gt;uCtrlOptSpace.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlOptSpace.Parent" xml:space="preserve">
     <value>tabPageSpaces</value>
@@ -669,32 +591,26 @@
   <data name="&gt;&gt;tabPageSpaces.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="uCtrlOptSpace.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 7</value>
+  <data name="tabCtrlConstraints.Location" type="System.Drawing.Point, System.Drawing">
+    <value>311, 93</value>
   </data>
-  <data name="uCtrlOptSpace.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>200, 20</value>
+  <data name="tabCtrlConstraints.Size" type="System.Drawing.Size, System.Drawing">
+    <value>468, 110</value>
   </data>
-  <data name="uCtrlOptSpace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 20</value>
+  <data name="tabCtrlConstraints.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
   </data>
-  <data name="uCtrlOptSpace.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;tabCtrlConstraints.Name" xml:space="preserve">
+    <value>tabCtrlConstraints</value>
   </data>
-  <data name="uCtrlOptSpace.Text" xml:space="preserve">
-    <value>Space</value>
+  <data name="&gt;&gt;tabCtrlConstraints.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;uCtrlOptSpace.Name" xml:space="preserve">
-    <value>uCtrlOptSpace</value>
+  <data name="&gt;&gt;tabCtrlConstraints.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;uCtrlOptSpace.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptSpace.Parent" xml:space="preserve">
-    <value>tabPageSpaces</value>
-  </data>
-  <data name="&gt;&gt;uCtrlOptSpace.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tabCtrlConstraints.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="lbSelect.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -742,7 +658,7 @@
     <value>uCtrlLayerListEdited</value>
   </data>
   <data name="&gt;&gt;uCtrlLayerListEdited.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.UCtrlLayerList, treeDiM.StackBuilder.Graphics, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.UCtrlLayerList, treeDiM.StackBuilder.Graphics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlLayerListEdited.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -880,6 +796,9 @@
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>fr</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -899,6 +818,6 @@
     <value>FormNewAnalysisCasePallet</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Desktop.FormNewAnalysis, treeDiM.StackBuilder.Desktop, Version=3.0.2.36, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Desktop.FormNewAnalysis, treeDiM.StackBuilder.Desktop, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -121,11 +121,8 @@
     <value>splitContainerVert</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="textEditorControl.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;splitContainerLayer.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="cbFileFormat.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;lbCoordinates.Name" xml:space="preserve">
     <value>lbCoordinates</value>
@@ -155,17 +152,17 @@
   <data name="tabPageLayerPrep.Text" xml:space="preserve">
     <value>Layer preparation</value>
   </data>
-  <data name="&gt;&gt;tabCtrlFeatures.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;lbLayers.Parent" xml:space="preserve">
     <value>splitContainerLayer.Panel1</value>
   </data>
   <data name="&gt;&gt;splitContainerHoriz.Name" xml:space="preserve">
     <value>splitContainerHoriz</value>
   </data>
-  <data name="splitContainerVert.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="splitContainerHoriz.Size" type="System.Drawing.Size, System.Drawing">
+    <value>800, 594</value>
+  </data>
+  <data name="tabPageDockingOffsets.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="cbLayers.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -176,8 +173,8 @@
   <data name="&gt;&gt;splitContainerVert.Panel2.Parent" xml:space="preserve">
     <value>splitContainerVert</value>
   </data>
-  <data name="uCtrlConveyorSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>366, 237</value>
+  <data name="&gt;&gt;cbLayers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;splitContainerHoriz.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -195,17 +192,11 @@
   <data name="&gt;&gt;lbLayers.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;uCtrlDockingOffset.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="tabPageAngles.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
   <data name="cbCoordinates.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 21</value>
-  </data>
-  <data name="&gt;&gt;textEditorControl.Name" xml:space="preserve">
-    <value>textEditorControl</value>
   </data>
   <data name="&gt;&gt;splitContainerLayer.Panel1.Name" xml:space="preserve">
     <value>splitContainerLayer.Panel1</value>
@@ -215,9 +206,6 @@
   </data>
   <data name="bnSave.Text" xml:space="preserve">
     <value>Export to file...</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 594</value>
   </data>
   <data name="uCtrlConveyorSettings.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -246,9 +234,6 @@
   <data name="cbCoordinates.Location" type="System.Drawing.Point, System.Drawing">
     <value>91, 6</value>
   </data>
-  <data name="&gt;&gt;splitContainerVert.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;lbFormat.Parent" xml:space="preserve">
     <value>splitContainerHoriz.Panel1</value>
   </data>
@@ -270,14 +255,11 @@
   <data name="&gt;&gt;bnClose.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;uCtrlConveyorSettings.Parent" xml:space="preserve">
-    <value>tabPageAngles</value>
-  </data>
   <data name="splitContainerLayer.Size" type="System.Drawing.Size, System.Drawing">
     <value>366, 438</value>
   </data>
-  <data name="cbCoordinates.Items" xml:space="preserve">
-    <value>Case corner</value>
+  <data name="&gt;&gt;uCtrlDockingOffset.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -428,14 +410,14 @@
   <data name="&gt;&gt;tabCtrlFeatures.Name" xml:space="preserve">
     <value>tabCtrlFeatures</value>
   </data>
-  <data name="&gt;&gt;cbLayers.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;splitContainerLayer.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="tabPageSettings.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="&gt;&gt;splitContainerHoriz.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="cbCoordinates.Items" xml:space="preserve">
+    <value>Case corner</value>
   </data>
   <data name="&gt;&gt;bnClose.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -461,17 +443,14 @@
   <data name="&gt;&gt;splitContainerLayer.Panel2.Name" xml:space="preserve">
     <value>splitContainerLayer.Panel2</value>
   </data>
-  <data name="&gt;&gt;textEditorControl.Type" xml:space="preserve">
-    <value>ICSharpCode.TextEditor.TextEditorControlEx, ICSharpCode.TextEditorEx, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="lbLayers.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="&gt;&gt;layerEditor.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Graphics2DRobotDropEditor, treeDiM.StackBuilder.Graphics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Graphics2DRobotDropEditor, treeDiM.StackBuilder.Graphics, Version=3.0.2.46, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="cbFileFormat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 10</value>
+  <data name="&gt;&gt;textEditorControl.Name" xml:space="preserve">
+    <value>textEditorControl</value>
   </data>
   <data name="pbBrandLogo.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -497,17 +476,14 @@
   <data name="&gt;&gt;tabPageLayerPrep.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;uCtrlDockingOffset.Type" xml:space="preserve">
+    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.46, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="cbCoordinates.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="splitContainerVert.SplitterDistance" type="System.Int32, mscorlib">
     <value>380</value>
-  </data>
-  <data name="splitContainerLayer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="lbCoordinates.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="&gt;&gt;bnSave.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -517,9 +493,6 @@
   </data>
   <data name="&gt;&gt;splitContainerHoriz.Panel2.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="cbFileFormat.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;textEditorControl.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -542,8 +515,8 @@
   <data name="&gt;&gt;splitContainerLayer.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tabCtrlFeatures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>380, 470</value>
+  <data name="&gt;&gt;splitContainerVert.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;layerEditor.Parent" xml:space="preserve">
     <value>splitContainerLayer.Panel2</value>
@@ -551,20 +524,23 @@
   <data name="&gt;&gt;cbCoordinates.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageDockingOffsets.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;textEditorControl.Type" xml:space="preserve">
+    <value>ICSharpCode.TextEditor.TextEditorControlEx, ICSharpCode.TextEditorEx, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="lbLayers.Text" xml:space="preserve">
     <value>Layers</value>
   </data>
-  <data name="splitContainerLayer.SplitterDistance" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
   <data name="&gt;&gt;lbFormat.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="tabCtrlFeatures.Size" type="System.Drawing.Size, System.Drawing">
+    <value>380, 470</value>
+  </data>
   <data name="&gt;&gt;splitContainerVert.Name" xml:space="preserve">
     <value>splitContainerVert</value>
+  </data>
+  <data name="&gt;&gt;tabPageDockingOffsets.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;splitContainerHoriz.Panel2.Name" xml:space="preserve">
     <value>splitContainerHoriz.Panel2</value>
@@ -578,11 +554,14 @@
   <data name="tabCtrlFeatures.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;uCtrlDockingOffset.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
+  <data name="splitContainerLayer.SplitterDistance" type="System.Int32, mscorlib">
+    <value>35</value>
   </data>
   <data name="&gt;&gt;pbBrandLogo.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="cbFileFormat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>91, 10</value>
   </data>
   <data name="splitContainerVert.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -596,7 +575,7 @@
   <data name="&gt;&gt;splitContainerHoriz.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="lbFormat.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbCoordinates.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="&gt;&gt;saveExportFile.Name" xml:space="preserve">
@@ -608,11 +587,8 @@
   <data name="&gt;&gt;tabPageDockingOffsets.Name" xml:space="preserve">
     <value>tabPageDockingOffsets</value>
   </data>
-  <data name="tabPageDockingOffsets.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="splitContainerHoriz.Size" type="System.Drawing.Size, System.Drawing">
-    <value>800, 594</value>
+  <data name="&gt;&gt;splitContainerVert.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="cbFileFormat.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 21</value>
@@ -644,8 +620,8 @@
   <data name="&gt;&gt;splitContainerVert.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;bnClose.Name" xml:space="preserve">
-    <value>bnClose</value>
+  <data name="splitContainerLayer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
   <data name="lbFormat.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -665,8 +641,8 @@
   <data name="&gt;&gt;splitContainerLayer.Name" xml:space="preserve">
     <value>splitContainerLayer</value>
   </data>
-  <data name="&gt;&gt;tabPageSettings.Name" xml:space="preserve">
-    <value>tabPageSettings</value>
+  <data name="&gt;&gt;bnClose.Name" xml:space="preserve">
+    <value>bnClose</value>
   </data>
   <data name="&gt;&gt;lbCoordinates.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -701,8 +677,11 @@
   <data name="lbCoordinates.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
   </data>
-  <data name="pbBrandLogo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>238, 6</value>
+  <data name="&gt;&gt;uCtrlConveyorSettings.Parent" xml:space="preserve">
+    <value>tabPageAngles</value>
+  </data>
+  <data name="lbFormat.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="lbFormat.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 13</value>
@@ -712,12 +691,6 @@
   </data>
   <data name="&gt;&gt;bnSave.Name" xml:space="preserve">
     <value>bnSave</value>
-  </data>
-  <data name="&gt;&gt;splitContainerVert.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="splitContainerHoriz.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -731,11 +704,14 @@
   <data name="&gt;&gt;cbFileFormat.Parent" xml:space="preserve">
     <value>splitContainerHoriz.Panel1</value>
   </data>
-  <data name="tabPageAngles.Text" xml:space="preserve">
-    <value>Conveyor &amp; Gripper angles</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;splitContainerHoriz.Panel1.Name" xml:space="preserve">
     <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;tabPageSettings.Name" xml:space="preserve">
+    <value>tabPageSettings</value>
   </data>
   <data name="bnSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -752,8 +728,8 @@
   <data name="&gt;&gt;lbFormat.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bnSave.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
+  <data name="&gt;&gt;tabCtrlFeatures.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tabPageAngles.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -785,17 +761,38 @@
   <data name="&gt;&gt;lbLayers.Name" xml:space="preserve">
     <value>lbLayers</value>
   </data>
+  <data name="uCtrlConveyorSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>366, 237</value>
+  </data>
+  <data name="&gt;&gt;splitContainerLayer.Parent" xml:space="preserve">
+    <value>tabPageLayerPrep</value>
+  </data>
   <data name="layerEditor.Size" type="System.Drawing.Size, System.Drawing">
     <value>366, 399</value>
   </data>
-  <data name="&gt;&gt;splitContainerLayer.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="textEditorControl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabPageAngles.Text" xml:space="preserve">
+    <value>Conveyor &amp; Gripper angles</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 594</value>
+  </data>
+  <data name="pbBrandLogo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 6</value>
   </data>
   <data name="&gt;&gt;splitContainerLayer.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="uCtrlDockingOffset.Size" type="System.Drawing.Size, System.Drawing">
     <value>340, 20</value>
+  </data>
+  <data name="&gt;&gt;splitContainerLayer.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="splitContainerVert.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
   <data name="tabPageLayerPrep.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -808,6 +805,9 @@
   </data>
   <data name="&gt;&gt;tabPageLayerPrep.Name" xml:space="preserve">
     <value>tabPageLayerPrep</value>
+  </data>
+  <data name="&gt;&gt;bnSave.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
   </data>
   <data name="&gt;&gt;lbFormat.Name" xml:space="preserve">
     <value>lbFormat</value>
@@ -833,8 +833,8 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
-  <data name="&gt;&gt;splitContainerLayer.Parent" xml:space="preserve">
-    <value>tabPageLayerPrep</value>
+  <data name="&gt;&gt;splitContainerHoriz.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="bnClose.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -843,7 +843,7 @@
     <value>1</value>
   </data>
   <data name="&gt;&gt;uCtrlConveyorSettings.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.UCtrlConveyorSettings, treeDiM.StackBuilder.Graphics, Version=3.0.2.45, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Controls.UCtrlConveyorSettings, treeDiM.StackBuilder.Graphics, Version=3.0.2.46, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tabPageSettings.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>

@@ -521,7 +521,7 @@ namespace treeDiM.StackBuilder.Reporting
                                 elemPalletisation.AppendChild(elemSolution);
                                 // number of cases
                                 if (rnPalletisationResults.GetChildByName(Resources.ID_RN_NOLAYERSBYNOCASES).Activated)
-                                    AppendElementValue(xmlDoc, elemSolution, "noLayersAndNoCases", sol.NoLayersPerNoCasesString);
+                                    AppendElementValue(xmlDoc, elemSolution, "noLayersAndNoCases", sol.TiHiString);
                                 // pallet weight
                                 if (sol.HasNetWeight)
                                     AppendElementValue(xmlDoc, elemSolution, "netWeight", UnitsManager.UnitType.UT_MASS, sol.NetWeight.Value);
@@ -861,11 +861,11 @@ namespace treeDiM.StackBuilder.Reporting
                 // Number of layers
                 AppendElementValue(xmlDoc, elemSolution, "noLayers", solLayer.Layers.Count);
                 // Number of cases per layer
-                if (solLayer.HasConstantNoCasesPerLayer)
+                if (solLayer.HasConstantTI)
                     AppendElementValue(xmlDoc, elemSolution, "noCasesPerLayer", solLayer.Layers[0].BoxCount);
                 // number layers x number cases
                 if (rnSolution.GetChildByName(Resources.ID_RN_NOLAYERSBYNOCASES).Activated)
-                    AppendElementValue(xmlDoc, elemSolution, "noLayersAndNoCases", solLayer.NoLayersPerNoCasesString);
+                    AppendElementValue(xmlDoc, elemSolution, "noLayersAndNoCases", solLayer.TiHiString);
                 // Number of interlayers
                 if (solLayer.InterlayerCount > 0 && rnSolution.GetChildByName(Resources.ID_RN_NOINTERLAYERS).Activated)
                     AppendElementValue(xmlDoc, elemSolution, "noInterlayers", solLayer.InterlayerCount);

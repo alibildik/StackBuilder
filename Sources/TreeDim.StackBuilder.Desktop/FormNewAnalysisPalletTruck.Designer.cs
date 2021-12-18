@@ -45,6 +45,18 @@
             // 
             resources.ApplyResources(this.tbDescription, "tbDescription");
             // 
+            // tbName
+            // 
+            resources.ApplyResources(this.tbName, "tbName");
+            // 
+            // lbDescription
+            // 
+            resources.ApplyResources(this.lbDescription, "lbDescription");
+            // 
+            // lbName
+            // 
+            resources.ApplyResources(this.lbName, "lbName");
+            // 
             // lbPallets
             // 
             resources.ApplyResources(this.lbPallets, "lbPallets");
@@ -82,6 +94,11 @@
             // uCtrlMinDistanceLoadRoof
             // 
             resources.ApplyResources(this.uCtrlMinDistanceLoadRoof, "uCtrlMinDistanceLoadRoof");
+            this.uCtrlMinDistanceLoadRoof.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.uCtrlMinDistanceLoadRoof.Minimum = new decimal(new int[] {
             0,
             0,
@@ -101,17 +118,17 @@
             // 
             // cbTrucks
             // 
+            resources.ApplyResources(this.cbTrucks, "cbTrucks");
             this.cbTrucks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTrucks.FormattingEnabled = true;
-            resources.ApplyResources(this.cbTrucks, "cbTrucks");
             this.cbTrucks.Name = "cbTrucks";
             this.cbTrucks.SelectedIndexChanged += new System.EventHandler(this.OnInputChanged);
             // 
             // cbPallets
             // 
+            resources.ApplyResources(this.cbPallets, "cbPallets");
             this.cbPallets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPallets.FormattingEnabled = true;
-            resources.ApplyResources(this.cbPallets, "cbPallets");
             this.cbPallets.Name = "cbPallets";
             this.cbPallets.SelectedIndexChanged += new System.EventHandler(this.OnInputChanged);
             // 

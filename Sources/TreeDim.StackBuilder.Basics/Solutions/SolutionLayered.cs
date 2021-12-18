@@ -202,7 +202,6 @@ namespace treeDiM.StackBuilder.Basics
             SymetryY = symetryY;
         }
         #endregion
-
         #region Public properties
         public int ItemCount
         { get { return Sol.LayerBoxCount(IndexLayer); } }
@@ -215,17 +214,13 @@ namespace treeDiM.StackBuilder.Basics
         public double Space
         { get { return Sol.LayerMaximumSpace(IndexLayer); } }
         public List<int> LayerIndexes { get; } = new List<int>();
-
         public string LayerIndexesString => string.Join(",", LayerIndexes.ToArray());
-
         public ILayer Layer3D => Sol.GetILayer(IndexLayer, SymetryX, SymetryY);
-
         public bool SymetryX { get; }
         public bool SymetryY { get; }
         public int IndexLayer { get; }
         public SolutionLayered Sol { get; set; }
         #endregion
-
         #region Public methods
         public bool IsLayerTypeOf(SolutionItem solItem)
         {
@@ -701,24 +696,6 @@ namespace treeDiM.StackBuilder.Basics
                 return llayers;
             }
         }
-        /*
-        public Dictionary<SolutionItemSimplified, List<int>> SolutionLayers
-        {
-            get
-            { 
-                var dict = new Dictionary<SolutionItemSimplified, List<int>>();
-                foreach (var solItem in SolutionItems)
-                {
-                    var solItemDict = new SolutionItemSimplified(solItem.IndexLayer, solItem.SymetryX, solItem.SymetryY);
-
-                }
-
-
-                return dict;
-            }
-        }
-        */
-
         public override BBox3D BBoxLoad
         {
             get
@@ -1001,42 +978,60 @@ namespace treeDiM.StackBuilder.Basics
                 return dict;
             }
         }
-        public string NoLayersPerNoCasesString
+        private Dictionary<int, List<int>> DictCountLayers
         {
             get
             {
-                // *** get dictionnary Number of cases <-> Number of layers
-                Dictionary<int, int> dictLayerCount = new Dictionary<int, int>();
-                foreach (ILayer layer in Layers)
+                var dict = new Dictionary<int, List<int>>();
+                for (int i=0; i<Layers.Count; ++i)
                 {
+                    ILayer layer = Layers[i];
                     int boxCount = layer.BoxCount;
-                    int noLayers = 1;
-                    if (dictLayerCount.ContainsKey(boxCount))
-                        noLayers += dictLayerCount[boxCount];
-                    dictLayerCount[boxCount] = noLayers;
+                    var list = new List<int>() { i };
+                    if (dict.ContainsKey(boxCount))
+                        dict[boxCount].AddRange(list);
                 }
+                return dict;
+            }
+        }
+        public string TiHiString
+        {
+            get
+            {
+                // *** get dictionnary Number of cases <-> List of layers
+                var dict = DictCountLayers;
+                
                 // *** build return string
                 string s = string.Empty;
-                foreach (KeyValuePair<int, int> kvp in dictLayerCount)
+                foreach (KeyValuePair<int, List<int>> kvp in dict)
                 {
                     if (!string.IsNullOrEmpty(s))
                         s += " + ";
-                    s += $"{kvp.Value} x {kvp.Key}";
+                    s += $"{kvp.Key} x {kvp.Value.Count}";
                 }
                 return s;
             }
         }
-        public bool HasConstantNoCasesPerLayer
+        public bool HasConstantTI => 1 == DictCountLayers.Count;
+        public int ConstantTI
         {
             get
             {
-                List<ILayer> layers = Layers;
-                if (layers.Count < 1)
-                    return false;
-                int iCaseCount = layers[0].BoxCount;
-                foreach (ILayer layer in layers)
+                var dict = DictCountLayers;
+                if (dict.Count > 1)
+                    throw new Exception("Solution does not have a constantTI");
+                else
+                    return DictCountLayers.First().Key;
+            }
+        }
+        public bool IsZOriented
+        {
+            get
+            {
+                foreach (var solItem in _solutionItems)
                 {
-                    if (layer.BoxCount != iCaseCount)
+                    ILayer2D currentLayer = LayerTypes[solItem.IndexLayer];
+                    if (currentLayer is Layer2DBrick layer2DBox && !layer2DBox.IsZOriented)
                         return false;
                 }
                 return true;

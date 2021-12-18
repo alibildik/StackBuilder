@@ -110,6 +110,15 @@ namespace treeDiM.StackBuilder.Graphics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not supported..
+        /// </summary>
+        internal static string ID_NOTSUPPORTED {
+            get {
+                return ResourceManager.GetString("ID_NOTSUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap QuestionMark {

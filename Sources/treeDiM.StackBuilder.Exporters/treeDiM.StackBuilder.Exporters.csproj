@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="Exceptions.cs" />
     <Compile Include="collada_schema_1_4.cs" />
+    <Compile Include="ExporterCSV_Angle.cs" />
     <Compile Include="Exporter.cs" />
     <Compile Include="Exporter3D.cs" />
     <Compile Include="ExporterCollada.cs" />

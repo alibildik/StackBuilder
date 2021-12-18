@@ -8,6 +8,7 @@ using Sharp3D.Math.Core;
 
 using treeDiM.Basics;
 using treeDiM.StackBuilder.Basics;
+using treeDiM.StackBuilder.Graphics.Properties;
 #endregion
 
 namespace treeDiM.StackBuilder.Graphics
@@ -44,19 +45,35 @@ namespace treeDiM.StackBuilder.Graphics
             // set default state
             SetDefaultState();
             // initialize automatic numbering corner combo box
-            RobotLayer.RefPointNumbering = (RobotLayer.enuCornerPoint)Properties.Settings.Default.AutomaticNumberingCornerIndex;
-            toolStripComboCorner.SelectedIndex = Properties.Settings.Default.AutomaticNumberingCornerIndex;
+            RobotLayer.RefPointNumbering = (RobotLayer.enuCornerPoint)Settings.Default.AutomaticNumberingCornerIndex;
+            toolStripComboCorner.SelectedIndex = Settings.Default.AutomaticNumberingCornerIndex;
         }
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             try
             {
+                if (null == Layer)
+                {
+                    e.Graphics.DrawString(
+                        Resources.ID_NOTSUPPORTED,
+                        new Font("Arial", 12),
+                        new SolidBrush(Color.Red),
+                        new PointF(Size.Width/2, Size.Height/2),
+                        new StringFormat()
+                        {
+                            Alignment = StringAlignment.Center,
+                            LineAlignment = StringAlignment.Center
+                        }
+                        );
+                    return;
+                }
+
                 double marginY = UnitsManager.ConvertLengthFrom(100.0, UnitsManager.UnitSystem.UNIT_METRIC1);
                 double frameRefLength = UnitsManager.ConvertLengthFrom(400.0, UnitsManager.UnitSystem.UNIT_METRIC1);
 
                 Graphics = new Graphics2DForm(this, e.Graphics) { };
-                if (null == Layer) return;
+
                 Vector2D margin = new Vector2D(0.0, marginY);
                 Graphics.SetViewport(Layer.MinPoint - margin, Layer.MaxPoint + margin);
                 // draw layer boundary rectangle

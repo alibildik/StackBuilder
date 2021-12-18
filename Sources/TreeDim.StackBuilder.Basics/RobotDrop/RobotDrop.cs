@@ -449,6 +449,7 @@ namespace treeDiM.StackBuilder.Basics
         }
         #endregion
         #region Public accessors
+        public bool IsValid => Analysis.SolutionLay.IsZOriented;
         public int NumberOfLayers => Analysis.SolutionLay.LayerCount;
         public RobotLayer GetLayerType(int index)
         {

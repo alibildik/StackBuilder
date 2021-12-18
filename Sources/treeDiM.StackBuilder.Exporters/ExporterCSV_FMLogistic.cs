@@ -1,5 +1,6 @@
 ﻿#region Using directives
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Globalization;
 
@@ -18,7 +19,7 @@ namespace treeDiM.StackBuilder.Exporters
             PositionCoordinateMode = CoordinateMode.CM_COG;
         }
         #endregion
-        #region Override Exporter
+        #region Override RobotExporter
         public override string Name => FormatName;
         public override string Extension => "csv";
         public override string Filter => "Comma Separated Values (*.csv) |*.csv";
@@ -26,7 +27,6 @@ namespace treeDiM.StackBuilder.Exporters
         public override bool UseRobotPreparation => true;
         public override System.Drawing.Bitmap BrandLogo => Properties.Resources.FM_Logistic;
         public override int MaxLayerIndexExporter(AnalysisLayered analysis) => Math.Min(analysis.SolutionLay.LayerCount, 2);
-
         public override void Export(AnalysisLayered analysis, NumberFormatInfo nfi, ref StringBuilder sb)
         {
             var sol = analysis.SolutionLay;
@@ -90,23 +90,21 @@ namespace treeDiM.StackBuilder.Exporters
             foreach (var indexInterlayer in robotPreparation.ListInterlayerIndexes)
                 sb.AppendLine($"{iLayer++},{(int)(0.5f * palletDim.X)},{(int)(0.5f * palletDim.Y)},{(indexInterlayer != -1 ? 1 : 0)},{indexInterlayer}");
 
+            robotPreparation.GetLayers(out List<RobotLayer> robotLayers, out List<Pair<int, double>> interlayers);
+
             // 1 line per block in the 2 first layer
             // get Layer 0
             int iLine = 1;
-            for (int i = 0; i < 2; ++i)
+            for (iLayer = 0; iLayer < Math.Min(robotLayers.Count, 2); ++iLayer)
             {
-                RobotLayer robotLayer = robotPreparation.GetLayerType(i);
-                if (null != robotLayer)
+                var robotLayer = robotLayers[iLayer];
+                foreach (var drop in robotLayer.Drops)
                 {
-                    foreach (var drop in robotLayer.Drops)
-                    {
-                        BoxPosition boxPos = drop.BoxPositionMain;
-                        int orientation = ConvertPositionAngleToPositionIndex(boxPos);
-                        Vector3D vPos = ConvertPosition(drop.BoxPositionMain, drop.Dimensions);
-                        int blockType = drop.PackDirection == RobotDrop.PackDir.LENGTH ? 1 : 0;
-
-                        sb.AppendLine($"{iLine},{(int)vPos.X},{(int)vPos.Y},{(int)vPos.Z},{orientation},{drop.Number},{blockType}");
-                    }
+                    BoxPosition boxPos = drop.BoxPositionMain;
+                    int orientation = ConvertPositionAngleToPositionIndex(boxPos);
+                    Vector3D vPos = ConvertPosition(drop.BoxPositionMain, drop.Dimensions);
+                    int blockType = drop.PackDirection == RobotDrop.PackDir.LENGTH ? 1 : 0;
+                    sb.AppendLine($"{iLine},{(int)vPos.X},{(int)vPos.Y},{(int)vPos.Z},{orientation},{drop.Number},{blockType}");
                 }
             }
         }

@@ -48,8 +48,8 @@
             this.lbSelect = new System.Windows.Forms.Label();
             this.uCtrlLayerListEdited = new treeDiM.StackBuilder.Graphics.UCtrlLayerList();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.bnEditLayer = new System.Windows.Forms.Button();
             this.bnEditLayerRight = new System.Windows.Forms.Button();
+            this.bnEditLayer = new System.Windows.Forms.Button();
             this.tabCtrlConstraints.SuspendLayout();
             this.tabPageStopCriterions.SuspendLayout();
             this.tabPageOverhang.SuspendLayout();
@@ -241,19 +241,19 @@
             this.splitContainer1.Panel2.Controls.Add(this.bnEditLayer);
             this.splitContainer1.Panel2.Controls.Add(this.uCtrlLayerListEdited);
             // 
-            // bnEditLayer
-            // 
-            resources.ApplyResources(this.bnEditLayer, "bnEditLayer");
-            this.bnEditLayer.Name = "bnEditLayer";
-            this.bnEditLayer.UseVisualStyleBackColor = true;
-            this.bnEditLayer.Click += new System.EventHandler(this.OnEditLayer);
-            // 
             // bnEditLayerRight
             // 
             resources.ApplyResources(this.bnEditLayerRight, "bnEditLayerRight");
             this.bnEditLayerRight.Name = "bnEditLayerRight";
             this.bnEditLayerRight.UseVisualStyleBackColor = true;
             this.bnEditLayerRight.Click += new System.EventHandler(this.OnEditLayerRight);
+            // 
+            // bnEditLayer
+            // 
+            resources.ApplyResources(this.bnEditLayer, "bnEditLayer");
+            this.bnEditLayer.Name = "bnEditLayer";
+            this.bnEditLayer.UseVisualStyleBackColor = true;
+            this.bnEditLayer.Click += new System.EventHandler(this.OnEditLayer);
             // 
             // FormNewAnalysisCasePallet
             // 

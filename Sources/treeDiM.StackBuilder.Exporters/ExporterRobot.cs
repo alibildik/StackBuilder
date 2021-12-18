@@ -8,6 +8,7 @@ using System.Linq;
 using Sharp3D.Math.Core;
 
 using treeDiM.StackBuilder.Basics;
+using treeDiM.StackBuilder.Exporters.Properties;
 #endregion
 
 namespace treeDiM.StackBuilder.Exporters
@@ -27,15 +28,20 @@ namespace treeDiM.StackBuilder.Exporters
                 NumberDecimalDigits = 1
             };
             // actual export
-            Export(robotPreparation, nfi, ref sb);
+            if (robotPreparation.IsValid)
+                Export(robotPreparation, nfi, ref sb);
+            else
+                sb.AppendLine(Resources.ID_UNSUPPORTEDANALYSIS);
             // write to stream
             var writer = new StreamWriter(stream);
             writer.Write(sb.ToString());
             writer.Flush();
             stream.Position = 0;
         }
-        public abstract void Export(RobotPreparation robotPreparation, NumberFormatInfo nfi, ref StringBuilder sb);
-
+        public virtual void Export(RobotPreparation robotPreparation, NumberFormatInfo nfi, ref StringBuilder sb)
+        {
+            throw new NotImplementedException($"Prepared analysis export not implemented with {Name}.");
+        }
         public override void Export(AnalysisLayered analysis, ref Stream stream)
         {
             // instantiate new string builder
@@ -54,20 +60,28 @@ namespace treeDiM.StackBuilder.Exporters
             writer.Flush();
             stream.Position = 0;
         }
-        public abstract void Export(AnalysisLayered analysis, NumberFormatInfo nfi, ref StringBuilder sb);
+        public virtual void Export(AnalysisLayered analysis, NumberFormatInfo nfi, ref StringBuilder sb)
+        {
+            throw new NotImplementedException($"Direct analysis export not implemented with {Name}.");
+        }
         public virtual int MaxLayerIndexExporter(AnalysisLayered analysis) => analysis.SolutionLay.LayerCount;
-
         public abstract System.Drawing.Bitmap BrandLogo { get; }
         public virtual bool UseRobotPreparation { get; } = false;
         public virtual bool UseCoordinateSelector { get; } = false;
         public virtual bool UseAngleSelector { get; } = false;
         public virtual bool UseDockingOffsets { get; } = false;
+        public virtual bool HasFormatDefinition { get; } = false;
+        public virtual string FormatDefinition { get; } = string.Empty;
         public CoordinateMode PositionCoordinateMode { get; set; } = CoordinateMode.CM_CORNER;
         public enum CoordinateMode { CM_CORNER, CM_COG };
 
-
-
         #region Helpers
+        protected int Modulo360(int angle)
+        {
+            int angleNew = angle % 360;
+            while (angleNew < 0) angleNew += 360;
+            return angleNew;
+        }
         protected Vector3D ConvertPosition(BoxPosition bp, Vector3D boxDim)
         {
             switch (PositionCoordinateMode)
@@ -92,6 +106,24 @@ namespace treeDiM.StackBuilder.Exporters
                 default: throw new ExceptionUnexpectedOrientation(bp, this);
             }
         }
+        protected static double DockingDistanceX(RobotDrop robotDrop, double dockingDistance)
+        {
+            if (robotDrop.HasNeighbour(RobotDrop.NeighbourDir.LEFT, dockingDistance))
+                return dockingDistance;
+            else if (robotDrop.HasNeighbour(RobotDrop.NeighbourDir.RIGHT, dockingDistance))
+                return -dockingDistance;
+            else
+                return 0.0;
+        }
+        protected static double DockingDistanceY(RobotDrop robotDrop, double dockingDistance)
+        {
+            if (robotDrop.HasNeighbour(RobotDrop.NeighbourDir.BOTTOM, dockingDistance))
+                return dockingDistance;
+            else if (robotDrop.HasNeighbour(RobotDrop.NeighbourDir.TOP, dockingDistance))
+                return -dockingDistance;
+            else
+                return 0.0;
+        }
         #endregion
 
         #region Static properties and methods
@@ -111,18 +143,17 @@ namespace treeDiM.StackBuilder.Exporters
             else
                 return new ExporterRobot[] { selectedExporter };
         }
-
         public static ExporterRobot GetByName(string name)
         {
             try { return RobotExporters.Single(r => string.Equals(r.Name, name, StringComparison.CurrentCultureIgnoreCase)); }
             catch (Exception) { return null; }
         }
-
         public static ExporterRobot[] RobotExporters =>
             new ExporterRobot[]
             {
                 new ExporterXML(),
                 new ExporterCSV(),
+                new ExporterCSV_Angle(),
                 new ExporterCSV_ABB_France(),
                 new ExporterCSV_FMLogistic(),
                 new ExporterCSV_TechBSA()

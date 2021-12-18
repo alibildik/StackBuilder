@@ -91,6 +91,15 @@ namespace treeDiM.StackBuilder.Exporters.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This format does not support non Z-aligned layers..
+        /// </summary>
+        internal static string ID_UNSUPPORTEDANALYSIS {
+            get {
+                return ResourceManager.GetString("ID_UNSUPPORTEDANALYSIS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap treeDiM {

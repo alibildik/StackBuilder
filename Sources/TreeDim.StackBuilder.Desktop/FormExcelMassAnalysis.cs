@@ -264,14 +264,15 @@ namespace treeDiM.StackBuilder.Desktop
                             double loadLength = 0.0, loadWidth = 0.0, loadHeight = 0.0;
                             double loadWeight = 0.0, totalPalletWeight = 0.0, stackEfficiency = 0.0;
                             string stackImagePath = string.Empty;
-                            string noLayersPerNoCasesString = string.Empty;
+                            int iTIcount = 0;
+                            string sTiHi = string.Empty;
                             // generate result
                             GenerateResult(name, description
                                 , length, width, height, weight
                                 , palletProperties, Overhang
                                 , AllowCombinations
                                 , ref stackCount
-                                , ref layerCount, ref noLayersPerNoCasesString
+                                , ref layerCount, ref iTIcount, ref sTiHi
                                 , ref loadWeight, ref totalPalletWeight
                                 , ref palletLength, ref palletWidth, ref palletHeight
                                 , ref loadLength, ref loadWidth, ref loadHeight
@@ -280,9 +281,15 @@ namespace treeDiM.StackBuilder.Desktop
                             // insert count
                             var countCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
                             countCell.Value = stackCount;
-                            // insert layer count
-                            var layerCountCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
-                            layerCountCell.Value = $"{noLayersPerNoCasesString}";
+                            // insert TI
+                            var TIcountCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                            if (0 != iTIcount)
+                                TIcountCell.Value = iTIcount;
+                            else
+                                TIcountCell.Value = sTiHi;
+                            // insert HI
+                            var HIcountCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                            HIcountCell.Value = layerCount;
                             // insert load dimensions
                             var loadDimCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
                             loadDimCell.Value = $"{loadLength}x{loadWidth}x{loadHeight}";
@@ -357,7 +364,7 @@ namespace treeDiM.StackBuilder.Desktop
             , PalletProperties palletProperties, Vector2D overhang
             , bool allowCombinations
             , ref int stackCount
-            , ref int layerCount, ref string noLayersPerNoCasesString
+            , ref int layerCount, ref int TICount, ref string sTiHi
             , ref double loadWeight, ref double totalWeight
             , ref double palletLength, ref double palletWidth, ref double palletHeight
             , ref double loadLength, ref double loadWidth, ref double loadHeight
@@ -431,8 +438,13 @@ namespace treeDiM.StackBuilder.Desktop
 
                 if (analysis.Solution is SolutionLayered solutionLayered)
                 {
+                    if (solutionLayered.HasConstantTI)
+                        TICount = solutionLayered.ConstantTI;
+                    else
+                        TICount = 0;
                     layerCount = solutionLayered.LayerCount;
-                    noLayersPerNoCasesString = solutionLayered.NoLayersPerNoCasesString;
+                    sTiHi = solutionLayered.TiHiString;
+
 
                     palletLength = solutionLayered.BBoxGlobal.Length;
                     palletWidth = solutionLayered.BBoxGlobal.Width;

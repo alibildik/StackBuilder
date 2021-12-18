@@ -133,6 +133,9 @@
   <data name="ID_CANNOTADD" xml:space="preserve">
     <value>Can not insert box/case at default location.</value>
   </data>
+  <data name="ID_NOTSUPPORTED" xml:space="preserve">
+    <value>Not supported.</value>
+  </data>
   <data name="QuestionMark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\QuestionMark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

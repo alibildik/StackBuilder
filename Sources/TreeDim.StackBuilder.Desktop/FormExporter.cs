@@ -80,8 +80,7 @@ namespace treeDiM.StackBuilder.Desktop
         private void OnSelectedLayerChanged(object sender, EventArgs e)
         {
             int iSel = cbLayers.SelectedIndex;
-            if (-1 != iSel)
-                layerEditor.Layer = RobotPreparation.LayerTypes[iSel];
+            layerEditor.Layer = (-1 != iSel && RobotPreparation.IsValid) ? RobotPreparation.LayerTypes[iSel] : null;
             layerEditor.Invalidate();
             RobotPreparation.Update();
         }
@@ -199,8 +198,6 @@ namespace treeDiM.StackBuilder.Desktop
         #endregion
         #region Private properties
         private ExporterRobot CurrentExporter => ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());
-        private int SelectedFormatIndex => cbFileFormat.SelectedIndex;
-        private string SelectedFormatString => cbFileFormat.SelectedItem.ToString();
         private string FormatName
         {
             get => Properties.Settings.Default.ExportFormatName;

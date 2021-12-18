@@ -1,7 +1,7 @@
 ﻿#region Using directives
 using System.Text;
-using System.IO;
 using System.Globalization;
+using System.Drawing;
 
 using Sharp3D.Math.Core;
 
@@ -13,14 +13,13 @@ namespace treeDiM.StackBuilder.Exporters
     public class ExporterCSV : ExporterRobot
     {
         #region Static members
-        public static string FormatName => "csv (default)";
+        public static string FormatName => "csv (legacy)";
         #endregion
-
-        public ExporterCSV() {}
+        #region Override ExporterRobot
         public override string Name => FormatName;
         public override string Extension => "csv";
         public override string Filter => "Comma Separated Values (*.csv)|*.csv";
-        public override System.Drawing.Bitmap BrandLogo => Properties.Resources.treeDiM;
+        public override Bitmap BrandLogo => Properties.Resources.treeDiM;
         public override void Export(AnalysisLayered analysis, NumberFormatInfo nfi, ref StringBuilder sb)
         {
             SolutionLayered sol = analysis.SolutionLay;
@@ -39,7 +38,7 @@ namespace treeDiM.StackBuilder.Exporters
                             $"{pos.Y.ToString("0,0.0", nfi)};" +
                             $"{pos.Z.ToString("0,0.0", nfi)};" +
                             $"{bPosition.DirectionLength};" +
-                            $"{bPosition.DirectionWidth}");
+                            $"{bPosition.DirectionWidth};");
                     }
                 }
                 else if (layer is Layer3DCyl layerCyl)
@@ -73,9 +72,10 @@ namespace treeDiM.StackBuilder.Exporters
                 }
             }
         }
-
         public override void Export(RobotPreparation robotPreparation, NumberFormatInfo nfi, ref StringBuilder sb)
         {
         }
+        #endregion
+
     }
 }
