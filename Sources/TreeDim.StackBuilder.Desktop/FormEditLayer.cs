@@ -21,15 +21,12 @@ namespace treeDiM.StackBuilder.Desktop
             Content = content as PackableBrick;
             uCtrlLayerEditor.Content = Content;
             uCtrlLayerEditor.Layer = Layer;
-
-
         }
         #endregion
         #region Form override
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
             uCtrlLayerEditor.Content = Content;
             uCtrlLayerEditor.Layer = Layer;
             uCtrlLayerEditor.Invalidate();
