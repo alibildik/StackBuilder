@@ -15,6 +15,7 @@
 					.style1
 					{
 					color:blue;
+					padding:0;
 					}
 					.style2
 					{
@@ -33,8 +34,8 @@
 					{
 					font-family:Arial;
 					font-size:10px;
-					margin: 5%;
-					width: 90%;
+					margin: 2%;
+					width: 98%;
 					padding: 0;
 					}
 					h1
@@ -42,7 +43,7 @@
 					color:black;
 					font-size:20px;
 					font-family:Arial;
-					width:200mm
+					width:200mm;
 					}
 					h2
 					{
@@ -53,8 +54,9 @@
 					h3
 					{
 					color:blue;
-					font-size:12px;
+					font-size:10px;
 					font-family:Arial;
+					padding: 0;
 					}
 
 					<!--
@@ -102,19 +104,17 @@
 			<body lang="FR" style='word-wrap: break-word'>
 
 				<div class="WordSection1">
-					<p class="MsoNormal" style='margin-top: 0cm; margin-right: 800pt; margin-bottom: 0cm; margin-left: -72.0pt'>
-
-					</p>
-					<table class="TableGrid" border="0" cellspacing="0" cellpadding="0" width="1026" style='width: 600pt; margin-left: 0pt; border-collapse: collapse'>
+					<p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: -72.0pt'/>
+					<table class="TableGrid" border="0" cellspacing="0" cellpadding="0" width="1126" style='width: 700pt; margin-left: 0pt; border-collapse: collapse'>
 						<tr style='height: 391.55pt'>
-							<td width="600" colspan="4" valign="top" style='width: 600pt; border: solid black 1.0pt; border-bottom: none; padding: 0cm 0cm 0cm 3.15pt; height: 800pt'>
+							<td width="600" colspan="4" valign="top" style='width: 700pt; border: solid black 1.0pt; border-bottom: none; padding: 0cm 0cm 0cm 3.15pt; height: 800pt'>
 								<p class="MsoNormal" style='margin-top: 0cm; margin-right: -.1pt; margin-bottom: 0cm; margin-left: 8.55pt'>
 									<xsl:apply-templates select="analysis" />
 								</p>
 							</td>
 						</tr>
 						<tr style='height: 33.35pt'>
-							<td width="506" rowspan="5" valign="bottom" style='width: 379.2pt; border: solid black 1.0pt; border-top: none; padding: 0cm 0cm 0cm 3.15pt; height: 33.35pt'>
+							<td width="550" rowspan="5" valign="bottom" style='width: 379.2pt; border: solid black 1.0pt; border-top: none; padding: 0cm 0cm 0cm 3.15pt; height: 33.35pt'>
 								<p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 2.1pt'>
 									<span style='font-size: 8.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
 										This drawing belongs to DESJARDIN and cannot be transferred to anyone without DESJARDIN authorization.
@@ -122,7 +122,7 @@
 								</p>
 								<p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 2.1pt'>
 									<span style='font-size: 8.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
-										Les poids sont donnes a titre indicatif avec +/-5%.
+										Les poids sont donn&#233;s &#224; titre indicatif avec +/-5%.
 									</span>
 								</p>
 							</td>
@@ -135,12 +135,12 @@
 							</td>
 						</tr>
 						<tr style='height: 23.8pt'>
-							<td width="347" colspan="2" rowspan="3" valign="top" style='width: 260.4pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
+							<td width="297" colspan="2" rowspan="3" valign="top" style='width: 222.0pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
 								<p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 7.05pt'>
-									<img width="327" height="77" src="images\logo_DESJARDIN.gif"/>
+									<img width="280" height="65" src="images\logo_DESJARDIN.gif"/>
 								</p>
 							</td>
-							<td width="174" style='width: 130.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
+							<td width="200" style='width: 200.0pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
 								<p class="MsoNormal" style='margin-bottom: 0cm'>
 									<span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
 										Drawned by:
@@ -149,18 +149,18 @@
 							</td>
 						</tr>
 						<tr style='height: 23.8pt'>
-							<td width="174" style='width: 130.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
+							<td width="200" style='width: 200.0pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
 								<p class="MsoNormal" style='margin-bottom: 0cm'>
-									<span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+									<span style='font-size: 9.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
 										Checked by:
 									</span>
 								</p>
 							</td>
 						</tr>
 						<tr style='height: 22.15pt'>
-							<td width="174" style='width: 130.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 22.15pt'>
+							<td width="200" style='width: 200.0pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 22.15pt'>
 								<p class="MsoNormal" style='margin-bottom: 0cm'>
-									<span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+									<span style='font-size: 9.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
 										Date:
 									</span>
 								</p>
@@ -169,19 +169,19 @@
 						<tr style='height: 28.4pt'>
 							<td width="173" style='width: 130.1pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
 								<p class="MsoNormal" align="center" style='margin-top: 0cm; margin-right: 3.2pt; margin-bottom: 0cm; margin-left: 0cm; text-align: center'>
-									<span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+									<span style='font-size: 9.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
 										PAPER FORMAT: A4
 									</span>
 								</p>
 							</td>
-							<td width="174" style='width: 130.35pt; border: solid black 1.0pt; border-left: none; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
+							<td width="174" style='width: 200.0pt; border: solid black 1.0pt; border-left: none; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
 								<p class="MsoNormal" style='margin-bottom: 0cm'>
-									<span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+									<span style='font-size: 9.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
 										Ref.:
 									</span>
 								</p>
 							</td>
-							<td width="174" valign="top" style='width: 130.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
+							<td width="174" valign="top" style='width: 200.0pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
 								<p class="MsoNormal" align="center" style='margin-top: 0cm; margin-right: 3.15pt; margin-bottom: 0cm; margin-left: 0cm; text-align: center'>
 									<span style='font-size: 18.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
 										1/1
@@ -314,17 +314,25 @@
 		</h3>
 		<table class="style1">
 			<tr>
-				<td colspan="4" align="middle">
-					<xsl:apply-templates select="view_solution_iso"/>
+				<td rowspan="2" align="middle">
+					<table border="1" cellspacing="0" cellpadding="4">
+						<tr>
+							<td>
+								<xsl:apply-templates select="view_solution_iso"/>
+							</td>
+						</tr>
+					</table>
 				</td>
-			</tr>
-			<tr>
+				<td width="100px" colspan="1"/>
 				<td align="middle" colspan="1">
 					<xsl:apply-templates select="view_solution_front"/>
 				</td>
 				<td align="middle" colspan="1">
 					<xsl:apply-templates select="view_solution_left"/>
 				</td>
+			</tr>
+			<tr>
+				<td width="100px" colspan="1"/>
 				<td align="middle" colspan="1">
 					<xsl:apply-templates select="view_solution_right"/>
 				</td>
@@ -333,10 +341,6 @@
 				</td>
 			</tr>
 		</table>
-		<h3>
-			Couche(s)
-		</h3>
-
 		<table>
 			<xsl:apply-templates select="item"/>
 			<xsl:if test="noLayersAndNoCases">
@@ -362,7 +366,7 @@
 			<xsl:if test="bboxLoad">
 				<tr>
 					<td class="style2" colspan="1">
-						<b>Dimension chargement</b>
+						<b>Dimensions chargement (LxlxH)</b>
 					</td>
 					<td class="style3" colspan="3">
 						<xsl:apply-templates select="bboxLoad/unitVector3"/>
@@ -382,7 +386,7 @@
 			<xsl:if test="bboxTotal">
 				<tr>
 					<td class="style2" colspan="1">
-						<b>Dimensions hors tout</b>
+						<b>Dimensions hors tout (LxlxH)</b>
 					</td>
 					<td class="style3" colspan="3">
 						<xsl:apply-templates select="bboxTotal/unitVector3"/>
@@ -439,7 +443,7 @@
 			<xsl:if test="bboxLoad">
 				<tr>
 					<td class="style2" colspan="1">
-						<b>Dimensions chargement</b>
+						<b>Dimensions chargement  (LxlxH)</b>
 					</td>
 					<td class="style3" colspan="3">
 						<xsl:apply-templates select="bboxLoad/unitVector3"/>
@@ -459,7 +463,7 @@
 			<xsl:if test="bboxTotal">
 				<tr>
 					<td class="style2" colspan="1">
-						<b>Dimensions hors-tout</b>
+						<b>Dimensions hors-tout (LxlxH)</b>
 					</td>
 					<td class="style3" colspan="3">
 						<xsl:apply-templates select="bboxTotal/unitVector3"/>
@@ -484,15 +488,9 @@
 	</xsl:template>
 	<!--#### IMAGEGENERIC ####-->
 	<xsl:template match="imageThumbSize">
-		<img align="middle">
+		<img width="200" height="200" align="middle">
 			<xsl:attribute name="src">
 				<xsl:value-of select="imagePath"/>
-			</xsl:attribute>
-			<xsl:attribute name="width">
-				<xsl:value-of select="width"/>
-			</xsl:attribute>
-			<xsl:attribute name="height">
-				<xsl:value-of select="height"/>
 			</xsl:attribute>
 		</img>
 	</xsl:template>
@@ -503,6 +501,7 @@
 				<xsl:value-of select="imagePath"/>
 			</xsl:attribute>
 		</img>
+		<p class="style3">Gauche</p>
 	</xsl:template>
 	<!--#### VIEW_SOLUTION_LEFT-->
 	<xsl:template match="view_solution_left">
@@ -511,6 +510,7 @@
 				<xsl:value-of select="imagePath"/>
 			</xsl:attribute>
 		</img>
+		<p class="style3">Face</p>
 	</xsl:template>
 	<!--#### VIEW_SOLUTION_RIGHT-->
 	<xsl:template match="view_solution_right">
@@ -519,6 +519,7 @@
 				<xsl:value-of select="imagePath"/>
 			</xsl:attribute>
 		</img>
+		<p class="style3">Arrière</p>
 	</xsl:template>
 	<!--#### VIEW_SOLUTION_BACK-->
 	<xsl:template match="view_solution_back">
@@ -527,16 +528,13 @@
 				<xsl:value-of select="imagePath"/>
 			</xsl:attribute>
 		</img>
+		<p class="style3">Droite</p>
 	</xsl:template>
 	<!--#### VIEW_SOLUTION_ISO-->
 	<xsl:template match="view_solution_iso">
 		<img align="middle">
-			<xsl:attribute name="width">
-				<xsl:value-of select="width"/>
-			</xsl:attribute>
-			<xsl:attribute name="height">
-				<xsl:value-of select="height"/>
-			</xsl:attribute>
+			<xsl:attribute name="width">300</xsl:attribute>
+			<xsl:attribute name="height">300</xsl:attribute>
 			<xsl:attribute name="src">
 				<xsl:value-of select="imagePath"/>
 			</xsl:attribute>
@@ -557,13 +555,12 @@
 	</xsl:template>
 	<!--#### LAYERS ####-->
 	<xsl:template match="layers">
-		<table>
+		<table width="100%">
 			<tbody>
 				<xsl:apply-templates select="layer[position() mod 2 = 1]" mode="row"/>
 			</tbody>
 		</table>
 	</xsl:template>
-
 	<xsl:template match="layer" mode="row">
 		<tr>
 			<!-- apply current and next layer -->
@@ -574,21 +571,21 @@
 	<!--#### LAYER ####-->
 	<xsl:template match="layer" mode="cell">
 		<td class="style2">
-			<table class="style1" cellpadding="1" >
+			<table width="100%">
 				<tr>
-					<td class="style2" colspan="1">
-						<b>Couche(s):</b>
-					</td>
-					<td class="style3" colspan="1">
-						<xsl:value-of select="layerIndexes"/>
+					<td colspan="2" align="middle" width="400px">
+						<xsl:apply-templates select="imageThumbSize"/>
 					</td>
 					<td class="style3" colspan="1"/>
 				</tr>
 				<tr>
-					<td colspan="2" align="middle">
-						<xsl:apply-templates select="imageThumbSize"/>
+					<td class="style2" colspan="1">
+						<b>Couche(s):</b>
 					</td>
-					<td class="style3" colspan="1"/>
+					<td class="style3" colspan="1" width="200px" align="middle">
+						<xsl:value-of select="layerIndexes"/>
+					</td>
+					<td class="style3" colspan="1" width="200px"/>
 				</tr>
 			</table>
 		</td>
@@ -607,10 +604,10 @@
 	<!--#### CASE ####-->
 	<xsl:template match="case">
 		<h3>Carton</h3>
-		<table class="style1" cellpadding="3">
+		<table class="style1" cellpadding="4">
 			<tr>
 				<td class="style2" colspan="1">Nom</td>
-				<td class="style3" colspan="2">
+				<td class="style3" colspan="2" width="400">
 					<xsl:value-of select="name"/>
 				</td>
 				<td rowspan="3" align="middle">
@@ -618,14 +615,14 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="style2" colspan="1">Dimensions</td>
-				<td class="style3" colspan="1">
+				<td class="style2" colspan="1">Dimensions (LxlxH)</td>
+				<td class="style3" colspan="1" width="400">
 					<xsl:apply-templates select="dimensions/unitVector3"/>
 				</td>
 			</tr>
 			<tr>
 				<td class="style2">Poid d'un carton</td>
-				<td class="style3" colspan="1">
+				<td class="style3" colspan="1" width="400">
 					<xsl:apply-templates select="weight/unitValue"/>
 				</td>
 			</tr>
@@ -826,11 +823,11 @@
 				<td class="style2" colspan="1">
 					<b>Nom</b>
 				</td>
-				<td class="style3" colspan="1">
+				<td class="style3" colspan="1" width="300">
 					<xsl:value-of select="name"/>
 				</td>
-				<xsl:if test="imageThumbSize">
-					<td rowspan="3" colspan="2" align="middle">
+				<xsl:if test="imageThumbSize" >
+					<td rowspan="3" colspan="1" align="middle" >
 						<xsl:apply-templates select="imageThumbSize"/>
 					</td>
 				</xsl:if>
@@ -839,16 +836,16 @@
 				<td class="style2" colspan="1">
 					<b>Description</b>
 				</td>
-				<td class="style3" colspan="1">
+				<td class="style3" colspan="1" width="300">
 					<xsl:value-of select="description"/>
 				</td>
 			</tr>
 			<tr>
 				<xsl:if test="dimensions">
 					<td class="style2" colspan="1">
-						<b>Dimensions</b>
+						<b>Dimensions  (LxlxH)</b>
 					</td>
-					<td class="style3" colspan="1">
+					<td class="style3" colspan="1" width="300">
 						<xsl:apply-templates select="dimensions/unitVector3"/>
 					</td>
 				</xsl:if>
@@ -863,21 +860,19 @@
 				<td class="style2" colspan="1">
 					<b>Nom</b>
 				</td>
-				<td class="style3" colspan="1">
+				<td class="style3" colspan="1" width="300">
 					<xsl:value-of select="name"></xsl:value-of>
 				</td>
-				<td rowspan="4" colspan="2" align="middle">
+				<td rowspan="3" colspan="2" align="middle">
 					<xsl:apply-templates select="imageThumbSize"/>
 				</td>
 			</tr>
 			<tr>
 				<xsl:if test="dimensions">
 					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Dimensions']"/>
-						</b>
+						<b>Dimensions  (LxlxH)</b>
 					</td>
-					<td class="style3" colspan="1">
+					<td class="style3" colspan="1" width="300">
 						<xsl:apply-templates select="dimensions/unitVector3"/>
 					</td>
 				</xsl:if>
@@ -885,11 +880,9 @@
 			<xsl:if test="weight">
 				<tr>
 					<td class="style2" colspan="1">
-						<b>
-							Poids d'un carton
-						</b>
+						<b>Poids d'un carton</b>
 					</td>
-					<td class="style3" colspan="1">
+					<td class="style3" colspan="1" width="300">
 						<xsl:apply-templates select="weight/unitValue"/>
 					</td>
 				</tr>

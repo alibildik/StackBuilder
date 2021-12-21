@@ -492,7 +492,6 @@
       </xsl:if>
     </table>
   </xsl:template>
-
   <!--#### ECTANALYSIS ####-->
   <xsl:template match="ectAnalysis">
     <h2>
@@ -605,125 +604,127 @@
     <h3>
       <xsl:value-of select="$loc/str[@name='Solution']"/>
     </h3>
-    <table class="style1">
-      <xsl:apply-templates select="item"/>
-      <xsl:if test="noLayersAndNoCases">
-        <tr>
-          <td class="style2" colspan="1">
-            <b>
-              <xsl:value-of select="$loc/str[@name='Layers x Cases']"/>
-            </b>
-          </td>
-          <td class="style3" colspan="3">
-            <xsl:value-of select="noLayersAndNoCases"/>
-          </td>
-        </tr>
-      </xsl:if>
-      <xsl:if test="noInterlayers">
-        <tr>
-          <td class="style2" colspan="1">
-            <b>
-              <xsl:value-of select="$loc/str[@name='Number of interlayers']"/>
-            </b>
-          </td>
-          <td class="style3" colspan="3">
-            <xsl:value-of select="noInterlayers"/>
-          </td>
-        </tr>
-      </xsl:if>
-      <xsl:if test="netWeight">
-        <tr>
-          <td class="style2" colspan="1">
-            <b>
-              <xsl:value-of select="$loc/str[@name='Net weight']"/> (<xsl:value-of select="netWeight/unit"/>)
-            </b>
-          </td>
-          <td class="style3" colspan="3">
-            <xsl:value-of select="netWeight/value"/>
-          </td>
-        </tr>
-      </xsl:if>
-      <xsl:if test="weightLoad">
-        <tr>
-          <td class="style2" colspan="1">
-            <b>
-              <xsl:value-of select="$loc/str[@name='Load weight']"/> (<xsl:value-of select="weightLoad/unit"/>)
-            </b>
-          </td>
-          <td class="style3" colspan="3">
-            <xsl:value-of select="weightLoad/value"/>
-          </td>
-        </tr>
-      </xsl:if>
-      <xsl:if test="bboxLoad">
-        <tr>
-          <td class="style2" colspan="1">
-            <b>
-              <xsl:value-of select="$loc/str[@name='Load dimensions']"/> (<xsl:value-of select="bboxLoad/unit"/>)
-            </b>
-          </td>
-          <td class="style3" colspan="3">
-            <xsl:value-of select="bboxLoad/v0"/> x <xsl:value-of select="bboxLoad/v1"/> x <xsl:value-of select="bboxLoad/v2"/>
-          </td>
-        </tr>
-      </xsl:if>
-      <xsl:if test="weightTotal">
-        <tr>
-          <td class="style2" colspan="1">
-            <b>
-              <xsl:value-of select="$loc/str[@name='Weight']"/> (<xsl:value-of select="weightTotal/unit"/>)
-            </b>
-          </td>
-          <td class="style3" colspan="3">
-            <xsl:value-of select="weightTotal/value"/>
-          </td>
-        </tr>
-      </xsl:if>
-      <xsl:if test="bboxTotal">
-        <tr>
-          <td class="style2" colspan="1">
-            <b>
-              <xsl:value-of select="$loc/str[@name='Overall dimensions']"/> (<xsl:value-of select="bboxTotal/unit"/>)
-            </b>
-          </td>
-          <td class="style3" colspan="3">
-            <xsl:value-of select="bboxTotal/v0"/> x <xsl:value-of select="bboxTotal/v1"/> x <xsl:value-of select="bboxTotal/v2"/>
-          </td>
-        </tr>
-      </xsl:if>
-      
-      <xsl:if test="efficiencyVolume">
-        <tr>
-          <td class="style2" colspan="1">
-            <b>
-              <xsl:value-of select="$loc/str[@name='Volume efficiency']"/>
-            </b>
-          </td>
-          <td class="style3" colspan="3">
-            <xsl:value-of select="efficiencyVolume"/>
-          </td>
-        </tr>
-      </xsl:if>
-      <tr>
-        <td align="middle" colspan="1">
-          <xsl:apply-templates select="view_solution_front"/>
-        </td>
-        <td align="middle" colspan="1">
-          <xsl:apply-templates select="view_solution_left"/>
-        </td>
-        <td align="middle" colspan="1">
-          <xsl:apply-templates select="view_solution_right"/>
-        </td>
-        <td align="middle" colspan="1">
-          <xsl:apply-templates select="view_solution_back"/>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="4" align="middle">
-          <xsl:apply-templates select="view_solution_iso"/>
-        </td>
-      </tr>
-    </table>
+	  <table class="style1">
+		  <xsl:apply-templates select="item"/>
+		  <xsl:if test="noLayersAndNoCases">
+			  <tr>
+				  <td class="style2" colspan="1">
+					  <b>
+						  <xsl:value-of select="$loc/str[@name='Layers x Cases']"/>
+					  </b>
+				  </td>
+				  <td class="style3" colspan="3">
+					  <xsl:value-of select="noLayersAndNoCases"/>
+				  </td>
+			  </tr>
+		  </xsl:if>
+		  <xsl:if test="noInterlayers">
+			  <tr>
+				  <td class="style2" colspan="1">
+					  <b>
+						  <xsl:value-of select="$loc/str[@name='Number of interlayers']"/>
+					  </b>
+				  </td>
+				  <td class="style3" colspan="3">
+					  <xsl:value-of select="noInterlayers"/>
+				  </td>
+			  </tr>
+		  </xsl:if>
+		  <xsl:if test="netWeight">
+			  <tr>
+				  <td class="style2" colspan="1">
+					  <b>
+						  <xsl:value-of select="$loc/str[@name='Net weight']"/> (<xsl:value-of select="netWeight/unit"/>)
+					  </b>
+				  </td>
+				  <td class="style3" colspan="3">
+					  <xsl:value-of select="netWeight/value"/>
+				  </td>
+			  </tr>
+		  </xsl:if>
+		  <xsl:if test="weightLoad">
+			  <tr>
+				  <td class="style2" colspan="1">
+					  <b>
+						  <xsl:value-of select="$loc/str[@name='Load weight']"/> (<xsl:value-of select="weightLoad/unit"/>)
+					  </b>
+				  </td>
+				  <td class="style3" colspan="3">
+					  <xsl:value-of select="weightLoad/value"/>
+				  </td>
+			  </tr>
+		  </xsl:if>
+		  <xsl:if test="bboxLoad">
+			  <tr>
+				  <td class="style2" colspan="1">
+					  <b>
+						  <xsl:value-of select="$loc/str[@name='Load dimensions']"/> (<xsl:value-of select="bboxLoad/unit"/>)
+					  </b>
+				  </td>
+				  <td class="style3" colspan="3">
+					  <xsl:value-of select="bboxLoad/v0"/> x <xsl:value-of select="bboxLoad/v1"/> x <xsl:value-of select="bboxLoad/v2"/>
+				  </td>
+			  </tr>
+		  </xsl:if>
+		  <xsl:if test="weightTotal">
+			  <tr>
+				  <td class="style2" colspan="1">
+					  <b>
+						  <xsl:value-of select="$loc/str[@name='Weight']"/> (<xsl:value-of select="weightTotal/unit"/>)
+					  </b>
+				  </td>
+				  <td class="style3" colspan="3">
+					  <xsl:value-of select="weightTotal/value"/>
+				  </td>
+			  </tr>
+		  </xsl:if>
+		  <xsl:if test="bboxTotal">
+			  <tr>
+				  <td class="style2" colspan="1">
+					  <b>
+						  <xsl:value-of select="$loc/str[@name='Overall dimensions']"/> (<xsl:value-of select="bboxTotal/unit"/>)
+					  </b>
+				  </td>
+				  <td class="style3" colspan="3">
+					  <xsl:value-of select="bboxTotal/v0"/> x <xsl:value-of select="bboxTotal/v1"/> x <xsl:value-of select="bboxTotal/v2"/>
+				  </td>
+			  </tr>
+		  </xsl:if>
+		  <xsl:if test="efficiencyVolume">
+			  <tr>
+				  <td class="style2" colspan="1">
+					  <b>
+						  <xsl:value-of select="$loc/str[@name='Volume efficiency']"/>
+					  </b>
+				  </td>
+				  <td class="style3" colspan="3">
+					  <xsl:value-of select="efficiencyVolume"/>
+				  </td>
+			  </tr>
+		  </xsl:if>
+	  </table>
+	  <table class="style1">
+		  <tr>
+			  <td rowspan="2" align="middle">
+				  <xsl:apply-templates select="view_solution_iso"/>
+			  </td>
+			  <td align="middle" colspan="1">
+				  <xsl:apply-templates select="view_solution_front"/>
+			  </td>
+			  <td align="middle" colspan="1">
+				  <xsl:apply-templates select="view_solution_left"/>
+			  </td>
+		  </tr>
+		  <tr>
+			  <td/>
+			  <td align="middle" colspan="1">
+				  <xsl:apply-templates select="view_solution_right"/>
+			  </td>
+			  <td align="middle" colspan="1">
+				  <xsl:apply-templates select="view_solution_back"/>
+			  </td>
+		  </tr>
+	  </table>
     <xsl:apply-templates select="layers"/>
   </xsl:template>
   <!--### HCONSTRAINTSET ###-->
