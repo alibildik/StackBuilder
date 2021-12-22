@@ -4,6 +4,7 @@ using System.Text;
 using System.Globalization;
 using System.Drawing;
 using System.Collections.Generic;
+using System.IO;
 
 using log4net;
 using Sharp3D.Math.Core;
@@ -27,6 +28,58 @@ namespace treeDiM.StackBuilder.Exporters
         public override bool UseRobotPreparation => true;
         public override bool UseDockingOffsets => true;
         public override Bitmap BrandLogo => Properties.Resources.ABB_France;
+        public override bool ShowOutput => Properties.Settings.Default.ShowOutputABB;
+        public override bool UseDirectExport => true;
+        public override string Encrypt(string input)
+        {
+            string[] sKeyIn =
+                {
+                "aBCEefgIilnoPprstVxy",
+                "[]0123456789.,",
+                "[]0123456789.,"
+            };
+            string[] sKeyOut =
+                {
+                "#+FaG7HcI2JeKs1%zU5!",
+                "#+FaG7HcI2JeKs",
+                "%!c9LDwJuKoHi5"
+            };
+            // read string
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(input ?? ""));
+            // string builder
+            StringBuilder sb = new StringBuilder();
+            // output
+            stream.Position = 0;
+            using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+            {
+                while (reader.Peek() > 0)
+                {
+                    var line = reader.ReadLine();
+                    if (line.Contains("START;") || line.Contains("END;"))
+                        sb.AppendLine(line);
+                    else
+                    {
+                        var lineParts = line.Split(';');
+                        string encryptedLine = string.Empty;
+                        for (int i = 0; i < 3; ++i)
+                        {
+                            if (lineParts[i].Trim().Length > 0)
+                                encryptedLine += EncryptWKey(lineParts[i], sKeyIn[i], sKeyOut[i]) + ";";
+                        }
+                        sb.AppendLine(encryptedLine);
+                    }
+                }
+            }
+            return sb.ToString();
+        }
+        private string EncryptWKey(string s, string sKeyIn, string sKeyOut)
+        {
+            System.Diagnostics.Debug.Assert(sKeyIn.Length == sKeyOut.Length);
+            string sCopy = s;
+            for (int i = 0; i < sKeyIn.Length; ++i)
+                sCopy = sCopy.Replace(sKeyIn[i], sKeyOut[i]);
+            return sCopy;
+        }
         public override void Export(RobotPreparation robotPreparation, NumberFormatInfo nfi, ref StringBuilder sb)
         {
             var analysis = robotPreparation.Analysis;

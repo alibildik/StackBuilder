@@ -15,7 +15,7 @@ namespace treeDiM.StackBuilder.Exporters
 {
     public abstract class ExporterRobot : Exporter
     {
-        public virtual void Export(RobotPreparation robotPreparation, ref Stream stream)
+        public virtual void Export(RobotPreparation robotPreparation, ref Stream stream, bool useEncryption = false)
         {
             // sanity check
             if (null == robotPreparation) return;
@@ -34,7 +34,7 @@ namespace treeDiM.StackBuilder.Exporters
                 sb.AppendLine(Resources.ID_UNSUPPORTEDANALYSIS);
             // write to stream
             var writer = new StreamWriter(stream);
-            writer.Write(sb.ToString());
+            writer.Write(useEncryption ? Encrypt(sb.ToString()) : sb.ToString());
             writer.Flush();
             stream.Position = 0;
         }
@@ -70,8 +70,11 @@ namespace treeDiM.StackBuilder.Exporters
         public virtual bool UseCoordinateSelector { get; } = false;
         public virtual bool UseAngleSelector { get; } = false;
         public virtual bool UseDockingOffsets { get; } = false;
+        public virtual bool UseDirectExport { get; } = false;
         public virtual bool HasFormatDefinition { get; } = false;
         public virtual string FormatDefinition { get; } = string.Empty;
+        public virtual bool ShowOutput { get; } = true;
+        public virtual string Encrypt(string input) => input;
         public CoordinateMode PositionCoordinateMode { get; set; } = CoordinateMode.CM_CORNER;
         public enum CoordinateMode { CM_CORNER, CM_COG };
 
@@ -132,7 +135,7 @@ namespace treeDiM.StackBuilder.Exporters
             Properties.Settings.Default.RobotBrand = robotBrand;
             Properties.Settings.Default.Save();
         }
-        public static string DefaultName => Properties.Settings.Default.RobotBrand;
+        public static string DefaultName => Settings.Default.RobotBrand;
 
         public static ExporterRobot[] GetRobotExporters()
         {

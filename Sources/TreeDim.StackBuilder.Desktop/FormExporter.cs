@@ -163,6 +163,8 @@ namespace treeDiM.StackBuilder.Desktop
             
             // save format 
             FormatName = CurrentExporter.Name;
+
+            // show/hide tabs
             tabCtrlFeatures.TabPages.Clear();
             if (CurrentExporter.UseCoordinateSelector)
                 tabCtrlFeatures.TabPages.Add(tabPageSettings);
@@ -172,6 +174,19 @@ namespace treeDiM.StackBuilder.Desktop
                 tabCtrlFeatures.TabPages.Add(tabPageLayerPrep);
             if (CurrentExporter.UseDockingOffsets)
                 tabCtrlFeatures.TabPages.Add(tabPageDockingOffsets);
+
+            // show / hide panel
+            textEditorControl.Visible = CurrentExporter.ShowOutput;
+            if (CurrentExporter.ShowOutput)
+            {
+                splitContainerVert.Panel2Collapsed = false;
+                splitContainerVert.Panel2.Show();
+            }
+            else
+            {
+                splitContainerVert.Panel2Collapsed = true;
+                splitContainerVert.Panel2.Hide();
+            }
  
             OnInputChanged(sender, e);
         }
@@ -191,7 +206,17 @@ namespace treeDiM.StackBuilder.Desktop
                 saveExportFile.DefaultExt = exporter.Extension;
 
                 if (DialogResult.OK == saveExportFile.ShowDialog())
-                    File.WriteAllLines(saveExportFile.FileName, new string[] { textEditorControl.Text }, System.Text.Encoding.UTF8);
+                {
+                    if (CurrentExporter.UseDirectExport)
+                    {
+                        Stream stream = new MemoryStream();
+                        CurrentExporter.Export(RobotPreparation, ref stream, true);
+                        StreamReader reader = new StreamReader(stream);
+                        File.WriteAllText(saveExportFile.FileName, reader.ReadToEnd());
+                    }
+                    else
+                        File.WriteAllLines(saveExportFile.FileName, new string[] { textEditorControl.Text }, System.Text.Encoding.UTF8);
+                }
             }
             catch (Exception ex) { _log.Error(ex.ToString()); }
         }

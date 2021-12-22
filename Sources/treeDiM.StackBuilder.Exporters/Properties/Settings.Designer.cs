@@ -52,5 +52,17 @@ namespace treeDiM.StackBuilder.Exporters.Properties {
                 this["RobotBrand"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowOutputABB {
+            get {
+                return ((bool)(this["ShowOutputABB"]));
+            }
+            set {
+                this["ShowOutputABB"] = value;
+            }
+        }
     }
 }

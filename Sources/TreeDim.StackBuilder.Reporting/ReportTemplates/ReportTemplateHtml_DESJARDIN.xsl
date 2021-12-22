@@ -202,6 +202,7 @@
 	</xsl:template>
 	<xsl:template match="analysis">
 		<xsl:apply-templates select="box"/>
+		<xsl:apply-templates select="caseWithInnerDims"/>
 		<xsl:apply-templates select="pallet"/>
 		<xsl:apply-templates select="solution"/>
 	</xsl:template>
@@ -607,7 +608,7 @@
 		<table class="style1" cellpadding="4">
 			<tr>
 				<td class="style2" colspan="1">Nom</td>
-				<td class="style3" colspan="2" width="400">
+				<td class="style3" colspan="2" width="300">
 					<xsl:value-of select="name"/>
 				</td>
 				<td rowspan="3" align="middle">
@@ -616,15 +617,48 @@
 			</tr>
 			<tr>
 				<td class="style2" colspan="1">Dimensions (LxlxH)</td>
-				<td class="style3" colspan="1" width="400">
+				<td class="style3" colspan="1" width="300">
 					<xsl:apply-templates select="dimensions/unitVector3"/>
 				</td>
 			</tr>
 			<tr>
 				<td class="style2">Poid d'un carton</td>
-				<td class="style3" colspan="1" width="400">
+				<td class="style3" colspan="1" width="300">
 					<xsl:apply-templates select="weight/unitValue"/>
 				</td>
+			</tr>
+		</table>
+	</xsl:template>
+	<!--#### CASE WITH INNER DIMS #### -->
+	<xsl:template match="caseWithInnerDims">
+		<h3>Carton</h3>
+		<table class="style1" cellpadding="4">
+			<tr>
+				<td class="style2" colspan="1">Nom</td>
+				<td class="style3" colspan="1" width="300">
+					<xsl:value-of select="name"/>
+				</td>
+				<xsl:if test="imageThumbSize">
+					<td rowspan="3" align="middle">
+						<xsl:apply-templates select="imageThumbSize"/>
+					</td>
+				</xsl:if>
+			</tr>
+			<tr>
+				<xsl:if test="dimensions">
+					<td class="style2" colspan="1">Dimensions (LxlxH)</td>
+					<td class="style3" colspan="1" width="300">
+						<xsl:apply-templates select="dimensions/unitVector3"/>
+					</td>
+				</xsl:if>
+			</tr>
+			<tr>
+				<xsl:if test="weight">
+					<td class="style2" colspan="1">Poid d'un carton</td>
+					<td class="style3" colspan="1" width="300">
+						<xsl:apply-templates select="weight/unitValue"/>
+					</td>
+				</xsl:if>
 			</tr>
 		</table>
 	</xsl:template>
@@ -756,65 +790,7 @@
 			</tr>
 		</table>
 	</xsl:template>
-	<!--#### CASE WITH INNER DIMS #### -->
-	<xsl:template match="caseWithInnerDims">
-		<h3>
-			<xsl:value-of select="$loc/str[@name='Case']"/>
-		</h3>
-		<table class="style1" cellpadding="4">
-			<tr>
-				<td class="style2" colspan="1">
-					<b>
-						<xsl:value-of select="$loc/str[@name='Name']"/>
-					</b>
-				</td>
-				<td class="style3" colspan="3">
-					<xsl:value-of select="name"></xsl:value-of>
-				</td>
-			</tr>
-			<tr>
-				<xsl:if test="dimensions">
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Dimensions']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="1">
-						<xsl:apply-templates select="dimensions/unitVector3"/>
-					</td>
-				</xsl:if>
-			</tr>
-			<tr>
-				<xsl:if test="innerDimensions">
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='InnerDimensions']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="1">
-						<xsl:apply-templates select="innerDimensions/unitVector3"/>
-					</td>
-				</xsl:if>
-			</tr>
-			<tr>
-				<xsl:if test="weight">
-					<td class="style2" colspan="1">
-						<b>
-							<xsl:value-of select="$loc/str[@name='Weight']"/>
-						</b>
-					</td>
-					<td class="style3" colspan="1">
-						<xsl:apply-templates select="weight/unitValue"/>
-					</td>
-				</xsl:if>
-				<xsl:if test="imageThumbSize">
-					<td colspan="2" align="middle">
-						<xsl:apply-templates select="imageThumbSize"/>
-					</td>
-				</xsl:if>
-			</tr>
-		</table>
-	</xsl:template>
+
 	<!--#### PALLET ####-->
 	<xsl:template match="pallet">
 		<h3>Palette</h3>
