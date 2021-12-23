@@ -177,16 +177,11 @@ namespace treeDiM.StackBuilder.Desktop
 
             // show / hide panel
             textEditorControl.Visible = CurrentExporter.ShowOutput;
+            splitContainerVert.Panel2Collapsed = !CurrentExporter.ShowOutput;
             if (CurrentExporter.ShowOutput)
-            {
-                splitContainerVert.Panel2Collapsed = false;
                 splitContainerVert.Panel2.Show();
-            }
             else
-            {
-                splitContainerVert.Panel2Collapsed = true;
                 splitContainerVert.Panel2.Hide();
-            }
  
             OnInputChanged(sender, e);
         }
