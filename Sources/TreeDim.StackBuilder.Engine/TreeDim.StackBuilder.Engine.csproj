@@ -91,6 +91,7 @@
     <Compile Include="LayerPatterns\LayerPatternMSpirale4Parts.cs" />
     <Compile Include="LayerPatterns\LayerPatternMSpirale8Parts.cs" />
     <Compile Include="LayerPatterns\LayerPatternOpposed.cs" />
+    <Compile Include="Solvers\BlockBuilder.cs" />
     <Compile Include="Solvers\ChunkSolver.cs" />
     <Compile Include="Solvers\CylLayoutSolver.cs" />
     <Compile Include="Solvers\HSolver.cs" />
