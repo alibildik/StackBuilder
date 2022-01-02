@@ -4,7 +4,7 @@ using System;
 using Sharp3D.Math.Core;
 #endregion
 
-namespace treeDiM.StackBuilder.Basics.Helpers
+namespace treeDiM.StackBuilder.Basics
 {
     public class BBox2D : ICloneable
     {
@@ -63,6 +63,7 @@ namespace treeDiM.StackBuilder.Basics.Helpers
                 return corners;
             }
         }
+        public Vector2D Dimensions => PtMax - PtMin;
         public static BBox2D Initial => new BBox2D();
         #endregion
         #region Override object

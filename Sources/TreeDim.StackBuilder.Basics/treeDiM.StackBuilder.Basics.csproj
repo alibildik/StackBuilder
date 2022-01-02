@@ -105,6 +105,7 @@
     <Compile Include="Analyses\LoadedCase.cs" />
     <Compile Include="Analyses\LoadedPallet.cs" />
     <Compile Include="Analyses\PackableLoaded.cs" />
+    <Compile Include="Block\Block2D.cs" />
     <Compile Include="ConstraintSets\ConstraintSetAbstract.cs" />
     <Compile Include="ConstraintSets\ConstraintSetBoxCase.cs" />
     <Compile Include="ConstraintSets\ConstraintSetCasePallet.cs" />

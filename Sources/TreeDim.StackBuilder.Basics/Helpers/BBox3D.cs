@@ -112,6 +112,7 @@ namespace treeDiM.StackBuilder.Basics
             PtMin -= new Vector3D(margin, margin, margin);
             PtMax += new Vector3D(margin, margin, margin);
         }
+        public BBox2D ToBBox2D() => new BBox2D(PtMin.X, PtMin.Y, PtMax.X, PtMax.Y);
         #endregion
 
         #region Public properties
