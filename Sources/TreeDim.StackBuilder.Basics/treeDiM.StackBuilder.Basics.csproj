@@ -178,7 +178,6 @@
     <Compile Include="Containers\TruckProperties.cs" />
     <Compile Include="Solutions\CaseDefinition.cs" />
     <Compile Include="Solutions\CaseOptimSolution.cs" />
-    <Compile Include="ConstraintSets\PalletConstraintSet.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="Helpers\HalfAxis.cs" />
     <Compile Include="Containers\InterlayerProperties.cs" />
