@@ -346,11 +346,23 @@
     <Compile Include="FormExcelLibrary.Designer.cs">
       <DependentUpon>FormExcelLibrary.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormExcelMassAnalysisCasePallet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExcelMassAnalysisCasePallet.Designer.cs">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormExcelMassAnalysis.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormExcelMassAnalysis.Designer.cs">
       <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormExcelMassAnalysisPackPallet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExcelMassAnalysisPackPallet.Designer.cs">
+      <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
     </Compile>
     <Compile Include="FormExporter.cs">
       <SubType>Form</SubType>
@@ -1443,47 +1455,53 @@
     <EmbeddedResource Include="FormExcelLibrary.zh.resx">
       <DependentUpon>FormExcelLibrary.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.de.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.de.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.es.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.es.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.fr.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.fr.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.it.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.it.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.ja.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.ja.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.nl.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.nl.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.pl.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.pl.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.pt.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.pt.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.ru.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.sl.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.sv.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.tr.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.zh.resx">
+      <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormExcelMassAnalysis.resx">
       <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.ru.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.sl.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.sv.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.tr.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormExcelMassAnalysis.zh.resx">
-      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.resx">
+      <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormExporter.fr.resx">
       <DependentUpon>FormExporter.cs</DependentUpon>
@@ -3369,16 +3387,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.es.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="..\TreeDim.StackBuilder.Reporting\ReportTemplates\ReportSchema.xsd">
-      <Link>ReportTemplates\ReportSchema.xsd</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\TreeDim.StackBuilder.Reporting\ReportTemplates\ReportTypes.xsd">
-      <Link>ReportTemplates\ReportTypes.xsd</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="Properties\Resources.ru.resx" />
     <EmbeddedResource Include="Properties\Resources.sl.resx" />
     <EmbeddedResource Include="Properties\Resources.sv.resx" />
@@ -3643,20 +3651,6 @@
       <Link>ReportTemplates\CHS.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\TreeDim.StackBuilder.Reporting\ReportTemplates\ReportTemplateHtml.xsl">
-      <Link>ReportTemplates\ReportTemplateHtml.xsl</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\TreeDim.StackBuilder.Reporting\ReportTemplates\ReportTypes.xsl">
-      <Link>ReportTemplates\ReportTypes.xsl</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\TreeDim.StackBuilder.Reporting\ReportTemplates\YourLogoHere.png">
-      <Link>ReportTemplates\YourLogoHere.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ReportTemplates\ReportTemplateHtml_INTEX.xsl" />
-    <Content Include="ReportTemplates\ReportTemplateHtml_MENASHA.xsl" />
     <Content Include="Resources\AnalysisBundle.bmp" />
     <None Include="Resources\Case.bmp" />
     <None Include="Resources\AnalysisCylinder.bmp" />

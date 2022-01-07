@@ -453,6 +453,18 @@ Continue?</value>
   <data name="ID_EFFICIENCYPERCENTAGE" xml:space="preserve">
     <value>Efficiency (%)</value>
   </data>
+  <data name="ID_ERROR_FAILEDTODOWNLOADFILE" xml:space="preserve">
+    <value>Failed to download file {0} : {1}</value>
+  </data>
+  <data name="ID_ERROR_INVALIDINPUTFILEPATH" xml:space="preserve">
+    <value>Invalid input file path {0}.</value>
+  </data>
+  <data name="ID_ERROR_NOPALLETSELECTED" xml:space="preserve">
+    <value>No pallet selected. Select at least one.</value>
+  </data>
+  <data name="ID_ERROR_NOSHEETLOADED" xml:space="preserve">
+    <value>No sheet loaded.</value>
+  </data>
   <data name="ID_EVALUATINGCASE" xml:space="preserve">
     <value>Evaluating case {0} out of {1}...</value>
   </data>
@@ -834,7 +846,7 @@ Continue?</value>
     <value>Image</value>
   </data>
   <data name="ID_RESULT_LAYERCOUNT" xml:space="preserve">
-    <value>Layers x Per Layer</value>
+    <value>N. of layers</value>
   </data>
   <data name="ID_RESULT_LOADDIMENSIONS" xml:space="preserve">
     <value>Load dimensions</value>
@@ -850,6 +862,9 @@ Continue?</value>
   </data>
   <data name="ID_RESULT_PALLETDIMENSIONS" xml:space="preserve">
     <value>Pallet dimensions</value>
+  </data>
+  <data name="ID_RESULT_PERLAYERCOUNT" xml:space="preserve">
+    <value>N. per layer</value>
   </data>
   <data name="ID_RESULT_TOTALPALLETWEIGHT" xml:space="preserve">
     <value>Total pallet weight</value>

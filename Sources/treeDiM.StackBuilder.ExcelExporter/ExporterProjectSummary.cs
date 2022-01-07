@@ -43,7 +43,7 @@ namespace treeDiM.StackBuilder.ExcelExporter
                     }
                     catch (Exception ex)
                     {
-                        _log.Error($"Failed to export analysis '{analysis.Name}' with exception:\n {ex.ToString()}");
+                        _log.Error($"Failed to export analysis '{analysis.Name}' with exception:\n {ex}");
                     }
                 }
             }

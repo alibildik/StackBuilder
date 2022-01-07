@@ -990,6 +990,8 @@ namespace treeDiM.StackBuilder.Basics
                     var list = new List<int>() { i };
                     if (dict.ContainsKey(boxCount))
                         dict[boxCount].AddRange(list);
+                    else
+                        dict[boxCount] = list;
                 }
                 return dict;
             }

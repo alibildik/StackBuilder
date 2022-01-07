@@ -1382,9 +1382,9 @@ namespace treeDiM.StackBuilder.Desktop.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://www.plmpack.com/stackbuilder/download/StackBuilderCalculator.xlsx")]
-        public string MassExcelTestSheetURL {
+        public string MassExcelTestSheetURLCasePallet {
             get {
-                return ((string)(this["MassExcelTestSheetURL"]));
+                return ((string)(this["MassExcelTestSheetURLCasePallet"]));
             }
         }
         
@@ -1409,6 +1409,66 @@ namespace treeDiM.StackBuilder.Desktop.Properties {
             }
             set {
                 this["DockingOffsets"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://www.plmpack.com/stackbuilder/download/StackBuilderPackPallet.xlsx")]
+        public string MassExcelTestSheetURLPackPallet {
+            get {
+                return ((string)(this["MassExcelTestSheetURLPackPallet"]));
+            }
+            set {
+                this["MassExcelTestSheetURLPackPallet"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("G")]
+        public string MassExcelColLetterNumber {
+            get {
+                return ((string)(this["MassExcelColLetterNumber"]));
+            }
+            set {
+                this["MassExcelColLetterNumber"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("H")]
+        public string MassExcelColLetterMaxLength {
+            get {
+                return ((string)(this["MassExcelColLetterMaxLength"]));
+            }
+            set {
+                this["MassExcelColLetterMaxLength"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("I")]
+        public string MassExcelColLetterMaxWidth {
+            get {
+                return ((string)(this["MassExcelColLetterMaxWidth"]));
+            }
+            set {
+                this["MassExcelColLetterMaxWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("J")]
+        public string MassExcelColLetterMaxHeight {
+            get {
+                return ((string)(this["MassExcelColLetterMaxHeight"]));
+            }
+            set {
+                this["MassExcelColLetterMaxHeight"] = value;
             }
         }
     }

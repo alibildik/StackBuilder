@@ -1074,6 +1074,42 @@ namespace treeDiM.StackBuilder.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to download file {0} : {1}.
+        /// </summary>
+        internal static string ID_ERROR_FAILEDTODOWNLOADFILE {
+            get {
+                return ResourceManager.GetString("ID_ERROR_FAILEDTODOWNLOADFILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid input file path {0}..
+        /// </summary>
+        internal static string ID_ERROR_INVALIDINPUTFILEPATH {
+            get {
+                return ResourceManager.GetString("ID_ERROR_INVALIDINPUTFILEPATH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No pallet selected. Select at least one..
+        /// </summary>
+        internal static string ID_ERROR_NOPALLETSELECTED {
+            get {
+                return ResourceManager.GetString("ID_ERROR_NOPALLETSELECTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No sheet loaded..
+        /// </summary>
+        internal static string ID_ERROR_NOSHEETLOADED {
+            get {
+                return ResourceManager.GetString("ID_ERROR_NOSHEETLOADED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Evaluating case {0} out of {1}....
         /// </summary>
         internal static string ID_EVALUATINGCASE {
@@ -2210,7 +2246,7 @@ namespace treeDiM.StackBuilder.Desktop.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Layers x Per Layer.
+        ///   Looks up a localized string similar to N. of layers.
         /// </summary>
         internal static string ID_RESULT_LAYERCOUNT {
             get {
@@ -2260,6 +2296,15 @@ namespace treeDiM.StackBuilder.Desktop.Properties {
         internal static string ID_RESULT_PALLETDIMENSIONS {
             get {
                 return ResourceManager.GetString("ID_RESULT_PALLETDIMENSIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to N. per layer.
+        /// </summary>
+        internal static string ID_RESULT_PERLAYERCOUNT {
+            get {
+                return ResourceManager.GetString("ID_RESULT_PERLAYERCOUNT", resourceCulture);
             }
         }
         

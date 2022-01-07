@@ -815,7 +815,7 @@ namespace treeDiM.StackBuilder.Desktop
             // BCT
             toolStripSB_BCT.Enabled = WCFClient.IsConnected;
             toolStripSplitButtonExcelProcessors.Enabled = WCFClient.IsConnected;
-            toolStripSBExcelPerRow.Enabled = WCFClient.IsConnected;
+            toolStripSBExcelOneCasePerRow.Enabled = WCFClient.IsConnected;
        }
         #endregion
         #region IDocumentFactory implementation
@@ -1108,7 +1108,7 @@ namespace treeDiM.StackBuilder.Desktop
             }
             toolStripSB_BCT.Enabled = WCFClient.IsConnected;
             toolStripSplitButtonExcelProcessors.Enabled = WCFClient.IsConnected;
-            toolStripSBExcelPerRow.Enabled = WCFClient.IsConnected;
+            toolStripSBExcelOneCasePerRow.Enabled = WCFClient.IsConnected;
 
 
             toolStripButtonPremium.Visible = !Program.IsSubscribed;
@@ -1502,12 +1502,22 @@ namespace treeDiM.StackBuilder.Desktop
             catch (Exception ex)
             { _log.Error(ex.ToString()); Program.SendCrashReport(ex); }
         }
-        private void OnExelSheetPerRow(object sender, EventArgs e)
+        private void OnExelSheetOneCasePerRow(object sender, EventArgs e)
         {
             try
             {
-                var form = new FormExcelMassAnalysis();
+                var form = new FormExcelMassAnalysisCasePallet();
                 if (DialogResult.OK == form.ShowDialog())  {}
+            }
+            catch (Exception ex)
+            { _log.Error(ex.ToString()); }
+        }
+        private void OneExcelSheetOnePackPerRow(object sender, EventArgs e)
+        {
+            try
+            {
+                var form = new FormExcelMassAnalysisPackPallet();
+                if (DialogResult.OK == form.ShowDialog()) {}
             }
             catch (Exception ex)
             { _log.Error(ex.ToString()); }
