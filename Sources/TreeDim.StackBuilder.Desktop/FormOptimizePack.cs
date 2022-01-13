@@ -140,10 +140,7 @@ namespace treeDiM.StackBuilder.Desktop
                     // build pack
                     if (analysis.Content is PackProperties packProperties)
                     {
-                        var pack = new Pack(0, packProperties)
-                        {
-                            ForceTransparency = true
-                        };
+                        var pack = new Pack(0, packProperties) { ForceTransparency = true };
                         graphics.AddBox(pack);
                         if (showDimensions)
                         {

@@ -177,8 +177,14 @@ namespace treeDiM.StackBuilder.Desktop
                 // image
                 if (GenerateImage)
                 {
+                    Excel.Range imagePackHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + 1];
+                    imagePackHeaderCell.Value = Resources.ID_RESULT_PACKIMAGE;
+                    imagePackHeaderCell.ColumnWidth = 24;
+                    ++iNoCols;
+
                     Excel.Range imageHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + 1];
                     imageHeaderCell.Value = Resources.ID_RESULT_IMAGE;
+                    imageHeaderCell.ColumnWidth = 24;
                     ++iNoCols;
 
                     Excel.Range dataRange = xlSheet.Range[
@@ -190,7 +196,6 @@ namespace treeDiM.StackBuilder.Desktop
                         ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + 2,
                         ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount)+rowCount
                         ];
-                    imageRange.ColumnWidth = 24;
                 }
 
 
@@ -233,6 +238,7 @@ namespace treeDiM.StackBuilder.Desktop
                         double palletLength = 0.0, palletWidth = 0.0, palletHeight = 0.0;
                         double stackEfficiency = 0.0;
                         string stackImagePath = string.Empty;
+                        string packImagePath = string.Empty;
 
                         // generate result
                         GenerateResult(name, description
@@ -247,6 +253,7 @@ namespace treeDiM.StackBuilder.Desktop
                             , ref palletLength, ref palletWidth, ref palletHeight
                             , ref loadLength, ref loadWidth, ref loadHeight 
                             , ref stackEfficiency
+                            , ref packImagePath
                             , ref stackImagePath);
                         // insert count
                         var countCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
@@ -278,6 +285,20 @@ namespace treeDiM.StackBuilder.Desktop
                         // insert image
                         if (GenerateImage)
                         {
+                            var imagePackCell = xlSheet.Range[
+                                ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + iRow,
+                                ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow
+                                ];
+                            xlSheet.Shapes.AddPicture(
+                                packImagePath,
+                                Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue,
+                                (float)Convert.ToDecimal(imagePackCell.Left) + 1.0f,
+                                (float)Convert.ToDecimal(imagePackCell.Top) + 1.0f,
+                                (float)Convert.ToDecimal(imagePackCell.Width) - 2.0f,
+                                (float)Convert.ToDecimal(imagePackCell.Height) - 2.0f
+                                );
+
+                            // pallet image
                             var imageCell = xlSheet.Range[
                                  ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + iRow,
                                  ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
@@ -319,6 +340,7 @@ namespace treeDiM.StackBuilder.Desktop
             , ref double palletLength, ref double palletWidth, ref double palletHeight
             , ref double loadLength, ref double loadWidth, ref double loadHeight
             , ref double stackEfficiency
+            , ref string packImagePath
             , ref string stackImagePath
             )
         {
@@ -347,7 +369,7 @@ namespace treeDiM.StackBuilder.Desktop
             List<AnalysisLayered> analyses = packOptimizer.BuildAnalyses(false);
 
 
-            Graphics3DImage graphics = null;
+            
             if (analyses.Any())
             {
                 var analysis = analyses[0];
@@ -379,9 +401,35 @@ namespace treeDiM.StackBuilder.Desktop
                 {
                     // generate image path
                     stackImagePath = Path.Combine(Path.ChangeExtension(Path.GetTempFileName(), "png"));
-                    graphics = new Graphics3DImage(new Size(ImageSize, ImageSize))
+                    packImagePath = Path.Combine(Path.ChangeExtension(Path.GetTempFileName(), "png"));
+
+                    // pack
+                    var graphicsPack = new Graphics3DImage(new Size(ImageSize, ImageSize))
                     {
-                        FontSizeRatio = 0.01F,
+                        FontSizeRatio = 0.02F,
+                        CameraPosition = Graphics3D.Corner_0
+                    };
+                    if (analysis.Content is PackProperties packProperties)
+                    {
+                        var pack = new Pack(0, packProperties);
+                        graphicsPack.AddBox(pack);
+                        graphicsPack.AddDimensions(
+                            new DimensionCube(Vector3D.Zero, pack.Length, pack.Width, pack.Height, Color.Black, true)
+                            );
+                        if (null != packProperties.Wrap && packProperties.Wrap.Transparent)
+                            graphicsPack.AddDimensions(
+                                new DimensionCube(
+                                    packProperties.InnerOffset
+                                    , packProperties.InnerLength, packProperties.InnerWidth, packProperties.InnerHeight, Color.Red, false)
+                                );
+                        graphicsPack.Flush();
+                        var bmpPack = graphicsPack.Bitmap;
+                        bmpPack.Save(packImagePath, System.Drawing.Imaging.ImageFormat.Png);
+                    }
+                    // pallet
+                    var graphics = new Graphics3DImage(new Size(ImageSize, ImageSize))
+                    {
+                        FontSizeRatio = 0.02F,
                         CameraPosition = Graphics3D.Corner_0
                     };
                     var sv = new ViewerSolution(analysis.SolutionLay);
