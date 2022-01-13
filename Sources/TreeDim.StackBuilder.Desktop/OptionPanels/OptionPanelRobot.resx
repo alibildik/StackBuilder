@@ -208,6 +208,6 @@
     <value>OptionPanelRobot</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GLib.Options.OptionsPanel, OptionsLib, Version=3.0.2.46, Culture=neutral, PublicKeyToken=null</value>
+    <value>GLib.Options.OptionsPanel, OptionsLib, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -4,11 +4,14 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 
 using Excel = Microsoft.Office.Interop.Excel;
 using Sharp3D.Math.Core;
 
+using treeDiM.Basics;
 using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Graphics;
 using treeDiM.StackBuilder.Engine;
@@ -65,16 +68,16 @@ namespace treeDiM.StackBuilder.Desktop
             // ---
             cbName.SelectedIndex = 0;
             chkbDescription.Checked = true;
-            cbDescription.SelectedIndex = 2;
-            cbLength.SelectedIndex = 3;
-            cbWidth.SelectedIndex = 4;
-            cbHeight.SelectedIndex = 5;
-            cbWeight.SelectedIndex = 6;
-            cbNumber.SelectedIndex = 7;
-            cbMaxLength.SelectedIndex = 8;
-            cbMaxWidth.SelectedIndex = 9;
-            cbMaxHeight.SelectedIndex = 10;
-            cbOutputStart.SelectedIndex = 11;
+            cbDescription.SelectedIndex = 1;
+            cbLength.SelectedIndex = 2;
+            cbWidth.SelectedIndex = 3;
+            cbHeight.SelectedIndex = 4;
+            cbWeight.SelectedIndex = 5;
+            cbNumber.SelectedIndex = 6;
+            cbMaxLength.SelectedIndex = 7;
+            cbMaxWidth.SelectedIndex = 8;
+            cbMaxHeight.SelectedIndex = 9;
+            cbOutputStart.SelectedIndex = 10;
             // ---
         }
         protected override void LoadSettings()
@@ -130,7 +133,6 @@ namespace treeDiM.StackBuilder.Desktop
 
             Excel.Range range = xlSheet.UsedRange;
             int rowCount = range.Rows.Count;
-
             int colStartIndex = ExcelHelpers.ColumnLetterToColumnIndex(ColumnLetterOutputStart);
             int palletColStartIndex = colStartIndex;
             // pallet loop
@@ -139,37 +141,141 @@ namespace treeDiM.StackBuilder.Desktop
             {
                 int iOutputFieldCount = palletColStartIndex;
                 int iNoCols = 0;
+                // ### header : begin
+                // count
+                Excel.Range countHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + 1];
+                countHeaderCell.Value = Resources.ID_RESULT_NOCASES;
+                ++iNoCols;
+                // tiCount
+                Excel.Range tiCountHeader = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + 1];
+                tiCountHeader.Value = Resources.ID_RESULT_PERLAYERCOUNT;
+                ++iNoCols;
+                // hiCount
+                Excel.Range hiCountHeader = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + 1];
+                hiCountHeader.Value = Resources.ID_RESULT_LAYERCOUNT;
+                ++iNoCols;
+                // load dimensions
+                Excel.Range loadDimensionsHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + 1];
+                loadDimensionsHeaderCell.Value = $"{Resources.ID_RESULT_LOADDIMENSIONS} ({UnitsManager.LengthUnitString}x{UnitsManager.LengthUnitString}x{UnitsManager.LengthUnitString})";
+                ++iNoCols;
+                // pallet dimensions
+                Excel.Range palletDimensionsHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + 1];
+                palletDimensionsHeaderCell.Value = $"{Resources.ID_RESULT_PALLETDIMENSIONS} ({UnitsManager.LengthUnitString}x{UnitsManager.LengthUnitString}x{UnitsManager.LengthUnitString})";
+                ++iNoCols;
+                // loadweight
+                Excel.Range loadWeightHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + 1];
+                loadWeightHeaderCell.Value = Resources.ID_RESULT_LOADWEIGHT + " (" + UnitsManager.MassUnitString + ")";
+                ++iNoCols;
+                // total pallet weight
+                Excel.Range totalPalletWeightHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + 1];
+                totalPalletWeightHeaderCell.Value = Resources.ID_RESULT_TOTALPALLETWEIGHT + " (" + UnitsManager.MassUnitString + ")";
+                ++iNoCols;
+                // efficiency
+                Excel.Range efficiencyHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + 1];
+                efficiencyHeaderCell.Value = Resources.ID_RESULT_EFFICIENCY;
+                ++iNoCols;
+                // image
+                if (GenerateImage)
+                {
+                    Excel.Range imageHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + 1];
+                    imageHeaderCell.Value = Resources.ID_RESULT_IMAGE;
+                    ++iNoCols;
+
+                    Excel.Range dataRange = xlSheet.Range[
+                        "a" + 2,
+                        ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + rowCount
+                        ];
+                    dataRange.RowHeight = 128;
+                    Excel.Range imageRange = xlSheet.Range[
+                        ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + 2,
+                        ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount)+rowCount
+                        ];
+                    imageRange.ColumnWidth = 24;
+                }
+
+
+                // ### header : end
+
                 // set bold font for all header row
                 // modify range for images
 
                 for (var iRow = 2; iRow <= rowCount; ++iRow)
                 {
+                    iOutputFieldCount = palletColStartIndex;
                     try
                     {
+                        // free version should exit after MaxNumberRowFree
+                        if (!UserIsSubscribed && iRow > MaxNumberRowFree + 1)
+                        {
+                            var cell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                            cell.Value = string.Format(Resources.ID_MASSEXCEL_FREEVERSIONLIMITEDNUMBER, MaxNumberRowFree);
+                            break;
+                        }
                         string name = (xlSheet.Range[colName+iRow, colName+iRow].Value).ToString();
                         string description = string.IsNullOrEmpty(colDescription) ? string.Empty : (xlSheet.Range[colDescription + iRow, colDescription + iRow]).ToString();
                         double length = (double)xlSheet.Range[colLength + iRow, colLength + iRow].Value;
                         double width = (double)xlSheet.Range[colWidth + iRow, colWidth + iRow].Value;
                         double height = (double)xlSheet.Range[colHeight + iRow, colHeight + iRow].Value;
-                        double weight = (double)xlSheet.Range[colWeight + iRow, colWeight + iRow].Value;
-                        int number = (int)xlSheet.Range[colNumber + iRow, colNumber + iRow].Value;
+                        int number = (int)(double)xlSheet.Range[colNumber + iRow, colNumber + iRow].Value;
                         double maxLength = (double)xlSheet.Range[colMaxLength + iRow, colMaxLength + iRow].Value;
                         double maxWidth = (double)xlSheet.Range[colMaxWidth + iRow, colMaxWidth + iRow].Value;
                         double maxHeight = (double)xlSheet.Range[colMaxHeight + iRow, colMaxHeight + iRow].Value;
-                        int stackCount = 0;
+
+                        double? weight = null;
+                        if (!string.IsNullOrEmpty(colWeight)
+                            && null != xlSheet.Range[colWeight + iRow, colWeight + iRow].Value)
+                            weight = (double)xlSheet.Range[colWeight + iRow, colWeight + iRow].Value;
+                        int stackCount = 0, layerCount = 0;
+                        int iTIcount = 0;
+                        string sTiHi = string.Empty;
+                        double loadLength = 0.0, loadWidth = 0.0, loadHeight = 0.0;
+                        double loadWeight = 0.0, totalPalletWeight = 0.0;
+                        double palletLength = 0.0, palletWidth = 0.0, palletHeight = 0.0;
                         double stackEfficiency = 0.0;
                         string stackImagePath = string.Empty;
+
                         // generate result
                         GenerateResult(name, description
                             , length, width, height, weight
                             , number
                             , WrapperThickness, NoWalls
                             , maxLength, maxWidth, maxHeight
+                            , pallet
                             , ref stackCount
+                            , ref layerCount, ref iTIcount, ref sTiHi
+                            , ref loadWeight, ref totalPalletWeight
+                            , ref palletLength, ref palletWidth, ref palletHeight
+                            , ref loadLength, ref loadWidth, ref loadHeight 
                             , ref stackEfficiency
                             , ref stackImagePath);
-
-
+                        // insert count
+                        var countCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                        countCell.Value = stackCount;
+                        // insert TI
+                        var TIcountCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                        if (0 != iTIcount)
+                            TIcountCell.Value = iTIcount;
+                        else
+                            TIcountCell.Value = sTiHi;
+                        // insert HI
+                        var HIcountCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                        HIcountCell.Value = layerCount;
+                        // insert load dimensions
+                        var loadDimCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                        loadDimCell.Value = $"{loadLength}x{loadWidth}x{loadHeight}";
+                        // insert pallet dimensions
+                        var palletDimCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                        palletDimCell.Value = $"{palletLength}x{palletWidth}x{palletHeight}";
+                        // insert load weight
+                        var loadWeightCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                        loadWeightCell.Value = loadWeight;
+                        // insert total weight
+                        var totalWeightCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                        totalWeightCell.Value = totalPalletWeight;
+                        // efficiency
+                        var efficiencyCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                        efficiencyCell.Value = Math.Round(stackEfficiency, 2);
+                        // insert image
                         if (GenerateImage)
                         {
                             var imageCell = xlSheet.Range[
@@ -184,8 +290,6 @@ namespace treeDiM.StackBuilder.Desktop
                                 (float)Convert.ToDecimal(imageCell.Height) - 2.0f
                                 );
                         }
-
-
                     }
                     catch (OutOfMemoryException ex) { sbErrors.Append($"{ex.Message}"); }
                     catch (EngineException ex) { sbErrors.Append($"{ex.Message} (row={iRow})"); }
@@ -208,7 +312,13 @@ namespace treeDiM.StackBuilder.Desktop
             , double wrapperThickness
             , int[] noWalls
             , double maxLength, double maxWidth, double maxHeight
-            , ref int stackCount, ref double stackEfficiency
+            , PalletProperties pallet
+            , ref int stackCount
+            , ref int layerCount, ref int TICount, ref string sTiHi
+            , ref double loadWeight, ref double totalWeight
+            , ref double palletLength, ref double palletWidth, ref double palletHeight
+            , ref double loadLength, ref double loadWidth, ref double loadHeight
+            , ref double stackEfficiency
             , ref string stackImagePath
             )
         {
@@ -219,25 +329,67 @@ namespace treeDiM.StackBuilder.Desktop
             bProperties.ID.SetNameDesc(name, description);
             if (weight.HasValue) bProperties.SetWeight(weight.Value);
             bProperties.SetColor(Color.Turquoise);
+            // constraint set
+            ConstraintSetCasePallet constraintSet = new ConstraintSetCasePallet();
+            constraintSet.SetAllowedOrientations(new[] { false, false, true });
+            constraintSet.SetMaxHeight(new OptDouble(true, MaximumPalletHeight));
+            constraintSet.Overhang = Overhang;
+            // Param set optim pack
+            ParamSetPackOptim paramSetOptimPack = new ParamSetPackOptim(number, Vector3D.Zero, new Vector3D(maxLength, maxWidth, maxHeight), false,
+                    true, Color.LightGray, NoWalls, WrapperThickness, 0.0,
+                    PackWrapper.WType.WT_POLYETHILENE, false, Color.Chocolate, new int[] { 2, 2, 2 }, 0.0, 0.0, 0.0
+                    );
+
+            var packOptimizer = new PackOptimizer(
+                   bProperties, pallet, constraintSet,
+                   paramSetOptimPack
+                   );
+            List<AnalysisLayered> analyses = packOptimizer.BuildAnalyses(false);
+
 
             Graphics3DImage graphics = null;
-            if (GenerateImage)
+            if (analyses.Any())
             {
-                graphics = new Graphics3DImage(new Size(ImageSize, ImageSize))
+                var analysis = analyses[0];
+                stackCount = analysis.Solution.ItemCount;
+                loadWeight = analysis.Solution.LoadWeight;
+                totalWeight = analysis.Solution.Weight;
+                stackEfficiency = analysis.Solution.VolumeEfficiency;
+
+                if (analysis.Solution is SolutionLayered solutionLayered)
                 {
-                    FontSizeRatio = 0.01F,
-                    CameraPosition = Graphics3D.Corner_0
-                };
-            }
-            List<AnalysisLayered> analyzes = new List<AnalysisLayered>();
-            if (analyzes.Count > 0)
-            {
-                var analysis = analyzes[0];
-                if (GenerateImage)
+                    if (solutionLayered.HasConstantTI)
+                        TICount = solutionLayered.ConstantTI;
+                    else
+                        TICount = 0;
+                    layerCount = solutionLayered.LayerCount;
+                    sTiHi = solutionLayered.TiHiString;
+
+
+                    palletLength = solutionLayered.BBoxGlobal.Length;
+                    palletWidth = solutionLayered.BBoxGlobal.Width;
+                    palletHeight = solutionLayered.BBoxGlobal.Height;
+
+                    loadLength = solutionLayered.BBoxLoad.Length;
+                    loadWidth = solutionLayered.BBoxLoad.Width;
+                    loadHeight = solutionLayered.BBoxLoad.Height;
+                }
+
+                if (GenerateImage && stackCount <= StackCountMax)
                 {
+                    // generate image path
+                    stackImagePath = Path.Combine(Path.ChangeExtension(Path.GetTempFileName(), "png"));
+                    graphics = new Graphics3DImage(new Size(ImageSize, ImageSize))
+                    {
+                        FontSizeRatio = 0.01F,
+                        CameraPosition = Graphics3D.Corner_0
+                    };
                     var sv = new ViewerSolution(analysis.SolutionLay);
                     sv.Draw(graphics, Transform3D.Identity);
                     graphics.Flush();
+
+                    var bmp = graphics.Bitmap;
+                    bmp.Save(stackImagePath, System.Drawing.Imaging.ImageFormat.Png);
                 }
             }
 
@@ -254,13 +406,24 @@ namespace treeDiM.StackBuilder.Desktop
         private string ColumnLetterMaxLength => cbMaxLength.SelectedItem.ToString();
         private string ColumnLetterMaxWidth => cbMaxWidth.SelectedItem.ToString();
         private string ColumnLetterMaxHeight => cbMaxHeight.SelectedItem.ToString();
-        private string ColumnLetterOutputStart => cbOutputStart.ToString();
+        private string ColumnLetterOutputStart => cbOutputStart.SelectedItem.ToString();
         #endregion
         #region Private properties
         private int ImageSize { get => (int)nudImageSize.Value; set => nudImageSize.Value = value; }
         private bool GenerateImage => true;
         private double WrapperThickness => uCtrlWrapperThickness.Value;
         private int[] NoWalls => new int[3] { uCtrlNumberOfWalls.NoX, uCtrlNumberOfWalls.NoY, uCtrlNumberOfWalls.NoZ };
+        private double MaximumPalletHeight
+        { 
+            get => uCtrlMaxPalletHeight.Value;
+            set => uCtrlMaxPalletHeight.Value = value;
+        }
+        private int StackCountMax => Settings.Default.MassExcelStackCountMax;
+        private Vector2D Overhang
+        {
+            get => uCtrlOverhang.Value;
+            set => uCtrlOverhang.Value = value;
+        }
         #endregion
     }
 }

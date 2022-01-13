@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -185,10 +186,9 @@ namespace treeDiM.StackBuilder.Desktop
                 // ### rows : begin
                 for (var iRow = 2; iRow <= rowCount; ++iRow)
                 {
+                    iOutputFieldCount = palletColStartIndex;
                     try
                     {
-                        iOutputFieldCount = palletColStartIndex;
-
                         // free version should exit after MaxNumberRowFree
                         if (!UserIsSubscribed && iRow > MaxNumberRowFree + 1)
                         {
@@ -378,7 +378,7 @@ namespace treeDiM.StackBuilder.Desktop
                 analyzes.Add(analysis);
             }
 
-            if (analyzes.Count > 0)
+            if (analyzes.Any())
             {
                 var analysis = analyzes[0];
                 stackCount = analysis.Solution.ItemCount;
@@ -459,7 +459,7 @@ namespace treeDiM.StackBuilder.Desktop
         private string ColumnLetterHeight => cbHeight.SelectedItem.ToString();
         private string ColumnLetterWeight => cbWeight.SelectedItem.ToString();
         private string ColumnLetterOutputStart => cbOutputStart.SelectedItem.ToString();
-        private int MaxNumberRowFree { get; set; } = 5;
+        
         private readonly double LargestDimensionMinimum = 10.0;
         private bool AllowCombinations
         {
@@ -477,5 +477,4 @@ namespace treeDiM.StackBuilder.Desktop
 
         #endregion
     }
-
 }

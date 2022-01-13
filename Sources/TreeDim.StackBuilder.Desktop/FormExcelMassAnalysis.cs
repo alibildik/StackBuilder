@@ -32,7 +32,6 @@ namespace treeDiM.StackBuilder.Desktop
             InitializeComponent();
         }
         #endregion
-
         #region Form override
         protected override void OnLoad(EventArgs e)
         {
@@ -41,7 +40,6 @@ namespace treeDiM.StackBuilder.Desktop
             LoadSettings();
         }
         #endregion
-
         #region Protected properties
         protected string InputFilePath
         {
@@ -50,7 +48,6 @@ namespace treeDiM.StackBuilder.Desktop
         }
         protected string SheetName => cbSheets.SelectedItem.ToString();
         #endregion
-
         #region Event handlers
         private void OnFilePathChanged(object sender, EventArgs e)
         {
@@ -155,7 +152,6 @@ namespace treeDiM.StackBuilder.Desktop
             UpdateStatus(sender, e);
         }
         #endregion
-
         #region Virtual properties and methods
         protected virtual string SampleFileURL => string.Empty;
         protected virtual void InitializeInputFields() {}
@@ -172,7 +168,7 @@ namespace treeDiM.StackBuilder.Desktop
             return message;
         }
         protected bool UserIsSubscribed => DesignMode || Program.IsSubscribed;
-
+        protected int MaxNumberRowFree { get; set; } = 5;
         #endregion
         #region Pallet listbox
         public static void FillPalletList(CheckedListBox listBoxPallets)
@@ -222,12 +218,9 @@ namespace treeDiM.StackBuilder.Desktop
             return list;
         }
         #endregion
-
         #region Logging
         protected ILog _log = LogManager.GetLogger(typeof(FormExcelMassAnalysis));
         #endregion
-
-
     }
 }
 #region ExcelHelpers
