@@ -274,7 +274,7 @@
     <value>Color</value>
   </data>
   <data name="&gt;&gt;uCtrlOptBulge.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btBitmaps.Parent" xml:space="preserve">
     <value>gbFaceColor</value>
@@ -415,13 +415,13 @@
     <value>Color</value>
   </data>
   <data name="&gt;&gt;uCtrlDimensionsOuter.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbTapeColor.Items" xml:space="preserve">
     <value>Color</value>
   </data>
   <data name="&gt;&gt;ctrlStrapperSet.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Basics.Controls.CtrlStrapperSet, treeDiM.StackBuilder.Basics, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Basics.Controls.CtrlStrapperSet, treeDiM.StackBuilder.Basics, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbColor.Items106" xml:space="preserve">
     <value>Color</value>
@@ -511,7 +511,7 @@
     <value>188, 37</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabCtrl.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -670,7 +670,7 @@
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Desktop.FormNewBase, treeDiM.StackBuilder.Desktop, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Desktop.FormNewBase, treeDiM.StackBuilder.Desktop, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbColor.Items116" xml:space="preserve">
     <value>Color</value>
@@ -1081,7 +1081,7 @@
     <value>Tape color</value>
   </data>
   <data name="&gt;&gt;uCtrlTapeWidth.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bnSaveToDB.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -1132,7 +1132,7 @@
     <value>graphCtrl</value>
   </data>
   <data name="&gt;&gt;uCtrlCOG.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbTapeColor.Items144" xml:space="preserve">
     <value>Color</value>
@@ -1141,7 +1141,7 @@
     <value>Color</value>
   </data>
   <data name="&gt;&gt;uCtrlNetWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptDouble, treeDiM.Basics, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbTapeColor.Items121" xml:space="preserve">
     <value>Color</value>
@@ -1174,7 +1174,7 @@
     <value>Color</value>
   </data>
   <data name="&gt;&gt;uCtrlDimensionsInner.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlOptTriDouble, treeDiM.Basics, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbColor.Items18" xml:space="preserve">
     <value>Color</value>
@@ -1501,7 +1501,7 @@
     <value>570, 84</value>
   </data>
   <data name="&gt;&gt;graphCtrl.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Graphics3DControl, treeDiM.StackBuilder.Graphics, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Graphics3DControl, treeDiM.StackBuilder.Graphics, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btBitmaps.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1576,7 +1576,7 @@
     <value>Color</value>
   </data>
   <data name="&gt;&gt;cbColor.Type" xml:space="preserve">
-    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>600, 555</value>
@@ -1714,7 +1714,7 @@
     <value>Color</value>
   </data>
   <data name="&gt;&gt;vcWeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbTapeColor.Items53" xml:space="preserve">
     <value>Color</value>
@@ -1768,7 +1768,7 @@
     <value>340, 20</value>
   </data>
   <data name="&gt;&gt;cbTapeColor.Type" xml:space="preserve">
-    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>OfficePickers.ColorPicker.ComboBoxColorPicker, OfficePickers, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbFacing.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

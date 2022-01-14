@@ -40,8 +40,8 @@
     <MinimumRequiredVersion>3.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>47</ApplicationRevision>
-    <ApplicationVersion>3.0.2.47</ApplicationVersion>
+    <ApplicationRevision>48</ApplicationRevision>
+    <ApplicationVersion>3.0.2.48</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -682,8 +682,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="AutoUpdater\AutoUpdater.xml" />
-    <Content Include="AutoUpdater\ChangeLog.html" />
     <Content Include="ReportTemplates\NLD.xml" />
     <Content Include="ReportTemplates\POL.xml" />
     <EmbeddedResource Include="AboutBox.de.resx">
@@ -3844,6 +3842,9 @@ if $(ConfigurationName) == Release "$(SolutionDir)Signfile.bat" "$(TargetPath)"
     <PackageReference Include="Syroot.Windows.IO.KnownFolders">
       <Version>1.2.3</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AutoUpdater\" />
   </ItemGroup>
   <PropertyGroup>
     <PreBuildEvent>
