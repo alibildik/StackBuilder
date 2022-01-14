@@ -75,9 +75,12 @@ namespace treeDiM.StackBuilder.Exporters
         private string EncryptWKey(string s, string sKeyIn, string sKeyOut)
         {
             System.Diagnostics.Debug.Assert(sKeyIn.Length == sKeyOut.Length);
-            string sCopy = s;
-            for (int i = 0; i < sKeyIn.Length; ++i)
-                sCopy = sCopy.Replace(sKeyIn[i], sKeyOut[i]);
+            string sCopy = string.Empty;
+            for (int i = 0; i < s.Length; ++i)
+            {
+                int index = sKeyIn.IndexOf(s[i]);
+                sCopy += (index != -1) ? sKeyOut[index] : s[i];
+            }
             return sCopy;
         }
         public override void Export(RobotPreparation robotPreparation, NumberFormatInfo nfi, ref StringBuilder sb)
