@@ -621,6 +621,7 @@ namespace treeDiM.StackBuilder.Basics
             , PalletCornerProperties palletCorners, PalletCapProperties palletCap, PalletFilmProperties palletFilm
             , ConstraintSetCasePallet constraintSet
             , List<LayerEncap> layerEncaps
+            , List<ConveyorSetting> conveyorSettings
             )
         {
             AnalysisCasePallet analysis = new AnalysisCasePallet(packable, pallet, constraintSet);
@@ -633,6 +634,8 @@ namespace treeDiM.StackBuilder.Basics
             analysis.PalletCornerProperties     = palletCorners;
             analysis.PalletCapProperties        = palletCap;
             analysis.PalletFilmProperties       = palletFilm;
+            analysis.ConveyorSettings           = conveyorSettings;
+
             analysis.AddSolution(layerEncaps);
 
             return InsertAnalysis(analysis);
@@ -645,6 +648,7 @@ namespace treeDiM.StackBuilder.Basics
             , PalletCornerProperties palletCorners, PalletCapProperties palletCap, PalletFilmProperties palletFilm
             , ConstraintSetCasePallet constraintSet
             , List<KeyValuePair<LayerEncap, int>> listLayers
+            , List<ConveyorSetting> conveyorSettings
             )
         {
             AnalysisCasePallet analysis = new AnalysisCasePallet(packable, pallet, constraintSet);
@@ -657,6 +661,7 @@ namespace treeDiM.StackBuilder.Basics
             analysis.PalletCornerProperties = palletCorners;
             analysis.PalletCapProperties = palletCap;
             analysis.PalletFilmProperties = palletFilm;
+            analysis.ConveyorSettings = conveyorSettings;
             analysis.AddSolution(listLayers);
 
             return InsertAnalysis(analysis);
@@ -941,7 +946,8 @@ namespace treeDiM.StackBuilder.Basics
                 name, description
                 , pack, pallet
                 , listInterlayers, null, null, null
-                , constraintSetNew, layerEncaps);
+                , constraintSetNew, layerEncaps
+                , new List<ConveyorSetting>());
 
             Modify();
             return analysis;
@@ -1660,6 +1666,29 @@ namespace treeDiM.StackBuilder.Basics
             }
             return true;
         }
+
+        private bool LoadConveyorSettings(XmlElement eltConveyorSettings, ref List<ConveyorSetting> conveyorSettings)
+        {
+            try
+            {
+                foreach (XmlNode node in eltConveyorSettings)
+                {
+                    if (string.Equals(node.Name, "ConveyorSetting", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        XmlElement eltConveyorSetting = node as XmlElement;
+                        string sNumber = eltConveyorSetting.Attributes["Number"].Value;
+                        string sAngle = eltConveyorSetting.Attributes["Angle"].Value;
+                        conveyorSettings.Add(new ConveyorSetting(int.Parse(sAngle), int.Parse(sNumber)));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.ToString());
+                return false;
+            }
+            return true;
+        }
         private void LoadPalletProperties(XmlElement eltPalletProperties)
         {
             string sid = eltPalletProperties.Attributes["Id"].Value;
@@ -1920,6 +1949,7 @@ namespace treeDiM.StackBuilder.Basics
 
                 StrapperSet strapperSet = new StrapperSet();
                 List<PalletLabelInst> palletLabelInstances = new List<PalletLabelInst>();
+                List<ConveyorSetting> conveyorSettings = new List<ConveyorSetting>();
 
                 ConstraintSetAbstract constraintSet = null;
                 foreach (XmlNode node in eltAnalysis.ChildNodes)
@@ -1934,6 +1964,8 @@ namespace treeDiM.StackBuilder.Basics
                         LoadStrapperSet(node as XmlElement, ref strapperSet);
                     else if (string.Equals(node.Name, "PalletLabelInstances", StringComparison.CurrentCultureIgnoreCase))
                         LoadPalletLabelInstances(node as XmlElement, ref palletLabelInstances);
+                    else if (string.Equals(node.Name, "ConveyorSettings", StringComparison.CurrentCultureIgnoreCase))
+                        LoadConveyorSettings(node as XmlElement, ref conveyorSettings);
                 }
 
                 var analysis = CreateNewAnalysisCasePallet(
@@ -1942,7 +1974,8 @@ namespace treeDiM.StackBuilder.Basics
                     , interlayers
                     , palletCorners, palletCap, palletFilm
                     , constraintSet as ConstraintSetCasePallet
-                    , listLayerEncaps) as AnalysisLayered;
+                    , listLayerEncaps
+                    , conveyorSettings) as AnalysisLayered;
                 AnalysisCasePallet analysisCasePallet = analysis as AnalysisCasePallet;
                 analysisCasePallet.PalletCornerTopProperties = palletCornersTop;
                 analysisCasePallet.StrapperSet = strapperSet;
@@ -2263,7 +2296,9 @@ namespace treeDiM.StackBuilder.Basics
                 , interlayers
                 , palletCorners, palletCap, palletFilm
                 , constraintSet
-                , new List<LayerEncap>() { new LayerEncap(layerDesc) }) as AnalysisLayered;
+                , new List<LayerEncap>() { new LayerEncap(layerDesc) }
+                , new List<ConveyorSetting>()
+                ) as AnalysisLayered;
             if (!string.IsNullOrEmpty(sId))
                 analysis.ID.IGuid = Guid.Parse(sId);
             AnalysisCasePallet analysisCasePallet = analysis as AnalysisCasePallet;
@@ -3579,6 +3614,25 @@ namespace treeDiM.StackBuilder.Basics
                 eltPli.Attributes.Append(attAxis);
             }
         }
+        private void SaveConveyorSettings(List<ConveyorSetting> conveyorSettings, XmlElement eltParent, XmlDocument xmlDoc)
+        {
+            // ConveyorSettings
+            XmlElement eltConveyorSettings = xmlDoc.CreateElement("ConveyorSettings");
+            eltConveyorSettings.AppendChild(eltConveyorSettings);
+            foreach (var cs in conveyorSettings)
+            {
+                XmlElement eltConveyorSetting = xmlDoc.CreateElement("ConveyorSetting");
+                eltConveyorSettings.AppendChild(eltConveyorSetting);
+                // angle
+                XmlAttribute attAngle = xmlDoc.CreateAttribute("Angle");
+                attAngle.Value = $"{cs.Angle}";
+                eltConveyorSetting.Attributes.Append(attAngle);
+                // number
+                XmlAttribute attNumber = xmlDoc.CreateAttribute("Number");
+                attNumber.Value = $"{cs.Number}";
+                eltConveyorSetting.Attributes.Append(attNumber);
+            }
+        }
         #endregion
 
         #region Save Wrappers
@@ -3756,6 +3810,8 @@ namespace treeDiM.StackBuilder.Basics
                 SaveStrappers(analysisCasePallet1.StrapperSet, xmlAnalysisElt, xmlDoc);
                 // labels
                 SavePalletLabelInstances(analysisCasePallet1.PalletLabels, xmlAnalysisElt, xmlDoc);
+                // conveyor settings
+                SaveConveyorSettings(analysisCasePallet1.ConveyorSettings, xmlAnalysisElt, xmlDoc);
             }
 
             // constraint set

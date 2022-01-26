@@ -73,6 +73,12 @@
     <Compile Include="BitmapHelpers.cs" />
     <Compile Include="BSPNode.cs" />
     <Compile Include="BSPTree.cs" />
+    <Compile Include="Controls\CCtrlComboConveyor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CCtrlComboConveyor.Designer.cs">
+      <DependentUpon>CCtrlComboConveyor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CCtrlComboFiltered.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -84,6 +90,12 @@
     </Compile>
     <Compile Include="Controls\CCtrlComboLayer.Designer.cs">
       <DependentUpon>CCtrlComboLayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CCtrlListBoxConveyor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CCtrlListBoxConveyor.Designer.cs">
+      <DependentUpon>CCtrlListBoxConveyor.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Graphics2DLayerEditor.cs">
       <SubType>UserControl</SubType>
@@ -146,6 +158,7 @@
     <Compile Include="BoxLayerToImage.cs" />
     <Compile Include="HCylLayoutToImage.cs" />
     <Compile Include="ImageTiling.cs" />
+    <Compile Include="ItemViewers\ImageGenConveyorSetting.cs" />
     <Compile Include="LayeredCrateToImage.cs" />
     <Compile Include="LayerEditorHelpers.cs" />
     <Compile Include="MultiCaseImageGenerator.cs" />
@@ -258,6 +271,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\CCtrlComboConveyor.resx">
+      <DependentUpon>CCtrlComboConveyor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CCtrlComboFiltered.fr.resx">
       <DependentUpon>CCtrlComboFiltered.cs</DependentUpon>
     </EmbeddedResource>
@@ -294,6 +310,9 @@
     <EmbeddedResource Include="Controls\CCtrlComboLayer.tr.resx">
       <DependentUpon>CCtrlComboLayer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CCtrlListBoxConveyor.resx">
+      <DependentUpon>CCtrlListBoxConveyor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Graphics2DLayerEditor.resx">
       <DependentUpon>Graphics2DLayerEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,6 +333,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCtrlConveyorSettings.fr.resx">
       <DependentUpon>UCtrlConveyorSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCtrlConveyorSettings.resx">
       <DependentUpon>UCtrlConveyorSettings.cs</DependentUpon>

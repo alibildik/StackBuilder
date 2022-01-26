@@ -30,27 +30,17 @@ namespace treeDiM.StackBuilder.Graphics.Controls
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrlConveyorSettings));
-            this.graph3DConveyor = new treeDiM.StackBuilder.Graphics.Graphics3DConveyor();
             this.lbCaseOrientConveyor = new System.Windows.Forms.Label();
             this.nudCaseAngle = new System.Windows.Forms.NumericUpDown();
             this.lbMaxNumber = new System.Windows.Forms.Label();
             this.nudMaxNumber = new System.Windows.Forms.NumericUpDown();
-            this.lbGripperAngle = new System.Windows.Forms.Label();
-            this.nudGrabberAngle = new System.Windows.Forms.NumericUpDown();
+            this.bnAdd = new System.Windows.Forms.Button();
+            this.bnRemove = new System.Windows.Forms.Button();
+            this.lbConveyorSetting = new treeDiM.StackBuilder.Graphics.Controls.CCtrlListBoxConveyor();
+            this.graph3DConveyor = new treeDiM.StackBuilder.Graphics.Graphics3DConveyor();
             ((System.ComponentModel.ISupportInitialize)(this.nudCaseAngle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxNumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGrabberAngle)).BeginInit();
             this.SuspendLayout();
-            // 
-            // graph3DConveyor
-            // 
-            resources.ApplyResources(this.graph3DConveyor, "graph3DConveyor");
-            this.graph3DConveyor.AngleHoriz = 95D;
-            this.graph3DConveyor.CaseAngle = 0;
-            this.graph3DConveyor.MaxDropNumber = 0;
-            this.graph3DConveyor.Name = "graph3DConveyor";
-            this.graph3DConveyor.Packable = null;
-            this.graph3DConveyor.TabStop = false;
             // 
             // lbCaseOrientConveyor
             // 
@@ -99,33 +89,45 @@ namespace treeDiM.StackBuilder.Graphics.Controls
             0});
             this.nudMaxNumber.ValueChanged += new System.EventHandler(this.OnSettingsChanged);
             // 
-            // lbGripperAngle
+            // bnAdd
             // 
-            resources.ApplyResources(this.lbGripperAngle, "lbGripperAngle");
-            this.lbGripperAngle.Name = "lbGripperAngle";
+            resources.ApplyResources(this.bnAdd, "bnAdd");
+            this.bnAdd.Name = "bnAdd";
+            this.bnAdd.UseVisualStyleBackColor = true;
+            this.bnAdd.Click += new System.EventHandler(this.OnSettingAdd);
             // 
-            // nudGrabberAngle
+            // bnRemove
             // 
-            resources.ApplyResources(this.nudGrabberAngle, "nudGrabberAngle");
-            this.nudGrabberAngle.Increment = new decimal(new int[] {
-            90,
-            0,
-            0,
-            0});
-            this.nudGrabberAngle.Maximum = new decimal(new int[] {
-            270,
-            0,
-            0,
-            0});
-            this.nudGrabberAngle.Name = "nudGrabberAngle";
-            this.nudGrabberAngle.ValueChanged += new System.EventHandler(this.OnSettingsChanged);
+            resources.ApplyResources(this.bnRemove, "bnRemove");
+            this.bnRemove.Name = "bnRemove";
+            this.bnRemove.UseVisualStyleBackColor = true;
+            this.bnRemove.Click += new System.EventHandler(this.OnSettingRemove);
+            // 
+            // lbConveyorSetting
+            // 
+            resources.ApplyResources(this.lbConveyorSetting, "lbConveyorSetting");
+            this.lbConveyorSetting.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lbConveyorSetting.FormattingEnabled = true;
+            this.lbConveyorSetting.Name = "lbConveyorSetting";
+            this.lbConveyorSetting.Packable = null;
+            // 
+            // graph3DConveyor
+            // 
+            resources.ApplyResources(this.graph3DConveyor, "graph3DConveyor");
+            this.graph3DConveyor.AngleHoriz = 95D;
+            this.graph3DConveyor.CaseAngle = 0;
+            this.graph3DConveyor.MaxDropNumber = 0;
+            this.graph3DConveyor.Name = "graph3DConveyor";
+            this.graph3DConveyor.Packable = null;
+            this.graph3DConveyor.TabStop = false;
             // 
             // UCtrlConveyorSettings
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.nudGrabberAngle);
-            this.Controls.Add(this.lbGripperAngle);
+            this.Controls.Add(this.lbConveyorSetting);
+            this.Controls.Add(this.bnRemove);
+            this.Controls.Add(this.bnAdd);
             this.Controls.Add(this.nudMaxNumber);
             this.Controls.Add(this.lbMaxNumber);
             this.Controls.Add(this.nudCaseAngle);
@@ -134,7 +136,6 @@ namespace treeDiM.StackBuilder.Graphics.Controls
             this.Name = "UCtrlConveyorSettings";
             ((System.ComponentModel.ISupportInitialize)(this.nudCaseAngle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxNumber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGrabberAngle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,7 +148,8 @@ namespace treeDiM.StackBuilder.Graphics.Controls
         private System.Windows.Forms.NumericUpDown nudCaseAngle;
         private System.Windows.Forms.Label lbMaxNumber;
         private System.Windows.Forms.NumericUpDown nudMaxNumber;
-        private System.Windows.Forms.Label lbGripperAngle;
-        private System.Windows.Forms.NumericUpDown nudGrabberAngle;
+        private System.Windows.Forms.Button bnAdd;
+        private System.Windows.Forms.Button bnRemove;
+        private CCtrlListBoxConveyor lbConveyorSetting;
     }
 }

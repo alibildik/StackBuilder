@@ -2291,11 +2291,29 @@ namespace treeDiM.StackBuilder.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pack dimension ({0}).
+        /// </summary>
+        internal static string ID_RESULT_PACKDIM {
+            get {
+                return ResourceManager.GetString("ID_RESULT_PACKDIM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pack image.
         /// </summary>
         internal static string ID_RESULT_PACKIMAGE {
             get {
                 return ResourceManager.GetString("ID_RESULT_PACKIMAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pack weight ({0}).
+        /// </summary>
+        internal static string ID_RESULT_PACKWEIGHT {
+            get {
+                return ResourceManager.GetString("ID_RESULT_PACKWEIGHT", resourceCulture);
             }
         }
         

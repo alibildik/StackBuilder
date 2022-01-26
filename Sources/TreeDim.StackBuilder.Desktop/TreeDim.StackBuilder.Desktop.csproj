@@ -1501,9 +1501,6 @@
     <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.resx">
       <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormExporter.fr.resx">
-      <DependentUpon>FormExporter.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormExporter.it.resx">
       <DependentUpon>FormExporter.cs</DependentUpon>
     </EmbeddedResource>

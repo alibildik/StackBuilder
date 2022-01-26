@@ -229,6 +229,7 @@ namespace treeDiM.StackBuilder.ExcelAddIn
                         }
                         catch (InvalidCastException ex)
                         {
+                            throw ex;
                         }
                         catch (Exception ex)
                         {

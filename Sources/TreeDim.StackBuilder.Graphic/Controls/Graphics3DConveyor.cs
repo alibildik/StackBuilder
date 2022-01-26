@@ -29,7 +29,18 @@ namespace treeDiM.StackBuilder.Graphics
             base.OnPaint(e);
             if (null == Packable) return;
 
+            var imageGenerator = new ImageGenConveyorSetting() { };
+            var graphics = new Graphics3DForm(this, e.Graphics)
+            {
+                ShowFacing = true,
+                FontSizeRatio = 0.1f,
+                Target = Vector3D.Zero,
+                CameraPosition = imageGenerator.CameraPosition
+            };
 
+            imageGenerator.Draw(graphics, Packable, MaxDropNumber, CaseAngle);
+
+            /*
             double angleHorizRad = AngleHoriz * Math.PI / 180.0;
             double angleVertRad = AngleVert * Math.PI / 180.0;
             double cameraDistance = 100000.0;
@@ -43,7 +54,7 @@ namespace treeDiM.StackBuilder.Graphics
                     , cameraDistance * Math.Sin(angleHorizRad) * Math.Cos(angleVertRad)
                     , cameraDistance * Math.Sin(angleVertRad))
             };
-
+            
             // draw conveyor belt
             double offsetBelt = 100.0;
             double beltLength = 2 * offsetBelt + (MaxDropNumber + 1) * Packable.Length;
@@ -122,6 +133,7 @@ namespace treeDiM.StackBuilder.Graphics
                     new Box(0, Packable, new BoxPosition(new Vector3D(xOffset + (MaxDropNumber - i - 1) * xStep, yOffset, 0.0), axis0, axis1)));
             }
             graphics.Flush();
+            */
         }
         #region Double buffering
         private void SetDoubleBuffered()

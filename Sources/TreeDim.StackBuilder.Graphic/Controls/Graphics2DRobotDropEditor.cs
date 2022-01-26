@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Collections.Generic;
 
 using log4net;
 using Sharp3D.Math.Core;
@@ -46,7 +47,7 @@ namespace treeDiM.StackBuilder.Graphics
             SetDefaultState();
             // initialize automatic numbering corner combo box
             RobotLayer.RefPointNumbering = (RobotLayer.enuCornerPoint)Settings.Default.AutomaticNumberingCornerIndex;
-            toolStripComboCorner.SelectedIndex = Settings.Default.AutomaticNumberingCornerIndex;
+            cbCorner.SelectedIndex = Settings.Default.AutomaticNumberingCornerIndex;
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -142,27 +143,26 @@ namespace treeDiM.StackBuilder.Graphics
             Invalidate();
         }
         #endregion
-        #region Toolbar event handlers
-        private void OnBuildCaseDropOf2(object sender, EventArgs e) => SetState(new StateBuildBlock(this, 2));
-        private void OnBuildCaseDropOf3(object sender, EventArgs e) => SetState(new StateBuildBlock(this, 3));
+        #region Event handlers
+        private void OnBuildCaseDrop(object sender, EventArgs e) => SetState(new StateBuildBlock(this, SelectedConveyorSetting));
         private void OnSplitDrop(object sender, EventArgs e) => SetState(new StateSplitDrop(this));
         private void OnReorder(object sender, EventArgs e) => SetState(new StateReoder(this));
         private void UpdateToolBar()
         {
-            toolStripBnCaseDrop2.Checked = (CurrentState is StateBuildBlock stateBlock2) && stateBlock2.Number == 2;
-            toolStripBnCaseDrop3.Checked = (CurrentState is StateBuildBlock stateBlock3) && stateBlock3.Number == 3;
-            toolStripBnSplitDrop.Checked = CurrentState is StateSplitDrop;
-            toolStripBnReorder.Checked = CurrentState is StateReoder;
+            chkbMerge.Checked = CurrentState is StateBuildBlock;
+            chkbSplit.Checked = CurrentState is StateSplitDrop;
+            chkbReorder.Checked = CurrentState is StateReoder;
         }
         private void OnNumberingCornerChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.AutomaticNumberingCornerIndex = toolStripComboCorner.SelectedIndex;
-            Properties.Settings.Default.Save();
+            Settings.Default.AutomaticNumberingCornerIndex = cbCorner.SelectedIndex;
+            Settings.Default.Save();
 
-            RobotLayer.RefPointNumbering = (RobotLayer.enuCornerPoint)toolStripComboCorner.SelectedIndex;
+            RobotLayer.RefPointNumbering = (RobotLayer.enuCornerPoint)cbCorner.SelectedIndex;
             Layer?.AutomaticRenumber();
             Invalidate();            
         }
+        private void OnDropModeChanged(object sender, EventArgs e) {}
         #endregion
         #region IStateHost implementation
         public void SetState(State state)
@@ -200,7 +200,6 @@ namespace treeDiM.StackBuilder.Graphics
             if (null != CurrentState)
                 statusLabel.Text = CurrentState.Message;
         }
-
         public Rectangle DropToRectangle(RobotDrop rd)
         {
             Vector3D[] rectPoints = rd.CornerPoints;
@@ -239,6 +238,13 @@ namespace treeDiM.StackBuilder.Graphics
             return pt.X >= bbox.PtMin.X && pt.X <= bbox.PtMax.X
                 && pt.Y >= bbox.PtMin.Y && pt.Y <= bbox.PtMax.Y;
         }
+        public void SetConveyorSettings(PackableBrick packable, List<ConveyorSetting> listConveyorSettings)
+        {
+            cbConveyorSetting.Packable = packable;
+            cbConveyorSetting.Items.AddRange(listConveyorSettings.ToArray());
+            cbConveyorSetting.SelectedIndex = 0;
+        }
+        protected ConveyorSetting SelectedConveyorSetting => cbConveyorSetting.SelectedItem as ConveyorSetting;
         #endregion
         #region Data members
         public RobotLayer Layer { get; set; }
@@ -246,8 +252,6 @@ namespace treeDiM.StackBuilder.Graphics
         private int FontSizeID => 16;
         protected ILog _log = LogManager.GetLogger(typeof(Graphics2DRobotDropEditor));
         private State _currentState;
-        #endregion
-        #region Delegate and event
         #endregion
     }
 
@@ -262,6 +266,7 @@ namespace treeDiM.StackBuilder.Graphics
     }
     public abstract class State
     {
+        public State(IStateHost host) { Host = host; }
         public virtual void OnMouseDown(int id) {}
         public virtual void OnMouseUp(int id) {}
         public virtual void OnKey(char c) {}
@@ -274,60 +279,45 @@ namespace treeDiM.StackBuilder.Graphics
     }
     internal class StateDefault : State
     {
-        public StateDefault(IStateHost host) { Host = host; }
+        public StateDefault(IStateHost host):base(host) {}
         public override bool ShowIDs => true;
         public override string Message => "Ready";
     }
     internal class StateBuildBlock : State
-    {
-        public StateBuildBlock(IStateHost host, int number)
+    { 
+        public StateBuildBlock(IStateHost host, ConveyorSetting setting) : base(host) 
         {
-            Host = host;
-            Number = number;
-            IndexArray = new int[number];            
+            Setting = setting;
+            IndexArray = new int[setting.Number];
         }
-        public int Number { get; set; }
-        private int ClickCount { get; set; }
         public override void OnMouseUp(int index)
         {
             if (-1 == index) return;
             IndexArray[ClickCount] = index;
-            ClickCount += 1;
-            if (ClickCount == Number)
+            ClickCount++;
+            if (ClickCount == Setting.Number)
             {
                 Merge();
                 Reset();
             }
         }
-        private void Merge()
-        {
-            Host.Layer.Merge(Number, IndexArray); 
-        }
+        private void Merge() => Host.Layer.Merge(Setting, IndexArray);
         private void Reset()
         {
             ClickCount = 0;
-            for (int i = 0; i < Number; ++i) IndexArray[i] = -1;
+            for (int i = 0; i < Setting.Number; ++i) IndexArray[i] = -1;
         }
+        public override string Message => string.Format(Resources.ID_CLICKCASEFORGROUP, ClickCount, Setting.Number);
+        #region Data members
+        public ConveyorSetting Setting { get; set; }
+        private int ClickCount { get; set; }
         private int[] IndexArray;
-        public override string Message
-        {
-            get
-            {
-                if (0 == ClickCount) return "Click first case...";
-                else if (1 == ClickCount) return "Click second case...";
-                else if (2 == ClickCount) return "Click third case...";
-                else if (3 == ClickCount) return "Click fourth case...";
-                else if (4 == ClickCount) return "Click fifth case...";
-                else return "";
-            }
-        }
+        #endregion
     }
-
     internal class StateSplitDrop : State
     {
-        public StateSplitDrop(IStateHost host)
+        public StateSplitDrop(IStateHost host) : base(host)
         {
-            Host = host; 
         }
         public override void OnMouseUp(int index)
         {
@@ -338,12 +328,10 @@ namespace treeDiM.StackBuilder.Graphics
             Host.Layer.Split(index);
         }
     }
-
     internal class StateReoder : State
     {
-        public StateReoder(IStateHost host)
+        public StateReoder(IStateHost host) : base(host)
         {
-            Host = host;
             Host.Layer.ResetNumbering();
             Host.Invalidate();
         }

@@ -14,6 +14,9 @@ namespace treeDiM.StackBuilder.Graphics
         #region Constructor
         public Graphics3DImage(Size size)
         {
+            if (size.Width <= 0 && size.Height <= 0)
+                throw new Exception("Invalid size");
+
             Bitmap = new Bitmap(size.Width, size.Height);        
         }
         public Graphics3DImage(Size size, double angle, double cameraDistance)

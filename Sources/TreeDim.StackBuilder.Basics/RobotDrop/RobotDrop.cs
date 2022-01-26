@@ -71,7 +71,6 @@ namespace treeDiM.StackBuilder.Basics
                 BoxPositionMain.DirectionLength,
                 BoxPositionMain.DirectionWidth);
         }
-
         public double MaxDistanceToPoint(Vector3D pt) => CornerPoints.Max(corner => (corner - pt).GetLength());
         public Vector3D[] CornerPoints => BoxPositionMain.Points(Dimensions);
         public Vector2D[] Contour
@@ -84,76 +83,75 @@ namespace treeDiM.StackBuilder.Basics
                 return new Vector2D[] { pos, pos + vi, pos + vi + vj, pos + vj, pos };
             }
         }
-
         #endregion
         #region Static merge methods
-        public static RobotDrop Merge2(RobotLayer layer, RobotDrop rd1, RobotDrop rd2)
+        public static RobotDrop Merge(RobotLayer layer, List<RobotDrop> robotDrops)
         {
             Vector3D offset = Vector3D.Zero;
             PackDir packDir;
-            if (rd2.IsRelAbove(rd1))
-            { packDir = PackDir.LENGTH; }
-            else if (rd2.IsRelUnder(rd1))
-            { packDir = PackDir.LENGTH; offset = -rd1.SingleWidth * HalfAxis.ToVector3D(rd1.BoxPositionMain.DirectionWidth); }
-            else if (rd2.IsRelRight(rd1))
-            { packDir = PackDir.WIDTH; }
-            else if (rd2.IsRelLeft(rd1))
-            { packDir = PackDir.WIDTH; offset = -rd1.SingleLength * HalfAxis.ToVector3D(rd1.BoxPositionMain.DirectionLength); }
-            else
-                return null;
-            return new RobotDrop(layer)
+            RobotDrop rd0 = robotDrops[0];
+
+            bool isRelAbove = true, isRelUnder = true, isRelRight = true, isRelLeft = true;
+            for (int i = 1; i < robotDrops.Count; i++)
             {
-                ID = -1,
-                Number = 2,
-                BoxPositionMain = new BoxPosition(rd1.BoxPositionMain.Position + offset, rd1.BoxPositionMain.DirectionLength, rd2.BoxPositionMain.DirectionWidth),
-                PackDirection = packDir
-            };
-        }
-        public static RobotDrop Merge3(RobotLayer layer, RobotDrop rd1, RobotDrop rd2, RobotDrop rd3)
-        {
-            Vector3D offset = Vector3D.Zero;
-            PackDir packDir;
-            if (rd2.IsRelAbove(rd1) && rd3.IsRelAbove(rd2))
+                if (!robotDrops[i].IsRelAbove(robotDrops[i - 1])) isRelAbove = false;
+                if (!robotDrops[i].IsRelUnder(robotDrops[i - 1])) isRelUnder = false;
+                if (!robotDrops[i].IsRelRight(robotDrops[i - 1])) isRelRight = false;
+                if (!robotDrops[i].IsRelLeft(robotDrops[i - 1])) isRelLeft = false;
+            }
+            if (isRelAbove)
             { packDir = PackDir.LENGTH; }
-            else if (rd2.IsRelUnder(rd1) && rd3.IsRelUnder(rd2))
-            { packDir = PackDir.LENGTH; offset = -2 * rd1.SingleWidth * HalfAxis.ToVector3D(rd1.BoxPositionMain.DirectionWidth); }
-            else if (rd2.IsRelRight(rd1) && rd3.IsRelRight(rd2))
+            else if (isRelUnder)
+            { packDir = PackDir.LENGTH; offset = -(robotDrops.Count - 1) * rd0.SingleWidth * HalfAxis.ToVector3D(rd0.BoxPositionMain.DirectionWidth); }
+            else if (isRelRight)
             { packDir = PackDir.WIDTH; }
-            else if (rd2.IsRelLeft(rd1) && rd3.IsRelLeft(rd2))
-            { packDir = PackDir.WIDTH; offset = -2 * rd1.SingleLength * HalfAxis.ToVector3D(rd1.BoxPositionMain.DirectionLength); }
+            else if (isRelLeft)
+            { packDir = PackDir.WIDTH; offset = -(robotDrops.Count - 1) * rd0.SingleLength * HalfAxis.ToVector3D(rd0.BoxPositionMain.DirectionLength); }
             else
-                return null;
+                return null;               
 
             return new RobotDrop(layer)
             {
                 ID = -1,
-                Number = 3,
-                BoxPositionMain = new BoxPosition(rd1.BoxPositionMain.Position + offset, rd1.BoxPositionMain.DirectionLength, rd1.BoxPositionMain.DirectionWidth),
+                Number = robotDrops.Count,
+                BoxPositionMain = new BoxPosition(rd0.BoxPositionMain.Position + offset, rd0.BoxPositionMain.DirectionLength, rd0.BoxPositionMain.DirectionWidth),
                 PackDirection = packDir
             };
         }
-        public static bool CanMerge(RobotDrop drop0, RobotDrop drop1)
+        public static bool CanMerge(List<RobotDrop> drops)
         {
-            if (drop0 == drop1)
+            // at least 2
+            if (drops.Count < 2)
                 return false;
-            if (!drop0.IsSingle && !drop1.IsSingle)
+            // any duplicate ?
+            if (drops.GroupBy(i => i).Where(g => g.Count() > 1).Any())
                 return false;
-            if (!BoxPosition.HaveSameOrientation(drop0.BoxPositionMain, drop1.BoxPositionMain))
+            // all are simple drops ?
+            if (drops.Where(i => !i.IsSingle).Any())
                 return false;
-            return drop1.IsRelAbove(drop0) || drop1.IsRelUnder(drop0) || drop1.IsRelLeft(drop0) || drop1.IsRelRight(drop0);
-        }
-        public static bool CanMerge(RobotDrop drop0, RobotDrop drop1, RobotDrop drop2)
-        {
-            if (drop0 == drop1 || drop1 == drop2 || drop0 == drop2)
-                return false;
-            if (!drop0.IsSingle && !drop1.IsSingle && !drop2.IsSingle)
-                return false;
-            if (!(BoxPosition.HaveSameOrientation(drop0.BoxPositionMain, drop1.BoxPositionMain) && BoxPosition.HaveSameOrientation(drop1.BoxPositionMain, drop2.BoxPositionMain)))
-                return false;
-            return (drop1.IsRelAbove(drop0) && drop2.IsRelAbove(drop1))
-                || (drop1.IsRelUnder(drop0) && drop2.IsRelUnder(drop1))
-                || (drop1.IsRelRight(drop0) && drop2.IsRelRight(drop1))
-                || (drop1.IsRelLeft(drop0) && drop2.IsRelLeft(drop1));
+            // have all the same orientation
+            BoxPosition bPos0 = drops[0].BoxPositionMain;
+            foreach (var d in drops)
+                if (!BoxPosition.HaveSameOrientation(d.BoxPositionMain, bPos0))
+                    return false;
+            // relative position ?
+            bool isRelAbove = true;
+            for (int i = 0; i < drops.Count - 1; ++i)
+                if (!drops[i + 1].IsRelAbove(drops[i]))
+                    isRelAbove = false;
+            bool isRelUnder = true;
+            for (int i = 0; i < drops.Count - 1; ++i)
+                if (!drops[i + 1].IsRelUnder(drops[i]))
+                    isRelUnder = false;
+            bool isRelRight = true;
+            for (int i = 0; i < drops.Count - 1; ++i)
+                if (!drops[i + 1].IsRelRight(drops[i]))
+                    isRelRight = false;
+            bool isRelLeft = true;
+            for (int i = 0; i < drops.Count - 1; ++i)
+                if (!drops[i + 1].IsRelLeft(drops[i]))
+                    isRelLeft = false;
+            return isRelAbove || isRelUnder || isRelRight || isRelLeft;
         }
         public static List<RobotDrop> Split(RobotLayer layer, RobotDrop drop)
         {
@@ -372,6 +370,7 @@ namespace treeDiM.StackBuilder.Basics
         }
         #endregion
         #region Merge methods / Split
+        /*
         public bool Merge(int number, int[] arrIndexes)
         {
             RobotDrop mergeDrop = null;
@@ -400,6 +399,31 @@ namespace treeDiM.StackBuilder.Basics
             Parent.Update();
 
             return true;
+        }
+        */
+        public bool Merge(ConveyorSetting setting, int[] arrIndexes)
+        {
+            List<RobotDrop> drops = new List<RobotDrop>();
+            for (int i = 0; i < arrIndexes.Length; ++i)
+            {
+                drops.Add(Drops[arrIndexes[i]]);
+            }
+            if (RobotDrop.CanMerge(drops))
+            {
+                var mergeDrop = RobotDrop.Merge(this, drops);
+                Drops.Add(mergeDrop);
+
+                // sort indexes in order to remove higher indexes first
+                Array.Sort(arrIndexes);
+                Array.Reverse(arrIndexes);
+
+                foreach (int index in arrIndexes)
+                    Drops.RemoveAt(index);
+                AutomaticRenumber();
+                Parent.Update();
+                return true;
+            }
+            return false;
         }
         public void Split(int index)
         {
@@ -445,7 +469,7 @@ namespace treeDiM.StackBuilder.Basics
                     robotLayer.Drops.Add(new RobotDrop(robotLayer) { BoxPositionMain = b, Number = 1, PackDirection = RobotDrop.PackDir.LENGTH });
                 }
                 robotLayer.AutomaticRenumber();
-            }
+            }            
         }
         #endregion
         #region Public accessors

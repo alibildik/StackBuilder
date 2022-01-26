@@ -30,106 +30,16 @@ namespace treeDiM.StackBuilder.Graphics
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Graphics2DRobotDropEditor));
-            this.toolStripMain = new System.Windows.Forms.ToolStrip();
-            this.toolStripBnCaseDrop2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBnCaseDrop3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBnSplitDrop = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripComboCorner = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripBnReorder = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLbAuntoNumber = new System.Windows.Forms.ToolStripLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripMain.SuspendLayout();
+            this.cbConveyorSetting = new treeDiM.StackBuilder.Graphics.Controls.CCtrlComboConveyor();
+            this.cbCorner = new System.Windows.Forms.ComboBox();
+            this.chkbMerge = new System.Windows.Forms.CheckBox();
+            this.chkbSplit = new System.Windows.Forms.CheckBox();
+            this.chkbReorder = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStripMain
-            // 
-            this.toolStripMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripBnCaseDrop2,
-            this.toolStripBnCaseDrop3,
-            this.toolStripBnSplitDrop,
-            this.toolStripSeparator1,
-            this.toolStripLbAuntoNumber,
-            this.toolStripComboCorner,
-            this.toolStripSeparator2,
-            this.toolStripBnReorder});
-            this.toolStripMain.Location = new System.Drawing.Point(0, 0);
-            this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(350, 25);
-            this.toolStripMain.TabIndex = 0;
-            this.toolStripMain.Text = "Tools";
-            // 
-            // toolStripBnCaseDrop2
-            // 
-            this.toolStripBnCaseDrop2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBnCaseDrop2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBnCaseDrop2.Image")));
-            this.toolStripBnCaseDrop2.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripBnCaseDrop2.Name = "toolStripBnCaseDrop2";
-            this.toolStripBnCaseDrop2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripBnCaseDrop2.Text = "Build a 2 case drop";
-            this.toolStripBnCaseDrop2.Click += new System.EventHandler(this.OnBuildCaseDropOf2);
-            // 
-            // toolStripBnCaseDrop3
-            // 
-            this.toolStripBnCaseDrop3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBnCaseDrop3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBnCaseDrop3.Image")));
-            this.toolStripBnCaseDrop3.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripBnCaseDrop3.Name = "toolStripBnCaseDrop3";
-            this.toolStripBnCaseDrop3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripBnCaseDrop3.Text = "Build a 3 cases drop";
-            this.toolStripBnCaseDrop3.Click += new System.EventHandler(this.OnBuildCaseDropOf3);
-            // 
-            // toolStripBnSplitDrop
-            // 
-            this.toolStripBnSplitDrop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBnSplitDrop.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBnSplitDrop.Image")));
-            this.toolStripBnSplitDrop.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripBnSplitDrop.Name = "toolStripBnSplitDrop";
-            this.toolStripBnSplitDrop.Size = new System.Drawing.Size(23, 22);
-            this.toolStripBnSplitDrop.Text = "Split drop";
-            this.toolStripBnSplitDrop.Click += new System.EventHandler(this.OnSplitDrop);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripComboCorner
-            // 
-            this.toolStripComboCorner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboCorner.Items.AddRange(new object[] {
-            "Lower-left",
-            "Lower-right",
-            "Upper-right",
-            "Upper-left"});
-            this.toolStripComboCorner.Name = "toolStripComboCorner";
-            this.toolStripComboCorner.Size = new System.Drawing.Size(90, 25);
-            this.toolStripComboCorner.SelectedIndexChanged += new System.EventHandler(this.OnNumberingCornerChanged);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripBnReorder
-            // 
-            this.toolStripBnReorder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBnReorder.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBnReorder.Image")));
-            this.toolStripBnReorder.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripBnReorder.Name = "toolStripBnReorder";
-            this.toolStripBnReorder.Size = new System.Drawing.Size(23, 22);
-            this.toolStripBnReorder.Text = "Manual reorder";
-            this.toolStripBnReorder.Click += new System.EventHandler(this.OnReorder);
-            // 
-            // toolStripLbAuntoNumber
-            // 
-            this.toolStripLbAuntoNumber.Name = "toolStripLbAuntoNumber";
-            this.toolStripLbAuntoNumber.Size = new System.Drawing.Size(95, 22);
-            this.toolStripLbAuntoNumber.Text = "Auto numbering";
             // 
             // statusStrip
             // 
@@ -137,7 +47,7 @@ namespace treeDiM.StackBuilder.Graphics
             this.statusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 328);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(350, 22);
+            this.statusStrip.Size = new System.Drawing.Size(450, 22);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -147,20 +57,103 @@ namespace treeDiM.StackBuilder.Graphics
             this.statusLabel.Size = new System.Drawing.Size(39, 17);
             this.statusLabel.Text = "Ready";
             // 
+            // cbConveyorSetting
+            // 
+            this.cbConveyorSetting.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbConveyorSetting.DropDownHeight = 120;
+            this.cbConveyorSetting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbConveyorSetting.DropDownWidth = 100;
+            this.cbConveyorSetting.FormattingEnabled = true;
+            this.cbConveyorSetting.IntegralHeight = false;
+            this.cbConveyorSetting.ItemHeight = 35;
+            this.cbConveyorSetting.Location = new System.Drawing.Point(1, 2);
+            this.cbConveyorSetting.Name = "cbConveyorSetting";
+            this.cbConveyorSetting.Packable = null;
+            this.cbConveyorSetting.Size = new System.Drawing.Size(85, 41);
+            this.cbConveyorSetting.TabIndex = 2;
+            this.cbConveyorSetting.SelectedValueChanged += new System.EventHandler(this.OnDropModeChanged);
+            // 
+            // cbCorner
+            // 
+            this.cbCorner.DropDownHeight = 120;
+            this.cbCorner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCorner.FormattingEnabled = true;
+            this.cbCorner.IntegralHeight = false;
+            this.cbCorner.ItemHeight = 13;
+            this.cbCorner.Items.AddRange(new object[] {
+            "Lower-left",
+            "Lower-right",
+            "Upper-right",
+            "Upper-left"});
+            this.cbCorner.Location = new System.Drawing.Point(303, 2);
+            this.cbCorner.MaxDropDownItems = 4;
+            this.cbCorner.Name = "cbCorner";
+            this.cbCorner.Size = new System.Drawing.Size(100, 21);
+            this.cbCorner.TabIndex = 5;
+            this.cbCorner.SelectedValueChanged += new System.EventHandler(this.OnNumberingCornerChanged);
+            // 
+            // chkbMerge
+            // 
+            this.chkbMerge.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkbMerge.AutoSize = true;
+            this.chkbMerge.Image = ((System.Drawing.Image)(resources.GetObject("chkbMerge.Image")));
+            this.chkbMerge.Location = new System.Drawing.Point(89, 2);
+            this.chkbMerge.Name = "chkbMerge";
+            this.chkbMerge.Size = new System.Drawing.Size(38, 38);
+            this.chkbMerge.TabIndex = 7;
+            this.chkbMerge.UseVisualStyleBackColor = true;
+            this.chkbMerge.Click += new System.EventHandler(this.OnBuildCaseDrop);
+            // 
+            // chkbSplit
+            // 
+            this.chkbSplit.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkbSplit.AutoSize = true;
+            this.chkbSplit.Image = ((System.Drawing.Image)(resources.GetObject("chkbSplit.Image")));
+            this.chkbSplit.Location = new System.Drawing.Point(128, 2);
+            this.chkbSplit.Name = "chkbSplit";
+            this.chkbSplit.Size = new System.Drawing.Size(38, 38);
+            this.chkbSplit.TabIndex = 8;
+            this.chkbSplit.UseVisualStyleBackColor = true;
+            this.chkbSplit.Click += new System.EventHandler(this.OnSplitDrop);
+            // 
+            // chkbReorder
+            // 
+            this.chkbReorder.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkbReorder.AutoSize = true;
+            this.chkbReorder.Image = ((System.Drawing.Image)(resources.GetObject("chkbReorder.Image")));
+            this.chkbReorder.Location = new System.Drawing.Point(405, 2);
+            this.chkbReorder.Name = "chkbReorder";
+            this.chkbReorder.Size = new System.Drawing.Size(38, 38);
+            this.chkbReorder.TabIndex = 9;
+            this.chkbReorder.UseVisualStyleBackColor = true;
+            this.chkbReorder.Click += new System.EventHandler(this.OnReorder);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(203, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Automatic ordering";
+            // 
             // Graphics2DRobotDropEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.chkbReorder);
+            this.Controls.Add(this.chkbSplit);
+            this.Controls.Add(this.chkbMerge);
+            this.Controls.Add(this.cbCorner);
+            this.Controls.Add(this.cbConveyorSetting);
             this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.toolStripMain);
             this.Name = "Graphics2DRobotDropEditor";
-            this.Size = new System.Drawing.Size(350, 350);
+            this.Size = new System.Drawing.Size(450, 350);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnKeyPress);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OnMouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnMouseUp);
-            this.toolStripMain.ResumeLayout(false);
-            this.toolStripMain.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -169,17 +162,13 @@ namespace treeDiM.StackBuilder.Graphics
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStripMain;
-        private System.Windows.Forms.ToolStripButton toolStripBnCaseDrop2;
-        private System.Windows.Forms.ToolStripButton toolStripBnCaseDrop3;
-        private System.Windows.Forms.ToolStripButton toolStripBnSplitDrop;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripBnReorder;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboCorner;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripLabel toolStripLbAuntoNumber;
+        private Controls.CCtrlComboConveyor cbConveyorSetting;
+        private System.Windows.Forms.ComboBox cbCorner;
+        private System.Windows.Forms.CheckBox chkbMerge;
+        private System.Windows.Forms.CheckBox chkbSplit;
+        private System.Windows.Forms.CheckBox chkbReorder;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
 
 using log4net;
 using Sharp3D.Math.Core;
@@ -38,12 +39,61 @@ namespace treeDiM.StackBuilder.Desktop
             {
                 RobotPreparation = new RobotPreparation(analysisCasePallet);
                 RobotPreparation.LayerModified += RobotPreparationModified;
+
                 uCtrlConveyorSettings.BoxProperties = analysisCasePallet.Content as PackableBrick;
                 uCtrlConveyorSettings.ValueChanged += OnInputChanged;
             }
+            LoadConveyorSettings();
+
             // fill combo layer types
             FillLayerComboBox();
             OnExportFormatChanged(this, e);
+        }
+        private void LoadConveyorSettings()
+        {
+            PackableBrick packable = null;
+            if (Analysis is AnalysisCasePallet analysisCasePallet)
+            {
+                packable = analysisCasePallet.Content as PackableBrick;
+                ConveyorSettings = analysisCasePallet.ConveyorSettings;
+            }
+
+            uCtrlConveyorSettings.SetConveyorSettings(packable, ConveyorSettings);
+            uCtrlConveyorSettings.ConveyorSettingAddedRemoved += OnSettingAddedRemoved;
+        }
+        private void OnSettingAddedRemoved(object sender, EventArgs e) => UpdatePreparationCtrl();
+        private void UpdatePreparationCtrl()
+        {
+            PackableBrick packable = null;
+            if (Analysis is AnalysisCasePallet analysisCasePallet)
+                packable = analysisCasePallet.Content as PackableBrick;
+
+            layerEditor.SetConveyorSettings(packable, ConveyorSettings);
+        }
+        public List<ConveyorSetting> ConveyorSettings
+        {
+            set
+            {
+                ListConveyorSettings = value;
+            }
+            get
+            {
+                if (null == ListConveyorSettings)
+                    ListConveyorSettings = new List<ConveyorSetting>();
+                if (ListConveyorSettings.Count == 0)
+                {
+                    ListConveyorSettings.AddRange(
+                        new ConveyorSetting[]
+                        {
+                            new ConveyorSetting(0, 2),
+                            new ConveyorSetting(90, 2),
+                            new ConveyorSetting(0, 3),
+                            new ConveyorSetting(90, 3)
+                        }
+                        );
+                }
+                return ListConveyorSettings;
+            }
         }
         private void FillFormatComboBox()
         {
@@ -54,9 +104,9 @@ namespace treeDiM.StackBuilder.Desktop
             // select depending on FormatName
             int iSel = cbFileFormat.Items.Count - 1;
             if (iSel > 0)
-            { 
+            {
                 int iFormat = cbFileFormat.FindStringExact(FormatName);
-                iSel = iFormat != -1 ? iFormat : 0;                
+                iSel = iFormat != -1 ? iFormat : 0;
             }
             cbFileFormat.SelectedIndex = iSel;
         }
@@ -108,7 +158,7 @@ namespace treeDiM.StackBuilder.Desktop
             try
             {
                 RobotPreparation.AngleItem = uCtrlConveyorSettings.AngleCase;
-                RobotPreparation.AngleGrabber = uCtrlConveyorSettings.AngleGrabber;
+                RobotPreparation.AngleGrabber = GrapperAngle;
                 RobotPreparation.DockingOffsets = DockingOffsets;
 
                 var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());
@@ -160,7 +210,7 @@ namespace treeDiM.StackBuilder.Desktop
             if (null == CurrentExporter) return;
 
             pbBrandLogo.Image = CurrentExporter.BrandLogo;
-            
+
             // save format 
             FormatName = CurrentExporter.Name;
 
@@ -182,7 +232,7 @@ namespace treeDiM.StackBuilder.Desktop
                 splitContainerVert.Panel2.Show();
             else
                 splitContainerVert.Panel2.Hide();
- 
+
             OnInputChanged(sender, e);
         }
         private void OnInputChanged(object sender, EventArgs e)
@@ -228,11 +278,17 @@ namespace treeDiM.StackBuilder.Desktop
             get => uCtrlDockingOffset.Value;
             set => uCtrlDockingOffset.Value = value;
         }
+        private int GrapperAngle
+        { 
+            get => (int) nudGripperAngle.Value;
+            set => nudGripperAngle.Value = value;
+        }
         #endregion
         #region Data members
         protected ILog _log = LogManager.GetLogger(typeof(FormExporter));
         public AnalysisLayered Analysis { get; set; }
         public RobotPreparation RobotPreparation { get; set; }
+        private List<ConveyorSetting> ListConveyorSettings = new List<ConveyorSetting>();
         #endregion
     }
 }

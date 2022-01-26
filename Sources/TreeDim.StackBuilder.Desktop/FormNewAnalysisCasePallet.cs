@@ -123,6 +123,7 @@ namespace treeDiM.StackBuilder.Desktop
                         , null, null, null
                         , BuildConstraintSet()
                         , layerEncaps
+                        , new List<ConveyorSetting>()
                         );
                 }
                 else
@@ -265,6 +266,7 @@ namespace treeDiM.StackBuilder.Desktop
                     , null, null, null
                     , constraintSet
                     , listLayer
+                    , new List<ConveyorSetting>()
                     );
                 Close();
             }

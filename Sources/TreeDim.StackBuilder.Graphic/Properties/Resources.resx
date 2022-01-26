@@ -133,6 +133,9 @@
   <data name="ID_CANNOTADD" xml:space="preserve">
     <value>Can not insert box/case at default location.</value>
   </data>
+  <data name="ID_CLICKCASEFORGROUP" xml:space="preserve">
+    <value>Click case {0} out of {1}.</value>
+  </data>
   <data name="ID_NOTSUPPORTED" xml:space="preserve">
     <value>Not supported.</value>
   </data>

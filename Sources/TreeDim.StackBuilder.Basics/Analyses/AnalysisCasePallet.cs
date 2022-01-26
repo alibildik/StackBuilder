@@ -1,4 +1,5 @@
 ﻿#region Using directives
+using System.Collections.Generic;
 using Sharp3D.Math.Core;
 using System.Drawing;
 #endregion
@@ -167,6 +168,10 @@ namespace treeDiM.StackBuilder.Basics
                     + labelWeight;
             }
         }
+        #endregion
+
+        #region Robot related members
+        public List<ConveyorSetting> ConveyorSettings = new List<ConveyorSetting>(); 
         #endregion
 
         #region Non-Public Members

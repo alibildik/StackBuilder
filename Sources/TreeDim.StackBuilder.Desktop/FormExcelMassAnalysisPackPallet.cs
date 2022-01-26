@@ -177,6 +177,12 @@ namespace treeDiM.StackBuilder.Desktop
                 // image
                 if (GenerateImage)
                 {
+                    Excel.Range packDimHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + 1];
+                    packDimHeaderCell.Value = Resources.ID_RESULT_PACKDIM + " (" + UnitsManager.LengthUnitString + ")";
+
+                    Excel.Range packWeightHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + 1];
+                    packWeightHeaderCell.Value = Resources.ID_RESULT_PACKWEIGHT + " (" + UnitsManager.MassUnitString + ")";
+
                     Excel.Range imagePackHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + 1];
                     imagePackHeaderCell.Value = Resources.ID_RESULT_PACKIMAGE;
                     imagePackHeaderCell.ColumnWidth = 24;
@@ -197,13 +203,10 @@ namespace treeDiM.StackBuilder.Desktop
                         ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount)+rowCount
                         ];
                 }
-
-
                 // ### header : end
 
                 // set bold font for all header row
                 // modify range for images
-
                 for (var iRow = 2; iRow <= rowCount; ++iRow)
                 {
                     iOutputFieldCount = palletColStartIndex;
@@ -236,6 +239,8 @@ namespace treeDiM.StackBuilder.Desktop
                         double loadLength = 0.0, loadWidth = 0.0, loadHeight = 0.0;
                         double loadWeight = 0.0, totalPalletWeight = 0.0;
                         double palletLength = 0.0, palletWidth = 0.0, palletHeight = 0.0;
+                        double packLength = 0.0, packWidth = 0.0, packHeight = 0.0;
+                        double packWeight = 0.0;
                         double stackEfficiency = 0.0;
                         string stackImagePath = string.Empty;
                         string packImagePath = string.Empty;
@@ -250,6 +255,7 @@ namespace treeDiM.StackBuilder.Desktop
                             , ref stackCount
                             , ref layerCount, ref iTIcount, ref sTiHi
                             , ref loadWeight, ref totalPalletWeight
+                            , ref packLength, ref packWidth, ref packHeight, ref packWeight
                             , ref palletLength, ref palletWidth, ref palletHeight
                             , ref loadLength, ref loadWidth, ref loadHeight 
                             , ref stackEfficiency
@@ -282,9 +288,15 @@ namespace treeDiM.StackBuilder.Desktop
                         // efficiency
                         var efficiencyCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
                         efficiencyCell.Value = Math.Round(stackEfficiency, 2);
+
                         // insert image
                         if (GenerateImage)
                         {
+                            var packDimCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                            packDimCell.Value = $"{packLength}x{packWidth}x{packHeight}";
+                            var packWeightCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                            packWeightCell.Value = packWeight;
+
                             var imagePackCell = xlSheet.Range[
                                 ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + iRow,
                                 ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow
@@ -337,6 +349,7 @@ namespace treeDiM.StackBuilder.Desktop
             , ref int stackCount
             , ref int layerCount, ref int TICount, ref string sTiHi
             , ref double loadWeight, ref double totalWeight
+            , ref double packLength, ref double packWidth, ref double packHeight, ref double packWeight
             , ref double palletLength, ref double palletWidth, ref double palletHeight
             , ref double loadLength, ref double loadWidth, ref double loadHeight
             , ref double stackEfficiency
@@ -367,8 +380,6 @@ namespace treeDiM.StackBuilder.Desktop
                    paramSetOptimPack
                    );
             List<AnalysisLayered> analyses = packOptimizer.BuildAnalyses(false);
-
-
             
             if (analyses.Any())
             {
@@ -425,6 +436,9 @@ namespace treeDiM.StackBuilder.Desktop
                         graphicsPack.Flush();
                         var bmpPack = graphicsPack.Bitmap;
                         bmpPack.Save(packImagePath, System.Drawing.Imaging.ImageFormat.Png);
+
+                        packLength = packProperties.Length; packWidth = packProperties.Width; packHeight = packProperties.Height;
+                        packWeight = packProperties.Weight;
                     }
                     // pallet
                     var graphics = new Graphics3DImage(new Size(ImageSize, ImageSize))

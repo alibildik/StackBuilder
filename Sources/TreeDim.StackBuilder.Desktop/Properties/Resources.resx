@@ -860,8 +860,14 @@ Continue?</value>
   <data name="ID_RESULT_NOSOLUTIONFOUND" xml:space="preserve">
     <value>No valid solution found!</value>
   </data>
+  <data name="ID_RESULT_PACKDIM" xml:space="preserve">
+    <value>Pack dimension ({0})</value>
+  </data>
   <data name="ID_RESULT_PACKIMAGE" xml:space="preserve">
     <value>Pack image</value>
+  </data>
+  <data name="ID_RESULT_PACKWEIGHT" xml:space="preserve">
+    <value>Pack weight ({0})</value>
   </data>
   <data name="ID_RESULT_PALLETDIMENSIONS" xml:space="preserve">
     <value>Pallet dimensions</value>

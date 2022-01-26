@@ -434,7 +434,9 @@ namespace treeDiM.StackBuilder.Desktop
                         AnalysisName, AnalysisDescription,
                         packProperties, SelectedPallet,
                         new List<InterlayerProperties>(), null, null, null,
-                        BuildConstraintSet(), analysisSel.SolutionLay.LayerEncaps);
+                        BuildConstraintSet(),
+                        analysisSel.SolutionLay.LayerEncaps,
+                        new List<ConveyorSetting>());
                 }
             }
             catch (Exception ex)
