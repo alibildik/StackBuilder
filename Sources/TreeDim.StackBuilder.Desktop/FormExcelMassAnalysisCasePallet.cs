@@ -213,7 +213,15 @@ namespace treeDiM.StackBuilder.Desktop
                         // get name
                         string name = (xlSheet.Range[colName + iRow, colName + iRow].Value).ToString();
                         // get description
-                        string description = string.IsNullOrEmpty(colDescription) ? string.Empty : (xlSheet.Range[colDescription + iRow, colDescription + iRow].Value).ToString();
+                        string description = string.Empty;
+                        try
+                        {
+                            description = string.IsNullOrEmpty(colDescription) ? string.Empty : (xlSheet.Range[colDescription + iRow, colDescription + iRow].Value).ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            _log.Error(ex.ToString());
+                        }
                         // get length
                         double length = (double)xlSheet.Range[colLength + iRow, colLength + iRow].Value;
                         // get width

@@ -41,8 +41,6 @@
             this.cbCoordinates = new System.Windows.Forms.ComboBox();
             this.lbCoordinates = new System.Windows.Forms.Label();
             this.tabPageAngles = new System.Windows.Forms.TabPage();
-            this.nudGripperAngle = new System.Windows.Forms.NumericUpDown();
-            this.lbGripperAngle = new System.Windows.Forms.Label();
             this.uCtrlConveyorSettings = new treeDiM.StackBuilder.Graphics.Controls.UCtrlConveyorSettings();
             this.tabPageLayerPrep = new System.Windows.Forms.TabPage();
             this.splitContainerLayer = new System.Windows.Forms.SplitContainer();
@@ -65,7 +63,6 @@
             this.tabCtrlFeatures.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
             this.tabPageAngles.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGripperAngle)).BeginInit();
             this.tabPageLayerPrep.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerLayer)).BeginInit();
             this.splitContainerLayer.Panel1.SuspendLayout();
@@ -173,38 +170,17 @@
             // 
             // tabPageAngles
             // 
-            this.tabPageAngles.Controls.Add(this.nudGripperAngle);
-            this.tabPageAngles.Controls.Add(this.lbGripperAngle);
             this.tabPageAngles.Controls.Add(this.uCtrlConveyorSettings);
             resources.ApplyResources(this.tabPageAngles, "tabPageAngles");
             this.tabPageAngles.Name = "tabPageAngles";
             this.tabPageAngles.UseVisualStyleBackColor = true;
-            // 
-            // nudGripperAngle
-            // 
-            resources.ApplyResources(this.nudGripperAngle, "nudGripperAngle");
-            this.nudGripperAngle.Increment = new decimal(new int[] {
-            90,
-            0,
-            0,
-            0});
-            this.nudGripperAngle.Maximum = new decimal(new int[] {
-            270,
-            0,
-            0,
-            0});
-            this.nudGripperAngle.Name = "nudGripperAngle";
-            // 
-            // lbGripperAngle
-            // 
-            resources.ApplyResources(this.lbGripperAngle, "lbGripperAngle");
-            this.lbGripperAngle.Name = "lbGripperAngle";
             // 
             // uCtrlConveyorSettings
             // 
             resources.ApplyResources(this.uCtrlConveyorSettings, "uCtrlConveyorSettings");
             this.uCtrlConveyorSettings.AngleCase = 0;
             this.uCtrlConveyorSettings.BoxProperties = null;
+            this.uCtrlConveyorSettings.GripperAngle = 0;
             this.uCtrlConveyorSettings.MaxDropNumber = 1;
             this.uCtrlConveyorSettings.Name = "uCtrlConveyorSettings";
             // 
@@ -303,8 +279,6 @@
             this.tabPageSettings.ResumeLayout(false);
             this.tabPageSettings.PerformLayout();
             this.tabPageAngles.ResumeLayout(false);
-            this.tabPageAngles.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGripperAngle)).EndInit();
             this.tabPageLayerPrep.ResumeLayout(false);
             this.splitContainerLayer.Panel1.ResumeLayout(false);
             this.splitContainerLayer.Panel1.PerformLayout();
@@ -340,7 +314,5 @@
         private Graphics.Controls.UCtrlConveyorSettings uCtrlConveyorSettings;
         private System.Windows.Forms.TabPage tabPageDockingOffsets;
         private treeDiM.Basics.UCtrlTriDouble uCtrlDockingOffset;
-        private System.Windows.Forms.NumericUpDown nudGripperAngle;
-        private System.Windows.Forms.Label lbGripperAngle;
     }
 }

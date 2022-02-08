@@ -85,10 +85,10 @@ namespace treeDiM.StackBuilder.Desktop
                     ListConveyorSettings.AddRange(
                         new ConveyorSetting[]
                         {
-                            new ConveyorSetting(0, 2),
-                            new ConveyorSetting(90, 2),
-                            new ConveyorSetting(0, 3),
-                            new ConveyorSetting(90, 3)
+                            new ConveyorSetting(0, 2, 0),
+                            new ConveyorSetting(90, 2, 0),
+                            new ConveyorSetting(0, 3, 0),
+                            new ConveyorSetting(90, 3, 0)
                         }
                         );
                 }
@@ -158,7 +158,7 @@ namespace treeDiM.StackBuilder.Desktop
             try
             {
                 RobotPreparation.AngleItem = uCtrlConveyorSettings.AngleCase;
-                RobotPreparation.AngleGrabber = GrapperAngle;
+                RobotPreparation.AngleGrabber = uCtrlConveyorSettings.GripperAngle;
                 RobotPreparation.DockingOffsets = DockingOffsets;
 
                 var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());
@@ -277,11 +277,6 @@ namespace treeDiM.StackBuilder.Desktop
         {
             get => uCtrlDockingOffset.Value;
             set => uCtrlDockingOffset.Value = value;
-        }
-        private int GrapperAngle
-        { 
-            get => (int) nudGripperAngle.Value;
-            set => nudGripperAngle.Value = value;
         }
         #endregion
         #region Data members

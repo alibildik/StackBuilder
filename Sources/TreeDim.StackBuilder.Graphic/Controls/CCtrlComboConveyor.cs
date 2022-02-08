@@ -36,7 +36,7 @@ namespace treeDiM.StackBuilder.Graphics.Controls
                         ShowFrameRef = false
                     };
                     e.Graphics.DrawImage(
-                        imageGenerator.GenerateImage(Packable, item.Number, item.Angle),
+                        imageGenerator.GenerateImage(Packable, item.Number, item.Angle, item.GripperAngle),
                         e.Bounds.Left,
                         e.Bounds.Top
                         );

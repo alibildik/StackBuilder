@@ -37,7 +37,7 @@ namespace treeDiM.StackBuilder.Graphics.Controls
                         BackgroundColor = selected ? Color.LightBlue : Color.White,
                     };
                     e.Graphics.DrawImage(
-                        imageGenerator.GenerateImage(Packable, item.Number, item.Angle),
+                        imageGenerator.GenerateImage(Packable, item.Number, item.Angle, item.GripperAngle),
                         e.Bounds.Left,
                         e.Bounds.Top
                         );

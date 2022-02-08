@@ -40,8 +40,8 @@
     <MinimumRequiredVersion>3.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>48</ApplicationRevision>
-    <ApplicationVersion>3.0.2.48</ApplicationVersion>
+    <ApplicationRevision>49</ApplicationRevision>
+    <ApplicationVersion>3.0.2.49</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1479,6 +1479,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.resx">
       <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.ru.resx">
       <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
@@ -1501,15 +1502,13 @@
     <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.resx">
       <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormExporter.it.resx">
+    <EmbeddedResource Include="FormExporter.fr.resx">
       <DependentUpon>FormExporter.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormExporter.resx">
       <DependentUpon>FormExporter.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormExporter.sl.resx">
-      <DependentUpon>FormExporter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormImportExcelCatalog.de.resx">
       <DependentUpon>FormImportExcelCatalog.cs</DependentUpon>

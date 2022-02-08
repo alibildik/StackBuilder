@@ -319,6 +319,9 @@
     <EmbeddedResource Include="Controls\Graphics2DRobotDropEditor.resx">
       <DependentUpon>Graphics2DRobotDropEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Graphics3DConveyor.resx">
+      <DependentUpon>Graphics3DConveyor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCtrlCaseOrientation.resx">
       <DependentUpon>UCtrlCaseOrientation.cs</DependentUpon>
     </EmbeddedResource>

@@ -29,8 +29,16 @@ namespace treeDiM.StackBuilder.Graphics
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Graphics3DConveyor));
+            this.SuspendLayout();
+            // 
+            // Graphics3DConveyor
+            // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "Graphics3DConveyor";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

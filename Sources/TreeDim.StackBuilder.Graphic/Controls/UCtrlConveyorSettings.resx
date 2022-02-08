@@ -117,53 +117,242 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="bnAdd.Text" xml:space="preserve">
-    <value>Add</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lbCaseOrientConveyor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
-  <data name="&gt;&gt;nudCaseAngle.Name" xml:space="preserve">
-    <value>nudCaseAngle</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lbCaseOrientConveyor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;lbMaxNumber.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="lbCaseOrientConveyor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lbCaseOrientConveyor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 163</value>
+  </data>
+  <data name="lbCaseOrientConveyor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="lbCaseOrientConveyor.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lbCaseOrientConveyor.Text" xml:space="preserve">
+    <value>Case angle</value>
+  </data>
+  <data name="&gt;&gt;lbCaseOrientConveyor.Name" xml:space="preserve">
+    <value>lbCaseOrientConveyor</value>
+  </data>
+  <data name="&gt;&gt;lbCaseOrientConveyor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbCaseOrientConveyor.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;bnRemove.Name" xml:space="preserve">
-    <value>bnRemove</value>
+  <data name="&gt;&gt;lbCaseOrientConveyor.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="nudCaseAngle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lbCaseOrientConveyor.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="nudCaseAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 161</value>
   </data>
-  <data name="&gt;&gt;graph3DConveyor.Name" xml:space="preserve">
-    <value>graph3DConveyor</value>
+  <data name="nudCaseAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 20</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lbConveyorSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 304</value>
+  <data name="nudCaseAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;nudMaxNumber.Type" xml:space="preserve">
+  <data name="&gt;&gt;nudCaseAngle.Name" xml:space="preserve">
+    <value>nudCaseAngle</value>
+  </data>
+  <data name="&gt;&gt;nudCaseAngle.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lbCaseOrientConveyor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;nudCaseAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;nudCaseAngle.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="lbMaxNumber.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
+  <data name="lbMaxNumber.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbMaxNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbMaxNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 188</value>
+  </data>
+  <data name="lbMaxNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 13</value>
+  </data>
+  <data name="lbMaxNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lbMaxNumber.Text" xml:space="preserve">
+    <value>Max. number</value>
+  </data>
+  <data name="&gt;&gt;lbMaxNumber.Name" xml:space="preserve">
+    <value>lbMaxNumber</value>
+  </data>
+  <data name="&gt;&gt;lbMaxNumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbMaxNumber.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbMaxNumber.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="nudMaxNumber.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="nudMaxNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 186</value>
+  </data>
+  <data name="nudMaxNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 20</value>
+  </data>
+  <data name="nudMaxNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;nudMaxNumber.Name" xml:space="preserve">
+    <value>nudMaxNumber</value>
+  </data>
+  <data name="&gt;&gt;nudMaxNumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nudMaxNumber.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;nudMaxNumber.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="bnAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
+  </data>
+  <data name="bnAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bnAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 258</value>
+  </data>
+  <data name="bnAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 23</value>
+  </data>
+  <data name="bnAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="bnAdd.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="&gt;&gt;bnAdd.Name" xml:space="preserve">
+    <value>bnAdd</value>
+  </data>
+  <data name="&gt;&gt;bnAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnAdd.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bnAdd.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="bnRemove.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="bnRemove.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bnRemove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 285</value>
+  </data>
+  <data name="bnRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 23</value>
+  </data>
+  <data name="bnRemove.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="bnRemove.Text" xml:space="preserve">
     <value>Remove</value>
   </data>
-  <data name="lbCaseOrientConveyor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
+  <data name="&gt;&gt;bnRemove.Name" xml:space="preserve">
+    <value>bnRemove</value>
+  </data>
+  <data name="&gt;&gt;bnRemove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnRemove.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bnRemove.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lbGripperAngle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lbGripperAngle.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbGripperAngle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbGripperAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 214</value>
+  </data>
+  <data name="lbGripperAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="lbGripperAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lbGripperAngle.Text" xml:space="preserve">
+    <value>Gripper angle</value>
+  </data>
+  <data name="&gt;&gt;lbGripperAngle.Name" xml:space="preserve">
+    <value>lbGripperAngle</value>
+  </data>
+  <data name="&gt;&gt;lbGripperAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbGripperAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbGripperAngle.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="nudGripperAngle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="nudGripperAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 212</value>
+  </data>
+  <data name="nudGripperAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 20</value>
+  </data>
+  <data name="nudGripperAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;nudGripperAngle.Name" xml:space="preserve">
+    <value>nudGripperAngle</value>
+  </data>
+  <data name="&gt;&gt;nudGripperAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nudGripperAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;nudGripperAngle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lbConveyorSetting.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="lbConveyorSetting.ItemHeight" type="System.Int32, mscorlib">
     <value>50</value>
@@ -171,184 +360,61 @@
   <data name="lbConveyorSetting.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 4</value>
   </data>
-  <data name="lbMaxNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 188</value>
+  <data name="lbConveyorSetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 304</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bnRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lbMaxNumber.Text" xml:space="preserve">
-    <value>Max. number</value>
-  </data>
-  <data name="nudMaxNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 20</value>
-  </data>
-  <data name="bnAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="bnRemove.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="lbConveyorSetting.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="bnAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 212</value>
-  </data>
-  <data name="&gt;&gt;nudCaseAngle.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lbMaxNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 13</value>
-  </data>
-  <data name="&gt;&gt;bnRemove.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;bnAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbMaxNumber.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;graph3DConveyor.ZOrder" xml:space="preserve">
+  <data name="lbConveyorSetting.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="nudCaseAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 161</value>
-  </data>
-  <data name="bnRemove.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="&gt;&gt;lbCaseOrientConveyor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbMaxNumber.Name" xml:space="preserve">
-    <value>lbMaxNumber</value>
-  </data>
-  <data name="&gt;&gt;nudMaxNumber.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="nudMaxNumber.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 313</value>
-  </data>
-  <data name="lbMaxNumber.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="&gt;&gt;lbConveyorSetting.Name" xml:space="preserve">
     <value>lbConveyorSetting</value>
   </data>
-  <data name="bnRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 23</value>
-  </data>
-  <data name="lbCaseOrientConveyor.Text" xml:space="preserve">
-    <value>Case angle</value>
-  </data>
-  <data name="lbCaseOrientConveyor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 163</value>
-  </data>
-  <data name="nudMaxNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 186</value>
-  </data>
-  <data name="&gt;&gt;bnAdd.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;nudMaxNumber.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="nudCaseAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 20</value>
-  </data>
-  <data name="bnRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 285</value>
-  </data>
   <data name="&gt;&gt;lbConveyorSetting.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlListBoxConveyor, treeDiM.StackBuilder.Graphics, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlListBoxConveyor, treeDiM.StackBuilder.Graphics, Version=3.0.2.49, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;nudCaseAngle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lbConveyorSetting.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;bnAdd.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbConveyorSetting.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="graph3DConveyor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;bnRemove.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>UCtrlConveyorSettings</value>
-  </data>
-  <data name="&gt;&gt;lbConveyorSetting.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lbCaseOrientConveyor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="&gt;&gt;nudMaxNumber.Name" xml:space="preserve">
-    <value>nudMaxNumber</value>
-  </data>
-  <data name="&gt;&gt;lbMaxNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="graph3DConveyor.Location" type="System.Drawing.Point, System.Drawing">
     <value>130, 4</value>
-  </data>
-  <data name="nudMaxNumber.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="graph3DConveyor.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;graph3DConveyor.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lbMaxNumber.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="lbConveyorSetting.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;nudCaseAngle.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="&gt;&gt;lbConveyorSetting.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="graph3DConveyor.Size" type="System.Drawing.Size, System.Drawing">
     <value>164, 153</value>
   </data>
-  <data name="&gt;&gt;bnAdd.Name" xml:space="preserve">
-    <value>bnAdd</value>
+  <data name="graph3DConveyor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="nudCaseAngle.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lbCaseOrientConveyor.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lbCaseOrientConveyor.Name" xml:space="preserve">
-    <value>lbCaseOrientConveyor</value>
+  <data name="&gt;&gt;graph3DConveyor.Name" xml:space="preserve">
+    <value>graph3DConveyor</value>
   </data>
   <data name="&gt;&gt;graph3DConveyor.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Graphics3DConveyor, treeDiM.StackBuilder.Graphics, Version=3.0.2.48, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Graphics3DConveyor, treeDiM.StackBuilder.Graphics, Version=3.0.2.49, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="bnAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 23</value>
+  <data name="&gt;&gt;graph3DConveyor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;graph3DConveyor.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>fr</value>
-  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 313</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>UCtrlConveyorSettings</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

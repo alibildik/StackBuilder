@@ -1,10 +1,7 @@
 ﻿#region Using directives
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
-
-using Sharp3D.Math.Core;
 
 using treeDiM.StackBuilder.Basics;
 #endregion
@@ -45,7 +42,7 @@ namespace treeDiM.StackBuilder.Graphics.Controls
         }
         private void OnSettingAdd(object sender, EventArgs e)
         {
-            ListSettings.Add(new ConveyorSetting(AngleCase, MaxDropNumber));
+            ListSettings.Add(new ConveyorSetting(AngleCase, MaxDropNumber, GripperAngle));
             FillListBox();
             ConveyorSettingAddedRemoved?.Invoke(this, e);
         }
@@ -77,6 +74,11 @@ namespace treeDiM.StackBuilder.Graphics.Controls
         {
             get => (int)nudMaxNumber.Value;
             set => nudMaxNumber.Value = value;
+        }
+        public int GripperAngle
+        {
+            get => (int)nudGripperAngle.Value;
+            set => nudGripperAngle.Value = value;
         }
         #endregion
         #region Initialization method

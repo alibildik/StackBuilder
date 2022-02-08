@@ -31,7 +31,7 @@ namespace treeDiM.StackBuilder.Graphics
     }
     internal class ImageGenConveyorSetting : ImageGen
     {
-        public Image GenerateImage(PackableBrick packable, int number, int angle)
+        public Image GenerateImage(PackableBrick packable, int number, int angle, int gripperAngle)
         {
             var graphics = new Graphics3DImage(Size)
             {
@@ -40,10 +40,10 @@ namespace treeDiM.StackBuilder.Graphics
                 Target = Vector3D.Zero,
                 BackgroundColor = BackgroundColor
             };
-            Draw(graphics, packable, number, angle);
+            Draw(graphics, packable, number, angle, gripperAngle);
             return graphics.Bitmap;
         }
-        public void Draw(Graphics3D graphics, PackableBrick packable, int number, int angle)
+        public void Draw(Graphics3D graphics, PackableBrick packable, int number, int angle, int gripperAngle)
         {
             // draw conveyor belt
             double offsetBelt = 100.0;
@@ -106,6 +106,9 @@ namespace treeDiM.StackBuilder.Graphics
                     new Box(0, packable, new BoxPosition(new Vector3D(xOffset + (number - i - 1) * xStep, yOffset, 0.0), axis0, axis1))
                     );
             graphics.Flush();
+
+            string csGripperAngle = Properties.Resources.ID_GRIPPERANGLE;
+            ThumbnailMarker.Annotate(graphics.Graphics, graphics.Size, $"{csGripperAngle}={gripperAngle}");
         }
         public void ConvertAngle(double angle, PackableBrick packable,
             ref HalfAxis.HAxis axis0, ref HalfAxis.HAxis axis1, ref double xStep, ref double xOffset, ref double yOffset)

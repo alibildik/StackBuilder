@@ -1678,7 +1678,8 @@ namespace treeDiM.StackBuilder.Basics
                         XmlElement eltConveyorSetting = node as XmlElement;
                         string sNumber = eltConveyorSetting.Attributes["Number"].Value;
                         string sAngle = eltConveyorSetting.Attributes["Angle"].Value;
-                        conveyorSettings.Add(new ConveyorSetting(int.Parse(sAngle), int.Parse(sNumber)));
+                        string sGripperAngle = eltConveyorSetting.Attributes["GripperAngle"].Value;
+                        conveyorSettings.Add(new ConveyorSetting(int.Parse(sAngle), int.Parse(sNumber), int.Parse(sGripperAngle)));
                     }
                 }
             }
@@ -3631,6 +3632,10 @@ namespace treeDiM.StackBuilder.Basics
                 XmlAttribute attNumber = xmlDoc.CreateAttribute("Number");
                 attNumber.Value = $"{cs.Number}";
                 eltConveyorSetting.Attributes.Append(attNumber);
+                // angle gripper
+                XmlAttribute attGripperAngle = xmlDoc.CreateAttribute("GripperAngle");
+                attGripperAngle.Value = $"{cs.GripperAngle}";
+                eltConveyorSetting.Attributes.Append(attGripperAngle);
             }
         }
         #endregion

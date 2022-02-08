@@ -119,6 +119,15 @@ namespace treeDiM.StackBuilder.Graphics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gripper.
+        /// </summary>
+        internal static string ID_GRIPPERANGLE {
+            get {
+                return ResourceManager.GetString("ID_GRIPPERANGLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not supported..
         /// </summary>
         internal static string ID_NOTSUPPORTED {

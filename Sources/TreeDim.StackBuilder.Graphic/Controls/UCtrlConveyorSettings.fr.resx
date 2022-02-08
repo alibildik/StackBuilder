@@ -143,6 +143,9 @@
   <data name="bnAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="bnAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 241</value>
+  </data>
   <data name="bnAdd.Text" xml:space="preserve">
     <value>Ajouter</value>
   </data>
