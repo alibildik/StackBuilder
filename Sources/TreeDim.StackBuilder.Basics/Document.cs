@@ -3615,27 +3615,35 @@ namespace treeDiM.StackBuilder.Basics
                 eltPli.Attributes.Append(attAxis);
             }
         }
-        private void SaveConveyorSettings(List<ConveyorSetting> conveyorSettings, XmlElement eltParent, XmlDocument xmlDoc)
+        private void SaveConveyorSettings(List<ConveyorSetting> conveyorSettings, XmlElement xmlAnalysisElt, XmlDocument xmlDoc)
         {
-            // ConveyorSettings
-            XmlElement eltConveyorSettings = xmlDoc.CreateElement("ConveyorSettings");
-            eltConveyorSettings.AppendChild(eltConveyorSettings);
-            foreach (var cs in conveyorSettings)
+            try
             {
-                XmlElement eltConveyorSetting = xmlDoc.CreateElement("ConveyorSetting");
-                eltConveyorSettings.AppendChild(eltConveyorSetting);
-                // angle
-                XmlAttribute attAngle = xmlDoc.CreateAttribute("Angle");
-                attAngle.Value = $"{cs.Angle}";
-                eltConveyorSetting.Attributes.Append(attAngle);
-                // number
-                XmlAttribute attNumber = xmlDoc.CreateAttribute("Number");
-                attNumber.Value = $"{cs.Number}";
-                eltConveyorSetting.Attributes.Append(attNumber);
-                // angle gripper
-                XmlAttribute attGripperAngle = xmlDoc.CreateAttribute("GripperAngle");
-                attGripperAngle.Value = $"{cs.GripperAngle}";
-                eltConveyorSetting.Attributes.Append(attGripperAngle);
+                // create conveyor settings elt
+                XmlElement eltConveyorSettings = xmlDoc.CreateElement("ConveyorSettings");
+                xmlAnalysisElt.AppendChild(eltConveyorSettings);
+
+                foreach (var cs in conveyorSettings)
+                {
+                    XmlElement eltConveyorSetting = xmlDoc.CreateElement("ConveyorSetting");
+                    eltConveyorSettings.AppendChild(eltConveyorSetting);
+                    // angle
+                    XmlAttribute attAngle = xmlDoc.CreateAttribute("Angle");
+                    attAngle.Value = $"{cs.Angle}";
+                    eltConveyorSetting.Attributes.Append(attAngle);
+                    // number
+                    XmlAttribute attNumber = xmlDoc.CreateAttribute("Number");
+                    attNumber.Value = $"{cs.Number}";
+                    eltConveyorSetting.Attributes.Append(attNumber);
+                    // angle gripper
+                    XmlAttribute attGripperAngle = xmlDoc.CreateAttribute("GripperAngle");
+                    attGripperAngle.Value = $"{cs.GripperAngle}";
+                    eltConveyorSetting.Attributes.Append(attGripperAngle);
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.Message);
             }
         }
         #endregion
@@ -3726,7 +3734,6 @@ namespace treeDiM.StackBuilder.Basics
             else if (analysis is AnalysisPalletsOnPallet) return "AnalysisPalletsOnPallet";
             else return TypeDescriptor.GetClassName(analysis.GetType());
         }
-
         private void SaveAnalysis(AnalysisHomo analysis, XmlElement parentElement, XmlDocument xmlDoc)
         {
             // create analysis element

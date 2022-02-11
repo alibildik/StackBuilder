@@ -148,7 +148,6 @@ namespace treeDiM.StackBuilder.Engine
             layer.UpdateMaxSpace( spaceYLength, Name );
             layer.UpdateMaxSpace( spaceYWidth, Name );
         }
-
         public override bool GetLayerDimensions(ILayer2D layer, out double actualLength, out double actualWidth)
         {
             double palletLength = GetPalletLength(layer);
@@ -170,9 +169,7 @@ namespace treeDiM.StackBuilder.Engine
                     || ((maxSizeYWidth % 2 == 0) && (fillSizeXWidth * fillSizeYWidth > 0))
                     );
         }
-
         #region Non-Public Members
-
         void GetSizeXY(double boxLength, double boxWidth, double palletLength, double palletWidth,
             out int optSizeXLength,  out int optSizeYLength, out int optSizeXWidth, out int optSizeYWidth,
             out int optFillSizeXLength, out int optFillSizeYLength, out int optFillSizeXWidth, out int optFillSizeYWidth)
@@ -225,8 +222,6 @@ namespace treeDiM.StackBuilder.Engine
                     int fillSizeYWidth = (int)Math.Floor(spaceYWidth / boxWidth);
 
                     int countLayer = sizeXLength * sizeYLength + sizeXWidth * sizeYWidth;
-                    /*+ fillSizeYLength * fillSizeXLength + fillSizeYWidth * fillSizeXWidth;*/
-
                     if (countLayer > optFound)
                     {
                         optFound = countLayer;
@@ -248,7 +243,6 @@ namespace treeDiM.StackBuilder.Engine
                 --sizeXLength;
             }
         }
-
         #endregion
     }
 }
