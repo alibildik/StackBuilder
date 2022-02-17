@@ -16,7 +16,12 @@ namespace treeDiM.StackBuilder.Basics
         public enum NeighbourDir { RIGHT, TOP, LEFT, BOTTOM}
         #endregion
         #region Constructor
-        public RobotDrop(RobotLayer parent) { Parent = parent; }
+        public RobotDrop(RobotLayer parent, ConveyorSetting conveyorSetting)
+        {
+            Parent = parent;
+            ConveyorSetting = conveyorSetting;
+            Number = null != ConveyorSetting ? ConveyorSetting.Number : 1;
+        }
         #endregion
         #region Public properties
         public PackableBrick Content => Parent.Parent.Content as PackableBrick;
@@ -31,7 +36,8 @@ namespace treeDiM.StackBuilder.Basics
                     + 0.5 * Dimensions.Y * HalfAxis.ToVector3D(BoxPositionMain.DirectionWidth)
                     + 0.5 * Dimensions.Z * Vector3D.CrossProduct(HalfAxis.ToVector3D(BoxPositionMain.DirectionLength), HalfAxis.ToVector3D(BoxPositionMain.DirectionWidth));
         public Vector2D Center2D => new Vector2D(BoxPositionMain.Position.X, BoxPositionMain.Position.Y) + 0.5 * (Length * VLength + Width * VWidth);
-        public int RawAngle
+        public Vector2D BottomRightCorner => new Vector2D(BoxPositionMain.BBox(Dimensions).PtMax.X, BoxPositionMain.BBox(Dimensions).PtMin.Y);
+        public int RawAngleSimple
         {
             get
             {
@@ -85,7 +91,7 @@ namespace treeDiM.StackBuilder.Basics
         }
         #endregion
         #region Static merge methods
-        public static RobotDrop Merge(RobotLayer layer, List<RobotDrop> robotDrops)
+        public static RobotDrop Merge(RobotLayer layer, List<RobotDrop> robotDrops, ConveyorSetting conveyorSetting)
         {
             Vector3D offset = Vector3D.Zero;
             PackDir packDir;
@@ -108,17 +114,17 @@ namespace treeDiM.StackBuilder.Basics
             else if (isRelLeft)
             { packDir = PackDir.WIDTH; offset = -(robotDrops.Count - 1) * rd0.SingleLength * HalfAxis.ToVector3D(rd0.BoxPositionMain.DirectionLength); }
             else
-                return null;               
+                return null;
 
-            return new RobotDrop(layer)
+
+            return new RobotDrop(layer, conveyorSetting)
             {
                 ID = -1,
-                Number = robotDrops.Count,
                 BoxPositionMain = new BoxPosition(rd0.BoxPositionMain.Position + offset, rd0.BoxPositionMain.DirectionLength, rd0.BoxPositionMain.DirectionWidth),
-                PackDirection = packDir
+                PackDirection = packDir,
             };
         }
-        public static bool CanMerge(List<RobotDrop> drops)
+        public static bool CanMerge(List<RobotDrop> drops, ConveyorSetting setting)
         {
             // at least 2
             if (drops.Count < 2)
@@ -151,7 +157,11 @@ namespace treeDiM.StackBuilder.Basics
             for (int i = 0; i < drops.Count - 1; ++i)
                 if (!drops[i + 1].IsRelLeft(drops[i]))
                     isRelLeft = false;
-            return isRelAbove || isRelUnder || isRelRight || isRelLeft;
+
+            bool forcePackLength = null != setting && (setting.Angle == 90 || setting.Angle == 270);
+            bool forcePackWidth = null != setting && (setting.Angle == 0 || setting.Angle == 180);
+
+            return ((isRelAbove || isRelUnder) && forcePackLength)|| (isRelRight || isRelLeft);
         }
         public static List<RobotDrop> Split(RobotLayer layer, RobotDrop drop)
         {
@@ -161,14 +171,15 @@ namespace treeDiM.StackBuilder.Basics
                 ? drop.SingleWidth * HalfAxis.ToVector3D(drop.BoxPositionMain.DirectionWidth)
                 : drop.SingleLength * HalfAxis.ToVector3D(drop.BoxPositionMain.DirectionLength);
 
+            var conveyorSetting = layer.Parent.Analysis.DefaultConveyorSetting;
+
             for (int i = 0; i < drop.Number; ++i)
                 list.Add(
-                    new RobotDrop(layer)
+                    new RobotDrop(layer, conveyorSetting)
                     {
                         ID = -1,
-                        PackDirection = drop.PackDirection, 
-                        BoxPositionMain = new BoxPosition(drop.BoxPositionMain.Position + i * offset, drop.BoxPositionMain.DirectionLength, drop.BoxPositionMain.DirectionWidth), 
-                        Number = 1
+                        BoxPositionMain = new BoxPosition(drop.BoxPositionMain.Position + i * offset, drop.BoxPositionMain.DirectionLength, drop.BoxPositionMain.DirectionWidth),
+                        PackDirection = PackDir.LENGTH
                     }
                     );
 
@@ -304,13 +315,30 @@ namespace treeDiM.StackBuilder.Basics
         }
         private Vector2D UnitVector(Vector2D pt0, Vector2D pt1) => (pt1 - pt0) / (pt1 - pt0).GetLength();
         private Vector2D OuterPt(Vector2D pt, double dist) => pt + dist * UnitVector(Center2D, pt);
+        /*
+        public PackDir PackDirection
+        {
+            get
+            {
+                switch (Setting.Angle)
+                {
+                    case 0: return PackDir.LENGTH;
+                    case 90: return PackDir.WIDTH;
+                    case 180: return PackDir.LENGTH;
+                    case 270: return PackDir.WIDTH;
+                    default: return PackDir.LENGTH;
+                }
+            }
+        }
+        */
         #endregion
         #region Data members
         public int ID { get; set; }
-        public int Number { get; set; }
-        public PackDir PackDirection { get; set; }
         public BoxPosition BoxPositionMain { get; set; }
         private RobotLayer Parent { get; set; }
+        public ConveyorSetting ConveyorSetting { get; set; }
+        public PackDir PackDirection { get; set; }
+        public int Number { get; set; }
         #endregion
     }
     #endregion
@@ -370,37 +398,6 @@ namespace treeDiM.StackBuilder.Basics
         }
         #endregion
         #region Merge methods / Split
-        /*
-        public bool Merge(int number, int[] arrIndexes)
-        {
-            RobotDrop mergeDrop = null;
-            if (number == 2)
-            {
-                if (!RobotDrop.CanMerge(Drops[arrIndexes[0]], Drops[arrIndexes[1]]))
-                    return false;
-                mergeDrop = RobotDrop.Merge2(this, Drops[arrIndexes[0]], Drops[arrIndexes[1]]);
-            }
-            else if (number == 3)
-            {
-                if (!RobotDrop.CanMerge(Drops[arrIndexes[0]], Drops[arrIndexes[1]], Drops[arrIndexes[2]]))
-                    return false;
-                mergeDrop = RobotDrop.Merge3(this, Drops[arrIndexes[0]], Drops[arrIndexes[1]], Drops[arrIndexes[2]]);
-            }
-            Drops.Add(mergeDrop);
-
-            // sort indexes in order to remove higher indexes first
-            Array.Sort(arrIndexes);
-            Array.Reverse(arrIndexes);
-
-            for (int i=0; i<number; ++i)
-                Drops.RemoveAt(arrIndexes[i]);
-
-            AutomaticRenumber();
-            Parent.Update();
-
-            return true;
-        }
-        */
         public bool Merge(ConveyorSetting setting, int[] arrIndexes)
         {
             List<RobotDrop> drops = new List<RobotDrop>();
@@ -408,9 +405,9 @@ namespace treeDiM.StackBuilder.Basics
             {
                 drops.Add(Drops[arrIndexes[i]]);
             }
-            if (RobotDrop.CanMerge(drops))
+            if (RobotDrop.CanMerge(drops, setting))
             {
-                var mergeDrop = RobotDrop.Merge(this, drops);
+                var mergeDrop = RobotDrop.Merge(this, drops, setting);
                 Drops.Add(mergeDrop);
 
                 // sort indexes in order to remove higher indexes first
@@ -458,6 +455,9 @@ namespace treeDiM.StackBuilder.Basics
             // initialize layer types
             List<Layer3DBox> listLayerBoxes = new List<Layer3DBox>();
             Analysis.SolutionLay.GetUniqueSolutionItemsAndOccurence(ref listLayerBoxes, ref ListLayerIndexes, ref ListInterlayerIndexes);
+            // conveyor setting
+            var conveyorSetting = analysis.DefaultConveyorSetting;
+
             // build layer types
             int layerID = 0;
             foreach (var layerBox in listLayerBoxes)
@@ -466,7 +466,12 @@ namespace treeDiM.StackBuilder.Basics
                 LayerTypes.Add(robotLayer);
                 foreach (var b in layerBox)
                 {
-                    robotLayer.Drops.Add(new RobotDrop(robotLayer) { BoxPositionMain = b, Number = 1, PackDirection = RobotDrop.PackDir.LENGTH });
+                    robotLayer.Drops.Add(
+                        new RobotDrop(robotLayer, conveyorSetting)
+                        {
+                            BoxPositionMain = b
+                        }
+                        );
                 }
                 robotLayer.AutomaticRenumber();
             }            
@@ -515,12 +520,10 @@ namespace treeDiM.StackBuilder.Basics
                     var v = bPos.Position;
 
                     robotLayer.Drops.Add(
-                        new RobotDrop(robotLayer)
+                        new RobotDrop(robotLayer, drop.ConveyorSetting)
                         {
                             ID = drop.ID,
-                            BoxPositionMain = new BoxPosition( new Vector3D(v.X, v.Y, zLayer), bPos.DirectionLength, bPos.DirectionWidth),
-                            Number = drop.Number,
-                            PackDirection = drop.PackDirection
+                            BoxPositionMain = new BoxPosition( new Vector3D(v.X, v.Y, zLayer), bPos.DirectionLength, bPos.DirectionWidth)
                         }
                         );
                 }
@@ -569,10 +572,6 @@ namespace treeDiM.StackBuilder.Basics
                 return cycleCount;
             }
         }
-        /// <summary>
-        /// Grabber angle
-        /// </summary>
-        public int AngleGrabber { get; set; }
         public int AngleItem { get; set; }
         public int Facing => (Analysis.Content as PackableBrick).Facing;
         public Vector3D DockingOffsets { get; set; } = new Vector3D(30.0, 30.0, 40.0);

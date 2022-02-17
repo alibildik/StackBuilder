@@ -71,6 +71,7 @@ namespace treeDiM.StackBuilder.Graphics
             this.cbConveyorSetting.Packable = null;
             this.cbConveyorSetting.Size = new System.Drawing.Size(85, 41);
             this.cbConveyorSetting.TabIndex = 2;
+            this.cbConveyorSetting.SelectedIndexChanged += new System.EventHandler(this.OnConveyorSettingChanged);
             this.cbConveyorSetting.SelectedValueChanged += new System.EventHandler(this.OnDropModeChanged);
             // 
             // cbCorner

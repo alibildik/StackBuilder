@@ -351,14 +351,14 @@
   <data name="&gt;&gt;tabPageSettings.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="uCtrlConveyorSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="uCtrlConveyorSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="uCtrlConveyorSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>0, 0</value>
   </data>
   <data name="uCtrlConveyorSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>366, 438</value>
+    <value>372, 444</value>
   </data>
   <data name="uCtrlConveyorSettings.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -367,7 +367,7 @@
     <value>uCtrlConveyorSettings</value>
   </data>
   <data name="&gt;&gt;uCtrlConveyorSettings.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.UCtrlConveyorSettings, treeDiM.StackBuilder.Graphics, Version=3.0.2.50, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Controls.UCtrlConveyorSettings, treeDiM.StackBuilder.Graphics, Version=3.0.2.51, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlConveyorSettings.Parent" xml:space="preserve">
     <value>tabPageAngles</value>
@@ -487,7 +487,7 @@
     <value>layerEditor</value>
   </data>
   <data name="&gt;&gt;layerEditor.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Graphics2DRobotDropEditor, treeDiM.StackBuilder.Graphics, Version=3.0.2.50, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Graphics2DRobotDropEditor, treeDiM.StackBuilder.Graphics, Version=3.0.2.51, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;layerEditor.Parent" xml:space="preserve">
     <value>splitContainerLayer.Panel2</value>
@@ -571,7 +571,7 @@
     <value>uCtrlDockingOffset</value>
   </data>
   <data name="&gt;&gt;uCtrlDockingOffset.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.50, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.51, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlDockingOffset.Parent" xml:space="preserve">
     <value>tabPageDockingOffsets</value>

@@ -657,6 +657,7 @@ namespace treeDiM.StackBuilder.Desktop
             {
                 FormExporter form = new FormExporter() { Analysis = analysis };
                 if (DialogResult.OK == form.ShowDialog()) { }
+                analysis.ParentDocument.Modify();
             }
             catch (Exception ex)
             {

@@ -40,8 +40,8 @@
     <MinimumRequiredVersion>3.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>50</ApplicationRevision>
-    <ApplicationVersion>3.0.2.50</ApplicationVersion>
+    <ApplicationRevision>51</ApplicationRevision>
+    <ApplicationVersion>3.0.2.51</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -333,6 +333,12 @@
     </Compile>
     <Compile Include="FormEditBitmaps.Designer.cs">
       <DependentUpon>FormEditBitmaps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditConveyorSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditConveyorSetting.Designer.cs">
+      <DependentUpon>FormEditConveyorSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="FormEditLayer.cs">
       <SubType>Form</SubType>
@@ -1400,6 +1406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditBitmaps.zh.resx">
       <DependentUpon>FormEditBitmaps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditConveyorSetting.resx">
+      <DependentUpon>FormEditConveyorSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditLayer.fr.resx">
       <DependentUpon>FormEditLayer.cs</DependentUpon>

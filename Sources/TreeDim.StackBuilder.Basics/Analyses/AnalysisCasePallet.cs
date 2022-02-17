@@ -1,5 +1,6 @@
 ﻿#region Using directives
 using System.Collections.Generic;
+using System.Linq;
 using Sharp3D.Math.Core;
 using System.Drawing;
 #endregion
@@ -172,6 +173,15 @@ namespace treeDiM.StackBuilder.Basics
 
         #region Robot related members
         public List<ConveyorSetting> ConveyorSettings = new List<ConveyorSetting>(); 
+        public ConveyorSetting DefaultConveyorSetting
+        {
+            get
+            {
+                if (!ConveyorSettings.Where(cs => cs.Number == 1).Any())
+                    ConveyorSettings.Add(new ConveyorSetting(0, 1, 0));
+                return ConveyorSettings.Where(cs => cs.Number == 1).First();
+            }
+        }
         #endregion
 
         #region Non-Public Members

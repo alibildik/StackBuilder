@@ -10,6 +10,7 @@ using Sharp3D.Math.Core;
 
 using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Exporters;
+using System.ComponentModel;
 #endregion
 
 namespace treeDiM.StackBuilder.Desktop
@@ -41,13 +42,19 @@ namespace treeDiM.StackBuilder.Desktop
                 RobotPreparation.LayerModified += RobotPreparationModified;
 
                 uCtrlConveyorSettings.BoxProperties = analysisCasePallet.Content as PackableBrick;
-                uCtrlConveyorSettings.ValueChanged += OnInputChanged;
             }
             LoadConveyorSettings();
+            UpdatePreparationCtrl();
 
             // fill combo layer types
             FillLayerComboBox();
             OnExportFormatChanged(this, e);
+        }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            if (Analysis is AnalysisCasePallet analysisCasePallet)
+                analysisCasePallet.ConveyorSettings = ConveyorSettings;
         }
         private void LoadConveyorSettings()
         {
@@ -61,7 +68,11 @@ namespace treeDiM.StackBuilder.Desktop
             uCtrlConveyorSettings.SetConveyorSettings(packable, ConveyorSettings);
             uCtrlConveyorSettings.ConveyorSettingAddedRemoved += OnSettingAddedRemoved;
         }
-        private void OnSettingAddedRemoved(object sender, EventArgs e) => UpdatePreparationCtrl();
+        private void OnSettingAddedRemoved(object sender, EventArgs e)
+        {
+            ConveyorSettings = uCtrlConveyorSettings.ListSettings;
+            UpdatePreparationCtrl();
+        }
         private void UpdatePreparationCtrl()
         {
             PackableBrick packable = null;
@@ -85,10 +96,7 @@ namespace treeDiM.StackBuilder.Desktop
                     ListConveyorSettings.AddRange(
                         new ConveyorSetting[]
                         {
-                            new ConveyorSetting(0, 2, 0),
-                            new ConveyorSetting(90, 2, 0),
-                            new ConveyorSetting(0, 3, 0),
-                            new ConveyorSetting(90, 3, 0)
+                            new ConveyorSetting(0, 1, 0),
                         }
                         );
                 }
@@ -112,6 +120,8 @@ namespace treeDiM.StackBuilder.Desktop
         }
         private void FillLayerComboBox()
         {
+            // layers
+            cbLayers.Items.Clear();
             for (int i = 0; i < RobotPreparation.LayerTypes.Count; ++i)
             {
                 // get layer indexes
@@ -157,8 +167,6 @@ namespace treeDiM.StackBuilder.Desktop
             if (null == RobotPreparation) return;
             try
             {
-                RobotPreparation.AngleItem = uCtrlConveyorSettings.AngleCase;
-                RobotPreparation.AngleGrabber = uCtrlConveyorSettings.GripperAngle;
                 RobotPreparation.DockingOffsets = DockingOffsets;
 
                 var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());

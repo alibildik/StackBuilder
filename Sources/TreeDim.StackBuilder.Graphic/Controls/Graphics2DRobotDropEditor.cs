@@ -111,10 +111,12 @@ namespace treeDiM.StackBuilder.Graphics
             }
             // draw drop boundary
             Graphics.DrawContour(drop.Contour, Color.Black, 4.0f);
-
             // draw 
             if (showID && drop.ID >= 0)
+            {
                 Graphics.DrawText($"{drop.ID}", FontSizeID, new Vector2D(drop.Center3D.X, drop.Center3D.Y), Color.Red);
+                Graphics.DrawText($"({drop.ConveyorSetting.Number},{drop.ConveyorSetting.Angle},{drop.ConveyorSetting.GripperAngle})", FontSizeID / 2, drop.BottomRightCorner, Color.Black, Graphics2D.TexpPos.TEXT_BOTTOMRIGHT);
+            }
         }
         #endregion
         #region Mouse event handlers
@@ -163,6 +165,7 @@ namespace treeDiM.StackBuilder.Graphics
             Invalidate();            
         }
         private void OnDropModeChanged(object sender, EventArgs e) {}
+        private void OnConveyorSettingChanged(object sender, EventArgs e) => SetState(new StateBuildBlock(this, SelectedConveyorSetting));
         #endregion
         #region IStateHost implementation
         public void SetState(State state)
@@ -240,6 +243,7 @@ namespace treeDiM.StackBuilder.Graphics
         }
         public void SetConveyorSettings(PackableBrick packable, List<ConveyorSetting> listConveyorSettings)
         {
+            cbConveyorSetting.Items.Clear();
             cbConveyorSetting.Packable = packable;
             cbConveyorSetting.Items.AddRange(listConveyorSettings.ToArray());
             cbConveyorSetting.SelectedIndex = 0;
@@ -250,9 +254,11 @@ namespace treeDiM.StackBuilder.Graphics
         public RobotLayer Layer { get; set; }
         private Graphics2D Graphics { get; set; }
         private int FontSizeID => 16;
+        private int FontSizeConv => 7;
         protected ILog _log = LogManager.GetLogger(typeof(Graphics2DRobotDropEditor));
         private State _currentState;
         #endregion
+
     }
 
     #region State

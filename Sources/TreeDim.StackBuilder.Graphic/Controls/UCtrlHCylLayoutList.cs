@@ -17,17 +17,14 @@ namespace treeDiM.StackBuilder.Graphics.Controls
         #region Constants
         private Size szButtons = new Size(150, 150);
         #endregion
-
         #region Delegate
         public delegate void LayoutButtonClicked(object sender, EventArgs e);
         public delegate void RefreshEnded(object sender, EventArgs e);
         #endregion
-
         #region Event handlers
         public event LayoutButtonClicked LayoutSelected;
         public event RefreshEnded RefreshFinished;
         #endregion
-
         #region Constructor
         public UCtrlHCylLayoutList()
         {
@@ -44,7 +41,6 @@ namespace treeDiM.StackBuilder.Graphics.Controls
             }
         }
         #endregion
-
         #region Public properties
         [Browsable(false),
         EditorBrowsable(EditorBrowsableState.Never),
@@ -85,7 +81,6 @@ namespace treeDiM.StackBuilder.Graphics.Controls
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CylinderProperties Packable { get; set; }
         #endregion
-
         #region Event handlers
         private void Start()
         {
@@ -153,7 +148,6 @@ namespace treeDiM.StackBuilder.Graphics.Controls
             LayoutSelected?.Invoke(this, e);
         }
         #endregion
-
         #region Context menu
         private void OnButtonSizeChange(object sender, EventArgs e)
         {
@@ -172,7 +166,6 @@ namespace treeDiM.StackBuilder.Graphics.Controls
             toolStripMenuItemX200.Checked = ButtonSizes.Height == 200;
         }
         #endregion
-
         #region Helpers
         private Image TryGeneratePatternImage(HCylLayout cylLayout, Size szButtons, bool selected)
         {
@@ -188,7 +181,6 @@ namespace treeDiM.StackBuilder.Graphics.Controls
             }
         }
         #endregion
-
         #region Data members
         protected static readonly ILog _log = LogManager.GetLogger(typeof(UCtrlHCylLayoutList));
         private List<HCylLayout> _hCylLayouts = new List<HCylLayout>();

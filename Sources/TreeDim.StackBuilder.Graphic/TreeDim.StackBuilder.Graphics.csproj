@@ -97,6 +97,12 @@
     <Compile Include="Controls\CCtrlListBoxConveyor.Designer.cs">
       <DependentUpon>CCtrlListBoxConveyor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FormEditConveyorSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\FormEditConveyorSetting.Designer.cs">
+      <DependentUpon>FormEditConveyorSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Graphics2DLayerEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -312,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CCtrlListBoxConveyor.resx">
       <DependentUpon>CCtrlListBoxConveyor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FormEditConveyorSetting.resx">
+      <DependentUpon>FormEditConveyorSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Graphics2DLayerEditor.resx">
       <DependentUpon>Graphics2DLayerEditor.cs</DependentUpon>

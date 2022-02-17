@@ -71,7 +71,7 @@ namespace treeDiM.StackBuilder.Exporters
                         , robotDrop.Number
                         , (int)robotDrop.PackDirection
                         , vPos.X, vPos.Y, vPos.Z
-                        , Modulo360(robotDrop.RawAngle)
+                        , Modulo360(robotDrop.RawAngleSimple)
                         , DockingDistanceX(robotDrop, robotPreparation.DockingOffsets.X)
                         , DockingDistanceY(robotDrop, robotPreparation.DockingOffsets.Y)
                         , robotPreparation.DockingOffsets.Z

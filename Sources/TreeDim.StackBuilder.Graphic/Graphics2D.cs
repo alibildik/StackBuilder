@@ -3,7 +3,6 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using Sharp3D.Math.Core;
-using treeDiM.StackBuilder.Basics;
 #endregion
 
 namespace treeDiM.StackBuilder.Graphics
@@ -131,14 +130,24 @@ namespace treeDiM.StackBuilder.Graphics
             Brush brushSolid = new SolidBrush(color);
             Graphics.FillEllipse(brushSolid, rectButton);
         }
-        public void DrawText(string sText, int size, Vector2D v, Color color)
+        public void DrawText(string sText, int size, Vector2D v, Color color, TexpPos textPos = TexpPos.TEXT_CENTER)
         {
             Point[] pt = TransformPoint(new Vector2D[] { v });
             Point pt0 = pt[0];
             Font font = new Font("Arial", size);
             SizeF sizeString = Graphics.MeasureString(sText, font);
-            pt0.X -= (int)sizeString.Width/2;
-            pt0.Y -= (int)sizeString.Height/2;
+            switch (textPos)
+            {
+                case TexpPos.TEXT_CENTER:
+                    pt0.X -= (int)sizeString.Width / 2;
+                    pt0.Y -= (int)sizeString.Height / 2;
+                    break;
+                case TexpPos.TEXT_BOTTOMRIGHT:
+                    pt0.X -= (int)sizeString.Width;
+                    pt0.Y -= (int)sizeString.Height;
+                    break;
+                default: break;
+            }
 
             Graphics.DrawString(sText, font, new SolidBrush(color), pt0);
         }
@@ -249,5 +258,9 @@ namespace treeDiM.StackBuilder.Graphics
         #region Data members
         public int SelectedItem { get; set; } = -1;
         #endregion
+        #region Enums
+        public enum TexpPos { TEXT_CENTER, TEXT_BOTTOMLEFT, TEXT_BOTTOMRIGHT, TEXT_TOPLEFT, TEXT_TOPRIGHT };
+        #endregion
+
     }
 }

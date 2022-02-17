@@ -177,9 +177,9 @@
             // 
             // uCtrlConveyorSettings
             // 
-            resources.ApplyResources(this.uCtrlConveyorSettings, "uCtrlConveyorSettings");
             this.uCtrlConveyorSettings.AngleCase = 0;
             this.uCtrlConveyorSettings.BoxProperties = null;
+            resources.ApplyResources(this.uCtrlConveyorSettings, "uCtrlConveyorSettings");
             this.uCtrlConveyorSettings.GripperAngle = 0;
             this.uCtrlConveyorSettings.MaxDropNumber = 1;
             this.uCtrlConveyorSettings.Name = "uCtrlConveyorSettings";

@@ -108,6 +108,7 @@ namespace treeDiM.StackBuilder.Graphics
             graphics.Flush();
 
             string csGripperAngle = Properties.Resources.ID_GRIPPERANGLE;
+            ThumbnailMarker.FontSize = 7;
             ThumbnailMarker.Annotate(graphics.Graphics, graphics.Size, $"{csGripperAngle}={gripperAngle}");
         }
         public void ConvertAngle(double angle, PackableBrick packable,

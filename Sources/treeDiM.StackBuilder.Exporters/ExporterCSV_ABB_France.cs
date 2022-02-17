@@ -135,11 +135,12 @@ namespace treeDiM.StackBuilder.Exporters
                     string itemPickSettings = string.Format(
                         CultureInfo.InvariantCulture,
                         "[[{0},{1},{2}],{3},[{4},{5},{6}],{7},{8},{9}]",
-                        boxDim.X, boxDim.Y, boxDim.Z, weight, cog.X, cog.Y, cog.Z, robotPreparation.AngleGrabber, robotPreparation.AngleItem, robotPreparation.Facing
+                        boxDim.X, boxDim.Y, boxDim.Z, weight, cog.X, cog.Y, cog.Z,
+                        robotDrop.ConveyorSetting.GripperAngle, robotDrop.ConveyorSetting.Angle, robotPreparation.Facing
                         );
                     // place settings
                     Vector3D vPos = robotDrop.Center3D;
-                    int angle = Modulo360(robotDrop.RawAngle - robotPreparation.AngleItem);
+                    int angle = Modulo360(robotDrop.RawAngleSimple - robotDrop.ConveyorSetting.Angle);
                     double dockingX = DockingDistanceX(robotDrop, robotPreparation.DockingOffsets.X);
                     double dockingY = DockingDistanceY(robotDrop, robotPreparation.DockingOffsets.Y);
                     string placeSettings = string.Format(
