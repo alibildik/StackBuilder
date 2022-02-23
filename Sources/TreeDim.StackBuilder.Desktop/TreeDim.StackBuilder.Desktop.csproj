@@ -40,8 +40,8 @@
     <MinimumRequiredVersion>3.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>51</ApplicationRevision>
-    <ApplicationVersion>3.0.2.51</ApplicationVersion>
+    <ApplicationRevision>52</ApplicationRevision>
+    <ApplicationVersion>3.0.2.52</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1462,6 +1462,9 @@
     <EmbeddedResource Include="FormExcelLibrary.zh.resx">
       <DependentUpon>FormExcelLibrary.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysis.fr.resx">
+      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormExcelMassAnalysisCasePallet.de.resx">
       <DependentUpon>FormExcelMassAnalysisCasePallet.cs</DependentUpon>
     </EmbeddedResource>
@@ -1507,6 +1510,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormExcelMassAnalysis.resx">
       <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.fr.resx">
+      <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.resx">
       <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>

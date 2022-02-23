@@ -10,8 +10,7 @@ namespace treeDiM.StackBuilder.Basics
             : base(doc)
         {
         }
-
-        public override double Volume { get { return Length * Width * Height; } }
+        public override double Volume => Length * Width * Height;
         public abstract double Length { get; }
         public abstract double Width { get; }
         public abstract double Height { get; }

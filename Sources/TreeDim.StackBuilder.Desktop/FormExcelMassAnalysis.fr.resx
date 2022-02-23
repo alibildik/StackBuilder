@@ -117,65 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lbCaseOrientConveyor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 283</value>
+  <data name="bnDownloadSampleSheet.Text" xml:space="preserve">
+    <value>Télécharger feuille exemple</value>
   </data>
-  <data name="lbCaseOrientConveyor.Size" type="System.Drawing.Size, System.Drawing">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lbSheet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 13</value>
+  </data>
+  <data name="lbSheet.Text" xml:space="preserve">
+    <value>Feuille</value>
+  </data>
+  <data name="lbExcelFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 13</value>
   </data>
-  <data name="lbCaseOrientConveyor.Text" xml:space="preserve">
-    <value>Angle caisse</value>
+  <data name="lbExcelFile.Text" xml:space="preserve">
+    <value>Fichier Excel</value>
   </data>
-  <data name="nudCaseAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 281</value>
+  <data name="bnCancel.Text" xml:space="preserve">
+    <value>Annuler</value>
   </data>
-  <data name="lbMaxNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 257</value>
-  </data>
-  <data name="lbMaxNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
-  </data>
-  <data name="lbMaxNumber.Text" xml:space="preserve">
-    <value>Nombre</value>
-  </data>
-  <data name="nudMaxNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 255</value>
-  </data>
-  <data name="bnAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 334</value>
-  </data>
-  <data name="bnAdd.Text" xml:space="preserve">
-    <value>Ajouter</value>
-  </data>
-  <data name="bnRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 364</value>
-  </data>
-  <data name="bnRemove.Text" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="lbGripperAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 309</value>
-  </data>
-  <data name="lbGripperAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 13</value>
-  </data>
-  <data name="lbGripperAngle.Text" xml:space="preserve">
-    <value>Angle préhenseur</value>
-  </data>
-  <data name="nudGripperAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 307</value>
-  </data>
-  <data name="graph3DConveyor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 240</value>
-  </data>
-  <data name="bnModify.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 334</value>
-  </data>
-  <data name="bnModify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 24</value>
-  </data>
-  <data name="bnModify.Text" xml:space="preserve">
-    <value>Modifier</value>
+  <data name="bnCompute.Text" xml:space="preserve">
+    <value>Calculer</value>
   </data>
 </root>

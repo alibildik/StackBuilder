@@ -73,6 +73,8 @@ namespace treeDiM.StackBuilder.Desktop
                         uCtrlDimensionsInner.Checked = false;
                         uCtrlCOG.Value = 0.5 * uCtrlDimensionsOuter.Value;
                         uCtrlTapeWidth.Value = new OptDouble(false, UnitsManager.ConvertLengthFrom(10, UnitsManager.UnitSystem.UNIT_METRIC1));
+                        lbFacing.Visible = false;
+                        cbFacing.Visible = false;
                         Facing = 0;
                         break;
                     default:

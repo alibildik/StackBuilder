@@ -1260,9 +1260,10 @@ namespace treeDiM.StackBuilder.Basics
             }
             int facing = 0;
             if (eltBoxProperties.HasAttribute("Facing"))
+            {
                 facing = int.Parse(eltBoxProperties.Attributes["Facing"].Value);
-
-
+                if (facing < 0) facing = 0;
+            }
             bool isCase = hasInsideDimensions || hasTape;
             if (!string.IsNullOrEmpty(sCAType))
                 isCase = string.Equals(sCAType, "Case", StringComparison.CurrentCultureIgnoreCase);

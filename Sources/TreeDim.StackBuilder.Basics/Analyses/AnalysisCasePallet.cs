@@ -172,7 +172,11 @@ namespace treeDiM.StackBuilder.Basics
         #endregion
 
         #region Robot related members
-        public List<ConveyorSetting> ConveyorSettings = new List<ConveyorSetting>(); 
+        public List<ConveyorSetting> ConveyorSettings = new List<ConveyorSetting>()
+        {
+            new ConveyorSetting(0, 1, 0),
+            new ConveyorSetting(0, 2, 0) 
+        };
         public ConveyorSetting DefaultConveyorSetting
         {
             get

@@ -40,12 +40,10 @@ namespace treeDiM.StackBuilder.Graphics.Controls
             this.nudGripperAngle = new System.Windows.Forms.NumericUpDown();
             this.lbConveyorSetting = new treeDiM.StackBuilder.Graphics.Controls.CCtrlListBoxConveyor();
             this.graph3DConveyor = new treeDiM.StackBuilder.Graphics.Graphics3DConveyor();
-            this.gbAdd = new System.Windows.Forms.GroupBox();
-            this.bnEdit = new System.Windows.Forms.Button();
+            this.bnModify = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudCaseAngle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGripperAngle)).BeginInit();
-            this.gbAdd.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbCaseOrientConveyor
@@ -149,42 +147,34 @@ namespace treeDiM.StackBuilder.Graphics.Controls
             this.graph3DConveyor.Packable = null;
             this.graph3DConveyor.TabStop = false;
             // 
-            // gbAdd
+            // bnModify
             // 
-            resources.ApplyResources(this.gbAdd, "gbAdd");
-            this.gbAdd.Controls.Add(this.graph3DConveyor);
-            this.gbAdd.Controls.Add(this.nudGripperAngle);
-            this.gbAdd.Controls.Add(this.lbGripperAngle);
-            this.gbAdd.Controls.Add(this.bnAdd);
-            this.gbAdd.Controls.Add(this.lbCaseOrientConveyor);
-            this.gbAdd.Controls.Add(this.nudCaseAngle);
-            this.gbAdd.Controls.Add(this.lbMaxNumber);
-            this.gbAdd.Controls.Add(this.nudMaxNumber);
-            this.gbAdd.Name = "gbAdd";
-            this.gbAdd.TabStop = false;
-            // 
-            // bnEdit
-            // 
-            resources.ApplyResources(this.bnEdit, "bnEdit");
-            this.bnEdit.Name = "bnEdit";
-            this.bnEdit.UseVisualStyleBackColor = true;
-            this.bnEdit.Click += new System.EventHandler(this.OnSettingEdit);
+            resources.ApplyResources(this.bnModify, "bnModify");
+            this.bnModify.Name = "bnModify";
+            this.bnModify.UseVisualStyleBackColor = true;
+            this.bnModify.Click += new System.EventHandler(this.OnSettingApply);
             // 
             // UCtrlConveyorSettings
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.bnEdit);
-            this.Controls.Add(this.gbAdd);
+            this.Controls.Add(this.bnModify);
+            this.Controls.Add(this.bnAdd);
+            this.Controls.Add(this.graph3DConveyor);
+            this.Controls.Add(this.nudGripperAngle);
+            this.Controls.Add(this.lbGripperAngle);
             this.Controls.Add(this.lbConveyorSetting);
             this.Controls.Add(this.bnRemove);
+            this.Controls.Add(this.lbCaseOrientConveyor);
+            this.Controls.Add(this.nudMaxNumber);
+            this.Controls.Add(this.nudCaseAngle);
+            this.Controls.Add(this.lbMaxNumber);
             this.Name = "UCtrlConveyorSettings";
             ((System.ComponentModel.ISupportInitialize)(this.nudCaseAngle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGripperAngle)).EndInit();
-            this.gbAdd.ResumeLayout(false);
-            this.gbAdd.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -200,7 +190,6 @@ namespace treeDiM.StackBuilder.Graphics.Controls
         private CCtrlListBoxConveyor lbConveyorSetting;
         private System.Windows.Forms.Label lbGripperAngle;
         private System.Windows.Forms.NumericUpDown nudGripperAngle;
-        private System.Windows.Forms.GroupBox gbAdd;
-        private System.Windows.Forms.Button bnEdit;
+        private System.Windows.Forms.Button bnModify;
     }
 }

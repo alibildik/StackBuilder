@@ -344,16 +344,6 @@
 		</table>
 		<table>
 			<xsl:apply-templates select="item"/>
-			<xsl:if test="noLayersAndNoCases">
-				<tr>
-					<td class="style2" colspan="1">
-						<b>Nb de couches x Caisses par couche</b>
-					</td>
-					<td class="style3" colspan="3">
-						<xsl:value-of select="noLayersAndNoCases"/>
-					</td>
-				</tr>
-			</xsl:if>
 			<xsl:if test="weightLoad">
 				<tr>
 					<td class="style2" colspan="1">
@@ -545,9 +535,7 @@
 	<xsl:template match="item">
 		<tr>
 			<td class="style2" colspan="1">
-				<b>
-					<xsl:value-of select="name"/>
-				</b>
+				<b>Nombre total de cartons</b>
 			</td>
 			<td class="style3" colspan="1">
 				<xsl:value-of select="value"/>
@@ -611,9 +599,15 @@
 				<td class="style3" colspan="2" width="300">
 					<xsl:value-of select="name"/>
 				</td>
-				<td rowspan="3" align="middle">
+				<td rowspan="4" align="middle">
 					<xsl:apply-templates select="imageThumbSize"/>
 				</td>
+			</tr>
+			<tr>
+				<td class="style2" colspan="1">Nombre de pi&#232;ces par carton</td>
+				<td class="style3" colspan="1" width="300">
+					<xsl:value-of select="description"/>				
+				</td>			
 			</tr>
 			<tr>
 				<td class="style2" colspan="1">Dimensions (LxlxH)</td>
@@ -622,13 +616,54 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="style2">Poid d'un carton</td>
+				<td class="style2">Poids d'un carton</td>
 				<td class="style3" colspan="1" width="300">
 					<xsl:apply-templates select="weight/unitValue"/>
 				</td>
 			</tr>
 		</table>
 	</xsl:template>
+	<!--#### BOX ###--><!--
+		<xsl:template match="box">
+			
+		<h3>Carton</h3>
+		<table class="style1" cellpadding="4">
+			<tr>
+				<td class="style2" colspan="1">Nom</td>
+				<td class="style3" colspan="1" width="300">
+					<xsl:value-of select="name"/>
+				</td>
+				<xsl:if test="imageThumbSize">
+					<td rowspan="3" align="middle">
+						<xsl:apply-templates select="imageThumbSize"/>
+					</td>
+				</xsl:if>
+			</tr>
+			<tr>
+				<td class="style2" colspan="1">Nombre par carton</td>
+				<td class="style3" colspan="1" width="300">
+					<xsl:value-of select="description"/>				
+				</td>			
+			</tr>
+			<tr>
+				<xsl:if test="dimensions">
+					<td class="style2" colspan="1">Dimensions (LxlxH)</td>
+					<td class="style3" colspan="1" width="300">
+						<xsl:apply-templates select="dimensions/unitVector3"/>
+					</td>
+				</xsl:if>
+			</tr>
+			<tr>
+				<xsl:if test="weight">
+					<td class="style2" colspan="1">Poids d'un carton</td>
+					<td class="style3" colspan="1" width="300">
+						<xsl:apply-templates select="weight/unitValue"/>
+					</td>
+				</xsl:if>
+			</tr>
+		</table>
+			
+	</xsl:template>-->
 	<!--#### CASE WITH INNER DIMS #### -->
 	<xsl:template match="caseWithInnerDims">
 		<h3>Carton</h3>
@@ -645,6 +680,12 @@
 				</xsl:if>
 			</tr>
 			<tr>
+				<td class="style2" colspan="1">Nombre de pi&#232;ces par carton</td>
+				<td class="style3" colspan="1" width="300">
+					<xsl:value-of select="description"/>				
+				</td>			
+			</tr>
+			<tr>
 				<xsl:if test="dimensions">
 					<td class="style2" colspan="1">Dimensions (LxlxH)</td>
 					<td class="style3" colspan="1" width="300">
@@ -654,7 +695,7 @@
 			</tr>
 			<tr>
 				<xsl:if test="weight">
-					<td class="style2" colspan="1">Poid d'un carton</td>
+					<td class="style2" colspan="1">Poids d'un carton</td>
 					<td class="style3" colspan="1" width="300">
 						<xsl:apply-templates select="weight/unitValue"/>
 					</td>
@@ -803,7 +844,7 @@
 					<xsl:value-of select="name"/>
 				</td>
 				<xsl:if test="imageThumbSize" >
-					<td rowspan="3" colspan="1" align="middle" >
+					<td rowspan="4" colspan="1" align="middle" >
 						<xsl:apply-templates select="imageThumbSize"/>
 					</td>
 				</xsl:if>
@@ -826,6 +867,16 @@
 					</td>
 				</xsl:if>
 			</tr>
+			<tr>
+				<xsl:if test="weight">
+					<td class="style2" colspan="1">
+						<b>Poids</b>					
+					</td>
+					<td class="style3" colspan="1" width="300">
+						<xsl:apply-templates select="weight/unitValue"/>					
+					</td>				
+				</xsl:if>			
+			</tr>
 		</table>
 	</xsl:template>
 	<!--#### BOX ####-->
@@ -842,6 +893,14 @@
 				<td rowspan="3" colspan="2" align="middle">
 					<xsl:apply-templates select="imageThumbSize"/>
 				</td>
+			</tr>
+			<tr>
+				<td class="style2" colspan="1">
+					<b>Nombre de pi&#232;ces par carton</b>
+				</td>
+				<td class="style3" colspan="1" width="300">
+					<xsl:value-of select="description"/>				
+				</td>			
 			</tr>
 			<tr>
 				<xsl:if test="dimensions">

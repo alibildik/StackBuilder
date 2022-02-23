@@ -97,25 +97,33 @@ namespace treeDiM.StackBuilder.Basics
             PackDir packDir;
             RobotDrop rd0 = robotDrops[0];
 
-            bool isRelAbove = true, isRelUnder = true, isRelRight = true, isRelLeft = true;
-            for (int i = 1; i < robotDrops.Count; i++)
+            if (robotDrops.Count > 1)
             {
-                if (!robotDrops[i].IsRelAbove(robotDrops[i - 1])) isRelAbove = false;
-                if (!robotDrops[i].IsRelUnder(robotDrops[i - 1])) isRelUnder = false;
-                if (!robotDrops[i].IsRelRight(robotDrops[i - 1])) isRelRight = false;
-                if (!robotDrops[i].IsRelLeft(robotDrops[i - 1])) isRelLeft = false;
+                bool isRelAbove = true, isRelUnder = true, isRelRight = true, isRelLeft = true;
+                for (int i = 1; i < robotDrops.Count; i++)
+                {
+                    if (!robotDrops[i].IsRelAbove(robotDrops[i - 1])) isRelAbove = false;
+                    if (!robotDrops[i].IsRelUnder(robotDrops[i - 1])) isRelUnder = false;
+                    if (!robotDrops[i].IsRelRight(robotDrops[i - 1])) isRelRight = false;
+                    if (!robotDrops[i].IsRelLeft(robotDrops[i - 1])) isRelLeft = false;
+                }
+                if (isRelAbove)
+                { packDir = PackDir.LENGTH; }
+                else if (isRelUnder)
+                { packDir = PackDir.LENGTH; offset = -(robotDrops.Count - 1) * rd0.SingleWidth * HalfAxis.ToVector3D(rd0.BoxPositionMain.DirectionWidth); }
+                else if (isRelRight)
+                { packDir = PackDir.WIDTH; }
+                else if (isRelLeft)
+                { packDir = PackDir.WIDTH; offset = -(robotDrops.Count - 1) * rd0.SingleLength * HalfAxis.ToVector3D(rd0.BoxPositionMain.DirectionLength); }
+                else
+                    return null;
             }
-            if (isRelAbove)
-            { packDir = PackDir.LENGTH; }
-            else if (isRelUnder)
-            { packDir = PackDir.LENGTH; offset = -(robotDrops.Count - 1) * rd0.SingleWidth * HalfAxis.ToVector3D(rd0.BoxPositionMain.DirectionWidth); }
-            else if (isRelRight)
-            { packDir = PackDir.WIDTH; }
-            else if (isRelLeft)
-            { packDir = PackDir.WIDTH; offset = -(robotDrops.Count - 1) * rd0.SingleLength * HalfAxis.ToVector3D(rd0.BoxPositionMain.DirectionLength); }
+            else if (robotDrops.Count == 1)
+            {
+                packDir = PackDir.LENGTH;
+            }
             else
                 return null;
-
 
             return new RobotDrop(layer, conveyorSetting)
             {
@@ -405,7 +413,7 @@ namespace treeDiM.StackBuilder.Basics
             {
                 drops.Add(Drops[arrIndexes[i]]);
             }
-            if (RobotDrop.CanMerge(drops, setting))
+            if (drops.Count == 1 || RobotDrop.CanMerge(drops, setting))
             {
                 var mergeDrop = RobotDrop.Merge(this, drops, setting);
                 Drops.Add(mergeDrop);

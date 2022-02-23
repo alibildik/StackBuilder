@@ -31,7 +31,7 @@ namespace treeDiM.StackBuilder.Graphics.Controls
             graph3DConveyor.GripperAngle = GripperAngle;
             graph3DConveyor.Invalidate();
 
-            UpdateAddButton();
+            UpdateModifyAddButton();
         }
         private void FillListBox()
         {
@@ -43,50 +43,66 @@ namespace treeDiM.StackBuilder.Graphics.Controls
             lbConveyorSetting.SelectedIndex = lbConveyorSetting.Items.Count  > 0 ? 0 : -1;
 
             // ListSettings updated => Can we still add?
-            UpdateAddButton();
+            UpdateModifyAddButton();
             UpdateRemoveButton();
         }
-        private void UpdateAddButton()
-        { 
-            bnAdd.Enabled = (null == ListSettings) || !ConveyorSetting.FindSetting(ListSettings, new ConveyorSetting(AngleCase, MaxDropNumber, GripperAngle), -1);        
+
+        private ConveyorSetting CurrentlyEnteredSetting => new ConveyorSetting(AngleCase, MaxDropNumber, GripperAngle);
+        private int SelectedIndexLb => lbConveyorSetting.SelectedIndex;
+        private void UpdateModifyAddButton()
+        {
+            // sanity check
+            if (null == ListSettings) return;
+            // setting already exists ?
+            bnModify.Enabled = ConveyorSetting.CanUpdate(ListSettings, CurrentlyEnteredSetting, SelectedIndexLb);
+            bnAdd.Enabled = ConveyorSetting.CanAdd(ListSettings, CurrentlyEnteredSetting);
+
+            nudMaxNumber.Enabled = ConveyorSetting.CanEditNumber(ListSettings, SelectedIndexLb);            
         }
         private void UpdateRemoveButton()
         {
-            bnRemove.Enabled = (null == ListSettings) || ConveyorSetting.CanRemove(ListSettings, lbConveyorSetting.SelectedIndex);
+            bnRemove.Enabled = (null == ListSettings) || ConveyorSetting.CanRemove(ListSettings, SelectedIndexLb);
+        }
+        private void OnSettingApply(object sender, EventArgs e)
+        {
+            int iSel = lbConveyorSetting.SelectedIndex;
+            if (iSel != -1 && ConveyorSetting.CanUpdate(ListSettings, CurrentlyEnteredSetting, iSel))
+                ListSettings[iSel] = CurrentlyEnteredSetting;
+
+            FillListBox();
+            ConveyorSettingAddedRemoved?.Invoke(this, e);
         }
         private void OnSettingAdd(object sender, EventArgs e)
         {
-            ListSettings.Add(new ConveyorSetting(AngleCase, MaxDropNumber, GripperAngle));
-
+            if (!ConveyorSetting.CanAdd(ListSettings, CurrentlyEnteredSetting))
+                return;
+            // add new conveyor setting
+            ListSettings.Add(CurrentlyEnteredSetting);
+            // updating listbox
             FillListBox();
-
             ConveyorSettingAddedRemoved?.Invoke(this, e);
         }
         private void OnSettingRemove(object sender, EventArgs e)
         {
-            int iSel = lbConveyorSetting.SelectedIndex;
-            if (iSel != -1) ListSettings.RemoveAt(iSel);
+            if (SelectedIndexLb != -1) ListSettings.RemoveAt(SelectedIndexLb);
+
             FillListBox();
             ConveyorSettingAddedRemoved?.Invoke(this, e);
         }
-        private void OnSettingEdit(object sender, EventArgs e)
+
+        private void OnSelectedSettingChanged(object sender, EventArgs e)
         {
+            // selected setting
             int iSel = lbConveyorSetting.SelectedIndex;
-            if (iSel != -1)
+            if (-1 == iSel) return;
+            var setting = ListSettings[iSel];
+            if (setting != null)
             {
-                var form = new FormEditConveyorSetting()
-                {
-                    Packable = BoxProperties,
-                    ListSettings = ListSettings,
-                    SelectedIndex = iSel 
-                };
-                if (DialogResult.OK == form.ShowDialog())
-                    ListSettings[iSel] = form.ItemSettings;
-            }
-            FillListBox();
-            ConveyorSettingAddedRemoved?.Invoke(this, e);
+                MaxDropNumber = setting.Number;
+                AngleCase = setting.Angle;
+                GripperAngle = setting.GripperAngle;
+            }            
         }
-        private void OnSelectedSettingChanged(object sender, EventArgs e) => UpdateRemoveButton();
         #endregion
         #region Public properties
         public PackableBrick BoxProperties
@@ -126,8 +142,8 @@ namespace treeDiM.StackBuilder.Graphics.Controls
         #region Data members
         public List<ConveyorSetting> ListSettings { get; set; }
         private PackableBrick _packable;
-        #endregion
 
+        #endregion
     }
     #endregion
 }

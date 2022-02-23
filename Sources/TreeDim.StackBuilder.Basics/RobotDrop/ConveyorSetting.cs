@@ -37,10 +37,17 @@ namespace treeDiM.StackBuilder.Basics
             }
             return false;
         }
-        public static bool CanRemove(List<ConveyorSetting> conveyorSettings, int iSel)
+        public static bool CanRemove(List<ConveyorSetting> listConveyorSettings, int iSel)
         {
-            var setting = conveyorSettings[iSel];
-            return !(setting.Number == 1 && (1 == conveyorSettings.Count(cs => cs.Number == 1)));
+            var setting = listConveyorSettings[iSel];
+            return !(setting.Number == 1 && (1 == listConveyorSettings.Count(cs => cs.Number == 1)));
+        }
+        public static bool CanUpdate(List<ConveyorSetting> listConveyorSettings, ConveyorSetting setting, int iSel) => -1 != iSel && !listConveyorSettings.Any(cs => cs.Equal(setting));
+        public static bool CanAdd(List<ConveyorSetting> listConveyorSettings, ConveyorSetting setting)  => !listConveyorSettings.Any(cs => cs.Equal(setting));
+        public static bool CanEditNumber(List<ConveyorSetting> listConveyorSettings, int iSel)
+        {
+            var setting = listConveyorSettings[iSel];
+            return !(setting.Number == 1 && (1 == listConveyorSettings.Count(cs => cs.Number == 1)));
         }
         #endregion
     }

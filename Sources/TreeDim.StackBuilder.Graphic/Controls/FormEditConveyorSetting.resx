@@ -165,7 +165,7 @@
     <value>graph3DConveyor</value>
   </data>
   <data name="&gt;&gt;graph3DConveyor.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Graphics3DConveyor, treeDiM.StackBuilder.Graphics, Version=3.0.2.51, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Graphics3DConveyor, treeDiM.StackBuilder.Graphics, Version=3.0.2.52, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;graph3DConveyor.Parent" xml:space="preserve">
     <value>$this</value>

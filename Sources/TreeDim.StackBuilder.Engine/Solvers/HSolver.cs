@@ -74,7 +74,8 @@ namespace treeDiM.StackBuilder.Engine
                         CuboidToSolItem(contentItems, offset, cuboid, out int index, out BoxPosition pos);
                         hSolItem.InsertContainedElt(index, pos);
                     }
-                    hSolItem.Recenter(sol, dimContainer, overhang);
+                    if (analysis is HAnalysisPallet)
+                        hSolItem.Recenter(sol, dimContainer, overhang);
                 }
                 solutions.Add(sol);
             }
@@ -128,7 +129,8 @@ namespace treeDiM.StackBuilder.Engine
                     BoxInfoToSolItem(dict1, contentItems, offset, item, transform, out int index, out BoxPosition pos);
                     hSolItem.InsertContainedElt(index, pos.Adjusted(new Vector3D((double)item.DimX, (double)item.DimY, (double)item.DimZ)));
                 }
-                hSolItem.Recenter(sol, dimContainer, overhang);
+                if (analysis is HAnalysisPallet)
+                    hSolItem.Recenter(sol, dimContainer, overhang);
                 solutions.Add(sol);
 
                 // ----
@@ -209,7 +211,8 @@ namespace treeDiM.StackBuilder.Engine
                     BoxInfoToSolItem(dict2, contentItems, offset, item, transform, out int index, out BoxPosition pos);
                     hSolItem.InsertContainedElt(index, pos.Adjusted(new Vector3D((double)item.DimX, (double)item.DimY, (double)item.DimZ)));
                 }
-                hSolItem.Recenter(hSol, dimContainer, overhang);
+                if (hSol.Analysis is HAnalysisPallet)
+                    hSolItem.Recenter(hSol, dimContainer, overhang);
 
                 var contentItemsClone = new List<ContentItem>();
                 foreach (var ci in contentItems)

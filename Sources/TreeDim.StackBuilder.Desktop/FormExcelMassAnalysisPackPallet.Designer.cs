@@ -29,6 +29,7 @@ namespace treeDiM.StackBuilder.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormExcelMassAnalysisPackPallet));
             this.tabCtrl = new System.Windows.Forms.TabControl();
             this.tpInputColumns = new System.Windows.Forms.TabPage();
             this.cbWeight = new System.Windows.Forms.ComboBox();
@@ -50,7 +51,7 @@ namespace treeDiM.StackBuilder.Desktop
             this.lbLength = new System.Windows.Forms.Label();
             this.chkbDescription = new System.Windows.Forms.CheckBox();
             this.cbName = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
             this.tpOutputs = new System.Windows.Forms.TabPage();
             this.chkbGenerateImageInRow = new System.Windows.Forms.CheckBox();
             this.nudImageSize = new System.Windows.Forms.NumericUpDown();
@@ -73,17 +74,16 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // tabCtrl
             // 
+            resources.ApplyResources(this.tabCtrl, "tabCtrl");
             this.tabCtrl.Controls.Add(this.tpInputColumns);
             this.tabCtrl.Controls.Add(this.tpOutputs);
             this.tabCtrl.Controls.Add(this.tpConstraints);
-            this.tabCtrl.Location = new System.Drawing.Point(0, 59);
             this.tabCtrl.Name = "tabCtrl";
             this.tabCtrl.SelectedIndex = 0;
-            this.tabCtrl.Size = new System.Drawing.Size(591, 207);
-            this.tabCtrl.TabIndex = 28;
             // 
             // tpInputColumns
             // 
+            resources.ApplyResources(this.tpInputColumns, "tpInputColumns");
             this.tpInputColumns.Controls.Add(this.cbWeight);
             this.tpInputColumns.Controls.Add(this.lbWeight);
             this.tpInputColumns.Controls.Add(this.cbMaxHeight);
@@ -103,232 +103,157 @@ namespace treeDiM.StackBuilder.Desktop
             this.tpInputColumns.Controls.Add(this.lbLength);
             this.tpInputColumns.Controls.Add(this.chkbDescription);
             this.tpInputColumns.Controls.Add(this.cbName);
-            this.tpInputColumns.Controls.Add(this.label1);
-            this.tpInputColumns.Location = new System.Drawing.Point(4, 22);
+            this.tpInputColumns.Controls.Add(this.lbName);
             this.tpInputColumns.Name = "tpInputColumns";
-            this.tpInputColumns.Padding = new System.Windows.Forms.Padding(3);
-            this.tpInputColumns.Size = new System.Drawing.Size(583, 181);
-            this.tpInputColumns.TabIndex = 0;
-            this.tpInputColumns.Text = "Input columns";
             this.tpInputColumns.UseVisualStyleBackColor = true;
             // 
             // cbWeight
             // 
+            resources.ApplyResources(this.cbWeight, "cbWeight");
             this.cbWeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWeight.FormattingEnabled = true;
-            this.cbWeight.Location = new System.Drawing.Point(99, 138);
             this.cbWeight.Name = "cbWeight";
-            this.cbWeight.Size = new System.Drawing.Size(50, 21);
-            this.cbWeight.TabIndex = 19;
             // 
             // lbWeight
             // 
-            this.lbWeight.AutoSize = true;
-            this.lbWeight.Location = new System.Drawing.Point(7, 141);
+            resources.ApplyResources(this.lbWeight, "lbWeight");
             this.lbWeight.Name = "lbWeight";
-            this.lbWeight.Size = new System.Drawing.Size(41, 13);
-            this.lbWeight.TabIndex = 18;
-            this.lbWeight.Text = "Weight";
             // 
             // cbMaxHeight
             // 
+            resources.ApplyResources(this.cbMaxHeight, "cbMaxHeight");
             this.cbMaxHeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaxHeight.FormattingEnabled = true;
-            this.cbMaxHeight.Location = new System.Drawing.Point(371, 85);
             this.cbMaxHeight.Name = "cbMaxHeight";
-            this.cbMaxHeight.Size = new System.Drawing.Size(50, 21);
-            this.cbMaxHeight.TabIndex = 17;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(212, 88);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 13);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Maximum pack height";
             // 
             // cbMaxWidth
             // 
+            resources.ApplyResources(this.cbMaxWidth, "cbMaxWidth");
             this.cbMaxWidth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaxWidth.FormattingEnabled = true;
-            this.cbMaxWidth.Location = new System.Drawing.Point(371, 58);
             this.cbMaxWidth.Name = "cbMaxWidth";
-            this.cbMaxWidth.Size = new System.Drawing.Size(50, 21);
-            this.cbMaxWidth.TabIndex = 15;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(212, 61);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Maximum pack width";
             // 
             // cbMaxLength
             // 
+            resources.ApplyResources(this.cbMaxLength, "cbMaxLength");
             this.cbMaxLength.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaxLength.FormattingEnabled = true;
-            this.cbMaxLength.Location = new System.Drawing.Point(371, 31);
             this.cbMaxLength.Name = "cbMaxLength";
-            this.cbMaxLength.Size = new System.Drawing.Size(50, 21);
-            this.cbMaxLength.TabIndex = 13;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(212, 33);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Maximum pack length";
             // 
             // cbNumber
             // 
+            resources.ApplyResources(this.cbNumber, "cbNumber");
             this.cbNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNumber.FormattingEnabled = true;
-            this.cbNumber.Location = new System.Drawing.Point(371, 4);
             this.cbNumber.Name = "cbNumber";
-            this.cbNumber.Size = new System.Drawing.Size(50, 21);
-            this.cbNumber.TabIndex = 11;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(212, 7);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Number per pack";
             // 
             // lbHeight
             // 
-            this.lbHeight.AutoSize = true;
-            this.lbHeight.Location = new System.Drawing.Point(8, 115);
+            resources.ApplyResources(this.lbHeight, "lbHeight");
             this.lbHeight.Name = "lbHeight";
-            this.lbHeight.Size = new System.Drawing.Size(38, 13);
-            this.lbHeight.TabIndex = 9;
-            this.lbHeight.Text = "Height";
             // 
             // cbHeight
             // 
+            resources.ApplyResources(this.cbHeight, "cbHeight");
             this.cbHeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbHeight.FormattingEnabled = true;
-            this.cbHeight.Location = new System.Drawing.Point(99, 112);
             this.cbHeight.Name = "cbHeight";
-            this.cbHeight.Size = new System.Drawing.Size(50, 21);
-            this.cbHeight.TabIndex = 8;
             // 
             // cbWidth
             // 
+            resources.ApplyResources(this.cbWidth, "cbWidth");
             this.cbWidth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWidth.FormattingEnabled = true;
-            this.cbWidth.Location = new System.Drawing.Point(99, 85);
             this.cbWidth.Name = "cbWidth";
-            this.cbWidth.Size = new System.Drawing.Size(50, 21);
-            this.cbWidth.TabIndex = 7;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 88);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Width";
             // 
             // cbLength
             // 
+            resources.ApplyResources(this.cbLength, "cbLength");
             this.cbLength.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLength.FormattingEnabled = true;
-            this.cbLength.Location = new System.Drawing.Point(99, 58);
             this.cbLength.Name = "cbLength";
-            this.cbLength.Size = new System.Drawing.Size(50, 21);
-            this.cbLength.TabIndex = 5;
             // 
             // cbDescription
             // 
+            resources.ApplyResources(this.cbDescription, "cbDescription");
             this.cbDescription.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDescription.FormattingEnabled = true;
-            this.cbDescription.Location = new System.Drawing.Point(99, 31);
             this.cbDescription.Name = "cbDescription";
-            this.cbDescription.Size = new System.Drawing.Size(50, 21);
-            this.cbDescription.TabIndex = 4;
             // 
             // lbLength
             // 
-            this.lbLength.AutoSize = true;
-            this.lbLength.Location = new System.Drawing.Point(8, 61);
+            resources.ApplyResources(this.lbLength, "lbLength");
             this.lbLength.Name = "lbLength";
-            this.lbLength.Size = new System.Drawing.Size(40, 13);
-            this.lbLength.TabIndex = 3;
-            this.lbLength.Text = "Length";
             // 
             // chkbDescription
             // 
-            this.chkbDescription.AutoSize = true;
-            this.chkbDescription.Location = new System.Drawing.Point(10, 33);
+            resources.ApplyResources(this.chkbDescription, "chkbDescription");
             this.chkbDescription.Name = "chkbDescription";
-            this.chkbDescription.Size = new System.Drawing.Size(79, 17);
-            this.chkbDescription.TabIndex = 2;
-            this.chkbDescription.Text = "Description";
             this.chkbDescription.UseVisualStyleBackColor = true;
             // 
             // cbName
             // 
+            resources.ApplyResources(this.cbName, "cbName");
             this.cbName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbName.FormattingEnabled = true;
-            this.cbName.Location = new System.Drawing.Point(99, 4);
             this.cbName.Name = "cbName";
-            this.cbName.Size = new System.Drawing.Size(50, 21);
-            this.cbName.TabIndex = 1;
             // 
-            // label1
+            // lbName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            resources.ApplyResources(this.lbName, "lbName");
+            this.lbName.Name = "lbName";
             // 
             // tpOutputs
             // 
+            resources.ApplyResources(this.tpOutputs, "tpOutputs");
             this.tpOutputs.Controls.Add(this.chkbGenerateImageInRow);
             this.tpOutputs.Controls.Add(this.nudImageSize);
             this.tpOutputs.Controls.Add(this.label7);
             this.tpOutputs.Controls.Add(this.cbOutputStart);
             this.tpOutputs.Controls.Add(this.lbStartOutput);
-            this.tpOutputs.Location = new System.Drawing.Point(4, 22);
             this.tpOutputs.Name = "tpOutputs";
-            this.tpOutputs.Padding = new System.Windows.Forms.Padding(3);
-            this.tpOutputs.Size = new System.Drawing.Size(583, 181);
-            this.tpOutputs.TabIndex = 1;
-            this.tpOutputs.Text = "Outputs";
             this.tpOutputs.UseVisualStyleBackColor = true;
             // 
             // chkbGenerateImageInRow
             // 
-            this.chkbGenerateImageInRow.AutoSize = true;
-            this.chkbGenerateImageInRow.Location = new System.Drawing.Point(11, 63);
+            resources.ApplyResources(this.chkbGenerateImageInRow, "chkbGenerateImageInRow");
             this.chkbGenerateImageInRow.Name = "chkbGenerateImageInRow";
-            this.chkbGenerateImageInRow.Size = new System.Drawing.Size(137, 17);
-            this.chkbGenerateImageInRow.TabIndex = 38;
-            this.chkbGenerateImageInRow.Text = "Generate images in row";
             this.chkbGenerateImageInRow.UseVisualStyleBackColor = true;
             // 
             // nudImageSize
             // 
-            this.nudImageSize.Location = new System.Drawing.Point(179, 34);
+            resources.ApplyResources(this.nudImageSize, "nudImageSize");
             this.nudImageSize.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.nudImageSize.Name = "nudImageSize";
-            this.nudImageSize.Size = new System.Drawing.Size(57, 20);
-            this.nudImageSize.TabIndex = 37;
             this.nudImageSize.Value = new decimal(new int[] {
             200,
             0,
@@ -337,62 +262,44 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(8, 34);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 13);
-            this.label7.TabIndex = 36;
-            this.label7.Text = "Image size";
             // 
             // cbOutputStart
             // 
+            resources.ApplyResources(this.cbOutputStart, "cbOutputStart");
             this.cbOutputStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOutputStart.FormattingEnabled = true;
-            this.cbOutputStart.Location = new System.Drawing.Point(179, 4);
             this.cbOutputStart.Name = "cbOutputStart";
-            this.cbOutputStart.Size = new System.Drawing.Size(45, 21);
-            this.cbOutputStart.TabIndex = 34;
             // 
             // lbStartOutput
             // 
-            this.lbStartOutput.AutoSize = true;
-            this.lbStartOutput.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbStartOutput.Location = new System.Drawing.Point(8, 7);
+            resources.ApplyResources(this.lbStartOutput, "lbStartOutput");
             this.lbStartOutput.Name = "lbStartOutput";
-            this.lbStartOutput.Size = new System.Drawing.Size(78, 13);
-            this.lbStartOutput.TabIndex = 33;
-            this.lbStartOutput.Text = "Start at column";
             // 
             // tpConstraints
             // 
+            resources.ApplyResources(this.tpConstraints, "tpConstraints");
             this.tpConstraints.Controls.Add(this.uCtrlNumberOfWalls);
             this.tpConstraints.Controls.Add(this.uCtrlWrapperThickness);
             this.tpConstraints.Controls.Add(this.uCtrlMaxPalletHeight);
             this.tpConstraints.Controls.Add(this.uCtrlOverhang);
             this.tpConstraints.Controls.Add(this.lbPallets);
             this.tpConstraints.Controls.Add(this.lPallets);
-            this.tpConstraints.Location = new System.Drawing.Point(4, 22);
             this.tpConstraints.Name = "tpConstraints";
-            this.tpConstraints.Size = new System.Drawing.Size(583, 181);
-            this.tpConstraints.TabIndex = 2;
-            this.tpConstraints.Text = "Pallets and constraints ";
             this.tpConstraints.UseVisualStyleBackColor = true;
             // 
             // uCtrlNumberOfWalls
             // 
-            this.uCtrlNumberOfWalls.Location = new System.Drawing.Point(192, 101);
+            resources.ApplyResources(this.uCtrlNumberOfWalls, "uCtrlNumberOfWalls");
             this.uCtrlNumberOfWalls.Name = "uCtrlNumberOfWalls";
             this.uCtrlNumberOfWalls.NoX = 1;
             this.uCtrlNumberOfWalls.NoY = 1;
             this.uCtrlNumberOfWalls.NoZ = 1;
-            this.uCtrlNumberOfWalls.Size = new System.Drawing.Size(354, 20);
-            this.uCtrlNumberOfWalls.TabIndex = 10;
-            this.uCtrlNumberOfWalls.Text = "Number of walls";
             // 
             // uCtrlWrapperThickness
             // 
-            this.uCtrlWrapperThickness.Location = new System.Drawing.Point(192, 75);
+            resources.ApplyResources(this.uCtrlWrapperThickness, "uCtrlWrapperThickness");
             this.uCtrlWrapperThickness.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -403,16 +310,12 @@ namespace treeDiM.StackBuilder.Desktop
             0,
             0,
             -2147483648});
-            this.uCtrlWrapperThickness.MinimumSize = new System.Drawing.Size(100, 20);
             this.uCtrlWrapperThickness.Name = "uCtrlWrapperThickness";
-            this.uCtrlWrapperThickness.Size = new System.Drawing.Size(272, 20);
-            this.uCtrlWrapperThickness.TabIndex = 9;
-            this.uCtrlWrapperThickness.Text = "Package thickness";
             this.uCtrlWrapperThickness.Unit = treeDiM.Basics.UnitsManager.UnitType.UT_LENGTH;
             // 
             // uCtrlMaxPalletHeight
             // 
-            this.uCtrlMaxPalletHeight.Location = new System.Drawing.Point(191, 23);
+            resources.ApplyResources(this.uCtrlMaxPalletHeight, "uCtrlMaxPalletHeight");
             this.uCtrlMaxPalletHeight.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -423,51 +326,36 @@ namespace treeDiM.StackBuilder.Desktop
             0,
             0,
             -2147483648});
-            this.uCtrlMaxPalletHeight.MinimumSize = new System.Drawing.Size(100, 20);
             this.uCtrlMaxPalletHeight.Name = "uCtrlMaxPalletHeight";
-            this.uCtrlMaxPalletHeight.Size = new System.Drawing.Size(273, 20);
-            this.uCtrlMaxPalletHeight.TabIndex = 7;
-            this.uCtrlMaxPalletHeight.Text = "Maximum pallet height";
             this.uCtrlMaxPalletHeight.Unit = treeDiM.Basics.UnitsManager.UnitType.UT_LENGTH;
             // 
             // uCtrlOverhang
             // 
-            this.uCtrlOverhang.Location = new System.Drawing.Point(191, 49);
+            resources.ApplyResources(this.uCtrlOverhang, "uCtrlOverhang");
             this.uCtrlOverhang.MinValue = -10000D;
             this.uCtrlOverhang.Name = "uCtrlOverhang";
-            this.uCtrlOverhang.Size = new System.Drawing.Size(340, 20);
-            this.uCtrlOverhang.TabIndex = 8;
-            this.uCtrlOverhang.Text = "Overhang";
             this.uCtrlOverhang.Unit = treeDiM.Basics.UnitsManager.UnitType.UT_LENGTH;
             this.uCtrlOverhang.ValueX = 0D;
             this.uCtrlOverhang.ValueY = 0D;
             // 
             // lbPallets
             // 
+            resources.ApplyResources(this.lbPallets, "lbPallets");
             this.lbPallets.CheckOnClick = true;
             this.lbPallets.FormattingEnabled = true;
-            this.lbPallets.Location = new System.Drawing.Point(5, 22);
             this.lbPallets.Name = "lbPallets";
-            this.lbPallets.Size = new System.Drawing.Size(180, 139);
-            this.lbPallets.TabIndex = 5;
             // 
             // lPallets
             // 
-            this.lPallets.AutoSize = true;
-            this.lPallets.Location = new System.Drawing.Point(6, 4);
+            resources.ApplyResources(this.lPallets, "lPallets");
             this.lPallets.Name = "lPallets";
-            this.lPallets.Size = new System.Drawing.Size(38, 13);
-            this.lPallets.TabIndex = 6;
-            this.lPallets.Text = "Pallets";
             // 
             // FormExcelMassAnalysisPackPallet
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 291);
             this.Controls.Add(this.tabCtrl);
             this.Name = "FormExcelMassAnalysisPackPallet";
-            this.Text = "Mass Excel Analysis (1 pack per row)";
             this.Controls.SetChildIndex(this.tabCtrl, 0);
             this.tabCtrl.ResumeLayout(false);
             this.tpInputColumns.ResumeLayout(false);
@@ -501,7 +389,7 @@ namespace treeDiM.StackBuilder.Desktop
         private System.Windows.Forms.Label lbLength;
         private System.Windows.Forms.CheckBox chkbDescription;
         private System.Windows.Forms.ComboBox cbName;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbMaxHeight;
         private System.Windows.Forms.Label label6;

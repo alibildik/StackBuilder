@@ -63,7 +63,6 @@ namespace treeDiM.StackBuilder.Engine.Heterogeneous3D.Test
             var solutions = solver.BuildSolutions(analysis);
 
             int solIndex = 0;
-
             foreach (var sol in solutions)
             {
                 Vector3D[] orientations = new Vector3D[] { Graphics3D.Corner_0, Graphics3D.Corner_90, Graphics3D.Corner_180, Graphics3D.Corner_270 };

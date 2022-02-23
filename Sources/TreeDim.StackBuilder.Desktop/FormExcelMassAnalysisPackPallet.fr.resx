@@ -117,65 +117,102 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="tpInputColumns.Text" xml:space="preserve">
+    <value>Colonnes entrées</value>
+  </data>
+  <data name="tpOutputs.Text" xml:space="preserve">
+    <value>Résultats</value>
+  </data>
+  <data name="tpConstraints.Text" xml:space="preserve">
+    <value>Palettes et contraintes</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lbCaseOrientConveyor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 283</value>
+  <data name="lbWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
   </data>
-  <data name="lbCaseOrientConveyor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 13</value>
+  <data name="lbWeight.Text" xml:space="preserve">
+    <value>Poid</value>
   </data>
-  <data name="lbCaseOrientConveyor.Text" xml:space="preserve">
-    <value>Angle caisse</value>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 13</value>
   </data>
-  <data name="nudCaseAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 281</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Hauteur max. (pack)</value>
   </data>
-  <data name="lbMaxNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 257</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 13</value>
   </data>
-  <data name="lbMaxNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Largeur max. (pack)</value>
   </data>
-  <data name="lbMaxNumber.Text" xml:space="preserve">
-    <value>Nombre</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Longueur max. (pack)</value>
   </data>
-  <data name="nudMaxNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 255</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Nombre par pack</value>
   </data>
-  <data name="bnAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 334</value>
+  <data name="lbHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
   </data>
-  <data name="bnAdd.Text" xml:space="preserve">
-    <value>Ajouter</value>
+  <data name="lbHeight.Text" xml:space="preserve">
+    <value>Hauteur</value>
   </data>
-  <data name="bnRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 364</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
   </data>
-  <data name="bnRemove.Text" xml:space="preserve">
-    <value>Supprimer</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Largeur</value>
   </data>
-  <data name="lbGripperAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 309</value>
+  <data name="lbLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
   </data>
-  <data name="lbGripperAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 13</value>
+  <data name="lbLength.Text" xml:space="preserve">
+    <value>Longueur</value>
   </data>
-  <data name="lbGripperAngle.Text" xml:space="preserve">
-    <value>Angle préhenseur</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lbName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="nudGripperAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 307</value>
+  <data name="lbName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
   </data>
-  <data name="graph3DConveyor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 240</value>
+  <data name="lbName.Text" xml:space="preserve">
+    <value>Nom</value>
   </data>
-  <data name="bnModify.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 334</value>
+  <data name="chkbGenerateImageInRow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 17</value>
   </data>
-  <data name="bnModify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 24</value>
+  <data name="chkbGenerateImageInRow.Text" xml:space="preserve">
+    <value>Generer les images dans les rangées</value>
   </data>
-  <data name="bnModify.Text" xml:space="preserve">
-    <value>Modifier</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Taille image</value>
+  </data>
+  <data name="lbStartOutput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 13</value>
+  </data>
+  <data name="lbStartOutput.Text" xml:space="preserve">
+    <value>Début à la colonne</value>
+  </data>
+  <data name="uCtrlNumberOfWalls.Text" xml:space="preserve">
+    <value>Nombre de murs</value>
+  </data>
+  <data name="uCtrlWrapperThickness.Text" xml:space="preserve">
+    <value>Epaisseur emballage</value>
+  </data>
+  <data name="uCtrlMaxPalletHeight.Text" xml:space="preserve">
+    <value>Hauteur max. palette</value>
+  </data>
+  <data name="uCtrlOverhang.Text" xml:space="preserve">
+    <value>Débord</value>
+  </data>
+  <data name="lPallets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="lPallets.Text" xml:space="preserve">
+    <value>Palettes</value>
   </data>
 </root>
