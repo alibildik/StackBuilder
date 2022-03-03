@@ -101,7 +101,8 @@ namespace treeDiM.StackBuilder.Graphics.Controls
                 MaxDropNumber = setting.Number;
                 AngleCase = setting.Angle;
                 GripperAngle = setting.GripperAngle;
-            }            
+            }
+            UpdateRemoveButton();
         }
         #endregion
         #region Public properties

@@ -92,13 +92,13 @@ namespace treeDiM.StackBuilder.Exporters
             var weight = analysis.Content.Weight;
             var cog = analysis.Content.COG;
             var cogInterlayer = Vector3D.Zero;
+            robotPreparation.GetLayers(out List<RobotLayer> robotLayers, out List<Pair<int, double>> interlayers, out int noCycles);
 
             sb.AppendLine("START;");
             sb.AppendLine($"ExportVersion;{ExportVersion};");
-            sb.AppendLine($"Config;[{sol.LayerCount},{sol.InterlayerCount},{sol.ItemCount},{robotPreparation.NumberOfPlaceCycles}];");
+            sb.AppendLine($"Config;[{sol.LayerCount},{sol.InterlayerCount},{sol.ItemCount},{noCycles}];");
             sb.AppendLine($"Pallet;[[{pal.Length},{pal.Width},{pal.Height}],{pal.Weight}];");
 
-            robotPreparation.GetLayers(out List<RobotLayer> robotLayers, out List<Pair<int, double>> interlayers);
             for (int iLayer = 0; iLayer < robotPreparation.NumberOfLayers; ++iLayer)
             {
                 // interlayer

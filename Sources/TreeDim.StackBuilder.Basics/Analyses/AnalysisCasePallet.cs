@@ -150,7 +150,6 @@ namespace treeDiM.StackBuilder.Basics
             // --- extend for pallet cap : end 
             return bbox;
         }
-
         public override double DecorationWeight
         {
             get
@@ -186,6 +185,7 @@ namespace treeDiM.StackBuilder.Basics
                 return ConveyorSettings.Where(cs => cs.Number == 1).First();
             }
         }
+        public RobotPreparation RobotPreparation { get; set; }
         #endregion
 
         #region Non-Public Members

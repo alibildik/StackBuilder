@@ -90,7 +90,7 @@ namespace treeDiM.StackBuilder.Exporters
             foreach (var indexInterlayer in robotPreparation.ListInterlayerIndexes)
                 sb.AppendLine($"{iLayer++},{(int)(0.5f * palletDim.X)},{(int)(0.5f * palletDim.Y)},{(indexInterlayer != -1 ? 1 : 0)},{indexInterlayer}");
 
-            robotPreparation.GetLayers(out List<RobotLayer> robotLayers, out List<Pair<int, double>> interlayers);
+            robotPreparation.GetLayers(out List<RobotLayer> robotLayers, out List<Pair<int, double>> interlayers, out int noCycles);
 
             // 1 line per block in the 2 first layer
             // get Layer 0

@@ -114,13 +114,17 @@ namespace treeDiM.StackBuilder.Graphics
             // draw 
             if (showID && drop.ID >= 0)
             {
-                Graphics.DrawText($"{drop.ID}", FontSizeID, new Vector2D(drop.Center3D.X, drop.Center3D.Y), Color.Red);
+                Graphics.DrawText($"{drop.ID}", FontSizeID, new Vector2D(drop.Center3D.X, drop.Center3D.Y), Color.Blue);
                 Graphics.DrawText($"({drop.ConveyorSetting.Number},{drop.ConveyorSetting.Angle},{drop.ConveyorSetting.GripperAngle})", FontSizeID / 2, drop.BottomRightCorner, Color.Black, Graphics2D.TexpPos.TEXT_BOTTOMRIGHT);
             }
         }
         #endregion
         #region Mouse event handlers
-        private void OnMouseMove(object sender, MouseEventArgs e) => SetMessage();
+        private void OnMouseMove(object sender, MouseEventArgs e)
+        {
+            OnStateMouseMove(ClickToIndex(e.Location));
+            SetMessage();
+        }
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
             OnStateMouseDown(ClickToIndex(e.Location));
@@ -164,6 +168,7 @@ namespace treeDiM.StackBuilder.Graphics
             Layer?.AutomaticRenumber();
             Invalidate();            
         }
+
         private void OnDropModeChanged(object sender, EventArgs e) {}
         private void OnConveyorSettingChanged(object sender, EventArgs e) => SetState(new StateBuildBlock(this, SelectedConveyorSetting));
         #endregion
@@ -186,8 +191,9 @@ namespace treeDiM.StackBuilder.Graphics
                 UpdateToolBar();
             } 
         }
+        public void SetCursor(Cursor cursor) { if (Cursor != cursor) Cursor = cursor; }
         public bool StateLoaded => !(CurrentState is StateDefault);
-
+        public void OnStateMouseMove(int id) => CurrentState?.OnMouseMove(id);
         public void OnStateMouseUp(int id) => CurrentState?.OnMouseUp(id);
         public void OnStateMouseDown(int id) => CurrentState?.OnMouseDown(id);
         public void OnStateKeyPress(char c) => CurrentState?.OnKey(c);
@@ -258,9 +264,7 @@ namespace treeDiM.StackBuilder.Graphics
         protected ILog _log = LogManager.GetLogger(typeof(Graphics2DRobotDropEditor));
         private State _currentState;
         #endregion
-
     }
-
     #region State
     public interface IStateHost
     {
@@ -269,10 +273,12 @@ namespace treeDiM.StackBuilder.Graphics
         void SetDefaultState();
         void Invalidate();
         RobotLayer Layer { get; }
+        void SetCursor(Cursor cursor);
     }
     public abstract class State
     {
         public State(IStateHost host) { Host = host; }
+        public virtual void OnMouseMove(int id) {}
         public virtual void OnMouseDown(int id) {}
         public virtual void OnMouseUp(int id) {}
         public virtual void OnKey(char c) {}
@@ -282,10 +288,11 @@ namespace treeDiM.StackBuilder.Graphics
         public virtual bool ShowAllowed(RobotDrop drop) => false;
         public IStateHost Host { get; set; }
         public virtual string Message { get; }
+        private void SetCursor(Cursor cursor) => Host.SetCursor(cursor);
     }
     internal class StateDefault : State
     {
-        public StateDefault(IStateHost host):base(host) {}
+        public StateDefault(IStateHost host):base(host) { Host.SetCursor(Cursors.Arrow); }
         public override bool ShowIDs => true;
         public override string Message => "Ready";
     }
@@ -296,11 +303,15 @@ namespace treeDiM.StackBuilder.Graphics
             Setting = setting;
             IndexArray = new int[setting.Number];
         }
+        public override void OnMouseMove(int index) => Host.SetCursor(index == -1 || Host.Layer.CanBeMerged(index) ? Cursors.Arrow : Cursors.No);
         public override void OnMouseUp(int index)
         {
             if (-1 == index) return;
-            IndexArray[ClickCount] = index;
-            ClickCount++;
+            if (Host.Layer.CanBeMerged(index))
+            {
+                IndexArray[ClickCount] = index;
+                ClickCount++;
+            }
             if (ClickCount == Setting.Number)
             {
                 Merge();
@@ -324,20 +335,22 @@ namespace treeDiM.StackBuilder.Graphics
     {
         public StateSplitDrop(IStateHost host) : base(host)
         {
+            Host.SetCursor(Cursors.Arrow);
         }
         public override void OnMouseUp(int index)
         {
             // not a valid click!
-            if (index == -1)
-                return;
+            if (index == -1) return;
             // split 
             Host.Layer.Split(index);
         }
+        public override void OnMouseMove(int index) => Host.SetCursor(index == -1 || Host.Layer.CanBeSplit(index) ? Cursors.Arrow : Cursors.No);
     }
     internal class StateReoder : State
     {
         public StateReoder(IStateHost host) : base(host)
         {
+            Host.SetCursor(Cursors.Arrow);
             Host.Layer.ResetNumbering();
             Host.Invalidate();
         }

@@ -117,11 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pbBrandLogo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bnSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="bnSave.Text" xml:space="preserve">
     <value>Exporter vers...</value>
   </data>
+  <data name="bnClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="bnClose.Text" xml:space="preserve">
     <value>Fermer</value>
+  </data>
+  <data name="lbFormat.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lbFormat.Size" type="System.Drawing.Size, System.Drawing">
@@ -130,11 +143,17 @@
   <data name="lbFormat.Text" xml:space="preserve">
     <value>Format de fichier</value>
   </data>
+  <data name="lbCoordinates.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="tabPageSettings.Text" xml:space="preserve">
     <value>Paramètres</value>
   </data>
   <data name="tabPageAngles.Text" xml:space="preserve">
     <value>Configurations de prise</value>
+  </data>
+  <data name="lbLayers.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="tabPageLayerPrep.Text" xml:space="preserve">
     <value>Préparations de couche</value>
@@ -272,5 +291,8 @@
         JycnJycAAAAAAAAAAAAAAAAAAAAAAP//AAAAHwAAAA8AAIAHAACAAwAAgAEAAIAAAACAAAAAgAEAAIAB
         AACAAQAAgAEAAMABAADgAQAA8AEAAP//AAA=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
 </root>

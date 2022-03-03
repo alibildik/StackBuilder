@@ -48,7 +48,7 @@ namespace treeDiM.StackBuilder.Exporters
                 sb.AppendLine($"{indexInterlayer++};{interlayerDim.X.ToString("0,0.0", nfi)};{interlayerDim.Y.ToString("0,0.0", nfi)};{interlayerDim.Z.ToString("0,0.0", nfi)};");
             }
             sb.AppendLine($"{sol.LayerCount};{sol.ItemCount};{sol.InterlayerCount}");
-            robotPreparation.GetLayers(out List<RobotLayer> robotLayers, out List<Pair<int, double>> interlayers);
+            robotPreparation.GetLayers(out List<RobotLayer> robotLayers, out List<Pair<int, double>> interlayers, out int noCycles);
 
             for (int iLayer = 0; iLayer < robotPreparation.NumberOfLayers; ++iLayer)
             {

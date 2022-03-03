@@ -323,22 +323,6 @@ namespace treeDiM.StackBuilder.Basics
         }
         private Vector2D UnitVector(Vector2D pt0, Vector2D pt1) => (pt1 - pt0) / (pt1 - pt0).GetLength();
         private Vector2D OuterPt(Vector2D pt, double dist) => pt + dist * UnitVector(Center2D, pt);
-        /*
-        public PackDir PackDirection
-        {
-            get
-            {
-                switch (Setting.Angle)
-                {
-                    case 0: return PackDir.LENGTH;
-                    case 90: return PackDir.WIDTH;
-                    case 180: return PackDir.LENGTH;
-                    case 270: return PackDir.WIDTH;
-                    default: return PackDir.LENGTH;
-                }
-            }
-        }
-        */
         #endregion
         #region Data members
         public int ID { get; set; }
@@ -406,6 +390,8 @@ namespace treeDiM.StackBuilder.Basics
         }
         #endregion
         #region Merge methods / Split
+        public bool CanBeMerged(int index) => index >= 0 ? Drops[index].IsSingle : false;
+        public bool CanBeSplit(int index) => index >= 0 ? !Drops[index].IsSingle : false;
         public bool Merge(ConveyorSetting setting, int[] arrIndexes)
         {
             List<RobotDrop> drops = new List<RobotDrop>();
@@ -496,12 +482,13 @@ namespace treeDiM.StackBuilder.Basics
             layer.SortByID();
             return layer;
         }
-        public void GetLayers(out List<RobotLayer> layers, out List<Pair<int,double>> interlayers)
+        public void GetLayers(out List<RobotLayer> layers, out List<Pair<int,double>> interlayers, out int noCycles)
         {
             var sol = Analysis.SolutionLay;
             layers = new List<RobotLayer>();
             interlayers = new List<Pair<int,double>>();
 
+            noCycles = 0;
             int iLayer = 0;
             double zLayer = 0;
             foreach (var solItem in sol.SolutionItems)
@@ -513,6 +500,8 @@ namespace treeDiM.StackBuilder.Basics
                     var interlayer = Analysis.Interlayer(solItem.InterlayerIndex);
                     interlayers.Add(new Pair<int,double>(solItem.InterlayerIndex, zLayer + interlayer.Thickness));
                     zLayer += interlayer.Thickness;
+                    // increment number of cycles
+                    noCycles++;
                 }
                 else
                     interlayers.Add(new Pair<int, double>(-1,0.0) );
@@ -534,6 +523,8 @@ namespace treeDiM.StackBuilder.Basics
                             BoxPositionMain = new BoxPosition( new Vector3D(v.X, v.Y, zLayer), bPos.DirectionLength, bPos.DirectionWidth)
                         }
                         );
+                    // increment number of cycles
+                    noCycles++; 
                 }
                 layers.Add(robotLayer);
                 // increase z by layer thickness
@@ -565,21 +556,6 @@ namespace treeDiM.StackBuilder.Basics
                 return dropCount;
             }
         }
-        public int NumberOfPlaceCycles
-        {
-            get
-            {
-                int cycleCount = 0;
-                var sol = Analysis.SolutionLay;
-                foreach (var solItem in sol.SolutionItems)
-                {
-                    var layer = LayerTypes[solItem.IndexLayer];
-                    cycleCount += layer.Drops.Count;
-                    cycleCount += solItem.HasInterlayer ? 1 : 0;
-                }
-                return cycleCount;
-            }
-        }
         public int AngleItem { get; set; }
         public int Facing => (Analysis.Content as PackableBrick).Facing;
         public Vector3D DockingOffsets { get; set; } = new Vector3D(30.0, 30.0, 40.0);
@@ -587,10 +563,7 @@ namespace treeDiM.StackBuilder.Basics
         #region Delegate / Event / Event triggering
         public delegate void DelegateLayerModified();
         public event DelegateLayerModified LayerModified;
-        public void Update()
-        {
-            LayerModified?.Invoke();
-        }
+        public void Update() => LayerModified?.Invoke();
         #endregion
         #region Data members
         public AnalysisCasePallet Analysis { get; protected set; }

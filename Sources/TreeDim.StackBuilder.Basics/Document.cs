@@ -775,7 +775,6 @@ namespace treeDiM.StackBuilder.Basics
                     analysis.AddInterlayer(interlayer);
             }
             analysis.AddSolution(layerDescs);
-
             return InsertAnalysis(analysis);
         }
         public Analysis CreateNewAnalysisHCylPallet(
@@ -1677,10 +1676,52 @@ namespace treeDiM.StackBuilder.Basics
                     if (string.Equals(node.Name, "ConveyorSetting", StringComparison.CurrentCultureIgnoreCase))
                     {
                         XmlElement eltConveyorSetting = node as XmlElement;
+                        int id = 0;
+                        if (eltConveyorSetting.HasAttribute("Id"))
+                            id = int.Parse(eltConveyorSetting.Attributes["Id"].Value);
                         string sNumber = eltConveyorSetting.Attributes["Number"].Value;
                         string sAngle = eltConveyorSetting.Attributes["Angle"].Value;
                         string sGripperAngle = eltConveyorSetting.Attributes["GripperAngle"].Value;
                         conveyorSettings.Add(new ConveyorSetting(int.Parse(sAngle), int.Parse(sNumber), int.Parse(sGripperAngle)));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.ToString());
+                return false;
+            }
+            return true;
+        }
+        private bool LoadRobotPreparation(XmlElement eltRobotPreparation, ref RobotPreparation robotPreparation)
+        {
+            try
+            {
+                foreach (XmlNode node in eltRobotPreparation)
+                {
+                    if (string.Equals(node.Name, "LayerTypes", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        XmlNode eltLayerTypes = node as XmlElement;
+                        foreach (var nodeLayer in eltLayerTypes)
+                        {
+                            XmlElement eltLayerType = nodeLayer as XmlElement;
+                            int layerID = int.Parse(eltLayerType.Attributes["LayerId"].Value);
+
+                            var robotLayer = new RobotLayer(robotPreparation, layerID);
+                            var robotDrops = new List<RobotDrop>();
+                            foreach (var nodeRobotDrop in eltLayerType.ChildNodes)
+                            {
+                                ConveyorSetting conveyorSetting = new ConveyorSetting(0, 1, 0);
+                                robotDrops.Add(new RobotDrop(robotLayer, conveyorSetting));
+                            }
+                            robotPreparation.LayerTypes.Add(new RobotLayer(robotPreparation, layerID) { Drops = robotDrops });
+                        }
+                    }
+                    else if (string.Equals(node.Name, "LayerIndexes", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                    }
+                    else if (string.Equals(node.Name, "InterlayerIndexes", StringComparison.CurrentCultureIgnoreCase))
+                    { 
                     }
                 }
             }
@@ -1952,6 +1993,7 @@ namespace treeDiM.StackBuilder.Basics
                 StrapperSet strapperSet = new StrapperSet();
                 List<PalletLabelInst> palletLabelInstances = new List<PalletLabelInst>();
                 List<ConveyorSetting> conveyorSettings = new List<ConveyorSetting>();
+                RobotPreparation robotPreparation = null; 
 
                 ConstraintSetAbstract constraintSet = null;
                 foreach (XmlNode node in eltAnalysis.ChildNodes)
@@ -1968,6 +2010,8 @@ namespace treeDiM.StackBuilder.Basics
                         LoadPalletLabelInstances(node as XmlElement, ref palletLabelInstances);
                     else if (string.Equals(node.Name, "ConveyorSettings", StringComparison.CurrentCultureIgnoreCase))
                         LoadConveyorSettings(node as XmlElement, ref conveyorSettings);
+                    else if (string.Equals(node.Name, "RobotPreparation", StringComparison.CurrentCultureIgnoreCase))
+                        LoadRobotPreparation(node as XmlElement, ref robotPreparation);
                 }
 
                 var analysis = CreateNewAnalysisCasePallet(
@@ -1986,6 +2030,7 @@ namespace treeDiM.StackBuilder.Basics
                 analysisCasePallet.HasPalletSleeve = hasPalletSleeve;
                 analysisCasePallet.PalletSleeveColor = palletSleeveColor;
                 analysisCasePallet.TopInterlayerProperties = topInterlayer;
+                analysisCasePallet.RobotPreparation = robotPreparation;
 
                 if (!string.IsNullOrEmpty(sId))
                     analysis.ID.IGuid = Guid.Parse(sId);
@@ -3647,6 +3692,26 @@ namespace treeDiM.StackBuilder.Basics
                 _log.Error(ex.Message);
             }
         }
+        private void SaveRobotPreparation(RobotPreparation robotPreparation, XmlElement xmlAnalysisElt, XmlDocument xmlDoc)
+        {
+            try
+            {
+                // create robot preparation elt
+                XmlElement eltRobotPreparation = xmlDoc.CreateElement("RobotPreparation");
+                xmlAnalysisElt.AppendChild(eltRobotPreparation);
+
+                // layer types
+                XmlElement eltLayerTypes = xmlDoc.CreateElement("LayerTypes");
+                foreach (var robotLayer in robotPreparation.LayerTypes)
+                {
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.Message);
+            }
+        }
         #endregion
 
         #region Save Wrappers
@@ -3825,6 +3890,8 @@ namespace treeDiM.StackBuilder.Basics
                 SavePalletLabelInstances(analysisCasePallet1.PalletLabels, xmlAnalysisElt, xmlDoc);
                 // conveyor settings
                 SaveConveyorSettings(analysisCasePallet1.ConveyorSettings, xmlAnalysisElt, xmlDoc);
+                // robot preparation
+                SaveRobotPreparation(analysisCasePallet1.RobotPreparation, xmlAnalysisElt, xmlDoc);
             }
 
             // constraint set
@@ -4482,6 +4549,7 @@ namespace treeDiM.StackBuilder.Basics
         private UnitsManager.UnitSystem UnitSystem = UnitsManager.UnitSystem.UNIT_METRIC1;
         private List<ItemBase> _typeList = new List<ItemBase>();
         private List<IDocumentListener> _listeners = new List<IDocumentListener>();
+        private Dictionary<int, ConveyorSetting> DictConveyorSettings { get; set; } = new Dictionary<int, ConveyorSetting>();
 
         protected static readonly ILog _log = LogManager.GetLogger(typeof(Document));
         #endregion

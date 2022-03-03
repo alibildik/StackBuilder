@@ -227,7 +227,7 @@ namespace treeDiM.StackBuilder.Desktop
             if (CurrentExporter.UseCoordinateSelector)
                 tabCtrlFeatures.TabPages.Add(tabPageSettings);
             if (CurrentExporter.UseAngleSelector)
-                tabCtrlFeatures.TabPages.Add(tabPageAngles);
+                tabCtrlFeatures.TabPages.Add(tabPagePickConfigurations);
             if (CurrentExporter.UseRobotPreparation)
                 tabCtrlFeatures.TabPages.Add(tabPageLayerPrep);
             if (CurrentExporter.UseDockingOffsets)
