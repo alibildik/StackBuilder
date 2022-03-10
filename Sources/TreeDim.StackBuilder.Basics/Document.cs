@@ -1693,7 +1693,7 @@ namespace treeDiM.StackBuilder.Basics
             }
             return true;
         }
-        private bool LoadRobotPreparation(XmlElement eltRobotPreparation, ref RobotPreparation robotPreparation)
+        private bool LoadRobotPreparation(XmlElement eltRobotPreparation, ref RobotPreparation robotPreparation, List<ConveyorSetting> conveyorSettings)
         {
             try
             {
@@ -1711,17 +1711,14 @@ namespace treeDiM.StackBuilder.Basics
                             var robotDrops = new List<RobotDrop>();
                             foreach (var nodeRobotDrop in eltLayerType.ChildNodes)
                             {
-                                ConveyorSetting conveyorSetting = new ConveyorSetting(0, 1, 0);
-                                robotDrops.Add(new RobotDrop(robotLayer, conveyorSetting));
+                                XmlElement eltRobotDrop = nodeRobotDrop as XmlElement;
+                                int conveyorIndex = int.Parse(eltRobotDrop.Attributes["ConveyorIndex"].Value);
+
+                                BoxPosition b = LoadBoxPosition(eltRobotDrop.GetElementsByTagName("BoxPosition")[0] as XmlElement);
+                                robotDrops.Add(new RobotDrop(robotLayer, conveyorSettings[conveyorIndex]) { BoxPositionMain = b });
                             }
                             robotPreparation.LayerTypes.Add(new RobotLayer(robotPreparation, layerID) { Drops = robotDrops });
                         }
-                    }
-                    else if (string.Equals(node.Name, "LayerIndexes", StringComparison.CurrentCultureIgnoreCase))
-                    {
-                    }
-                    else if (string.Equals(node.Name, "InterlayerIndexes", StringComparison.CurrentCultureIgnoreCase))
-                    { 
                     }
                 }
             }
@@ -2011,7 +2008,10 @@ namespace treeDiM.StackBuilder.Basics
                     else if (string.Equals(node.Name, "ConveyorSettings", StringComparison.CurrentCultureIgnoreCase))
                         LoadConveyorSettings(node as XmlElement, ref conveyorSettings);
                     else if (string.Equals(node.Name, "RobotPreparation", StringComparison.CurrentCultureIgnoreCase))
-                        LoadRobotPreparation(node as XmlElement, ref robotPreparation);
+                    {
+                        robotPreparation = new RobotPreparation();
+                        LoadRobotPreparation(node as XmlElement, ref robotPreparation, conveyorSettings);
+                    }
                 }
 
                 var analysis = CreateNewAnalysisCasePallet(
@@ -2031,6 +2031,8 @@ namespace treeDiM.StackBuilder.Basics
                 analysisCasePallet.PalletSleeveColor = palletSleeveColor;
                 analysisCasePallet.TopInterlayerProperties = topInterlayer;
                 analysisCasePallet.RobotPreparation = robotPreparation;
+
+                robotPreparation.SetAnalysis(analysisCasePallet);
 
                 if (!string.IsNullOrEmpty(sId))
                     analysis.ID.IGuid = Guid.Parse(sId);
@@ -3692,19 +3694,39 @@ namespace treeDiM.StackBuilder.Basics
                 _log.Error(ex.Message);
             }
         }
-        private void SaveRobotPreparation(RobotPreparation robotPreparation, XmlElement xmlAnalysisElt, XmlDocument xmlDoc)
+        private void SaveRobotPreparation(RobotPreparation robotPreparation, XmlElement eltAnalysis, XmlDocument xmlDoc)
         {
             try
             {
                 // create robot preparation elt
                 XmlElement eltRobotPreparation = xmlDoc.CreateElement("RobotPreparation");
-                xmlAnalysisElt.AppendChild(eltRobotPreparation);
+                eltAnalysis.AppendChild(eltRobotPreparation);
 
                 // layer types
                 XmlElement eltLayerTypes = xmlDoc.CreateElement("LayerTypes");
+                eltRobotPreparation.AppendChild(eltLayerTypes);
+
                 foreach (var robotLayer in robotPreparation.LayerTypes)
                 {
-                    
+                    XmlElement eltLayerType = xmlDoc.CreateElement("LayerType");
+                    eltLayerTypes.AppendChild(eltLayerType);
+                    XmlAttribute attLayerId = xmlDoc.CreateAttribute("LayerId");
+                    eltLayerType.Attributes.Append(attLayerId);
+                    attLayerId.Value = $"{robotLayer.LayerID}";
+                    // robot drops
+                    foreach (var robotDrop in robotLayer.Drops)
+                    {
+                        int conveyorIndex = robotPreparation.Analysis.ConveyorSettings.FindIndex(cs => cs.Equal(robotDrop.ConveyorSetting));
+
+                        XmlElement eltRobotDrop = xmlDoc.CreateElement("RobotDrop");
+                        eltLayerType.AppendChild(eltRobotDrop);
+
+                        XmlAttribute attConveyorIndex = xmlDoc.CreateAttribute("ConveyorIndex");
+                        eltRobotDrop.Attributes.Append(attConveyorIndex);
+                        attConveyorIndex.Value = $"{conveyorIndex}";
+
+                        SaveBoxPosition(robotDrop.BoxPositionMain, eltRobotDrop, xmlDoc);
+                    }
                 }
             }
             catch (Exception ex)
@@ -3891,6 +3913,7 @@ namespace treeDiM.StackBuilder.Basics
                 // conveyor settings
                 SaveConveyorSettings(analysisCasePallet1.ConveyorSettings, xmlAnalysisElt, xmlDoc);
                 // robot preparation
+                analysisCasePallet1.RobotPreparation = new RobotPreparation(analysisCasePallet1);
                 SaveRobotPreparation(analysisCasePallet1.RobotPreparation, xmlAnalysisElt, xmlDoc);
             }
 

@@ -443,6 +443,9 @@ namespace treeDiM.StackBuilder.Basics
     public class RobotPreparation
     {
         #region Constructor
+        public RobotPreparation()
+        { 
+        }
         public RobotPreparation(AnalysisCasePallet analysis)
         {
             Analysis = analysis;
@@ -567,6 +570,7 @@ namespace treeDiM.StackBuilder.Basics
         #endregion
         #region Data members
         public AnalysisCasePallet Analysis { get; protected set; }
+        public void SetAnalysis(AnalysisCasePallet analysisCasePallet) { Analysis = analysisCasePallet; }
         public List<RobotLayer> LayerTypes { get; set; } = new List<RobotLayer>();
         public List<int> ListInterlayerIndexes = new List<int>();
         public List<int> ListLayerIndexes = new List<int>();
