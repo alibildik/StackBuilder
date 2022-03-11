@@ -185,7 +185,19 @@ namespace treeDiM.StackBuilder.Basics
                 return ConveyorSettings.Where(cs => cs.Number == 1).First();
             }
         }
-        public RobotPreparation RobotPreparation { get; set; }
+        public RobotPreparation RobotPreparation
+        {
+            get
+            {
+                if (null == _robotPreparation)
+                    _robotPreparation = new RobotPreparation(this);
+                return _robotPreparation;
+            }
+            set
+            {
+                _robotPreparation = value; 
+            }
+        }
         #endregion
 
         #region Non-Public Members
@@ -195,6 +207,7 @@ namespace treeDiM.StackBuilder.Basics
         private PalletCapProperties _palletCapProperties;
         private PalletFilmProperties _palletFilmProperties;
         private StrapperSet _strapperSet = new StrapperSet();
+        private RobotPreparation _robotPreparation;
         #endregion
     }
 }

@@ -570,7 +570,12 @@ namespace treeDiM.StackBuilder.Basics
         #endregion
         #region Data members
         public AnalysisCasePallet Analysis { get; protected set; }
-        public void SetAnalysis(AnalysisCasePallet analysisCasePallet) { Analysis = analysisCasePallet; }
+        public void SetAnalysis(AnalysisCasePallet analysisCasePallet)
+        {
+            Analysis = analysisCasePallet;
+            List<Layer3DBox> listLayerBoxes = new List<Layer3DBox>();
+            Analysis.SolutionLay.GetUniqueSolutionItemsAndOccurence(ref listLayerBoxes, ref ListLayerIndexes, ref ListInterlayerIndexes);
+        }
         public List<RobotLayer> LayerTypes { get; set; } = new List<RobotLayer>();
         public List<int> ListInterlayerIndexes = new List<int>();
         public List<int> ListLayerIndexes = new List<int>();

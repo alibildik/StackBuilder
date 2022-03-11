@@ -3698,6 +3698,7 @@ namespace treeDiM.StackBuilder.Basics
         {
             try
             {
+                if (null == robotPreparation) return;
                 // create robot preparation elt
                 XmlElement eltRobotPreparation = xmlDoc.CreateElement("RobotPreparation");
                 eltAnalysis.AppendChild(eltRobotPreparation);
@@ -3913,7 +3914,6 @@ namespace treeDiM.StackBuilder.Basics
                 // conveyor settings
                 SaveConveyorSettings(analysisCasePallet1.ConveyorSettings, xmlAnalysisElt, xmlDoc);
                 // robot preparation
-                analysisCasePallet1.RobotPreparation = new RobotPreparation(analysisCasePallet1);
                 SaveRobotPreparation(analysisCasePallet1.RobotPreparation, xmlAnalysisElt, xmlDoc);
             }
 

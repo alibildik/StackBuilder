@@ -906,11 +906,14 @@ namespace treeDiM.StackBuilder.Basics
                         foreach (var layerPos in layer2DBox.Positions)
                         {
                             BoxPosition layerPosTemp = AdjustLayerPosition(layerPos, solItem.SymetryX, solItem.SymetryY);
-                            boxLayer.Add(new BoxPosition(
+                            BoxPosition boxPos = new BoxPosition(
                                 layerPosTemp.Position + Analysis.Offset + zLayer * Vector3D.ZAxis
                                 , layerPosTemp.DirectionLength
                                 , layerPosTemp.DirectionWidth
-                                ));
+                                );
+                            var packable = AnalysisCast.Content as BoxProperties;
+                            boxPos.FlipFacingOutside(packable.Facing, packable.OuterDimensions, AnalysisCast.ContainerDimensions);
+                            boxLayer.Add(boxPos);
                         }
                         listLayerTypes.Add(boxLayer);
                     }

@@ -231,7 +231,7 @@
     <value>True</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.52, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.53, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbMaxWidth.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -327,7 +327,7 @@
     <value>50, 21</value>
   </data>
   <data name="&gt;&gt;uCtrlNumberOfWalls.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.52, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.53, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tpOutputs.Text" xml:space="preserve">
     <value>Outputs</value>
@@ -384,7 +384,7 @@
     <value>tpInputColumns</value>
   </data>
   <data name="&gt;&gt;uCtrlWrapperThickness.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.52, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.53, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDescription.ZOrder" xml:space="preserve">
     <value>15</value>
@@ -565,7 +565,7 @@
     <value>cbDescription</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Desktop.FormExcelMassAnalysis, treeDiM.StackBuilder.Desktop, Version=3.0.2.52, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Desktop.FormExcelMassAnalysis, treeDiM.StackBuilder.Desktop, Version=3.0.2.53, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDescription.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -619,7 +619,7 @@
     <value>99, 85</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.52, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.53, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tpOutputs.Parent" xml:space="preserve">
     <value>tabCtrl</value>

@@ -38,7 +38,7 @@ namespace treeDiM.StackBuilder.Desktop
 
             if (Analysis is AnalysisCasePallet analysisCasePallet)
             {
-                RobotPreparation = new RobotPreparation(analysisCasePallet);
+                RobotPreparation = analysisCasePallet.RobotPreparation;
                 RobotPreparation.LayerModified += RobotPreparationModified;
 
                 uCtrlConveyorSettings.BoxProperties = analysisCasePallet.Content as PackableBrick;
@@ -53,8 +53,12 @@ namespace treeDiM.StackBuilder.Desktop
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
+            RobotPreparation.LayerModified -= RobotPreparationModified;
             if (Analysis is AnalysisCasePallet analysisCasePallet)
+            {
                 analysisCasePallet.ConveyorSettings = ConveyorSettings;
+                analysisCasePallet.RobotPreparation = RobotPreparation;
+            }
         }
         private void LoadConveyorSettings()
         {
