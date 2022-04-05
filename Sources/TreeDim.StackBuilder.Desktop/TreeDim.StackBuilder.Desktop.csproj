@@ -40,8 +40,8 @@
     <MinimumRequiredVersion>3.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>53</ApplicationRevision>
-    <ApplicationVersion>3.0.2.53</ApplicationVersion>
+    <ApplicationRevision>55</ApplicationRevision>
+    <ApplicationVersion>3.0.2.55</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1462,6 +1462,9 @@
     <EmbeddedResource Include="FormExcelLibrary.zh.resx">
       <DependentUpon>FormExcelLibrary.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysis.de.resx">
+      <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormExcelMassAnalysis.fr.resx">
       <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
     </EmbeddedResource>
@@ -1511,10 +1514,34 @@
     <EmbeddedResource Include="FormExcelMassAnalysis.resx">
       <DependentUpon>FormExcelMassAnalysis.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.de.resx">
+      <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.fr.resx">
       <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.it.resx">
+      <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.ja.resx">
+      <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.nl.resx">
+      <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.pl.resx">
+      <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.pt.resx">
+      <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.resx">
+      <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.ru.resx">
+      <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcelMassAnalysisPackPallet.zh.resx">
       <DependentUpon>FormExcelMassAnalysisPackPallet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormExporter.fr.resx">

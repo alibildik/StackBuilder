@@ -475,7 +475,7 @@ namespace treeDiM.StackBuilder.Basics
         }
         #endregion
         #region Public accessors
-        public bool IsValid => Analysis.SolutionLay.IsZOriented;
+        public bool HasValidOrientation => Analysis.SolutionLay.IsZOriented;
         public int NumberOfLayers => Analysis.SolutionLay.LayerCount;
         public RobotLayer GetLayerType(int index)
         {
@@ -510,30 +510,33 @@ namespace treeDiM.StackBuilder.Basics
                     interlayers.Add(new Pair<int, double>(-1,0.0) );
 
                 // 2.robot layer
-                RobotLayer editedLayer = LayerTypes[ListLayerIndexes[iLayer]];
-                editedLayer.SortByID();
-                RobotLayer robotLayer = new RobotLayer(this, iLayer) { LayerThickness = currentLayer.LayerHeight };
-
-                foreach (var drop in editedLayer.Drops)
+                if (ListLayerIndexes[iLayer] < LayerTypes.Count)
                 {
-                    var bPos = drop.BoxPositionMain;
-                    var v = bPos.Position;
+                    RobotLayer editedLayer = LayerTypes[ListLayerIndexes[iLayer]];
+                    editedLayer.SortByID();
+                    RobotLayer robotLayer = new RobotLayer(this, iLayer) { LayerThickness = currentLayer.LayerHeight };
 
-                    robotLayer.Drops.Add(
-                        new RobotDrop(robotLayer, drop.ConveyorSetting)
-                        {
-                            ID = drop.ID,
-                            BoxPositionMain = new BoxPosition( new Vector3D(v.X, v.Y, zLayer), bPos.DirectionLength, bPos.DirectionWidth)
-                        }
-                        );
-                    // increment number of cycles
-                    noCycles++; 
+                    foreach (var drop in editedLayer.Drops)
+                    {
+                        var bPos = drop.BoxPositionMain;
+                        var v = bPos.Position;
+
+                        robotLayer.Drops.Add(
+                            new RobotDrop(robotLayer, drop.ConveyorSetting)
+                            {
+                                ID = drop.ID,
+                                BoxPositionMain = new BoxPosition(new Vector3D(v.X, v.Y, zLayer), bPos.DirectionLength, bPos.DirectionWidth)
+                            }
+                            );
+                        // increment number of cycles
+                        noCycles++;
+                    }
+                    layers.Add(robotLayer);
+                    // increase z by layer thickness
+                    zLayer += currentLayer.LayerHeight;
+                    // change layer index
+                    ++iLayer;
                 }
-                layers.Add(robotLayer);
-                // increase z by layer thickness
-                zLayer += currentLayer.LayerHeight;
-                // change layer index
-                ++iLayer;
             }
         }
         public Vector2D MinPoint { get { Analysis.GetPtMinMax(out Vector2D ptMin, out Vector2D ptMax); return ptMin; } }
@@ -576,6 +579,25 @@ namespace treeDiM.StackBuilder.Basics
             List<Layer3DBox> listLayerBoxes = new List<Layer3DBox>();
             Analysis.SolutionLay.GetUniqueSolutionItemsAndOccurence(ref listLayerBoxes, ref ListLayerIndexes, ref ListInterlayerIndexes);
         }
+        public void UpdateLayerIndexes()
+        {
+            // rebuild list of layers / interlayers
+            Analysis.SolutionLay.GetLayerIndexes(ref ListLayerIndexes, ref ListInterlayerIndexes);
+        }
+        public bool IsValid
+        {
+            get
+            {
+                if (!Analysis.SolutionLay.IsZOriented)
+                    return false;
+                foreach (var index in ListLayerIndexes)
+                {
+                    if (index < 0 || index >= LayerTypes.Count)
+                        return false;
+                }
+                return true;
+            }
+        }        
         public List<RobotLayer> LayerTypes { get; set; } = new List<RobotLayer>();
         public List<int> ListInterlayerIndexes = new List<int>();
         public List<int> ListLayerIndexes = new List<int>();

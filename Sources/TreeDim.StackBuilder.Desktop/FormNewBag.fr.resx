@@ -460,4 +460,7 @@
   <data name="cbColor.Items102" xml:space="preserve">
     <value>Couleur</value>
   </data>
+  <data name="uCtrlOptBulge.Text" xml:space="preserve">
+    <value>Renflement</value>
+  </data>
 </root>

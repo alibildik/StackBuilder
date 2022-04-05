@@ -871,9 +871,17 @@ namespace treeDiM.StackBuilder.Basics
                 return loadTopLayers / noInFirstLayer;
             }
         }
-        public void GetUniqueSolutionItemsAndOccurence(ref List<Layer3DBox> listLayerTypes, ref List<int> layers, ref List<int> interlayerIndexes)
+
+        public void GetLayerIndexes(ref List<int> layers, ref List<int> interlayerIndexes)
         {
+            layers.Clear();
+            interlayerIndexes.Clear();
             List<SolutionItem> listSolItem = new List<SolutionItem>();
+            GetUniqueSolutionItems(ref listSolItem, ref layers, ref interlayerIndexes);
+        }
+        private void GetUniqueSolutionItems(ref List<SolutionItem> listSolItem, ref List<int> layers, ref List<int> interlayerIndexes)
+        {
+            listSolItem.Clear();
             foreach (var solItem in _solutionItems)
             {
                 int index = listSolItem.FindIndex(
@@ -893,6 +901,32 @@ namespace treeDiM.StackBuilder.Basics
             }
             if (Analysis is AnalysisCasePallet analysisCasePallet)
                 interlayerIndexes.Add(analysisCasePallet.HasTopInterlayer ? GetInterlayerIndex(analysisCasePallet.TopInterlayerProperties) : -1);
+        }
+        public void GetUniqueSolutionItemsAndOccurence(ref List<Layer3DBox> listLayerTypes, ref List<int> layers, ref List<int> interlayerIndexes)
+        {
+            List<SolutionItem> listSolItem = new List<SolutionItem>();
+            /*
+            foreach (var solItem in _solutionItems)
+            {
+                int index = listSolItem.FindIndex(
+                    si => si.IndexLayer == solItem.IndexLayer
+                    && si.IndexEditedLayer == solItem.IndexEditedLayer
+                    && si.SymetryX == solItem.SymetryX
+                    && si.SymetryY == solItem.SymetryY);
+
+                if (-1 != index)
+                    layers.Add(index);
+                else
+                {
+                    listSolItem.Add(solItem);
+                    layers.Add(listSolItem.Count - 1);
+                }
+                interlayerIndexes.Add(solItem.HasInterlayer ? solItem.InterlayerIndex : -1);
+            }
+            if (Analysis is AnalysisCasePallet analysisCasePallet)
+                interlayerIndexes.Add(analysisCasePallet.HasTopInterlayer ? GetInterlayerIndex(analysisCasePallet.TopInterlayerProperties) : -1);
+            */
+            GetUniqueSolutionItems(ref listSolItem, ref layers, ref interlayerIndexes);
 
             double zLayer = 0;
             foreach (var solItem in listSolItem)
@@ -911,8 +945,8 @@ namespace treeDiM.StackBuilder.Basics
                                 , layerPosTemp.DirectionLength
                                 , layerPosTemp.DirectionWidth
                                 );
-                            var packable = AnalysisCast.Content as BoxProperties;
-                            boxPos.FlipFacingOutside(packable.Facing, packable.OuterDimensions, AnalysisCast.ContainerDimensions);
+                            if (AnalysisCast.Content is BoxProperties packable)
+                                boxPos.FlipFacingOutside(packable.Facing, packable.OuterDimensions, AnalysisCast.ContainerDimensions);
                             boxLayer.Add(boxPos);
                         }
                         listLayerTypes.Add(boxLayer);

@@ -1017,4 +1017,10 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Définir un nouvel étui / une nouvelle caisse...</value>
   </data>
+  <data name="gbDimensions.Text" xml:space="preserve">
+    <value>Dimensions</value>
+  </data>
+  <data name="cbColor.Items4" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
 </root>

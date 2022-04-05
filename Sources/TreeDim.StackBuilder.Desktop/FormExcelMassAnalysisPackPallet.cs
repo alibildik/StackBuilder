@@ -37,7 +37,19 @@ namespace treeDiM.StackBuilder.Desktop
             uCtrlOverhang.ValueX = Settings.Default.OverhangX;
             uCtrlOverhang.ValueY = Settings.Default.OverhangY;
 
+            GenerateImage = Settings.Default.MassExcelGenerateImageInRow;
+
             UpdateStatus(this, null);
+        }
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Settings.Default.MaximumPalletHeight = uCtrlMaxPalletHeight.Value;
+            Settings.Default.OverhangX = uCtrlOverhang.ValueX;
+            Settings.Default.OverhangY = uCtrlOverhang.ValueY;
+
+            Settings.Default.MassExcelGenerateImageInRow = GenerateImage;
         }
         #endregion
         #region Override FormExcelMassAnalysis
@@ -64,7 +76,6 @@ namespace treeDiM.StackBuilder.Desktop
             };
             foreach (var cb in comboBoxes)
                 ExcelHelpers.FillComboWithColumnName(cb);
-
             // ---
             cbName.SelectedIndex = 0;
             chkbDescription.Checked = true;
@@ -472,7 +483,7 @@ namespace treeDiM.StackBuilder.Desktop
         #endregion
         #region Private properties
         private int ImageSize { get => (int)nudImageSize.Value; set => nudImageSize.Value = value; }
-        private bool GenerateImage => true;
+        private bool GenerateImage { get => chkbGenerateImageInRow.Checked; set => chkbGenerateImageInRow.Checked = value; }
         private double WrapperThickness => uCtrlWrapperThickness.Value;
         private int[] NoWalls => new int[3] { uCtrlNumberOfWalls.NoX, uCtrlNumberOfWalls.NoY, uCtrlNumberOfWalls.NoZ };
         private double MaximumPalletHeight

@@ -967,4 +967,7 @@ Blijven?</value>
   <data name="ID_RESULT_TOTALPALLETWEIGHT" xml:space="preserve">
     <value>Totale palletWeight</value>
   </data>
+  <data name="ID_MASSEXCEL_FREEVERSIONLIMITEDNUMBER" xml:space="preserve">
+    <value>La version gratuite ne peut traiter que {0} lignes...</value>
+  </data>
 </root>

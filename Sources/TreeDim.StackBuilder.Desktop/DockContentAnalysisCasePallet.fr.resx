@@ -391,4 +391,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Analyse caisse/palette...</value>
   </data>
+  <data name="cbPalletSleeveColor.Items" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
 </root>

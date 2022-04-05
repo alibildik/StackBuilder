@@ -19,7 +19,6 @@ namespace treeDiM.StackBuilder.Basics
         {
         }
         #endregion
-
         #region Specific case/pallet decoration 
         public StrapperSet StrapperSet
         {
@@ -103,7 +102,6 @@ namespace treeDiM.StackBuilder.Basics
         public bool HasPalletSleeve { get; set; }
         public Color PalletSleeveColor { get; set; }
         #endregion
-
         #region Override AnalysisHomo
         public override BBox3D BBoxLoadWDeco(BBox3D loadBBox)
         {
@@ -168,8 +166,12 @@ namespace treeDiM.StackBuilder.Basics
                     + labelWeight;
             }
         }
+        public override void OnEndUpdate(ItemBase updatedAttribute)
+        {
+            base.OnEndUpdate(updatedAttribute);
+            ClearRobotPreparation();
+        }
         #endregion
-
         #region Robot related members
         public List<ConveyorSetting> ConveyorSettings = new List<ConveyorSetting>()
         {
@@ -189,6 +191,8 @@ namespace treeDiM.StackBuilder.Basics
         {
             get
             {
+                if (null!=_robotPreparation && !_robotPreparation.IsValid)
+                    _robotPreparation = null;
                 if (null == _robotPreparation)
                     _robotPreparation = new RobotPreparation(this);
                 return _robotPreparation;
@@ -198,16 +202,16 @@ namespace treeDiM.StackBuilder.Basics
                 _robotPreparation = value; 
             }
         }
+        private void ClearRobotPreparation() => _robotPreparation = null;
         #endregion
-
         #region Non-Public Members
         private PalletCornerProperties _palletCornerProperties;
         private PalletCornerProperties _palletCornerTopProperties;
         private InterlayerProperties _topInterlayerProperties;
         private PalletCapProperties _palletCapProperties;
         private PalletFilmProperties _palletFilmProperties;
-        private StrapperSet _strapperSet = new StrapperSet();
         private RobotPreparation _robotPreparation;
+        private StrapperSet _strapperSet = new StrapperSet();
         #endregion
     }
 }

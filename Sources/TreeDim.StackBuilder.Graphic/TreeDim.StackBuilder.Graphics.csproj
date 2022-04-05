@@ -316,6 +316,9 @@
     <EmbeddedResource Include="Controls\Graphics2DLayerEditor.resx">
       <DependentUpon>Graphics2DLayerEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Graphics2DRobotDropEditor.fr.resx">
+      <DependentUpon>Graphics2DRobotDropEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Graphics2DRobotDropEditor.resx">
       <DependentUpon>Graphics2DRobotDropEditor.cs</DependentUpon>
     </EmbeddedResource>

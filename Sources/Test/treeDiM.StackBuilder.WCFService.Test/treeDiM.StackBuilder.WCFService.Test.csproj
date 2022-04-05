@@ -147,6 +147,7 @@
     <EmbeddedResource Include="FormTestHomogeneous.resx">
       <DependentUpon>FormTestHomogeneous.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.fr.resx" />
     <EmbeddedResource Include="Properties\Resources.nl.resx" />
     <EmbeddedResource Include="Properties\Resources.pl.resx" />
     <EmbeddedResource Include="Properties\Resources.pt.resx" />

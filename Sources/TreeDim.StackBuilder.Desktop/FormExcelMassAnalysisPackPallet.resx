@@ -164,8 +164,8 @@
   <data name="lbWeight.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="uCtrlNumberOfWalls.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 101</value>
+  <data name="&gt;&gt;lbHeight.Parent" xml:space="preserve">
+    <value>tpInputColumns</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -185,14 +185,8 @@
   <data name="chkbGenerateImageInRow.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 63</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lbName.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 7</value>
-  </data>
-  <data name="&gt;&gt;lbLength.ZOrder" xml:space="preserve">
-    <value>16</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Parent" xml:space="preserve">
     <value>tpConstraints</value>
@@ -208,6 +202,9 @@
   </data>
   <data name="cbMaxWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 21</value>
+  </data>
+  <data name="cbMaxLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>371, 31</value>
   </data>
   <data name="uCtrlMaxPalletHeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>100, 20</value>
@@ -227,11 +224,8 @@
   <data name="&gt;&gt;lbStartOutput.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.53, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.55, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbMaxWidth.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -272,9 +266,6 @@
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
     <value>tpOutputs</value>
   </data>
-  <data name="&gt;&gt;lbHeight.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
   <data name="cbNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 21</value>
   </data>
@@ -298,9 +289,6 @@
   </data>
   <data name="uCtrlOverhang.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 49</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Name</value>
   </data>
   <data name="lbLength.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -327,13 +315,13 @@
     <value>50, 21</value>
   </data>
   <data name="&gt;&gt;uCtrlNumberOfWalls.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.53, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.55, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tpOutputs.Text" xml:space="preserve">
     <value>Outputs</value>
   </data>
-  <data name="lPallets.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="&gt;&gt;cbWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -356,14 +344,17 @@
   <data name="cbMaxLength.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
+  <data name="&gt;&gt;nudImageSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;lbHeight.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbLength.Name" xml:space="preserve">
     <value>cbLength</value>
   </data>
-  <data name="&gt;&gt;tabCtrl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 7</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Number per pack</value>
@@ -380,14 +371,11 @@
   <data name="&gt;&gt;lPallets.Parent" xml:space="preserve">
     <value>tpConstraints</value>
   </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbLength.Parent" xml:space="preserve">
     <value>tpInputColumns</value>
   </data>
   <data name="&gt;&gt;uCtrlWrapperThickness.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.53, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cbDescription.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.55, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Image size</value>
@@ -401,11 +389,14 @@
   <data name="&gt;&gt;nudImageSize.Parent" xml:space="preserve">
     <value>tpOutputs</value>
   </data>
+  <data name="cbLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 21</value>
+  </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+  <data name="&gt;&gt;tabCtrl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>9</value>
@@ -421,6 +412,9 @@
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
+  </data>
+  <data name="lPallets.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -453,11 +447,11 @@
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
     <value>tpInputColumns</value>
   </data>
-  <data name="&gt;&gt;tpInputColumns.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;cbMaxWidth.Name" xml:space="preserve">
-    <value>cbMaxWidth</value>
+  <data name="chkbDescription.Text" xml:space="preserve">
+    <value>Description</value>
   </data>
   <data name="lbStartOutput.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -477,8 +471,8 @@
   <data name="&gt;&gt;lbName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lbName.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;cbMaxWidth.Parent" xml:space="preserve">
+    <value>tpInputColumns</value>
   </data>
   <data name="&gt;&gt;cbMaxHeight.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -498,11 +492,8 @@
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 7</value>
-  </data>
-  <data name="&gt;&gt;cbMaxWidth.Parent" xml:space="preserve">
-    <value>tpInputColumns</value>
+  <data name="cbMaxWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
   </data>
   <data name="&gt;&gt;lbWeight.Name" xml:space="preserve">
     <value>lbWeight</value>
@@ -510,8 +501,8 @@
   <data name="&gt;&gt;lbLength.Name" xml:space="preserve">
     <value>lbLength</value>
   </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;tpInputColumns.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;lbPallets.Name" xml:space="preserve">
     <value>lbPallets</value>
@@ -528,8 +519,8 @@
   <data name="chkbDescription.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 33</value>
   </data>
-  <data name="lbHeight.Text" xml:space="preserve">
-    <value>Height</value>
+  <data name="&gt;&gt;cbLength.ZOrder" xml:space="preserve">
+    <value>14</value>
   </data>
   <data name="tpInputColumns.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -546,14 +537,17 @@
   <data name="lbLength.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
   </data>
-  <data name="&gt;&gt;lbStartOutput.Parent" xml:space="preserve">
-    <value>tpOutputs</value>
+  <data name="lbLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 61</value>
   </data>
-  <data name="&gt;&gt;lbName.Parent" xml:space="preserve">
-    <value>tpInputColumns</value>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;lbWeight.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="uCtrlNumberOfWalls.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;cbDescription.ZOrder" xml:space="preserve">
+    <value>15</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -565,7 +559,7 @@
     <value>cbDescription</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Desktop.FormExcelMassAnalysis, treeDiM.StackBuilder.Desktop, Version=3.0.2.53, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Desktop.FormExcelMassAnalysis, treeDiM.StackBuilder.Desktop, Version=3.0.2.55, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDescription.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -579,8 +573,8 @@
   <data name="&gt;&gt;nudImageSize.Name" xml:space="preserve">
     <value>nudImageSize</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tpInputColumns</value>
+  <data name="&gt;&gt;tpInputColumns.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="cbLength.Location" type="System.Drawing.Point, System.Drawing">
     <value>99, 58</value>
@@ -603,9 +597,6 @@
   <data name="&gt;&gt;chkbGenerateImageInRow.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
   <data name="lPallets.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -619,7 +610,7 @@
     <value>99, 85</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.53, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.55, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tpOutputs.Parent" xml:space="preserve">
     <value>tabCtrl</value>
@@ -630,32 +621,32 @@
   <data name="&gt;&gt;lbPallets.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
   <data name="&gt;&gt;cbName.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <data name="&gt;&gt;tpInputColumns.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tpConstraints.Size" type="System.Drawing.Size, System.Drawing">
+    <value>583, 181</value>
   </data>
   <data name="tpInputColumns.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;cbLength.ZOrder" xml:space="preserve">
-    <value>14</value>
+  <data name="&gt;&gt;lbHeight.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
   </data>
-  <data name="cbMaxWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+  <data name="lbPallets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 139</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 13</value>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tpInputColumns</value>
   </data>
   <data name="uCtrlOverhang.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -693,14 +684,11 @@
   <data name="&gt;&gt;cbName.Parent" xml:space="preserve">
     <value>tpInputColumns</value>
   </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 34</value>
-  </data>
   <data name="cbLength.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="lbLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 61</value>
+  <data name="lbName.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="tpInputColumns.Size" type="System.Drawing.Size, System.Drawing">
     <value>583, 181</value>
@@ -714,8 +702,11 @@
   <data name="lbHeight.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 13</value>
   </data>
-  <data name="&gt;&gt;nudImageSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 34</value>
+  </data>
+  <data name="uCtrlNumberOfWalls.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 101</value>
   </data>
   <data name="&gt;&gt;cbName.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -729,9 +720,6 @@
   <data name="uCtrlWrapperThickness.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>100, 20</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 88</value>
   </data>
@@ -740,9 +728,6 @@
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;lbHeight.Name" xml:space="preserve">
-    <value>lbHeight</value>
   </data>
   <data name="&gt;&gt;tabCtrl.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -756,8 +741,14 @@
   <data name="&gt;&gt;tabCtrl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;cbNumber.Name" xml:space="preserve">
+    <value>cbNumber</value>
+  </data>
   <data name="&gt;&gt;lbName.ZOrder" xml:space="preserve">
     <value>19</value>
+  </data>
+  <data name="lbWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 13</value>
   </data>
   <data name="&gt;&gt;cbNumber.ZOrder" xml:space="preserve">
     <value>8</value>
@@ -768,8 +759,8 @@
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 13</value>
   </data>
-  <data name="&gt;&gt;lbLength.Parent" xml:space="preserve">
-    <value>tpInputColumns</value>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;lPallets.Name" xml:space="preserve">
     <value>lPallets</value>
@@ -792,14 +783,8 @@
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
   </data>
-  <data name="&gt;&gt;lbHeight.Parent" xml:space="preserve">
-    <value>tpInputColumns</value>
-  </data>
   <data name="&gt;&gt;cbName.Name" xml:space="preserve">
     <value>cbName</value>
-  </data>
-  <data name="cbMaxHeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 21</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Width</value>
@@ -813,9 +798,6 @@
   <data name="&gt;&gt;cbMaxLength.Parent" xml:space="preserve">
     <value>tpInputColumns</value>
   </data>
-  <data name="&gt;&gt;cbMaxLength.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="cbNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>371, 4</value>
   </data>
@@ -825,8 +807,8 @@
   <data name="label6.Text" xml:space="preserve">
     <value>Maximum pack height</value>
   </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;lbLength.ZOrder" xml:space="preserve">
+    <value>16</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -834,8 +816,8 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Maximum pack length</value>
   </data>
-  <data name="cbLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 21</value>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 13</value>
   </data>
   <data name="chkbDescription.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -858,8 +840,8 @@
   <data name="&gt;&gt;chkbGenerateImageInRow.Name" xml:space="preserve">
     <value>chkbGenerateImageInRow</value>
   </data>
-  <data name="chkbDescription.Text" xml:space="preserve">
-    <value>Description</value>
+  <data name="cbMaxHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 21</value>
   </data>
   <data name="&gt;&gt;lPallets.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -870,8 +852,8 @@
   <data name="&gt;&gt;cbOutputStart.Name" xml:space="preserve">
     <value>cbOutputStart</value>
   </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;cbMaxLength.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="lbPallets.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 22</value>
@@ -885,11 +867,11 @@
   <data name="&gt;&gt;cbMaxLength.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;uCtrlMaxPalletHeight.Parent" xml:space="preserve">
-    <value>tpConstraints</value>
+  <data name="&gt;&gt;lbName.Parent" xml:space="preserve">
+    <value>tpInputColumns</value>
   </data>
-  <data name="uCtrlNumberOfWalls.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="&gt;&gt;tpInputColumns.Parent" xml:space="preserve">
+    <value>tabCtrl</value>
   </data>
   <data name="&gt;&gt;lbWeight.Parent" xml:space="preserve">
     <value>tpInputColumns</value>
@@ -912,9 +894,6 @@
   <data name="lbHeight.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="lbPallets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 139</value>
-  </data>
   <data name="uCtrlMaxPalletHeight.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 23</value>
   </data>
@@ -927,23 +906,20 @@
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 13</value>
   </data>
-  <data name="cbMaxLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>371, 31</value>
+  <data name="lbStartOutput.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
   </data>
-  <data name="lbWeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 13</value>
+  <data name="&gt;&gt;lbWeight.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Maximum pack width</value>
   </data>
-  <data name="&gt;&gt;cbWeight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
-  <data name="&gt;&gt;tpInputColumns.Parent" xml:space="preserve">
-    <value>tabCtrl</value>
-  </data>
-  <data name="&gt;&gt;cbNumber.Name" xml:space="preserve">
-    <value>cbNumber</value>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="&gt;&gt;lPallets.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -954,8 +930,8 @@
   <data name="chkbDescription.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 17</value>
   </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 7</value>
+  <data name="&gt;&gt;lbHeight.Name" xml:space="preserve">
+    <value>lbHeight</value>
   </data>
   <data name="chkbGenerateImageInRow.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 17</value>
@@ -975,14 +951,11 @@
   <data name="uCtrlWrapperThickness.Size" type="System.Drawing.Size, System.Drawing">
     <value>272, 20</value>
   </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;uCtrlMaxPalletHeight.Parent" xml:space="preserve">
+    <value>tpConstraints</value>
   </data>
-  <data name="tpConstraints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>583, 181</value>
-  </data>
-  <data name="lbStartOutput.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
+  <data name="lbHeight.Text" xml:space="preserve">
+    <value>Height</value>
   </data>
   <data name="&gt;&gt;chkbGenerateImageInRow.Parent" xml:space="preserve">
     <value>tpOutputs</value>
@@ -990,11 +963,11 @@
   <data name="&gt;&gt;chkbGenerateImageInRow.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="&gt;&gt;cbMaxWidth.Name" xml:space="preserve">
+    <value>cbMaxWidth</value>
   </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lbStartOutput.Parent" xml:space="preserve">
+    <value>tpOutputs</value>
   </data>
   <data name="lPallets.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 13</value>
@@ -1004,6 +977,9 @@
   </data>
   <data name="lbWeight.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 141</value>
+  </data>
+  <data name="lbName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
   </data>
   <data name="uCtrlMaxPalletHeight.Text" xml:space="preserve">
     <value>Maximum pallet height</value>

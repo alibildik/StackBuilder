@@ -338,7 +338,6 @@ namespace treeDiM.StackBuilder.ExcelAddIn
             }
             return pallets;
         }
-
         private void OnRefreshPallets(object sender, EventArgs e)
         {
             try
@@ -392,7 +391,6 @@ namespace treeDiM.StackBuilder.ExcelAddIn
             }
         }
         #endregion
-
         #region Computing results
         private void GenerateResult(
             string name, string description

@@ -171,4 +171,25 @@
   <data name="toolStrip.Text" xml:space="preserve">
     <value>toolStrip1</value>
   </data>
+  <data name="tabPageReport.Text" xml:space="preserve">
+    <value>Rapport</value>
+  </data>
+  <data name="lbReportTemplate.Text" xml:space="preserve">
+    <value>Patron de rapport</value>
+  </data>
+  <data name="cbUnit.Items" xml:space="preserve">
+    <value>Métrique</value>
+  </data>
+  <data name="cbUnit.Items1" xml:space="preserve">
+    <value>Impérial</value>
+  </data>
+  <data name="cbUnit.Items2" xml:space="preserve">
+    <value>Métrique + impérial</value>
+  </data>
+  <data name="lbUnit.Text" xml:space="preserve">
+    <value>Unité</value>
+  </data>
+  <data name="tabPageUnits.Text" xml:space="preserve">
+    <value>Unités</value>
+  </data>
 </root>

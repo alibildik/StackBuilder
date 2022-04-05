@@ -123,4 +123,7 @@
   <data name="ID_NUMBER" xml:space="preserve">
     <value>Nombre</value>
   </data>
+  <data name="ID_PRIORITYLEVEL" xml:space="preserve">
+    <value>Niveau de priorité</value>
+  </data>
 </root>

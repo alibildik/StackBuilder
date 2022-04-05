@@ -171,4 +171,25 @@
   <data name="gbOutput.Text" xml:space="preserve">
     <value>Sortie</value>
   </data>
+  <data name="lbStartOutput.Text" xml:space="preserve">
+    <value>Commencer à la colonne</value>
+  </data>
+  <data name="tpOutputs.Text" xml:space="preserve">
+    <value>Résultats</value>
+  </data>
+  <data name="lPallets.Text" xml:space="preserve">
+    <value>Palettes</value>
+  </data>
+  <data name="tpPalletsAndConstraints.Text" xml:space="preserve">
+    <value>Palettes et contraintes</value>
+  </data>
+  <data name="chkbGenerateImageInRow.Text" xml:space="preserve">
+    <value>Générer les images dans les lignes</value>
+  </data>
+  <data name="chkbAllowCombinations.Text" xml:space="preserve">
+    <value>Autoriser la combinaison de couches</value>
+  </data>
+  <data name="tpInputColumns.Text" xml:space="preserve">
+    <value>Colonnes données</value>
+  </data>
 </root>

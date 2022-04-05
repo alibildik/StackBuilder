@@ -121,7 +121,7 @@
     <value>Zaak/Pallet analyse...</value>
   </data>
   <data name="chkbPalletCap.Text" xml:space="preserve">
-    <value>Pallet GLB</value>
+    <value>Pallet cap</value>
   </data>
   <data name="chkbPalletCorners.Text" xml:space="preserve">
     <value>Pallet hoeken</value>

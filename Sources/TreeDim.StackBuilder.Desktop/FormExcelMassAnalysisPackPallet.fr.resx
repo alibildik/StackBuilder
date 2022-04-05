@@ -180,10 +180,10 @@
     <value>Nom</value>
   </data>
   <data name="chkbGenerateImageInRow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 17</value>
+    <value>188, 17</value>
   </data>
   <data name="chkbGenerateImageInRow.Text" xml:space="preserve">
-    <value>Generer les images dans les rangées</value>
+    <value>Générer les images dans les lignes</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
@@ -214,5 +214,11 @@
   </data>
   <data name="lPallets.Text" xml:space="preserve">
     <value>Palettes</value>
+  </data>
+  <data name="chkbDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Analyse de masse Excel (1 pack par ligne)</value>
   </data>
 </root>

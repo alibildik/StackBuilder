@@ -192,4 +192,7 @@
   <data name="ID_NAMEBAG" xml:space="preserve">
     <value>Sac</value>
   </data>
+  <data name="ID_PALLETSONPALLET" xml:space="preserve">
+    <value>Palettes sur palette</value>
+  </data>
 </root>

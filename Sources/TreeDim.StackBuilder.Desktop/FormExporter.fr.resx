@@ -146,20 +146,32 @@
   <data name="lbCoordinates.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="lbCoordinates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="lbCoordinates.Text" xml:space="preserve">
+    <value>Coordonnées</value>
+  </data>
   <data name="tabPageSettings.Text" xml:space="preserve">
     <value>Paramètres</value>
   </data>
-  <data name="tabPageAngles.Text" xml:space="preserve">
-    <value>Configurations de prise</value>
+  <data name="tabPagePickConfigurations.Text" xml:space="preserve">
+    <value>Configurations préhenseur</value>
   </data>
   <data name="lbLayers.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="lbLayers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="lbLayers.Text" xml:space="preserve">
+    <value>Couches</value>
   </data>
   <data name="tabPageLayerPrep.Text" xml:space="preserve">
     <value>Préparations de couche</value>
   </data>
   <data name="uCtrlDockingOffset.Text" xml:space="preserve">
-    <value>Distance d'accostage</value>
+    <value>Distances d'accostage</value>
   </data>
   <data name="tabPageDockingOffsets.Text" xml:space="preserve">
     <value>Accostage</value>
@@ -291,8 +303,5 @@
         JycnJycAAAAAAAAAAAAAAAAAAAAAAP//AAAAHwAAAA8AAIAHAACAAwAAgAEAAIAAAACAAAAAgAEAAIAB
         AACAAQAAgAEAAMABAADgAQAA8AEAAP//AAA=
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
 </root>

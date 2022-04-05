@@ -881,4 +881,37 @@ Souhaitez-vous continuer?</value>
   <data name="ID_RESULT_TOTALPALLETWEIGHT" xml:space="preserve">
     <value>Poids total de la palette</value>
   </data>
+  <data name="ID_RESULT_LAYERCOUNT" xml:space="preserve">
+    <value>Nombre de couches</value>
+  </data>
+  <data name="ID_RESULT_LOADDIMENSIONS" xml:space="preserve">
+    <value>Dimensions chargement</value>
+  </data>
+  <data name="ID_RESULT_PACKDIM" xml:space="preserve">
+    <value>Dimensions du pack</value>
+  </data>
+  <data name="ID_ERROR_NOSHEETLOADED" xml:space="preserve">
+    <value>Aucune page chargée</value>
+  </data>
+  <data name="ID_ERROR_FAILEDTODOWNLOADFILE" xml:space="preserve">
+    <value>Echec du téléchargement du fichier {0}:{1}</value>
+  </data>
+  <data name="ID_ERROR_INVALIDINPUTFILEPATH" xml:space="preserve">
+    <value>Chemin de fichier invalide {0}.</value>
+  </data>
+  <data name="ID_ERROR_NOPALLETSELECTED" xml:space="preserve">
+    <value>Aucune palette n'est sélectionnée. Au moins une palette doit être sélectionnée.</value>
+  </data>
+  <data name="ID_RESULT_PACKIMAGE" xml:space="preserve">
+    <value>Image pack</value>
+  </data>
+  <data name="ID_RESULT_PALLETDIMENSIONS" xml:space="preserve">
+    <value>Dimensions palette</value>
+  </data>
+  <data name="ID_RESULT_PACKWEIGHT" xml:space="preserve">
+    <value>Masse du pack ({0})</value>
+  </data>
+  <data name="ID_RESULT_PERLAYERCOUNT" xml:space="preserve">
+    <value>Nombre par couche</value>
+  </data>
 </root>

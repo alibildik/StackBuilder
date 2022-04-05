@@ -157,7 +157,7 @@
     <value>2</value>
   </data>
   <data name="&gt;&gt;fileSelectExcel.Type" xml:space="preserve">
-    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.53, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.55, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bnDownloadSampleSheet.Name" xml:space="preserve">
     <value>bnDownloadSampleSheet</value>

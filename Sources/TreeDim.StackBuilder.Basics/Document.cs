@@ -1712,10 +1712,16 @@ namespace treeDiM.StackBuilder.Basics
                             foreach (var nodeRobotDrop in eltLayerType.ChildNodes)
                             {
                                 XmlElement eltRobotDrop = nodeRobotDrop as XmlElement;
+                                // ID 
+                                int id = int.Parse(eltRobotDrop.Attributes["Id"].Value);
+                                // conveyor index
                                 int conveyorIndex = int.Parse(eltRobotDrop.Attributes["ConveyorIndex"].Value);
-
-                                BoxPosition b = LoadBoxPosition(eltRobotDrop.GetElementsByTagName("BoxPosition")[0] as XmlElement);
-                                robotDrops.Add(new RobotDrop(robotLayer, conveyorSettings[conveyorIndex]) { BoxPositionMain = b });
+                                // BoxPosition
+                                if (conveyorIndex >= 0 && conveyorIndex < conveyorSettings.Count)
+                                {
+                                    BoxPosition b = LoadBoxPosition(eltRobotDrop.GetElementsByTagName("BoxPosition")[0] as XmlElement);
+                                    robotDrops.Add(new RobotDrop(robotLayer, conveyorSettings[conveyorIndex]) { ID = id, BoxPositionMain = b });
+                                }
                             }
                             robotPreparation.LayerTypes.Add(new RobotLayer(robotPreparation, layerID) { Drops = robotDrops });
                         }
@@ -2031,8 +2037,7 @@ namespace treeDiM.StackBuilder.Basics
                 analysisCasePallet.PalletSleeveColor = palletSleeveColor;
                 analysisCasePallet.TopInterlayerProperties = topInterlayer;
                 analysisCasePallet.RobotPreparation = robotPreparation;
-
-                robotPreparation.SetAnalysis(analysisCasePallet);
+                robotPreparation?.SetAnalysis(analysisCasePallet);
 
                 if (!string.IsNullOrEmpty(sId))
                     analysis.ID.IGuid = Guid.Parse(sId);
@@ -3718,10 +3723,19 @@ namespace treeDiM.StackBuilder.Basics
                     foreach (var robotDrop in robotLayer.Drops)
                     {
                         int conveyorIndex = robotPreparation.Analysis.ConveyorSettings.FindIndex(cs => cs.Equal(robotDrop.ConveyorSetting));
+                        if (-1 == conveyorIndex)
+                        {
+                            _log.Error($"Unable to retrieve conveyor index for {robotDrop.ConveyorSetting}.");
+                            continue;
+                        }
 
                         XmlElement eltRobotDrop = xmlDoc.CreateElement("RobotDrop");
                         eltLayerType.AppendChild(eltRobotDrop);
-
+                        // ID
+                        XmlAttribute attID = xmlDoc.CreateAttribute("Id");
+                        eltRobotDrop.Attributes.Append(attID);
+                        attID.Value = $"{robotDrop.ID}";
+                        // conveyor index
                         XmlAttribute attConveyorIndex = xmlDoc.CreateAttribute("ConveyorIndex");
                         eltRobotDrop.Attributes.Append(attConveyorIndex);
                         attConveyorIndex.Value = $"{conveyorIndex}";

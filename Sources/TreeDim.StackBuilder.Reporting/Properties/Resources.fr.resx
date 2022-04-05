@@ -235,7 +235,7 @@
     <value>Poids</value>
   </data>
   <data name="ID_CASE_DIMENSIONS" xml:space="preserve">
-    <value>Case_{0}x{1}x{2}</value>
+    <value>Caisse_{0}x{1}x{2}</value>
   </data>
   <data name="ID_REPORT_CAPTION" xml:space="preserve">
     <value>Rapport {0}</value>
@@ -275,5 +275,8 @@
   </data>
   <data name="ID_RN_STATICBCT" xml:space="preserve">
     <value>RCV statique</value>
+  </data>
+  <data name="ID_RN_BULGE" xml:space="preserve">
+    <value>Renflement</value>
   </data>
 </root>

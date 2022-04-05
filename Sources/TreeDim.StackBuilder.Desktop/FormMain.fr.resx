@@ -1960,4 +1960,16 @@
         AAD//wAA//8AAA==
 </value>
   </data>
+  <data name="toolStripSplitButtonExcelProcessors.Text" xml:space="preserve">
+    <value>Processeur Excel...</value>
+  </data>
+  <data name="toolStripStandard.Text" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="toolStripMIPalletPallet.Text" xml:space="preserve">
+    <value>Palette/Palette</value>
+  </data>
+  <data name="toolStripMIPalletPallet.ToolTipText" xml:space="preserve">
+    <value>Analyse palettes/palette</value>
+  </data>
 </root>

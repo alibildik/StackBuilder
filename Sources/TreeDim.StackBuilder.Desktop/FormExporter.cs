@@ -124,6 +124,7 @@ namespace treeDiM.StackBuilder.Desktop
         }
         private void FillLayerComboBox()
         {
+            RobotPreparation.UpdateLayerIndexes();
             // layers
             cbLayers.Items.Clear();
             for (int i = 0; i < RobotPreparation.LayerTypes.Count; ++i)

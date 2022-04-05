@@ -22,6 +22,7 @@ namespace treeDiM.StackBuilder.Basics
         #endregion
         #region Equal & Clone method
         public bool Equal(ConveyorSetting cs) => Number == cs.Number && Angle == cs.Angle && GripperAngle == cs.GripperAngle;
+        public override string ToString() => $"Number={Number}, Angle={Angle}, GripperAngle={GripperAngle}";
         public ConveyorSetting Clone() => new ConveyorSetting(Angle, Number, GripperAngle);
         #endregion
         #region Static methods

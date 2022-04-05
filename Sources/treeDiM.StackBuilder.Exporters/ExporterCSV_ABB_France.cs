@@ -126,30 +126,35 @@ namespace treeDiM.StackBuilder.Exporters
                     sb.AppendLine($"{itemName};{itemPickSettings};{placeSettings};");
                 }
                 // layer drops
-                var robotLayer = robotLayers[iLayer];
-                foreach (var robotDrop in robotLayer.Drops)
+                if (iLayer < robotLayers.Count)
                 {
-                    // item name
-                    string itemName = "Box";
-                    // item pick setting
-                    string itemPickSettings = string.Format(
-                        CultureInfo.InvariantCulture,
-                        "[[{0},{1},{2}],{3},[{4},{5},{6}],{7},{8},{9}]",
-                        boxDim.X, boxDim.Y, boxDim.Z, weight, cog.X, cog.Y, cog.Z,
-                        robotDrop.ConveyorSetting.GripperAngle, robotDrop.ConveyorSetting.Angle, robotPreparation.Facing
-                        );
-                    // place settings
-                    Vector3D vPos = robotDrop.Center3D;
-                    int angle = Modulo360(robotDrop.RawAngleSimple - robotDrop.ConveyorSetting.Angle);
-                    double dockingX = DockingDistanceX(robotDrop, robotPreparation.DockingOffsets.X);
-                    double dockingY = DockingDistanceY(robotDrop, robotPreparation.DockingOffsets.Y);
-                    string placeSettings = string.Format(
-                        CultureInfo.InvariantCulture,
-                        "[{0},[{1},{2},{3}],{4},[{5},{6},{7}]]",
-                        robotDrop.Number, vPos.X, vPos.Y, robotDrop.TopHeight, angle, dockingX, dockingY, robotPreparation.DockingOffsets.Z);
-                    // append drop line
-                    sb.AppendLine($"{itemName};{itemPickSettings};{placeSettings};");
+                    var robotLayer = robotLayers[iLayer];
+                    foreach (var robotDrop in robotLayer.Drops)
+                    {
+                        // item name
+                        string itemName = "Box";
+                        // item pick setting
+                        string itemPickSettings = string.Format(
+                            CultureInfo.InvariantCulture,
+                            "[[{0},{1},{2}],{3},[{4},{5},{6}],{7},{8},{9}]",
+                            boxDim.X, boxDim.Y, boxDim.Z, weight, cog.X, cog.Y, cog.Z,
+                            robotDrop.ConveyorSetting.GripperAngle, robotDrop.ConveyorSetting.Angle, robotPreparation.Facing
+                            );
+                        // place settings
+                        Vector3D vPos = robotDrop.Center3D;
+                        int angle = Modulo360(robotDrop.RawAngleSimple - robotDrop.ConveyorSetting.Angle);
+                        double dockingX = DockingDistanceX(robotDrop, robotPreparation.DockingOffsets.X);
+                        double dockingY = DockingDistanceY(robotDrop, robotPreparation.DockingOffsets.Y);
+                        string placeSettings = string.Format(
+                            CultureInfo.InvariantCulture,
+                            "[{0},[{1},{2},{3}],{4},[{5},{6},{7}]]",
+                            robotDrop.Number, vPos.X, vPos.Y, robotDrop.TopHeight, angle, dockingX, dockingY, robotPreparation.DockingOffsets.Z);
+                        // append drop line
+                        sb.AppendLine($"{itemName};{itemPickSettings};{placeSettings};");
+                    }
                 }
+                else
+                    _log.Error($"RobotLayer count {robotLayers.Count} not equal to solution layer count {robotPreparation.NumberOfLayers}");
             }
             sb.AppendLine("END;");
         }
