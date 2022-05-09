@@ -48,6 +48,9 @@ namespace treeDiM.StackBuilder.Graphics
             // initialize automatic numbering corner combo box
             RobotLayer.RefPointNumbering = (RobotLayer.enuCornerPoint)Settings.Default.AutomaticNumberingCornerIndex;
             cbCorner.SelectedIndex = Settings.Default.AutomaticNumberingCornerIndex;
+
+            // set event
+            cbCorner.SelectedValueChanged += new EventHandler(OnNumberingCornerChanged);
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -228,6 +231,7 @@ namespace treeDiM.StackBuilder.Graphics
         }
         public int ClickToIndex(Point pt)
         {
+            if (null == Graphics) return -1;
             // get world coordinate
             Vector2D ptWorld = Graphics.ReverseTransform(pt);
             // test each box positions

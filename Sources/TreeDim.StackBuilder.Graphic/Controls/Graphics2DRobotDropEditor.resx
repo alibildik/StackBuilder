@@ -177,7 +177,7 @@
     <value>Automatic ordering</value>
   </data>
   <data name="&gt;&gt;cbConveyorSetting.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboConveyor, treeDiM.StackBuilder.Graphics, Version=3.0.2.55, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboConveyor, treeDiM.StackBuilder.Graphics, Version=3.0.2.56, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cbConveyorSetting.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>

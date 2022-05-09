@@ -65,7 +65,6 @@ namespace treeDiM.StackBuilder.Graphics
             resources.GetString("cbCorner.Items2"),
             resources.GetString("cbCorner.Items3")});
             this.cbCorner.Name = "cbCorner";
-            this.cbCorner.SelectedValueChanged += new System.EventHandler(this.OnNumberingCornerChanged);
             // 
             // chkbMerge
             // 

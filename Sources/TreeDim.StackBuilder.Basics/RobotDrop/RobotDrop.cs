@@ -453,7 +453,7 @@ namespace treeDiM.StackBuilder.Basics
             List<Layer3DBox> listLayerBoxes = new List<Layer3DBox>();
             Analysis.SolutionLay.GetUniqueSolutionItemsAndOccurence(ref listLayerBoxes, ref ListLayerIndexes, ref ListInterlayerIndexes);
             // conveyor setting
-            var conveyorSetting = analysis.DefaultConveyorSetting;
+            var conveyorSetting = Analysis.DefaultConveyorSetting;
 
             // build layer types
             int layerID = 0;
@@ -485,6 +485,52 @@ namespace treeDiM.StackBuilder.Basics
             layer.SortByID();
             return layer;
         }
+        public void RegenerateLayer(int indexLayerType)
+        {
+            // exit if 
+            if (indexLayerType < 0 || indexLayerType >= LayerTypes.Count)
+                return;
+
+            // initialize layer types
+            List<Layer3DBox> listLayerBoxes = new List<Layer3DBox>();
+            Analysis.SolutionLay.GetUniqueSolutionItemsAndOccurence(ref listLayerBoxes, ref ListLayerIndexes, ref ListInterlayerIndexes);
+            if (indexLayerType >= listLayerBoxes.Count)
+                return;
+            // conveyor setting
+            var conveyorSetting = Analysis.DefaultConveyorSetting;
+            Layer3DBox layer3DBox = listLayerBoxes[indexLayerType];
+
+            // rebuild layer
+            int layerID = LayerTypes[indexLayerType].LayerID;
+            RobotLayer robotLayer = new RobotLayer(this, layerID);
+            foreach (var boxPos in layer3DBox)
+            {
+                robotLayer.Drops.Add(new RobotDrop(robotLayer, conveyorSetting) { BoxPositionMain = boxPos });
+            }
+            robotLayer.AutomaticRenumber();
+            LayerTypes[indexLayerType] = robotLayer;
+        }
+        /*
+        protected int MaxLayerID => LayerTypes.Select(lt => lt.LayerID).Max();
+        protected RobotLayer GetRobotLayer(Layer3DBox layer, RobotLayerTypeDesc robotLayerDesc)
+        {
+            
+            var robotLayer = LayerTypes.Find(lt => lt.RobotLayerDesc.Equals(robotLayerDesc));
+            int layerID = LayerTypes.Select(lt => lt.LayerID).Max();
+            if (null == robotLayer)
+            {
+                List<RobotDrop> drops = new List<RobotDrop>();
+                foreach (var bp in layer)
+                    drops.Add(new RobotDrop(robotLayer, Analysis.DefaultConveyorSetting) { BoxPositionMain = bp });
+
+                // build new robotlayer
+                robotLayer = new RobotLayer(this, MaxLayerID + 1) { Drops = drops, RobotLayerDesc = robotLayerDesc };
+                robotLayer.AutomaticRenumber();
+                LayerTypes.Add(robotLayer);
+            }
+            return robotLayer;
+        }
+        */
         public void GetLayers(out List<RobotLayer> layers, out List<Pair<int,double>> interlayers, out int noCycles)
         {
             var sol = Analysis.SolutionLay;
@@ -512,6 +558,7 @@ namespace treeDiM.StackBuilder.Basics
                 // 2.robot layer
                 if (ListLayerIndexes[iLayer] < LayerTypes.Count)
                 {
+                    // SHOULD PROBABLY GET LAYER TYPE BY DESCRIPTOR
                     RobotLayer editedLayer = LayerTypes[ListLayerIndexes[iLayer]];
                     editedLayer.SortByID();
                     RobotLayer robotLayer = new RobotLayer(this, iLayer) { LayerThickness = currentLayer.LayerHeight };
@@ -597,7 +644,37 @@ namespace treeDiM.StackBuilder.Basics
                 }
                 return true;
             }
-        }        
+        }
+        public string ListLayerIndexesByType(int layerTypeIndex)
+        {
+            // get layer indexes
+            var list = ListLayerIndexes;
+            // list of occurrence of index
+            var result = Enumerable.Range(0, list.Count)
+                 .Where(v => list[v] == layerTypeIndex)
+                 .ToList();
+            // join list values & insert 
+            return string.Join(";", result);
+        }
+        public List<string> ListLayerIndexesString
+        {
+            get
+            {
+                var listStrings = new List<string>();
+                for (int i = 0; i < LayerTypes.Count; i++)
+                {
+                    // get layer indexes
+                    var list = ListLayerIndexes;
+                    // list of occurrence of index
+                    var result = Enumerable.Range(0, list.Count)
+                         .Where(v => list[v] == i)
+                         .ToList();
+                    // join list values & insert 
+                    listStrings.Add( string.Join(";", result) );
+                }
+                return listStrings;
+            }
+        }
         public List<RobotLayer> LayerTypes { get; set; } = new List<RobotLayer>();
         public List<int> ListInterlayerIndexes = new List<int>();
         public List<int> ListLayerIndexes = new List<int>();

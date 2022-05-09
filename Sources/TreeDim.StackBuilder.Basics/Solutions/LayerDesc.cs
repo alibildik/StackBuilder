@@ -13,8 +13,9 @@
         #region Public properties
         public string PatternName { get; }
         public bool Swapped { get; }
+        public string SwappedStr => Swapped ? "t" : "f";
         #endregion
-
+        #region Object override
         public override bool Equals(object obj)
         {
             if (!(obj is LayerDesc layerDesc)) return false;
@@ -22,6 +23,7 @@
         }
         public override int GetHashCode() => PatternName.GetHashCode() ^ Swapped.GetHashCode();
         public override string ToString() => $"{PatternName}_{(Swapped ? "1" : "0")}";
+        #endregion
     }
     #endregion
 }

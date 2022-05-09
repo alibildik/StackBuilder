@@ -23,7 +23,7 @@ namespace treeDiM.StackBuilder.Basics
         public HalfAxis.HAxis AxisOrtho { get; }
         #endregion
         #region Object override
-        public override string ToString() => string.Format("{0}|{1}|{2}", PatternName, HalfAxis.ToString(AxisOrtho), Swapped ? "t" : "f");
+        public override string ToString() => $"{PatternName}|{HalfAxis.ToString(AxisOrtho)}|{SwappedStr}";
         public override bool Equals(object obj)
         {
             if (obj is LayerDescBox layerDesc)
@@ -49,7 +49,7 @@ namespace treeDiM.StackBuilder.Basics
                 return new LayerDescBox(patternName, axis, swapped);
             }
             else
-                throw new Exception("Failed to parse LayerDesc");
+                throw new Exception($"Failed to parse LayerDesc : {value}");
         }
         #endregion
     }

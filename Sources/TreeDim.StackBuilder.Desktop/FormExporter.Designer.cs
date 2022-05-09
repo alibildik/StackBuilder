@@ -44,6 +44,7 @@
             this.uCtrlConveyorSettings = new treeDiM.StackBuilder.Graphics.Controls.UCtrlConveyorSettings();
             this.tabPageLayerPrep = new System.Windows.Forms.TabPage();
             this.splitContainerLayer = new System.Windows.Forms.SplitContainer();
+            this.bnRegenerate = new System.Windows.Forms.Button();
             this.cbLayers = new System.Windows.Forms.ComboBox();
             this.lbLayers = new System.Windows.Forms.Label();
             this.layerEditor = new treeDiM.StackBuilder.Graphics.Graphics2DRobotDropEditor();
@@ -78,7 +79,6 @@
             // 
             // splitContainerHoriz.Panel1
             // 
-            resources.ApplyResources(this.splitContainerHoriz.Panel1, "splitContainerHoriz.Panel1");
             this.splitContainerHoriz.Panel1.Controls.Add(this.pbBrandLogo);
             this.splitContainerHoriz.Panel1.Controls.Add(this.bnSave);
             this.splitContainerHoriz.Panel1.Controls.Add(this.bnClose);
@@ -87,7 +87,6 @@
             // 
             // splitContainerHoriz.Panel2
             // 
-            resources.ApplyResources(this.splitContainerHoriz.Panel2, "splitContainerHoriz.Panel2");
             this.splitContainerHoriz.Panel2.Controls.Add(this.splitContainerVert);
             // 
             // pbBrandLogo
@@ -117,9 +116,9 @@
             // 
             // cbFileFormat
             // 
-            resources.ApplyResources(this.cbFileFormat, "cbFileFormat");
             this.cbFileFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFileFormat.FormattingEnabled = true;
+            resources.ApplyResources(this.cbFileFormat, "cbFileFormat");
             this.cbFileFormat.Name = "cbFileFormat";
             this.cbFileFormat.SelectedIndexChanged += new System.EventHandler(this.OnExportFormatChanged);
             // 
@@ -130,40 +129,38 @@
             // 
             // splitContainerVert.Panel1
             // 
-            resources.ApplyResources(this.splitContainerVert.Panel1, "splitContainerVert.Panel1");
             this.splitContainerVert.Panel1.Controls.Add(this.tabCtrlFeatures);
             // 
             // splitContainerVert.Panel2
             // 
-            resources.ApplyResources(this.splitContainerVert.Panel2, "splitContainerVert.Panel2");
             this.splitContainerVert.Panel2.Controls.Add(this.textEditorControl);
             // 
             // tabCtrlFeatures
             // 
-            resources.ApplyResources(this.tabCtrlFeatures, "tabCtrlFeatures");
             this.tabCtrlFeatures.Controls.Add(this.tabPageSettings);
             this.tabCtrlFeatures.Controls.Add(this.tabPagePickConfigurations);
             this.tabCtrlFeatures.Controls.Add(this.tabPageLayerPrep);
             this.tabCtrlFeatures.Controls.Add(this.tabPageDockingOffsets);
+            resources.ApplyResources(this.tabCtrlFeatures, "tabCtrlFeatures");
             this.tabCtrlFeatures.Name = "tabCtrlFeatures";
             this.tabCtrlFeatures.SelectedIndex = 0;
             // 
             // tabPageSettings
             // 
-            resources.ApplyResources(this.tabPageSettings, "tabPageSettings");
             this.tabPageSettings.Controls.Add(this.cbCoordinates);
             this.tabPageSettings.Controls.Add(this.lbCoordinates);
+            resources.ApplyResources(this.tabPageSettings, "tabPageSettings");
             this.tabPageSettings.Name = "tabPageSettings";
             this.tabPageSettings.UseVisualStyleBackColor = true;
             // 
             // cbCoordinates
             // 
-            resources.ApplyResources(this.cbCoordinates, "cbCoordinates");
             this.cbCoordinates.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCoordinates.FormattingEnabled = true;
             this.cbCoordinates.Items.AddRange(new object[] {
             resources.GetString("cbCoordinates.Items"),
             resources.GetString("cbCoordinates.Items1")});
+            resources.ApplyResources(this.cbCoordinates, "cbCoordinates");
             this.cbCoordinates.Name = "cbCoordinates";
             this.cbCoordinates.SelectedIndexChanged += new System.EventHandler(this.OnInputChanged);
             // 
@@ -174,16 +171,16 @@
             // 
             // tabPagePickConfigurations
             // 
-            resources.ApplyResources(this.tabPagePickConfigurations, "tabPagePickConfigurations");
             this.tabPagePickConfigurations.Controls.Add(this.uCtrlConveyorSettings);
+            resources.ApplyResources(this.tabPagePickConfigurations, "tabPagePickConfigurations");
             this.tabPagePickConfigurations.Name = "tabPagePickConfigurations";
             this.tabPagePickConfigurations.UseVisualStyleBackColor = true;
             // 
             // uCtrlConveyorSettings
             // 
-            resources.ApplyResources(this.uCtrlConveyorSettings, "uCtrlConveyorSettings");
             this.uCtrlConveyorSettings.AngleCase = 0;
             this.uCtrlConveyorSettings.BoxProperties = null;
+            resources.ApplyResources(this.uCtrlConveyorSettings, "uCtrlConveyorSettings");
             this.uCtrlConveyorSettings.GripperAngle = 0;
             this.uCtrlConveyorSettings.ListSettings = null;
             this.uCtrlConveyorSettings.MaxDropNumber = 1;
@@ -191,8 +188,8 @@
             // 
             // tabPageLayerPrep
             // 
-            resources.ApplyResources(this.tabPageLayerPrep, "tabPageLayerPrep");
             this.tabPageLayerPrep.Controls.Add(this.splitContainerLayer);
+            resources.ApplyResources(this.tabPageLayerPrep, "tabPageLayerPrep");
             this.tabPageLayerPrep.Name = "tabPageLayerPrep";
             this.tabPageLayerPrep.UseVisualStyleBackColor = true;
             // 
@@ -204,21 +201,28 @@
             // 
             // splitContainerLayer.Panel1
             // 
-            resources.ApplyResources(this.splitContainerLayer.Panel1, "splitContainerLayer.Panel1");
+            this.splitContainerLayer.Panel1.Controls.Add(this.bnRegenerate);
             this.splitContainerLayer.Panel1.Controls.Add(this.cbLayers);
             this.splitContainerLayer.Panel1.Controls.Add(this.lbLayers);
             // 
             // splitContainerLayer.Panel2
             // 
-            resources.ApplyResources(this.splitContainerLayer.Panel2, "splitContainerLayer.Panel2");
             this.splitContainerLayer.Panel2.Controls.Add(this.layerEditor);
+            // 
+            // bnRegenerate
+            // 
+            resources.ApplyResources(this.bnRegenerate, "bnRegenerate");
+            this.bnRegenerate.Name = "bnRegenerate";
+            this.bnRegenerate.UseVisualStyleBackColor = true;
+            this.bnRegenerate.Click += new System.EventHandler(this.OnRegenerateLayer);
             // 
             // cbLayers
             // 
-            resources.ApplyResources(this.cbLayers, "cbLayers");
             this.cbLayers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLayers.FormattingEnabled = true;
+            resources.ApplyResources(this.cbLayers, "cbLayers");
             this.cbLayers.Name = "cbLayers";
+            this.cbLayers.SelectedIndexChanged += new System.EventHandler(this.OnSelectedLayerChanged);
             // 
             // lbLayers
             // 
@@ -233,8 +237,8 @@
             // 
             // tabPageDockingOffsets
             // 
-            resources.ApplyResources(this.tabPageDockingOffsets, "tabPageDockingOffsets");
             this.tabPageDockingOffsets.Controls.Add(this.uCtrlDockingOffset);
+            resources.ApplyResources(this.tabPageDockingOffsets, "tabPageDockingOffsets");
             this.tabPageDockingOffsets.Name = "tabPageDockingOffsets";
             this.tabPageDockingOffsets.UseVisualStyleBackColor = true;
             // 
@@ -259,10 +263,6 @@
             this.textEditorControl.FoldingStrategy = "XML";
             this.textEditorControl.Name = "textEditorControl";
             this.textEditorControl.SyntaxHighlighting = "XML";
-            // 
-            // saveExportFile
-            // 
-            resources.ApplyResources(this.saveExportFile, "saveExportFile");
             // 
             // FormExporter
             // 
@@ -325,5 +325,6 @@
         private Graphics.Controls.UCtrlConveyorSettings uCtrlConveyorSettings;
         private System.Windows.Forms.TabPage tabPageDockingOffsets;
         private treeDiM.Basics.UCtrlTriDouble uCtrlDockingOffset;
+        private System.Windows.Forms.Button bnRegenerate;
     }
 }

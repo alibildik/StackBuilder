@@ -48,6 +48,10 @@ namespace treeDiM.StackBuilder.Desktop
 
             // fill combo layer types
             FillLayerComboBox();
+            // select first layer
+            if (RobotPreparation.LayerTypes.Count > 0)
+                cbLayers.SelectedIndex = 0;
+
             OnExportFormatChanged(this, e);
         }
         protected override void OnClosing(CancelEventArgs e)
@@ -127,20 +131,8 @@ namespace treeDiM.StackBuilder.Desktop
             RobotPreparation.UpdateLayerIndexes();
             // layers
             cbLayers.Items.Clear();
-            for (int i = 0; i < RobotPreparation.LayerTypes.Count; ++i)
-            {
-                // get layer indexes
-                var list = RobotPreparation.ListLayerIndexes;
-                // list of occurrence of index
-                var result = Enumerable.Range(0, list.Count)
-                     .Where(v => list[v] == i)
-                     .ToList();
-                // join list values & insert 
-                cbLayers.Items.Add(string.Join(";", result));
-            }
-            cbLayers.SelectedIndexChanged += OnSelectedLayerChanged;
-            if (RobotPreparation.LayerTypes.Count > 0)
-                cbLayers.SelectedIndex = 0;
+            cbLayers.Items.AddRange( RobotPreparation.ListLayerIndexesString.ToArray() );
+
         }
         private void OnSelectedLayerChanged(object sender, EventArgs e)
         {
@@ -202,7 +194,6 @@ namespace treeDiM.StackBuilder.Desktop
                 return;
             try
             {
-
                 Stream stream = new MemoryStream();
                 var exporter = ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());
                 exporter.Export(RobotPreparation, ref stream);
@@ -278,6 +269,26 @@ namespace treeDiM.StackBuilder.Desktop
             }
             catch (Exception ex) { _log.Error(ex.ToString()); }
         }
+        private void OnRegenerateLayer(object sender, EventArgs e)
+        {
+            try
+            {
+                // get selected layer
+                int iSel = cbLayers.SelectedIndex;
+
+                // regenerate layer 
+                RobotPreparation.RegenerateLayer(iSel);
+                layerEditor.Layer = (-1 != iSel && RobotPreparation.IsValid) ? RobotPreparation.LayerTypes[iSel] : null;
+
+                
+
+                // regenerate layer lists
+                cbLayers.SelectedIndex = iSel;
+                OnSelectedLayerChanged(sender, e);
+
+            }
+            catch (Exception ex) { _log.Error(ex.ToString()); }
+        }
         #endregion
         #region Private properties
         private ExporterRobot CurrentExporter => ExporterRobot.GetByName(cbFileFormat.SelectedItem.ToString());
@@ -298,5 +309,7 @@ namespace treeDiM.StackBuilder.Desktop
         public RobotPreparation RobotPreparation { get; set; }
         private List<ConveyorSetting> ListConveyorSettings = new List<ConveyorSetting>();
         #endregion
+
+
     }
 }
