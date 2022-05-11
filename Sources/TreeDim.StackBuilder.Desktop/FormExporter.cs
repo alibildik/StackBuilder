@@ -269,21 +269,15 @@ namespace treeDiM.StackBuilder.Desktop
             }
             catch (Exception ex) { _log.Error(ex.ToString()); }
         }
-        private void OnRegenerateLayer(object sender, EventArgs e)
+        private void OnRegenerateLayers(object sender, EventArgs e)
         {
             try
             {
-                // get selected layer
-                int iSel = cbLayers.SelectedIndex;
-
-                // regenerate layer 
-                RobotPreparation.RegenerateLayer(iSel);
-                layerEditor.Layer = (-1 != iSel && RobotPreparation.IsValid) ? RobotPreparation.LayerTypes[iSel] : null;
-
-                
-
+                // regenerate all layers
+                RobotPreparation.RegenerateLayers();
                 // regenerate layer lists
-                cbLayers.SelectedIndex = iSel;
+                FillLayerComboBox();
+                cbLayers.SelectedIndex = 0;
                 OnSelectedLayerChanged(sender, e);
 
             }

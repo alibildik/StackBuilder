@@ -449,29 +449,7 @@ namespace treeDiM.StackBuilder.Basics
         public RobotPreparation(AnalysisCasePallet analysis)
         {
             Analysis = analysis;
-            // initialize layer types
-            List<Layer3DBox> listLayerBoxes = new List<Layer3DBox>();
-            Analysis.SolutionLay.GetUniqueSolutionItemsAndOccurence(ref listLayerBoxes, ref ListLayerIndexes, ref ListInterlayerIndexes);
-            // conveyor setting
-            var conveyorSetting = Analysis.DefaultConveyorSetting;
-
-            // build layer types
-            int layerID = 0;
-            foreach (var layerBox in listLayerBoxes)
-            {
-                var robotLayer = new RobotLayer(this, layerID++);
-                LayerTypes.Add(robotLayer);
-                foreach (var b in layerBox)
-                {
-                    robotLayer.Drops.Add(
-                        new RobotDrop(robotLayer, conveyorSetting)
-                        {
-                            BoxPositionMain = b
-                        }
-                        );
-                }
-                robotLayer.AutomaticRenumber();
-            }            
+            RegenerateLayers();
         }
         #endregion
         #region Public accessors
@@ -484,6 +462,26 @@ namespace treeDiM.StackBuilder.Basics
             RobotLayer layer =  LayerTypes[ListLayerIndexes[index]];
             layer.SortByID();
             return layer;
+        }
+        public void RegenerateLayers()
+        {
+            List<Layer3DBox> listLayerBoxes = new List<Layer3DBox>();
+            Analysis.SolutionLay.GetUniqueSolutionItemsAndOccurence(ref listLayerBoxes, ref ListLayerIndexes, ref ListInterlayerIndexes);
+            // conveyor setting
+            var conveyorSetting = Analysis.DefaultConveyorSetting;
+            // build layer types
+            LayerTypes.Clear();
+            int layerID = 0;
+            foreach (var layerBox in listLayerBoxes)
+            {
+                // instantiate robotLayer
+                var robotLayer = new RobotLayer(this, layerID++);
+                foreach (var b in layerBox)
+                    robotLayer.Drops.Add(new RobotDrop(robotLayer, conveyorSetting) { BoxPositionMain = b });
+                robotLayer.AutomaticRenumber();
+                // add layerType
+                LayerTypes.Add(robotLayer);
+            }
         }
         public void RegenerateLayer(int indexLayerType)
         {

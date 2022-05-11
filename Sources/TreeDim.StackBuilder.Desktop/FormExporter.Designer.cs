@@ -214,7 +214,7 @@
             resources.ApplyResources(this.bnRegenerate, "bnRegenerate");
             this.bnRegenerate.Name = "bnRegenerate";
             this.bnRegenerate.UseVisualStyleBackColor = true;
-            this.bnRegenerate.Click += new System.EventHandler(this.OnRegenerateLayer);
+            this.bnRegenerate.Click += new System.EventHandler(this.OnRegenerateLayers);
             // 
             // cbLayers
             // 
