@@ -23,17 +23,15 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
             if (!Page.IsPostBack)
             {
                 Angle = 45.0;
-                ChkbMirrorLength.Checked = LayersMirrorLength;
-                ChkbMirrorWidth.Checked = LayersMirrorWidth;
                 TBFileName.Text = FileName;
 
                 var interlayerArray = Interlayers.Select(p => p == '1' ? true : false).ToArray();
-                var listInterlayers = new List<InterlayerDetails>();
+                var listInterlayers = new List<LayerDataShort>();
                 PalletStacking.InitializeInterlayers(DimCase, PalletIndex, NumberOfLayers, string.Empty, ref listInterlayers);
                 for (var i = 0; i < interlayerArray.Length; ++i)
                 {
                     if (i < listInterlayers.Count)
-                        listInterlayers[i].Activated = interlayerArray[i];
+                        listInterlayers[i].HasInterlayer = interlayerArray[i];
                 }
 
                 listInterlayers.Reverse();
@@ -49,7 +47,6 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "VKeyPad", "ActivateVirtualKeyboard();", true);
         }
         #endregion
-
 
         #region Update image
         protected void UpdateImage()
@@ -100,14 +97,17 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
         {
             string fileName = TBFileName.Text;
             fileName = Path.ChangeExtension(fileName, "csv");
+            List<int> ListLayerIndexes = new List<int>();
+            List<List<BoxPositionIndexed>> listBoxPositions = new List<List<BoxPositionIndexed>>();
+
 
             byte[] fileBytes = null;
             byte[] imageFileBytes = null;
             PalletStacking.Export(
                 DimCase, WeightCase,
                 PalletIndex, WeightPallet,
-                NumberOfLayers, BoxPositions,
-                ChkbMirrorLength.Checked, ChkbMirrorWidth.Checked,
+                listBoxPositions,
+                ListLayerIndexes,
                 InterlayersBoolArray,
                 LayerDesignMode,
                 ref fileBytes,
@@ -156,12 +156,10 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
         private int PalletIndex => (int)Session[SessionVariables.PalletIndex];
         private double WeightPallet => (double)Session[SessionVariables.WeightPallet];
         private int NumberOfLayers => (int)Session[SessionVariables.NumberOfLayers];
-        private bool LayersMirrorLength => (bool)Session[SessionVariables.LayersMirrorLength];
-        private bool LayersMirrorWidth => (bool)Session[SessionVariables.LayersMirrorWidth];
         private bool LayerEdited => (bool)Session[SessionVariables.LayerEdited];
         private double Angle	{	get => (double)ViewState["Angle"];	set => ViewState["Angle"] = value;	}
         private string FileName => (string)Session[SessionVariables.FileName];
-        private List<BoxPositionIndexed> BoxPositions => (List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions];
+        private List<BoxPositionIndexed> BoxPositions => (List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions1];
         private Bitmap BitmapTexture => (Bitmap)Session[SessionVariables.BitmapTexture];
         private string Interlayers => (string)Session[SessionVariables.Interlayers];
         private int LayerDesignMode => (int)Session[SessionVariables.LayerDesignMode];

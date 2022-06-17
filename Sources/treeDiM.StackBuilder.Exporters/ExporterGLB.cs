@@ -49,11 +49,14 @@ namespace treeDiM.StackBuilder.Exporters
                 var colors = boxProperties.Colors;
                 var colorFilet = boxProperties.Colors[0];
                 var colorTape = boxProperties.TapeColor;
+                var colorFacing = Color.Red;
+                float facingWidth = 50.0f;
 
                 var meshPallet = BuildPalletMesh(analysis.Container as PalletProperties);
                 var meshCase = BuildCaseMesh("Case", (float)boxProperties.Length, (float)boxProperties.Width, (float)boxProperties.Height,
                     colors, 0.0f, colorFilet,
-                    boxProperties.TapeWidth.Activated ? (float)boxProperties.TapeWidth.Value : 0.0f, colorTape);
+                    boxProperties.TapeWidth.Activated ? (float)boxProperties.TapeWidth.Value : 0.0f, colorTape,
+                    facingWidth, colorFacing);
                 var meshesInterlayer = BuildInterlayerMeshes(analysis);
 
                 // add pallet mesh
@@ -131,7 +134,8 @@ namespace treeDiM.StackBuilder.Exporters
             float length, float width, float height,
             Color[] colorFaces,
             float filet,  Color colorFilet, 
-            float tapeWidth, Color colorTape
+            float tapeWidth, Color colorTape,
+            float facingWidth, Color colorFacing
             )
         {
             var mesh = new MeshBuilder<VPOS/*, VTEX*/>(meshName);
@@ -145,6 +149,7 @@ namespace treeDiM.StackBuilder.Exporters
             //    |/               |/                    B      
             //    0----------------1
             //
+            float offset = 0.5f;
             VPOS[] vertices = new VPOS[]
             {
                 // 0
@@ -191,7 +196,17 @@ namespace treeDiM.StackBuilder.Exporters
                 new VPOS(0.0f + filet, 0.5f*(width - tapeWidth), height), // 32
                 new VPOS(length - filet, 0.5f*(width - tapeWidth), height), // 33
                 new VPOS(length - filet, 0.5f*(width + tapeWidth), height), // 34
-                new VPOS(0.0f + filet, 0.5f*(width + tapeWidth), height) //35
+                new VPOS(0.0f + filet, 0.5f*(width + tapeWidth), height), //35
+                // 9
+                new VPOS(0.5f * length - 0.5f * facingWidth, 0.0f, height + offset), // 36
+                new VPOS(0.5f * length + 0.5f * facingWidth, 0.0f, height + offset), // 37
+                new VPOS(0.5f * length + 0.5f * facingWidth, facingWidth, height + offset), // 38
+                new VPOS(0.5f * length - 0.5f * facingWidth, facingWidth, height + offset), // 39
+                // 10
+                new VPOS(0.5f * length - 0.5f * facingWidth, -offset, height - facingWidth), // 40
+                new VPOS(0.5f * length + 0.5f * facingWidth, -offset, height - facingWidth), // 41
+                new VPOS(0.5f * length + 0.5f * facingWidth, -offset, height ), // 42
+                new VPOS(0.5f * length - 0.5f * facingWidth, -offset, height ) // 43              
             };
 
             Vector3[] vectors = {
@@ -249,9 +264,11 @@ namespace treeDiM.StackBuilder.Exporters
                 {  2,  6, 22, 18 }, // front
                 { 10, 14, 30, 26 }, // rear
                 { 1,  13,  9,  5 }, // bottom
-                { 17, 21, 33, 32 },  // top1
-                { 35, 34, 25, 29 },  // top2
-                { 32, 33, 34, 35 }   // tape
+                { 17, 21, 33, 32 }, // top1
+                { 35, 34, 25, 29 }, // top2
+                { 32, 33, 34, 35 }, // tape
+                { 36, 37, 38, 39 }, // facing top
+                { 40, 41, 42, 43 }  // facing X
             };
 
             int[,] qFaceFilet = new int[,]
@@ -294,28 +311,7 @@ namespace treeDiM.StackBuilder.Exporters
                     .WithDoubleSide(true)
                     .WithChannelParam(KnownChannel.BaseColor,
                     ColorToVector4(colorFaces[i < 6 ? i : 5]));
-                /*
-                if (i == 1)
-                {
-                    materialColor = new MaterialBuilder().WithChannelImage(KnownChannel.BaseColor, @"D:\\testImage.png");
-                    materialColor.GetChannel(KnownChannel.BaseColor).UseTexture().WithTransform(1.0f, 1.0f, 1.0f, 1.0f);
-                }
-                */
                 var primFace = mesh.UsePrimitive(materialColor); // 1 2 6 5
-                /*
-                Vector2 v3 = new Vector2(0.0f, 0.0f);
-                Vector2 v2 = new Vector2(1.0f, 0.0f);
-                Vector2 v1 = new Vector2(1.0f, 1.0f);
-                Vector2 v0 = new Vector2(0.0f, 1.0f);
-                if (i == 1)
-                    primFace.AddQuadrangle(
-                        (vectors[qFace[i, 0]], v0 ),
-                        (vectors[qFace[i, 1]], v1 ),
-                        (vectors[qFace[i, 2]], v2 ),
-                        (vectors[qFace[i, 3]], v3 )
-                        );
-                else
-                */
                 primFace.AddQuadrangle(vertices[qFace[i, 0]], vertices[qFace[i, 1]], vertices[qFace[i, 2]], vertices[qFace[i, 3]]);
             }
             if (tapeWidth > 0.0f)
@@ -337,6 +333,18 @@ namespace treeDiM.StackBuilder.Exporters
                     primTapeBorder.AddLine(vertices[qFace[7, 3]], vertices[qFace[7, 0]]);
                 }
             }
+            if (facingWidth > 0)
+            {
+                var materialFacing = new MaterialBuilder()
+                   .WithDoubleSide(true)
+                   .WithMetallicRoughnessShader()
+                   .WithChannelParam(KnownChannel.BaseColor, ColorToVector4(colorFacing));
+
+                var prim = mesh.UsePrimitive(materialFacing);
+                prim.AddQuadrangle(vertices[qFace[8, 0]], vertices[qFace[8, 1]], vertices[qFace[8, 2]], vertices[qFace[8, 3]]);
+                prim.AddQuadrangle(vertices[qFace[9, 0]], vertices[qFace[9, 1]], vertices[qFace[9, 2]], vertices[qFace[9, 3]]);
+            }
+
             if (filet > 0)
             {
                 var materialFilet = new MaterialBuilder()
@@ -504,7 +512,9 @@ namespace treeDiM.StackBuilder.Exporters
                     $"{interlayer.Name}",
                     (float)interlayer.Length, (float)interlayer.Width, (float)interlayer.Thickness,
                     Enumerable.Repeat(interlayer.Color, 6).ToArray(),
-                    0.0f, Color.Black, 0.0f, Color.Beige));
+                    0.0f, Color.Black,
+                    0.0f, Color.Beige,
+                    0.0f, Color.Red));
             }
             return lMesh;
         }

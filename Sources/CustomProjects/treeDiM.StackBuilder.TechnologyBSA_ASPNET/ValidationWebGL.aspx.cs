@@ -22,21 +22,26 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
         {
             if (!Page.IsPostBack)
             {
-                ChkbMirrorLength.Checked = LayersMirrorLength;
-                ChkbMirrorWidth.Checked = LayersMirrorWidth;
                 TBFileName.Text = FileName;
                 var interlayerArray = Interlayers.Select(p => p == '1' ? true : false).ToArray();
-                var listInterlayers = new List<InterlayerDetails>();
+                ListLayerIndexes = LayerIndexes.Split(' ').Select(n => Convert.ToInt32(n)).ToList();
+
+
+                var listInterlayers = new List<LayerDataShort>();
                 PalletStacking.InitializeInterlayers(DimCase, PalletIndex, NoLayers, string.Empty, ref listInterlayers);
                 for (var i = 0; i < interlayerArray.Length; ++i)
                 {
                     if (i < listInterlayers.Count)
-                        listInterlayers[i].Activated = interlayerArray[i];
+                    {
+                        listInterlayers[i].HasInterlayer = interlayerArray[i];
+                        listInterlayers[i].LayerIndex = ListLayerIndexes[i];
+                    }
                 }
 
                 listInterlayers.Reverse();
                 LVInterlayers.DataSource = listInterlayers;
                 LVInterlayers.DataBind();
+
 
                 // clear output directory
                 DirectoryHelpers.ClearDirectory(Output);
@@ -66,9 +71,8 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
             PalletStacking.GenerateExport(
                 DimCase, WeightCase, BitmapTexture,
                 PalletIndex, WeightPallet,
-                NoLayers,
-                BoxPositions,
-                ChkbMirrorLength.Checked, ChkbMirrorWidth.Checked,
+                ListLayerTypes,
+                LayerIndexesIntArray,
                 InterlayersBoolArray,
                 Path.Combine(Output, fileGuid),
                 ref caseCount, ref layerCount,
@@ -81,6 +85,13 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
         #endregion
 
         #region Event handlers
+        protected void OnSelectedLayerTypeChanged(object sender, EventArgs e)
+        {
+            if (sender is DropDownList dropDownList)
+            {
+                UpdateImage();
+            }
+        }
         protected void OnInputChanged(object sender, EventArgs e)
         {
             UpdateImage();
@@ -97,8 +108,8 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
                 PalletStacking.Export(
                     DimCase, WeightCase,
                     PalletIndex, WeightPallet,
-                    NoLayers, BoxPositions,
-                    ChkbMirrorLength.Checked, ChkbMirrorWidth.Checked,
+                    ListLayerTypes,
+                    LayerIndexesIntArray,
                     InterlayersBoolArray,
                     LayerDesignMode,
                     ref fileBytes,
@@ -145,6 +156,9 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
             get
             {
                 var list = new List<bool>();
+
+                list.Add(HasTopInterlayer);
+
                 foreach (var item in LVInterlayers.Items)
                 {
                     if (item.FindControl("LayerCheckBox") is CheckBox chkBox)
@@ -154,21 +168,59 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
                 return list;
             }
         }
-        private Vector3D DimCase=> Vector3D.Parse((string)Session[SessionVariables.DimCase]);
+        private List<int> LayerIndexesIntArray
+        {
+            get
+            {
+                var list = new List<int>();
+                foreach (var item in LVInterlayers.Items)
+                {
+                    if (item.FindControl("LayerDropDown") is DropDownList dropDownList)
+                        list.Add(dropDownList.SelectedIndex);
+                }
+                list.Reverse();
+                return list;
+            }
+        }
+
+        private List<List<BoxPositionIndexed>> ListLayerTypes
+        {
+            get
+            {
+                var listLayerTypes = new List<List<BoxPositionIndexed>>();
+                if (BoxPositions1.Count > 0) listLayerTypes.Add(BoxPositions1);
+                if (BoxPositions2.Count > 0) listLayerTypes.Add(BoxPositions2);
+                if (BoxPositions3.Count > 0) listLayerTypes.Add(BoxPositions3);
+                if (BoxPositions4.Count > 0) listLayerTypes.Add(BoxPositions4);
+                return listLayerTypes;
+            }
+        }
+        private bool HasTopInterlayer => LayerCheckBoxTop.Checked;
+        private Vector3D DimCase => Vector3D.Parse((string)Session[SessionVariables.DimCase]);
         private double WeightCase => (double)Session[SessionVariables.WeightCase];
-        private int PalletIndex=> (int)Session[SessionVariables.PalletIndex];
+        private int PalletIndex => (int)Session[SessionVariables.PalletIndex];
         private double WeightPallet => (double)Session[SessionVariables.WeightPallet];
         private int NoLayers => (int)Session[SessionVariables.NumberOfLayers];
-        private bool LayersMirrorLength => (bool)Session[SessionVariables.LayersMirrorLength];
-        private bool LayersMirrorWidth => (bool)Session[SessionVariables.LayersMirrorWidth];
+        private string LayerIndexes
+        { 
+            get => (string) Session[SessionVariables.LayerIndexes];
+            set => Session[SessionVariables.LayerIndexes] = value;
+        }
+        private List<int> ListLayerIndexes
+        {
+            get => LayerIndexes.Split(' ').Select(n => Convert.ToInt32(n)).ToList();
+            set => LayerIndexes = string.Join(" ", value.Select(n => n.ToString()).ToArray());
+        } 
         private bool LayerEdited => (bool)Session[SessionVariables.LayerEdited];
         private string FileName => (string)Session[SessionVariables.FileName];
-        private List<BoxPositionIndexed> BoxPositions => (List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions];
+        private List<BoxPositionIndexed> BoxPositions1 => (List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions1];
+        private List<BoxPositionIndexed> BoxPositions2 => (List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions2];
+        private List<BoxPositionIndexed> BoxPositions3 => (List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions3];
+        private List<BoxPositionIndexed> BoxPositions4 => (List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions4];
         private Bitmap BitmapTexture => (Bitmap)Session[SessionVariables.BitmapTexture];
         private string Output => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Output");
         private string Interlayers => (string) Session[SessionVariables.Interlayers];
         private int LayerDesignMode => (int)Session[SessionVariables.LayerDesignMode];
         #endregion
-
     }
 }

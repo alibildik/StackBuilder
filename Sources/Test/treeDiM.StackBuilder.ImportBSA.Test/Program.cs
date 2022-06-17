@@ -15,8 +15,6 @@ namespace treeDiM.StackBuilder.ImportBSA.Test
             string filePath = @"D:\GitHub\StackBuilder\Sources\Samples\testFGA.csv";
             using (FileStream fs = File.OpenRead(filePath))
             {
-                ExporterCSV_TechBSA exporter = new ExporterCSV_TechBSA();
-
                 Vector3D dimCase = Vector3D.Zero;
                 Vector3D dimPallet = Vector3D.Zero;
                 double weightCase = 0.0, weightPallet = 0.0;
@@ -42,9 +40,6 @@ namespace treeDiM.StackBuilder.ImportBSA.Test
                 Console.WriteLine($"WeightCase:{weightCase}");
                 Console.WriteLine($"DimPallet:{dimPallet}");
                 Console.WriteLine($"WeightPallet:{weightPallet}");
-
-
-
             }
         }
     }

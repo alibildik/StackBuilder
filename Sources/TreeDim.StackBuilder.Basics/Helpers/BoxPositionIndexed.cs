@@ -41,6 +41,8 @@ namespace treeDiM.StackBuilder.Basics
             return boxPosTemp;
         }
         public override string ToString() => $"{BPos.Position} | ({HalfAxis.ToString(BPos.DirectionLength)},{HalfAxis.ToString(BPos.DirectionWidth)}) | {Index}";
+
+        #region Static methods
         public static BoxPositionIndexed Parse(string s)
         {
             string[] sArray = s.Split('|');
@@ -88,13 +90,80 @@ namespace treeDiM.StackBuilder.Basics
                 }
             }
             Sort(ref listBPIReduced);
+        }        
+        public static List<BoxPositionIndexed> MirrorX(List<BoxPositionIndexed> listIn, Vector3D containerDim, Vector3D dimensions) => ApplyTransformation(listIn, containerDim, dimensions, 0);
+        public static List<BoxPositionIndexed> MirrorY(List<BoxPositionIndexed> listIn, Vector3D containerDim, Vector3D dimensions) => ApplyTransformation(listIn, containerDim, dimensions, 1);
+        public static List<BoxPositionIndexed> Rotate180(List<BoxPositionIndexed> listIn, Vector3D containerDim, Vector3D dimensions) => ApplyTransformation(listIn, containerDim, dimensions, 2);
+        public static List<BoxPositionIndexed> ApplyTransformation(List<BoxPositionIndexed> listIn, Vector3D containerDims, Vector3D dimensions, int mode)
+        {
+            Matrix4D matRot = Matrix4D.Identity;
+            Vector3D vTranslation = Vector3D.Zero;
+
+            switch (mode)
+            {
+                case 0:
+                    matRot = new Matrix4D(
+                        1.0, 0.0, 0.0, 0.0
+                        , 0.0, -1.0, 0.0, 0.0
+                        , 0.0, 0.0, 1.0, 0.0
+                        , 0.0, 0.0, 0.0, 1.0
+                        );
+                    vTranslation = new Vector3D(0.0, containerDims.Y, 0.0);
+                    break;
+                case 1:
+                    matRot = new Matrix4D(
+                        -1.0, 0.0, 0.0, 0.0
+                        , 0.0, 1.0, 0.0, 0.0
+                        , 0.0, 0.0, 1.0, 0.0
+                        , 0.0, 0.0, 0.0, 1.0
+                        );
+                    vTranslation = new Vector3D(containerDims.X, 0.0, 0.0);
+                    break;
+                case 2:
+                    matRot = new Matrix4D(
+                        -1.0, 0.0, 0.0, 0.0
+                        , 0.0, -1.0, 0.0, 0.0
+                        , 0.0, 0.0, 1.0, 0.0
+                        , 0.0, 0.0, 0.0, 1.0
+                        );
+                    vTranslation = new Vector3D(containerDims.X, containerDims.Y, 0.0);
+                    break;
+                default:
+                    break;
+            }
+            var listOut = new List<BoxPositionIndexed>();
+            foreach (var lint in listIn)
+            {
+                var layerPosTemp = new BoxPositionIndexed(lint);
+                listOut.Add(ApplyReflection(layerPosTemp, matRot, vTranslation, dimensions, mode)); 
+            }
+            return listOut;
         }
+        private static BoxPositionIndexed ApplyReflection(BoxPositionIndexed bPosition, Matrix4D matRot, Vector3D vTranslation, Vector3D dimensions, int mode)
+        {
+            Transform3D transfRot = new Transform3D(matRot);
+            HalfAxis.HAxis axisLength = HalfAxis.ToHalfAxis(transfRot.transform(HalfAxis.ToVector3D(bPosition.BPos.DirectionLength)));
+            HalfAxis.HAxis axisWidth = HalfAxis.ToHalfAxis(transfRot.transform(HalfAxis.ToVector3D(bPosition.BPos.DirectionWidth)));
+            matRot.M14 = vTranslation[0];
+            matRot.M24 = vTranslation[1];
+            matRot.M34 = vTranslation[2];
+            Transform3D transfRotTranslation = new Transform3D(matRot);
+            Vector3D transPos = transfRotTranslation.transform(
+                new Vector3D(bPosition.BPos.Position.X, bPosition.BPos.Position.Y, bPosition.BPos.Position.Z)
+                );
+            if (mode == 0 || mode == 1)
+                transPos -= dimensions.Z * Vector3D.CrossProduct(HalfAxis.ToVector3D(axisLength), HalfAxis.ToVector3D(axisWidth));
+            else if (mode == 2)
+                transPos += dimensions.Z * Vector3D.CrossProduct(HalfAxis.ToVector3D(axisLength), HalfAxis.ToVector3D(axisWidth));
+            var bpi = new BoxPositionIndexed(transPos, axisLength, axisWidth, bPosition.Index);
+            return bpi.Adjusted(dimensions);
+        }
+        #endregion
         #region Data members
         public BoxPosition BPos { get; set; }
         public int Index { get; set; }
         #endregion
     }
-
     public class BPosIndexedComparer : IComparer<BoxPositionIndexed>
     {
         int IComparer<BoxPositionIndexed>.Compare(BoxPositionIndexed bpi1, BoxPositionIndexed bpi2)

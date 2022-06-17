@@ -12,12 +12,6 @@
             <Component Id="cmp482E22FB157E214BD74A3672565A5903" Directory="ReportTemplates" Guid="B6E27535-C496-4762-A9D3-B577155D8DE6">
                 <File Id="fil3AFEF988572280AFF9F0F51D9CD13993" KeyPath="yes" Source="$(var.ReportTemplatesSourceDir)\CAT.xml" />
             </Component>
-            <Component Id="cmpE47887A0ED190B351DDB768F1A063D5B" Directory="ReportTemplates" Guid="E9B5F5DF-CACD-45A6-B2B5-CC8429B649FE">
-                <File Id="filB6E1071E777BDE0247B42D8B0285638F" KeyPath="yes" Source="$(var.ReportTemplatesSourceDir)\CHS.xml" />
-            </Component>
-            <Component Id="cmp69C78908184D299E16A7E214F496E2D3" Directory="ReportTemplates" Guid="652F1CB5-170C-4535-8533-D9FB9C1E4309">
-                <File Id="fil12C4437F8971BCE8E4ACDC1AD827FBB4" KeyPath="yes" Source="$(var.ReportTemplatesSourceDir)\DEU.xml" />
-            </Component>
             <Component Id="cmp30F59078BB59B5E0E2969DD9FDBBE634" Directory="ReportTemplates" Guid="1CC163F6-3050-47B7-88DE-6EBA8BBC417B">
                 <File Id="fil101D645F6573770E58BEDF361E288042" KeyPath="yes" Source="$(var.ReportTemplatesSourceDir)\ENU.xml" />
             </Component>

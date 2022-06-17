@@ -36,12 +36,11 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
         {
             var layerEditorHelper = new LayerEditorHelpers(ImageSize, DimCase, DimContainer)
             {
-                Positions = BoxPositions
+                Positions = BoxPositions1
             };
             SelectedIndex = layerEditorHelper.GetPickedIndex(new Point(e.X, e.Y));
             UpdateImage();
         }
-
         protected void OnArrowClicked(object sender, ImageClickEventArgs e)
         {
             HalfAxis.HAxis axis = HalfAxis.HAxis.AXIS_X_N;
@@ -52,11 +51,12 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
 
             var layerEditHelper = new LayerEditorHelpers(ImageSize, DimCase, DimContainer)
             {
-                Positions = BoxPositions,
+                Positions = BoxPositions1,
                 SelectedIndex = SelectedIndex
             };
             layerEditHelper.Move(axis, 10.0);
-            BoxPositions = layerEditHelper.Positions;
+            BoxPositions1 = layerEditHelper.Positions;
+
 
             UpdateImage();
         }
@@ -70,34 +70,34 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
 
             var layerEditHelper = new LayerEditorHelpers(ImageSize, DimCase, DimContainer)
             {
-                Positions = BoxPositions,
+                Positions = BoxPositions1,
                 SelectedIndex = SelectedIndex
             };
             layerEditHelper.MoveMax(axis);
-            BoxPositions = layerEditHelper.Positions;
+            BoxPositions1 = layerEditHelper.Positions;
 
             UpdateImage();
-        }
+        }        
         protected void OnRotateClicked(object sender, ImageClickEventArgs e)
         {
             var layerEditHelper = new LayerEditorHelpers(ImageSize, DimCase, DimContainer)
             {
-                Positions = BoxPositions,
+                Positions = BoxPositions1,
                 SelectedIndex = SelectedIndex
             };
             layerEditHelper.Rotate();
-            BoxPositions = layerEditHelper.Positions;
+            BoxPositions1 = layerEditHelper.Positions;
             UpdateImage();  
         }
         protected void OnButtonInsert(object sender, ImageClickEventArgs e)
         {
             var layerEditHelper = new LayerEditorHelpers(ImageSize, DimCase, DimContainer)
             {
-                Positions = BoxPositions,
+                Positions = BoxPositions1,
                 SelectedIndex = SelectedIndex
             };
             layerEditHelper.Insert();
-            BoxPositions = layerEditHelper.Positions;
+            BoxPositions1 = layerEditHelper.Positions;
             SelectedIndex = -1;
             UpdateImage();
         }
@@ -105,14 +105,13 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
         {
             var layerEditHelper = new LayerEditorHelpers(ImageSize, DimCase, DimContainer)
             {
-                Positions = BoxPositions,
+                Positions = BoxPositions1,
                 SelectedIndex = SelectedIndex
             };
             layerEditHelper.Remove();
             SelectedIndex = -1;
             UpdateImage();
         }
-
         protected void OnPrevious(object sender, EventArgs e)
         {
             if (ConfigSettings.WebGLMode)
@@ -124,7 +123,7 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
         {
             var layerEditHelper = new LayerEditorHelpers(ImageSize, DimCase, DimContainer)
             {
-                Positions = BoxPositions,
+                Positions = BoxPositions1,
                 SelectedIndex = SelectedIndex
             };
             if (layerEditHelper.IsValidLayer)
@@ -159,10 +158,25 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
 
         private Vector3D DimCase => Vector3D.Parse((string)Session[SessionVariables.DimCase]);
         private int PalletIndex => (int)Session[SessionVariables.PalletIndex];
-        private List<BoxPosition> BoxPositions
+        private List<BoxPosition> BoxPositions1
         {
-            get => BoxPositionIndexed.ToListBoxPosition((List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions]);
-            set => Session[SessionVariables.BoxPositions] = BoxPositionIndexed.FromListBoxPosition(value);
+            get => BoxPositionIndexed.ToListBoxPosition((List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions1]);
+            set => Session[SessionVariables.BoxPositions1] = BoxPositionIndexed.FromListBoxPosition(value);
+        }
+        private List<BoxPosition> BoxPositions2
+        {
+            get => BoxPositionIndexed.ToListBoxPosition((List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions2]);
+            set => Session[SessionVariables.BoxPositions2] = BoxPositionIndexed.FromListBoxPosition(value);
+        }
+        private List<BoxPosition> BoxPositions3
+        {
+            get => BoxPositionIndexed.ToListBoxPosition((List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions3]);
+            set => Session[SessionVariables.BoxPositions3] = BoxPositionIndexed.FromListBoxPosition(value);
+        }
+        private List<BoxPosition> BoxPositions4
+        {
+            get => BoxPositionIndexed.ToListBoxPosition((List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions4]);
+            set => Session[SessionVariables.BoxPositions4] = BoxPositionIndexed.FromListBoxPosition(value);
         }
         private int SelectedIndex
         {

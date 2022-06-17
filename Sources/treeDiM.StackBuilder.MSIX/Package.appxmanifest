@@ -9,7 +9,7 @@
   <Identity
     Name="4763a126-3f8e-497e-92f0-bdcd420be013"
     Publisher="CN=TREEDIM, O=TREEDIM, STREET=1 RUE DES FRERES LUMIERE, L=RUEIL-MALMAISON, S=Île-de-France, PostalCode=92500, C=FR"
-    Version="3.0.4.0" />
+    Version="3.2.0.0" />
 
   <Properties>
     <DisplayName>treeDiM.StackBuilder.MSIX</DisplayName>

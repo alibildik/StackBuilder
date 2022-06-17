@@ -66,13 +66,13 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
         public static void InitializeInterlayers(
             Vector3D caseDim, int palletIndex, int noLayers,
             string initializer,
-            ref List<InterlayerDetails> interlayers)
+            ref List<LayerDataShort> interlayers)
         {
             bool[] arrayBool = initializer.Select(c => c == '1').ToArray();
-
             for (var i = 0; i<noLayers; ++i)
-                interlayers.Add(new InterlayerDetails($"# {i+1}", (i<arrayBool.Length) && arrayBool[i]));
-            interlayers.Add(new InterlayerDetails("Top", (noLayers<arrayBool.Length) && arrayBool[noLayers]));
+                interlayers.Add(new LayerDataShort($"# {i+1}", 0, (i<arrayBool.Length) && arrayBool[i]));
+            //interlayers.Add(new LayerDataShort("Top", -1, (noLayers<arrayBool.Length) && arrayBool[noLayers]));
+            //interlayers[1].LayerIndex = 1;
         }
 
         public static void GetSolution(
@@ -161,9 +161,8 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
 
         public static void GenerateExport(Vector3D caseDim, double caseWeight, Bitmap bmpTexture,
             int palletIndex, double palletWeight,
-            int layerNumber,
-            List<BoxPositionIndexed> boxPositions,
-            bool mirrorLength, bool mirrorWidth,
+            List<List<BoxPositionIndexed>> listLayerTypes,
+            List<int> listLayerIndexes,
             List<bool> interlayers,
             string filePath,
             ref int caseCount, ref int layerCount,
@@ -200,14 +199,24 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
             // constraint set
             var constraintSet = new ConstraintSetCasePallet();
             constraintSet.SetAllowedOrientations(new bool[] { false, false, true });
-            constraintSet.OptMaxLayerNumber = layerNumber;
-            // layer 2D
-            var layer2D = new Layer2DBrickExpIndexed(caseDim, new Vector2D(), "", HalfAxis.HAxis.AXIS_Z_P);
-            layer2D.SetPositions(boxPositions);
+            constraintSet.OptMaxLayerNumber = listLayerIndexes.Count;
+
+            // layer types
+            var listLayers = new List<LayerEncap>();
+            foreach (var layerBP in listLayerTypes)
+            {
+                var layer2D = new Layer2DBrickExpIndexed(caseDim, new Vector2D(), "", HalfAxis.HAxis.AXIS_Z_P);
+                layer2D.SetPositions(layerBP);
+                listLayers.Add(new LayerEncap(layer2D));
+            }
+            // solution items
+            var listSolutionItem = new List<SolutionItem>();
+            for (int i = 0; i < listLayerIndexes.Count; ++i)
+                listSolutionItem.Add( new SolutionItem(listLayerIndexes[i], interlayers[i] ? 0 : -1, false, false) );
             // analysis
             var analysis = new AnalysisCasePallet(boxProperties, palletProperties, constraintSet);
             analysis.AddInterlayer(new InterlayerProperties(null, "interlayer", "", palletDim.X, palletDim.Y, 1.0, 0.0, Color.White));
-            analysis.AddSolution(layer2D, mirrorLength, mirrorWidth);
+            analysis.AddSolution(listLayers, listSolutionItem);
             // solution
             SolutionLayered sol = analysis.SolutionLay;
             var solutionItems = sol.SolutionItems;
@@ -261,9 +270,8 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
         public static void Export(
             Vector3D caseDim, double caseWeight,
             int palletIndex, double palletWeight,
-            int noLayers,
-            List<BoxPositionIndexed> listBoxPositionIndexed,
-            bool mirrorLength, bool mirrorWidth,
+            List<List<BoxPositionIndexed>> listLayerTypes,
+            List<int> listLayerIndexes,
             List<bool> interlayers,
             int layerDesignMode,
             ref byte[] fileBytes,
@@ -290,16 +298,25 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
             // constraint set
             var constraintSet = new ConstraintSetCasePallet();
             constraintSet.SetAllowedOrientations(new bool[] { false, false, true });
-            constraintSet.OptMaxLayerNumber = noLayers;
+            constraintSet.OptMaxLayerNumber = listLayerIndexes.Count;
 
-            // layer
-            var layer2D = new Layer2DBrickExpIndexed(caseDim, new Vector2D(palletDim.X, palletDim.Y), "", HalfAxis.HAxis.AXIS_Z_P);
-            layer2D.SetPositions(listBoxPositionIndexed);
+            // list layer types
+            var listLayer2D = new List<LayerEncap>();
+            for (int i = 0; i < listLayerTypes.Count; ++i)
+            {
+                var layer2D = new Layer2DBrickExpIndexed(caseDim, new Vector2D(palletDim.X, palletDim.Y), "", HalfAxis.HAxis.AXIS_Z_P);
+                layer2D.SetPositions(listLayerTypes[i]);
+                listLayer2D.Add(new LayerEncap(layer2D));
+            }
+            // list solution types
+            var listSolItems = new List<SolutionItem>();
+            for (int i = 0; i < listLayerIndexes.Count; ++i)
+                listSolItems.Add(new SolutionItem(listLayerIndexes[i], interlayers[i] ? 0 : -1, false, false));
+
             // analysis
             var analysis = new AnalysisCasePallet(boxProperties, palletProperties, constraintSet);
             analysis.AddInterlayer(new InterlayerProperties(null, "interlayer", "", palletDim.X, palletDim.Y, 1.0, 0.0, Color.LightYellow));
-            analysis.AddSolution(layer2D, mirrorLength, mirrorWidth);
-            
+            analysis.AddSolution(listLayer2D, listSolItems);            
 
             SolutionLayered sol = analysis.SolutionLay;
             var solutionItems = sol.SolutionItems;
@@ -313,7 +330,7 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
                     null, "palletCap", "", palletDim.X, palletDim.Y, 1, palletDim.X, palletDim.Y, 0.0, 0.0, Color.LightYellow);
 
             // export
-            var exporter = ExporterFactory.GetExporterByName("csv (TechnologyBSA)") as ExporterRobot;
+            var exporter = ExporterRobot.GetByName("csv (TechnologyBSA)");
             exporter.PositionCoordinateMode = ExporterRobot.CoordinateMode.CM_COG;
             Stream stream = new MemoryStream();
             if (exporter is ExporterCSV_TechBSA exporterTechBSA)

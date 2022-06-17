@@ -57,7 +57,7 @@
         <File Id="ConfigSettings.cs" Source="$(var.StackBuilderTechBSASourceDir)\App_code\ConfigSettings.cs"/>
         <File Id="Extensions.cs" Source="$(var.StackBuilderTechBSASourceDir)\App_code\Extensions.cs"/>
         <File Id="FtpHelpers.cs" Source="$(var.StackBuilderTechBSASourceDir)\App_code\FtpHelpers.cs"/>
-        <File Id="InterlayerDetails" Source="$(var.StackBuilderTechBSASourceDir)\App_code\InterlayerDetails.cs"/>
+        <File Id="InterlayerDetails" Source="$(var.StackBuilderTechBSASourceDir)\App_code\LayerDataShort.cs"/>
         <File Id="LayerDetails.cs" Source="$(var.StackBuilderTechBSASourceDir)\App_code\LayerDetails.cs"/>
         <File Id="PalletDetails.cs" Source="$(var.StackBuilderTechBSASourceDir)\App_code\PalletDetails.cs"/>
         <File Id="PalletStacking.cs" Source="$(var.StackBuilderTechBSASourceDir)\App_code\PalletStacking.cs"/>

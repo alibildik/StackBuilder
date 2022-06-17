@@ -87,7 +87,8 @@ namespace treeDiM.StackBuilder.Graphics
             var bProperties = new BoxProperties(null, dimCase.X, dimCase.Y, dimCase.Z)
             {
                 TapeWidth = new treeDiM.Basics.OptDouble(true, 50.0),
-                TapeColor = Color.Tan
+                TapeColor = Color.Tan,
+                Facing = 1
             };
             bProperties.SetAllColors(Enumerable.Repeat(Color.Beige, 6).ToArray());
 

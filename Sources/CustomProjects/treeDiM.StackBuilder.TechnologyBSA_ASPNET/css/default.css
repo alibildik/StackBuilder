@@ -1,13 +1,11 @@
 ﻿body {
 }
-
 div.div980x780 {
     max-width: 980px;
     height: 780px;
     margin: auto;
     border: 0px solid #000000;
 }
-
 .button {
     background-color: #F2F4F4;
     color: dimgray;
@@ -152,6 +150,62 @@ input[type=buttonremove] {
     margin: 4px 2px;
     border-radius: 5px;
     width: 200px;
+    height: 50px;
+}
+.buttonMirrorX {
+    background-color: #F2F4F4 url("/Images/BnMirrorX.png") no-repeat center;
+    color: dimgray;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
+}
+.buttonMirrorY {
+    background-color: #F2F4F4 url("/Images/BnMirrorY.png") no-repeat center;
+    color: dimgray;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
+}
+.buttonRotate180 {
+    background-color: #F2F4F4 url("/Images/BnRotate180.png") no-repeat center;
+    color: dimgray;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
+}
+.buttonCopyFrom {
+    background-color: #F2F4F4 url("/Images/BnCopy.png") no-repeat center;
+    color: dimgray;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 5px;
+    width: 100px;
     height: 50px;
 }
 .buttonRefresh {

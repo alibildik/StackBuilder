@@ -102,7 +102,7 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
             PalletIndex = PalletIndexCtrl;
             WeightPallet = WeightPalletCtrl;
             NumberOfLayers = NumberOfLayersCtrl;
-            BoxPositions = BoxPositionsLayer;
+            BoxPositions1 = BoxPositionsLayer[0];
 
             Session[SessionVariables.LayerEdited] = false;
             Response.Redirect(ConfigSettings.WebGLMode ? "ValidationWebGL.aspx" : "Validation.aspx");
@@ -149,13 +149,13 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
             Vector3D bbTotal = Vector3D.Zero;
             string fileGuid = Guid.NewGuid().ToString() + ".glb";
             List<bool> interlayers = new List<bool>();
+            List<int> ListLayerIndexes = new List<int>();
+
             
             PalletStacking.GenerateExport(
                 caseDim, caseWeight, BitmapTexture,
                 PalletIndexCtrl, palletWeight,
-                NumberOfLayersCtrl,
-                BoxPositionsLayer,
-                false, false,
+                BoxPositionsLayer, ListLayerIndexes,               
                 interlayers,
                 Path.Combine(Output, fileGuid),
                 ref caseCount, ref layerCount,
@@ -194,7 +194,7 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
             PalletIndex = PalletIndexCtrl;
             WeightPallet = WeightPalletCtrl;
             SelectedIndex = -1;
-            BoxPositions = BoxPositionsLayer;
+            BoxPositions1 = BoxPositionsLayer[0];
 
             Session[SessionVariables.LayerEdited] = true;
             Response.Redirect("LayerEdition.aspx");
@@ -254,26 +254,32 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
             get => (int)Session[SessionVariables.NumberOfLayers];
             set => Session[SessionVariables.NumberOfLayers] = value;
         }
-        private List<BoxPositionIndexed> BoxPositions
+        private List<BoxPositionIndexed> BoxPositions1
         {
-            set => Session[SessionVariables.BoxPositions] = value;
+            set => Session[SessionVariables.BoxPositions1] = value;
         }
         private int SelectedIndex
         {
             set => Session[SessionVariables.SelectedIndex] = value;
         }
-        private List<BoxPositionIndexed> BoxPositionsLayer
+        private List<List<BoxPositionIndexed>> BoxPositionsLayer
         {
             get
             {
                 var layerDesc = LayerDescBox.Parse(ViewState["LayerDescriptor"].ToString()) as LayerDescBox;
                 LayerSolver solver = new LayerSolver();
                 var layer = solver.BuildLayer(DimCaseCtrl, PalletStacking.PalletIndexToDim2D(PalletIndexCtrl), layerDesc, 0.0);
+
+                List<List<BoxPositionIndexed>> listLayerTypes = new List<List<BoxPositionIndexed>>();
                 var listPositions = new List<BoxPositionIndexed>();
                 int counter = 0;
                 foreach (var pos in layer.Positions)
                     listPositions.Add(new BoxPositionIndexed(pos, ++counter));
-                return listPositions;
+
+                for (int i = 0; i < 4; ++i)
+                    listLayerTypes.Add(listPositions);
+
+                return listLayerTypes;
             }
         }
         private Bitmap BitmapTexture

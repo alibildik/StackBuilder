@@ -34,10 +34,11 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
             PalletIndex = PalletIndexCtrl;
             WeightPallet = WeightPalletCtrl;
             NumberOfLayers = NumberOfLayersCtrl;
-            BoxPositions = new List<BoxPositionIndexed>
-            {
-                new BoxPositionIndexed(Vector3D.Zero, HalfAxis.HAxis.AXIS_X_P, HalfAxis.HAxis.AXIS_Y_P, 1)
-            };
+            // initialize layers with a single box
+            BoxPositions1 = new List<BoxPositionIndexed> { new BoxPositionIndexed(Vector3D.Zero, HalfAxis.HAxis.AXIS_X_P, HalfAxis.HAxis.AXIS_Y_P, 1) };
+            BoxPositions2 = new List<BoxPositionIndexed> { new BoxPositionIndexed(Vector3D.Zero, HalfAxis.HAxis.AXIS_X_P, HalfAxis.HAxis.AXIS_Y_P, 1) };
+            BoxPositions3 = new List<BoxPositionIndexed> { new BoxPositionIndexed(Vector3D.Zero, HalfAxis.HAxis.AXIS_X_P, HalfAxis.HAxis.AXIS_Y_P, 1) };
+            BoxPositions4 = new List<BoxPositionIndexed> { new BoxPositionIndexed(Vector3D.Zero, HalfAxis.HAxis.AXIS_X_P, HalfAxis.HAxis.AXIS_Y_P, 1) };
 
             Session[SessionVariables.LayerEdited] = true;
             Response.Redirect("LayerDesign.aspx");
@@ -116,12 +117,26 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
             get => (int)Session[SessionVariables.NumberOfLayers];
             set => Session[SessionVariables.NumberOfLayers] = value;
         }
-        private List<BoxPositionIndexed> BoxPositions
+        private List<BoxPositionIndexed> BoxPositions1
         {
-            get => (List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions];
-            set => Session[SessionVariables.BoxPositions] = value;
+            get => (List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions1];
+            set => Session[SessionVariables.BoxPositions1] = value;
         }
-
+        private List<BoxPositionIndexed> BoxPositions2
+        {
+            get => (List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions2];
+            set => Session[SessionVariables.BoxPositions2] = value;
+        }
+        private List<BoxPositionIndexed> BoxPositions3
+        {
+            get => (List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions3];
+            set => Session[SessionVariables.BoxPositions3] = value;
+        }
+        private List<BoxPositionIndexed> BoxPositions4
+        {
+            get => (List<BoxPositionIndexed>)Session[SessionVariables.BoxPositions4];
+            set => Session[SessionVariables.BoxPositions4] = value;
+        }
         protected void OnRefresh(object sender, EventArgs e)
         {
             Page.Validate();

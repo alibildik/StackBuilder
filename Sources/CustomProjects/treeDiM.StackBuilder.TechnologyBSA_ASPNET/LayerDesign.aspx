@@ -116,6 +116,17 @@
                 insertCase(canvas, boxPositions[i].NumberCase, boxPositions[i].X, boxPositions[i].Y, boxPositions[i].Angle);
             }
             
+            fabric.util.addListener(canvas.upperCanvasEl, 'click', function (e) {
+                var target = canvas.findTarget(e);
+                if (target.type === 'group') {
+                    target.setCoords();
+                    var text = target.item(1);
+                    if (text.type === 'text')
+                        text.rotate(text.get('angle') + 90);
+                }
+                target.setCoords();
+                canvas.renderAll();
+            });
             fabric.util.addListener(canvas.upperCanvasEl, 'dblclick', function (e) {
                 var target = canvas.findTarget(e);
                 if (target.type === 'group')
@@ -133,7 +144,7 @@
                 options.target.setCoords();
                 Move(canvas, options.target);
                 options.target.setCoords();
-            });
+            });            
         });
         function insertCases(number) {
             var canvas = document.getElementById('canvas').fabric;
@@ -205,9 +216,35 @@
             <asp:ScriptManager ID="pageUpdates" runat="server" EnablePartialRendering="true"></asp:ScriptManager>
             <table>
                 <tr>
+                    <td>
+                        <asp:DropDownList ID="DropDownSelectLayer" AutoPostBack="True" Width="100px" OnChange="Save()" OnSelectedIndexChanged="OnSelectedLayerTypeChanged" runat="server">
+                            <asp:ListItem Text="Layer type 1" />
+                            <asp:ListItem Text="Layer type 2" />
+                            <asp:ListItem Text="Layer type 3" />
+                            <asp:ListItem Text="Layer type 4" />
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                    </td>
+                    <td class="style250px">
+                        <asp:Button ID="ButtonMirrorX" CssClass="buttonMirrorX" runat="server" Text="MirrorX" OnClientClick="javascript:Save()" OnClick="OnMirrorX" Style="background-image:url('Images/BnMirrorX.png'); background-repeat:no-repeat"/>
+                        <asp:Button ID="ButtonMirrorY" CssClass="buttonMirrorY" runat="server" Text="MirrorY" OnClientClick="javascript:Save()" OnClick="OnMirrorY" Style="background-image:url('Images/BnMirrorY.png'); background-repeat:no-repeat"/>
+                        <asp:Button ID="ButtonRotate180" CssClass="buttonRotate180" Text="Rotate 180" runat="server" OnClientClick="javascript:Save()" OnClick="OnRotate180" Style="background-image:url('Images/BnRotate180.png'); background-repeat:no-repeat"/>
+                    </td>
+                    <td class="style100px">
+                        <asp:DropDownList ID="DropDownSelectLayerCopyFrom" AutoPostBack="True" Width="100px" runat="server">
+                            <asp:ListItem Text="Layer type 1" />
+                            <asp:ListItem Text="Layer type 2" />
+                            <asp:ListItem Text="Layer type 3" />
+                            <asp:ListItem Text="Layer type 4" />
+                        </asp:DropDownList>
+                        <asp:Button ID="ButtonCopyFrom" CssClass="buttonCopyFrom" runat="server" Text="Copy From"  OnClientClick="javascript:Save()" OnClick="OnCopy" Style="background-image:url('Images/BnCopy.png'); background-repeat:no-repeat"/>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="4">
                         <div class="canvas-container" style="width: 850px; height: 550px; position: relative; user-select: none;">
-                            <canvas id="canvas" width="850" height="550" style="border: 1px solid #ccc" runat="server"></canvas>
+                            <canvas id="canvas" width="850" height="550" style="border: 1px solid #ccc" runat="server" />
                         </div>
                     </td>
                     <td colspan="1">

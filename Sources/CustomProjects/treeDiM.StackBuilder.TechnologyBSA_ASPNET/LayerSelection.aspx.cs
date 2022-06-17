@@ -270,7 +270,7 @@ namespace treeDiM.StackBuilder.TechnologyBSA_ASPNET
         }
         private List<BoxPositionIndexed> BoxPositions
         {
-            set => Session[SessionVariables.BoxPositions] = value;
+            set => Session[SessionVariables.BoxPositions1] = value;
         }
         private int SelectedIndex
         {

@@ -6,9 +6,6 @@
 <head runat="server">
     <title></title>
     <style type="text/css">
-        .auto-style1 {
-            width: 100%;
-        }
         .auto-style2 {
             width: 550px;
             text-align: center;
@@ -18,14 +15,6 @@
             text-align: left;
         }
         .auto-style4 {
-            text-align: right;
-        }
-        .auto-style5 {
-            text-align: left;
-        }
-        .auto-style6 {
-        }
-        .auto-style7 {
             text-align: right;
         }
         .border {
@@ -160,33 +149,24 @@
                                 </table>
                             </td>
                             <td colspan="2" class="auto-style3">
-                                <asp:Panel ID="PanelLayerOrientation" runat="server" GroupingText="Alternate layer orientation" Width="100%" BorderColor="LightGray" BackColor="Transparent" CssClass="groupBox">
-                                    <table class="style100pct">
-                                        <tr>
-                                            <td>
-                                                <label class="switch">
-                                                    <asp:CheckBox ID="ChkbMirrorLength" runat="server" OnCheckedChanged="OnInputChanged" AutoPostBack="true" />
-                                                    <span class="slider round"/>
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <asp:Image ID="IMGMirrorLength" runat="server" ImageUrl="Images/MirrorLength.png" />
-                                            </td>
-                                            <td>
-                                                <label class="switch">
-                                                    <asp:CheckBox ID="ChkbMirrorWidth" runat="server" OnCheckedChanged="OnInputChanged" AutoPostBack="true" />
-                                                    <span class="slider round"/>
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <asp:Image ID="IMGMirrorWidth" runat="server" ImageUrl="Images/MirrorWidth.png" />
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </asp:Panel>
-                                <br />
                                 <asp:Panel ID="PanelInterlayer" runat="server" GroupingText="Interlayers" Width="100%" BorderColor="LightGray" BackColor="Transparent" CssClass="groupBox">
-                                    <div style="height: 300px; overflow-x:hidden; overflow-y:visible">
+                                    <div style="height: 350px; overflow-x:hidden; overflow-y:visible">
+                                        <table>
+                                            <tr>
+                                                <td id="td1" runat="server">
+                                                    <asp:Label ID="LayerLabel" Text="Top" Width="100px" runat="server" CssClass="labelRight"/>
+                                                </td>
+                                                <td id="td2" runat="server">
+                                                    <asp:Label ID="Label1" Text="" Width="100px" runat="server" CssClass="labelRight"/>
+                                                </td>
+                                                <td id="td3" runat="server">
+                                                        <label class="switch">
+                                                            <asp:CheckBox ID="LayerCheckBoxTop" AutoPostBack="true" Checked="false" runat="server" />
+                                                            <span class="slider round" />
+                                                        </label>
+                                                    </td>
+                                            </tr>
+                                        </table>
                                         <asp:ListView ID="LVInterlayers" runat="server">
                                             <LayoutTemplate>
                                                 <table id="tableInterlayers" runat="server">
@@ -199,8 +179,16 @@
                                                         <asp:Label ID="LayerLabel" Text='<%#Eval("Name") %>' Width="100px" runat="server" CssClass="labelRight"/>
                                                     </td>
                                                     <td id="td2" runat="server">
+                                                        <asp:DropDownList ID="LayerDropDown" AutoPostBack="true" Width="100px" OnSelectedIndexChanged="OnSelectedLayerTypeChanged" SelectedIndex='<%#Eval("LayerIndex") %>' runat="server">
+                                                            <asp:ListItem Text="Layer type 1" />
+                                                            <asp:ListItem Text="Layer type 2" />
+                                                            <asp:ListItem Text="Layer type 3" />
+                                                            <asp:ListItem Text="Layer type 4" />
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                    <td id="td3" runat="server">
                                                         <label class="switch">
-                                                            <asp:CheckBox ID="LayerCheckBox" AutoPostBack="true" Checked='<%#Eval("Activated") %>' runat="server" />
+                                                            <asp:CheckBox ID="LayerCheckBox" AutoPostBack="true" Checked='<%#Eval("HasInterlayer") %>' runat="server" />
                                                             <span class="slider round" />
                                                         </label>
                                                     </td>

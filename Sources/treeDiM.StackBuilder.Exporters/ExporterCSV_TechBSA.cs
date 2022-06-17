@@ -4,6 +4,8 @@ using System.Text;
 using System.IO;
 using System.Globalization;
 using System.Collections.Generic;
+using System.Linq;
+
 using Microsoft.VisualBasic.FileIO;
 
 using log4net;
@@ -142,7 +144,7 @@ namespace treeDiM.StackBuilder.Exporters
             ref Vector3D dimCase, ref double weightCase,
             ref Vector3D dimPallet, ref double weightPallet,
             ref int numberOfLayers,
-            ref bool layersMirrorX, ref bool layersMirrorY,
+            ref List<int> listLayerIndexes,
             ref List<bool> interlayers,
             ref int layerDesignMode)
         {
@@ -242,13 +244,9 @@ namespace treeDiM.StackBuilder.Exporters
                     {
                         numberOfLayers = int.Parse(fields[3], NumberFormatInfo.InvariantInfo);
                     }
-                    else if (f1.Contains("Program:StackBuilder.LayersMirrorXOnOff"))
+                    else if (f1.Contains("Program:StackBuilder.ListLayerIndexes"))
                     {
-                        layersMirrorX = String2Bool(fields[3]);
-                    }
-                    else if (f1.Contains("Program:StackBuilder.LayersMirrorYOnOff"))
-                    {
-                        layersMirrorY = String2Bool(fields[3]);
+                        listLayerIndexes = ListIndexes(fields[3]);
                     }
                     else if (f1.Contains("Program:StackBuilder.LayerDesignMode"))
                     {
@@ -283,8 +281,10 @@ namespace treeDiM.StackBuilder.Exporters
         private static string Bool2string(bool b) => b ? "TRUE" : "FALSE";
         private static bool String2Bool(string s) =>
             string.Equals(s, "TRUE", StringComparison.CurrentCultureIgnoreCase);
-
-
+        private static List<int> ListIndexes(string s) =>
+            s.Split(' ').Select(n => Convert.ToInt32(n)).ToList();
+        #endregion
+        #region Log
         private static ILog _log = LogManager.GetLogger(typeof(ExporterCSV_TechBSA));
         #endregion
     }

@@ -239,7 +239,8 @@ namespace treeDiM.StackBuilder.Graphics
         private Vector3D[] SquarePoints(Vector3D xAxis, Vector3D yAxis)
         {
             Vector3D pt = FacingPos;
-            double facing = UnitsManager.ConvertLengthFrom(Properties.Settings.Default.FacingDimension, UnitsManager.UnitSystem.UNIT_METRIC1);
+            double facing = UnitsManager.ConvertLengthFrom(50.0, UnitsManager.UnitSystem.UNIT_METRIC1);
+            try { facing = UnitsManager.ConvertLengthFrom(Properties.Settings.Default.FacingDimension, UnitsManager.UnitSystem.UNIT_METRIC1); } catch (Exception) { }
             var points = new Vector3D[4];
             points[0] = pt - 0.5 * facing * xAxis;
             points[1] = pt + 0.5 * facing * xAxis;

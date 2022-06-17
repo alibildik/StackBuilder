@@ -141,6 +141,10 @@ namespace treeDiM.StackBuilder.Basics
         {
             Solution = new SolutionLayered(this, listLayers);
         }
+        public void AddSolution(List<LayerEncap> layers, List<SolutionItem> listSolItems)
+        {
+            Solution = new SolutionLayered(this, layers) { SolutionItems = listSolItems };
+        }
         #endregion
 
         #region AnalysisHomo overrides

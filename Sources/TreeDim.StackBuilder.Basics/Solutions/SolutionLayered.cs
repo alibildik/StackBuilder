@@ -1181,7 +1181,6 @@ namespace treeDiM.StackBuilder.Basics
             }
             return layerPosTemp.Adjusted(dimensions);
         }
-
         private BoxPositionIndexed AdjustLayerPosition(BoxPositionIndexed layerPos, bool reflectionX, bool reflectionY)
         {
             Vector3D dimensions = Analysis.ContentDimensions;
