@@ -115,8 +115,6 @@ namespace treeDiM.StackBuilder.Graphics
                     ArrowButtons.Clear();
                     Vector2D ptCenter = new Vector2D(boxSelected.Center.X, boxSelected.Center.Y);
 
-
-
                     // draw translation arrows
                     for (int i = 0; i < 4; ++i)
                     {
@@ -168,7 +166,11 @@ namespace treeDiM.StackBuilder.Graphics
                 }
             }
             if (null != _rotateRectangle && _rotateRectangle.Contains(e.Location))
+            {
                 Rotate();
+                Moving = true;
+            }
+
         }
         private void OnMouseUp(object sender, MouseEventArgs e)
         {
@@ -306,7 +308,10 @@ namespace treeDiM.StackBuilder.Graphics
                 // allow rotations
                 ArrowRotate = !BoxInteraction.HaveIntersection(Layer.Positions, dim, SelectedIndex, Layer.Positions[SelectedIndex].RotateZ90(dim));
             }
-            bool allBoxesInside = BoxInteraction.BoxesAreInside(Layer.Positions, dim, Vector2D.Zero, Layer.DimContainer);
+            double epsilon = UnitsManager.ConvertLengthFrom(1.0, UnitsManager.UnitSystem.UNIT_METRIC1);
+            var vecEpsilon = new Vector2D(epsilon, epsilon);
+
+            bool allBoxesInside = BoxInteraction.BoxesAreInside(Layer.Positions, dim, Vector2D.Zero - vecEpsilon, Layer.DimContainer + vecEpsilon);
             if (AllBoxesInside != allBoxesInside)
             {
                 AllBoxesInside = allBoxesInside;

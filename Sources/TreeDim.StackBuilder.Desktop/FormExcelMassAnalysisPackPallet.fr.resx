@@ -221,4 +221,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Analyse de masse Excel (1 pack par ligne)</value>
   </data>
+  <data name="chkbPalletAdmissibleLoadWeight.Text" xml:space="preserve">
+    <value>Utiliser la charge admissible de la palette</value>
+  </data>
 </root>

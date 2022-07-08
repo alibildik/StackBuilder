@@ -433,7 +433,8 @@ namespace treeDiM.StackBuilder.Desktop
             List<string> captions = new List<string>
             {
                 string.Format(Properties.Resources.ID_DIMENSIONS, UnitsManager.UnitString(UnitsManager.UnitType.UT_LENGTH)),
-                string.Format(Properties.Resources.ID_WEIGHT_WU, UnitsManager.UnitString(UnitsManager.UnitType.UT_MASS))
+                string.Format(Properties.Resources.ID_WEIGHT_WU, UnitsManager.UnitString(UnitsManager.UnitType.UT_MASS)),
+                string.Format(Properties.Resources.ID_ADMISSIBLELOAD_WU, UnitsManager.UnitString(UnitsManager.UnitType.UT_MASS))
             };
             GridInitialize(gridPallets, captions);
             // handling checkbox event
@@ -462,6 +463,7 @@ namespace treeDiM.StackBuilder.Desktop
                 gridPallets[iIndex, iCol++] = new SourceGrid.Cells.Cell(
                        string.Format("{0:0.###}", UnitsManager.ConvertMassFrom(p.Weight, us))
                     );
+                gridPallets[iIndex, iCol++] = new SourceGrid.Cells.Cell(p.AdmissibleLoad.HasValue ? string.Format("{0:0.###}", UnitsManager.ConvertMassFrom(p.AdmissibleLoad.Value, us)) : "-");
                 gridPallets[iIndex, iCol] = new SourceGrid.Cells.CheckBox(null, p.AutoInsert);
                 gridPallets[iIndex, iCol++].AddController(checkBoxEvent);
                 gridPallets[iIndex, iCol] = new SourceGrid.Cells.Button("") { Image = Properties.Resources.Delete };

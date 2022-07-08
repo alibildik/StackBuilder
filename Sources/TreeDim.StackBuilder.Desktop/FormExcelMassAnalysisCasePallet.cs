@@ -88,6 +88,7 @@ namespace treeDiM.StackBuilder.Desktop
             Settings.Default.MassExcelImageFolderPath = DirectoryPathImages;
             Settings.Default.MassExcelReportFolderPath = DirectoryPathReports;
             Settings.Default.AllowCombinations = AllowCombinations;
+            Settings.Default.MassExcelUseAdmissibleLoadWeight = UseAdmissibleLoadWeight;
         }
         protected override void LoadSettings()
         {
@@ -106,6 +107,7 @@ namespace treeDiM.StackBuilder.Desktop
             DirectoryPathImages = Settings.Default.MassExcelImageFolderPath;
             DirectoryPathReports = Settings.Default.MassExcelReportFolderPath;
             AllowCombinations = Settings.Default.AllowCombinations;
+            UseAdmissibleLoadWeight = Settings.Default.MassExcelUseAdmissibleLoadWeight;
         }
         #endregion
         #region Computation
@@ -362,7 +364,10 @@ namespace treeDiM.StackBuilder.Desktop
             constraintSet.SetAllowedOrientations(new[] { !AllowOnlyZOrientation, !AllowOnlyZOrientation, true });
             constraintSet.SetMaxHeight(new OptDouble(true, MaxPalletHeight));
             constraintSet.Overhang = overhang;
-
+            constraintSet.OptMaxWeight = new OptDouble(
+                UseAdmissibleLoadWeight && palletProperties.AdmissibleLoadWeight > 0
+                , palletProperties.AdmissibleLoadWeight + palletProperties.Weight
+                );
 
             List<AnalysisLayered> analyzes = new List<AnalysisLayered>();
             if (!allowCombinations)
@@ -453,8 +458,8 @@ namespace treeDiM.StackBuilder.Desktop
         private bool GenerateImage { get => chkbGenerateImageInRow.Checked; set => chkbGenerateImageInRow.Checked = value; }
         private bool GenerateImageInFolder { get => chkbGenerateImageInFolder.Checked; set => chkbGenerateImageInFolder.Checked = value; }
         private bool GenerateReport { get => chkbGenerateReportInFolder.Checked; set => chkbGenerateReportInFolder.Checked = value; }
-        private string DirectoryPathImages { get => fsFolderImages.Text; set => fsFolderImages.Text = value; } 
-        private string DirectoryPathReports { get => fsFolderReports.Text; set => fsFolderReports.Text = value; }
+        private string DirectoryPathImages { get => fsFolderImages.FileName; set => fsFolderImages.FileName = value; } 
+        private string DirectoryPathReports { get => fsFolderReports.FileName; set => fsFolderReports.FileName = value; }
         private int ImageSize { get => (int)nudImageSize.Value; set => nudImageSize.Value = value; }
         private bool AllowOnlyZOrientation { get => chkbOnlyZOrientation.Checked; }
         private int StackCountMax => Settings.Default.MassExcelStackCountMax;
@@ -467,6 +472,7 @@ namespace treeDiM.StackBuilder.Desktop
         private string ColumnLetterHeight => cbHeight.SelectedItem.ToString();
         private string ColumnLetterWeight => cbWeight.SelectedItem.ToString();
         private string ColumnLetterOutputStart => cbOutputStart.SelectedItem.ToString();
+        private bool UseAdmissibleLoadWeight { get => chkbPalletAdmissibleLoadWeight.Checked; set => chkbPalletAdmissibleLoadWeight.Checked = value; }
         
         private readonly double LargestDimensionMinimum = 10.0;
         private bool AllowCombinations

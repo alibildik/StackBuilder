@@ -123,7 +123,6 @@
             // statusStripDef
             // 
             resources.ApplyResources(this.statusStripDef, "statusStripDef");
-            this.statusStripDef.Name = "statusStripDef";
             // 
             // toolStripStatusLabelDef
             // 

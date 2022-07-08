@@ -160,4 +160,7 @@
   <data name="uCtrlNumberPerCase.Text" xml:space="preserve">
     <value>Nombre par cas</value>
   </data>
+  <data name="chkbAllowCombinations.Text" xml:space="preserve">
+    <value>Autoriser la combinaison de couches</value>
+  </data>
 </root>

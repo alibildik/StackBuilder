@@ -31,6 +31,9 @@ namespace treeDiM.StackBuilder.WCFAppServ
             , DCCompFormat expectedFormat, bool showCotations);
         #endregion
 
+        #region JJA Specific
+        #endregion
+
         #region Heterogeneous stacking
         [OperationContract]
         DCSBHSolution SB_GetHSolutionBestCasePallet(DCSBContentItem[] sbConstentItems

@@ -466,6 +466,15 @@ namespace treeDiM.StackBuilder.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Admissible load ({0}).
+        /// </summary>
+        internal static string ID_ADMISSIBLELOAD_WU {
+            get {
+                return ResourceManager.GetString("ID_ADMISSIBLELOAD_WU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Algorithm.
         /// </summary>
         internal static string ID_ALGORITHM {

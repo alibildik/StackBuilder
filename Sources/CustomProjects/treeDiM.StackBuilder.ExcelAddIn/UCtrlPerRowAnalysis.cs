@@ -420,7 +420,7 @@ namespace treeDiM.StackBuilder.ExcelAddIn
             // generate image path
             if (GenerateImage)
                 stackImagePath = Path.Combine(Path.ChangeExtension(Path.GetTempFileName(), "png"));
-            else if (GenerateImageInFolder)
+            if (GenerateImageInFolder)
                 stackImagePath = Path.ChangeExtension(Path.Combine(DirectoryPathImages, name), "png");
 
             Graphics3DImage graphics = null;
@@ -438,6 +438,9 @@ namespace treeDiM.StackBuilder.ExcelAddIn
             constraintSet.SetAllowedOrientations(new[] { !AllowOnlyZOrientation, !AllowOnlyZOrientation, true });
             constraintSet.SetMaxHeight(new OptDouble(true, PalletMaximumHeight));
             constraintSet.Overhang = Overhang;
+
+            //if (palletProperties.AdmissibleLoadWeight > 0)
+                //constraintSet.OptMaxWeight = new OptDouble(true, palletProperties.AdmissibleLoadWeight);
 
             SolverCasePallet solver = new SolverCasePallet(bProperties, palletProperties, constraintSet);
             List<AnalysisLayered> analyzes = solver.BuildAnalyses(false);

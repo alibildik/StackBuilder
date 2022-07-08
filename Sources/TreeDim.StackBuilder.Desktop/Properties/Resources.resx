@@ -247,6 +247,9 @@
   <data name="ID_ADDNEWTRUCKANALYSIS" xml:space="preserve">
     <value>Add new truck analysis...</value>
   </data>
+  <data name="ID_ADMISSIBLELOAD_WU" xml:space="preserve">
+    <value>Admissible load ({0})</value>
+  </data>
   <data name="ID_ALGORITHM" xml:space="preserve">
     <value>Algorithm</value>
   </data>

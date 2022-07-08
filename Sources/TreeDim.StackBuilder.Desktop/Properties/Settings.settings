@@ -374,5 +374,8 @@
     <Setting Name="MassExcelColLetterMaxHeight" Type="System.String" Scope="User">
       <Value Profile="(Default)">J</Value>
     </Setting>
+    <Setting Name="MassExcelUseAdmissibleLoadWeight" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

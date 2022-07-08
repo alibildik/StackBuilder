@@ -60,6 +60,7 @@ namespace treeDiM.StackBuilder.Desktop
             this.cbOutputStart = new System.Windows.Forms.ComboBox();
             this.lbStartOutput = new System.Windows.Forms.Label();
             this.tpPalletsAndConstraints = new System.Windows.Forms.TabPage();
+            this.chkbPalletAdmissibleLoadWeight = new System.Windows.Forms.CheckBox();
             this.lPallets = new System.Windows.Forms.Label();
             this.tabCtrl.SuspendLayout();
             this.tpInputColumns.SuspendLayout();
@@ -292,6 +293,7 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // tpPalletsAndConstraints
             // 
+            this.tpPalletsAndConstraints.Controls.Add(this.chkbPalletAdmissibleLoadWeight);
             this.tpPalletsAndConstraints.Controls.Add(this.lPallets);
             this.tpPalletsAndConstraints.Controls.Add(this.chkbAllowCombinations);
             this.tpPalletsAndConstraints.Controls.Add(this.lbPallets);
@@ -301,6 +303,12 @@ namespace treeDiM.StackBuilder.Desktop
             resources.ApplyResources(this.tpPalletsAndConstraints, "tpPalletsAndConstraints");
             this.tpPalletsAndConstraints.Name = "tpPalletsAndConstraints";
             this.tpPalletsAndConstraints.UseVisualStyleBackColor = true;
+            // 
+            // chkbPalletAdmissibleLoadWeight
+            // 
+            resources.ApplyResources(this.chkbPalletAdmissibleLoadWeight, "chkbPalletAdmissibleLoadWeight");
+            this.chkbPalletAdmissibleLoadWeight.Name = "chkbPalletAdmissibleLoadWeight";
+            this.chkbPalletAdmissibleLoadWeight.UseVisualStyleBackColor = true;
             // 
             // lPallets
             // 
@@ -359,5 +367,6 @@ namespace treeDiM.StackBuilder.Desktop
         private UserControls.FileSelect fsFolderReports;
         private UserControls.FileSelect fsFolderImages;
         private System.Windows.Forms.Label lPallets;
+        private System.Windows.Forms.CheckBox chkbPalletAdmissibleLoadWeight;
     }
 }

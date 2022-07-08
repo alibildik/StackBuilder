@@ -26,7 +26,7 @@ namespace treeDiM.StackBuilder.Desktop
         public FormExcelMassAnalysisPackPallet()
         {
             InitializeComponent();
-         }
+        }
         #endregion
         #region Form override
         protected override void OnLoad(EventArgs e)
@@ -105,6 +105,7 @@ namespace treeDiM.StackBuilder.Desktop
             cbMaxWidth.SelectedIndex = ExcelHelpers.ColumnLetterToColumnIndex(Settings.Default.MassExcelColLetterMaxWidth) - 1;
             cbMaxHeight.SelectedIndex = ExcelHelpers.ColumnLetterToColumnIndex(Settings.Default.MassExcelColLetterMaxHeight) - 1;
             cbOutputStart.SelectedIndex = ExcelHelpers.ColumnLetterToColumnIndex(Settings.Default.MassExcelColLetterOutputStart) - 1;
+            UseAdmissibleLoadWeight = Settings.Default.MassExcelUseAdmissibleLoadWeight;
         }
         protected override void SaveSettings()
         {
@@ -119,6 +120,7 @@ namespace treeDiM.StackBuilder.Desktop
             Settings.Default.MassExcelColLetterMaxWidth = ColumnLetterMaxWidth;
             Settings.Default.MassExcelColLetterMaxHeight = ColumnLetterMaxHeight;
             Settings.Default.MassExcelImageSize = ImageSize;
+            Settings.Default.MassExcelUseAdmissibleLoadWeight = UseAdmissibleLoadWeight;
         }
         #endregion
         #region Computation
@@ -211,7 +213,7 @@ namespace treeDiM.StackBuilder.Desktop
                     dataRange.RowHeight = 128;
                     Excel.Range imageRange = xlSheet.Range[
                         ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + 2,
-                        ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount)+rowCount
+                        ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + rowCount
                         ];
                 }
                 // ### header : end
@@ -230,7 +232,7 @@ namespace treeDiM.StackBuilder.Desktop
                             cell.Value = string.Format(Resources.ID_MASSEXCEL_FREEVERSIONLIMITEDNUMBER, MaxNumberRowFree);
                             break;
                         }
-                        string name = (xlSheet.Range[colName+iRow, colName+iRow].Value).ToString();
+                        string name = (xlSheet.Range[colName + iRow, colName + iRow].Value).ToString();
                         string description = string.IsNullOrEmpty(colDescription) ? string.Empty : (xlSheet.Range[colDescription + iRow, colDescription + iRow]).ToString();
                         double length = (double)xlSheet.Range[colLength + iRow, colLength + iRow].Value;
                         double width = (double)xlSheet.Range[colWidth + iRow, colWidth + iRow].Value;
@@ -268,7 +270,7 @@ namespace treeDiM.StackBuilder.Desktop
                             , ref loadWeight, ref totalPalletWeight
                             , ref packLength, ref packWidth, ref packHeight, ref packWeight
                             , ref palletLength, ref palletWidth, ref palletHeight
-                            , ref loadLength, ref loadWidth, ref loadHeight 
+                            , ref loadLength, ref loadWidth, ref loadHeight
                             , ref stackEfficiency
                             , ref packImagePath
                             , ref stackImagePath);
@@ -380,6 +382,8 @@ namespace treeDiM.StackBuilder.Desktop
             constraintSet.SetAllowedOrientations(new[] { false, false, true });
             constraintSet.SetMaxHeight(new OptDouble(true, MaximumPalletHeight));
             constraintSet.Overhang = Overhang;
+            constraintSet.OptMaxWeight = new OptDouble(UseAdmissibleLoadWeight && pallet.AdmissibleLoadWeight > 0.0, pallet.AdmissibleLoadWeight+pallet.Weight);
+
             // Param set optim pack
             ParamSetPackOptim paramSetOptimPack = new ParamSetPackOptim(number, Vector3D.Zero, new Vector3D(maxLength, maxWidth, maxHeight), false,
                     true, Color.LightGray, NoWalls, WrapperThickness, 0.0,
@@ -391,7 +395,7 @@ namespace treeDiM.StackBuilder.Desktop
                    paramSetOptimPack
                    );
             List<AnalysisLayered> analyses = packOptimizer.BuildAnalyses(false);
-            
+
             if (analyses.Any())
             {
                 var analysis = analyses[0];
@@ -487,7 +491,7 @@ namespace treeDiM.StackBuilder.Desktop
         private double WrapperThickness => uCtrlWrapperThickness.Value;
         private int[] NoWalls => new int[3] { uCtrlNumberOfWalls.NoX, uCtrlNumberOfWalls.NoY, uCtrlNumberOfWalls.NoZ };
         private double MaximumPalletHeight
-        { 
+        {
             get => uCtrlMaxPalletHeight.Value;
             set => uCtrlMaxPalletHeight.Value = value;
         }
@@ -497,6 +501,7 @@ namespace treeDiM.StackBuilder.Desktop
             get => uCtrlOverhang.Value;
             set => uCtrlOverhang.Value = value;
         }
+        private bool UseAdmissibleLoadWeight { get => chkbPalletAdmissibleLoadWeight.Checked; set => chkbPalletAdmissibleLoadWeight.Checked = value; }
         #endregion
     }
 }

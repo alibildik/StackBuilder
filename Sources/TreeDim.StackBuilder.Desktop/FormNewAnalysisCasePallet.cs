@@ -70,6 +70,12 @@ namespace treeDiM.StackBuilder.Desktop
                 uCtrlOverhang.ValueX = constraintSet.Overhang.X;
                 uCtrlOverhang.ValueY = constraintSet.Overhang.Y;
                 uCtrlOptSpace.Value = constraintSet.MinimumSpace;
+
+                foreach (var layer in AnalysisCast.SolutionLay.LayerTypes)
+                {
+                    if (layer is Layer2DBrickExp layerExp)
+                        _layersEdited.Add(layerExp);
+                }
             }
             checkBoxBestLayersOnly.Checked = Settings.Default.KeepBestSolutions;
             OnLayerSelected(this, null);
@@ -207,7 +213,7 @@ namespace treeDiM.StackBuilder.Desktop
         }
         private void OnInputChanged(object sender, EventArgs e)
         {
-            try { FillLayerList(); } catch (Exception ex) { _log.Error(ex.ToString()); }
+            try { FillLayerList(); FillEditedLayerList(); } catch (Exception ex) { _log.Error(ex.ToString()); }
         }
         private void FillLayerList()
         { 

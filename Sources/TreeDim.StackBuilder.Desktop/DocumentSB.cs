@@ -623,7 +623,6 @@ namespace treeDiM.StackBuilder.Desktop
 
         #region Object override
         public override string ToString() => Name;
-
         #endregion
 
         #region Data members

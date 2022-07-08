@@ -627,7 +627,9 @@ namespace treeDiM.StackBuilder.Basics
                                     , layerPosTemp.DirectionLength
                                     , layerPosTemp.DirectionWidth
                                     );
-                                boxPos.FlipFacingOutside(packable.Facing, packable.OuterDimensions, AnalysisCast.ContainerDimensions);
+                                // only allow flip facing outside if implicit layer
+                                if (currentLayer is Layer2DBrickImp)
+                                    boxPos.FlipFacingOutside(packable.Facing, packable.OuterDimensions, AnalysisCast.ContainerDimensions);
                                 boxLayer.Add(boxPos);
 
                                 ++iBoxCount;
@@ -1468,7 +1470,7 @@ namespace treeDiM.StackBuilder.Basics
 
         #region Data members
         private List<SolutionItem> _solutionItems;
-        internal List<ILayer2D> LayerTypes { get; set; } = new List<ILayer2D>();
+        public List<ILayer2D> LayerTypes { get; set; } = new List<ILayer2D>();
         // cached data
         private BBox3D _bbox = BBox3D.Initial;
         private List<StrapperData> _strappers = new List<StrapperData>();

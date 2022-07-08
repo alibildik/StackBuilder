@@ -65,6 +65,7 @@ namespace treeDiM.StackBuilder.Desktop
             this.uCtrlOverhang = new treeDiM.Basics.UCtrlDualDouble();
             this.lbPallets = new System.Windows.Forms.CheckedListBox();
             this.lPallets = new System.Windows.Forms.Label();
+            this.chkbPalletAdmissibleLoadWeight = new System.Windows.Forms.CheckBox();
             this.tabCtrl.SuspendLayout();
             this.tpInputColumns.SuspendLayout();
             this.tpOutputs.SuspendLayout();
@@ -74,16 +75,15 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // tabCtrl
             // 
-            resources.ApplyResources(this.tabCtrl, "tabCtrl");
             this.tabCtrl.Controls.Add(this.tpInputColumns);
             this.tabCtrl.Controls.Add(this.tpOutputs);
             this.tabCtrl.Controls.Add(this.tpConstraints);
+            resources.ApplyResources(this.tabCtrl, "tabCtrl");
             this.tabCtrl.Name = "tabCtrl";
             this.tabCtrl.SelectedIndex = 0;
             // 
             // tpInputColumns
             // 
-            resources.ApplyResources(this.tpInputColumns, "tpInputColumns");
             this.tpInputColumns.Controls.Add(this.cbWeight);
             this.tpInputColumns.Controls.Add(this.lbWeight);
             this.tpInputColumns.Controls.Add(this.cbMaxHeight);
@@ -104,14 +104,15 @@ namespace treeDiM.StackBuilder.Desktop
             this.tpInputColumns.Controls.Add(this.chkbDescription);
             this.tpInputColumns.Controls.Add(this.cbName);
             this.tpInputColumns.Controls.Add(this.lbName);
+            resources.ApplyResources(this.tpInputColumns, "tpInputColumns");
             this.tpInputColumns.Name = "tpInputColumns";
             this.tpInputColumns.UseVisualStyleBackColor = true;
             // 
             // cbWeight
             // 
-            resources.ApplyResources(this.cbWeight, "cbWeight");
             this.cbWeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWeight.FormattingEnabled = true;
+            resources.ApplyResources(this.cbWeight, "cbWeight");
             this.cbWeight.Name = "cbWeight";
             // 
             // lbWeight
@@ -121,9 +122,9 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // cbMaxHeight
             // 
-            resources.ApplyResources(this.cbMaxHeight, "cbMaxHeight");
             this.cbMaxHeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaxHeight.FormattingEnabled = true;
+            resources.ApplyResources(this.cbMaxHeight, "cbMaxHeight");
             this.cbMaxHeight.Name = "cbMaxHeight";
             // 
             // label6
@@ -133,9 +134,9 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // cbMaxWidth
             // 
-            resources.ApplyResources(this.cbMaxWidth, "cbMaxWidth");
             this.cbMaxWidth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaxWidth.FormattingEnabled = true;
+            resources.ApplyResources(this.cbMaxWidth, "cbMaxWidth");
             this.cbMaxWidth.Name = "cbMaxWidth";
             // 
             // label5
@@ -145,9 +146,9 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // cbMaxLength
             // 
-            resources.ApplyResources(this.cbMaxLength, "cbMaxLength");
             this.cbMaxLength.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaxLength.FormattingEnabled = true;
+            resources.ApplyResources(this.cbMaxLength, "cbMaxLength");
             this.cbMaxLength.Name = "cbMaxLength";
             // 
             // label4
@@ -157,9 +158,9 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // cbNumber
             // 
-            resources.ApplyResources(this.cbNumber, "cbNumber");
             this.cbNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNumber.FormattingEnabled = true;
+            resources.ApplyResources(this.cbNumber, "cbNumber");
             this.cbNumber.Name = "cbNumber";
             // 
             // label3
@@ -174,16 +175,16 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // cbHeight
             // 
-            resources.ApplyResources(this.cbHeight, "cbHeight");
             this.cbHeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbHeight.FormattingEnabled = true;
+            resources.ApplyResources(this.cbHeight, "cbHeight");
             this.cbHeight.Name = "cbHeight";
             // 
             // cbWidth
             // 
-            resources.ApplyResources(this.cbWidth, "cbWidth");
             this.cbWidth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWidth.FormattingEnabled = true;
+            resources.ApplyResources(this.cbWidth, "cbWidth");
             this.cbWidth.Name = "cbWidth";
             // 
             // label2
@@ -193,16 +194,16 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // cbLength
             // 
-            resources.ApplyResources(this.cbLength, "cbLength");
             this.cbLength.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLength.FormattingEnabled = true;
+            resources.ApplyResources(this.cbLength, "cbLength");
             this.cbLength.Name = "cbLength";
             // 
             // cbDescription
             // 
-            resources.ApplyResources(this.cbDescription, "cbDescription");
             this.cbDescription.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDescription.FormattingEnabled = true;
+            resources.ApplyResources(this.cbDescription, "cbDescription");
             this.cbDescription.Name = "cbDescription";
             // 
             // lbLength
@@ -218,9 +219,9 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // cbName
             // 
-            resources.ApplyResources(this.cbName, "cbName");
             this.cbName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbName.FormattingEnabled = true;
+            resources.ApplyResources(this.cbName, "cbName");
             this.cbName.Name = "cbName";
             // 
             // lbName
@@ -230,12 +231,12 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // tpOutputs
             // 
-            resources.ApplyResources(this.tpOutputs, "tpOutputs");
             this.tpOutputs.Controls.Add(this.chkbGenerateImageInRow);
             this.tpOutputs.Controls.Add(this.nudImageSize);
             this.tpOutputs.Controls.Add(this.label7);
             this.tpOutputs.Controls.Add(this.cbOutputStart);
             this.tpOutputs.Controls.Add(this.lbStartOutput);
+            resources.ApplyResources(this.tpOutputs, "tpOutputs");
             this.tpOutputs.Name = "tpOutputs";
             this.tpOutputs.UseVisualStyleBackColor = true;
             // 
@@ -267,9 +268,9 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // cbOutputStart
             // 
-            resources.ApplyResources(this.cbOutputStart, "cbOutputStart");
             this.cbOutputStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOutputStart.FormattingEnabled = true;
+            resources.ApplyResources(this.cbOutputStart, "cbOutputStart");
             this.cbOutputStart.Name = "cbOutputStart";
             // 
             // lbStartOutput
@@ -279,13 +280,14 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // tpConstraints
             // 
-            resources.ApplyResources(this.tpConstraints, "tpConstraints");
+            this.tpConstraints.Controls.Add(this.chkbPalletAdmissibleLoadWeight);
             this.tpConstraints.Controls.Add(this.uCtrlNumberOfWalls);
             this.tpConstraints.Controls.Add(this.uCtrlWrapperThickness);
             this.tpConstraints.Controls.Add(this.uCtrlMaxPalletHeight);
             this.tpConstraints.Controls.Add(this.uCtrlOverhang);
             this.tpConstraints.Controls.Add(this.lbPallets);
             this.tpConstraints.Controls.Add(this.lPallets);
+            resources.ApplyResources(this.tpConstraints, "tpConstraints");
             this.tpConstraints.Name = "tpConstraints";
             this.tpConstraints.UseVisualStyleBackColor = true;
             // 
@@ -340,15 +342,21 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // lbPallets
             // 
-            resources.ApplyResources(this.lbPallets, "lbPallets");
             this.lbPallets.CheckOnClick = true;
             this.lbPallets.FormattingEnabled = true;
+            resources.ApplyResources(this.lbPallets, "lbPallets");
             this.lbPallets.Name = "lbPallets";
             // 
             // lPallets
             // 
             resources.ApplyResources(this.lPallets, "lPallets");
             this.lPallets.Name = "lPallets";
+            // 
+            // chkbPalletAdmissibleLoadWeight
+            // 
+            resources.ApplyResources(this.chkbPalletAdmissibleLoadWeight, "chkbPalletAdmissibleLoadWeight");
+            this.chkbPalletAdmissibleLoadWeight.Name = "chkbPalletAdmissibleLoadWeight";
+            this.chkbPalletAdmissibleLoadWeight.UseVisualStyleBackColor = true;
             // 
             // FormExcelMassAnalysisPackPallet
             // 
@@ -407,5 +415,6 @@ namespace treeDiM.StackBuilder.Desktop
         private System.Windows.Forms.Label label7;
         private treeDiM.Basics.UCtrlTriInt uCtrlNumberOfWalls;
         private treeDiM.Basics.UCtrlDouble uCtrlWrapperThickness;
+        private System.Windows.Forms.CheckBox chkbPalletAdmissibleLoadWeight;
     }
 }

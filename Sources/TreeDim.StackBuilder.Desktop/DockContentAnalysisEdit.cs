@@ -400,7 +400,6 @@ namespace treeDiM.StackBuilder.Desktop
         {
             FormMain.GenerateExport(_analysis);
         }
-
         private void OnExportOBJ(object sender, EventArgs e) => OnExport3D("obj");
         private void OnExportGLB(object sender, EventArgs e) => OnExport3D("glb");
         private void OnExport3D(string fileExt)

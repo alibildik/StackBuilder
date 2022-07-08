@@ -192,4 +192,10 @@
   <data name="tpInputColumns.Text" xml:space="preserve">
     <value>Colonnes données</value>
   </data>
+  <data name="chkbGenerateImageInFolder.Text" xml:space="preserve">
+    <value>Générer les images dans le dossier</value>
+  </data>
+  <data name="chkbGenerateReportInFolder.Text" xml:space="preserve">
+    <value>Générer un rappert dans le dossier.</value>
+  </data>
 </root>

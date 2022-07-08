@@ -194,7 +194,8 @@ namespace treeDiM.StackBuilder.Desktop
                             )
                         {
                             Color = Color.FromArgb(dcsbPallet.Color),
-                            Weight = UnitsManager.ConvertMassFrom(dcsbPallet.Weight, us)
+                            Weight = UnitsManager.ConvertMassFrom(dcsbPallet.Weight, us),
+                            AdmissibleLoadWeight = dcsbPallet.AdmissibleLoad.HasValue ? UnitsManager.ConvertMassFrom(dcsbPallet.AdmissibleLoad.Value, us) : 0.0
                         };
                         palletProperties.ID.SetNameDesc(dcsbPallet.Name, dcsbPallet.Description);
 
