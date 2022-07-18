@@ -342,7 +342,5 @@ namespace treeDiM.StackBuilder.WCFService.Test
 
         private ILog _log = LogManager.GetLogger(typeof(FormTestHomogeneous));
         #endregion
-
-
     }
 }

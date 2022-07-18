@@ -1,42 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="anyType" nillable="true" type="xs:anyType" />
-  <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
-  <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
-  <xs:element name="boolean" nillable="true" type="xs:boolean" />
-  <xs:element name="byte" nillable="true" type="xs:byte" />
-  <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
-  <xs:element name="decimal" nillable="true" type="xs:decimal" />
-  <xs:element name="double" nillable="true" type="xs:double" />
-  <xs:element name="float" nillable="true" type="xs:float" />
-  <xs:element name="int" nillable="true" type="xs:int" />
-  <xs:element name="long" nillable="true" type="xs:long" />
-  <xs:element name="QName" nillable="true" type="xs:QName" />
-  <xs:element name="short" nillable="true" type="xs:short" />
-  <xs:element name="string" nillable="true" type="xs:string" />
-  <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
-  <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
-  <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
-  <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
-  <xs:element name="char" nillable="true" type="tns:char" />
-  <xs:simpleType name="char">
-    <xs:restriction base="xs:int" />
-  </xs:simpleType>
-  <xs:element name="duration" nillable="true" type="tns:duration" />
-  <xs:simpleType name="duration">
-    <xs:restriction base="xs:duration">
-      <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
-      <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
-      <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="guid" nillable="true" type="tns:guid" />
-  <xs:simpleType name="guid">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:attribute name="FactoryType" type="xs:QName" />
-  <xs:attribute name="Id" type="xs:ID" />
-  <xs:attribute name="Ref" type="xs:IDREF" />
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:5512/StackBuilder.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" />
+  <xs:element name="SB_GetCasePalletBestSolution">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbCase" nillable="true" type="q1:DCSBCase" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbPallet" nillable="true" type="q2:DCSBPallet" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbInterlayer" nillable="true" type="q3:DCSBInterlayer" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbConstraintSet" nillable="true" type="q4:DCSBConstraintSet" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="expectedFormat" nillable="true" type="q5:DCCompFormat" />
+        <xs:element minOccurs="0" name="showCotations" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SB_GetCasePalletBestSolutionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="SB_GetCasePalletBestSolutionResult" nillable="true" type="q6:DCSBSolution" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SB_GetBundlePalletBestSolution">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbBundle" nillable="true" type="q7:DCSBBundle" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbPallet" nillable="true" type="q8:DCSBPallet" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbInterlayer" nillable="true" type="q9:DCSBInterlayer" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbConstraintSet" nillable="true" type="q10:DCSBConstraintSet" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="expectedFormat" nillable="true" type="q11:DCCompFormat" />
+        <xs:element minOccurs="0" name="showCotations" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SB_GetBundlePalletBestSolutionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="SB_GetBundlePalletBestSolutionResult" nillable="true" type="q12:DCSBSolution" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SB_GetBundleCaseBestSolution">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbBundle" nillable="true" type="q13:DCSBBundle" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbCase" nillable="true" type="q14:DCSBCase" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbConstraintSet" nillable="true" type="q15:DCSBConstraintSet" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="expectedFormat" nillable="true" type="q16:DCCompFormat" />
+        <xs:element minOccurs="0" name="showCotations" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SB_GetBundleCaseBestSolutionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="SB_GetBundleCaseBestSolutionResult" nillable="true" type="q17:DCSBSolution" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SB_GetBoxCaseBestSolution">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbBox" nillable="true" type="q18:DCSBCase" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbCase" nillable="true" type="q19:DCSBCase" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbInterlayer" nillable="true" type="q20:DCSBInterlayer" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbConstraintSet" nillable="true" type="q21:DCSBConstraintSet" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="expectedFormat" nillable="true" type="q22:DCCompFormat" />
+        <xs:element minOccurs="0" name="showCotations" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SB_GetBoxCaseBestSolutionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="SB_GetBoxCaseBestSolutionResult" nillable="true" type="q23:DCSBSolution" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SB_GetHSolutionBestCasePallet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbConstentItems" nillable="true" type="q24:ArrayOfDCSBContentItem" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbPallet" nillable="true" type="q25:DCSBPallet" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbConstraintSet" nillable="true" type="q26:DCSBHConstraintSet" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="expectedFormat" nillable="true" type="q27:DCCompFormat" />
+        <xs:element minOccurs="0" name="showCotations" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SB_GetHSolutionBestCasePalletResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="SB_GetHSolutionBestCasePalletResult" nillable="true" type="q28:DCSBHSolution" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SB_GetHSolutionPart">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbContentItems" nillable="true" type="q29:ArrayOfDCSBContentItem" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbPallet" nillable="true" type="q30:DCSBPallet" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="sbConstraintSet" nillable="true" type="q31:DCSBHConstraintSet" />
+        <xs:element minOccurs="0" name="solIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="binIndex" type="xs:int" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="expectedFormat" nillable="true" type="q32:DCCompFormat" />
+        <xs:element minOccurs="0" name="showCotations" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SB_GetHSolutionPartResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="SB_GetHSolutionPartResult" nillable="true" type="q33:DCSBHSolutionItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

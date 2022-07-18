@@ -243,7 +243,7 @@ namespace treeDiM.StackBuilder.Basics
         public LayerDesc LayerDescriptor        { get; set; }
         public HalfAxis.HAxis Axis              { get; set; }
         public int Count                        { get; set; }
-        public bool Equals(LayerPhrase other) => LayerDescriptor == other.LayerDescriptor && Axis == other.Axis && Count == other.Count;
+        public bool Equals(LayerPhrase other) =>  Axis == other.Axis && Count == other.Count;
     }
     #endregion
 
@@ -977,10 +977,7 @@ namespace treeDiM.StackBuilder.Basics
                             Count = layer.Count,
                             Axis = layer.VerticalAxisProp
                         };
-                        if (dict.ContainsKey(lp))
-                            dict[lp] += 1;
-                        else
-                            dict.Add(lp, 1);
+                        IncrementDictionnary(ref dict, lp);
                     }
                     else
                     {
@@ -1005,16 +1002,30 @@ namespace treeDiM.StackBuilder.Basics
                                 Count = iLayerBoxCount,
                                 Axis = layer.VerticalAxisProp 
                             };
+                            IncrementDictionnary(ref dict, lp);
+                            /*
                             if (dict.ContainsKey(lp))
                                 dict[lp] += 1;
                             else
                                 dict.Add(lp, 1);
+                            */
                         }
                     }
                     if (stop)
                         break;
                 }
                 return dict;
+            }
+        }
+        private void IncrementDictionnary(ref Dictionary<LayerPhrase, int> dict, LayerPhrase lp)
+        {
+            int index = dict.Keys.FindIndex(k => k.Equals(lp));
+            if (index == -1)
+                dict.Add(lp, 1);
+            else
+            {
+                var key = dict.Keys.ElementAt(index);
+                dict[key] += 1;
             }
         }
         private Dictionary<int, List<int>> DictCountLayers

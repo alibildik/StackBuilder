@@ -89,6 +89,7 @@
             this.lbLoadedPalletEfficiency = new System.Windows.Forms.Label();
             this.lbLoadedPalletWeight = new System.Windows.Forms.Label();
             this.lbTotalPalletDim = new System.Windows.Forms.Label();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.pbStackbuilder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHoriz)).BeginInit();
             this.splitContainerHoriz.Panel1.SuspendLayout();
@@ -125,6 +126,10 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbStackbuilder
@@ -146,10 +151,8 @@
             // 
             // splitContainerHoriz.Panel1
             // 
+            this.splitContainerHoriz.Panel1.Controls.Add(this.splitContainer1);
             this.splitContainerHoriz.Panel1.Controls.Add(this.chkbAllowMultipleLayerOrientations);
-            this.splitContainerHoriz.Panel1.Controls.Add(this.tabCtrlContainer);
-            this.splitContainerHoriz.Panel1.Controls.Add(this.tabCtrlContent);
-            this.splitContainerHoriz.Panel1.Controls.Add(this.bnCompute);
             // 
             // splitContainerHoriz.Panel2
             // 
@@ -170,19 +173,20 @@
             // 
             // tabCtrlContainer
             // 
-            this.tabCtrlContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tabCtrlContainer.Controls.Add(this.tabPallet);
             this.tabCtrlContainer.Controls.Add(this.tabCase);
-            this.tabCtrlContainer.Location = new System.Drawing.Point(405, 16);
+            this.tabCtrlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabCtrlContainer.Location = new System.Drawing.Point(0, 0);
             this.tabCtrlContainer.Name = "tabCtrlContainer";
             this.tabCtrlContainer.SelectedIndex = 0;
-            this.tabCtrlContainer.Size = new System.Drawing.Size(526, 147);
+            this.tabCtrlContainer.Size = new System.Drawing.Size(522, 200);
             this.tabCtrlContainer.TabIndex = 54;
             // 
             // tabPallet
             // 
             this.tabPallet.Controls.Add(this.nudMaxPalletWeight);
             this.tabPallet.Controls.Add(this.lbMaxPalletWeight);
+            this.tabPallet.Controls.Add(this.bnCompute);
             this.tabPallet.Controls.Add(this.nudOverhangY);
             this.tabPallet.Controls.Add(this.lbPalletDim);
             this.tabPallet.Controls.Add(this.nudOverhangX);
@@ -197,15 +201,16 @@
             this.tabPallet.Location = new System.Drawing.Point(4, 22);
             this.tabPallet.Name = "tabPallet";
             this.tabPallet.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPallet.Size = new System.Drawing.Size(518, 121);
+            this.tabPallet.Size = new System.Drawing.Size(514, 174);
             this.tabPallet.TabIndex = 0;
             this.tabPallet.Text = "Pallet";
             this.tabPallet.UseVisualStyleBackColor = true;
             // 
             // nudMaxPalletWeight
             // 
+            this.nudMaxPalletWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nudMaxPalletWeight.DecimalPlaces = 1;
-            this.nudMaxPalletWeight.Location = new System.Drawing.Point(438, 63);
+            this.nudMaxPalletWeight.Location = new System.Drawing.Point(429, 63);
             this.nudMaxPalletWeight.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -217,8 +222,9 @@
             // 
             // lbMaxPalletWeight
             // 
+            this.lbMaxPalletWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbMaxPalletWeight.AutoSize = true;
-            this.lbMaxPalletWeight.Location = new System.Drawing.Point(336, 65);
+            this.lbMaxPalletWeight.Location = new System.Drawing.Point(327, 65);
             this.lbMaxPalletWeight.Name = "lbMaxPalletWeight";
             this.lbMaxPalletWeight.Size = new System.Drawing.Size(92, 13);
             this.lbMaxPalletWeight.TabIndex = 71;
@@ -451,10 +457,11 @@
             // 
             this.tabCtrlContent.Controls.Add(this.tabBox);
             this.tabCtrlContent.Controls.Add(this.tabBundle);
-            this.tabCtrlContent.Location = new System.Drawing.Point(3, 12);
+            this.tabCtrlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabCtrlContent.Location = new System.Drawing.Point(0, 0);
             this.tabCtrlContent.Name = "tabCtrlContent";
             this.tabCtrlContent.SelectedIndex = 0;
-            this.tabCtrlContent.Size = new System.Drawing.Size(401, 151);
+            this.tabCtrlContent.Size = new System.Drawing.Size(408, 200);
             this.tabCtrlContent.TabIndex = 53;
             // 
             // tabBox
@@ -472,7 +479,7 @@
             this.tabBox.Location = new System.Drawing.Point(4, 22);
             this.tabBox.Name = "tabBox";
             this.tabBox.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBox.Size = new System.Drawing.Size(393, 125);
+            this.tabBox.Size = new System.Drawing.Size(400, 174);
             this.tabBox.TabIndex = 0;
             this.tabBox.Text = "Box";
             this.tabBox.UseVisualStyleBackColor = true;
@@ -693,7 +700,7 @@
             // bnCompute
             // 
             this.bnCompute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bnCompute.Location = new System.Drawing.Point(793, 167);
+            this.bnCompute.Location = new System.Drawing.Point(365, 144);
             this.bnCompute.Name = "bnCompute";
             this.bnCompute.Size = new System.Drawing.Size(138, 23);
             this.bnCompute.TabIndex = 49;
@@ -837,6 +844,23 @@
             this.lbTotalPalletDim.TabIndex = 30;
             this.lbTotalPalletDim.Text = "Total pallet dimensions";
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.tabCtrlContent);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tabCtrlContainer);
+            this.splitContainer1.Size = new System.Drawing.Size(934, 200);
+            this.splitContainer1.SplitterDistance = 408;
+            this.splitContainer1.TabIndex = 56;
+            // 
             // FormTestHomogeneous
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -891,6 +915,10 @@
             this.splitContainer3.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -956,6 +984,7 @@
         private System.Windows.Forms.Label lbMaxPalletWeight;
         private System.Windows.Forms.Label lbLoadDimValues;
         private System.Windows.Forms.Label lbLoadDim;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 

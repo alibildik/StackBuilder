@@ -93,11 +93,11 @@ namespace treeDiM.StackBuilder.WCFAppServ
                         Vector3D bbLoad = analysis.Solution.BBoxLoad.DimensionsVec;
                         OptDouble optNetWeight = analysis.Solution.NetWeight;
                         double? weightNet = optNetWeight.Activated ? optNetWeight.Value : (double?)null;
-
+                        
                         List<string> layerDescs = new List<string>();
                         foreach (var lp in analysis.SolutionLay.LayerPhrases.Keys)
                             layerDescs.Add(lp.LayerDescriptor.ToString());
-
+                        
                         DCSBSolution solution = new DCSBSolution()
                         {
                             LayerCount = analysis.SolutionLay.LayerCount,
