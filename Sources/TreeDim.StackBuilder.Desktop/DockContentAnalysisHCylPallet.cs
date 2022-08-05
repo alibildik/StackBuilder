@@ -252,10 +252,8 @@ namespace treeDiM.StackBuilder.Desktop
             Close();
             Document.EditAnalysis(Analysis);
         }
-        private void OnScreenshot(object sender, EventArgs e)
-        {
-            graphCtrlSolution.ScreenShotToClipboard();
-        }
+        private void OnScreenshot(object sender, EventArgs e) => graphCtrlSolution.ScreenshotToClipboard();
+        private void OnScreenshotToFile(object sender, EventArgs e) => graphCtrlSolution.ScreenshotToFile();
         #endregion
         #region Data members
         private AnalysisHCylPallet Analysis { get; set; }

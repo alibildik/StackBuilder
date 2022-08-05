@@ -164,12 +164,10 @@ namespace treeDiM.StackBuilder.Graphics
         }
         private void OnNumberingCornerChanged(object sender, EventArgs e)
         {
-            Settings.Default.AutomaticNumberingCornerIndex = cbCorner.SelectedIndex;
-            Settings.Default.Save();
-
             RobotLayer.RefPointNumbering = (RobotLayer.enuCornerPoint)cbCorner.SelectedIndex;
-            Layer?.AutomaticRenumber();
-            Invalidate();            
+            Layer.AutomaticRenumber();
+            Layer.Parent.Update();
+            Invalidate();
         }
 
         private void OnDropModeChanged(object sender, EventArgs e) {}
@@ -298,7 +296,7 @@ namespace treeDiM.StackBuilder.Graphics
     {
         public StateDefault(IStateHost host):base(host) { Host.SetCursor(Cursors.Arrow); }
         public override bool ShowIDs => true;
-        public override string Message => "Ready";
+        public override string Message => Resources.ID_READY;
     }
     internal class StateBuildBlock : State
     { 

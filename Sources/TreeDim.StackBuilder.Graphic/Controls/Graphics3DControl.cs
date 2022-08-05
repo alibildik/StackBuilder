@@ -181,62 +181,78 @@ namespace treeDiM.StackBuilder.Graphics
         #endregion
 
         #region Helpers
-        public void ScreenShotToClipboard()
+        private Bitmap ScreenshotBitmap
         {
-            var graphics = new Graphics3DImage(this.Size);
-            try
+            get
             {
-                double angleHorizRad = AngleHoriz * Math.PI / 180.0;
-                double angleVertRad = AngleVert * Math.PI / 180.0;
-                double cameraDistance = 100000.0;
-                graphics.CameraPosition = new Vector3D(
-                    cameraDistance * Math.Cos(angleHorizRad) * Math.Cos(angleVertRad)
-                    , cameraDistance * Math.Sin(angleHorizRad) * Math.Cos(angleVertRad)
-                    , cameraDistance * Math.Sin(angleVertRad));
-                // set camera target
-                graphics.Target = Vector3D.Zero;
-                // set viewport (not actually needed)
-                graphics.SetViewport(-500.0f, -500.0f, 500.0f, 500.0f);
-                // show images
-                graphics.ShowTextures = true;
-                graphics.ShowDimensions = ShowDimensions;
-                graphics.FontSizeRatio = 10.0f / (float)Size.Height;
-
-                if (null != DrawingContainer)
+                var graphics = new Graphics3DImage(Size);
+                try
                 {
-                    try
-                    {
-                        DrawingContainer.Draw(this, graphics);
-                    }
-                    catch (Exception ex)
-                    {
-                        _log.Error(ex.ToString());
-                    }
-                }
-                else if (null != Viewer)
-                {
-                    try
-                    {
-                        Viewer.Draw(graphics, Transform3D.Identity);
-                    }
-                    catch (Exception ex)
-                    {
-                        graphics.Graphics.DrawString(ex.Message
-                            , new Font("Arial", 12)
-                            , new SolidBrush(Color.Red)
-                            , new Point(0, 0)
-                            , StringFormat.GenericDefault);
-                        _log.Error(ex.Message);
-                    }
-                }
+                    double angleHorizRad = AngleHoriz * Math.PI / 180.0;
+                    double angleVertRad = AngleVert * Math.PI / 180.0;
+                    double cameraDistance = 100000.0;
+                    graphics.CameraPosition = new Vector3D(
+                        cameraDistance * Math.Cos(angleHorizRad) * Math.Cos(angleVertRad)
+                        , cameraDistance * Math.Sin(angleHorizRad) * Math.Cos(angleVertRad)
+                        , cameraDistance * Math.Sin(angleVertRad));
+                    // set camera target
+                    graphics.Target = Vector3D.Zero;
+                    // set viewport (not actually needed)
+                    graphics.SetViewport(-500.0f, -500.0f, 500.0f, 500.0f);
+                    // show images
+                    graphics.ShowTextures = true;
+                    graphics.ShowDimensions = ShowDimensions;
+                    graphics.FontSizeRatio = 10.0f / (float)Size.Height;
 
-                graphics.Flush();
+                    if (null != DrawingContainer)
+                    {
+                        try
+                        {
+                            DrawingContainer.Draw(this, graphics);
+                        }
+                        catch (Exception ex)
+                        {
+                            _log.Error(ex.ToString());
+                        }
+                    }
+                    else if (null != Viewer)
+                    {
+                        try
+                        {
+                            Viewer.Draw(graphics, Transform3D.Identity);
+                        }
+                        catch (Exception ex)
+                        {
+                            graphics.Graphics.DrawString(ex.Message
+                                , new Font("Arial", 12)
+                                , new SolidBrush(Color.Red)
+                                , new Point(0, 0)
+                                , StringFormat.GenericDefault);
+                            _log.Error(ex.Message);
+                        }
+                    }
+                    graphics.Flush();
+                }
+                catch (Exception ex)
+                {
+                    _log.Error(ex.ToString());
+                }
+                return BitmapHelpers.Crop(graphics.Bitmap);
             }
-            catch (Exception ex)
+        }
+        public void ScreenshotToClipboard() => Clipboard.SetImage(ScreenshotBitmap);
+        public void ScreenshotToFile()
+        {
+            using (var dlg = new SaveFileDialog())
             {
-                _log.Error(ex.ToString());
+                dlg.Title = "Save as image...";
+                dlg.Filter = "Images (*.bmp;*jpg;*.png)|*.bmp;*.jpg;*.png|All files (*.*)|*.*";
+                dlg.FilterIndex = 0;
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    ScreenshotBitmap.Save(dlg.FileName);
+                }
             }
-            Clipboard.SetImage(BitmapHelpers.Crop(graphics.Bitmap));
         }
         #endregion
 

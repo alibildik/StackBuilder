@@ -94,7 +94,6 @@ namespace treeDiM.StackBuilder.Basics
         public static RobotDrop Merge(RobotLayer layer, List<RobotDrop> robotDrops, ConveyorSetting conveyorSetting)
         {
             Vector3D offset = Vector3D.Zero;
-            PackDir packDir;
             RobotDrop rd0 = robotDrops[0];
 
             if (robotDrops.Count > 1)
@@ -107,20 +106,15 @@ namespace treeDiM.StackBuilder.Basics
                     if (!robotDrops[i].IsRelRight(robotDrops[i - 1])) isRelRight = false;
                     if (!robotDrops[i].IsRelLeft(robotDrops[i - 1])) isRelLeft = false;
                 }
-                if (isRelAbove)
-                { packDir = PackDir.LENGTH; }
-                else if (isRelUnder)
-                { packDir = PackDir.LENGTH; offset = -(robotDrops.Count - 1) * rd0.SingleWidth * HalfAxis.ToVector3D(rd0.BoxPositionMain.DirectionWidth); }
-                else if (isRelRight)
-                { packDir = PackDir.WIDTH; }
-                else if (isRelLeft)
-                { packDir = PackDir.WIDTH; offset = -(robotDrops.Count - 1) * rd0.SingleLength * HalfAxis.ToVector3D(rd0.BoxPositionMain.DirectionLength); }
+                if (isRelAbove) {  }
+                else if (isRelUnder) {  offset = -(robotDrops.Count - 1) * rd0.SingleWidth * HalfAxis.ToVector3D(rd0.BoxPositionMain.DirectionWidth); }
+                else if (isRelRight) {  }
+                else if (isRelLeft)  {  offset = -(robotDrops.Count - 1) * rd0.SingleLength * HalfAxis.ToVector3D(rd0.BoxPositionMain.DirectionLength); }
                 else
                     return null;
             }
             else if (robotDrops.Count == 1)
             {
-                packDir = PackDir.LENGTH;
             }
             else
                 return null;
@@ -128,8 +122,7 @@ namespace treeDiM.StackBuilder.Basics
             return new RobotDrop(layer, conveyorSetting)
             {
                 ID = -1,
-                BoxPositionMain = new BoxPosition(rd0.BoxPositionMain.Position + offset, rd0.BoxPositionMain.DirectionLength, rd0.BoxPositionMain.DirectionWidth),
-                PackDirection = packDir,
+                BoxPositionMain = new BoxPosition(rd0.BoxPositionMain.Position + offset, rd0.BoxPositionMain.DirectionLength, rd0.BoxPositionMain.DirectionWidth)
             };
         }
         public static bool CanMerge(List<RobotDrop> drops, ConveyorSetting setting)
@@ -186,8 +179,7 @@ namespace treeDiM.StackBuilder.Basics
                     new RobotDrop(layer, conveyorSetting)
                     {
                         ID = -1,
-                        BoxPositionMain = new BoxPosition(drop.BoxPositionMain.Position + i * offset, drop.BoxPositionMain.DirectionLength, drop.BoxPositionMain.DirectionWidth),
-                        PackDirection = PackDir.LENGTH
+                        BoxPositionMain = new BoxPosition(drop.BoxPositionMain.Position + i * offset, drop.BoxPositionMain.DirectionLength, drop.BoxPositionMain.DirectionWidth)
                     }
                     );
 
@@ -329,7 +321,7 @@ namespace treeDiM.StackBuilder.Basics
         public BoxPosition BoxPositionMain { get; set; }
         private RobotLayer Parent { get; set; }
         public ConveyorSetting ConveyorSetting { get; set; }
-        public PackDir PackDirection { get; set; }
+        public PackDir PackDirection => ConveyorSetting.PackDir;
         public int Number { get; set; }
         #endregion
     }

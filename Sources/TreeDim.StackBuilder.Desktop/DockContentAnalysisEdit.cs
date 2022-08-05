@@ -423,7 +423,8 @@ namespace treeDiM.StackBuilder.Desktop
                 _log.Error(ex.ToString());
             }
         }
-
+        private void OnScreenShot(object sender, EventArgs e)=> graphCtrlSolution.ScreenshotToClipboard();
+        private void OnScreenshotToFile(object sender, EventArgs e) => graphCtrlSolution.ScreenshotToFile();
         #endregion
 
         #region Layer controls
@@ -510,10 +511,7 @@ namespace treeDiM.StackBuilder.Desktop
                 _log.Error(ex.ToString());
             }
         }
-        private void OnScreenShot(object sender, EventArgs e)
-        {
-            graphCtrlSolution.ScreenShotToClipboard();
-        }
+
         #endregion
 
         #region Data members

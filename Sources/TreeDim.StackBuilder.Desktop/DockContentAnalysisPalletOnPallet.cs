@@ -170,7 +170,7 @@ namespace treeDiM.StackBuilder.Desktop
         }
         private void OnScreenshot(object sender, EventArgs e)
         {
-            graphCtrlSolution.ScreenShotToClipboard();
+            graphCtrlSolution.ScreenshotToClipboard();
         }
 
         #endregion

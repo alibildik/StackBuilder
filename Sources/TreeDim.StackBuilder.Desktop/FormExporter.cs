@@ -85,8 +85,10 @@ namespace treeDiM.StackBuilder.Desktop
         {
             PackableBrick packable = null;
             if (Analysis is AnalysisCasePallet analysisCasePallet)
+            {
                 packable = analysisCasePallet.Content as PackableBrick;
-
+                analysisCasePallet.ConveyorSettings = ConveyorSettings;
+            }
             layerEditor.SetConveyorSettings(packable, ConveyorSettings);
         }
         public List<ConveyorSetting> ConveyorSettings
@@ -303,7 +305,5 @@ namespace treeDiM.StackBuilder.Desktop
         public RobotPreparation RobotPreparation { get; set; }
         private List<ConveyorSetting> ListConveyorSettings = new List<ConveyorSetting>();
         #endregion
-
-
     }
 }

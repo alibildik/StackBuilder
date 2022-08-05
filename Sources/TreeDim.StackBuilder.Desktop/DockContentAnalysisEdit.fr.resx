@@ -117,7 +117,133 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="gbLayer.Text" xml:space="preserve">
+    <value>Double-cliquer une couche...</value>
+  </data>
+  <data name="tbClickLayer.Text" xml:space="preserve">
+    <value>Double-cliquer une couche pour éditer patron/orientation/intercalaire.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkbInterlayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 17</value>
+  </data>
+  <data name="chkbInterlayer.Text" xml:space="preserve">
+    <value>Intercallaire</value>
+  </data>
+  <data name="bnSymmetryX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAABGdBTUEAALGPC/xhBQAAABJQTFRF7e3t
+        i0UTmZmZAAAAjEYU////vjOrZAAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAACS
+        SURBVEhL1ZTRDoAgCEUt8/9/OQQeaAoDs2lnDh+6Z17nVipBthayCYcewmXQFQ6DRQKVVeBQR8DZ7FOF
+        lFK7r61EzBBIipyAI1SpztgdYBOCCWek4CIPCecJyzdIgILY0jEGK0WQQj1ThzPvHo6+4OwJtCIC9fpW
+        qEbs0sAEYb/fjAKHWkHhL4IJh6TgZDuhlBuX5iXHVdaTfwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="bnSymetryY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAABGdBTUEAALGPC/xhBQAAABJQTFRF7e3t
+        i0UTmZmZAAAAjEYU////vjOrZAAAAAlwSFlzAAAOwQAADsEBuJFr7QAAABl0RVh0U29mdHdhcmUAQWRv
+        YmUgSW1hZ2VSZWFkeXHJZTwAAADHSURBVEhL1dDbEoMgDEVRqfL/v9yQiwQ4CMzotO6XSmQN1C0uhsHO
+        6aIMAdsKCQBuGz3WqAWy4yM/7cUaoBvmgSYA/PVrAOqBbgzSyUVygi5yGRwhhP04M6BLih9vABu/bACN
+        x0DG0hSYO8GqAAWBS4ELgTSTDOiSGgMZn43B3AnLX+l5YPGbDCgIXHqCC4E0kwzokvoZcF9JxtKNn3UZ
+        WBWgIHApcAGQRhq/KU7gLkF1Je6/QV0adsYMQOkE2ItAtxddqVOMX64UJcfaxRFaAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripAnalysis.Text" xml:space="preserve">
+    <value>Générer un rapport...</value>
+  </data>
+  <data name="toolStripButtonBack.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABYSURBVDhP3Y+xDcAwCASZk0FgZMaw9fHTpImxRBGfROG3
+        7hHSRkQMd3+G0T4pq+ows1rBW8abX9/8VAaQIFcGC6mfFcChvk7IEjSXTwCXlzCukSUYRh2ITINE0o5U
+        APEDAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripButtonBack.Text" xml:space="preserve">
+    <value>Précédent...</value>
+  </data>
+  <data name="toolStripButtonBack.ToolTipText" xml:space="preserve">
+    <value>Précédent...</value>
+  </data>
+  <data name="toolStripButtonReport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABkSURBVDhPzYxBDoBACAP3/5/GFC0phAPuenCSapka11pm
+        Z7kfm/zsB3gzpHMgeY5JPnQOJK9jSOka9exxgDpOehygjpMeB6jjpMcBODJK571XoVE6770KjdJ57/XD
+        N3z3g92YXauEAwxp1v7WAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripButtonReport.Text" xml:space="preserve">
+    <value>Générer un rapport...</value>
+  </data>
+  <data name="toolStripButtonExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB2SURBVDhPnZLRDcAgCESZoGt0TObrVFRQiG2xgC/hQ+Xu
+        CBEiCE/iGscyIh4GWyZvUcmEENETxCZD+NcYmqzSjeViE+mM9rh9YXpD3599yXQfug4RJ9K/sHj7s6jY
+        qk9Sw0x2xA0dfa4SsjgtPvfrPHNy0QDgBt3pYyCp2AxlAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripButtonExportGLB.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFMSURBVDhPjVNdyoJAFO1FLBQiqDCkHkR7swV8Gwjaii3B
+        FbSk3EPhUxsIzX5MpJcwOR93+qyZmvo8cDnMvece5jreRlmWmM1mUFUVmqZJo9VqodPpYLFYoPGKLMsw
+        GAywWq2Qpqk0NpsNer0eFEWB53miCRk4jsOEf6k3kGYymWC5XMI0Tczn86eWirZtI47jjwZJkmA4HGK7
+        3SIIAnYT3/fv+joGlcayLLiui263C8MwcL1eUcuAcD6fsdvtmC4MQ4xGo/vYNQyqvFB/fDeJATEv5vI/
+        jzz1CAZRFH1pfOc3g8PhQIVKRJA2ViwYjMdjHI9HKrwGgePnCNQjM+DxemYgPbFgwI1AIJY28xBGoCc5
+        nU7/NvEQnpGWab1eg36WPM9xuVwY01mWo8Xr9/vY7/do3G43ts60srqus2i32yw+nZvNJqbTKYqiwC8v
+        vXyjADcq4gAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonExportGLB.Text" xml:space="preserve">
+    <value>Exportation comme GLB...</value>
+  </data>
+  <data name="toolStripButtonExportOBJ.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE/SURBVDhPlVNdqoJQEPZFVAxEqDAiH8R8qwXcDQhuRZfQ
+        CtxW74VP7sCfyorwJUq+25yu3czjxfvBMDNnvvk443GEqqrgeR4kSYKqqlxTFAW6riMMQwifOJ/PmEwm
+        2Gw2OB6PXIvjGKPRCKIowvf9pggJzOdzRvw5aoE4y+WS1afTKYIg+OVS0bZtpGnaKZDnOWaz2atON1mt
+        Vs+8j0DNsSwLi8UCw+EQhmHger2ilwDhdDohyzLGi6IIpmk+x+4hwD1/fTeOAPn3pkf89ZELAvU0BJIk
+        4TR2+5bAfr+nQk0icBtr3xBwHAeHw+GdUMeER9wegXq6BP4C1ut1W+BthN5ojEBPUhTFvwQaz0jLtN1u
+        QT/L5XJBWZbMU847o8Ubj8fY7XYQ7vc7W2da2cFgwEzTNGZduSzLcF0Xt9sN326DbRlplTwSAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="toolStripButtonScreenShot.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEmSURBVDhPnZNBS4NgHIdfnVPYMVgE20IiyAUF7VJQHSNa
+        ENUlx7T1HRQ6RTt06zsodNxH8OLX6eAHEFF/+X8JUVJzEx6En+/zXFQWxzE8z8NqtVoLcshlT7qOobqH
+        /aNJxklLJtzRZzMwSZIwf/3Ay9vnWpBDLssuqIfHG0EuD0RRtBGVgTAM+Tg3DAiCAEEUYZhmvhfPkktb
+        PliWhZ3hCNuDAfqn52Bf35z+2QXfCNu26wNip5NLxFYWI4obnWkVIPF9ueQUI40BPvwT+HO+LkD0Rip6
+        u2ppawx0ZaV8uIKuotQHHMfB5d19JVcPj/zuum45IMsygiDIx98HpfddtZNDLjOzj+RA03B9M824bckU
+        2niM58UCLEkS+L5f+cs2QU6apvgBKfluEIDItYkAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="toolStripButtonScreenShot.Text" xml:space="preserve">
+    <value>Prendre une capture d'écran et l'ajouter au presse-papiers</value>
+  </data>
+  <data name="toolStripButtonScreenShot.ToolTipText" xml:space="preserve">
+    <value>Prendre une capture d'écran et l'ajouter au presse-papiers</value>
+  </data>
+  <data name="toolStripButtonScreenshotToFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFLSURBVDhPnZNPS4NwGMfVLYMdg0WwP0gEjaCgXSqqc1QQ
+        3XK4Qe9BoVO0Q7feg4eOvgQvvpGiS6wCyVFbiUy++fw2zX9I64EP4uP3++GHKDeZTGCaJgzDmAvqUJe7
+        kGXUpVWsbbYDtv9Im3XkTgdcuVyGcnWLy+u7uaAOdblgIG1s/QvqMoHneXBdl90o3S54ngcvCOj2etGe
+        MmmoS8+gqipW6g0s12qo7uyDu39lVHcP2I7QNI2FaTICoVSKSsRSICPiO5aZTaGAijf9PiMuKRQwcgTD
+        4RDNPaWQjICoNCRUmhILvI3dKBhOeo8FcTEhCCkSvIy+fwW6ruPw7DxDXJBm8BkTxF5KYijguF4uzx9f
+        U4EoirBtO5KEIrpS4MkZZ05Bu0dnNBX0gq9tvdXC0fFJwGmCtCA8FZUf3mcC3/dhWVbuL0uBYhT8AIsD
+        FiuQRimuAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripButtonScreenshotToFile.Text" xml:space="preserve">
+    <value>Prendre une capture d'écran et la sauvegarder</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAMAMDAAAAEACACoDgAANgAAACAgAAABAAgAqAgAAN4OAAAQEAAAAQAIAGgFAACGFwAAKAAAADAA
@@ -248,82 +374,5 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Analyse...</value>
-  </data>
-  <data name="bnSymetryY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAABGdBTUEAALGPC/xhBQAAABJQTFRF7e3t
-        i0UTmZmZAAAAjEYU////vjOrZAAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABl0RVh0U29mdHdhcmUAQWRv
-        YmUgSW1hZ2VSZWFkeXHJZTwAAADHSURBVEhL1dDbEoMgDEVRqfL/v9yQiwQ4CMzotO6XSmQN1C0uhsHO
-        6aIMAdsKCQBuGz3WqAWy4yM/7cUaoBvmgSYA/PVrAOqBbgzSyUVygi5yGRwhhP04M6BLih9vABu/bACN
-        x0DG0hSYO8GqAAWBS4ELgTSTDOiSGgMZn43B3AnLX+l5YPGbDCgIXHqCC4E0kwzokvoZcF9JxtKNn3UZ
-        WBWgIHApcAGQRhq/KU7gLkF1Je6/QV0adsYMQOkE2ItAtxddqVOMX64UJcfaxRFaAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="bnSymmetryX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAABGdBTUEAALGPC/xhBQAAABJQTFRF7e3t
-        i0UTmZmZAAAAjEYU////vjOrZAAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAACS
-        SURBVEhL1ZTRDoAgCEUt8/9/OQQeaAoDs2lnDh+6Z17nVipBthayCYcewmXQFQ6DRQKVVeBQR8DZ7FOF
-        lFK7r61EzBBIipyAI1SpztgdYBOCCWek4CIPCecJyzdIgILY0jEGK0WQQj1ThzPvHo6+4OwJtCIC9fpW
-        qEbs0sAEYb/fjAKHWkHhL4IJh6TgZDuhlBuX5iXHVdaTfwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="chkbInterlayer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 17</value>
-  </data>
-  <data name="chkbInterlayer.Text" xml:space="preserve">
-    <value>Intercallaire</value>
-  </data>
-  <data name="gbLayer.Text" xml:space="preserve">
-    <value>Double-cliquer une couche...</value>
-  </data>
-  <data name="tbClickLayer.Text" xml:space="preserve">
-    <value>Double-cliquer une couche pour éditer patron/orientation/intercalaire.</value>
-  </data>
-  <data name="toolStripAnalysis.Text" xml:space="preserve">
-    <value>Générer un rapport...</value>
-  </data>
-  <data name="toolStripButtonBack.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABYSURBVDhP3Y+xDcAwCASZk0FgZMaw9fHTpImxRBGfROG3
-        7hHSRkQMd3+G0T4pq+ows1rBW8abX9/8VAaQIFcGC6mfFcChvk7IEjSXTwCXlzCukSUYRh2ITINE0o5U
-        APEDAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="toolStripButtonBack.Text" xml:space="preserve">
-    <value>Précédent...</value>
-  </data>
-  <data name="toolStripButtonBack.ToolTipText" xml:space="preserve">
-    <value>Précédent...</value>
-  </data>
-  <data name="toolStripButtonExportCSV.Text" xml:space="preserve">
-    <value>Exporter en CSV...</value>
-  </data>
-  <data name="toolStripButtonExportXML.Text" xml:space="preserve">
-    <value>Exporter au format XML...</value>
-  </data>
-  <data name="toolStripButtonReport.Text" xml:space="preserve">
-    <value>Générer un rapport...</value>
-  </data>
-  <data name="toolStripButtonReportWord.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABkSURBVDhPzYxBDoBACAP3/5/GFC0phAPuenCSapka11pm
-        Z7kfm/zsB3gzpHMgeY5JPnQOJK9jSOka9exxgDpOehygjpMeB6jjpMcBODJK571XoVE6770KjdJ57/XD
-        N3z3g92YXauEAwxp1v7WAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="toolStripButtonExport3D.Text" xml:space="preserve">
-    <value>Modèle 3D d’exportation...</value>
-  </data>
-  <data name="toolStripButtonScreenShot.Text" xml:space="preserve">
-    <value>Prendre une capture d'écran et l'ajouter au presse-papiers</value>
-  </data>
-  <data name="toolStripButtonScreenShot.ToolTipText" xml:space="preserve">
-    <value>Prendre une capture d'écran et l'ajouter au presse-papiers</value>
-  </data>
-  <data name="toolStripButtonExportGLB.Text" xml:space="preserve">
-    <value>Exportation comme GLB...</value>
   </data>
 </root>

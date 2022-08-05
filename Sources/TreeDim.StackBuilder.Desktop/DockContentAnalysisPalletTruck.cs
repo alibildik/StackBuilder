@@ -212,10 +212,8 @@ namespace treeDiM.StackBuilder.Desktop
         {
             FormMain.GenerateReport(_analysis);
         }
-        private void OnScreenshot(object sender, EventArgs e)
-        {
-            graphCtrlSolution.ScreenShotToClipboard();
-        }
+        private void OnScreenshot(object sender, EventArgs e) => graphCtrlSolution.ScreenshotToClipboard();
+        private void OnScreenshotToFile(object sender, EventArgs e) => graphCtrlSolution.ScreenshotToFile();
         #endregion
 
         #region Data members

@@ -24,6 +24,7 @@ namespace treeDiM.StackBuilder.Basics
         public bool Equal(ConveyorSetting cs) => Number == cs.Number && Angle == cs.Angle && GripperAngle == cs.GripperAngle;
         public override string ToString() => $"Number={Number}, Angle={Angle}, GripperAngle={GripperAngle}";
         public ConveyorSetting Clone() => new ConveyorSetting(Angle, Number, GripperAngle);
+        public RobotDrop.PackDir PackDir => Angle == 0 || Angle == 180 ? RobotDrop.PackDir.WIDTH : RobotDrop.PackDir.LENGTH;
         #endregion
         #region Static methods
         public static bool FindSetting(List<ConveyorSetting> conveyorSettings, ConveyorSetting setting, int iSel)

@@ -43,15 +43,15 @@ namespace treeDiM.StackBuilder.Graphics
             // 
             // statusStrip
             // 
-            resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
+            resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Name = "statusStrip";
             // 
             // statusLabel
             // 
-            resources.ApplyResources(this.statusLabel, "statusLabel");
             this.statusLabel.Name = "statusLabel";
+            resources.ApplyResources(this.statusLabel, "statusLabel");
             // 
             // cbCorner
             // 
@@ -94,12 +94,12 @@ namespace treeDiM.StackBuilder.Graphics
             // 
             // cbConveyorSetting
             // 
-            resources.ApplyResources(this.cbConveyorSetting, "cbConveyorSetting");
             this.cbConveyorSetting.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbConveyorSetting.DropDownHeight = 120;
             this.cbConveyorSetting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbConveyorSetting.DropDownWidth = 100;
             this.cbConveyorSetting.FormattingEnabled = true;
+            resources.ApplyResources(this.cbConveyorSetting, "cbConveyorSetting");
             this.cbConveyorSetting.Name = "cbConveyorSetting";
             this.cbConveyorSetting.Packable = null;
             this.cbConveyorSetting.SelectedIndexChanged += new System.EventHandler(this.OnConveyorSettingChanged);
