@@ -894,7 +894,7 @@ Souhaitez-vous continuer?</value>
     <value>Aucune page chargée</value>
   </data>
   <data name="ID_ERROR_FAILEDTODOWNLOADFILE" xml:space="preserve">
-    <value>Echec du téléchargement du fichier {0}:{1}</value>
+    <value>Echec du téléchargement du fichier {0} vers {1}.</value>
   </data>
   <data name="ID_ERROR_INVALIDINPUTFILEPATH" xml:space="preserve">
     <value>Chemin de fichier invalide {0}.</value>

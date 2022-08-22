@@ -121,7 +121,6 @@ namespace treeDiM.StackBuilder.Desktop
                 }
             }
         }
-
         public static bool UseDisconnected
         {
             get

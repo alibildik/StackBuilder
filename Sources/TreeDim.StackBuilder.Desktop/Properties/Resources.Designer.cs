@@ -1083,7 +1083,7 @@ namespace treeDiM.StackBuilder.Desktop.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to download file {0} : {1}.
+        ///   Looks up a localized string similar to Failed to download file {0} to {1}..
         /// </summary>
         internal static string ID_ERROR_FAILEDTODOWNLOADFILE {
             get {

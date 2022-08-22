@@ -129,23 +129,11 @@ namespace treeDiM.StackBuilder.Desktop
         }
         private void OnDownloadSampleSheet(object sender, EventArgs e)
         {
-            string fileURL = SampleFileURL;
-            try
-            {
-                var knownFolder = new KnownFolder(KnownFolderType.Downloads);
-                string downloadPath = Path.Combine(knownFolder.Path, Path.GetFileName(fileURL));
-
-                using (var client = new WebClient())
-                { client.DownloadFile(fileURL, downloadPath); }
-
-                if (File.Exists(downloadPath))
-                    fileSelectExcel.FileName = downloadPath;
-
-                InitializeInputFields();
-            }
-            catch (WebException ex) { MessageBox.Show(string.Format(Resources.ID_ERROR_FAILEDTODOWNLOADFILE, fileURL, ex.Message)); }
-            catch (Exception ex) { _log.Error(ex.Message); }
-
+            var knownFolder = new KnownFolder(KnownFolderType.Downloads);
+            string downloadPath = Path.Combine(knownFolder.Path, Path.GetFileName(SampleFileURL));
+            if (DownloadHelper.DownloadFile(SampleFileURL, false, downloadPath))
+                fileSelectExcel.FileName = downloadPath;
+            InitializeInputFields();
         }
         private void OnSheetChanged(object sender, EventArgs e)
         {

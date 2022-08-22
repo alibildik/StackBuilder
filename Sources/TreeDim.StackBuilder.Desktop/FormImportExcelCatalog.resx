@@ -117,17 +117,341 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="splitContainerHoriz.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="splitContainerHoriz.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="splitContainerHoriz.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkbOverwrite.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>fr</value>
-  </metadata>
+  </data>
+  <data name="chkbOverwrite.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 64</value>
+  </data>
+  <data name="chkbOverwrite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 17</value>
+  </data>
+  <data name="chkbOverwrite.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="chkbOverwrite.Text" xml:space="preserve">
+    <value>Overwrite existing items</value>
+  </data>
+  <data name="&gt;&gt;chkbOverwrite.Name" xml:space="preserve">
+    <value>chkbOverwrite</value>
+  </data>
+  <data name="&gt;&gt;chkbOverwrite.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkbOverwrite.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;chkbOverwrite.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="bnDownload.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 10</value>
+  </data>
+  <data name="bnDownload.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 23</value>
+  </data>
+  <data name="bnDownload.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="bnDownload.Text" xml:space="preserve">
+    <value>Download sample sheet</value>
+  </data>
+  <data name="&gt;&gt;bnDownload.Name" xml:space="preserve">
+    <value>bnDownload</value>
+  </data>
+  <data name="&gt;&gt;bnDownload.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnDownload.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;bnDownload.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bnStop.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="bnStop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>487, 64</value>
+  </data>
+  <data name="bnStop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
+  </data>
+  <data name="bnStop.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="bnStop.Text" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="&gt;&gt;bnStop.Name" xml:space="preserve">
+    <value>bnStop</value>
+  </data>
+  <data name="&gt;&gt;bnStop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnStop.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;bnStop.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="progressBar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="progressBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 91</value>
+  </data>
+  <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>472, 23</value>
+  </data>
+  <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Name" xml:space="preserve">
+    <value>progressBar</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;progressBar.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="bnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="bnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>487, 92</value>
+  </data>
+  <data name="bnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
+  </data>
+  <data name="bnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="bnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;bnCancel.Name" xml:space="preserve">
+    <value>bnCancel</value>
+  </data>
+  <data name="&gt;&gt;bnCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnCancel.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;bnCancel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lbExcelFilePath.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbExcelFilePath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbExcelFilePath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 42</value>
+  </data>
+  <data name="lbExcelFilePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 13</value>
+  </data>
+  <data name="lbExcelFilePath.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbExcelFilePath.Text" xml:space="preserve">
+    <value>Excel catalog path</value>
+  </data>
+  <data name="&gt;&gt;lbExcelFilePath.Name" xml:space="preserve">
+    <value>lbExcelFilePath</value>
+  </data>
+  <data name="&gt;&gt;lbExcelFilePath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbExcelFilePath.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;lbExcelFilePath.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="excelFileSelect.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="excelFileSelect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 38</value>
+  </data>
+  <data name="excelFileSelect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 20</value>
+  </data>
+  <data name="excelFileSelect.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;excelFileSelect.Name" xml:space="preserve">
+    <value>excelFileSelect</value>
+  </data>
+  <data name="&gt;&gt;excelFileSelect.Type" xml:space="preserve">
+    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.60, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;excelFileSelect.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;excelFileSelect.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="bnImport.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="bnImport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bnImport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>487, 37</value>
+  </data>
+  <data name="bnImport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
+  </data>
+  <data name="bnImport.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="bnImport.Text" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="&gt;&gt;bnImport.Name" xml:space="preserve">
+    <value>bnImport</value>
+  </data>
+  <data name="&gt;&gt;bnImport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnImport.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;bnImport.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Panel1.Name" xml:space="preserve">
+    <value>splitContainerHoriz.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Panel1.Parent" xml:space="preserve">
+    <value>splitContainerHoriz</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="richTextBoxLog.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="richTextBoxLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="richTextBoxLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>584, 216</value>
+  </data>
+  <data name="richTextBoxLog.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="richTextBoxLog.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;richTextBoxLog.Name" xml:space="preserve">
+    <value>richTextBoxLog</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxLog.Parent" xml:space="preserve">
+    <value>splitContainerHoriz.Panel2</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxLog.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Panel2.Name" xml:space="preserve">
+    <value>splitContainerHoriz.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Panel2.Parent" xml:space="preserve">
+    <value>splitContainerHoriz</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainerHoriz.Size" type="System.Drawing.Size, System.Drawing">
+    <value>584, 339</value>
+  </data>
+  <data name="splitContainerHoriz.SplitterDistance" type="System.Int32, mscorlib">
+    <value>119</value>
+  </data>
+  <data name="splitContainerHoriz.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Name" xml:space="preserve">
+    <value>splitContainerHoriz</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <data name="statusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="statusLabel.Text" xml:space="preserve">
+    <value>statusLabel</value>
+  </data>
+  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 339</value>
+  </data>
+  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>584, 22</value>
+  </data>
+  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="statusStrip1.Text" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -266,373 +590,19 @@
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>600, 200</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormImportExcelCatalog</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Import Excel catalog to database...</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="bnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="bnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 92</value>
-  </data>
-  <data name="&gt;&gt;bnCancel.Name" xml:space="preserve">
-    <value>bnCancel</value>
-  </data>
-  <data name="&gt;&gt;bnCancel.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="bnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
-  </data>
-  <data name="bnCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="bnCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;bnCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bnCancel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="bnDownload.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 10</value>
-  </data>
-  <data name="&gt;&gt;bnDownload.Name" xml:space="preserve">
-    <value>bnDownload</value>
-  </data>
-  <data name="&gt;&gt;bnDownload.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="bnDownload.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
-  </data>
-  <data name="bnDownload.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="bnDownload.Text" xml:space="preserve">
-    <value>Download</value>
-  </data>
-  <data name="&gt;&gt;bnDownload.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bnDownload.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="bnImport.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="bnImport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bnImport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 37</value>
-  </data>
-  <data name="&gt;&gt;bnImport.Name" xml:space="preserve">
-    <value>bnImport</value>
-  </data>
-  <data name="&gt;&gt;bnImport.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="bnImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
-  </data>
-  <data name="bnImport.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="bnImport.Text" xml:space="preserve">
-    <value>Import</value>
-  </data>
-  <data name="&gt;&gt;bnImport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bnImport.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="bnStop.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="bnStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 64</value>
-  </data>
-  <data name="&gt;&gt;bnStop.Name" xml:space="preserve">
-    <value>bnStop</value>
-  </data>
-  <data name="&gt;&gt;bnStop.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="bnStop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
-  </data>
-  <data name="bnStop.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="bnStop.Text" xml:space="preserve">
-    <value>Stop</value>
-  </data>
-  <data name="&gt;&gt;bnStop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bnStop.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="chkbOverwrite.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkbOverwrite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 64</value>
-  </data>
-  <data name="&gt;&gt;chkbOverwrite.Name" xml:space="preserve">
-    <value>chkbOverwrite</value>
-  </data>
-  <data name="&gt;&gt;chkbOverwrite.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="chkbOverwrite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 17</value>
-  </data>
-  <data name="chkbOverwrite.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="chkbOverwrite.Text" xml:space="preserve">
-    <value>Overwrite existing items</value>
-  </data>
-  <data name="&gt;&gt;chkbOverwrite.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkbOverwrite.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="excelFileSelect.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="excelFileSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 38</value>
-  </data>
-  <data name="&gt;&gt;excelFileSelect.Name" xml:space="preserve">
-    <value>excelFileSelect</value>
-  </data>
-  <data name="&gt;&gt;excelFileSelect.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="excelFileSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>356, 20</value>
-  </data>
-  <data name="excelFileSelect.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;excelFileSelect.Type" xml:space="preserve">
-    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=1.0.6544.21645, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;excelFileSelect.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="lbExcelFilePath.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbExcelFilePath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lbExcelFilePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 42</value>
-  </data>
-  <data name="&gt;&gt;lbExcelFilePath.Name" xml:space="preserve">
-    <value>lbExcelFilePath</value>
-  </data>
-  <data name="&gt;&gt;lbExcelFilePath.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="lbExcelFilePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 13</value>
-  </data>
-  <data name="lbExcelFilePath.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lbExcelFilePath.Text" xml:space="preserve">
-    <value>Excel catalog path</value>
-  </data>
-  <data name="&gt;&gt;lbExcelFilePath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbExcelFilePath.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="lbExcelFileTemplate.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbExcelFileTemplate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>295, 15</value>
-  </data>
-  <data name="&gt;&gt;lbExcelFileTemplate.Name" xml:space="preserve">
-    <value>lbExcelFileTemplate</value>
-  </data>
-  <data name="&gt;&gt;lbExcelFileTemplate.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="lbExcelFileTemplate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 13</value>
-  </data>
-  <data name="lbExcelFileTemplate.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="lbExcelFileTemplate.Text" xml:space="preserve">
-    <value>Download empty Excel file template -&gt;</value>
-  </data>
-  <data name="lbExcelFileTemplate.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="&gt;&gt;lbExcelFileTemplate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbExcelFileTemplate.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="progressBar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="progressBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 91</value>
-  </data>
-  <data name="&gt;&gt;progressBar.Name" xml:space="preserve">
-    <value>progressBar</value>
-  </data>
-  <data name="&gt;&gt;progressBar.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>472, 23</value>
-  </data>
-  <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;progressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;progressBar.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="richTextBoxLog.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="richTextBoxLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;richTextBoxLog.Name" xml:space="preserve">
-    <value>richTextBoxLog</value>
-  </data>
-  <data name="&gt;&gt;richTextBoxLog.Parent" xml:space="preserve">
-    <value>splitContainerHoriz.Panel2</value>
-  </data>
-  <data name="richTextBoxLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 216</value>
-  </data>
-  <data name="richTextBoxLog.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;richTextBoxLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;richTextBoxLog.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainerHoriz.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="splitContainerHoriz.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Name" xml:space="preserve">
-    <value>splitContainerHoriz</value>
-  </data>
-  <data name="splitContainerHoriz.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
-    <value>Horizontal</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel1.Name" xml:space="preserve">
-    <value>splitContainerHoriz.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel1.Parent" xml:space="preserve">
-    <value>splitContainerHoriz</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel2.Name" xml:space="preserve">
-    <value>splitContainerHoriz.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel2.Parent" xml:space="preserve">
-    <value>splitContainerHoriz</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="splitContainerHoriz.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 339</value>
-  </data>
-  <data name="splitContainerHoriz.SplitterDistance" type="System.Int32, mscorlib">
-    <value>119</value>
-  </data>
-  <data name="splitContainerHoriz.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainerHoriz.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;statusLabel.Name" xml:space="preserve">
-    <value>statusLabel</value>
-  </data>
-  <data name="statusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
-  </data>
-  <data name="statusLabel.Text" xml:space="preserve">
     <value>statusLabel</value>
   </data>
   <data name="&gt;&gt;statusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 339</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormImportExcelCatalog</value>
   </data>
-  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
-    <value>statusStrip1</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 22</value>
-  </data>
-  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="statusStrip1.Text" xml:space="preserve">
-    <value>statusStrip</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

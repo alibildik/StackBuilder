@@ -16,9 +16,11 @@ using Syroot.Windows.IO;
 
 using treeDiM.Basics;
 using treeDiM.StackBuilder.ExcelReader;
+using treeDiM.StackBuilder.Desktop.Properties;
 
 using treeDiM.PLMPack.DBClient;
 using treeDiM.PLMPack.DBClient.PLMPackSR;
+using System.Deployment.Application;
 #endregion
 
 namespace treeDiM.StackBuilder.Desktop
@@ -65,7 +67,9 @@ namespace treeDiM.StackBuilder.Desktop
         #region Handlers
         private void OnDownloadExcelTemplate(object sender, EventArgs e)
         {
-            string fileURL = Properties.Settings.Default.ExcelTemplateFileURL;
+            DownloadHelper.DownloadFile(Settings.Default.ExcelTemplateFileURL, true);
+            /*
+            string fileURL = Settings.Default.ExcelTemplateFileURL;
             try
             {
                 var knownFolder = new KnownFolder(KnownFolderType.Downloads);
@@ -76,15 +80,12 @@ namespace treeDiM.StackBuilder.Desktop
 
                 if (File.Exists(downloadPath))
                     Process.Start(downloadPath);
+                else
+                    _log.Error($"Failed to download file {fileURL} to {downloadPath}");
             }
-            catch (WebException ex)
-            {
-                MessageBox.Show($"Failed to download file {fileURL} : {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                _log.Error(ex.Message);
-            }
+            catch (WebException ex) { MessageBox.Show(string.Format(Resources.ID_ERROR_FAILEDTODOWNLOADFILE, fileURL, ex.Message)); }
+            catch (Exception ex) { _log.Error(ex.Message); }
+            */
         }
         private void OnFileNameChanged(object sender, EventArgs e)
         {
@@ -111,10 +112,10 @@ namespace treeDiM.StackBuilder.Desktop
         {
             // Warning about expected unit
             if (DialogResult.No == MessageBox.Show(
-                string.Format(Properties.Resources.ID_EXCELSHEETUNITSYSTEM,
+                string.Format(Resources.ID_EXCELSHEETUNITSYSTEM,
                 Path.GetFileName(excelFileSelect.FileName),
                 UnitsManager.SystemUnitString),
-                Properties.Resources.ID_UNITSYSTEM,
+                Resources.ID_UNITSYSTEM,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
                 return;
             bnImport.Enabled = false;
@@ -169,11 +170,11 @@ namespace treeDiM.StackBuilder.Desktop
                     // does item already exist?
                     if (!CanWrite(wcfClient.Client, dt))
                     {
-                        AppendRtb(string.Format(Properties.Resources.ID_IMPORTSKIPPING, dt.Name));
+                        AppendRtb(string.Format(Resources.ID_IMPORTSKIPPING, dt.Name));
                         return;
                     }
                     else
-                        AppendRtb(string.Format(Properties.Resources.ID_IMPORTLOADING, dt.Name));
+                        AppendRtb(string.Format(Resources.ID_IMPORTLOADING, dt.Name));
                     // create case
                     if (dt is DataCase dtCase)
                     {
@@ -409,7 +410,7 @@ namespace treeDiM.StackBuilder.Desktop
             if (exist && Overwrite)
             {
                 client.RemoveItemById(eType, itemID);
-                AppendRtb(string.Format(Properties.Resources.ID_REMOVINGEXISTINGTYPE, dt.Name));
+                AppendRtb(string.Format(Resources.ID_REMOVINGEXISTINGTYPE, dt.Name));
             }
             return !exist || Overwrite;
         }
@@ -425,7 +426,7 @@ namespace treeDiM.StackBuilder.Desktop
             else if (dt is DataPalletCap) return DCSBTypeEnum.TPalletCap;
             else if (dt is DataPalletFilm) return DCSBTypeEnum.TPalletFilm;
             else if (dt is DataTruck) return DCSBTypeEnum.TTruck;
-            else throw new Exception(string.Format(Properties.Resources.ID_UNEXPECTEDTYPE, dt.Name));
+            else throw new Exception(string.Format(Resources.ID_UNEXPECTEDTYPE, dt.Name));
         }
         /// <summary>
         /// On completed do the appropriate task

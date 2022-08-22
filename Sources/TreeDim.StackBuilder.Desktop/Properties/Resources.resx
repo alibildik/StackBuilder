@@ -457,7 +457,7 @@ Continue?</value>
     <value>Efficiency (%)</value>
   </data>
   <data name="ID_ERROR_FAILEDTODOWNLOADFILE" xml:space="preserve">
-    <value>Failed to download file {0} : {1}</value>
+    <value>Failed to download file {0} to {1}.</value>
   </data>
   <data name="ID_ERROR_INVALIDINPUTFILEPATH" xml:space="preserve">
     <value>Invalid input file path {0}.</value>
