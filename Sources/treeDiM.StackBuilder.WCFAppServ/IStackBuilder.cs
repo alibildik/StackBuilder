@@ -31,7 +31,22 @@ namespace treeDiM.StackBuilder.WCFAppServ
             , DCCompFormat expectedFormat, bool showCotations);
         #endregion
 
-        #region JJA Specific
+        #region JJA Specific methods
+        [OperationContract]
+        DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight
+            , DCCompFormat imageFormat, bool showCotations);
+        [OperationContract]
+        DCSBLoadResultContainer[] JJA_GetMultiContainerResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBContainer[] containers);
+        [OperationContract]
+        DCSBLoadResultPallet[] JJA_GetMultiPalletResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBPallet[] pallets, double palletHeight);
+        [OperationContract]
+        DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(DCSBDim3D dimensions, double weight, int noItemPerCase
+            , DCSBContainer container, DCSBConfigId configId
+            , DCCompFormat expectedFormat, bool showCotations);
+        [OperationContract]
+        DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(DCSBDim3D dimensions, double weight, int noItemPerCase
+            , DCSBPallet pallet, DCSBConfigId configId, double maxPalletHeight
+            , DCCompFormat expectedFormat, bool showCotations);
         #endregion
 
         #region Heterogeneous stacking

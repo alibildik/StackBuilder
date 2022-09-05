@@ -13,6 +13,7 @@ using treeDiM.Basics;
 using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Engine;
 using treeDiM.StackBuilder.Graphics;
+using System.ServiceModel;
 #endregion
 
 namespace treeDiM.StackBuilder.WCFAppServ
@@ -910,6 +911,39 @@ namespace treeDiM.StackBuilder.WCFAppServ
         #endregion
         #region Data members
         protected static readonly ILog _log = LogManager.GetLogger(typeof(StackBuilderServ));
+        #endregion
+
+        #region JJA Specific methods
+        DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight
+            , DCCompFormat imageFormat, bool showCotations)
+        {
+            DCSBCaseConfig[] caseConfigs = new DCSBCaseConfig[3];
+            return caseConfigs;
+        }
+        DCSBLoadResultContainer[] JJA_GetMultiContainerResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBContainer[] containers)
+        {
+            DCSBLoadResultContainer[] loadResultsContainers = new DCSBLoadResultContainer[3 * containers.Length];
+            return loadResultsContainers;
+        }
+        DCSBLoadResultPallet[] JJA_GetMultiPalletResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBPallet[] pallets, double palletHeight)
+        {
+            DCSBLoadResultPallet[] loadResultsPallets = new DCSBLoadResultPallet[3 * pallets.Length];
+            return loadResultsPallets;
+        }
+        DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(DCSBDim3D dimensions, double weight, int noItemPerCase
+            , DCSBContainer container, DCSBConfigId configId
+            , DCCompFormat expectedFormat, bool showCotations)
+        {
+            DCSBLoadResultSingleContainer loadResultSingleContainer = new DCSBLoadResultSingleContainer();
+            return loadResultSingleContainer;
+        }
+        DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(DCSBDim3D dimensions, double weight, int noItemPerCase
+            , DCSBPallet pallet, DCSBConfigId configId, double maxPalletHeight
+            , DCCompFormat expectedFormat, bool showCotations)
+        {
+            DCSBLoadResultSinglePallet loadResultSinglePallet = new DCSBLoadResultSinglePallet();
+            return loadResultSinglePallet;
+        }
         #endregion
     }
 

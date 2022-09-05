@@ -116,7 +116,9 @@
     <Compile Include="DCSBBool3.cs" />
     <Compile Include="DCSBBundle.cs" />
     <Compile Include="DCSBCase.cs" />
+    <Compile Include="DCSBCaseConfig.cs" />
     <Compile Include="DCSBConstraintSet.cs" />
+    <Compile Include="DCSBContainer.cs" />
     <Compile Include="DCSBContentItem.cs" />
     <Compile Include="DCSBCylinder.cs" />
     <Compile Include="DCSBDim3D.cs" />
@@ -124,6 +126,8 @@
     <Compile Include="DCSBHSolution.cs" />
     <Compile Include="DCSBInterlayer.cs" />
     <Compile Include="DCSBItem.cs" />
+    <Compile Include="DCSBLoadResult.cs" />
+    <Compile Include="DCSBLoadResultSingle.cs" />
     <Compile Include="DCSBPallet.cs" />
     <Compile Include="DCSBPalletCap.cs" />
     <Compile Include="DCSBPalletCorner.cs" />
