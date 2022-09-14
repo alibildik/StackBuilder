@@ -13,40 +13,40 @@ namespace treeDiM.StackBuilder.WCFAppServ
         DCSBSolution SB_GetCasePalletBestSolution(
             DCSBCase sbCase, DCSBPallet sbPallet, DCSBInterlayer sbInterlayer
             , DCSBConstraintSet sbConstraintSet
-            , DCCompFormat expectedFormat, bool showCotations);
+            , DCCompFormat expectedFormat);
         [OperationContract]
         DCSBSolution SB_GetBundlePalletBestSolution(
             DCSBBundle sbBundle, DCSBPallet sbPallet, DCSBInterlayer sbInterlayer
             , DCSBConstraintSet sbConstraintSet
-            , DCCompFormat expectedFormat, bool showCotations);
+            , DCCompFormat expectedFormat);
         [OperationContract]
         DCSBSolution SB_GetBundleCaseBestSolution(
             DCSBBundle sbBundle, DCSBCase sbCase
             , DCSBConstraintSet sbConstraintSet
-            , DCCompFormat expectedFormat, bool showCotations);
+            , DCCompFormat expectedFormat);
         [OperationContract]
         DCSBSolution SB_GetBoxCaseBestSolution(
             DCSBCase sbBox, DCSBCase sbCase, DCSBInterlayer sbInterlayer
             , DCSBConstraintSet sbConstraintSet
-            , DCCompFormat expectedFormat, bool showCotations);
+            , DCCompFormat expectedFormat);
         #endregion
 
         #region JJA Specific methods
         [OperationContract]
         DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight
-            , DCCompFormat imageFormat, bool showCotations);
+            , DCCompSize imageFormat, bool showCotations);
         [OperationContract]
         DCSBLoadResultContainer[] JJA_GetMultiContainerResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBContainer[] containers);
         [OperationContract]
-        DCSBLoadResultPallet[] JJA_GetMultiPalletResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBPallet[] pallets, double palletHeight);
+        DCSBLoadResultPallet[] JJA_GetMultiPalletResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBPalletWHeight[] pallets);
         [OperationContract]
         DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(DCSBDim3D dimensions, double weight, int noItemPerCase
             , DCSBContainer container, DCSBConfigId configId
-            , DCCompFormat expectedFormat, bool showCotations);
+            , DCCompFormat expectedFormat);
         [OperationContract]
         DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(DCSBDim3D dimensions, double weight, int noItemPerCase
-            , DCSBPallet pallet, DCSBConfigId configId, double maxPalletHeight
-            , DCCompFormat expectedFormat, bool showCotations);
+            , DCSBPalletWHeight pallet, DCSBConfigId configId
+            , DCCompFormat expectedFormat);
         #endregion
 
         #region Heterogeneous stacking
@@ -54,12 +54,13 @@ namespace treeDiM.StackBuilder.WCFAppServ
         DCSBHSolution SB_GetHSolutionBestCasePallet(DCSBContentItem[] sbConstentItems
             , DCSBPallet sbPallet
             , DCSBHConstraintSet sbConstraintSet 
-            , DCCompFormat expectedFormat, bool showCotations);
+            , DCCompFormat expectedFormat);
         [OperationContract]
         DCSBHSolutionItem SB_GetHSolutionPart(
-            DCSBContentItem[] sbContentItems, DCSBPallet sbPallet, DCSBHConstraintSet sbConstraintSet
+            DCSBContentItem[] sbContentItems
+            , DCSBPallet sbPallet, DCSBHConstraintSet sbConstraintSet
             , int solIndex, int binIndex
-            , DCCompFormat expectedFormat, bool showCotations
+            , DCCompFormat expectedFormat
             );
         #endregion
     }

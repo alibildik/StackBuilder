@@ -46,9 +46,16 @@ namespace treeDiM.StackBuilder.Graphics
 
         #region Public properties
         public Bitmap Bitmap { get; private set; }
+        public byte[] Bytes
+        {
+            get
+            {
+                ImageConverter converter = new ImageConverter();
+                return (byte[])converter.ConvertTo(Bitmap, typeof(byte[]));
+            }
+        }
         #endregion
     }
-
     public class Graphics3DForm : Graphics3D
     {
         #region Constructor

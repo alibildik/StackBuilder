@@ -17,50 +17,52 @@ namespace treeDiM.StackBuilder.WCFAppServ
         [EnumMember]
         FailureWeightExceeded
     }
-
+    [DataContract]
     public class DCSBStatus
     {
         [DataMember]
-        DCSBStatusEnu Status { get; set; }
+        public DCSBStatusEnu Status { get; set; }
         [DataMember]
-        string Error { get; set; }
+        public string Error { get; set; }
     }
 
     [DataContract]
     public class DCSBLoadResult
     {
         [DataMember]
-        DCSBConfigId ConfigId { get; set; }
+        public DCSBConfigId ConfigId { get; set; }
         [DataMember]
-        DCSBStatus Status { get; set; }
+        public DCSBStatus Status { get; set; }
         [DataMember]
-        int NumberPerLayer { get; set; } // string for non homogeneous layers
+        public int NumberPerLayer { get; set; } // string for non homogeneous layers
         [DataMember]
-        int NumberOfLayers { get; set; }
+        public int NumberOfLayers { get; set; }
         [DataMember]
-        int UpalItem { get; set; }
+        public int UpalItem { get; set; }
         [DataMember]
-        int UpalCase { get; set; }
+        public int UpalCase { get; set; }
         [DataMember]
-        double IsoBasePercentage { get; set; }
+        public double IsoBasePercentage { get; set; }
         [DataMember]
-        double IsoVolPercentage { get; set; }
+        public double IsoVolPercentage { get; set; }
         [DataMember]
-        double LoadWeight { get; set; }
+        public double LoadWeight { get; set; }
         [DataMember]
-        bool MaxLoadValidity { get; set; }
+        public bool MaxLoadValidity { get; set; }
     }
 
     [DataContract]
     public class DCSBLoadResultContainer : DCSBLoadResult
     {
         [DataMember]
-        DCSBContainer Container { get; set; }
+        public DCSBContainer Container { get; set; }
     }
-
+    [DataContract]
     public class DCSBLoadResultPallet : DCSBLoadResult
     {
         [DataMember]
-        DCSBPallet Pallet { get; set; }
+        public DCSBPalletWHeight Pallet { get; set; }
+        [DataMember]
+        public string PalletMapPhrase { get; set; }
     }
 }

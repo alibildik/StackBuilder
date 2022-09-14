@@ -135,6 +135,7 @@
     <Compile Include="DCSBPalletLayouts.cs" />
     <Compile Include="DCSBSolution.cs" />
     <Compile Include="DCSBTruck.cs" />
+    <Compile Include="JJAConfig.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

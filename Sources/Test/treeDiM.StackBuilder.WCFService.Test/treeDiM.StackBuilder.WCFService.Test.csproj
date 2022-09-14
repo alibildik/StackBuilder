@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>ftp://plmpack.com/public/www/stackbuilder/WCFServiceTestClient/ClickOnce/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -32,7 +33,6 @@
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -130,6 +130,15 @@
     <Compile Include="FormTestHomogeneous.Designer.cs">
       <DependentUpon>FormTestHomogeneous.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTestJJA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTestJJA.Designer.cs">
+      <DependentUpon>FormTestJJA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JJA_InputData.cs">
+      <DependentUpon>JJA_InputData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DockContentLogConsole.resx">
@@ -146,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTestHomogeneous.resx">
       <DependentUpon>FormTestHomogeneous.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTestJJA.resx">
+      <DependentUpon>FormTestJJA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.fr.resx" />
     <EmbeddedResource Include="Properties\Resources.nl.resx" />
@@ -176,14 +188,32 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\SB_SR\StackBuilderServ.wsdl" />
+    <None Include="Connected Services\SB_SR\treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBCaseConfig.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\SB_SR\treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBHSolution.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SB_SR\treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBHSolutionItem.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\SB_SR\treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultContainer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SB_SR\treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultPallet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SB_SR\treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSingleContainer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SB_SR\treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSinglePallet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\SB_SR\treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSolution.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="JJA_InputData.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -221,6 +251,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="JJA_inputData.xml" />
     <Content Include="treeDim.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +273,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release "$(SolutionDir)Signfile.bat" $(TargetPath)</PostBuildEvent>
+    <PostBuildEvent>REM if $(ConfigurationName) == Release "$(SolutionDir)Signfile.bat" $(TargetPath)</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -1089,6 +1089,14 @@ namespace treeDiM.StackBuilder.Basics
                 return true;
             }
         }
+        public override double AreaEfficiency
+        {
+            get
+            {
+                if (SolutionItems.Count == 0) return 0.0;
+                return LayerTypes[SolutionItems[0].IndexLayer].AreaEfficiency;
+            }
+        }
         #endregion
 
         #region Layer type methods

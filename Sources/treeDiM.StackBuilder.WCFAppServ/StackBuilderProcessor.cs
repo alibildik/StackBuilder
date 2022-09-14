@@ -15,6 +15,18 @@ using treeDiM.StackBuilder.Engine;
 namespace treeDiM.StackBuilder.WCFAppServ
 {
     #region StackBuilderProcessor
+
+    public class ImageDefinition
+    {
+        public bool ShowImage { get; set; } = true;
+        public bool ShowDimensions { get; set; } = true;
+        public Vector3D CameraPosition { get; set; } = Graphics3D.Corner_0;
+        public Size ImageSize { get; set; } = new Size(500, 500);
+        public float FontSizeRatio { get; set; } = 0.03f;
+
+        public static ImageDefinition Default = new ImageDefinition() { ShowImage = true, ShowDimensions = true, FontSizeRatio = 0.03f, ImageSize = new Size(250, 250), CameraPosition = Graphics3D.Corner_0 };
+        public static ImageDefinition NoImage = new ImageDefinition() { ShowImage = false, ShowDimensions = false, FontSizeRatio = 0.03f, ImageSize = new Size(250, 250), CameraPosition = Graphics3D.Corner_0 };
+    }
     public static class StackBuilderProcessor
     {
         #region Homogeneous
@@ -31,7 +43,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
             PackableBrick packableProperties, PalletProperties palletProperties, InterlayerProperties interlayerProperties
             , ConstraintSetCasePallet constraintSet
             , LayerDesc layerDesc
-            , Vector3D cameraPosition, bool showCotations, float fontSizeRatio, Size sz
+            , ImageDefinition imageDef
             , ref int layerCount, ref int caseCount, ref int interlayerCount
             , ref double weightTotal, ref double weightLoad, ref double? weightNet
             , ref Vector3D bbLoad, ref Vector3D bbGlob
@@ -69,19 +81,18 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 weightEfficiency = null;
                 if (analysis.Solution.WeightEfficiency.Activated)
                     weightEfficiency = analysis.Solution.WeightEfficiency.Value;
+
                 // generate image path
-                Graphics3DImage graphics = new Graphics3DImage(sz)
+                Graphics3DImage graphics = new Graphics3DImage(imageDef.ImageSize)
                 {
-                    FontSizeRatio = fontSizeRatio,
-                    CameraPosition = cameraPosition,
-                    ShowDimensions = showCotations
+                    FontSizeRatio = imageDef.FontSizeRatio,
+                    CameraPosition = imageDef.CameraPosition,
+                    ShowDimensions = imageDef.ShowDimensions
                 };
                 using (ViewerSolution sv = new ViewerSolution(analysis.SolutionLay))
                     sv.Draw(graphics, Transform3D.Identity);
                 graphics.Flush();
-                Bitmap bmp = graphics.Bitmap;
-                ImageConverter converter = new ImageConverter();
-                imageBytes = (byte[])converter.ConvertTo(bmp, typeof(byte[]));
+                imageBytes = graphics.Bytes;
 
                 // pallet phrase
                 palletMapPhrase = BuildPalletMapPhrase(analysis.SolutionLay);
@@ -96,11 +107,12 @@ namespace treeDiM.StackBuilder.WCFAppServ
         public static bool GetBestSolution(
             PackableBrick packableProperties, PalletProperties palletProperties, InterlayerProperties interlayer
             , ConstraintSetCasePallet constraintSet, bool allowMultipleLayerOrientations
-            , Vector3D cameraPosition, bool showCotations, float fontSizeRatio, Size sz
-            , ref int layerCount, ref int caseCount, ref int interlayerCount
+            , ImageDefinition imageDef
+            , ref int casePerLayerCount, ref int layerCount
+            , ref int caseCount, ref int interlayerCount
             , ref double weightTotal, ref double weightLoad, ref double? weightNet
             , ref Vector3D bbLoad, ref Vector3D bbGlob
-            , ref double volumeEfficency, ref double? weightEfficiency
+            , ref double areaEfficiency, ref double volumeEfficency, ref double? weightEfficiency
             , ref string palletMapPhrase
             , ref byte[] imageBytes
             , ref string[] errors)
@@ -120,37 +132,42 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 {
                     // first solution
                     AnalysisLayered analysis = analyses[0];
-                    layerCount = analysis.SolutionLay.LayerCount;
-                    caseCount = analysis.Solution.ItemCount;
-                    interlayerCount = analysis.SolutionLay.LayerCount;
-
-                    weightLoad = analysis.Solution.LoadWeight;
-                    weightTotal = analysis.Solution.Weight;
-
-                    OptDouble optNetWeight = analysis.Solution.NetWeight;
-                    weightNet = optNetWeight.Activated ? optNetWeight.Value : (double?)null;
-                    bbGlob = analysis.Solution.BBoxGlobal.DimensionsVec;
-                    bbLoad = analysis.Solution.BBoxLoad.DimensionsVec;
-                    volumeEfficency = analysis.Solution.VolumeEfficiency;
-                    weightEfficiency = null;
-                    if (analysis.Solution.WeightEfficiency.Activated)
-                        weightEfficiency = analysis.Solution.WeightEfficiency.Value;
-                    palletMapPhrase = BuildPalletMapPhrase(analysis.SolutionLay);
-
-                    Graphics3DImage graphics = null;
-                    // generate image path
-                    graphics = new Graphics3DImage(sz)
+                    var solutionLay = analysis.SolutionLay;
+                    if (null != solutionLay)
                     {
-                        FontSizeRatio = fontSizeRatio,
-                        CameraPosition = cameraPosition,
-                        ShowDimensions = showCotations
-                    };
-                    using (ViewerSolution sv = new ViewerSolution(analysis.SolutionLay))
-                        sv.Draw(graphics, Transform3D.Identity);
-                    graphics.Flush();
-                    Bitmap bmp = graphics.Bitmap;
-                    ImageConverter converter = new ImageConverter();
-                    imageBytes = (byte[])converter.ConvertTo(bmp, typeof(byte[]));
+                        layerCount = solutionLay.LayerCount;
+                        caseCount = solutionLay.ItemCount;
+                        interlayerCount = solutionLay.LayerCount;
+
+                        weightLoad = solutionLay.LoadWeight;
+                        weightTotal = solutionLay.Weight;
+
+                        OptDouble optNetWeight = solutionLay.NetWeight;
+                        weightNet = optNetWeight.Activated ? optNetWeight.Value : (double?)null;
+                        bbGlob = solutionLay.BBoxGlobal.DimensionsVec;
+                        bbLoad = solutionLay.BBoxLoad.DimensionsVec;
+                        volumeEfficency = solutionLay.VolumeEfficiency;
+                        areaEfficiency = solutionLay.AreaEfficiency;
+                        weightEfficiency = null;
+                        if (solutionLay.WeightEfficiency.Activated)
+                            weightEfficiency = solutionLay.WeightEfficiency.Value;
+                        casePerLayerCount = solutionLay.Layers[solutionLay.SolutionItems[0].IndexLayer].BoxCount;
+                        palletMapPhrase = BuildPalletMapPhrase(solutionLay);
+                    }
+                    if (imageDef.ShowImage)
+                    {
+                        Graphics3DImage graphics = new Graphics3DImage(imageDef.ImageSize)
+                        {
+                            FontSizeRatio = imageDef.FontSizeRatio,
+                            CameraPosition = imageDef.CameraPosition,
+                            ShowDimensions = imageDef.ShowDimensions
+                        };
+                        using (ViewerSolution sv = new ViewerSolution(solutionLay))
+                            sv.Draw(graphics, Transform3D.Identity);
+                        graphics.Flush();
+                        // graphics to byte
+                        imageBytes = graphics.Bytes;
+                    }
                 }
                 else
                     lErrors.Add("No solution found!");
@@ -161,6 +178,11 @@ namespace treeDiM.StackBuilder.WCFAppServ
             }
             errors = lErrors.ToArray();
             return (0 == lErrors.Count);
+        }
+        public static int FirstLayerCount(SolutionLayered solution)
+        {
+            var indexLayer = solution.SolutionItems[0].IndexLayer;
+            return solution.Layers[indexLayer].BoxCount;
         }
         public static bool GetBestSolution(PackableBrick packableProperties, BoxProperties caseProperties, InterlayerProperties interlayer
             , ConstraintSetBoxCase constraintSet, bool allowMultipleLayerOrientations
@@ -226,6 +248,10 @@ namespace treeDiM.StackBuilder.WCFAppServ
             errors = lErrors.ToArray();
             return (0 == lErrors.Count);
         }
+        #endregion
+
+        #region JJA_Homogeneous
+
         #endregion
 
         #region Heterogeneous

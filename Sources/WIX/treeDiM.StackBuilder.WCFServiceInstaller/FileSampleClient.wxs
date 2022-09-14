@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?include $(sys.CURRENTDIR)\Config.wxi?>
 <?define TestAppBinDir=..\..\Test\treeDiM.StackBuilder.WCFService.Test\bin\Release\?>
+<?define TestAppDataDir=..\..\Test\treeDiM.StackBuilder.WCFService.Test\?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
@@ -15,6 +16,10 @@
         <File Source="$(var.TestAppBinDir)SourceGrid.dll"/>
         <File Source="$(var.TestAppBinDir)WeifenLuo.WinFormsUI.Docking.dll"/>        
       </Component>
+	    <Component Id="JJA_inoutData" Guid="{c5a6be71-8ed8-4683-95fd-5d3bf9e41978}">
+		  <File Source="$(var.TestAppDataDir)JJA_inputData.xml"/>
+		  <File Source="$(var.TestAppDataDir)JJA_inputData.xsd"/>			
+		</Component>
     </ComponentGroup>
     <DirectoryRef Id="DesktopFolder"/>
     <ComponentGroup Id="SampleClientShortcut" Directory="DesktopFolder">

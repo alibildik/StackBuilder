@@ -300,8 +300,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
                                 CY = pbStackbuilder.Size.Height
                             },
                             Format = OutFormat.IMAGE
-                        },
-                        false
+                        }
                         );
 
                     // image
@@ -371,9 +370,9 @@ namespace treeDiM.StackBuilder.WCFService.Test
                                 CX = pbPalletIndex.Size.Width,
                                 CY = pbPalletIndex.Size.Height
                             },
-                            Format = OutFormat.IMAGE
-                        },
-                        true
+                            Format = OutFormat.IMAGE,
+                            ShowCotations = true
+                        }
                         );
                     var bboxLoad = hSolItem.BBoxLoad;
                     var bboxTotal = hSolItem.BBoxTotal;

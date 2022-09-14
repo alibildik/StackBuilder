@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<input xmlns="http://JJAnamespace">
+	<containers>
+		<container name="20Box" color="-5383962" dimensions ="5900 2340 2380" maxLoadWeight="22000" />
+		<container name="40Box" color="-5383962" dimensions ="11900 2340 2380" maxLoadWeight="27000" />
+		<container name="40HC" color="-5383962" dimensions ="11900 2340 2680" maxLoadWeight="29000" />
+		<container name="20Box" color="-5383962" dimensions ="5900 2340 2380" maxLoadWeight="10000" />
+		<container name="20Box" color="-5383962" dimensions ="5900 2340 2380" maxLoadWeight="10000" />
+	</containers>
+	<pallets>
+		<pallet name="Pal EUR 180" color="-256" type="EUR" dimensions="1200 800 144" maxLoadWeight="1000" maxPalletHeight="1800"/>
+		<pallet name="Pal EUR 210" color="-256" type="EUR" dimensions="1200 800 144" maxLoadWeight="1000" maxPalletHeight="2100"/>
+		<pallet name="Pal EUR 225" color="-256" type="EUR" dimensions="1200 800 144" maxLoadWeight="1000" maxPalletHeight="2250"/>
+	</pallets>
+	<cases>
+		<case name="Case1" color="-12525360" dimensions="400 270 280" weight="4.5" pcb="12"/>
+	</cases>
+</input>

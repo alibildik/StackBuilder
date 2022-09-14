@@ -19,6 +19,7 @@ namespace treeDiM.StackBuilder.Basics
         public virtual double Weight => LoadWeight + InterlayersWeight + Analysis.ContainerWeight + Analysis.DecorationWeight;
         public OptDouble NetWeight => ItemCount * Analysis.Content.NetWeight;
         public double VolumeEfficiency => 100.0 * (ItemCount * Analysis.ContentVolume) / Analysis.ContainerLoadingVolume;
+        public abstract double AreaEfficiency { get; }
         public OptDouble WeightEfficiency
         {
             get

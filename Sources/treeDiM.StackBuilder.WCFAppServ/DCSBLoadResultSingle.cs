@@ -8,21 +8,21 @@ namespace treeDiM.StackBuilder.WCFAppServ
     public class DCSBLoadResultSingle
     {
         [DataMember]
-        DCSBStatus Status { get; set; }
+        public DCSBStatus Status { get; set; }
         [DataMember]
-        DCCompFileOutput OutFile { get; set; }
+        public DCCompFileOutput OutFile { get; set; }
     }
 
     [DataContract]
-    public class DCSBLoadResultSinglePallet : DCSBLoadResult
+    public class DCSBLoadResultSinglePallet : DCSBLoadResultSingle
     {
         [DataMember]
-        DCSBLoadResultPallet Result { get; set; }
+        public DCSBLoadResultPallet Result { get; set; }
     }
-
-    public class DCSBLoadResultSingleContainer : DCSBLoadResult
+    [DataContract]
+    public class DCSBLoadResultSingleContainer : DCSBLoadResultSingle
     {
         [DataMember]
-        DCSBLoadResultContainer Result { get; set; }
+        public DCSBLoadResultContainer Result { get; set; }
     }
 }

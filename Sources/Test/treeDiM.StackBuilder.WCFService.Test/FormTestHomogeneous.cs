@@ -122,7 +122,6 @@ namespace treeDiM.StackBuilder.WCFService.Test
                                     },
                                     Format = OutFormat.IMAGE
                                 }
-                                , true
                             );
                     }
                     else if (tabCtrlContent.SelectedIndex == 1 && tabCtrlContainer.SelectedIndex == 0)
@@ -163,9 +162,9 @@ namespace treeDiM.StackBuilder.WCFService.Test
                                     CX = pbStackbuilder.Size.Width,
                                     CY = pbStackbuilder.Size.Height
                                 },
-                                Format = OutFormat.IMAGE
+                                Format = OutFormat.IMAGE,
+                                ShowCotations = true
                             }
-                            , true
                             );
                     }
                     else if (tabCtrlContent.SelectedIndex == 0 && tabCtrlContainer.SelectedIndex == 1)
@@ -209,9 +208,10 @@ namespace treeDiM.StackBuilder.WCFService.Test
                                     CX = pbStackbuilder.Size.Width,
                                     CY = pbStackbuilder.Size.Height
                                 },
-                                Format = OutFormat.IMAGE
+                                Format = OutFormat.IMAGE,
+                                ShowCotations = true
                             }
-                            , true
+                            
                             );
                     }
                     else if (tabCtrlContent.SelectedIndex == 1 && tabCtrlContainer.SelectedIndex == 1)
@@ -249,9 +249,9 @@ namespace treeDiM.StackBuilder.WCFService.Test
                                         CX = pbStackbuilder.Size.Width,
                                         CY = pbStackbuilder.Size.Height
                                     },
-                                    Format = OutFormat.IMAGE
+                                    Format = OutFormat.IMAGE,
+                                    ShowCotations = true
                                 }
-                                , true
                             );
                     }
                     if (null != sol)

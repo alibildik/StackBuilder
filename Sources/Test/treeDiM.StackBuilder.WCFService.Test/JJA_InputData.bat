@@ -1,0 +1,1 @@
+xsd /classes JJA_InputData.xsd /n:JJA.InputData

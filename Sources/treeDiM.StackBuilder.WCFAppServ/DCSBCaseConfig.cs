@@ -8,11 +8,11 @@ namespace treeDiM.StackBuilder.WCFAppServ
     public enum DCSBConfigId
     {
         [EnumMember]
-        Config1,
+        Config1 = 1,
         [EnumMember]
-        Config2,
+        Config2 = 2,
         [EnumMember]
-        Config3
+        Config3 = 3
     }
     [DataContract]
     public enum DCSBStabilityEnum
@@ -68,15 +68,24 @@ namespace treeDiM.StackBuilder.WCFAppServ
         [DataMember]
         public DCSBDim3D Dim3D { get; set; }
         [DataMember]
-        public DCSBDim2D[] FaceDimensions { get; set; }
+        public double Volume { get; set; }
         [DataMember]
-        DCSBConveyability Conveyability { get; set; }
+        public double AreaBottomTop { get; set; }
         [DataMember]
-        DCSBOrientationName ConveyFace { get; set; }
+        public double AreaFrontBack { get; set; }
         [DataMember]
-        DCSBConveyMode ConveyMode { get; set; }
+        public double AreaLeftRight { get; set; }
         [DataMember]
-        DCSBPrep PrepMode { get; set; }
+        public DCSBStabilityEnum Stable { get; set; }
         [DataMember]
-        DCCompFileOutput Image { get; set; }
+        public DCSBConveyability Conveyability { get; set; }
+        [DataMember]
+        public DCSBOrientationName ConveyFace { get; set; }
+        [DataMember]
+        public DCSBConveyMode ConveyMode { get; set; }
+        [DataMember]
+        public DCSBPrep PrepMode { get; set; }
+        [DataMember]
+        public DCCompFileOutput Image { get; set; }
     }
+}

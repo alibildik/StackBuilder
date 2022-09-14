@@ -32,6 +32,36 @@
   <wsdl:message name="IStackBuilder_SB_GetBoxCaseBestSolution_OutputMessage">
     <wsdl:part name="parameters" element="tns:SB_GetBoxCaseBestSolutionResponse" />
   </wsdl:message>
+  <wsdl:message name="IStackBuilder_JJA_GetCaseConfigs_InputMessage">
+    <wsdl:part name="parameters" element="tns:JJA_GetCaseConfigs" />
+  </wsdl:message>
+  <wsdl:message name="IStackBuilder_JJA_GetCaseConfigs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JJA_GetCaseConfigsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStackBuilder_JJA_GetMultiContainerResults_InputMessage">
+    <wsdl:part name="parameters" element="tns:JJA_GetMultiContainerResults" />
+  </wsdl:message>
+  <wsdl:message name="IStackBuilder_JJA_GetMultiContainerResults_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JJA_GetMultiContainerResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStackBuilder_JJA_GetMultiPalletResults_InputMessage">
+    <wsdl:part name="parameters" element="tns:JJA_GetMultiPalletResults" />
+  </wsdl:message>
+  <wsdl:message name="IStackBuilder_JJA_GetMultiPalletResults_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JJA_GetMultiPalletResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStackBuilder_JJA_GetLoadResultSingleContainer_InputMessage">
+    <wsdl:part name="parameters" element="tns:JJA_GetLoadResultSingleContainer" />
+  </wsdl:message>
+  <wsdl:message name="IStackBuilder_JJA_GetLoadResultSingleContainer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JJA_GetLoadResultSingleContainerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStackBuilder_JJA_GetLoadResultSinglePallet_InputMessage">
+    <wsdl:part name="parameters" element="tns:JJA_GetLoadResultSinglePallet" />
+  </wsdl:message>
+  <wsdl:message name="IStackBuilder_JJA_GetLoadResultSinglePallet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JJA_GetLoadResultSinglePalletResponse" />
+  </wsdl:message>
   <wsdl:message name="IStackBuilder_SB_GetHSolutionBestCasePallet_InputMessage">
     <wsdl:part name="parameters" element="tns:SB_GetHSolutionBestCasePallet" />
   </wsdl:message>
@@ -60,6 +90,26 @@
     <wsdl:operation name="SB_GetBoxCaseBestSolution">
       <wsdl:input wsaw:Action="http://tempuri.org/IStackBuilder/SB_GetBoxCaseBestSolution" message="tns:IStackBuilder_SB_GetBoxCaseBestSolution_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStackBuilder/SB_GetBoxCaseBestSolutionResponse" message="tns:IStackBuilder_SB_GetBoxCaseBestSolution_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JJA_GetCaseConfigs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStackBuilder/JJA_GetCaseConfigs" message="tns:IStackBuilder_JJA_GetCaseConfigs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStackBuilder/JJA_GetCaseConfigsResponse" message="tns:IStackBuilder_JJA_GetCaseConfigs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JJA_GetMultiContainerResults">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStackBuilder/JJA_GetMultiContainerResults" message="tns:IStackBuilder_JJA_GetMultiContainerResults_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStackBuilder/JJA_GetMultiContainerResultsResponse" message="tns:IStackBuilder_JJA_GetMultiContainerResults_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JJA_GetMultiPalletResults">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStackBuilder/JJA_GetMultiPalletResults" message="tns:IStackBuilder_JJA_GetMultiPalletResults_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStackBuilder/JJA_GetMultiPalletResultsResponse" message="tns:IStackBuilder_JJA_GetMultiPalletResults_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JJA_GetLoadResultSingleContainer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSingleContainer" message="tns:IStackBuilder_JJA_GetLoadResultSingleContainer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSingleContainerResponse" message="tns:IStackBuilder_JJA_GetLoadResultSingleContainer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JJA_GetLoadResultSinglePallet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSinglePallet" message="tns:IStackBuilder_JJA_GetLoadResultSinglePallet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSinglePalletResponse" message="tns:IStackBuilder_JJA_GetLoadResultSinglePallet_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SB_GetHSolutionBestCasePallet">
       <wsdl:input wsaw:Action="http://tempuri.org/IStackBuilder/SB_GetHSolutionBestCasePallet" message="tns:IStackBuilder_SB_GetHSolutionBestCasePallet_InputMessage" />
@@ -101,6 +151,51 @@
     </wsdl:operation>
     <wsdl:operation name="SB_GetBoxCaseBestSolution">
       <soap:operation soapAction="http://tempuri.org/IStackBuilder/SB_GetBoxCaseBestSolution" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JJA_GetCaseConfigs">
+      <soap:operation soapAction="http://tempuri.org/IStackBuilder/JJA_GetCaseConfigs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JJA_GetMultiContainerResults">
+      <soap:operation soapAction="http://tempuri.org/IStackBuilder/JJA_GetMultiContainerResults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JJA_GetMultiPalletResults">
+      <soap:operation soapAction="http://tempuri.org/IStackBuilder/JJA_GetMultiPalletResults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JJA_GetLoadResultSingleContainer">
+      <soap:operation soapAction="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSingleContainer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JJA_GetLoadResultSinglePallet">
+      <soap:operation soapAction="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSinglePallet" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

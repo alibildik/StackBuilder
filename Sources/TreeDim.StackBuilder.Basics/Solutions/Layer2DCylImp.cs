@@ -124,6 +124,7 @@ namespace treeDiM.StackBuilder.Basics
                 return bbox;
             }
         }
+        public double AreaEfficiency => 100.0 * Count * Math.Pow(Radius, 2) * Math.PI / (DimContainer.X * DimContainer.Y);
         #endregion
 
         #region Public properties

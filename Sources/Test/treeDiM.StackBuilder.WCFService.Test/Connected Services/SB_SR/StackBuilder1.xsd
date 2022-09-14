@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:5512/StackBuilder.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:5512/StackBuilder.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="DCSBCase">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:DCSBItem">
@@ -117,6 +118,7 @@
   <xs:complexType name="DCCompFormat">
     <xs:sequence>
       <xs:element minOccurs="0" name="Format" type="tns:OutFormat" />
+      <xs:element minOccurs="0" name="ShowCotations" type="xs:boolean" />
       <xs:element minOccurs="0" name="Size" nillable="true" type="tns:DCCompSize" />
     </xs:sequence>
   </xs:complexType>
@@ -178,6 +180,215 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="DCSBBundle" nillable="true" type="tns:DCSBBundle" />
+  <xs:complexType name="ArrayOfDCSBCaseConfig">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DCSBCaseConfig" nillable="true" type="tns:DCSBCaseConfig" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDCSBCaseConfig" nillable="true" type="tns:ArrayOfDCSBCaseConfig" />
+  <xs:complexType name="DCSBCaseConfig">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AreaBottomTop" type="xs:double" />
+      <xs:element minOccurs="0" name="AreaFrontBack" type="xs:double" />
+      <xs:element minOccurs="0" name="AreaLeftRight" type="xs:double" />
+      <xs:element minOccurs="0" name="ConfigId" type="tns:DCSBConfigId" />
+      <xs:element minOccurs="0" name="ConveyFace" type="tns:DCSBOrientationName" />
+      <xs:element minOccurs="0" name="ConveyMode" type="tns:DCSBConveyMode" />
+      <xs:element minOccurs="0" name="Conveyability" type="tns:DCSBConveyability" />
+      <xs:element minOccurs="0" name="Dim3D" nillable="true" type="tns:DCSBDim3D" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="tns:DCCompFileOutput" />
+      <xs:element minOccurs="0" name="PrepMode" type="tns:DCSBPrep" />
+      <xs:element minOccurs="0" name="Stable" type="tns:DCSBStabilityEnum" />
+      <xs:element minOccurs="0" name="Volume" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DCSBCaseConfig" nillable="true" type="tns:DCSBCaseConfig" />
+  <xs:simpleType name="DCSBConfigId">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Config1">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Config2">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Config3">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DCSBConfigId" nillable="true" type="tns:DCSBConfigId" />
+  <xs:simpleType name="DCSBOrientationName">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BottomTop" />
+      <xs:enumeration value="FrontBack" />
+      <xs:enumeration value="LeftRight" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DCSBOrientationName" nillable="true" type="tns:DCSBOrientationName" />
+  <xs:simpleType name="DCSBConveyMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Manual" />
+      <xs:enumeration value="Automatisable" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DCSBConveyMode" nillable="true" type="tns:DCSBConveyMode" />
+  <xs:simpleType name="DCSBConveyability">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Conveyable" />
+      <xs:enumeration value="NonConveyableDimensions" />
+      <xs:enumeration value="NonConveyableWeight" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DCSBConveyability" nillable="true" type="tns:DCSBConveyability" />
+  <xs:simpleType name="DCSBPrep">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pac" />
+      <xs:enumeration value="HorsPac" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DCSBPrep" nillable="true" type="tns:DCSBPrep" />
+  <xs:simpleType name="DCSBStabilityEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Stable" />
+      <xs:enumeration value="Unstable" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DCSBStabilityEnum" nillable="true" type="tns:DCSBStabilityEnum" />
+  <xs:complexType name="ArrayOfDCSBContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DCSBContainer" nillable="true" type="tns:DCSBContainer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDCSBContainer" nillable="true" type="tns:ArrayOfDCSBContainer" />
+  <xs:complexType name="DCSBContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Color" type="xs:int" />
+      <xs:element minOccurs="0" name="ContainerType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Dimensions" nillable="true" type="tns:DCSBDim3D" />
+      <xs:element minOccurs="0" name="MaxLoadWeight" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DCSBContainer" nillable="true" type="tns:DCSBContainer" />
+  <xs:complexType name="ArrayOfDCSBLoadResultContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DCSBLoadResultContainer" nillable="true" type="tns:DCSBLoadResultContainer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDCSBLoadResultContainer" nillable="true" type="tns:ArrayOfDCSBLoadResultContainer" />
+  <xs:complexType name="DCSBLoadResultContainer">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DCSBLoadResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Container" nillable="true" type="tns:DCSBContainer" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DCSBLoadResultContainer" nillable="true" type="tns:DCSBLoadResultContainer" />
+  <xs:complexType name="DCSBLoadResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConfigId" type="tns:DCSBConfigId" />
+      <xs:element minOccurs="0" name="IsoBasePercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="IsoVolPercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="LoadWeight" type="xs:double" />
+      <xs:element minOccurs="0" name="MaxLoadValidity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NumberOfLayers" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberPerLayer" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:DCSBStatus" />
+      <xs:element minOccurs="0" name="UpalCase" type="xs:int" />
+      <xs:element minOccurs="0" name="UpalItem" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DCSBLoadResult" nillable="true" type="tns:DCSBLoadResult" />
+  <xs:complexType name="DCSBStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="tns:DCSBStatusEnu" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DCSBStatus" nillable="true" type="tns:DCSBStatus" />
+  <xs:simpleType name="DCSBStatusEnu">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Success" />
+      <xs:enumeration value="FailureLengthOrWidthExceeded" />
+      <xs:enumeration value="FailureHeightExceeded" />
+      <xs:enumeration value="FailureWeightExceeded" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DCSBStatusEnu" nillable="true" type="tns:DCSBStatusEnu" />
+  <xs:complexType name="ArrayOfDCSBPalletWHeight">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DCSBPalletWHeight" nillable="true" type="tns:DCSBPalletWHeight" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDCSBPalletWHeight" nillable="true" type="tns:ArrayOfDCSBPalletWHeight" />
+  <xs:complexType name="DCSBPalletWHeight">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DCSBPallet">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MaxPalletHeight" type="xs:double" />
+          <xs:element minOccurs="0" name="MaxPalletWeight" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DCSBPalletWHeight" nillable="true" type="tns:DCSBPalletWHeight" />
+  <xs:complexType name="ArrayOfDCSBLoadResultPallet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DCSBLoadResultPallet" nillable="true" type="tns:DCSBLoadResultPallet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDCSBLoadResultPallet" nillable="true" type="tns:ArrayOfDCSBLoadResultPallet" />
+  <xs:complexType name="DCSBLoadResultPallet">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DCSBLoadResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Pallet" nillable="true" type="tns:DCSBPalletWHeight" />
+          <xs:element minOccurs="0" name="PalletMapPhrase" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DCSBLoadResultPallet" nillable="true" type="tns:DCSBLoadResultPallet" />
+  <xs:complexType name="DCSBLoadResultSingleContainer">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DCSBLoadResultSingle">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Result" nillable="true" type="tns:DCSBLoadResultContainer" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DCSBLoadResultSingleContainer" nillable="true" type="tns:DCSBLoadResultSingleContainer" />
+  <xs:complexType name="DCSBLoadResultSingle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OutFile" nillable="true" type="tns:DCCompFileOutput" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:DCSBStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DCSBLoadResultSingle" nillable="true" type="tns:DCSBLoadResultSingle" />
+  <xs:complexType name="DCSBLoadResultSinglePallet">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DCSBLoadResultSingle">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Result" nillable="true" type="tns:DCSBLoadResultPallet" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DCSBLoadResultSinglePallet" nillable="true" type="tns:DCSBLoadResultSinglePallet" />
   <xs:complexType name="ArrayOfDCSBContentItem">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DCSBContentItem" nillable="true" type="tns:DCSBContentItem" />

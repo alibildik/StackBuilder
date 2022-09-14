@@ -18,8 +18,8 @@ namespace treeDiM.StackBuilder.Basics
         LayerDesc LayerDescriptor { get; }
         double MaximumSpace { get; }
         BBox3D BBox { get; }
+        double AreaEfficiency { get; }
         #endregion
-
         #region Methods
         void Clear();
         int CountInHeight(double height);

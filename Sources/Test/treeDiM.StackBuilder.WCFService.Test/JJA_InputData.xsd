@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="JJA_InputData"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://JJAnamespace"
+    xmlns="http://JJAnamespace"
+    elementFormDefault="qualified"
+>
+	<!-- input -->
+	<xs:element name="input">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="containers" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="container" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string" use="required"/>
+									<xs:attribute name="color" type="xs:int" use="required"/>
+									<xs:attribute name ="dimensions" type="vector3D" use="required"/>
+									<xs:attribute name="maxLoadWeight" type="xs:double" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="pallets" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="pallet" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string" use="required"/>
+									<xs:attribute name="color" type="xs:int" use="required"/>
+									<xs:attribute name="type" type="xs:string" use="required"/>
+									<xs:attribute name="dimensions" type="vector3D" use="required"/>
+									<xs:attribute name="maxPalletHeight" type="xs:double" use="required"/>
+									<xs:attribute name="maxLoadWeight" type="xs:double"  use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="cases" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="case" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string" use="required"/>
+									<xs:attribute name="color" type="xs:int" use="required"/>
+									<xs:attribute name="dimensions" type="vector3D" use="required"/>
+									<xs:attribute name="weight" type="xs:double" use="required"/>
+									<xs:attribute name="pcb" type="xs:int" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- vector3D -->
+	<xs:simpleType name="vector3D">
+		<xs:restriction>
+			<xs:simpleType>
+				<xs:list itemType="xs:double"/>
+			</xs:simpleType>
+			<xs:length value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -24,7 +24,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
     {
         #region Solution list
         public DCSBSolution[] SB_GetSolutionList(
-            DCSBCase sbCase, DCSBPallet sbPallet,  DCSBInterlayer sbInterlayer, 
+            DCSBCase sbCase, DCSBPallet sbPallet, DCSBInterlayer sbInterlayer,
             DCSBConstraintSet sbConstraintSet)
         {
             var listSolution = new List<DCSBSolution>();
@@ -94,11 +94,11 @@ namespace treeDiM.StackBuilder.WCFAppServ
                         Vector3D bbLoad = analysis.Solution.BBoxLoad.DimensionsVec;
                         OptDouble optNetWeight = analysis.Solution.NetWeight;
                         double? weightNet = optNetWeight.Activated ? optNetWeight.Value : (double?)null;
-                        
+
                         List<string> layerDescs = new List<string>();
                         foreach (var lp in analysis.SolutionLay.LayerPhrases.Keys)
                             layerDescs.Add(lp.LayerDescriptor.ToString());
-                        
+
                         DCSBSolution solution = new DCSBSolution()
                         {
                             LayerCount = analysis.SolutionLay.LayerCount,
@@ -131,7 +131,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
         #region Get specific solution
         public DCSBSolution SB_GetSolution(DCSBCase sbCase, DCSBPallet sbPallet, DCSBInterlayer sbInterlayer,
             DCSBConstraintSet sbConstraintSet, string sLayerDesc,
-            DCCompFormat expectedFormat, bool showCotations
+            DCCompFormat expectedFormat
             )
         {
             List<string> lErrors = new List<string>();
@@ -186,7 +186,6 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 throw new Exception("Invalid constraint set");
 
             LayerDesc layerDesc = LayerDescBox.Parse(sLayerDesc);
-            Vector3D cameraPosition = Graphics3D.Corner_0;
             int layerCount = 0, caseCount = 0, interlayerCount = 0;
             double weightTotal = 0.0, weightLoad = 0.0, volumeEfficiency = 0.0;
             double? weightEfficiency = 0.0;
@@ -200,8 +199,13 @@ namespace treeDiM.StackBuilder.WCFAppServ
             StackBuilderProcessor.GetSolutionByLayer(
                 boxProperties, palletProperties, interlayerProperties,
                 constraintSet, layerDesc,
-                cameraPosition, true, 0.03f,
-                new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
+                new ImageDefinition()
+                {
+                    CameraPosition = Graphics3D.Corner_0,
+                    ImageSize = new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
+                    FontSizeRatio = 0.03f,
+                    ShowDimensions = expectedFormat.ShowCotations
+                },
                 ref layerCount, ref caseCount, ref interlayerCount,
                 ref weightTotal, ref weightLoad, ref weightNet,
                 ref bbLoad, ref bbGlob,
@@ -233,7 +237,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
         public DCSBSolution SB_GetCasePalletBestSolution(
             DCSBCase sbCase, DCSBPallet sbPallet, DCSBInterlayer sbInterlayer,
             DCSBConstraintSet sbConstraintSet,
-            DCCompFormat expectedFormat, bool showCotations)
+            DCCompFormat expectedFormat)
         {
             List<string> lErrors = new List<string>();
             try
@@ -289,8 +293,8 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     throw new Exception("Invalid constraint set");
 
                 Vector3D cameraPosition = Graphics3D.Corner_0;
-                int layerCount = 0, caseCount = 0, interlayerCount = 0;
-                double weightTotal = 0.0, weightLoad = 0.0, volumeEfficiency = 0.0;
+                int casePerLayerCount = 0, layerCount = 0, caseCount = 0, interlayerCount = 0;
+                double weightTotal = 0.0, weightLoad = 0.0, areaEfficiency = 0.0, volumeEfficiency = 0.0;
                 double? weightEfficiency = 0.0;
                 double? weightNet = null;
                 Vector3D bbLoad = new Vector3D();
@@ -302,12 +306,12 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 if (StackBuilderProcessor.GetBestSolution(
                     boxProperties, palletProperties, interlayerProperties,
                     constraintSet, sbConstraintSet.AllowMultipleLayerOrientations,
-                    cameraPosition, showCotations, 0.03f,
-                    new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
-                    ref layerCount, ref caseCount, ref interlayerCount,
+                    new ImageDefinition() { ShowDimensions = expectedFormat.ShowCotations, ImageSize = new Size(expectedFormat.Size.CX, expectedFormat.Size.CY) },
+                    ref casePerLayerCount, ref layerCount,
+                    ref caseCount, ref interlayerCount,
                     ref weightTotal, ref weightLoad, ref weightNet,
                     ref bbLoad, ref bbGlob,
-                    ref volumeEfficiency, ref weightEfficiency,
+                    ref areaEfficiency, ref volumeEfficiency, ref weightEfficiency,
                     ref palletMapPhrase,
                     ref imageBytes, ref errors))
                 {
@@ -352,7 +356,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
         public DCSBSolution SB_GetBundlePalletBestSolution(
             DCSBBundle sbBundle, DCSBPallet sbPallet, DCSBInterlayer sbInterlayer
             , DCSBConstraintSet sbConstraintSet
-            , DCCompFormat expectedFormat, bool showCotations)
+            , DCCompFormat expectedFormat)
         {
             List<string> lErrors = new List<string>();
             try
@@ -394,9 +398,8 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 if (!constraintSet.Valid)
                     throw new Exception("Invalid constraint set");
 
-                Vector3D cameraPosition = Graphics3D.Corner_0;
-                int layerCount = 0, caseCount = 0, interlayerCount = 0;
-                double weightTotal = 0.0, weightLoad = 0.0, volumeEfficiency = 0.0;
+                int casePerLayerCount = 0, layerCount = 0, caseCount = 0, interlayerCount = 0;
+                double weightTotal = 0.0, weightLoad = 0.0, areaEfficency = 0.0, volumeEfficiency = 0.0;
                 double? weightEfficiency = 0.0;
                 double? weightNet = (double?)null;
                 Vector3D bbLoad = new Vector3D();
@@ -408,12 +411,18 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 if (StackBuilderProcessor.GetBestSolution(
                     bundleProperties, palletProperties, interlayerProperties,
                     constraintSet, false,
-                    cameraPosition, showCotations, 0.03f,
-                    new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
-                    ref layerCount, ref caseCount, ref interlayerCount,
+                    new ImageDefinition()
+                    {
+                        CameraPosition = Graphics3D.Corner_0,
+                        ShowDimensions = expectedFormat.ShowCotations,
+                        ImageSize = new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
+                        FontSizeRatio = 0.03f
+                    },
+                    ref casePerLayerCount, ref layerCount,
+                    ref caseCount, ref interlayerCount,
                     ref weightTotal, ref weightLoad, ref weightNet,
                     ref bbLoad, ref bbGlob,
-                    ref volumeEfficiency, ref weightEfficiency,
+                    ref areaEfficency, ref volumeEfficiency, ref weightEfficiency,
                     ref palletMapPhrase,
                     ref imageBytes, ref errors))
                 {
@@ -457,7 +466,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
         public DCSBSolution SB_GetBundleCaseBestSolution(
             DCSBBundle sbBundle, DCSBCase sbCase
             , DCSBConstraintSet sbConstraintSet
-            , DCCompFormat expectedFormat, bool showCotations)
+            , DCCompFormat expectedFormat)
         {
             List<string> lErrors = new List<string>();
             try
@@ -482,7 +491,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                         caseProperties.SetColor((HalfAxis.HAxis)i, Color.FromArgb(sbCase.Colors[i]));
                 }
                 else
-                    caseProperties.SetAllColors( Enumerable.Repeat<Color>(Color.Chocolate, 6).ToArray() );
+                    caseProperties.SetAllColors(Enumerable.Repeat<Color>(Color.Chocolate, 6).ToArray());
 
                 OptDouble oMaxWeight = null != sbConstraintSet.MaxWeight ? new OptDouble(sbConstraintSet.MaxWeight.Active, sbConstraintSet.MaxWeight.Value_d) : OptDouble.Zero;
                 OptInt oMaxNumber = null != sbConstraintSet.MaxNumber ? new OptInt(sbConstraintSet.MaxNumber.Active, sbConstraintSet.MaxNumber.Value_i) : OptInt.Zero;
@@ -508,7 +517,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 if (StackBuilderProcessor.GetBestSolution(
                     bundleProperties, caseProperties, null,
                     constraintSet, false,
-                    cameraPosition, showCotations, 0.03f,
+                    cameraPosition, expectedFormat.ShowCotations, 0.03f,
                     new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
                     ref layerCount, ref caseCount, ref interlayerCount,
                     ref weightTotal, ref weightLoad, ref weightNet,
@@ -556,9 +565,9 @@ namespace treeDiM.StackBuilder.WCFAppServ
         public DCSBSolution SB_GetBoxCaseBestSolution(
             DCSBCase sbBox, DCSBCase sbCase, DCSBInterlayer sbInterlayer
             , DCSBConstraintSet sbConstraintSet
-            , DCCompFormat expectedFormat, bool showCotations)
+            , DCCompFormat expectedFormat)
         {
-            List<string> lErrors = new List<string>();
+            var lErrors = new List<string>();
             try
             {
                 BoxProperties boxProperties = new BoxProperties(null
@@ -613,7 +622,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 if (StackBuilderProcessor.GetBestSolution(
                     boxProperties, caseProperties, null,
                     constraintSet, sbConstraintSet.AllowMultipleLayerOrientations,
-                    cameraPosition, showCotations, 0.03f,
+                    cameraPosition, expectedFormat.ShowCotations, 0.03f,
                     new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
                     ref layerCount, ref caseCount, ref interlayerCount,
                     ref weightTotal, ref weightLoad, ref weightNet,
@@ -662,7 +671,10 @@ namespace treeDiM.StackBuilder.WCFAppServ
         #endregion
 
         #region Heterogeneous Pallet Stacking
-        public DCSBHSolution SB_GetHSolutionBestCasePallet(DCSBContentItem[] sbConstentItems, DCSBPallet sbPallet, DCSBHConstraintSet sbConstraintSet, DCCompFormat expectedFormat, bool showCotations)
+        public DCSBHSolution SB_GetHSolutionBestCasePallet(DCSBContentItem[] sbConstentItems
+            , DCSBPallet sbPallet
+            , DCSBHConstraintSet sbConstraintSet
+            , DCCompFormat expectedFormat)
         {
             var lErrors = new List<string>();
 
@@ -679,7 +691,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     ConvertDCSBContentItems(sbConstentItems),
                     ConvertDCSBPallet(sbPallet),
                     ConvertDCSBConstraintSet(sbConstraintSet),
-                    cameraPosition, showCotations, 0.03f,
+                    cameraPosition, expectedFormat.ShowCotations, 0.03f,
                     new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
                     ref palletCount,
                     ref algorithm,
@@ -783,7 +795,10 @@ namespace treeDiM.StackBuilder.WCFAppServ
         */
 
         public DCSBHSolutionItem SB_GetHSolutionPart(
-            DCSBContentItem[] sbContentItems, DCSBPallet sbPallet, DCSBHConstraintSet sbConstraintSet, int solIndex, int binIndex, DCCompFormat expectedFormat, bool showCotations)
+            DCSBContentItem[] sbContentItems
+            , DCSBPallet sbPallet, DCSBHConstraintSet sbConstraintSet
+            , int solIndex, int binIndex
+            , DCCompFormat expectedFormat)
         {
             var lErrors = new List<string>();
 
@@ -801,7 +816,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                    ConvertDCSBPallet(sbPallet),
                    ConvertDCSBConstraintSet(sbConstraintSet),
                    solIndex, binIndex,
-                   cameraPosition, showCotations, 0.03f,
+                   cameraPosition, expectedFormat.ShowCotations, 0.03f,
                    new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
                    ref weightLoad, ref weightTotal,
                    ref bbLoad, ref bbGlob,
@@ -909,45 +924,267 @@ namespace treeDiM.StackBuilder.WCFAppServ
             };
         }
         #endregion
-        #region Data members
-        protected static readonly ILog _log = LogManager.GetLogger(typeof(StackBuilderServ));
-        #endregion
 
         #region JJA Specific methods
-        DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight
-            , DCCompFormat imageFormat, bool showCotations)
+        public DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight
+            , DCCompSize imageSize, bool showCotations)
         {
             DCSBCaseConfig[] caseConfigs = new DCSBCaseConfig[3];
+
+            for (int i = 0; i < 3; ++i)
+            {
+                var jjaconfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, i + 1);
+                caseConfigs[i].ConfigId = (DCSBConfigId)i;
+                caseConfigs[i].Dim3D = new DCSBDim3D(jjaconfig.Length, jjaconfig.Width, jjaconfig.Height);
+                caseConfigs[i].Volume = jjaconfig.Volume;
+                caseConfigs[i].AreaBottomTop = jjaconfig.AreaBottomTop;
+                caseConfigs[i].AreaFrontBack = jjaconfig.AreaFrontBack;
+                caseConfigs[i].AreaLeftRight = jjaconfig.AreaLeftRight;
+                caseConfigs[i].Stable = (DCSBStabilityEnum)jjaconfig.Stability;
+                caseConfigs[i].Conveyability = (DCSBConveyability)jjaconfig.Conveyability;
+                caseConfigs[i].ConveyFace = (DCSBOrientationName)jjaconfig.ConveyFace;
+                caseConfigs[i].Image = new DCCompFileOutput()
+                {
+                    Bytes = jjaconfig.GetImageBytes(imageSize.CX, imageSize.CY, 0.02f, showCotations),
+                    Format = new DCCompFormat()
+                    {
+                        Format = EOutFormat.IMAGE,
+                        Size = new DCCompSize()
+                        {
+                            CX = imageSize.CX,
+                            CY = imageSize.CY
+                        }
+                    }
+                };
+            }
             return caseConfigs;
         }
-        DCSBLoadResultContainer[] JJA_GetMultiContainerResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBContainer[] containers)
+        public DCSBLoadResultContainer[] JJA_GetMultiContainerResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBContainer[] containers)
         {
             DCSBLoadResultContainer[] loadResultsContainers = new DCSBLoadResultContainer[3 * containers.Length];
+
+
+
+
             return loadResultsContainers;
         }
-        DCSBLoadResultPallet[] JJA_GetMultiPalletResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBPallet[] pallets, double palletHeight)
+        public DCSBLoadResultPallet[] JJA_GetMultiPalletResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBPalletWHeight[] pallets)
         {
+            var lErrors = new List<string>();
             DCSBLoadResultPallet[] loadResultsPallets = new DCSBLoadResultPallet[3 * pallets.Length];
+
+            for (int iPallet = 0; iPallet < pallets.Length; ++iPallet)
+            {
+                var dcsbPallet = pallets[iPallet];
+                // build pallet
+                var palletProperties = new PalletProperties(null, dcsbPallet.PalletType
+                    , dcsbPallet.Dimensions.M0, dcsbPallet.Dimensions.M1, dcsbPallet.Dimensions.M2)
+                {
+                    Weight = dcsbPallet.Weight,
+                    Color = Color.FromArgb(dcsbPallet.Color)
+                };
+                // build constraint set
+                ConstraintSetCasePallet constraintSet = new ConstraintSetCasePallet()
+                {
+                    Overhang = Vector2D.Zero,
+                    OptMaxWeight = new OptDouble(true, dcsbPallet.MaxPalletHeight),
+                    OptMaxNumber = OptInt.Zero
+                };
+                constraintSet.SetMaxHeight(new OptDouble());
+                constraintSet.SetAllowedOrientations(new bool[] { false, false, true });
+                if (!constraintSet.Valid) throw new Exception("Invalid constraint set");
+
+                for (int iConfig = 0; iConfig < 3; ++iConfig)
+                {
+                    var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, iConfig + 1);
+                    // build box
+                    var boxProperties = new BoxProperties(null, jjaConfig.Length, jjaConfig.Width, jjaConfig.Height)
+                    {
+                        InsideLength = 0.0,
+                        InsideWidth = 0.0,
+                        InsideHeight = 0.0,
+                        TapeColor = Color.Beige,
+                        TapeWidth = new OptDouble(true, 50.0)
+                    };
+                    boxProperties.SetWeight(weight);
+                    boxProperties.SetNetWeight(new OptDouble(false, 0.0));
+                    boxProperties.SetAllColors(Enumerable.Repeat(Color.Chocolate, 6).ToArray());
+
+                    int casePerLayerCount = 0, layerCount = 0, caseCount = 0, interlayerCount = 0;
+                    double weightTotal = 0.0, weightLoad = 0.0;
+                    double areaEfficiency = 0.0, volumeEfficiency = 0.0;
+                    double? weightNet = null;
+                    double? weightEfficiency = null;
+                    string palletMapPhrase = string.Empty;
+                    byte[] imageBytes = null;
+                    var bbLoad = Vector3D.Zero;
+                    var bbGlob = Vector3D.Zero;
+                    string[] errors = null;
+
+                    if (StackBuilderProcessor.GetBestSolution(
+                boxProperties, palletProperties, null,
+                constraintSet, false,
+                ImageDefinition.NoImage,
+                ref casePerLayerCount, ref layerCount,
+                ref caseCount, ref interlayerCount,
+                ref weightTotal, ref weightLoad, ref weightNet,
+                ref bbLoad, ref bbGlob,
+                ref areaEfficiency, ref volumeEfficiency, ref weightEfficiency,
+                ref palletMapPhrase,
+                ref imageBytes, ref errors))
+                    {
+                        foreach (string err in errors)
+                            lErrors.Add(err);
+                        loadResultsPallets[3 * iPallet + iConfig] = new DCSBLoadResultPallet()
+                        {
+                            ConfigId = (DCSBConfigId)(iConfig + 1),
+                            Pallet = dcsbPallet,
+                            PalletMapPhrase = palletMapPhrase,
+                            NumberOfLayers = layerCount,
+                            NumberPerLayer = casePerLayerCount,
+                            UpalItem = casePerLayerCount * noItemPerCase,
+                            UpalCase = caseCount,
+                            IsoBasePercentage = areaEfficiency,
+                            IsoVolPercentage = volumeEfficiency,
+                            LoadWeight = weightLoad,
+                            MaxLoadValidity = weightTotal < dcsbPallet.MaxPalletWeight
+                        };
+                    }
+                }
+            }
             return loadResultsPallets;
         }
-        DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(DCSBDim3D dimensions, double weight, int noItemPerCase
+        public DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(DCSBDim3D dimensions, double weight, int noItemPerCase
             , DCSBContainer container, DCSBConfigId configId
-            , DCCompFormat expectedFormat, bool showCotations)
+            , DCCompFormat expectedFormat)
         {
             DCSBLoadResultSingleContainer loadResultSingleContainer = new DCSBLoadResultSingleContainer();
             return loadResultSingleContainer;
         }
-        DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(DCSBDim3D dimensions, double weight, int noItemPerCase
-            , DCSBPallet pallet, DCSBConfigId configId, double maxPalletHeight
-            , DCCompFormat expectedFormat, bool showCotations)
+        public DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(
+            DCSBDim3D dimensions, double weight, int pcb
+            , DCSBPalletWHeight sbPallet, DCSBConfigId configId
+            , DCCompFormat expectedFormat)
         {
-            DCSBLoadResultSinglePallet loadResultSinglePallet = new DCSBLoadResultSinglePallet();
-            return loadResultSinglePallet;
+            var lErrors = new List<string>();
+            var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, (int)configId);
+
+            // build boxProperties
+            var boxProperties = new BoxProperties(null, jjaConfig.Length, jjaConfig.Width, jjaConfig.Height)
+            {
+                InsideLength = 0.0,
+                InsideWidth = 0.0,
+                InsideHeight = 0.0,
+                TapeColor = Color.Beige,
+                TapeWidth = new OptDouble(true, 50.0)
+            };
+            boxProperties.SetWeight(weight);
+            boxProperties.SetNetWeight(new OptDouble(false, 0.0));
+            boxProperties.SetAllColors(Enumerable.Repeat(Color.Chocolate, 6).ToArray());
+
+            PalletProperties palletProperties = null;
+            if (null != sbPallet.Dimensions)
+                palletProperties = new PalletProperties(null, sbPallet.PalletType,
+                    sbPallet.Dimensions.M0, sbPallet.Dimensions.M1, sbPallet.Dimensions.M2)
+                {
+                    Weight = sbPallet.Weight,
+                    Color = Color.FromArgb(sbPallet.Color)
+                };
+            else
+                palletProperties = new PalletProperties(null, "EUR2", 1200.0, 1000.0, 150.0);
+
+            ConstraintSetCasePallet constraintSet = new ConstraintSetCasePallet()
+            {
+                Overhang = Vector2D.Zero,
+                OptMaxWeight = OptDouble.Zero,
+                OptMaxNumber = OptInt.Zero
+            };
+            constraintSet.SetMaxHeight(new OptDouble(true, sbPallet.MaxPalletHeight));
+            constraintSet.SetAllowedOrientations(new bool[] { false, false, true });
+            if (!constraintSet.Valid) throw new Exception("Invalid constraint set");
+
+            int casePerLayerCount = 0, layerCount = 0, caseCount = 0, interlayerCount = 0;
+            double weightTotal = 0.0, weightLoad = 0.0, volumeEfficiency = 0.0;
+            double areaEfficiency = 0.0;
+            double? weightEfficiency = 0.0;
+            double? weightNet = (double?)null;
+            Vector3D bbLoad = new Vector3D();
+            Vector3D bbGlob = new Vector3D();
+            byte[] imageBytes = null;
+            string[] errors = null;
+            string palletMapPhrase = string.Empty;
+
+            if (StackBuilderProcessor.GetBestSolution(
+                boxProperties, palletProperties, null,
+                constraintSet, false,
+                new ImageDefinition()
+                {
+                    CameraPosition = Graphics3D.Corner_0,
+                    ImageSize = new Size(expectedFormat.Size.CX, expectedFormat.Size.CY)
+                },
+                ref casePerLayerCount, ref layerCount,
+                ref caseCount, ref interlayerCount,
+                ref weightTotal, ref weightLoad, ref weightNet,
+                ref bbLoad, ref bbGlob,
+                ref areaEfficiency, ref volumeEfficiency, ref weightEfficiency,
+                ref palletMapPhrase,
+                ref imageBytes, ref errors))
+            {
+                foreach (string err in errors)
+                    lErrors.Add(err);
+                return new DCSBLoadResultSinglePallet()
+                {
+                    Status = new DCSBStatus()
+                    {
+                        Status = DCSBStatusEnu.Success,
+                        Error = string.Empty
+                    },
+                    Result = new DCSBLoadResultPallet()
+                    {
+                        ConfigId = configId,
+                        Pallet = sbPallet,
+                        PalletMapPhrase = palletMapPhrase,
+                        NumberOfLayers = layerCount,
+                        NumberPerLayer = casePerLayerCount,
+                        UpalItem = caseCount * pcb,
+                        UpalCase = caseCount,
+                        IsoBasePercentage = areaEfficiency,
+                        IsoVolPercentage = volumeEfficiency,
+                        LoadWeight = weightLoad,
+                        MaxLoadValidity = weightTotal <= sbPallet.MaxPalletWeight
+                    },
+                    OutFile = new DCCompFileOutput()
+                    {
+                        Bytes = imageBytes,
+                        Format = new DCCompFormat()
+                        {
+                            Format = EOutFormat.IMAGE,
+                            Size = new DCCompSize()
+                            {
+                                CX = expectedFormat.Size.CX,
+                                CY = expectedFormat.Size.CY
+                            }
+                        }
+                    }
+                };
+            }
+            return new DCSBLoadResultSinglePallet()
+            {
+                Status = new DCSBStatus()
+                {
+                    Status = DCSBStatusEnu.FailureLengthOrWidthExceeded,
+                },
+                Result = new DCSBLoadResultPallet()
+                {
+                },
+                OutFile = null
+            };
         }
         #endregion
+
+        #region Data members
+        protected static readonly ILog _log = LogManager.GetLogger(typeof(StackBuilderServ));
+        #endregion
     }
-
-
-
 }
 

@@ -25,6 +25,8 @@ namespace treeDiM.StackBuilder.WCFService.Test
             formHomo.Show(dockPanel, DockState.Document);
             var formHetero = new FormTestHeterogeneous();
             formHetero.Show(dockPanel, DockState.Document);
+            var formTestJJA = new FormTestJJA();
+            formTestJJA.Show(dockPanel, DockState.Document);
         }
         #endregion
     }

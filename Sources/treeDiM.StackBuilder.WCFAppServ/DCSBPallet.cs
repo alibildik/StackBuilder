@@ -20,7 +20,14 @@ namespace treeDiM.StackBuilder.WCFAppServ
         [DataMember]
         public int Color { get; set; }
     }
-
+    [DataContract]
+    public class DCSBPalletWHeight : DCSBPallet
+    {
+        [DataMember]
+        public double MaxPalletHeight { get; set; }
+        [DataMember]
+        public double MaxPalletWeight { get; set; }
+    }
     public class ComparerDCSBPallet_Name : IComparer<DCSBPallet>
     {
         public int Compare(DCSBPallet pallet1, DCSBPallet pallet2)

@@ -39,6 +39,8 @@ namespace treeDiM.StackBuilder.WCFAppServ
         public EOutFormat Format { get; set; }
         [DataMember]
         public DCCompSize Size{ get; set; }
+        [DataMember]
+        public bool ShowCotations { get; set; } = true;
     }
 
     [DataContract]

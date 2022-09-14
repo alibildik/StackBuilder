@@ -26,6 +26,9 @@
       <Component Id="Sharp3D.Math.dll" Guid="{701684BB-6AD7-4E02-8414-1CD90F9D146A}">
         <File Source="$(var.BinDir)Sharp3D.Math.dll"/>
       </Component>
+		<Component Id="MIConvexHull.dll" Guid="{45110FED-11A7-48DA-9614-496C2A4EE9FB}">
+			<File Source="$(var.BinDir)MIConvexHull.dll"/>
+		</Component>
       <Component Id="Sharp3DBinPacking.dll" Guid="{2D815BD0-7270-4184-A579-0E2CB19B5702}">
         <File Source="$(var.BinDir)Sharp3DBinPacking.dll"/>
       </Component>
@@ -40,13 +43,19 @@
         <File Source="$(var.BinDir)Microsoft.Data.Edm.dll"/>
         <File Source="$(var.BinDir)Microsoft.Data.OData.dll"/>
         <File Source="$(var.BinDir)Microsoft.Data.Services.Client.dll"/>
-        <File Source="$(var.BinDir)Microsoft.WindowsAzure.Diagnostics.dll"/>
+  	    <File Source="$(var.BinDir)Microsoft.Rest.ClientRuntime.Azure.dll"/>
+		<File Source="$(var.BinDir)Microsoft.Rest.ClientRuntime.dll"/>  
+		<File Source="$(var.BinDir)Microsoft.WindowsAzure.Diagnostics.dll"/>
         <File Source="$(var.BinDir)Microsoft.WindowsAzure.Storage.dll"/>
         <File Source="$(var.BinDir)MonAgentListener.dll"/>
-        <File Source="$(var.BinDir)System.Collections.Immutable.dll"/>
         <File Source="$(var.BinDir)Newtonsoft.Json.dll"/>
+		<File Source="$(var.BinDir)System.Buffers.dll"/>  
+        <File Source="$(var.BinDir)System.Collections.Immutable.dll"/>
+        <File Source="$(var.BinDir)System.Memory.dll"/>		  
+	    <File Source="$(var.BinDir)System.Numerics.Vectors.dll"/>
+		<File Source="$(var.BinDir)System.Runtime.CompilerServices.Unsafe.dll"/>
         <File Source="$(var.BinDir)System.Spatial.dll"/>
-      </Component>
+	  </Component>
       <Component Id="treeDiM.StackBuilder" Guid="{C61D9742-6CF1-464F-9400-9DB6AF07E1D2}">
         <File Source="$(var.BinDir)treeDiM.Basics.dll"/>
         <File Source="$(var.BinDir)treeDiM.StackBuilder.Basics.dll"/>

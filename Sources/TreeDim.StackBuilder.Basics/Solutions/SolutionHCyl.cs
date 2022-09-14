@@ -55,6 +55,7 @@ namespace treeDiM.StackBuilder.Basics
         #region Implementation SolutionHomo abstract methods 
         public override int ItemCount => Layout.Positions.Count;
         public override BBox3D BBoxLoad => Layout.BBox;
+        public override double AreaEfficiency => 0.0;
         #endregion
 
         #region Private properties
