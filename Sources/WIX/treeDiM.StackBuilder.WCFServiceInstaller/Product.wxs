@@ -2,7 +2,7 @@
 <?include $(sys.CURRENTDIR)\Config.wxi?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Name="treeDiM.StackBuilder.WCFServiceInstaller"
+  <Product Id="*" Name="treeDiM.StackBuilder.WCFService"
            Language="1033"
            Version="$(var.ProductVersion)"
            Manufacturer="$(var.Manufacturer)"

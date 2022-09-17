@@ -64,6 +64,12 @@ namespace treeDiM.StackBuilder.WCFAppServ
     public class DCSBCaseConfig
     {
         [DataMember]
+        public double Length { get; set; }
+        [DataMember]
+        public double Width { get; set; }
+        [DataMember]
+        public double Height { get; set; }
+        [DataMember]
         public DCSBConfigId ConfigId { get; set; }
         [DataMember]
         public DCSBDim3D Dim3D { get; set; }

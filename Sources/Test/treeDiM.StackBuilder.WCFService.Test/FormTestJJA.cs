@@ -1,25 +1,19 @@
 ﻿#region Using directives
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
 using log4net;
 using WeifenLuo.WinFormsUI.Docking;
-using SourceGrid;
 
 using treeDiM.StackBuilder.WCFService.Test.Properties;
 using JJA.InputData;
-using System.Runtime.InteropServices.ComTypes;
 using System.Xml.Serialization;
 using static treeDiM.StackBuilder.WCFService.Test.FormTestHeterogeneous;
 using treeDiM.StackBuilder.WCFService.Test.SB_SR;
+using System.Reflection;
 #endregion
 
 namespace treeDiM.StackBuilder.WCFService.Test
@@ -49,6 +43,46 @@ namespace treeDiM.StackBuilder.WCFService.Test
         }
         #endregion
         #region Grid
+        private string ConveyMode(DCSBConveyMode convMode)
+        {
+            switch (convMode)
+            {
+                case DCSBConveyMode.Manual: return "Manual";
+                default: return string.Empty;
+            }
+        }
+        #region Helpers
+        private string Conveyability(DCSBConveyability conv)
+        {
+            switch (conv)
+            {
+                case DCSBConveyability.Conveyable: return "Conveyable";
+                case DCSBConveyability.NonConveyableDimensions: return "Non conveyable (dimensions)";
+                case DCSBConveyability.NonConveyableWeight: return "Non conveyable (weight)";
+                default: return string.Empty;
+            }
+        }
+        private string Stability(DCSBStabilityEnum stab)
+        {
+            switch (stab)
+            {
+                case DCSBStabilityEnum.Stable: return "stable";
+                case DCSBStabilityEnum.Unstable: return "unstable";
+                default: return string.Empty;
+            }
+        }
+        private string ConveyFace(DCSBOrientationName orientation)
+        {
+            switch (orientation)
+            {
+                case DCSBOrientationName.BottomTop: return "BottomTop";
+                case DCSBOrientationName.LeftRight: return "LeftRight";
+                case DCSBOrientationName.FrontBack: return "FrontBack";
+                default: return string.Empty;
+
+            }
+        }
+        #endregion
         private void FillGridContent1()
         {
             try
@@ -63,7 +97,8 @@ namespace treeDiM.StackBuilder.WCFService.Test
                         Border = DevAge.Drawing.RectangleBorder.NoBorder
                     },
                     ForeColor = Color.Black,
-                    Font = new Font("Arial", 10, FontStyle.Regular)
+                    Font = new Font("Arial", 10, FontStyle.Regular),
+                    TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter
                 };
                 viewColumnHeader.ElementSort.SortStyle = DevAge.Drawing.HeaderSortStyle.None;
                 // viewNormal
@@ -91,10 +126,61 @@ namespace treeDiM.StackBuilder.WCFService.Test
                 // pallet row
                 // content
                 int iIndex = 0;
+                int indexStart = 0;
+
+                // loop on cases
                 for (int iCase = 0; iCase < Cases.Count; ++iCase)
                 {
                     var crate = Cases[iCase];
+                    var dimensions = new DCSBDim3D() { M0 = crate.dimensions[0], M1 = crate.dimensions[1], M2 = crate.dimensions[2] };
 
+                    using (var client = new StackBuilderClient())
+                    {
+                        var configs = client.JJA_GetCaseConfigs(
+                            dimensions,
+                            crate.weight,
+                            new DCCompFormat()
+                            {
+                                Format = OutFormat.IMAGE,
+                                Size = new DCCompSize() { CX = 100, CY = 100 },
+                                ShowCotations = true,
+                                FontSizeRatio = 0.05f
+                            }
+                            );
+
+                        indexStart = iIndex;
+                        for (int configId = 0; configId < 3; ++configId)
+                        {
+                            iIndex = indexStart;
+                            var config = configs[configId];
+                            string sDim = $"{config.Length} x {config.Width} x {config.Height}";
+
+                            // dimensions
+                            ++iIndex;
+                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Dimensions") { View = viewNormal }; }
+                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(sDim) { View = viewNormal };
+                            // stable
+                            ++iIndex;
+                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Stable") { View = viewNormal }; }
+                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(Stability(config.Stable)) { View = viewNormal };
+                            // conveyability
+                            ++iIndex;
+                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Conveyability") { View = viewNormal }; }
+                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(Conveyability(config.Conveyability)) { View = viewNormal };
+                            // convey mode
+                            ++iIndex;
+                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Convey mode") { View = viewNormal }; }
+                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(ConveyMode(config.ConveyMode)) { View = viewNormal };
+                            // convey face
+                            ++iIndex;
+                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Convey face") { View = viewNormal }; }
+                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.ConveyFace) { View = viewNormal };
+                            // image
+                            ++iIndex;
+                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Image case") { View = viewNormal }; }
+                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Image(ByteArrayToImage(config.Image.Bytes)) { View = viewNormal };
+                        }
+                    }
                     for (int iPallet = 0; iPallet < Pallets.Count; ++iPallet)
                     {
                         // insert row
@@ -104,14 +190,19 @@ namespace treeDiM.StackBuilder.WCFService.Test
                         var pallet = Pallets[iPallet];
 
                         // name
-                        gridPallets[iIndex, iCol] = new SourceGrid.Cells.Cell($"{crate.name} on {pallet.name}") { View = viewColumnHeader, Tag = $"{crate.name} on {pallet.name}" };
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.RowHeader($"{crate.name} on {pallet.name}")
+                        {
+                            View = viewColumnHeader,
+                            ColumnSpan = 4,
+                            Tag = $"{crate.name} on {pallet.name}"
+                        };
 
-                        int indexStart = iIndex;
+                       indexStart = iIndex;
 
                         for (int configId = 0; configId < 3; ++configId)
                         {
                             iIndex = indexStart;
-                            using (StackBuilderClient client = new StackBuilderClient())
+                            using (var client = new StackBuilderClient())
                             {
                                 var loadResult = client.JJA_GetLoadResultSinglePallet(
                                     new DCSBDim3D() { M0 = crate.dimensions[0], M1 = crate.dimensions[1], M2 = crate.dimensions[2] },
@@ -135,8 +226,10 @@ namespace treeDiM.StackBuilder.WCFService.Test
                                     (DCSBConfigId)(configId + 1),
                                     new DCCompFormat()
                                     {
+                                        Format = OutFormat.IMAGE,
                                         ShowCotations = true,
-                                        Size = new DCCompSize() { CX = 250, CY = 250 }
+                                        Size = new DCCompSize() { CX = 250, CY = 250 },
+                                        FontSizeRatio = 0.03f
                                     }
                                     );
 
@@ -211,24 +304,19 @@ namespace treeDiM.StackBuilder.WCFService.Test
             // ***
             // set first row
             gridPallets.BorderStyle = BorderStyle.FixedSingle;
-            gridPallets.ColumnsCount = 4;
+            gridPallets.ColumnsCount = 2;
             gridPallets.FixedRows = 1;
+            
             // *** header : begin
             int iCol = 0;
             gridPallets.Rows.Insert(0);
-            gridPallets[0, iCol] = new SourceGrid.Cells.ColumnHeader(string.Empty)
+            gridPallets[0, iCol] = new SourceGrid.Cells.ColumnHeader("")
             {
                 AutomaticSortEnabled = false,
                 View = viewColumnHeader
             };
-            for (int configId = 0; configId < 3; ++configId)
-                gridPallets[0, ++iCol] = new SourceGrid.Cells.ColumnHeader($"Config {configId + 1}")
-                {
-                    AutomaticSortEnabled = false,
-                    View = viewColumnHeader
-                };
             // *** header : end
-
+            
             // build pallet array
             var dcsbPallets = new DCSBPalletWHeight[Pallets.Count];
             for (int i = 0; i < Pallets.Count; i++)
@@ -240,9 +328,11 @@ namespace treeDiM.StackBuilder.WCFService.Test
                     Color = pallet.color,
                     Dimensions = new DCSBDim3D() { M0 = pallet.dimensions[0], M1 = pallet.dimensions[1], M2 = pallet.dimensions[2] },
                     Weight = 20.0,
+                    MaxPalletHeight = pallet.maxPalletHeight,
                     MaxPalletWeight = pallet.maxLoadWeight
                 };
             }
+            int iIndex = 0;
             // *** proceed with each crate
             for (int iCase = 0; iCase < Cases.Count; ++iCase)
             {
@@ -257,15 +347,75 @@ namespace treeDiM.StackBuilder.WCFService.Test
                             M1 = crate.dimensions[1],
                             M2 = crate.dimensions[2]
                         }, crate.weight, crate.pcb, dcsbPallets);
+
+                    
+                    foreach (var loadResult in loadResults)
+                    {
+                        if (null == loadResult)
+                            continue;
+                        if (loadResult.Status.Status != DCSBStatusEnu.Success)
+                            continue;
+
+                        int configId = (int)loadResult.ConfigId;
+
+                        // name
+                        gridPallets.Rows.Insert(++iIndex);
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.RowHeader($"{crate.name} on {loadResult.Pallet.Name} ({configId})")
+                        {
+                            View = viewColumnHeader,
+                            ColumnSpan = 2,
+                            Tag = $"{crate.name} on {loadResult.Pallet.Name} ({configId})"
+                        };
+                        // config id
+                        gridPallets.Rows.Insert(++iIndex);
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Config Id") { View = viewNormal };
+                        gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.ConfigId) { View = viewNormal };
+                        // number of case per layer
+                        gridPallets.Rows.Insert(++iIndex);
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of case per layer") { View = viewNormal }; 
+                        gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.NumberPerLayer) { View = viewNormal };
+                        // no of layers
+                        gridPallets.Rows.Insert(++iIndex);
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of layers") { View = viewNormal };
+                        gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.NumberOfLayers) { View = viewNormal };
+                        // pallet map phrase
+                        gridPallets.Rows.Insert(++iIndex);
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet map phrase") { View = viewNormal }; 
+                        gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.PalletMapPhrase) { View = viewNormal };
+                        // no of case/pallet
+                        gridPallets.Rows.Insert(++iIndex);
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of cases per pallet") { View = viewNormal }; 
+                        gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.UpalCase) { View = viewNormal };
+                        // no of items/pallet
+                        gridPallets.Rows.Insert(++iIndex);
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of items per pallet") { View = viewNormal }; 
+                        gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.UpalItem) { View = viewNormal };
+                        // iso base
+                        gridPallets.Rows.Insert(++iIndex);
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area efficiency (1st layer)") { View = viewNormal }; 
+                        gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.IsoBasePercentage) { View = viewNormal };
+                        // iso pallet
+                        gridPallets.Rows.Insert(++iIndex);
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet volume efficiency (%)") { View = viewNormal }; 
+                        gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.IsoVolPercentage) { View = viewNormal };
+                    }
                 }
                 // *** call WS
             }
             // ***
-
             gridPallets.AutoSizeCells();
             gridPallets.Columns.StretchToFit();
             gridPallets.AutoStretchColumnsToFitWidth = true;
             gridPallets.Invalidate();
+        }
+
+        private void FillGridContent3()
+        { 
+            // ***
+            gridContainers.AutoSizeCells();
+            gridContainers.Columns.StretchToFit();
+            gridContainers.AutoStretchColumnsToFitWidth = true;
+            gridContainers.Invalidate();        
         }
 
         public Image ByteArrayToImage(byte[] byteArrayIn)
@@ -324,7 +474,11 @@ namespace treeDiM.StackBuilder.WCFService.Test
         #endregion
         #region Loading data
         private void LoadInputData()
-        { 
+        {
+            Containers.Clear();
+            Pallets.Clear();
+            Cases.Clear();
+
             bool result = false;
             string filePath = tbFilePath.Text;
             if (File.Exists(filePath))
@@ -354,7 +508,6 @@ namespace treeDiM.StackBuilder.WCFService.Test
         private List<inputPallet> Pallets = new List<inputPallet>();
         private List<inputContainer> Containers = new List<inputContainer>(); 
         private List<inputCase> Cases = new List<inputCase>();
-
         protected ILog _log = LogManager.GetLogger(typeof(FormTestJJA));
         #endregion
 

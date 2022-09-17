@@ -306,7 +306,13 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 if (StackBuilderProcessor.GetBestSolution(
                     boxProperties, palletProperties, interlayerProperties,
                     constraintSet, sbConstraintSet.AllowMultipleLayerOrientations,
-                    new ImageDefinition() { ShowDimensions = expectedFormat.ShowCotations, ImageSize = new Size(expectedFormat.Size.CX, expectedFormat.Size.CY) },
+                    new ImageDefinition()
+                    {
+                        ShowImage = expectedFormat.Format == EOutFormat.IMAGE,
+                        ShowDimensions = expectedFormat.ShowCotations,
+                        ImageSize = new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
+                        FontSizeRatio = expectedFormat.FontSizeRatio
+                    },
                     ref casePerLayerCount, ref layerCount,
                     ref caseCount, ref interlayerCount,
                     ref weightTotal, ref weightLoad, ref weightNet,
@@ -413,10 +419,11 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     constraintSet, false,
                     new ImageDefinition()
                     {
+                        ShowImage = expectedFormat.Format == EOutFormat.IMAGE,
                         CameraPosition = Graphics3D.Corner_0,
                         ShowDimensions = expectedFormat.ShowCotations,
                         ImageSize = new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
-                        FontSizeRatio = 0.03f
+                        FontSizeRatio = expectedFormat.FontSizeRatio
                     },
                     ref casePerLayerCount, ref layerCount,
                     ref caseCount, ref interlayerCount,
@@ -926,15 +933,18 @@ namespace treeDiM.StackBuilder.WCFAppServ
         #endregion
 
         #region JJA Specific methods
-        public DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight
-            , DCCompSize imageSize, bool showCotations)
+        public DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight, DCCompFormat format)
         {
             DCSBCaseConfig[] caseConfigs = new DCSBCaseConfig[3];
 
             for (int i = 0; i < 3; ++i)
             {
                 var jjaconfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, i + 1);
-                caseConfigs[i].ConfigId = (DCSBConfigId)i;
+                caseConfigs[i] = new DCSBCaseConfig();
+                caseConfigs[i].ConfigId = (DCSBConfigId)i + 1;
+                caseConfigs[i].Length = jjaconfig.Length;
+                caseConfigs[i].Width = jjaconfig.Width;
+                caseConfigs[i].Height = jjaconfig.Height;
                 caseConfigs[i].Dim3D = new DCSBDim3D(jjaconfig.Length, jjaconfig.Width, jjaconfig.Height);
                 caseConfigs[i].Volume = jjaconfig.Volume;
                 caseConfigs[i].AreaBottomTop = jjaconfig.AreaBottomTop;
@@ -945,16 +955,8 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 caseConfigs[i].ConveyFace = (DCSBOrientationName)jjaconfig.ConveyFace;
                 caseConfigs[i].Image = new DCCompFileOutput()
                 {
-                    Bytes = jjaconfig.GetImageBytes(imageSize.CX, imageSize.CY, 0.02f, showCotations),
-                    Format = new DCCompFormat()
-                    {
-                        Format = EOutFormat.IMAGE,
-                        Size = new DCCompSize()
-                        {
-                            CX = imageSize.CX,
-                            CY = imageSize.CY
-                        }
-                    }
+                    Bytes = jjaconfig.GetImageBytes(format.Size.CX, format.Size.CY, format.FontSizeRatio, format.ShowCotations),
+                    Format = format
                 };
             }
             return caseConfigs;
@@ -987,10 +989,10 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 ConstraintSetCasePallet constraintSet = new ConstraintSetCasePallet()
                 {
                     Overhang = Vector2D.Zero,
-                    OptMaxWeight = new OptDouble(true, dcsbPallet.MaxPalletHeight),
+                    OptMaxWeight = new OptDouble(false, dcsbPallet.MaxPalletWeight),
                     OptMaxNumber = OptInt.Zero
                 };
-                constraintSet.SetMaxHeight(new OptDouble());
+                constraintSet.SetMaxHeight(new OptDouble() { Activated = true, Value = dcsbPallet.MaxPalletHeight });
                 constraintSet.SetAllowedOrientations(new bool[] { false, false, true });
                 if (!constraintSet.Valid) throw new Exception("Invalid constraint set");
 
@@ -1022,21 +1024,22 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     string[] errors = null;
 
                     if (StackBuilderProcessor.GetBestSolution(
-                boxProperties, palletProperties, null,
-                constraintSet, false,
-                ImageDefinition.NoImage,
-                ref casePerLayerCount, ref layerCount,
-                ref caseCount, ref interlayerCount,
-                ref weightTotal, ref weightLoad, ref weightNet,
-                ref bbLoad, ref bbGlob,
-                ref areaEfficiency, ref volumeEfficiency, ref weightEfficiency,
-                ref palletMapPhrase,
-                ref imageBytes, ref errors))
+                        boxProperties, palletProperties, null,
+                        constraintSet, false,
+                        ImageDefinition.NoImage,
+                        ref casePerLayerCount, ref layerCount,
+                        ref caseCount, ref interlayerCount,
+                        ref weightTotal, ref weightLoad, ref weightNet,
+                        ref bbLoad, ref bbGlob,
+                        ref areaEfficiency, ref volumeEfficiency, ref weightEfficiency,
+                        ref palletMapPhrase,
+                        ref imageBytes, ref errors))
                     {
                         foreach (string err in errors)
                             lErrors.Add(err);
                         loadResultsPallets[3 * iPallet + iConfig] = new DCSBLoadResultPallet()
                         {
+                            Status = new DCSBStatus() { Status = DCSBStatusEnu.Success },
                             ConfigId = (DCSBConfigId)(iConfig + 1),
                             Pallet = dcsbPallet,
                             PalletMapPhrase = palletMapPhrase,
@@ -1050,6 +1053,12 @@ namespace treeDiM.StackBuilder.WCFAppServ
                             MaxLoadValidity = weightTotal < dcsbPallet.MaxPalletWeight
                         };
                     }
+                    else
+                        loadResultsPallets[3 * iPallet + iConfig] = new DCSBLoadResultPallet()
+                        {
+                            ConfigId = (DCSBConfigId)(iConfig + 1),
+                            Status = new DCSBStatus() { Status = DCSBStatusEnu.FailureHeightExceeded, Error = string.Join("|", errors.ToArray()) }
+                        };
                 }
             }
             return loadResultsPallets;
@@ -1119,8 +1128,10 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 constraintSet, false,
                 new ImageDefinition()
                 {
+                    ShowImage = expectedFormat.Format == EOutFormat.IMAGE,
                     CameraPosition = Graphics3D.Corner_0,
-                    ImageSize = new Size(expectedFormat.Size.CX, expectedFormat.Size.CY)
+                    ImageSize = new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
+                    FontSizeRatio = expectedFormat.FontSizeRatio
                 },
                 ref casePerLayerCount, ref layerCount,
                 ref caseCount, ref interlayerCount,

@@ -22,7 +22,6 @@ namespace treeDiM.StackBuilder.WCFAppServ
         [EnumMember]
         DES
     }
-
     [DataContract]
     public class DCCompSize
     {
@@ -31,7 +30,6 @@ namespace treeDiM.StackBuilder.WCFAppServ
         [DataMember]
         public int CY { get; set; }
     }
-
     [DataContract]
     public class DCCompFormat
     {
@@ -41,8 +39,9 @@ namespace treeDiM.StackBuilder.WCFAppServ
         public DCCompSize Size{ get; set; }
         [DataMember]
         public bool ShowCotations { get; set; } = true;
+        [DataMember]
+        public float FontSizeRatio { get; set; } = 0.03f;
     }
-
     [DataContract]
     public class DCCompFileOutput
     {

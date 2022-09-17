@@ -160,7 +160,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                         {
                             FontSizeRatio = imageDef.FontSizeRatio,
                             CameraPosition = imageDef.CameraPosition,
-                            ShowDimensions = imageDef.ShowDimensions
+                            ShowDimensions = imageDef.ShowDimensions,
                         };
                         using (ViewerSolution sv = new ViewerSolution(solutionLay))
                             sv.Draw(graphics, Transform3D.Identity);

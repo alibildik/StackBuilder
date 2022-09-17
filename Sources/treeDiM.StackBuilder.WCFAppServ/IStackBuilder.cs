@@ -33,20 +33,19 @@ namespace treeDiM.StackBuilder.WCFAppServ
 
         #region JJA Specific methods
         [OperationContract]
-        DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight
-            , DCCompSize imageFormat, bool showCotations);
+        DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight, DCCompFormat imageFormat);
         [OperationContract]
-        DCSBLoadResultContainer[] JJA_GetMultiContainerResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBContainer[] containers);
+        DCSBLoadResultContainer[] JJA_GetMultiContainerResults(DCSBDim3D dimensions, double weight, int noItemPerCase
+            , DCSBContainer[] containers);
         [OperationContract]
-        DCSBLoadResultPallet[] JJA_GetMultiPalletResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBPalletWHeight[] pallets);
+        DCSBLoadResultPallet[] JJA_GetMultiPalletResults(DCSBDim3D dimensions, double weight, int noItemPerCase
+            , DCSBPalletWHeight[] pallets);
         [OperationContract]
         DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(DCSBDim3D dimensions, double weight, int noItemPerCase
-            , DCSBContainer container, DCSBConfigId configId
-            , DCCompFormat expectedFormat);
+            , DCSBContainer container, DCSBConfigId configId, DCCompFormat imageFormat);
         [OperationContract]
         DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(DCSBDim3D dimensions, double weight, int noItemPerCase
-            , DCSBPalletWHeight pallet, DCSBConfigId configId
-            , DCCompFormat expectedFormat);
+            , DCSBPalletWHeight pallet, DCSBConfigId configId, DCCompFormat imageFormat);
         #endregion
 
         #region Heterogeneous stacking

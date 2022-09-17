@@ -117,6 +117,7 @@
   <xs:element name="DCSBDim2D" nillable="true" type="tns:DCSBDim2D" />
   <xs:complexType name="DCCompFormat">
     <xs:sequence>
+      <xs:element minOccurs="0" name="FontSizeRatio" type="xs:float" />
       <xs:element minOccurs="0" name="Format" type="tns:OutFormat" />
       <xs:element minOccurs="0" name="ShowCotations" type="xs:boolean" />
       <xs:element minOccurs="0" name="Size" nillable="true" type="tns:DCCompSize" />
@@ -196,10 +197,13 @@
       <xs:element minOccurs="0" name="ConveyMode" type="tns:DCSBConveyMode" />
       <xs:element minOccurs="0" name="Conveyability" type="tns:DCSBConveyability" />
       <xs:element minOccurs="0" name="Dim3D" nillable="true" type="tns:DCSBDim3D" />
+      <xs:element minOccurs="0" name="Height" type="xs:double" />
       <xs:element minOccurs="0" name="Image" nillable="true" type="tns:DCCompFileOutput" />
+      <xs:element minOccurs="0" name="Length" type="xs:double" />
       <xs:element minOccurs="0" name="PrepMode" type="tns:DCSBPrep" />
       <xs:element minOccurs="0" name="Stable" type="tns:DCSBStabilityEnum" />
       <xs:element minOccurs="0" name="Volume" type="xs:double" />
+      <xs:element minOccurs="0" name="Width" type="xs:double" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DCSBCaseConfig" nillable="true" type="tns:DCSBCaseConfig" />
