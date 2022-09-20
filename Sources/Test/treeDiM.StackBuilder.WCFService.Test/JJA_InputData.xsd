@@ -32,6 +32,7 @@
 									<xs:attribute name="color" type="xs:int" use="required"/>
 									<xs:attribute name="type" type="xs:string" use="required"/>
 									<xs:attribute name="dimensions" type="vector3D" use="required"/>
+									<xs:attribute name="weight" type="xs:double" use="required"/>
 									<xs:attribute name="maxPalletHeight" type="xs:double" use="required"/>
 									<xs:attribute name="maxLoadWeight" type="xs:double"  use="optional"/>
 								</xs:complexType>

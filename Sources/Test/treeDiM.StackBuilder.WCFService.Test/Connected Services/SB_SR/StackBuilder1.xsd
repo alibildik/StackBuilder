@@ -200,9 +200,11 @@
       <xs:element minOccurs="0" name="Height" type="xs:double" />
       <xs:element minOccurs="0" name="Image" nillable="true" type="tns:DCCompFileOutput" />
       <xs:element minOccurs="0" name="Length" type="xs:double" />
+      <xs:element minOccurs="0" name="Pcb" type="xs:int" />
       <xs:element minOccurs="0" name="PrepMode" type="tns:DCSBPrep" />
       <xs:element minOccurs="0" name="Stable" type="tns:DCSBStabilityEnum" />
       <xs:element minOccurs="0" name="Volume" type="xs:double" />
+      <xs:element minOccurs="0" name="Weight" type="xs:double" />
       <xs:element minOccurs="0" name="Width" type="xs:double" />
     </xs:sequence>
   </xs:complexType>
@@ -311,6 +313,7 @@
       <xs:element minOccurs="0" name="NumberOfLayers" type="xs:int" />
       <xs:element minOccurs="0" name="NumberPerLayer" type="xs:int" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="tns:DCSBStatus" />
+      <xs:element minOccurs="0" name="TotalWeight" type="xs:double" />
       <xs:element minOccurs="0" name="UpalCase" type="xs:int" />
       <xs:element minOccurs="0" name="UpalItem" type="xs:int" />
     </xs:sequence>
@@ -343,7 +346,7 @@
       <xs:extension base="tns:DCSBPallet">
         <xs:sequence>
           <xs:element minOccurs="0" name="MaxPalletHeight" type="xs:double" />
-          <xs:element minOccurs="0" name="MaxPalletWeight" type="xs:double" />
+          <xs:element minOccurs="0" name="MaxPalletLoad" type="xs:double" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

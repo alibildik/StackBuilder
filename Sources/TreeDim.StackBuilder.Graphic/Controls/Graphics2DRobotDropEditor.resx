@@ -374,7 +374,7 @@
     <value>cbConveyorSetting</value>
   </data>
   <data name="&gt;&gt;cbConveyorSetting.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboConveyor, treeDiM.StackBuilder.Graphics, Version=3.0.2.60, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Controls.CCtrlComboConveyor, treeDiM.StackBuilder.Graphics, Version=3.0.2.61, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbConveyorSetting.Parent" xml:space="preserve">
     <value>$this</value>

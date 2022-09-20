@@ -48,6 +48,8 @@ namespace treeDiM.StackBuilder.WCFAppServ
         [DataMember]
         public double LoadWeight { get; set; }
         [DataMember]
+        public double TotalWeight { get; set; }
+        [DataMember]
         public bool MaxLoadValidity { get; set; }
     }
 

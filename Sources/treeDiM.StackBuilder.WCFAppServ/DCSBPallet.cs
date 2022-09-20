@@ -26,7 +26,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
         [DataMember]
         public double MaxPalletHeight { get; set; }
         [DataMember]
-        public double MaxPalletWeight { get; set; }
+        public double MaxPalletLoad { get; set; }
     }
     public class ComparerDCSBPallet_Name : IComparer<DCSBPallet>
     {

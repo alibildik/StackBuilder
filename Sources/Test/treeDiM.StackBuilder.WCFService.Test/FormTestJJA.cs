@@ -139,6 +139,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
                         var configs = client.JJA_GetCaseConfigs(
                             dimensions,
                             crate.weight,
+                            crate.pcb,
                             new DCCompFormat()
                             {
                                 Format = OutFormat.IMAGE,
@@ -159,6 +160,28 @@ namespace treeDiM.StackBuilder.WCFService.Test
                             ++iIndex;
                             if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Dimensions") { View = viewNormal }; }
                             gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(sDim) { View = viewNormal };
+                            // volume
+                            ++iIndex;
+                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Volume") { View = viewNormal }; }
+                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.Volume) { View = viewNormal };
+                            // weight
+                            ++iIndex;
+                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Weight case") { View = viewNormal }; }
+                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.Weight) { View = viewNormal };
+                            // pcb
+                            ++iIndex;
+                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pcb") { View = viewNormal }; }
+                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.Pcb) { View = viewNormal };
+                            // area
+                            ++iIndex;
+                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area bottom/top") { View = viewNormal }; }
+                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.AreaBottomTop) { View = viewNormal };
+                            ++iIndex;
+                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area front/back") { View = viewNormal }; }
+                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.AreaFrontBack) { View = viewNormal };
+                            ++iIndex;
+                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area left/right") { View = viewNormal }; }
+                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.AreaLeftRight) { View = viewNormal };
                             // stable
                             ++iIndex;
                             if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Stable") { View = viewNormal }; }
@@ -219,9 +242,10 @@ namespace treeDiM.StackBuilder.WCFService.Test
                                             M2 = pallet.dimensions[2]
                                         },
                                         Color = pallet.color,
-                                        Weight = 0.0,
+                                        Weight = pallet.weight,
                                         PalletType = pallet.type,
-                                        MaxPalletHeight = pallet.maxPalletHeight
+                                        MaxPalletHeight = pallet.maxPalletHeight,
+                                        MaxPalletLoad = pallet.maxLoadWeight
                                     },
                                     (DCSBConfigId)(configId + 1),
                                     new DCCompFormat()
@@ -261,12 +285,22 @@ namespace treeDiM.StackBuilder.WCFService.Test
                                 ++iIndex;
                                 if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet volume efficiency (%)") { View = viewNormal }; }
                                 gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.IsoVolPercentage) { View = viewNormal };
+                                // load weight
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Load weight (kg)") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.LoadWeight) { View = viewNormal };
+                                // total weight
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Total weight (kg)") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.TotalWeight) { View = viewNormal };
+                                // OK / NOK
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Max load validity") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.MaxLoadValidity ? "OK" : "NOK") { View = viewNormal };
                                 // image
                                 ++iIndex;
                                 if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Image") { View = viewNormal }; }
-                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Image(ByteArrayToImage(loadResult.OutFile.Bytes));
-
-
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Image(ByteArrayToImage(loadResult.OutFile.Bytes));                                
                             } // using
                         } // for (configId)
 
@@ -329,7 +363,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
                     Dimensions = new DCSBDim3D() { M0 = pallet.dimensions[0], M1 = pallet.dimensions[1], M2 = pallet.dimensions[2] },
                     Weight = 20.0,
                     MaxPalletHeight = pallet.maxPalletHeight,
-                    MaxPalletWeight = pallet.maxLoadWeight
+                    MaxPalletLoad = pallet.maxLoadWeight
                 };
             }
             int iIndex = 0;
@@ -446,7 +480,6 @@ namespace treeDiM.StackBuilder.WCFService.Test
                 tbFilePath.Text = openFileDialog.FileName;
             }
         }
-
         private void OnLoadMultipleCalls(object sender, EventArgs e)
         {
             _log.Info("Calling FillGridContent1()...");
@@ -473,7 +506,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
         }
         #endregion
         #region Loading data
-        private void LoadInputData()
+        private bool LoadInputData()
         {
             Containers.Clear();
             Pallets.Clear();
@@ -487,7 +520,8 @@ namespace treeDiM.StackBuilder.WCFService.Test
                 {
                     result = DeserializeInput(fStream, ref Containers, ref Pallets, ref Cases); 
                 }
-            }        
+            }
+            return result;
         }
         private bool DeserializeInput(FileStream fStream, ref List<inputContainer> containers, ref List<inputPallet> pallets, ref List<inputCase> cases)
         {
@@ -510,6 +544,5 @@ namespace treeDiM.StackBuilder.WCFService.Test
         private List<inputCase> Cases = new List<inputCase>();
         protected ILog _log = LogManager.GetLogger(typeof(FormTestJJA));
         #endregion
-
     }
 }

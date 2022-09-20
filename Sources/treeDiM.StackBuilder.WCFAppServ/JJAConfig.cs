@@ -6,6 +6,7 @@ using System.Drawing;
 using Sharp3D.Math.Core;
 using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Graphics;
+using System.Diagnostics;
 #endregion
 
 internal class JJAConfig
@@ -41,11 +42,15 @@ internal class JJAConfig
     }
     #endregion
     #region Constructor
-    public JJAConfig(double[] dimensions, double weight, int configIndex)
+    public JJAConfig(double[] dimensions, double weight, int pcb, int configIndex)
     {
-        Dimensions = dimensions.OrderByDescending(x => x).ToArray();
+        Debug.Assert( 1 <= configIndex && configIndex <= 3 );
+        Debug.Assert( dimensions.Length == 3 );
+
+        Dimensions = dimensions;
         ConfigIndex = configIndex;
         Weight = weight;
+        Pcb = pcb;
     }
     #endregion
     #region Public properties
@@ -97,7 +102,7 @@ internal class JJAConfig
         {
             for (int i = 1; i < 4; ++i)
             {
-                var jjaconfig = new JJAConfig(Dimensions, Weight, i);
+                var jjaconfig = new JJAConfig(Dimensions, Weight, Pcb, i);
                 if (jjaconfig.Stability == eStable.STABLE && jjaconfig.Conveyability == eConveyability.CONVEYABLE)
                 {
                     switch (i)
@@ -194,6 +199,7 @@ internal class JJAConfig
     #region Data members
     public double[] Dimensions { get; }
     public double Weight { get; }
+    public int Pcb { get; }
     public int ConfigIndex { get; set; }
     public Color ColorCase { get; set; } = Color.Chocolate;
     public Color ColorTape { get; set; } = Color.Beige;

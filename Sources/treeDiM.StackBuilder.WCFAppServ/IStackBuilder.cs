@@ -33,7 +33,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
 
         #region JJA Specific methods
         [OperationContract]
-        DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight, DCCompFormat imageFormat);
+        DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight, int pcb, DCCompFormat imageFormat);
         [OperationContract]
         DCSBLoadResultContainer[] JJA_GetMultiContainerResults(DCSBDim3D dimensions, double weight, int noItemPerCase
             , DCSBContainer[] containers);

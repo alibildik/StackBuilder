@@ -933,30 +933,34 @@ namespace treeDiM.StackBuilder.WCFAppServ
         #endregion
 
         #region JJA Specific methods
-        public DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight, DCCompFormat format)
+        public DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight, int pcb, DCCompFormat format)
         {
             DCSBCaseConfig[] caseConfigs = new DCSBCaseConfig[3];
 
             for (int i = 0; i < 3; ++i)
             {
-                var jjaconfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, i + 1);
-                caseConfigs[i] = new DCSBCaseConfig();
-                caseConfigs[i].ConfigId = (DCSBConfigId)i + 1;
-                caseConfigs[i].Length = jjaconfig.Length;
-                caseConfigs[i].Width = jjaconfig.Width;
-                caseConfigs[i].Height = jjaconfig.Height;
-                caseConfigs[i].Dim3D = new DCSBDim3D(jjaconfig.Length, jjaconfig.Width, jjaconfig.Height);
-                caseConfigs[i].Volume = jjaconfig.Volume;
-                caseConfigs[i].AreaBottomTop = jjaconfig.AreaBottomTop;
-                caseConfigs[i].AreaFrontBack = jjaconfig.AreaFrontBack;
-                caseConfigs[i].AreaLeftRight = jjaconfig.AreaLeftRight;
-                caseConfigs[i].Stable = (DCSBStabilityEnum)jjaconfig.Stability;
-                caseConfigs[i].Conveyability = (DCSBConveyability)jjaconfig.Conveyability;
-                caseConfigs[i].ConveyFace = (DCSBOrientationName)jjaconfig.ConveyFace;
-                caseConfigs[i].Image = new DCCompFileOutput()
+                var jjaconfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, pcb, i + 1);
+                caseConfigs[i] = new DCSBCaseConfig
                 {
-                    Bytes = jjaconfig.GetImageBytes(format.Size.CX, format.Size.CY, format.FontSizeRatio, format.ShowCotations),
-                    Format = format
+                    ConfigId = (DCSBConfigId)i + 1,
+                    Length = jjaconfig.Length,
+                    Width = jjaconfig.Width,
+                    Height = jjaconfig.Height,
+                    Weight = jjaconfig.Weight,
+                    Pcb = jjaconfig.Pcb,
+                    Dim3D = new DCSBDim3D(jjaconfig.Length, jjaconfig.Width, jjaconfig.Height),
+                    Volume = jjaconfig.Volume,
+                    AreaBottomTop = jjaconfig.AreaBottomTop,
+                    AreaFrontBack = jjaconfig.AreaFrontBack,
+                    AreaLeftRight = jjaconfig.AreaLeftRight,
+                    Stable = (DCSBStabilityEnum)jjaconfig.Stability,
+                    Conveyability = (DCSBConveyability)jjaconfig.Conveyability,
+                    ConveyFace = (DCSBOrientationName)jjaconfig.ConveyFace,
+                    Image = new DCCompFileOutput()
+                    {
+                        Bytes = jjaconfig.GetImageBytes(format.Size.CX, format.Size.CY, format.FontSizeRatio, format.ShowCotations),
+                        Format = format
+                    }
                 };
             }
             return caseConfigs;
@@ -989,7 +993,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 ConstraintSetCasePallet constraintSet = new ConstraintSetCasePallet()
                 {
                     Overhang = Vector2D.Zero,
-                    OptMaxWeight = new OptDouble(false, dcsbPallet.MaxPalletWeight),
+                    OptMaxWeight = new OptDouble(false, dcsbPallet.MaxPalletLoad),
                     OptMaxNumber = OptInt.Zero
                 };
                 constraintSet.SetMaxHeight(new OptDouble() { Activated = true, Value = dcsbPallet.MaxPalletHeight });
@@ -998,7 +1002,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
 
                 for (int iConfig = 0; iConfig < 3; ++iConfig)
                 {
-                    var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, iConfig + 1);
+                    var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, noItemPerCase, iConfig + 1);
                     // build box
                     var boxProperties = new BoxProperties(null, jjaConfig.Length, jjaConfig.Width, jjaConfig.Height)
                     {
@@ -1050,7 +1054,8 @@ namespace treeDiM.StackBuilder.WCFAppServ
                             IsoBasePercentage = areaEfficiency,
                             IsoVolPercentage = volumeEfficiency,
                             LoadWeight = weightLoad,
-                            MaxLoadValidity = weightTotal < dcsbPallet.MaxPalletWeight
+                            TotalWeight = weightTotal, 
+                            MaxLoadValidity = weightTotal < dcsbPallet.MaxPalletLoad
                         };
                     }
                     else
@@ -1076,7 +1081,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
             , DCCompFormat expectedFormat)
         {
             var lErrors = new List<string>();
-            var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, (int)configId);
+            var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, pcb, (int)configId);
 
             // build boxProperties
             var boxProperties = new BoxProperties(null, jjaConfig.Length, jjaConfig.Width, jjaConfig.Height)
@@ -1091,12 +1096,13 @@ namespace treeDiM.StackBuilder.WCFAppServ
             boxProperties.SetNetWeight(new OptDouble(false, 0.0));
             boxProperties.SetAllColors(Enumerable.Repeat(Color.Chocolate, 6).ToArray());
 
-            PalletProperties palletProperties = null;
+            PalletProperties palletProperties;
             if (null != sbPallet.Dimensions)
                 palletProperties = new PalletProperties(null, sbPallet.PalletType,
                     sbPallet.Dimensions.M0, sbPallet.Dimensions.M1, sbPallet.Dimensions.M2)
                 {
                     Weight = sbPallet.Weight,
+                    AdmissibleLoadWeight = sbPallet.MaxPalletLoad,
                     Color = Color.FromArgb(sbPallet.Color)
                 };
             else
@@ -1162,7 +1168,8 @@ namespace treeDiM.StackBuilder.WCFAppServ
                         IsoBasePercentage = areaEfficiency,
                         IsoVolPercentage = volumeEfficiency,
                         LoadWeight = weightLoad,
-                        MaxLoadValidity = weightTotal <= sbPallet.MaxPalletWeight
+                        TotalWeight = weightTotal,
+                        MaxLoadValidity = weightTotal <= sbPallet.MaxPalletLoad
                     },
                     OutFile = new DCCompFileOutput()
                     {

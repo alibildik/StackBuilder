@@ -154,6 +154,8 @@ namespace JJA.InputData {
         
         private double[] dimensionsField;
         
+        private double weightField;
+        
         private double maxPalletHeightField;
         
         private double maxLoadWeightField;
@@ -201,6 +203,17 @@ namespace JJA.InputData {
             }
             set {
                 this.dimensionsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public double weight {
+            get {
+                return this.weightField;
+            }
+            set {
+                this.weightField = value;
             }
         }
         

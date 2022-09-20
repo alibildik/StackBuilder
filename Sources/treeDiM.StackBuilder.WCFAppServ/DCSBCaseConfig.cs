@@ -70,6 +70,10 @@ namespace treeDiM.StackBuilder.WCFAppServ
         [DataMember]
         public double Height { get; set; }
         [DataMember]
+        public double Weight { get; set; }
+        [DataMember]
+        public int Pcb { get; set; }
+        [DataMember]
         public DCSBConfigId ConfigId { get; set; }
         [DataMember]
         public DCSBDim3D Dim3D { get; set; }
