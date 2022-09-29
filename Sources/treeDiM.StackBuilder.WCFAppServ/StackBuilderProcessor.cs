@@ -179,6 +179,82 @@ namespace treeDiM.StackBuilder.WCFAppServ
             errors = lErrors.ToArray();
             return (0 == lErrors.Count);
         }
+
+        public static bool GetBestSolution(
+            PackableBrick packableProperties, TruckProperties truckProperties
+            , ConstraintSetCaseTruck constraintSet, bool allowMultipleLayerOrientations
+            , ImageDefinition imageDef
+            , ref int casePerLayerCount, ref int layerCount
+            , ref int caseCount, ref int interlayerCount
+            , ref double weightTotal, ref double weightLoad, ref double? weightNet
+            , ref Vector3D bbLoad, ref Vector3D bbGlob
+            , ref double areaEfficiency, ref double volumeEfficency, ref double? weightEfficiency
+            , ref string palletMapPhrase
+            , ref byte[] imageBytes
+            , ref string[] errors)
+        {
+            List<string> lErrors = new List<string>();
+            if (!packableProperties.FitsIn(truckProperties, constraintSet))
+            {
+                lErrors.Add($"{packableProperties.Name} does not fit in {truckProperties.Name} with given constraint set!");
+                return false;
+            }
+            try
+            {
+                // use a solver and get a list of sorted analyses + select the best one
+                SolverCaseTruck solver = new SolverCaseTruck(packableProperties, truckProperties, constraintSet);
+                List<AnalysisLayered> analyses = solver.BuildAnalyses(allowMultipleLayerOrientations);
+                if (analyses.Count > 0)
+                {
+                    // first solution
+                    AnalysisLayered analysis = analyses[0];
+                    var solutionLay = analysis.SolutionLay;
+                    if (null != solutionLay)
+                    {
+                        layerCount = solutionLay.LayerCount;
+                        caseCount = solutionLay.ItemCount;
+                        interlayerCount = solutionLay.LayerCount;
+
+                        weightLoad = solutionLay.LoadWeight;
+                        weightTotal = solutionLay.Weight;
+
+                        OptDouble optNetWeight = solutionLay.NetWeight;
+                        weightNet = optNetWeight.Activated ? optNetWeight.Value : (double?)null;
+                        bbGlob = solutionLay.BBoxGlobal.DimensionsVec;
+                        bbLoad = solutionLay.BBoxLoad.DimensionsVec;
+                        volumeEfficency = solutionLay.VolumeEfficiency;
+                        areaEfficiency = solutionLay.AreaEfficiency;
+                        weightEfficiency = null;
+                        if (solutionLay.WeightEfficiency.Activated)
+                            weightEfficiency = solutionLay.WeightEfficiency.Value;
+                        casePerLayerCount = solutionLay.Layers[solutionLay.SolutionItems[0].IndexLayer].BoxCount;
+                        palletMapPhrase = BuildPalletMapPhrase(solutionLay);
+                    }
+                    if (imageDef.ShowImage)
+                    {
+                        Graphics3DImage graphics = new Graphics3DImage(imageDef.ImageSize)
+                        {
+                            FontSizeRatio = imageDef.FontSizeRatio,
+                            CameraPosition = imageDef.CameraPosition,
+                            ShowDimensions = imageDef.ShowDimensions,
+                        };
+                        using (ViewerSolution sv = new ViewerSolution(solutionLay))
+                            sv.Draw(graphics, Transform3D.Identity);
+                        graphics.Flush();
+                        // graphics to byte
+                        imageBytes = graphics.Bytes;
+                    }
+                }
+                else
+                    lErrors.Add("No solution found!");
+            }
+            catch (Exception ex)
+            {
+                lErrors.Add(ex.Message);
+            }
+            errors = lErrors.ToArray();
+            return (0 == lErrors.Count);
+        }
         public static int FirstLayerCount(SolutionLayered solution)
         {
             var indexLayer = solution.SolutionItems[0].IndexLayer;

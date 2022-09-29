@@ -5,14 +5,12 @@ using System.Runtime.Serialization;
 namespace treeDiM.StackBuilder.WCFAppServ
 {
     [DataContract]
-    public class DCSBContainer
+    public class DCSBContainer : DCSBItem
     {
         [DataMember]
-        DCSBDim3D Dimensions { get; set; }
+        public DCSBDim3D Dimensions { get; set; }
         [DataMember]
-        double? MaxLoadWeight { get; set; }
-        [DataMember]
-        string ContainerType { get; set; }
+        public double? MaxLoadWeight { get; set; }
         [DataMember]
         public int Color { get; set; }
     }

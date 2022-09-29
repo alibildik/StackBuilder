@@ -83,7 +83,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
             }
         }
         #endregion
-        private void FillGridContent1()
+        private void FillGridPallet1()
         {
             try
             {
@@ -133,76 +133,83 @@ namespace treeDiM.StackBuilder.WCFService.Test
                 {
                     var crate = Cases[iCase];
                     var dimensions = new DCSBDim3D() { M0 = crate.dimensions[0], M1 = crate.dimensions[1], M2 = crate.dimensions[2] };
-
-                    using (var client = new StackBuilderClient())
+                    try
                     {
-                        var configs = client.JJA_GetCaseConfigs(
-                            dimensions,
-                            crate.weight,
-                            crate.pcb,
-                            new DCCompFormat()
-                            {
-                                Format = OutFormat.IMAGE,
-                                Size = new DCCompSize() { CX = 100, CY = 100 },
-                                ShowCotations = true,
-                                FontSizeRatio = 0.05f
-                            }
-                            );
 
-                        indexStart = iIndex;
-                        for (int configId = 0; configId < 3; ++configId)
+                        using (var client = new StackBuilderClient())
                         {
-                            iIndex = indexStart;
-                            var config = configs[configId];
-                            string sDim = $"{config.Length} x {config.Width} x {config.Height}";
+                            var configs = client.JJA_GetCaseConfigs(
+                                dimensions,
+                                crate.weight,
+                                crate.pcb,
+                                new DCCompFormat()
+                                {
+                                    Format = OutFormat.IMAGE,
+                                    Size = new DCCompSize() { CX = 100, CY = 100 },
+                                    ShowCotations = true,
+                                    FontSizeRatio = 0.05f
+                                }
+                                );
 
-                            // dimensions
-                            ++iIndex;
-                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Dimensions") { View = viewNormal }; }
-                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(sDim) { View = viewNormal };
-                            // volume
-                            ++iIndex;
-                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Volume") { View = viewNormal }; }
-                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.Volume) { View = viewNormal };
-                            // weight
-                            ++iIndex;
-                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Weight case") { View = viewNormal }; }
-                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.Weight) { View = viewNormal };
-                            // pcb
-                            ++iIndex;
-                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pcb") { View = viewNormal }; }
-                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.Pcb) { View = viewNormal };
-                            // area
-                            ++iIndex;
-                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area bottom/top") { View = viewNormal }; }
-                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.AreaBottomTop) { View = viewNormal };
-                            ++iIndex;
-                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area front/back") { View = viewNormal }; }
-                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.AreaFrontBack) { View = viewNormal };
-                            ++iIndex;
-                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area left/right") { View = viewNormal }; }
-                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.AreaLeftRight) { View = viewNormal };
-                            // stable
-                            ++iIndex;
-                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Stable") { View = viewNormal }; }
-                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(Stability(config.Stable)) { View = viewNormal };
-                            // conveyability
-                            ++iIndex;
-                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Conveyability") { View = viewNormal }; }
-                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(Conveyability(config.Conveyability)) { View = viewNormal };
-                            // convey mode
-                            ++iIndex;
-                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Convey mode") { View = viewNormal }; }
-                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(ConveyMode(config.ConveyMode)) { View = viewNormal };
-                            // convey face
-                            ++iIndex;
-                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Convey face") { View = viewNormal }; }
-                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.ConveyFace) { View = viewNormal };
-                            // image
-                            ++iIndex;
-                            if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Image case") { View = viewNormal }; }
-                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Image(ByteArrayToImage(config.Image.Bytes)) { View = viewNormal };
+                            indexStart = iIndex;
+                            for (int configId = 0; configId < 3; ++configId)
+                            {
+                                iIndex = indexStart;
+                                var config = configs[configId];
+                                string sDim = $"{config.Length} x {config.Width} x {config.Height}";
+
+                                // dimensions
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Dimensions") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(sDim) { View = viewNormal };
+                                // volume
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Volume") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.Volume) { View = viewNormal };
+                                // weight
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Weight case") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.Weight) { View = viewNormal };
+                                // pcb
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pcb") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.Pcb) { View = viewNormal };
+                                // area
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area bottom/top") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.AreaBottomTop) { View = viewNormal };
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area front/back") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.AreaFrontBack) { View = viewNormal };
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area left/right") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.AreaLeftRight) { View = viewNormal };
+                                // stable
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Stable") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(Stability(config.Stable)) { View = viewNormal };
+                                // conveyability
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Conveyability") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(Conveyability(config.Conveyability)) { View = viewNormal };
+                                // convey mode
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Convey mode") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(ConveyMode(config.ConveyMode)) { View = viewNormal };
+                                // convey face
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Convey face") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.ConveyFace) { View = viewNormal };
+                                // image
+                                ++iIndex;
+                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Image case") { View = viewNormal }; }
+                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Image(ByteArrayToImage(config.Image.Bytes)) { View = viewNormal };
+                            }
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        _log.Error($"Error -> Crate {iCase} : {ex.Message}");
                     }
                     for (int iPallet = 0; iPallet < Pallets.Count; ++iPallet)
                     {
@@ -220,87 +227,100 @@ namespace treeDiM.StackBuilder.WCFService.Test
                             Tag = $"{crate.name} on {pallet.name}"
                         };
 
-                       indexStart = iIndex;
-
+                        indexStart = iIndex;
+                        bool firstSuccessfull = true;
                         for (int configId = 0; configId < 3; ++configId)
                         {
                             iIndex = indexStart;
                             using (var client = new StackBuilderClient())
                             {
-                                var loadResult = client.JJA_GetLoadResultSinglePallet(
-                                    new DCSBDim3D() { M0 = crate.dimensions[0], M1 = crate.dimensions[1], M2 = crate.dimensions[2] },
-                                    crate.weight,
-                                    crate.pcb,
-                                    new DCSBPalletWHeight()
-                                    {
-                                        ID = iCase,
-                                        Name = pallet.name,
-                                        Dimensions = new DCSBDim3D()
+                                try
+                                {
+                                    var loadResult = client.JJA_GetLoadResultSinglePallet(
+                                        new DCSBDim3D() { M0 = crate.dimensions[0], M1 = crate.dimensions[1], M2 = crate.dimensions[2] },
+                                        crate.weight,
+                                        crate.pcb,
+                                        new DCSBPalletWHeight()
                                         {
-                                            M0 = pallet.dimensions[0],
-                                            M1 = pallet.dimensions[1],
-                                            M2 = pallet.dimensions[2]
+                                            ID = iCase,
+                                            Name = pallet.name,
+                                            Dimensions = new DCSBDim3D()
+                                            {
+                                                M0 = pallet.dimensions[0],
+                                                M1 = pallet.dimensions[1],
+                                                M2 = pallet.dimensions[2]
+                                            },
+                                            Color = pallet.color,
+                                            Weight = pallet.weight,
+                                            PalletType = pallet.type,
+                                            MaxPalletHeight = pallet.maxPalletHeight,
+                                            MaxPalletLoad = pallet.maxLoadWeight
                                         },
-                                        Color = pallet.color,
-                                        Weight = pallet.weight,
-                                        PalletType = pallet.type,
-                                        MaxPalletHeight = pallet.maxPalletHeight,
-                                        MaxPalletLoad = pallet.maxLoadWeight
-                                    },
-                                    (DCSBConfigId)(configId + 1),
-                                    new DCCompFormat()
-                                    {
-                                        Format = OutFormat.IMAGE,
-                                        ShowCotations = true,
-                                        Size = new DCCompSize() { CX = 250, CY = 250 },
-                                        FontSizeRatio = 0.03f
-                                    }
-                                    );
+                                        (DCSBConfigId)(configId + 1),
+                                        new DCCompFormat()
+                                        {
+                                            Format = OutFormat.IMAGE,
+                                            ShowCotations = true,
+                                            Size = new DCCompSize() { CX = 250, CY = 250 },
+                                            FontSizeRatio = 0.03f
+                                        }
+                                        );
 
-                                // case count per layer
-                                ++iIndex;
-                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of case per layer") { View = viewNormal }; }
-                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.NumberPerLayer) { View = viewNormal };
-                                // no of layers
-                                ++iIndex;
-                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of layers") { View = viewNormal }; }
-                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.NumberOfLayers) { View = viewNormal };
-                                // pallet map phrase
-                                ++iIndex;
-                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet map phrase") { View = viewNormal }; }
-                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.PalletMapPhrase) { View = viewNormal };
-                                // no of case/pallet
-                                ++iIndex;
-                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of case per pallet") { View = viewNormal }; }
-                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.UpalCase) { View = viewNormal };
-                                // no of items/pallet
-                                ++iIndex;
-                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of items per pallet") { View = viewNormal }; }
-                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.UpalItem) { View = viewNormal };
-                                // iso base
-                                ++iIndex;
-                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area efficiency (1st layer)") { View = viewNormal }; }
-                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.IsoBasePercentage) { View = viewNormal };
-                                // iso pallet
-                                ++iIndex;
-                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet volume efficiency (%)") { View = viewNormal }; }
-                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.IsoVolPercentage) { View = viewNormal };
-                                // load weight
-                                ++iIndex;
-                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Load weight (kg)") { View = viewNormal }; }
-                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.LoadWeight) { View = viewNormal };
-                                // total weight
-                                ++iIndex;
-                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Total weight (kg)") { View = viewNormal }; }
-                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.TotalWeight) { View = viewNormal };
-                                // OK / NOK
-                                ++iIndex;
-                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Max load validity") { View = viewNormal }; }
-                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.MaxLoadValidity ? "OK" : "NOK") { View = viewNormal };
-                                // image
-                                ++iIndex;
-                                if (configId == 0) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Image") { View = viewNormal }; }
-                                gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Image(ByteArrayToImage(loadResult.OutFile.Bytes));                                
+
+                                    if (loadResult.Status.Status == DCSBStatusEnu.Success)
+                                    {
+                                        // case count per layer
+                                        ++iIndex;
+                                        if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of case per layer") { View = viewNormal }; }
+                                        gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.NumberPerLayer) { View = viewNormal };
+                                        // no of layers
+                                        ++iIndex;
+                                        if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of layers") { View = viewNormal }; }
+                                        gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.NumberOfLayers) { View = viewNormal };
+                                        // pallet map phrase
+                                        ++iIndex;
+                                        if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet map phrase") { View = viewNormal }; }
+                                        gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.PalletMapPhrase) { View = viewNormal };
+                                        // no of case/pallet
+                                        ++iIndex;
+                                        if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of case per pallet") { View = viewNormal }; }
+                                        gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.UpalCase) { View = viewNormal };
+                                        // no of items/pallet
+                                        ++iIndex;
+                                        if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of items per pallet") { View = viewNormal }; }
+                                        gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.UpalItem) { View = viewNormal };
+                                        // iso base
+                                        ++iIndex;
+                                        if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area efficiency (1st layer)") { View = viewNormal }; }
+                                        gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.IsoBasePercentage) { View = viewNormal };
+                                        // iso pallet
+                                        ++iIndex;
+                                        if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet volume efficiency (%)") { View = viewNormal }; }
+                                        gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.IsoVolPercentage) { View = viewNormal };
+                                        // load weight
+                                        ++iIndex;
+                                        if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Load weight (kg)") { View = viewNormal }; }
+                                        gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.LoadWeight) { View = viewNormal };
+                                        // total weight
+                                        ++iIndex;
+                                        if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Total weight (kg)") { View = viewNormal }; }
+                                        gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.TotalWeight) { View = viewNormal };
+                                        // OK / NOK
+                                        ++iIndex;
+                                        if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Max load validity") { View = viewNormal }; }
+                                        gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.MaxLoadValidity ? "OK" : "NOK") { View = viewNormal };
+                                        // image
+                                        ++iIndex;
+                                        if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Image") { View = viewNormal }; }
+                                        gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Image(ByteArrayToImage(loadResult.OutFile.Bytes));
+
+                                        firstSuccessfull = false;
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    _log.Error($"Error => {configId} - {ex.Message}");
+                                }
                             } // using
                         } // for (configId)
 
@@ -317,7 +337,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
             }
         }
 
-        private void FillGridContent2()
+        private void FillGridPallet2()
         {
             gridPallets.Rows.Clear();
             // *** viewColumnHeader
@@ -340,7 +360,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
             gridPallets.BorderStyle = BorderStyle.FixedSingle;
             gridPallets.ColumnsCount = 2;
             gridPallets.FixedRows = 1;
-            
+
             // *** header : begin
             int iCol = 0;
             gridPallets.Rows.Insert(0);
@@ -350,7 +370,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
                 View = viewColumnHeader
             };
             // *** header : end
-            
+
             // build pallet array
             var dcsbPallets = new DCSBPalletWHeight[Pallets.Count];
             for (int i = 0; i < Pallets.Count; i++)
@@ -382,7 +402,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
                             M2 = crate.dimensions[2]
                         }, crate.weight, crate.pcb, dcsbPallets);
 
-                    
+
                     foreach (var loadResult in loadResults)
                     {
                         if (null == loadResult)
@@ -406,7 +426,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
                         gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.ConfigId) { View = viewNormal };
                         // number of case per layer
                         gridPallets.Rows.Insert(++iIndex);
-                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of case per layer") { View = viewNormal }; 
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of case per layer") { View = viewNormal };
                         gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.NumberPerLayer) { View = viewNormal };
                         // no of layers
                         gridPallets.Rows.Insert(++iIndex);
@@ -414,23 +434,23 @@ namespace treeDiM.StackBuilder.WCFService.Test
                         gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.NumberOfLayers) { View = viewNormal };
                         // pallet map phrase
                         gridPallets.Rows.Insert(++iIndex);
-                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet map phrase") { View = viewNormal }; 
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet map phrase") { View = viewNormal };
                         gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.PalletMapPhrase) { View = viewNormal };
                         // no of case/pallet
                         gridPallets.Rows.Insert(++iIndex);
-                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of cases per pallet") { View = viewNormal }; 
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of cases per pallet") { View = viewNormal };
                         gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.UpalCase) { View = viewNormal };
                         // no of items/pallet
                         gridPallets.Rows.Insert(++iIndex);
-                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of items per pallet") { View = viewNormal }; 
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of items per pallet") { View = viewNormal };
                         gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.UpalItem) { View = viewNormal };
                         // iso base
                         gridPallets.Rows.Insert(++iIndex);
-                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area efficiency (1st layer)") { View = viewNormal }; 
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Area efficiency (1st layer)") { View = viewNormal };
                         gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.IsoBasePercentage) { View = viewNormal };
                         // iso pallet
                         gridPallets.Rows.Insert(++iIndex);
-                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet volume efficiency (%)") { View = viewNormal }; 
+                        gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet volume efficiency (%)") { View = viewNormal };
                         gridPallets[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.IsoVolPercentage) { View = viewNormal };
                     }
                 }
@@ -443,13 +463,241 @@ namespace treeDiM.StackBuilder.WCFService.Test
             gridPallets.Invalidate();
         }
 
-        private void FillGridContent3()
-        { 
-            // ***
-            gridContainers.AutoSizeCells();
-            gridContainers.Columns.StretchToFit();
-            gridContainers.AutoStretchColumnsToFitWidth = true;
-            gridContainers.Invalidate();        
+        private void FillGridContainer1()
+        {
+            try
+            {
+                gridContainers.Rows.Clear();
+                // viewColumnHeader
+                SourceGrid.Cells.Views.ColumnHeader viewColumnHeader = new SourceGrid.Cells.Views.ColumnHeader()
+                {
+                    Background = new DevAge.Drawing.VisualElements.ColumnHeader()
+                    {
+                        BackColor = Color.LightGray,
+                        Border = DevAge.Drawing.RectangleBorder.NoBorder
+                    },
+                    ForeColor = Color.Black,
+                    Font = new Font("Arial", 10, FontStyle.Regular),
+                    TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter
+                };
+                viewColumnHeader.ElementSort.SortStyle = DevAge.Drawing.HeaderSortStyle.None;
+                // viewNormal
+                var viewNormal = new CellBackColorAlternate(Color.LightBlue, Color.White);
+                // ***
+                // set first row
+                gridContainers.BorderStyle = BorderStyle.FixedSingle;
+                gridContainers.ColumnsCount = 4;
+                gridContainers.FixedRows = 1;
+
+                // header
+                int iCol = 0;
+                gridContainers.Rows.Insert(0);
+                gridContainers[0, iCol] = new SourceGrid.Cells.ColumnHeader(string.Empty)
+                {
+                    AutomaticSortEnabled = false,
+                    View = viewColumnHeader
+                };
+                for (int configId = 0; configId < 3; ++configId)
+                    gridContainers[0, ++iCol] = new SourceGrid.Cells.ColumnHeader($"Config {configId + 1}")
+                    {
+                        AutomaticSortEnabled = false,
+                        View = viewColumnHeader
+                    };
+                // pallet row
+                // content
+                int iIndex = 0;
+                int indexStart = 0;
+
+                // loop on cases
+                for (int iCase = 0; iCase < Cases.Count; ++iCase)
+                {
+                    var crate = Cases[iCase];
+                    var dimensions = new DCSBDim3D() { M0 = crate.dimensions[0], M1 = crate.dimensions[1], M2 = crate.dimensions[2] };
+
+                    using (var client = new StackBuilderClient())
+                    {
+                        var configs = client.JJA_GetCaseConfigs(
+                            dimensions,
+                            crate.weight,
+                            crate.pcb,
+                            new DCCompFormat()
+                            {
+                                Format = OutFormat.IMAGE,
+                                Size = new DCCompSize() { CX = 100, CY = 100 },
+                                ShowCotations = true,
+                                FontSizeRatio = 0.05f
+                            }
+                            );
+
+                        indexStart = iIndex;
+                        for (int configId = 0; configId < 3; ++configId)
+                        {
+                            iIndex = indexStart;
+                            var config = configs[configId];
+                            string sDim = $"{config.Length} x {config.Width} x {config.Height}";
+
+                            // dimensions
+                            ++iIndex;
+                            if (configId == 0) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Dimensions") { View = viewNormal }; }
+                            gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(sDim) { View = viewNormal };
+                            // volume
+                            ++iIndex;
+                            if (configId == 0) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Volume") { View = viewNormal }; }
+                            gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.Volume) { View = viewNormal };
+                            // weight
+                            ++iIndex;
+                            if (configId == 0) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Weight case") { View = viewNormal }; }
+                            gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.Weight) { View = viewNormal };
+                            // pcb
+                            ++iIndex;
+                            if (configId == 0) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Pcb") { View = viewNormal }; }
+                            gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.Pcb) { View = viewNormal };
+                            // area
+                            ++iIndex;
+                            if (configId == 0) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Area bottom/top") { View = viewNormal }; }
+                            gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.AreaBottomTop) { View = viewNormal };
+                            ++iIndex;
+                            if (configId == 0) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Area front/back") { View = viewNormal }; }
+                            gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.AreaFrontBack) { View = viewNormal };
+                            ++iIndex;
+                            if (configId == 0) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Area left/right") { View = viewNormal }; }
+                            gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.AreaLeftRight) { View = viewNormal };
+                            // stable
+                            ++iIndex;
+                            if (configId == 0) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Stable") { View = viewNormal }; }
+                            gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(Stability(config.Stable)) { View = viewNormal };
+                            // conveyability
+                            ++iIndex;
+                            if (configId == 0) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Conveyability") { View = viewNormal }; }
+                            gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(Conveyability(config.Conveyability)) { View = viewNormal };
+                            // convey mode
+                            ++iIndex;
+                            if (configId == 0) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Convey mode") { View = viewNormal }; }
+                            gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(ConveyMode(config.ConveyMode)) { View = viewNormal };
+                            // convey face
+                            ++iIndex;
+                            if (configId == 0) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Convey face") { View = viewNormal }; }
+                            gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(config.ConveyFace) { View = viewNormal };
+                            // image
+                            ++iIndex;
+                            if (configId == 0) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Image case") { View = viewNormal }; }
+                            gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Image(ByteArrayToImage(config.Image.Bytes)) { View = viewNormal };
+                        }
+                    }
+                    for (int iContainer = 0; iContainer < Containers.Count; ++iContainer)
+                    {
+                        // insert row
+                        gridContainers.Rows.Insert(++iIndex);
+                        iCol = 0;
+
+                        var container = Containers[iContainer];
+
+                        // name
+                        gridContainers[iIndex, 0] = new SourceGrid.Cells.RowHeader($"{crate.name} on {container.name}")
+                        {
+                            View = viewColumnHeader,
+                            ColumnSpan = 4,
+                            Tag = $"{crate.name} on {container.name}"
+                        };
+
+                        indexStart = iIndex;
+                        bool firstSuccessfull = true;
+
+                        for (int configId = 0; configId < 3; ++configId)
+                        {
+                            iIndex = indexStart;
+                            using (var client = new StackBuilderClient())
+                            {
+                                var loadResult = client.JJA_GetLoadResultSingleContainer(
+                                    new DCSBDim3D() { M0 = crate.dimensions[0], M1 = crate.dimensions[1], M2 = crate.dimensions[2] },
+                                    crate.weight,
+                                    crate.pcb,
+                                    new DCSBContainer()
+                                    {
+                                        ID = iCase,
+                                        Name = container.name,
+                                        Dimensions = new DCSBDim3D()
+                                        {
+                                            M0 = container.dimensions[0],
+                                            M1 = container.dimensions[1],
+                                            M2 = container.dimensions[2]
+                                        },
+                                        Color = container.color,
+                                        MaxLoadWeight = container.maxLoadWeight
+                                    },
+                                    (DCSBConfigId)(configId + 1),
+                                    new DCCompFormat()
+                                    {
+                                        Format = OutFormat.IMAGE,
+                                        ShowCotations = true,
+                                        Size = new DCCompSize() { CX = 250, CY = 250 },
+                                        FontSizeRatio = 0.03f
+                                    }
+                                    );
+
+                                if (loadResult.Status.Status == DCSBStatusEnu.Success)
+                                {
+                                    // case count per layer
+                                    ++iIndex;
+                                    if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of case per layer") { View = viewNormal }; }
+                                    gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.NumberPerLayer) { View = viewNormal };
+                                    // no of layers
+                                    ++iIndex;
+                                    if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of layers") { View = viewNormal }; }
+                                    gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.NumberOfLayers) { View = viewNormal };
+                                    // no of case/pallet
+                                    ++iIndex;
+                                    if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of case per pallet") { View = viewNormal }; }
+                                    gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.UpalCase) { View = viewNormal };
+                                    // no of items/pallet
+                                    ++iIndex;
+                                    if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of items per pallet") { View = viewNormal }; }
+                                    gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.UpalItem) { View = viewNormal };
+                                    // iso base
+                                    ++iIndex;
+                                    if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Area efficiency (1st layer)") { View = viewNormal }; }
+                                    gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.IsoBasePercentage) { View = viewNormal };
+                                    // iso pallet
+                                    ++iIndex;
+                                    if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet volume efficiency (%)") { View = viewNormal }; }
+                                    gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.IsoVolPercentage) { View = viewNormal };
+                                    // load weight
+                                    ++iIndex;
+                                    if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Load weight (kg)") { View = viewNormal }; }
+                                    gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.LoadWeight) { View = viewNormal };
+                                    // total weight
+                                    ++iIndex;
+                                    if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Total weight (kg)") { View = viewNormal }; }
+                                    gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.TotalWeight) { View = viewNormal };
+                                    // OK / NOK
+                                    ++iIndex;
+                                    if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Max load validity") { View = viewNormal }; }
+                                    gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.MaxLoadValidity ? "OK" : "NOK") { View = viewNormal };
+                                    // image
+                                    ++iIndex;
+                                    if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Image") { View = viewNormal }; }
+                                    gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Image(ByteArrayToImage(loadResult.OutFile.Bytes));
+
+                                    firstSuccessfull = false;
+                                }
+                            } // using
+                        } // for (configId)
+
+                    }
+                }
+                gridContainers.AutoSizeCells();
+                gridContainers.Columns.StretchToFit();
+                gridContainers.AutoStretchColumnsToFitWidth = true;
+                gridContainers.Invalidate();
+            }
+            catch (Exception ex)
+            {
+                _log.Warn(ex.ToString());
+            }
+        }
+        private void FillGridContainer2()
+        {
+
         }
 
         public Image ByteArrayToImage(byte[] byteArrayIn)
@@ -469,7 +717,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
         public static string DefaultInputFilePath
         {
             get => Settings.Default.JJA_InputFilePath;
-            set => Settings.Default.JJA_InputFilePath = value; 
+            set => Settings.Default.JJA_InputFilePath = value;
         }
         #endregion
         #region Handlers
@@ -484,13 +732,21 @@ namespace treeDiM.StackBuilder.WCFService.Test
         {
             _log.Info("Calling FillGridContent1()...");
             LoadInputData();
-            FillGridContent1();
+
+            if (tabCtrlPalletContainer.SelectedIndex == 0)
+                FillGridPallet1();
+            else if (tabCtrlPalletContainer.SelectedIndex == 1)
+                FillGridContainer1();
         }
         private void OnLoadSingleCall(object sender, EventArgs e)
         {
             _log.Info("Calling FillGridContent2()...");
             LoadInputData();
-            FillGridContent2();
+
+            if (tabCtrlPalletContainer.SelectedIndex == 0)
+                FillGridPallet2();
+            else if (tabCtrlPalletContainer.SelectedIndex == 1)
+                FillGridContainer2();
         }
 
         private void OnFileChanged(object sender, EventArgs e)
@@ -518,7 +774,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
             {
                 using (var fStream = new FileStream(filePath, FileMode.Open))
                 {
-                    result = DeserializeInput(fStream, ref Containers, ref Pallets, ref Cases); 
+                    result = DeserializeInput(fStream, ref Containers, ref Pallets, ref Cases);
                 }
             }
             return result;
@@ -530,17 +786,17 @@ namespace treeDiM.StackBuilder.WCFService.Test
             // Call the Deserialize method and cast to the object type.  
             var inputRoot = (input)inputSerializer.Deserialize(fStream);
             foreach (var inputCont in inputRoot.containers)
-            {   containers.Add(inputCont); }
+            { containers.Add(inputCont); }
             foreach (var inputPallet in inputRoot.pallets)
-            {   pallets.Add(inputPallet); }
+            { pallets.Add(inputPallet); }
             foreach (var inputCase in inputRoot.cases)
-            {   cases.Add(inputCase);  }
+            { cases.Add(inputCase); }
             return containers.Count > 0 && pallets.Count > 0 && cases.Count > 0;
         }
         #endregion
         #region Data members
         private List<inputPallet> Pallets = new List<inputPallet>();
-        private List<inputContainer> Containers = new List<inputContainer>(); 
+        private List<inputContainer> Containers = new List<inputContainer>();
         private List<inputCase> Cases = new List<inputCase>();
         protected ILog _log = LogManager.GetLogger(typeof(FormTestJJA));
         #endregion

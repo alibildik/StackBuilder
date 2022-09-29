@@ -240,6 +240,7 @@
       <xs:enumeration value="BottomTop" />
       <xs:enumeration value="FrontBack" />
       <xs:enumeration value="LeftRight" />
+      <xs:enumeration value="Unconveyable" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="DCSBOrientationName" nillable="true" type="tns:DCSBOrientationName" />
@@ -279,12 +280,15 @@
   </xs:complexType>
   <xs:element name="ArrayOfDCSBContainer" nillable="true" type="tns:ArrayOfDCSBContainer" />
   <xs:complexType name="DCSBContainer">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Color" type="xs:int" />
-      <xs:element minOccurs="0" name="ContainerType" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Dimensions" nillable="true" type="tns:DCSBDim3D" />
-      <xs:element minOccurs="0" name="MaxLoadWeight" nillable="true" type="xs:double" />
-    </xs:sequence>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DCSBItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Color" type="xs:int" />
+          <xs:element minOccurs="0" name="Dimensions" nillable="true" type="tns:DCSBDim3D" />
+          <xs:element minOccurs="0" name="MaxLoadWeight" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:element name="DCSBContainer" nillable="true" type="tns:DCSBContainer" />
   <xs:complexType name="ArrayOfDCSBLoadResultContainer">

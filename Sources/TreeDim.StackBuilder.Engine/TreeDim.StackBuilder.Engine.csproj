@@ -91,6 +91,7 @@
     <Compile Include="LayerPatterns\LayerPatternMSpirale4Parts.cs" />
     <Compile Include="LayerPatterns\LayerPatternMSpirale8Parts.cs" />
     <Compile Include="LayerPatterns\LayerPatternOpposed.cs" />
+    <Compile Include="LayerPatterns\LayerPatternPinWheel.cs" />
     <Compile Include="Solvers\BlockBuilder.cs" />
     <Compile Include="Solvers\ChunkSolver.cs" />
     <Compile Include="Solvers\CylLayoutSolver.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Solvers\LayerSolver.cs" />
     <Compile Include="Solvers\SolverBoxCase.cs" />
     <Compile Include="Solvers\SolverCasePallet.cs" />
+    <Compile Include="Solvers\SolverCaseTruck.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

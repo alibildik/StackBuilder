@@ -49,7 +49,9 @@ namespace treeDiM.StackBuilder.WCFAppServ
         [EnumMember]
         FrontBack,
         [EnumMember]
-        LeftRight
+        LeftRight,
+        [EnumMember]
+        Unconveyable
     }
     [DataContract]
     public enum DCSBPrep

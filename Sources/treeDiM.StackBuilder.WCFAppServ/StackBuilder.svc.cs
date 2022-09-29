@@ -968,10 +968,6 @@ namespace treeDiM.StackBuilder.WCFAppServ
         public DCSBLoadResultContainer[] JJA_GetMultiContainerResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBContainer[] containers)
         {
             DCSBLoadResultContainer[] loadResultsContainers = new DCSBLoadResultContainer[3 * containers.Length];
-
-
-
-
             return loadResultsContainers;
         }
         public DCSBLoadResultPallet[] JJA_GetMultiPalletResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBPalletWHeight[] pallets)
@@ -1068,12 +1064,139 @@ namespace treeDiM.StackBuilder.WCFAppServ
             }
             return loadResultsPallets;
         }
-        public DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(DCSBDim3D dimensions, double weight, int noItemPerCase
+        public DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(DCSBDim3D dimensions, double weight, int pcb
             , DCSBContainer container, DCSBConfigId configId
             , DCCompFormat expectedFormat)
         {
-            DCSBLoadResultSingleContainer loadResultSingleContainer = new DCSBLoadResultSingleContainer();
-            return loadResultSingleContainer;
+            var lErrors = new List<string>();
+            var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, pcb, (int)configId);
+
+            // build boxProperties
+            var boxProperties = new BoxProperties(null, jjaConfig.Length, jjaConfig.Width, jjaConfig.Height)
+            {
+                InsideLength = 0.0,
+                InsideWidth = 0.0,
+                InsideHeight = 0.0,
+                TapeColor = Color.Beige,
+                TapeWidth = new OptDouble(true, 50.0)
+            };
+            boxProperties.SetWeight(weight);
+            boxProperties.SetNetWeight(new OptDouble(false, 0.0));
+            boxProperties.SetAllColors(Enumerable.Repeat(Color.Chocolate, 6).ToArray());
+
+            // container
+            var containerProperties = new TruckProperties(null, container.Dimensions.M0, container.Dimensions.M1, container.Dimensions.M2)
+            {
+                Color = Color.FromArgb(container.Color),
+                AdmissibleLoadWeight = container.MaxLoadWeight.HasValue ? container.MaxLoadWeight.Value : 0.0
+            };
+
+            // --- checking validity
+            DCSBStatusEnu statusValidity = DCSBStatusEnu.Success;
+            if (boxProperties.Height >= containerProperties.Height)
+                statusValidity = DCSBStatusEnu.FailureHeightExceeded;
+            if (
+                (boxProperties.Length > containerProperties.Length || boxProperties.Width > containerProperties.Width)
+                && (boxProperties.Length > containerProperties.Width || boxProperties.Width > containerProperties.Length)
+                )
+                statusValidity = DCSBStatusEnu.FailureLengthOrWidthExceeded;
+            if (container.MaxLoadWeight.HasValue && boxProperties.Weight > container.MaxLoadWeight.Value)
+                statusValidity = DCSBStatusEnu.FailureWeightExceeded;
+
+            if (statusValidity != DCSBStatusEnu.Success)
+                return new DCSBLoadResultSingleContainer()
+                {
+                    Status = new DCSBStatus()
+                    {
+                        Status = statusValidity,
+                        Error = string.Empty
+                    },
+                    Result = null,
+                    OutFile = null
+                };
+            // ---
+
+            // constraint set
+            var constraintSet = new ConstraintSetCaseTruck(containerProperties) { };
+            constraintSet.SetAllowedOrientations(new bool[] { false, false, true });
+
+            int casePerLayerCount = 0, layerCount = 0, caseCount = 0, interlayerCount = 0;
+            double weightTotal = 0.0, weightLoad = 0.0, volumeEfficiency = 0.0;
+            double areaEfficiency = 0.0;
+            double? weightEfficiency = 0.0;
+            double? weightNet = (double?)null;
+            Vector3D bbLoad = new Vector3D();
+            Vector3D bbGlob = new Vector3D();
+            byte[] imageBytes = null;
+            string[] errors = null;
+            string palletMapPhrase = string.Empty;
+
+            if (StackBuilderProcessor.GetBestSolution(
+                boxProperties, containerProperties,
+                constraintSet, false,
+                new ImageDefinition()
+                {
+                    ShowImage = expectedFormat.Format == EOutFormat.IMAGE,
+                    CameraPosition = Graphics3D.Corner_0,
+                    ImageSize = new Size(expectedFormat.Size.CX, expectedFormat.Size.CY),
+                    FontSizeRatio = expectedFormat.FontSizeRatio
+                },
+                ref casePerLayerCount, ref layerCount,
+                ref caseCount, ref interlayerCount,
+                ref weightTotal, ref weightLoad, ref weightNet,
+                ref bbLoad, ref bbGlob,
+                ref areaEfficiency, ref volumeEfficiency, ref weightEfficiency,
+                ref palletMapPhrase,
+                ref imageBytes, ref errors
+                )
+                )
+                return new DCSBLoadResultSingleContainer()
+                {
+                    Status = new DCSBStatus()
+                    {
+                        Status = DCSBStatusEnu.Success,
+                        Error = string.Empty
+                    },
+                    Result = new DCSBLoadResultContainer()
+                    {
+                        ConfigId = configId,
+                        Container = container,
+                        NumberOfLayers = layerCount,
+                        NumberPerLayer = casePerLayerCount,
+                        UpalItem = caseCount * pcb,
+                        UpalCase = caseCount,
+                        IsoBasePercentage = areaEfficiency,
+                        IsoVolPercentage = volumeEfficiency,
+                        LoadWeight = weightLoad,
+                        TotalWeight = weightTotal,
+                        MaxLoadValidity = weightTotal <= container.MaxLoadWeight
+
+                    },
+                    OutFile = new DCCompFileOutput()
+                    {
+                        Bytes = imageBytes,
+                        Format = new DCCompFormat()
+                        {
+                            Format = EOutFormat.IMAGE,
+                            Size = new DCCompSize()
+                            {
+                                CX = expectedFormat.Size.CX,
+                                CY = expectedFormat.Size.CY
+                            }
+                        }
+                    }
+                };
+            else
+                return new DCSBLoadResultSingleContainer()
+                {
+                    Status = new DCSBStatus()
+                    {
+                        Status = DCSBStatusEnu.FailureLengthOrWidthExceeded,
+                        Error = string.Empty
+                    },
+                    Result = null,
+                    OutFile = null
+                };
         }
         public DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(
             DCSBDim3D dimensions, double weight, int pcb
@@ -1117,6 +1240,31 @@ namespace treeDiM.StackBuilder.WCFAppServ
             constraintSet.SetMaxHeight(new OptDouble(true, sbPallet.MaxPalletHeight));
             constraintSet.SetAllowedOrientations(new bool[] { false, false, true });
             if (!constraintSet.Valid) throw new Exception("Invalid constraint set");
+
+            // --- checking validity
+            DCSBStatusEnu statusValidity = DCSBStatusEnu.Success;
+            if (boxProperties.Height + palletProperties.Height >= sbPallet.MaxPalletHeight)
+                statusValidity = DCSBStatusEnu.FailureHeightExceeded;
+            if (
+                (boxProperties.Length > palletProperties.Length || boxProperties.Width > palletProperties.Width)
+                && (boxProperties.Length > palletProperties.Width || boxProperties.Width > palletProperties.Length)
+                )
+                statusValidity = DCSBStatusEnu.FailureLengthOrWidthExceeded;
+            if (boxProperties.Weight > sbPallet.MaxPalletLoad)
+                statusValidity = DCSBStatusEnu.FailureWeightExceeded;
+
+            if (statusValidity != DCSBStatusEnu.Success)
+                return new DCSBLoadResultSinglePallet()
+                {
+                    Status = new DCSBStatus()
+                    {
+                        Status = statusValidity,
+                        Error = string.Empty
+                    },
+                    Result = null,
+                    OutFile = null
+                };
+            // ---
 
             int casePerLayerCount = 0, layerCount = 0, caseCount = 0, interlayerCount = 0;
             double weightTotal = 0.0, weightLoad = 0.0, volumeEfficiency = 0.0;
@@ -1191,6 +1339,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 Status = new DCSBStatus()
                 {
                     Status = DCSBStatusEnu.FailureLengthOrWidthExceeded,
+                    Error = string.Empty
                 },
                 Result = new DCSBLoadResultPallet()
                 {

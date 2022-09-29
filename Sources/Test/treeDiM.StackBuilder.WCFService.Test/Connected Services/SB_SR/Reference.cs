@@ -21,6 +21,7 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBPalletWHeight))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBInterlayer))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBBundle))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBContainer))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBCase))]
     public partial class DCSBItem : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -343,6 +344,61 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
                 if ((this.UnitWeightField.Equals(value) != true)) {
                     this.UnitWeightField = value;
                     this.RaisePropertyChanged("UnitWeight");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DCSBContainer", Namespace="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ")]
+    [System.SerializableAttribute()]
+    public partial class DCSBContainer : treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBItem {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ColorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D DimensionsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> MaxLoadWeightField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Color {
+            get {
+                return this.ColorField;
+            }
+            set {
+                if ((this.ColorField.Equals(value) != true)) {
+                    this.ColorField = value;
+                    this.RaisePropertyChanged("Color");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D Dimensions {
+            get {
+                return this.DimensionsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DimensionsField, value) != true)) {
+                    this.DimensionsField = value;
+                    this.RaisePropertyChanged("Dimensions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> MaxLoadWeight {
+            get {
+                return this.MaxLoadWeightField;
+            }
+            set {
+                if ((this.MaxLoadWeightField.Equals(value) != true)) {
+                    this.MaxLoadWeightField = value;
+                    this.RaisePropertyChanged("MaxLoadWeight");
                 }
             }
         }
@@ -1753,6 +1809,9 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         LeftRight = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Unconveyable = 3,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -1800,99 +1859,6 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Unstable = 1,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DCSBContainer", Namespace="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ")]
-    [System.SerializableAttribute()]
-    public partial class DCSBContainer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ColorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContainerTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D DimensionsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> MaxLoadWeightField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Color {
-            get {
-                return this.ColorField;
-            }
-            set {
-                if ((this.ColorField.Equals(value) != true)) {
-                    this.ColorField = value;
-                    this.RaisePropertyChanged("Color");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ContainerType {
-            get {
-                return this.ContainerTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ContainerTypeField, value) != true)) {
-                    this.ContainerTypeField = value;
-                    this.RaisePropertyChanged("ContainerType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D Dimensions {
-            get {
-                return this.DimensionsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DimensionsField, value) != true)) {
-                    this.DimensionsField = value;
-                    this.RaisePropertyChanged("Dimensions");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> MaxLoadWeight {
-            get {
-                return this.MaxLoadWeightField;
-            }
-            set {
-                if ((this.MaxLoadWeightField.Equals(value) != true)) {
-                    this.MaxLoadWeightField = value;
-                    this.RaisePropertyChanged("MaxLoadWeight");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
