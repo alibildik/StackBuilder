@@ -9,7 +9,7 @@ namespace treeDiM.StackBuilder.Engine
     {
         public override string Name => "Spirale";
         public override int GetNumberOfVariants(Layer2DBrickImp layer) => 1;
-        public override bool IsSymetric => true;
+        public override bool IsSymetric => false;
         public override bool CanBeSwapped => true;
         public override bool CanBeInverted => true;
 

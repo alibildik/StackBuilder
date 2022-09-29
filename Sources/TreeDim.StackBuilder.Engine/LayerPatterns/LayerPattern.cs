@@ -8,9 +8,7 @@ namespace treeDiM.StackBuilder.Engine
         public abstract string Name { get; }
         public abstract bool GetLayerDimensions(ILayer2D layer, out double actualLength, out double actualWidth);
         public abstract void GenerateLayer(ILayer2D layer, double actualLength, double actualWidth);
-
         public virtual bool CanBeSwapped => false;
-
         public bool GetLayerDimensionsChecked(ILayer2D layer, out double actualLength, out double actualWidth)
         {
             bool result = GetLayerDimensions(layer, out actualLength, out actualWidth);
@@ -20,7 +18,6 @@ namespace treeDiM.StackBuilder.Engine
                 throw new EngineException($"Pattern name={Name} : actualWidth={actualWidth} > palletWidth={GetPalletWidth(layer)} ?");
             return result;
         }
-
         #region Non-Public Members
         protected double GetPalletLength(ILayer2D layer)
         {

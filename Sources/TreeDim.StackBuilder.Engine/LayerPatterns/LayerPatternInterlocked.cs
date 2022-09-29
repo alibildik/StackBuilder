@@ -13,7 +13,6 @@ namespace treeDiM.StackBuilder.Engine
         public override bool IsSymetric => true;
         public override bool CanBeSwapped => true;
         public override bool CanBeInverted => true;
-
         public override void GenerateLayer(ILayer2D layer, double actualLength, double actualWidth)
         {
             layer.Clear();

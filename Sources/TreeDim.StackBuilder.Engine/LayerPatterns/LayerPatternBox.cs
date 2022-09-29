@@ -7,6 +7,7 @@ using Sharp3D.Math.Core;
 using log4net;
 
 using treeDiM.StackBuilder.Basics;
+using treeDiM.StackBuilder.Engine.LayerPatterns;
 #endregion
 
 namespace treeDiM.StackBuilder.Engine
@@ -27,6 +28,7 @@ namespace treeDiM.StackBuilder.Engine
             , new LayerPatternMSpirale4Parts()
             , new LayerPatternMSpirale8Parts()
             , new LayerPatternBrick()
+            , new LayerPatternPinWheel()
         });
 
         public static LayerPatternBox GetByName(string patternName)
