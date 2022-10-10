@@ -551,12 +551,13 @@ namespace treeDiM.StackBuilder.Basics
             string name, string description,
             string typeName,
             double length, double width, double height,
-            double weight,
+            double weight, double admissibleLoad,
             Color palletColor)
         {
             PalletProperties palletProperties = new PalletProperties(this, typeName, length, width, height);
             palletProperties.ID.SetNameDesc( name, description );
             palletProperties.Weight = weight;
+            palletProperties.AdmissibleLoadWeight = admissibleLoad;
             palletProperties.Color = palletColor;
             // insert in list
             _typeList.Add(palletProperties);
@@ -753,7 +754,16 @@ namespace treeDiM.StackBuilder.Basics
                 loadedPallet2,
                 loadedPallet3);
             analysis.ID.SetNameDesc(name, description);
+            return InsertAnalysis(analysis);
+        }
 
+        public Analysis CreateNewAnalysisPalletColumn(
+            string name, string description,
+            LoadedPallet loadedPallet0,
+            LoadedPallet loadedPallet1)
+        {
+            var analysis = new AnalysisPalletColumn(this, loadedPallet0, loadedPallet1);
+            analysis.ID.SetNameDesc(name, description);
             return InsertAnalysis(analysis);
         }
 
@@ -1001,8 +1011,14 @@ namespace treeDiM.StackBuilder.Basics
                 if (!Analyses.Remove(item as Analysis))
                     _log.Warn($"Failed to properly remove analysis {item.ID.Name}");
             }
+            else if (item is AnalysisPalletColumn)
+            {
+                NotifyOnAnalysisRemoved(item as Analysis);
+                if (!Analyses.Remove(item as Analysis))
+                    _log.Warn($"Failed to properly remove analysis {item.ID.Name}");
+            }
             else
-                _log.Error($"Removing document {item.ID.Name} of unknown type {item.GetType()}...");
+                throw new Exception($"Removing document {item.ID.Name} of unknown type {item.GetType()}...");
             Modify();
         }
         #endregion
@@ -1763,8 +1779,8 @@ namespace treeDiM.StackBuilder.Basics
                 , UnitsManager.ConvertLengthFrom(Convert.ToDouble(swidth, CultureInfo.InvariantCulture), UnitSystem)
                 , UnitsManager.ConvertLengthFrom(Convert.ToDouble(sheight, CultureInfo.InvariantCulture), UnitSystem)
                 , UnitsManager.ConvertMassFrom(Convert.ToDouble(sweight, CultureInfo.InvariantCulture), UnitSystem)
+                , UnitsManager.ConvertMassFrom(Convert.ToDouble(sadmissibleloadweight, CultureInfo.InvariantCulture), UnitSystem)
                 , Color.FromArgb(Convert.ToInt32(sColor)));
-            palletProperties.AdmissibleLoadWeight = UnitsManager.ConvertMassFrom(Convert.ToDouble(sadmissibleloadweight, CultureInfo.InvariantCulture), UnitSystem);
             palletProperties.AdmissibleLoadHeight = UnitsManager.ConvertLengthFrom(Convert.ToDouble(sadmissibleloadheight, CultureInfo.InvariantCulture), UnitSystem);
             palletProperties.ID.IGuid = new Guid(sid);
         }
@@ -1996,7 +2012,7 @@ namespace treeDiM.StackBuilder.Basics
                 StrapperSet strapperSet = new StrapperSet();
                 List<PalletLabelInst> palletLabelInstances = new List<PalletLabelInst>();
                 List<ConveyorSetting> conveyorSettings = new List<ConveyorSetting>();
-                RobotPreparation robotPreparation = null; 
+                RobotPreparation robotPreparation = null;
 
                 ConstraintSetAbstract constraintSet = null;
                 foreach (XmlNode node in eltAnalysis.ChildNodes)
@@ -2214,6 +2230,17 @@ namespace treeDiM.StackBuilder.Basics
                     sName, sDescription,
                     masterPalletSplit, loadedPalletOrientation,
                     palletProperties, pallet0, pallet1, pallet2, pallet3) as AnalysisPalletsOnPallet;
+                if (!string.IsNullOrEmpty(sId))
+                    analysis.ID.IGuid = Guid.Parse(sId);
+            }
+            else if (string.Equals(eltAnalysis.Name, "AnalysisPalletColumn", StringComparison.CurrentCultureIgnoreCase))
+            {
+                LoadedPallet pallet0 = null, pallet1 = null;
+                if (eltAnalysis.HasAttribute("Pallet0"))
+                    pallet0 = GetContentByGuid(Guid.Parse(eltAnalysis.Attributes["Pallet0"].Value)) as LoadedPallet;
+                if (eltAnalysis.HasAttribute("Pallet1"))
+                    pallet1 = GetContentByGuid(Guid.Parse(eltAnalysis.Attributes["Pallet1"].Value)) as LoadedPallet;
+                var analysis = CreateNewAnalysisPalletColumn(sName, sDescription, pallet0, pallet1);
                 if (!string.IsNullOrEmpty(sId))
                     analysis.ID.IGuid = Guid.Parse(sId);
             }
@@ -2852,6 +2879,8 @@ namespace treeDiM.StackBuilder.Basics
                         SaveAnalysis(analysisHomo, xmlAnalysesElt, xmlDoc);
                     else if (analysis is AnalysisPalletsOnPallet analysisPalletsOnPallet)
                         SaveAnalysis(analysisPalletsOnPallet, xmlAnalysesElt, xmlDoc);
+                    else if (analysis is AnalysisPalletColumn analysisPalletColumn)
+                        SaveAnalysis(analysisPalletColumn, xmlAnalysesElt, xmlDoc);
                 }
                 XmlElement xmlHAnalysesElt = xmlDoc.CreateElement("HAnalyses");
                 xmlRootElement.AppendChild(xmlHAnalysesElt);
@@ -3835,6 +3864,7 @@ namespace treeDiM.StackBuilder.Basics
             else if (analysis is AnalysisHCylTruck) return "AnalysisHCylTruck";
             else if (analysis is AnalysisPalletTruck) return "AnalysisPalletTruck";
             else if (analysis is AnalysisPalletsOnPallet) return "AnalysisPalletsOnPallet";
+            else if (analysis is AnalysisPalletColumn) return "AnalysisPalletColumn";
             else return TypeDescriptor.GetClassName(analysis.GetType());
         }
         private void SaveAnalysis(AnalysisHomo analysis, XmlElement parentElement, XmlDocument xmlDoc)
@@ -3967,7 +3997,6 @@ namespace treeDiM.StackBuilder.Basics
                     XmlAttribute attPalletFilmTurns = xmlDoc.CreateAttribute("PalletFilmTurns");
                     attPalletFilmTurns.Value = constraintSetCasePallet.PalletFilmTurns.ToString();
                     eltContraintSet.Attributes.Append(attPalletFilmTurns);
-
                 }
             }
             else if (analysis is AnalysisPalletTruck analysisPalletTruck)
@@ -4070,6 +4099,34 @@ namespace treeDiM.StackBuilder.Basics
             }
         }
 
+        private void SaveAnalysis(AnalysisPalletColumn analysis, XmlElement parentElement, XmlDocument xmlDoc)
+        {
+            // create analysis element
+            XmlElement xmlAnalysisElt = xmlDoc.CreateElement(AnalysisTypeName(analysis));
+            parentElement.AppendChild(xmlAnalysisElt);
+            // guid
+            XmlAttribute analysisGuidAttribute = xmlDoc.CreateAttribute("Id");
+            analysisGuidAttribute.Value = analysis.ID.IGuid.ToString();
+            xmlAnalysisElt.Attributes.Append(analysisGuidAttribute);
+            // name
+            XmlAttribute analysisNameAttribute = xmlDoc.CreateAttribute("Name");
+            analysisNameAttribute.Value = analysis.ID.Name;
+            xmlAnalysisElt.Attributes.Append(analysisNameAttribute);
+            // description
+            XmlAttribute analysisDescriptionAttribute = xmlDoc.CreateAttribute("Description");
+            analysisDescriptionAttribute.Value = analysis.ID.Description;
+            xmlAnalysisElt.Attributes.Append(analysisDescriptionAttribute);
+            // loaded pallets
+            for (int i = 0; i < 2; ++i)
+            {
+                if (null != analysis.PalletAnalyses[i])
+                {
+                    XmlAttribute palletAttribute = xmlDoc.CreateAttribute($"Pallet{i}");
+                    palletAttribute.Value = analysis.PalletAnalyses[i].ParentAnalysis.ID.IGuid.ToString();
+                    xmlAnalysisElt.Attributes.Append(palletAttribute);
+                }
+            }
+        }
         private void SaveSolution(SolutionLayered sol, XmlElement parentElement, XmlDocument xmlDoc)
         {
             XmlElement eltSolution = xmlDoc.CreateElement("Solution");
@@ -4418,10 +4475,17 @@ namespace treeDiM.StackBuilder.Basics
         {
             // remove all analysis and items
             // -> this should close any listening forms
-            while (Analyses.Count > 0)
-                RemoveItem(Analyses[0]);
-            while (_typeList.Count > 0)
-                RemoveItem(_typeList[0]);
+            try
+            {
+                while (Analyses.Count > 0)
+                    RemoveItem(Analyses[0]);
+                while (_typeList.Count > 0)
+                    RemoveItem(_typeList[0]);
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.ToString());
+            }
             DocumentClosed?.Invoke(this);
         }
         #endregion

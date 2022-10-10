@@ -38,10 +38,8 @@ namespace treeDiM.StackBuilder.Desktop
                                 UnitsManager.ConvertLengthFrom(dcsbPallet.Dimensions.M1, us),
                                 UnitsManager.ConvertLengthFrom(dcsbPallet.Dimensions.M2, us),
                                 UnitsManager.ConvertMassFrom(dcsbPallet.Weight, us),
+                                UnitsManager.ConvertMassFrom(null != dcsbPallet.AdmissibleLoad? dcsbPallet.AdmissibleLoad.Value : 0.0, us),
                                 Color.FromArgb(dcsbPallet.Color));
-
-                            if (null != dcsbPallet.AdmissibleLoad)
-                                palletProperties.AdmissibleLoadWeight = UnitsManager.ConvertMassFrom(dcsbPallet.AdmissibleLoad.Value, us);
                         }
                     }
                     while ((rangeIndex + 1) * 20 < numberOfItems);

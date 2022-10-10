@@ -1198,10 +1198,9 @@ namespace treeDiM.StackBuilder.Desktop
                         UnitsManager.ConvertLengthFrom(dcsbPallet.Dimensions.M1, us),
                         UnitsManager.ConvertLengthFrom(dcsbPallet.Dimensions.M2, us),
                         UnitsManager.ConvertMassFrom(dcsbPallet.Weight, us),
+                        UnitsManager.ConvertMassFrom(dcsbPallet.AdmissibleLoad.HasValue ? dcsbPallet.AdmissibleLoad.Value : 0.0, us),
                         Color.FromArgb(dcsbPallet.Color)
                         );
-                    if (dcsbPallet.AdmissibleLoad.HasValue)
-                        palletProperties.AdmissibleLoadWeight = UnitsManager.ConvertMassFrom(dcsbPallet.AdmissibleLoad.Value, us);
                 }
                 // interlayer
                 if (_selectedItem is DCSBInterlayer dcsbInterlayer)

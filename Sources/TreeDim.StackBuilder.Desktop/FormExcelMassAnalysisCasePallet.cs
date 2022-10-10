@@ -484,11 +484,17 @@ namespace treeDiM.StackBuilder.Desktop
         #region Event handlers
         private void OnGenerateImagesInFolderChanged(object sender, EventArgs e) => fsFolderImages.Enabled = chkbGenerateImageInFolder.Checked;
         private void OnGenerateReportsInFolderChanged(object sender, EventArgs e) => fsFolderReports.Enabled = chkbGenerateReportInFolder.Checked;
-        private void OnItemChecked(object sender, ItemCheckEventArgs e)
+        private void OnItemChecked(object sender, ItemCheckEventArgs e) => UpdateStatus(sender, null);
+        private void OnCheckAllPallets(object sender, EventArgs e) => CheckAll(sender, true);
+        private void OnUncheckAllPallets(object sender, EventArgs e) => CheckAll(sender, false);
+        #endregion
+        #region Helpers
+        private void CheckAll(object sender, bool bChecked)
         {
+            for(int i=0; i<lbPallets.Items.Count; ++i)
+                lbPallets.SetItemChecked(i, bChecked);
             UpdateStatus(sender, null);
         }
-
         #endregion
     }
 }

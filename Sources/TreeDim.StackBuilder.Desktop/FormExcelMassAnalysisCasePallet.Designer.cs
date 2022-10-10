@@ -60,6 +60,8 @@ namespace treeDiM.StackBuilder.Desktop
             this.cbOutputStart = new System.Windows.Forms.ComboBox();
             this.lbStartOutput = new System.Windows.Forms.Label();
             this.tpPalletsAndConstraints = new System.Windows.Forms.TabPage();
+            this.bnUncheckAll = new System.Windows.Forms.Button();
+            this.bnCheckAll = new System.Windows.Forms.Button();
             this.chkbPalletAdmissibleLoadWeight = new System.Windows.Forms.CheckBox();
             this.lPallets = new System.Windows.Forms.Label();
             this.tabCtrl.SuspendLayout();
@@ -293,6 +295,8 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // tpPalletsAndConstraints
             // 
+            this.tpPalletsAndConstraints.Controls.Add(this.bnUncheckAll);
+            this.tpPalletsAndConstraints.Controls.Add(this.bnCheckAll);
             this.tpPalletsAndConstraints.Controls.Add(this.chkbPalletAdmissibleLoadWeight);
             this.tpPalletsAndConstraints.Controls.Add(this.lPallets);
             this.tpPalletsAndConstraints.Controls.Add(this.chkbAllowCombinations);
@@ -303,6 +307,20 @@ namespace treeDiM.StackBuilder.Desktop
             resources.ApplyResources(this.tpPalletsAndConstraints, "tpPalletsAndConstraints");
             this.tpPalletsAndConstraints.Name = "tpPalletsAndConstraints";
             this.tpPalletsAndConstraints.UseVisualStyleBackColor = true;
+            // 
+            // bnUncheckAll
+            // 
+            resources.ApplyResources(this.bnUncheckAll, "bnUncheckAll");
+            this.bnUncheckAll.Name = "bnUncheckAll";
+            this.bnUncheckAll.UseVisualStyleBackColor = true;
+            this.bnUncheckAll.Click += new System.EventHandler(this.OnUncheckAllPallets);
+            // 
+            // bnCheckAll
+            // 
+            resources.ApplyResources(this.bnCheckAll, "bnCheckAll");
+            this.bnCheckAll.Name = "bnCheckAll";
+            this.bnCheckAll.UseVisualStyleBackColor = true;
+            this.bnCheckAll.Click += new System.EventHandler(this.OnCheckAllPallets);
             // 
             // chkbPalletAdmissibleLoadWeight
             // 
@@ -368,5 +386,7 @@ namespace treeDiM.StackBuilder.Desktop
         private UserControls.FileSelect fsFolderImages;
         private System.Windows.Forms.Label lPallets;
         private System.Windows.Forms.CheckBox chkbPalletAdmissibleLoadWeight;
+        private System.Windows.Forms.Button bnUncheckAll;
+        private System.Windows.Forms.Button bnCheckAll;
     }
 }

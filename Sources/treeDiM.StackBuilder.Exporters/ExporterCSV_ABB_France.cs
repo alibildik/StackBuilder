@@ -155,6 +155,31 @@ namespace treeDiM.StackBuilder.Exporters
                 else
                     _log.Error($"RobotLayer count {robotLayers.Count} not equal to solution layer count {robotPreparation.NumberOfLayers}");
             }
+
+            // top interlayer?
+            if (interlayers.Count == robotPreparation.NumberOfLayers + 1 && -1 != interlayers[robotPreparation.NumberOfLayers].first)
+            {
+                var interlayerProp = analysis.Interlayers[interlayers[robotPreparation.NumberOfLayers].first];
+                var vPos = new Vector3D(pal.Length / 2, pal.Width / 2, interlayers[robotPreparation.NumberOfLayers].second);
+                // item name
+                string itemName = "Interlayer";
+                // item pick setting
+                string itemPickSettings = string.Format(
+                    CultureInfo.InvariantCulture,
+                    "[[{0},{1},{2}],{3},[{4},{5},{6}],0,0,0]",
+                    interlayerProp.Length, interlayerProp.Width, interlayerProp.Thickness, interlayerProp.Weight, cogInterlayer.X, cogInterlayer.Y, cogInterlayer.Z);
+                // place settings
+                int number = 1;
+                int angle = 0;
+                double dockingX = 0.0;
+                double dockingY = 0.0;
+                string placeSettings = string.Format(
+                    CultureInfo.InvariantCulture,
+                    "[{0},[{1},{2},{3}],{0},[{4},{5},{6}]]",
+                    number, vPos.X, vPos.Y, vPos.Z, angle, dockingX, dockingY, robotPreparation.DockingOffsets.Z);
+                // append interlayer line
+                sb.AppendLine($"{itemName};{itemPickSettings};{placeSettings};");
+            }
             sb.AppendLine("END;");
         }
         #endregion

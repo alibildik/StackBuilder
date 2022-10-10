@@ -95,6 +95,7 @@ namespace treeDiM.StackBuilder.Desktop
             else if (item is HAnalysisCase) return 17;
             else if (item is HAnalysisTruck) return 16;
             else if (item is AnalysisPalletsOnPallet) return 25;
+            else if (item is AnalysisPalletColumn) return 25;
             else
             {
                 _log.Error($"Unexpected analysis type = {item.GetType()}");
@@ -445,7 +446,12 @@ namespace treeDiM.StackBuilder.Desktop
             {
                 NodeTag tag = SelectedNode.Tag as NodeTag;
                 DocumentSB doc = tag.Document as DocumentSB;
-                doc.EditAnalysis(tag.Analysis);
+                if (null != tag.Analysis)
+                    doc.EditAnalysis(tag.Analysis);
+                else if (null != tag.AnalysisPalletsOnPallet)
+                    doc.EditAnalysis(tag.AnalysisPalletsOnPallet);
+                else if (null != tag.AnalysisPalletColumn)
+                    doc.EditAnalysis(tag.AnalysisPalletColumn);
             }
             catch (Exception ex) { _log.Error(ex.ToString()); }
         }
@@ -1112,9 +1118,8 @@ namespace treeDiM.StackBuilder.Desktop
         #region Object method overrides
         public override bool Equals(object obj)
         {
-            return !(obj is NodeTag nodeTag)
-                ? false
-                : Type == nodeTag.Type
+            return obj is NodeTag nodeTag
+                && Type == nodeTag.Type
                 && Document == nodeTag.Document
                 && ItemProperties == nodeTag.ItemProperties;
         }
@@ -1144,6 +1149,7 @@ namespace treeDiM.StackBuilder.Desktop
         /// </summary>
         public AnalysisHomo Analysis => ItemProperties as AnalysisHomo;
         public AnalysisPalletsOnPallet AnalysisPalletsOnPallet => ItemProperties as AnalysisPalletsOnPallet;
+        public AnalysisPalletColumn AnalysisPalletColumn => ItemProperties as AnalysisPalletColumn;
         public AnalysisHetero HAnalysis => ItemProperties as AnalysisHetero;
         #endregion
     }
@@ -1164,6 +1170,7 @@ namespace treeDiM.StackBuilder.Desktop
         public AnalysisHomo Analysis => NodeTag.Analysis;
         public AnalysisHetero HAnalysis => NodeTag.HAnalysis;
         public AnalysisPalletsOnPallet AnalysisPalletsOnPallet => NodeTag.AnalysisPalletsOnPallet;
+        public AnalysisPalletColumn AnalysisPalletColumn => NodeTag.AnalysisPalletColumn;
         public ItemBase ItemBase => NodeTag.ItemProperties;
         #endregion
         #region Private properties

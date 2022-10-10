@@ -36,8 +36,8 @@ namespace treeDiM.StackBuilder.Desktop
                 PalletWidth = palletProperties.Width;
                 PalletHeight = palletProperties.Height;
                 Weight = palletProperties.Weight;
-                PalletColor = palletProperties.Color;
                 AdmissibleLoad = palletProperties.AdmissibleLoadWeight;
+                PalletColor = palletProperties.Color;
             }
             else
             {

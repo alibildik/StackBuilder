@@ -111,6 +111,7 @@ namespace treeDiM.StackBuilder.Desktop
             else if (analysis is AnalysisHCylPallet) form = new DockContentAnalysisHCylPallet(this, analysis as AnalysisHCylPallet);
             else if (analysis is AnalysisHCylTruck) form = new DockContentAnalysisHCylTruck(this, analysis as AnalysisHCylTruck);
             else if (analysis is AnalysisPalletsOnPallet) form = new DockContentAnalysisPalletsOnPallet(this, analysis as AnalysisPalletsOnPallet);
+            else if (analysis is AnalysisPalletColumn) form = new DockContentAnalysisPalletColumn(this, analysis as AnalysisPalletColumn);
             else
             {
                 _log.Error($"Analysis ({analysis.Name}) type not handled");
@@ -341,7 +342,7 @@ namespace treeDiM.StackBuilder.Desktop
                     CreateNewPallet(form.ItemName, form.ItemDescription
                         , form.PalletTypeName
                         , form.PalletLength, form.PalletWidth, form.PalletHeight
-                        , form.Weight
+                        , form.Weight, form.AdmissibleLoad
                         , form.PalletColor);
             }
         }
@@ -405,6 +406,12 @@ namespace treeDiM.StackBuilder.Desktop
         {
             if (!CanCreatePalletsOnPallet) return;
             using (var form = new FormNewAnalysisPalletsOnPallet(this, null))
+                if (DialogResult.OK == form.ShowDialog()) { }
+        }
+        public void CreateNewPalletOnPalletUI()
+        {
+            if (!CanCreatePalletsOnPallet) return;
+            using (var form = new FormNewAnalysisPalletColumn(this, null))
                 if (DialogResult.OK == form.ShowDialog()) { }
         }
         public void CreateNewAnalysisPalletTruckUI()
@@ -580,7 +587,7 @@ namespace treeDiM.StackBuilder.Desktop
             else if (analysis is AnalysisHCylTruck analysisHCylTruck) form = new FormNewAnalysisHCylTruck(this, analysisHCylTruck);
             else
             {
-               _log.Error($"Unexepected analysis type = {analysis.GetType()}");
+                _log.Error($"Unexepected analysis type = {analysis.GetType()}");
                 return;
             }
             if (DialogResult.OK == form.ShowDialog())
@@ -609,13 +616,25 @@ namespace treeDiM.StackBuilder.Desktop
         }
         public void EditAnalysis(AnalysisPalletsOnPallet analysis)
         {
-            // search for DockContentHAnalysis window and close it
+            // search for DockContentAnalysisPalletsOnPallet window and close it
             var seq = (from view in Views
                        where view is DockContentAnalysisPalletsOnPallet && (analysis == (view as DockContentAnalysisPalletsOnPallet).Analysis)
                        select view);
             if (seq.Count() > 0) seq.First().Close();
 
             Form form = new FormNewAnalysisPalletsOnPallet(this, analysis);
+            if (DialogResult.OK == form.ShowDialog())
+                Modify();
+        }
+        public void EditAnalysis(AnalysisPalletColumn analysis)
+        {
+            // search for DockContentAnalysisPalletColumn window and close it
+            var seq = (from view in Views
+                       where view is DockContentAnalysisPalletColumn && (analysis == (view as DockContentAnalysisPalletColumn).Analysis)
+                       select view);
+            if (seq.Count() > 0) seq.First().Close();
+
+            Form form = new DockContentAnalysisPalletColumn(this, analysis);
             if (DialogResult.OK == form.ShowDialog())
                 Modify();
         }

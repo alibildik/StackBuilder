@@ -43,7 +43,7 @@ namespace treeDiM.EdgeCrushTest
                         var dcsbPallets = wcfClient.Client.GetAllPalletsSearch(string.Empty, false, rangeIndex++, ref numberOfItems, false);
                         pallets.AddRange(dcsbPallets);
                     }
-                    while ((rangeIndex + 1) * 20 < numberOfItems) ;
+                    while (rangeIndex * 20 < numberOfItems) ;
                     
                 }
                 return pallets;

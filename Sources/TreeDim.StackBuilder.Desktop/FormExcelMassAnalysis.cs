@@ -190,7 +190,7 @@ namespace treeDiM.StackBuilder.Desktop
                         listBoxPallets.Items.Add(new ItemBaseWrapper(palletProperties), true);
                     }
                 }
-                while ((rangeIndex + 1) * 20 < numberOfItems);
+                while (rangeIndex * 20 < numberOfItems);
             }
         }
         public static List<PalletProperties> SelectedPallets(CheckedListBox listBox)

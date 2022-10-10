@@ -177,7 +177,7 @@ namespace treeDiM.StackBuilder.Graphics
             if ((pt1 - pt0).GetLengthSquared() < 1.0E-03)
                 return;
 
-            string text = string.Format("{0:0.0}", (pt1-pt0).GetLength());
+            string text = string.Format("{0:0.#}", (pt1-pt0).GetLength());
             graphics.Draw(text, 0.5 * (pt1_ + pt0_), Color, graphics.FontSize);
             graphics.Draw(new Segment(pt0_, pt0_ + (pt1 - pt0) * (2.0 / 5.0), Color));
             graphics.Draw(new Segment(pt0_ + (pt1 - pt0) * (3.0 / 5.0), pt1_, Color));

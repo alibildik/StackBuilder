@@ -156,6 +156,9 @@
             this.saveFileDialogWebGL = new System.Windows.Forms.SaveFileDialog();
             this.timerLogin = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialogExport = new System.Windows.Forms.SaveFileDialog();
+            this.toolStripMIPalletOnPalletVert = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripMain.SuspendLayout();
             this.toolStripStandard.SuspendLayout();
             this.SuspendLayout();
@@ -784,8 +787,11 @@
             this.toolStripMIAnalysisCylinderPallet,
             this.toolStripMIAnalysisHCylPallet,
             this.toolStripMIAnalysisBundlePallet,
+            this.toolStripSeparator17,
             this.toolStripMIHAnalysis,
-            this.toolStripMIPalletPallet});
+            this.toolStripSeparator22,
+            this.toolStripMIPalletPallet,
+            this.toolStripMIPalletOnPalletVert});
             resources.ApplyResources(this.toolStripSBAnalysisPallet, "toolStripSBAnalysisPallet");
             this.toolStripSBAnalysisPallet.Name = "toolStripSBAnalysisPallet";
             this.toolStripSBAnalysisPallet.Click += new System.EventHandler(this.OnAnalysisPallet);
@@ -1036,6 +1042,22 @@
             this.saveFileDialogExport.DefaultExt = "xml";
             resources.ApplyResources(this.saveFileDialogExport, "saveFileDialogExport");
             // 
+            // toolStripMIPalletOnPalletVert
+            // 
+            resources.ApplyResources(this.toolStripMIPalletOnPalletVert, "toolStripMIPalletOnPalletVert");
+            this.toolStripMIPalletOnPalletVert.Name = "toolStripMIPalletOnPalletVert";
+            this.toolStripMIPalletOnPalletVert.Click += new System.EventHandler(this.OnNewPalletOnPalletVertical);
+            // 
+            // toolStripSeparator17
+            // 
+            this.toolStripSeparator17.Name = "toolStripSeparator17";
+            resources.ApplyResources(this.toolStripSeparator17, "toolStripSeparator17");
+            // 
+            // toolStripSeparator22
+            // 
+            this.toolStripSeparator22.Name = "toolStripSeparator22";
+            resources.ApplyResources(this.toolStripSeparator22, "toolStripSeparator22");
+            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -1181,5 +1203,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem toolStripSBExcelOneCasePerRow;
         private System.Windows.Forms.ToolStripMenuItem toolStripSBExcelOnePackPerRow;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMIPalletOnPalletVert;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
     }
 }

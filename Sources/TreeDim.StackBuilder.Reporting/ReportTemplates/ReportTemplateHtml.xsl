@@ -126,6 +126,7 @@
         <xsl:apply-templates select="analysis"/>
         <xsl:apply-templates select="hAnalysis"/>
         <xsl:apply-templates select="analysisPalletsOnPallet"/>
+        <xsl:apply-templates select="analysisPalletColumn"/>
         <xsl:apply-templates select="packStress"/>
       </body>
     </html>
@@ -242,8 +243,27 @@
     <xsl:apply-templates select="pallet"/>
     <xsl:apply-templates select="solutionPalletsOnPallet"/>
   </xsl:template>
-  <!-- ### SOLUTIONPALLETONPALLET ### -->
-  
+  <!-- ### ANALYSISPALLETCOLUMN ###-->
+  <xsl:template match="analysisPalletColumn">
+    <h2>
+      <xsl:value-of select="$loc/str[@name='Analysis']"/>: <xsl:value-of select="name"/>
+    </h2>
+    <table class="style1" cellpadding="3">
+      <xsl:if test="description">
+        <tr>
+          <td class="style2" colspan="1">
+            <b>
+              <xsl:value-of select="$loc/str[@name='Description']"/>
+            </b>
+          </td>
+          <td class="style3" colspan="2">
+            <xsl:value-of select="description"/>
+          </td>
+        </tr>
+      </xsl:if>
+    </table>    
+    <xsl:apply-templates select="solutionPalletColumn"/>
+  </xsl:template>
   <!--#### PACKSTRESS ####-->
   <xsl:template match ="packStress">
     <h2>
@@ -777,7 +797,7 @@
     </table>
     <xsl:apply-templates select="layers"/>
   </xsl:template>
-  <!---->
+  <!-- ### solutionPalletsOnPallet ###-->
   <xsl:template match="solutionPalletsOnPallet">
     <h3>
       <xsl:value-of select="$loc/str[@name='Solution']"/>
@@ -857,6 +877,63 @@
       </tr>
     </table>
   </xsl:template>
+  <!--### solutionPalletColumn ###-->
+  <xsl:template match="solutionPalletColumn">
+    <h3>
+      <xsl:value-of select="$loc/str[@name='Solution']"/>
+    </h3>
+    <table class="style1">
+      <tr>
+        <td>
+          <xsl:apply-templates select="item"/>
+        </td>
+      </tr>
+      <xsl:if test="weightTotal">
+        <tr>
+          <td class="style2" colspan="1">
+            <b>
+              <xsl:value-of select="$loc/str[@name='Weight']"/>
+            </b>
+          </td>
+          <td class="style3" colspan="3">
+            <xsl:apply-templates select="weightTotal/unitValue"/>
+          </td>
+        </tr>
+      </xsl:if>
+      <xsl:if test="bboxTotal">
+        <tr>
+          <td class="style2" colspan="1">
+            <b>
+              <xsl:value-of select="$loc/str[@name='Overall dimensions']"/>
+            </b>
+          </td>
+          <td class="style3" colspan="3">
+            <xsl:apply-templates select="bboxTotal/unitVector3"/>
+          </td>
+        </tr>
+      </xsl:if>
+      <tr>
+        <td align="middle" colspan="1">
+          <xsl:apply-templates select="view_solution_front"/>
+        </td>
+        <td align="middle" colspan="1">
+          <xsl:apply-templates select="view_solution_left"/>
+        </td>
+        <td align="middle" colspan="1">
+          <xsl:apply-templates select="view_solution_right"/>
+        </td>
+        <td align="middle" colspan="1">
+          <xsl:apply-templates select="view_solution_back"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" align="middle">
+          <xsl:apply-templates select="view_solution_iso"/>
+        </td>
+      </tr>
+    </table>
+  </xsl:template>
+  
   <!--### HCONSTRAINTSET ###-->
   <xsl:template match="hConstraintSet">
     <h3>
@@ -882,7 +959,55 @@
     <h3>
       <xsl:value-of select="$loc/str[@name='Solution']"/>
     </h3>
-    <xsl:apply-templates select="solItem"/>
+    <tr>
+      <td>
+        <xsl:apply-templates select="item"/>
+      </td>
+    </tr>
+    <xsl:if test="weightTotal">
+      <tr>
+        <td class="style2" colspan="1">
+          <b>
+            <xsl:value-of select="$loc/str[@name='Weight']"/>
+          </b>
+        </td>
+        <td class="style3" colspan="3">
+          <xsl:apply-templates select="weightTotal/unitValue"/>
+        </td>
+      </tr>
+    </xsl:if>
+    <xsl:if test="bboxTotal">
+      <tr>
+        <td class="style2" colspan="1">
+          <b>
+            <xsl:value-of select="$loc/str[@name='Overall dimensions']"/>
+          </b>
+        </td>
+        <td class="style3" colspan="3">
+          <xsl:apply-templates select="bboxTotal/unitVector3"/>
+        </td>
+      </tr>
+    </xsl:if>
+    <tr>
+      <td align="middle" colspan="1">
+        <xsl:apply-templates select="view_solution_front"/>
+      </td>
+      <td align="middle" colspan="1">
+        <xsl:apply-templates select="view_solution_left"/>
+      </td>
+      <td align="middle" colspan="1">
+        <xsl:apply-templates select="view_solution_right"/>
+      </td>
+      <td align="middle" colspan="1">
+        <xsl:apply-templates select="view_solution_back"/>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" align="middle">
+        <xsl:apply-templates select="view_solution_iso"/>
+      </td>
+    </tr>
+    
   </xsl:template>
   <!--#### SOLITEM ####-->
   <xsl:template match="solItem">

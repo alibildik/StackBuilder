@@ -575,6 +575,11 @@ namespace treeDiM.StackBuilder.Basics
                     ++iLayer;
                 }
             }
+            if (Analysis.HasTopInterlayer)
+                interlayers.Add(new Pair<int, double>(Analysis.GetInterlayerIndex(Analysis.TopInterlayerProperties), zLayer));
+            else
+                interlayers.Add(new Pair<int, double>(-1, 0.0));
+
         }
         public Vector2D MinPoint { get { Analysis.GetPtMinMax(out Vector2D ptMin, out Vector2D ptMax); return ptMin; } }
         public Vector2D MaxPoint { get { Analysis.GetPtMinMax(out Vector2D ptMin, out Vector2D ptMax); return ptMax; } }

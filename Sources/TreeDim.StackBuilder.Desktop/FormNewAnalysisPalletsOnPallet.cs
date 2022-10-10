@@ -71,7 +71,7 @@ namespace treeDiM.StackBuilder.Desktop
         {
             try
             {
-                AnalysisPalletsOnPallet analysis = AnalysisCast;
+                var analysis = AnalysisCast;
                 if (null == analysis)
                 {
                     _item = _document.CreateNewAnalysisPalletsOnPallet(
@@ -104,7 +104,7 @@ namespace treeDiM.StackBuilder.Desktop
         #endregion
 
         #region FormNewBase override
-        public override string ItemDefaultName => Resources.ID_PALLET;
+        public override string ItemDefaultName => Resources.ID_ANALYSIS;
         #endregion
 
         #region IItemBaseFilter

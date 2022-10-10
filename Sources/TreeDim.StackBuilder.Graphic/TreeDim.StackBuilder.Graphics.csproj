@@ -168,6 +168,7 @@
     <Compile Include="SolutionViewers\ViewerHSolution.cs" />
     <Compile Include="SolutionViewers\ViewerLayeredBoxes.cs" />
     <Compile Include="SolutionViewers\ViewerSolutionHCyl.cs" />
+    <Compile Include="SolutionViewers\ViewerSolutionPalletColumn.cs" />
     <Compile Include="SolutionViewers\ViewerSolutionPalletsOnPallet.cs" />
     <Compile Include="ThumbnailMarker.cs" />
     <Compile Include="Triangle.cs" />
@@ -321,6 +322,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Graphics2DRobotDropEditor.resx">
       <DependentUpon>Graphics2DRobotDropEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Graphics3DConveyor.resx">
       <DependentUpon>Graphics3DConveyor.cs</DependentUpon>

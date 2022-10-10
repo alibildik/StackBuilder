@@ -334,9 +334,6 @@ namespace treeDiM.StackBuilder.Desktop
                 Settings.Default.FormNewBoxPosition = new WindowSettings();
             Settings.Default.FormNewBoxPosition.Record(this);
         }
-        #endregion
-
-        #region Form override
         protected override void OnResize(EventArgs e)
         {
  	         base.OnResize(e);

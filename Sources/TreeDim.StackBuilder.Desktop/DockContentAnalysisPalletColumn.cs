@@ -1,29 +1,45 @@
 ﻿#region Using directives
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Globalization;
-
-using log4net;
-using Sharp3D.Math.Core;
 
 using treeDiM.Basics;
 using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Graphics;
 using treeDiM.StackBuilder.Desktop.Properties;
+
+using log4net;
+using Sharp3D.Math.Core;
 #endregion
 
 namespace treeDiM.StackBuilder.Desktop
 {
-    public partial class DockContentAnalysisPalletsOnPallet : DockContentView, IDrawingContainer
+    public partial class DockContentAnalysisPalletColumn : DockContentView, IDrawingContainer
     {
         #region Constructor
-        public DockContentAnalysisPalletsOnPallet(IDocument document, AnalysisPalletsOnPallet analysis)
+        public DockContentAnalysisPalletColumn(IDocument document, AnalysisPalletColumn analysis)
             : base(document)
         {
             InitializeComponent();
             Analysis = analysis;
             Analysis.AddListener(this);
+        }
+        #endregion
+
+        #region Form override
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            // --- window caption
+            if (null != Analysis)
+                Text = Analysis.Name + "_" + Analysis.ParentDocument.Name;
+            // --- initialize drawing container
+            graphCtrlSolution.DrawingContainer = this;
+            graphCtrlSolution.Viewer = new ViewerSolutionPalletColumn(Analysis.Solution);
+            graphCtrlSolution.Invalidate();
+
+            FillGrid();
         }
         #endregion
 
@@ -40,29 +56,6 @@ namespace treeDiM.StackBuilder.Desktop
             base.Kill(item);
             Close();
             Analysis?.RemoveListener(this);
-        }
-        #endregion
-
-        #region Form override
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-
-            // --- window caption
-            if (null != Analysis)
-                Text = Analysis.Name + "_" + Analysis.ParentDocument.Name;
-
-            // --- initialize drawing container
-            graphCtrlSolution.DrawingContainer = this;
-            graphCtrlSolution.Viewer = new ViewerSolutionPalletsOnPallet(Analysis.Solution);
-            graphCtrlSolution.Invalidate();
-
-            FillGrid();
-        }
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
-            Document.RemoveView(this);
         }
         #endregion
 
@@ -125,28 +118,23 @@ namespace treeDiM.StackBuilder.Desktop
                 BBox3D bboxGlobal = Analysis.Solution.BBoxGlobal;
                 gridSolution.Rows.Insert(++iRow);
                 gridSolution[iRow, 0] = new SourceGrid.Cells.RowHeader(
-                    string.Format(Resources.ID_OUTERDIMENSIONS, UnitsManager.LengthUnitString)) { View = vPropValue };
+                    string.Format(Resources.ID_OUTERDIMENSIONS, UnitsManager.LengthUnitString))
+                { View = vPropValue };
                 gridSolution[iRow, 1] = new SourceGrid.Cells.Cell(
                     string.Format(CultureInfo.InvariantCulture, "{0:0.#} x {1:0.#} x {2:0.#}", bboxGlobal.Length, bboxGlobal.Width, bboxGlobal.Height)
-                    );
-                // load dimensions
-                BBox3D bboxLoad = Analysis.Solution.BBoxLoad;
-                gridSolution.Rows.Insert(++iRow);
-                gridSolution[iRow, 0] = new SourceGrid.Cells.RowHeader(
-                    string.Format(Resources.ID_LOADDIMENSIONS, UnitsManager.LengthUnitString)) { View = vPropValue };
-                gridSolution[iRow, 1] = new SourceGrid.Cells.Cell(
-                    string.Format(CultureInfo.InvariantCulture, "{0:0.#} x {1:0.#} x {2:0.#}", bboxLoad.Length, bboxLoad.Width, bboxLoad.Height)
                     );
                 // total weight
                 gridSolution.Rows.Insert(++iRow);
                 gridSolution[iRow, 0] = new SourceGrid.Cells.RowHeader(
-                    string.Format(Resources.ID_TOTALWEIGHT_WU, UnitsManager.MassUnitString)) { View = vPropValue };
+                    string.Format(Resources.ID_TOTALWEIGHT_WU, UnitsManager.MassUnitString))
+                { View = vPropValue };
                 gridSolution[iRow, 1] = new SourceGrid.Cells.Cell(string.Format(CultureInfo.InvariantCulture, "{0:0.#}", Analysis.Solution.Weight)
                     );
                 // load weight
                 gridSolution.Rows.Insert(++iRow);
                 gridSolution[iRow, 0] = new SourceGrid.Cells.RowHeader(
-                    string.Format(Resources.ID_LOADWEIGHT_WU, UnitsManager.MassUnitString)) { View = vPropValue };
+                    string.Format(Resources.ID_LOADWEIGHT_WU, UnitsManager.MassUnitString))
+                { View = vPropValue };
                 gridSolution[iRow, 1] = new SourceGrid.Cells.Cell(string.Format(CultureInfo.InvariantCulture, "{0:0.#}", Analysis.Solution.LoadWeight)
                     );
             }
@@ -175,14 +163,8 @@ namespace treeDiM.StackBuilder.Desktop
         #endregion
 
         #region Data members
-        /// <summary>
-        /// analysis
-        /// </summary>
-        public AnalysisPalletsOnPallet Analysis { get; set; }
-        /// <summary>
-        ///  logger
-        /// </summary>
-        static readonly ILog _log = LogManager.GetLogger(typeof(DockContentAnalysisPalletsOnPallet));
+        public AnalysisPalletColumn Analysis { get; set; }
+        static readonly ILog _log = LogManager.GetLogger(typeof(DockContentAnalysisPalletColumn));
         #endregion
     }
 }

@@ -947,7 +947,7 @@ namespace treeDiM.StackBuilder.Basics
                                 , layerPosTemp.DirectionLength
                                 , layerPosTemp.DirectionWidth
                                 );
-                            if (AnalysisCast.Content is BoxProperties packable)
+                            if (AnalysisCast.Content is BoxProperties packable && currentLayer is Layer2DBrickImp)
                                 boxPos.FlipFacingOutside(packable.Facing, packable.OuterDimensions, AnalysisCast.ContainerDimensions);
                             boxLayer.Add(boxPos);
                         }

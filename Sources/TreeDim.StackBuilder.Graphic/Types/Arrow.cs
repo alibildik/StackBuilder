@@ -15,9 +15,10 @@ namespace treeDiM.StackBuilder.Graphics
 {
     public class Arrow : Drawable
     {
-        public Arrow(uint pickId) : base(pickId)
-        {        
-        }
+        #region Constructor
+        public Arrow(uint pickId) : base(pickId) { }
+        #endregion
+        #region Public properties
         public double Length { get; set; }
         public double Width { get; set; }
         public Vector3D Position { get; set; }
@@ -25,6 +26,7 @@ namespace treeDiM.StackBuilder.Graphics
         public HalfAxis.HAxis WidthAxis { get; set; } = HalfAxis.HAxis.AXIS_Y_P;
         public Color ColorFill { get; set; }
         public Color ColorPath { get; set; }
+        #endregion
         public override Vector3D[] Points
         {
             get
@@ -84,6 +86,7 @@ namespace treeDiM.StackBuilder.Graphics
                 return triangles;
             }
         }
+        #region Override Drawable
         public override void Draw(Graphics3D graphics)
         {
             foreach (var face in Faces)
@@ -105,5 +108,6 @@ namespace treeDiM.StackBuilder.Graphics
             if (Vector3D.DotProduct(Triangles[0].Normal, graphics.ViewDirection) <= 0.0)
                 graphics.AddTriangle(Triangles[0]);
         }
+        #endregion
     }
 }

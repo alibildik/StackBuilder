@@ -307,7 +307,7 @@
     <value>excelFileSelect</value>
   </data>
   <data name="&gt;&gt;excelFileSelect.Type" xml:space="preserve">
-    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.61, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;excelFileSelect.Parent" xml:space="preserve">
     <value>splitContainerHoriz.Panel1</value>

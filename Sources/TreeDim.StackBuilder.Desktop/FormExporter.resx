@@ -367,7 +367,7 @@
     <value>uCtrlConveyorSettings</value>
   </data>
   <data name="&gt;&gt;uCtrlConveyorSettings.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Controls.UCtrlConveyorSettings, treeDiM.StackBuilder.Graphics, Version=3.0.2.61, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Controls.UCtrlConveyorSettings, treeDiM.StackBuilder.Graphics, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlConveyorSettings.Parent" xml:space="preserve">
     <value>tabPagePickConfigurations</value>
@@ -511,7 +511,7 @@
     <value>layerEditor</value>
   </data>
   <data name="&gt;&gt;layerEditor.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Graphics.Graphics2DRobotDropEditor, treeDiM.StackBuilder.Graphics, Version=3.0.2.61, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Graphics.Graphics2DRobotDropEditor, treeDiM.StackBuilder.Graphics, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;layerEditor.Parent" xml:space="preserve">
     <value>splitContainerLayer.Panel2</value>
@@ -595,7 +595,7 @@
     <value>uCtrlDockingOffset</value>
   </data>
   <data name="&gt;&gt;uCtrlDockingOffset.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.61, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriDouble, treeDiM.Basics, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlDockingOffset.Parent" xml:space="preserve">
     <value>tabPageDockingOffsets</value>

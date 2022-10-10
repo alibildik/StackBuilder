@@ -22,580 +22,593 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="StackBuilderDesktopGroup">
-            <Component Id="cmp80CB7C7237485A2293C7C19E170CA600" Directory="Bin" Guid="26C43323-A920-40C8-A895-37ABFEDD2171">
+            <Component Id="cmp80CB7C7237485A2293C7C19E170CA600" Directory="Bin" Guid="75B9EB56-5BFB-4C15-BEAE-7AC504FCB899">
                 <File Id="fil7C4E6116A9A43FC50DDF02544F8ACF0E" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\AutoUpdater.NET.dll" />
             </Component>
-            <Component Id="cmp967575660DFE20C17700CC0325412C73" Directory="Bin" Guid="A265E73F-3AF9-40B2-BEF2-89C6E81ECFC0">
+            <Component Id="cmp967575660DFE20C17700CC0325412C73" Directory="Bin" Guid="ADB855F2-0850-4089-8DAF-6B8A391FCB8B">
                 <File Id="fil3A89FEF7632F4B0A7D087E8C84EB5338" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Common.Logging.Core.dll" />
             </Component>
-            <Component Id="cmpBFD79E3B1B5D6FA8B4158BAC56660FE3" Directory="Bin" Guid="F6039E3E-7B40-4565-AE65-C0A1BEA2C38E">
+            <Component Id="cmpBFD79E3B1B5D6FA8B4158BAC56660FE3" Directory="Bin" Guid="387E9D84-046D-4BC1-9E39-A24E11347C18">
                 <File Id="fil77F067E11BD48F2B1ABFD75B742258A8" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Common.Logging.dll" />
             </Component>
-            <Component Id="cmp5D37549496D250FF6BC1BE06330C2F86" Directory="Bin" Guid="C1A6267F-A9E7-48E8-A0F0-90DE02A639A7">
+            <Component Id="cmp5D37549496D250FF6BC1BE06330C2F86" Directory="Bin" Guid="49118EB1-E06A-4EB4-8E14-551FDE1F7D37">
                 <File Id="fil016C99FC65C1F24E8D7A26A4476D694D" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\CrashReporter.NET.dll" />
             </Component>
-            <Component Id="cmpB5F2771100F52D12860FA3E195E1F2BE" Directory="Bin" Guid="AFC501AC-721D-4FA3-824F-8F959F1889FF">
+            <Component Id="cmpB5F2771100F52D12860FA3E195E1F2BE" Directory="Bin" Guid="14846807-9E72-4A2B-8292-D7B31BD7FFEE">
                 <File Id="fil0777030352A360404A6D34865891981F" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Cureos.Measures.dll" />
             </Component>
-            <Component Id="cmp0AA4D763D4159DA736AB2A6C99C4B962" Directory="Bin" Guid="7D9E9C27-EC2A-4350-A40D-9AF8377203C1">
+            <Component Id="cmp0AA4D763D4159DA736AB2A6C99C4B962" Directory="Bin" Guid="7E07177D-C8C7-4566-9D0F-0FD6B94AC43D">
                 <File Id="fil8180FAF68801C3F49C00E147A8BC4238" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ExcelDataReader.DataSet.dll" />
             </Component>
-            <Component Id="cmp88B61BB0895FD0A59E0E80BBB9BAF4F4" Directory="Bin" Guid="BEE20508-52B6-475F-97DE-8F1369DA5A90">
+            <Component Id="cmp88B61BB0895FD0A59E0E80BBB9BAF4F4" Directory="Bin" Guid="B174E6C5-42C7-412B-B6A3-D875A773D113">
                 <File Id="fil6E328BC3AEFF064CC8264437778A9601" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ExcelDataReader.dll" />
             </Component>
-            <Component Id="cmp64ABC9E6852047A94D6DF72FA9E08752" Directory="Bin" Guid="D9F12AFE-9D87-4892-B039-7937F5BE4AD9">
+            <Component Id="cmp64ABC9E6852047A94D6DF72FA9E08752" Directory="Bin" Guid="4A6EB9A8-26DE-4C3B-B479-B948AF5F9068">
                 <File Id="fil1501C576C394FEDC6571A9BD253996F2" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ICSharpCode.SharpZipLib.dll" />
             </Component>
-            <Component Id="cmpC1283E8E12295C57F1398DA6F0C65F2A" Directory="Bin" Guid="ACE8C238-D32A-4531-934A-63A100F2C7EE">
+            <Component Id="cmpC1283E8E12295C57F1398DA6F0C65F2A" Directory="Bin" Guid="617540FE-1881-4356-9519-4194C89EDFE5">
                 <File Id="fil9543FAA09415C3E09ED66DAA90DB3F45" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ICSharpCode.TextEditorEx.dll" />
             </Component>
-            <Component Id="cmp223F7A40DFEA68AB8E5332C1C201B6DC" Directory="Bin" Guid="B6BE10C1-D1CA-45AE-AF59-A18987A02BF4">
+            <Component Id="cmp223F7A40DFEA68AB8E5332C1C201B6DC" Directory="Bin" Guid="114E5F47-6571-4476-BA57-5FE5365BB3CB">
                 <File Id="fil53216D1158CAC2A725AF4E77F7DA2DDE" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\log4net.dll" />
             </Component>
-            <Component Id="cmp7FA903CEA9889BD654B2DAB4635610A4" Directory="Bin" Guid="E63875D2-8A74-4FF8-9730-558840DEA98C">
+            <Component Id="cmp7FA903CEA9889BD654B2DAB4635610A4" Directory="Bin" Guid="D644B2C1-5453-4E55-AE59-FD270560A117">
                 <File Id="filA0AE4734F4C6151F585D15E2DE650B8A" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\MIConvexHull.dll" />
             </Component>
-            <Component Id="cmpA753B91B4D11CF06686676307DA07D67" Directory="Bin" Guid="195009A3-C55C-42FA-A2FB-983F1D7F74CB">
+            <Component Id="cmpA753B91B4D11CF06686676307DA07D67" Directory="Bin" Guid="CCD0084E-931E-4077-B73C-9A71B1FF1F75">
                 <File Id="filE8CD01DA7945F10A4F7031F6B9E822F5" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Microsoft.Bcl.AsyncInterfaces.dll" />
             </Component>
-            <Component Id="cmp52CD32B2A5AA3BFECD600DBB5B8EE84E" Directory="Bin" Guid="E8C3D659-91C5-4BB4-BC8D-B483CDBD8033">
+            <Component Id="cmp52CD32B2A5AA3BFECD600DBB5B8EE84E" Directory="Bin" Guid="4115BF50-6C84-41C9-A294-AA10FF1886CB">
                 <File Id="filF39EB487F295800E1EEB4CC3786F16FD" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Microsoft.Office.Interop.Excel.dll" />
             </Component>
-            <Component Id="cmpE2F1163BD84B3C6E33A375089D8E1419" Directory="Bin" Guid="80D8CA4F-D049-422F-9775-B945382D87E6">
+            <Component Id="cmpE2F1163BD84B3C6E33A375089D8E1419" Directory="Bin" Guid="4CA8B420-E1BE-49B5-B333-96E5BD11D99D">
                 <File Id="fil022D50B84313E828AF905CD41C89A6DB" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Microsoft.Office.Interop.Word.dll" />
             </Component>
-            <Component Id="cmp7F4DEE4588F1574C3C120C6DDE6928A1" Directory="Bin" Guid="5436CAC4-F2C0-444E-895F-D73A0B640999">
+            <Component Id="cmp7F4DEE4588F1574C3C120C6DDE6928A1" Directory="Bin" Guid="52D7D8B6-7DDE-4B0E-909D-43626B87087F">
                 <File Id="fil62448A376862E3CEE7DA3DC979432DB5" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Microsoft.Web.WebView2.Core.dll" />
             </Component>
-            <Component Id="cmp339B380CB4125E7CF1DDE42AC9A45C65" Directory="Bin" Guid="D83550ED-D25A-4333-AE1F-C01F40EDD607">
+            <Component Id="cmp339B380CB4125E7CF1DDE42AC9A45C65" Directory="Bin" Guid="E163B276-CB2F-4A7A-A393-A37350B71EAE">
                 <File Id="filB9727BE1763457D5D0643C18B03E287B" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Microsoft.Web.WebView2.WinForms.dll" />
             </Component>
-            <Component Id="cmpBD5323FFD386A5AC9C822466CEA93351" Directory="Bin" Guid="8D53B43D-A296-4FD4-BD83-88B6D2541568">
-                <File Id="fil9C3EB219D926E58F84420428B5F1B988" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Microsoft.Web.WebView2.Wpf.dll" />
-            </Component>
-            <Component Id="cmpBD50004859623D4735EEA41FF983BE0D" Directory="Bin" Guid="9B66EFC2-F371-4034-9890-F9C19A9E9C9B">
+            <Component Id="cmpBD50004859623D4735EEA41FF983BE0D" Directory="Bin" Guid="343A669B-50E8-40C7-AD30-01368DE6C799">
                 <File Id="filDAF5CFE0C5756300C2964835434FBCED" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Newtonsoft.Json.dll" />
             </Component>
-            <Component Id="cmp3B10914DBFD558E32910983457EB7D87" Directory="Bin" Guid="7B4CD878-A83F-489A-AD1E-29DC483382B2">
+            <Component Id="cmp3B10914DBFD558E32910983457EB7D87" Directory="Bin" Guid="DC52BF30-ACC8-45FB-AD0E-A8AA2A7735A2">
                 <File Id="fil606DB13528D9FBD39E606EEB4132834F" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Office.dll" />
             </Component>
-            <Component Id="cmp93B8AAD5CCAAA98FFAD347A19E6C3475" Directory="Bin" Guid="BE3D81B0-9442-48D9-ADA1-E79C23439255">
+            <Component Id="cmp93B8AAD5CCAAA98FFAD347A19E6C3475" Directory="Bin" Guid="7BCC435E-895C-469E-86F2-B6ABFA34285E">
                 <File Id="fil2FE507B83B812AEF884414FEB99FA784" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\OfficePickers.dll" />
             </Component>
-            <Component Id="cmpBEA03C834B2E572B611A831063B2308C" Directory="Bin" Guid="B314039E-A817-4777-BE80-995BA7ACDB90">
+            <Component Id="cmpBEA03C834B2E572B611A831063B2308C" Directory="Bin" Guid="83F2A87A-4FD9-4B17-BF50-7A5EF0B8DDF5">
                 <File Id="fil439E08A3D1C204D3DC7ADC18E93BC443" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\OptionsLib.dll" />
             </Component>
-            <Component Id="cmp88E995DC324011D74D449A2B6F4F9C6A" Directory="Bin" Guid="95ADCCF4-5077-4128-95FC-CEAC891ED507">
+            <Component Id="cmp88E995DC324011D74D449A2B6F4F9C6A" Directory="Bin" Guid="03B36804-9696-48C2-962E-3558F44E52FF">
                 <File Id="fil8E09F77159990E7FEC504B5B0B84B6DA" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\PropertyGridEx.dll" />
             </Component>
-            <Component Id="cmp64874A6AA44AE8EA5EF21DE166ACA1D3" Directory="Bin" Guid="C6DA8E5A-FB18-49F4-A5F7-3552DA632F93">
+            <Component Id="cmp64874A6AA44AE8EA5EF21DE166ACA1D3" Directory="Bin" Guid="B4279877-1484-4008-AC01-DBFF3E31333E">
                 <File Id="fil4CA2823E816DFAAF212EF70D25DFA665" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\RichTextBoxAppender.dll" />
             </Component>
-            <Component Id="cmpF7DBB3DB90C231795A210FA29B9BDED6" Directory="Bin" Guid="6F0BE55B-E6DE-405D-B0D1-37EE60CEAF6E">
+            <Component Id="cmpF7DBB3DB90C231795A210FA29B9BDED6" Directory="Bin" Guid="D6CEE308-F39B-4210-9164-C376ED8369AC">
                 <File Id="filD41C721A8E2554B9F5A5C934F20CA9B0" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Sharp3D.Boxologic.dll" />
             </Component>
-            <Component Id="cmp84BB5F6380BAC7A6AA707C764F5B9C97" Directory="Bin" Guid="FF3588C9-6AE1-4995-9FA4-2E92F5A697CB">
+            <Component Id="cmp84BB5F6380BAC7A6AA707C764F5B9C97" Directory="Bin" Guid="B3D6A963-4EF3-4B02-98A9-DB369A6738BD">
                 <File Id="filD6F16025096C7EC5FA37321C27041CD2" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Sharp3D.Math.dll" />
             </Component>
-            <Component Id="cmp8BF276CB484B0E1D3700226FB70DF47A" Directory="Bin" Guid="0FC3E4FC-56EF-436E-BF62-4C013A8832E3">
+            <Component Id="cmp8BF276CB484B0E1D3700226FB70DF47A" Directory="Bin" Guid="B9B8F3FF-32E6-4DB7-A148-EC7FF6D5E02E">
                 <File Id="fil4B006E3FF9F9CDC5BC83A373A844FE22" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Sharp3DBinPacking.dll" />
             </Component>
-            <Component Id="cmp59091B35C246031969F40956E53FFD0B" Directory="Bin" Guid="8F5582E9-9B39-4ABF-A790-3E0BE0C19C3F">
+            <Component Id="cmp59091B35C246031969F40956E53FFD0B" Directory="Bin" Guid="A82D62A6-70AB-460E-B974-EC5578E350FD">
                 <File Id="filE93116E12CB21B1A38CE30C27BE97868" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\SharpGLTF.Core.dll" />
             </Component>
-            <Component Id="cmp1296F5FB3DFCEB0D5B4D27F1E82B3918" Directory="Bin" Guid="C66B5B23-655C-43C9-8691-BF01ED20C846">
+            <Component Id="cmp1296F5FB3DFCEB0D5B4D27F1E82B3918" Directory="Bin" Guid="B5939286-71EB-4863-BFE6-70B8ADE1FC9D">
                 <File Id="fil23F66EF18832E600A93F2F102C6CEFAD" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\SharpGLTF.Toolkit.dll" />
             </Component>
-            <Component Id="cmpFA3F737CB13792E4A80AE73247CC1070" Directory="Bin" Guid="CA757769-A088-4EB8-BA06-E18E0AFB71E3">
+            <Component Id="cmpFA3F737CB13792E4A80AE73247CC1070" Directory="Bin" Guid="EC62F172-52C3-4E78-9DF3-36F55CA8060C">
                 <File Id="fil78601734F77601AB601C5337002EB694" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\SourceGrid.dll" />
             </Component>
-            <Component Id="cmpCB77ECEE422A13C46E0776F162D93BD6" Directory="Bin" Guid="60D50D9B-3FAB-4454-BE09-BDEA6B26BB37">
+            <Component Id="cmpCB77ECEE422A13C46E0776F162D93BD6" Directory="Bin" Guid="8C875FC1-FC73-4813-964F-A750C619602C">
                 <File Id="fil4DD7B1F72CC894E98010B15F8EA614FF" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\Syroot.KnownFolders.dll" />
             </Component>
-            <Component Id="cmpFA194DF41573A378B8180E4DCB0F2A45" Directory="Bin" Guid="B71C9388-46F7-479E-A000-105C9AF309FF">
+            <Component Id="cmpFA194DF41573A378B8180E4DCB0F2A45" Directory="Bin" Guid="CDDFDA81-AFF6-42EF-99F6-85933B32D39D">
                 <File Id="fil23C1EFAAFFCD7415ECFA0785A1944094" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\System.Buffers.dll" />
             </Component>
-            <Component Id="cmp5B1324C9C051CA3E1B973FCB82A73E52" Directory="Bin" Guid="0D59FE87-035A-4EAA-97C1-DDC64B218C52">
+            <Component Id="cmp5B1324C9C051CA3E1B973FCB82A73E52" Directory="Bin" Guid="7A84D216-0378-4161-BB11-831812E172CB">
                 <File Id="filABC17A98520B61E1C81C03E2874D19DA" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\System.Collections.Immutable.dll" />
             </Component>
-            <Component Id="cmp534C8E124A698D2600A92B4D46C851CD" Directory="Bin" Guid="24910C3A-3057-4E27-8F97-6D0E9AE3E95D">
+            <Component Id="cmp534C8E124A698D2600A92B4D46C851CD" Directory="Bin" Guid="5DF9DF89-F02A-4AF7-8908-DDB9DA1D4A19">
                 <File Id="fil97BD56144F97C32BCC88C55229E82BE6" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\System.Memory.dll" />
             </Component>
-            <Component Id="cmp305B5867CCBC3CC60AABAAF05E527221" Directory="Bin" Guid="F9F88A60-C045-43A4-AC5B-02D34303581B">
+            <Component Id="cmp305B5867CCBC3CC60AABAAF05E527221" Directory="Bin" Guid="1A937BAE-5F06-4A10-B2B9-B6227117E25E">
                 <File Id="fil6CBC4BCBF41F99AED3D7AD5F5B2C73AE" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\System.Numerics.Vectors.dll" />
             </Component>
-            <Component Id="cmp3DE5167F7CFA41CB9D75724062EC54CE" Directory="Bin" Guid="50CC2EAF-C1E7-4181-937C-0B15218A9311">
+            <Component Id="cmp3DE5167F7CFA41CB9D75724062EC54CE" Directory="Bin" Guid="2CCE76EC-BD49-4125-8AAE-6C8E472FBA48">
                 <File Id="fil09E0225ABC608E8904CCE1A9FB393B24" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\System.Runtime.CompilerServices.Unsafe.dll" />
             </Component>
-            <Component Id="cmpC98E0C1FDF9B09D4772261BB0D7E8A0A" Directory="Bin" Guid="462803E6-2D2E-4E00-809F-BC28FF18912B">
+            <Component Id="cmpC98E0C1FDF9B09D4772261BB0D7E8A0A" Directory="Bin" Guid="961550FB-9D64-48FB-B826-7BE825ED2188">
                 <File Id="fil78D9E3714C2A2D10CF5AC96942B27BDF" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\System.Security.Principal.Windows.dll" />
             </Component>
-            <Component Id="cmp222AF91A4870EF274F9AA31B9A648199" Directory="Bin" Guid="DE4A3ADB-5670-439C-8DAE-38B49C7E9F09">
+            <Component Id="cmp222AF91A4870EF274F9AA31B9A648199" Directory="Bin" Guid="FD56118B-7B57-493C-BB3D-27BB0B447714">
                 <File Id="fil2B018499E391AF7DFF7AA773119F6F97" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\System.Text.Encodings.Web.dll" />
             </Component>
-            <Component Id="cmp98C8D4470B057A78F4E179BFFCF0EC19" Directory="Bin" Guid="252787A4-2A73-44BB-B149-E5409C4D1B8B">
+            <Component Id="cmp98C8D4470B057A78F4E179BFFCF0EC19" Directory="Bin" Guid="00C180F0-E998-413B-BF30-DE1EBE3D6324">
                 <File Id="fil43DC48512BBA6393AD0F3C4F51C320FB" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\System.Text.Json.dll" />
             </Component>
-            <Component Id="cmpE72D58B22FE9090E61ACBCE128B51E2C" Directory="Bin" Guid="173D98C9-E9E9-4760-B99F-672902412C8F">
+            <Component Id="cmpE72D58B22FE9090E61ACBCE128B51E2C" Directory="Bin" Guid="04D4D86A-C2A6-43CC-A850-D36CD8D80447">
                 <File Id="filE4396342CFF3A9B0E2B42CF19CB366B2" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\System.Threading.Tasks.Extensions.dll" />
             </Component>
-            <Component Id="cmp6B05B521015D43EB62AE9C718EEE417B" Directory="Bin" Guid="D4E80D76-B948-4659-8984-A6527EF35038">
+            <Component Id="cmp6B05B521015D43EB62AE9C718EEE417B" Directory="Bin" Guid="7E9F81F1-BBDB-433D-AAD2-B21B9D6F0677">
                 <File Id="filD4C26C95C0DB77476B5EE445B914AB92" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\System.ValueTuple.dll" />
             </Component>
-            <Component Id="cmp56B5FD2AC91A9321D8364440DFB78D24" Directory="Bin" Guid="A0A76625-C593-425D-AF23-B985A950AFBD">
+            <Component Id="cmp56B5FD2AC91A9321D8364440DFB78D24" Directory="Bin" Guid="1341FCC0-83BC-4074-9579-0A8E81F20574">
                 <File Id="filCFDDDC5DF37CA791B05BDE3F8B29F2DE" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.Basics.dll" />
             </Component>
-            <Component Id="cmp47F408C085BBFCDAF267D3D7E06AB8F3" Directory="Bin" Guid="966730B4-1D8D-4FEB-A822-497E747798E8">
+            <Component Id="cmp47F408C085BBFCDAF267D3D7E06AB8F3" Directory="Bin" Guid="3E5F3810-1A9D-4B5B-9FC1-F4773F4372A1">
                 <File Id="fil5A524DC56CD4410FC61FC17C684CCD75" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.EdgeCrushTest.dll" />
             </Component>
-            <Component Id="cmpFAC46841CA65F22174EF74E6AFD5ACD1" Directory="Bin" Guid="D42745F9-9387-4463-8AC8-5A9B2D4325BC">
+            <Component Id="cmpFAC46841CA65F22174EF74E6AFD5ACD1" Directory="Bin" Guid="E3BC24AC-DD22-46D4-B534-83CD68D27F8D">
                 <File Id="fil596C3D64E5F94AAE8CF6FBE93BD71F73" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.EdgeCrushTest.dll.config" />
             </Component>
-            <Component Id="cmp2CC43E9454ECBD501835AF4DADCE11CD" Directory="Bin" Guid="495F541A-13EC-450D-B662-6ADD9DCDE907">
+            <Component Id="cmp2CC43E9454ECBD501835AF4DADCE11CD" Directory="Bin" Guid="3EEA57CD-1605-4BE8-B4D5-8174B54E59A5">
                 <File Id="filAEBEEE6D2A57D903B7C47C927B675B23" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.PLMPack.DBClient.dll" />
             </Component>
-            <Component Id="cmpD59779542C652592094DF2958FB0E1CB" Directory="Bin" Guid="9667EAE9-E9CD-4C3F-9C40-76FF27990748">
+            <Component Id="cmpD59779542C652592094DF2958FB0E1CB" Directory="Bin" Guid="F3F7DD89-86E3-4028-BC18-F37B00EF9B5B">
                 <File Id="fil2A273FEC39063EDE3403A42B8A08D453" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.PLMPack.DBClient.dll.config" />
             </Component>
-            <Component Id="cmp7A726A41FE490FD1DB24ADB922A2F7F5" Directory="Bin" Guid="8B083435-E581-467D-A9B3-7EE56FBDBD83">
+            <Component Id="cmp7A726A41FE490FD1DB24ADB922A2F7F5" Directory="Bin" Guid="49B4037A-7377-44FD-8AED-26054BB42CD8">
                 <File Id="filB6BCFE6CF7E39F7254E8F2847BCBACE2" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Basics.dll" />
             </Component>
-            <Component Id="cmp534340705A19859678F4C77D8D8490F3" Directory="Bin" Guid="39425D82-F717-4F5A-95C3-B51B54A7D011">
+            <Component Id="cmp534340705A19859678F4C77D8D8490F3" Directory="Bin" Guid="60493D7B-5836-408A-9780-A5AB3F75AE8F">
                 <File Id="filD7AA502D7CC4C4592A8E6BD9CD2C31AE" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Basics.dll.config" />
             </Component>
-            <Component Id="cmpEB3454899C0BEBFD4DDD28F0B8DF3F96" Directory="Bin" Guid="7EBF240C-57AD-403C-8579-8C1BC54247D7">
+            <Component Id="cmpEB3454899C0BEBFD4DDD28F0B8DF3F96" Directory="Bin" Guid="76F2E77E-6EC4-4CF8-94E7-3C3311AEC6BF">
                 <File Id="filF55B2EEB3ECAA09C32F6E571ED9BA99F" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Desktop.application" />
             </Component>
-            <Component Id="cmpA5E138902737D604A8130E8C658F150A" Directory="Bin" Guid="041EC499-6778-47BF-9A0A-8C59F65CE6D4">
+            <Component Id="cmpA5E138902737D604A8130E8C658F150A" Directory="Bin" Guid="EF44F662-79F0-4881-9EF6-26BF9A842968">
                 <File Id="fil2656F06014B6C3862D26E1D37EA80C54" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Desktop.exe" />
             </Component>
-            <Component Id="cmpF3CCF0EFD18817D1E59A55DBC22497E5" Directory="Bin" Guid="9A26F2AB-0854-4F31-A142-4F5E0B9AE1E8">
+            <Component Id="cmpF3CCF0EFD18817D1E59A55DBC22497E5" Directory="Bin" Guid="0826BE9E-F3BC-43A8-9564-36078BC97238">
                 <File Id="fil3BB35BF9E4E0E0B8C101F7B0C957B0F6" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Desktop.exe.config" />
             </Component>
-            <Component Id="cmp51F7667B2D997625F703E3EB430E8C03" Directory="Bin" Guid="A954DB82-27FA-436C-9BD0-B280BF2FE647">
+            <Component Id="cmp51F7667B2D997625F703E3EB430E8C03" Directory="Bin" Guid="511DCBE4-E23C-4E54-BDBF-833ED74AE008">
                 <File Id="fil16380423DE0A8988F8847C100B4C5C17" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Desktop.exe.manifest" />
             </Component>
-            <Component Id="cmpB5748DB170CF33732C3F08AE87AB1FDE" Directory="Bin" Guid="5E418144-92CE-4666-84F1-5ED87B5158A1">
+            <Component Id="cmpB5748DB170CF33732C3F08AE87AB1FDE" Directory="Bin" Guid="3BFDE345-84C9-4973-AF8F-FC64829BFAE5">
                 <File Id="fil12CDB3AEF441E1C73ABFEC95843F324B" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Engine.dll" />
             </Component>
-            <Component Id="cmpE41C38C58E02EBBE6E4A5004B9B2FE50" Directory="Bin" Guid="0C582783-9739-446A-A1A9-062295FBC435">
+            <Component Id="cmpE41C38C58E02EBBE6E4A5004B9B2FE50" Directory="Bin" Guid="4EB91DED-4B23-4F1E-AB14-1C7464572854">
                 <File Id="fil89F4A324D46571E56DD3DCE64E0EBC33" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Engine.dll.config" />
             </Component>
-            <Component Id="cmp8D7BB7F6933A85DBA9867F975EA50409" Directory="Bin" Guid="32720A21-5022-42AC-B00D-4682D425D58D">
+            <Component Id="cmp8D7BB7F6933A85DBA9867F975EA50409" Directory="Bin" Guid="A9C77520-1878-471B-9D86-6B60BE5DE3C4">
                 <File Id="fil9FB9552730F847CDE2C89E667AD45EB5" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.ExcelExporter.dll" />
             </Component>
-            <Component Id="cmpEA542CC4BA865A9EB1B20DC559D719DC" Directory="Bin" Guid="E5941039-6559-4D6F-8CC8-1597D98C61A3">
+            <Component Id="cmpEA542CC4BA865A9EB1B20DC559D719DC" Directory="Bin" Guid="D4432FBF-8859-4E7A-B9D0-B809D3EEC260">
                 <File Id="filF5335BA6D5A1F619F3393123B99BE0DA" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.ExcelExporter.dll.config" />
             </Component>
-            <Component Id="cmpDB6DCA89D1462CC3660E980033F5546D" Directory="Bin" Guid="BD5F12D9-4296-4360-9FA1-B398B126FA39">
+            <Component Id="cmpDB6DCA89D1462CC3660E980033F5546D" Directory="Bin" Guid="CCBA7A9E-515F-41FD-AACB-DDEB29ECBB4C">
                 <File Id="fil15564050355181207294F961ABE4A7B1" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.ExcelReader.dll" />
             </Component>
-            <Component Id="cmpA9CEBF03548905FB68DBEC34130D4BAF" Directory="Bin" Guid="049B1E05-655D-4D94-B778-BD5735E939F3">
+            <Component Id="cmpA9CEBF03548905FB68DBEC34130D4BAF" Directory="Bin" Guid="6D59BE5F-95CA-4947-964A-1299D9AA0E7C">
                 <File Id="filFD536963D9C4EEB7F729C1A89E31DDF6" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.ExcelReader.dll.config" />
             </Component>
-            <Component Id="cmpAB03CB15087A9BFB59753D5ADEF53708" Directory="Bin" Guid="16ABD7C2-0A8E-4A50-B7F0-B1888BA44B27">
+            <Component Id="cmpAB03CB15087A9BFB59753D5ADEF53708" Directory="Bin" Guid="CD316859-E6BB-49A6-8164-CBDB25D10E91">
                 <File Id="fil09E3F698645D3A9C1B9464202316EF06" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Exporters.dll" />
             </Component>
-            <Component Id="cmp2C124A1954343057036690854D623E85" Directory="Bin" Guid="6A4EF51A-D0B9-4496-8A58-3D5F3B5FD474">
+            <Component Id="cmp2C124A1954343057036690854D623E85" Directory="Bin" Guid="0CD0381C-EE5A-4AC1-9C20-409067CA975E">
                 <File Id="fil03479A5224C6AE6F9C1BB21972F559D5" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Exporters.dll.config" />
             </Component>
-            <Component Id="cmpBFF4558AFE987E56C73FECF9CDBBD38B" Directory="Bin" Guid="EC095975-561B-4300-AC26-A7FD41925867">
+            <Component Id="cmpBFF4558AFE987E56C73FECF9CDBBD38B" Directory="Bin" Guid="399A41B7-781A-429A-A902-F8FB4EC89D7F">
                 <File Id="fil9FD2C3909106DCF01889C88A03BFE266" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Graphics.dll" />
             </Component>
-            <Component Id="cmpCD7C6EED585709D6D6C3BC2D2E6EAABB" Directory="Bin" Guid="2B04826A-F635-42DE-B188-0B6ADEE7CD95">
+            <Component Id="cmpCD7C6EED585709D6D6C3BC2D2E6EAABB" Directory="Bin" Guid="04406FE4-BF69-4D99-9018-58A6362A74AF">
                 <File Id="fil3734595A1F6349CCFE38BC907E4D9545" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Graphics.dll.config" />
             </Component>
-            <Component Id="cmp34A126EB8129C80DA30CFD113BE15B25" Directory="Bin" Guid="93E3ABB8-6710-430F-B890-11E1E88E42DD">
+            <Component Id="cmp34A126EB8129C80DA30CFD113BE15B25" Directory="Bin" Guid="63078ECF-9E9A-4F5E-BC1C-C49819A0542D">
                 <File Id="fil6A31B8B44C75E62A4A8B54309DDE3918" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Plugin.dll" />
             </Component>
-            <Component Id="cmp788DA1EB975A4D0BCBB7FF31BB8579CC" Directory="Bin" Guid="BA0223D6-EB78-4EF8-82C7-FD264B647410">
+            <Component Id="cmp788DA1EB975A4D0BCBB7FF31BB8579CC" Directory="Bin" Guid="B872C272-87F6-413A-8020-24895B5CE52C">
                 <File Id="fil77C3DB2B6EDA5DEB53EFDBD66F1C0C7A" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Reporting.dll" />
             </Component>
-            <Component Id="cmp9A8519710BDB7B88BAA1879818CF9E3D" Directory="Bin" Guid="67004029-D9C3-4730-92E7-9E9AB4C257C0">
+            <Component Id="cmp9A8519710BDB7B88BAA1879818CF9E3D" Directory="Bin" Guid="A678B5E9-F124-497E-A06A-B23072874896">
                 <File Id="filF94926A68D70375E559B127FF61891B8" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.StackBuilder.Reporting.dll.config" />
             </Component>
-            <Component Id="cmp1A951584AFA5C87018BDA8C22ED6301D" Directory="Bin" Guid="A5FA7A82-DD50-4287-9351-4926885914A1">
+            <Component Id="cmp1A951584AFA5C87018BDA8C22ED6301D" Directory="Bin" Guid="168EDFCE-5DA8-4938-B56E-01F353288379">
                 <File Id="filDBA12CDF2F7470E1E5BA8CD52286B660" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.ThreadCallback.dll" />
             </Component>
-            <Component Id="cmp9F6510A3916BEB17946C75D07D760B29" Directory="Bin" Guid="D6B3BBE9-7DBF-4555-B32A-37471CC3DF92">
+            <Component Id="cmp9F6510A3916BEB17946C75D07D760B29" Directory="Bin" Guid="582DF5A6-0616-4309-96C1-CF53D6FE96B4">
                 <File Id="fil5E2BD6F94304B2E6036601556CDBA0D0" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\treeDiM.UserControls.dll" />
             </Component>
-            <Component Id="cmpC84F6623B49D671A2535B33BDD33026B" Directory="Bin" Guid="51E2FE1A-CD7C-4496-8118-B4C4F259F8A8">
+            <Component Id="cmpC84F6623B49D671A2535B33BDD33026B" Directory="Bin" Guid="C0D7EC8B-463A-4F44-B83B-BF1299637FEF">
                 <File Id="fil1287F0AF2D5F3C1F7FC2D2676331483F" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\WeifenLuo.WinFormsUI.Docking.dll" />
             </Component>
-            <Component Id="cmp54399822F197E61A322210A374908FB5" Directory="Bin" Guid="421BD4F9-0B91-4427-AB1C-8B647CA8F3AB">
+            <Component Id="cmp54399822F197E61A322210A374908FB5" Directory="Bin" Guid="38829E25-1B0E-48D3-B00C-EFD732F24A6C">
                 <File Id="filE00FCE124A5DD2725645CB4596B7B471" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll" />
             </Component>
-            <Component Id="cmpB4B339791AD3AF3DA31F686320E185A1" Directory="Bin" Guid="0D947A61-FC3C-4B14-93BF-288B6B15E7FE">
+            <Component Id="cmpB4B339791AD3AF3DA31F686320E185A1" Directory="Bin" Guid="4D48F9CA-C4F8-4C29-8B97-3B260A8A19A2">
                 <File Id="filB95B3F1F24C588901A82B8AF338DE51C" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\wkhtmltox0.dll" />
             </Component>
-            <Component Id="cmpE3F9AC1278086F7241583DF31CC8988B" Directory="Bin" Guid="634C4E7B-FB72-43B1-896E-609C7647D233">
+            <Component Id="cmpE3F9AC1278086F7241583DF31CC8988B" Directory="Bin" Guid="DFA6169A-1ED1-44E6-AA5C-4CB51B715AC8">
                 <File Id="fil62B534534610968F79205117BD020C90" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\WkHtmlToXSharp.dll" />
             </Component>
-            <Component Id="cmpF144BD63BE7032C01B30BAEE5A70F442" Directory="Bin" Guid="5D405197-3CC2-433E-9832-C01FF38F60E6">
+            <Component Id="cmpF144BD63BE7032C01B30BAEE5A70F442" Directory="Bin" Guid="B0256055-260F-43B6-AD56-8C2BA059F955">
                 <File Id="fil3FA9E7FCA81EC2DFA3D5F68AC1BD5CA8" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\WkHtmlToXSharp.Win32.dll" />
             </Component>
-            <Component Id="cmp0BFEB3397B08109BFA50F3E16673DBAB" Directory="Bin" Guid="89A4767A-D430-4496-8D96-DF1793D0732C">
+            <Component Id="cmp0BFEB3397B08109BFA50F3E16673DBAB" Directory="Bin" Guid="FBA593E4-FF1D-43AD-A671-F2526038812D">
                 <File Id="filBCF2B21E0788B232786FCD86C9F92E85" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\WkHtmlToXSharp.Win64.dll" />
             </Component>
-            <Component Id="cmp146A48160F71EC6CB920CDF2A0515B5B" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="CDC5CB9D-81B0-41DC-8EBB-AA668B8AE2F0">
+            <Component Id="cmp146A48160F71EC6CB920CDF2A0515B5B" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="912C71F6-1D54-4957-9595-2E8E9678D056">
                 <File Id="fil8F53713180461A6BB4B76658487EC4F1" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\de\CrashReporter.NET.resources.dll" />
             </Component>
-            <Component Id="cmpF3B46F91F9D7AB4DBE0FB9CAC3FC1870" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="1F80E0E5-B9FA-4D26-B0C0-856A317569BB">
+            <Component Id="cmpF3B46F91F9D7AB4DBE0FB9CAC3FC1870" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="70E64F83-51C6-496A-BF83-8C7810DD0DF0">
                 <File Id="fil689580D50E7042B14EB747BB691EED72" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\de\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmp0A158A8601CF3F0D9E77468B86A07747" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="2BBBF614-96E4-41F2-BD28-471B98A188FB">
+            <Component Id="cmp0A158A8601CF3F0D9E77468B86A07747" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="E8A05A0C-A69E-4DCF-86EA-B3A3922B84CD">
                 <File Id="fil004475518AEB60B4FA560CEC7CC636D3" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\de\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmp7A86F01A60D62593221BE1751801DDBD" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="6905678C-76B0-4262-A9AF-A67EAFF1A116">
+            <Component Id="cmp7A86F01A60D62593221BE1751801DDBD" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="831E4855-C3B3-40EB-9EF7-63179BD99A1E">
                 <File Id="fil6913FAD6C0807F1CE396098CA8FB7DB0" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\de\treeDiM.PLMPack.DBClient.resources.dll" />
             </Component>
-            <Component Id="cmp55BE40BD51911B1ED6DBC8A75458BEA5" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="CB873E70-B690-4F6C-A08C-E99C3B1CDDF2">
+            <Component Id="cmp55BE40BD51911B1ED6DBC8A75458BEA5" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="3B6A98EB-57D7-4946-9663-F30C3DA898A0">
                 <File Id="fil573525EDAFE1A119F04F5D89EFE8A429" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\de\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmp2102D7C595EABB69E4E8B7BEBB076593" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="9A4E1F5A-49D6-4561-8A3D-023C37BF3D2D">
+            <Component Id="cmp2102D7C595EABB69E4E8B7BEBB076593" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="8E2C7707-69B1-4C4E-B787-F20775F39951">
                 <File Id="filD430167097EF9C3F5B9CBA4C68E8DCDA" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\de\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmp6436BF144B44411AAC252240677A7032" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="99B8262E-DF31-4E0E-8089-A2AA95BE8A4D">
+            <Component Id="cmp6436BF144B44411AAC252240677A7032" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="4EAA5FCE-F695-4E6E-AC65-E7CCB1F18D59">
                 <File Id="filE9F2DC273251D6CFBA049DE72701C683" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\de\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmpFFA4130388E6F42C68523F692B449EC9" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="032B5AB4-04FA-4245-8E7D-A6E071F941AC">
+            <Component Id="cmpFFA4130388E6F42C68523F692B449EC9" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="87419000-DD19-49A3-982B-96698A8C9105">
                 <File Id="fil891A822A2BBC26C312A11E751C692700" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\de\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmp234B27F9004765D59785CB880FC2B438" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="DABC40D6-4333-4D12-900E-E984B49624EC">
+            <Component Id="cmp234B27F9004765D59785CB880FC2B438" Directory="dirFDA47A283BDE3D4AFE0253B93F0C88FB" Guid="DD7FF25D-D62A-4EC8-B97C-2B6674A6813E">
                 <File Id="fil66C9509A1226342F0668505D757DC928" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\de\treeDiM.UserControls.resources.dll" />
             </Component>
-            <Component Id="cmpD331C848D7CBCE2DD48409F0FB315B2C" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="1C360D4E-2129-407C-8221-FD2CC13E133A">
+            <Component Id="cmpD331C848D7CBCE2DD48409F0FB315B2C" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="BA8C5D0A-261E-4320-B7E1-BEC03E557440">
                 <File Id="fil4EADA042BD901ABEFA08803F98821753" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\es\CrashReporter.NET.resources.dll" />
             </Component>
-            <Component Id="cmpB7D8660511FA02A5B92C9578712EE20A" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="BCE83875-462C-4A93-8495-43403BE3CB72">
+            <Component Id="cmpB7D8660511FA02A5B92C9578712EE20A" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="42B7A738-B7A2-42F5-BE89-98EED12C1E81">
                 <File Id="fil7B7CAADF0341F7F828F3DCE06FC8E0DC" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\es\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmp0C629C75952F5FCBF97857E806F6541F" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="5DF93CA7-C468-40D3-BD59-2C82F1A7B5F6">
+            <Component Id="cmp0C629C75952F5FCBF97857E806F6541F" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="D16C936F-8AC1-4B56-81CA-23A31599CE12">
                 <File Id="fil38AB650FA9A1CF11406F792359DCBEAC" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\es\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmpF2F67D146227B02178AD6DA239BBB97C" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="93F08A97-91BE-4F29-AC61-C9A5E60B19D5">
+            <Component Id="cmpF2F67D146227B02178AD6DA239BBB97C" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="8493C3D1-E012-431D-A451-442E28A2AD72">
                 <File Id="fil5D0261370F4DCD8BCBF75670EAC95B09" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\es\treeDiM.PLMPack.DBClient.resources.dll" />
             </Component>
-            <Component Id="cmp7C1B947E3E70335B9247F2F18CAB011A" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="D4193873-C74F-40E8-8C71-C020608C63E8">
+            <Component Id="cmp7C1B947E3E70335B9247F2F18CAB011A" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="F5C666DF-7CE3-434B-BB78-5FE4042F1DFE">
                 <File Id="fil6BB14452FA62AA583CF0652F950F954A" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\es\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmpF8664FC9F27A97B36EEE976B913293E9" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="78A5113B-E4C3-4FF3-AFF6-0A870544961E">
+            <Component Id="cmpF8664FC9F27A97B36EEE976B913293E9" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="BD34C7D3-5281-4C22-9EDD-9DD9FF857CDF">
                 <File Id="fil2E94C5358DBC16FC70EA3AF3E6707E92" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\es\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmp3907F542B4FF97BE091EFBB521885B8A" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="FA314EDB-60B6-49E7-8082-5382760047A3">
+            <Component Id="cmp3907F542B4FF97BE091EFBB521885B8A" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="BD552807-F96A-43A8-BCDE-AA2F987F729B">
                 <File Id="fil70D95E93D549F8CCCD2AE10DDEE3915F" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\es\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmpBEC8CDB374E3B59BCBF2F63D5CD84F9D" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="ADF9B9DC-2993-4860-807B-43615B418BA0">
+            <Component Id="cmpBEC8CDB374E3B59BCBF2F63D5CD84F9D" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="F1785416-AD02-4CC0-B30F-8E5DFAC95AA3">
                 <File Id="filAF996CE9A0445B7510CE3ECF50F9102C" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\es\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmpE91E69E3D0AD81B99707A4C50F4DBB1D" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="721BE00C-534C-4F9E-B550-981932C37B82">
+            <Component Id="cmpE91E69E3D0AD81B99707A4C50F4DBB1D" Directory="dir79C3E2AFE9261FB8C8ECA0864B9183CD" Guid="BC54FAB8-E8C9-454A-A641-0820BEDD3342">
                 <File Id="fil47982BBCDFF84042D15FFD0F2AF77831" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\es\treeDiM.UserControls.resources.dll" />
             </Component>
-            <Component Id="cmpC7B673ED5042D039376374900C44E313" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="7B913B08-20FB-4E50-90D0-E34C29478245">
+            <Component Id="cmpC7B673ED5042D039376374900C44E313" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="7351F3CB-C1F9-4936-B9AF-7494E2A4F7AB">
                 <File Id="filAFF51C32BC1DF710A36326DF7ED9AEAC" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\fr\CrashReporter.NET.resources.dll" />
             </Component>
-            <Component Id="cmp7E135033966B28E00C0E365AB8EDD628" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="3976B608-ACDA-46CF-9635-59986318F30B">
+            <Component Id="cmp7E135033966B28E00C0E365AB8EDD628" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="4EEE721F-76D9-419B-9FC1-3DF56D6DFCA8">
                 <File Id="fil0ADC35B720AF2145653D316E0C389F70" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\fr\OfficePickers.resources.dll" />
             </Component>
-            <Component Id="cmpB44B811D3111E538C9BD5BDE9112D30C" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="2D14A39E-6E2B-42B4-8720-ADC4908D8335">
+            <Component Id="cmpB44B811D3111E538C9BD5BDE9112D30C" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="401F92F9-F840-4B15-A37F-11BEA16EAC8C">
                 <File Id="filDCC3D7C009D844DF317661E2E86D5C35" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\fr\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmp00BB5B8879E1A7BEE004ED3136B94F41" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="BF6FE7C5-DF15-4F35-B276-DBA8EDBB9838">
+            <Component Id="cmp00BB5B8879E1A7BEE004ED3136B94F41" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="C500D4AB-6AA5-48CA-ADC4-C0A83DD52F64">
                 <File Id="fil1697D9F3380D562102469383D4D12F18" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\fr\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmp187545DD2244FEA8E17C949F26969567" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="D613BD03-3119-4D60-AACC-79CBF7ED9D9C">
+            <Component Id="cmp187545DD2244FEA8E17C949F26969567" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="786179E5-61C5-4004-B2E6-F68641870176">
                 <File Id="fil1B131F04CCF501175E28E7A086AB691B" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\fr\treeDiM.PLMPack.DBClient.resources.dll" />
             </Component>
-            <Component Id="cmpF3F289E26D37FC178AB0987CA220D391" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="F3D4D6F4-EC9B-4808-9CF5-ABF2A8D164BC">
+            <Component Id="cmpF3F289E26D37FC178AB0987CA220D391" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="6D5DA7C3-544B-46B5-8CFC-1639B98ED9C2">
                 <File Id="fil541031C147EEE07A250C42BE3EEF47BD" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\fr\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmpA1BC562BBEF1C64F14EDD4218C304F10" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="43D2082C-E98C-412F-958F-A283E99E9CC9">
+            <Component Id="cmpA1BC562BBEF1C64F14EDD4218C304F10" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="B6E625A4-7E2B-4E1D-9987-98365F526984">
                 <File Id="fil8CC4CDEB0F36F89DB2859DC02552281F" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\fr\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmpE8F1B2AFA744AEB50A5763B4C60BCCFE" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="29E822BE-449B-4AF7-B657-CCA89144C4ED">
+            <Component Id="cmpE8F1B2AFA744AEB50A5763B4C60BCCFE" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="E8AB85CD-51B9-4C85-A68D-BD2070214EB5">
                 <File Id="fil9EBB4130C11F54D8C85FFE8FEC5FE098" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\fr\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmp5B1454C139C1F1995312D7CCB14192DF" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="FB26648E-B863-4C86-B015-1BD834804CA8">
+            <Component Id="cmp5B1454C139C1F1995312D7CCB14192DF" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="66C17C92-65E7-45E6-9D81-60460FE4BD72">
                 <File Id="fil66AA3FE0D32D7823AFB84D051DB2B83C" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\fr\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmp79B2B12030CCFEE13CAEB6A3EB3A23D3" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="D726EB69-563F-4DEC-AC64-19E7BDDFB465">
+            <Component Id="cmp79B2B12030CCFEE13CAEB6A3EB3A23D3" Directory="dir9AA3BF36EA892601E370D102B541D66A" Guid="5AAB8296-1591-478B-957F-0EE2CA59FF46">
                 <File Id="fil35ADE2F719F31F0F7E5B7CE86A8FA5F1" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\fr\treeDiM.UserControls.resources.dll" />
             </Component>
-            <Component Id="cmp28FDD2AFAF67B3DB0228A1D1DAC57240" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="25014E37-BA6E-4701-809D-43E068091700">
+            <Component Id="cmp28FDD2AFAF67B3DB0228A1D1DAC57240" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="4F35BFB5-E0A2-4CC4-927C-234E332BDFD1">
                 <File Id="fil1B1EA1EA3F2CF8832C0AAD6C52A89CE5" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\it\CrashReporter.NET.resources.dll" />
             </Component>
-            <Component Id="cmp64047A16F099296BC60CF2ECF5056857" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="40B4B944-3863-4C72-A4C2-625CE65C2915">
+            <Component Id="cmp64047A16F099296BC60CF2ECF5056857" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="2E3E2AC8-4C8A-4BDB-9EFE-A2175B4AA68D">
                 <File Id="fil2CBFA069B2459793486106BA20E5C769" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\it\OfficePickers.resources.dll" />
             </Component>
-            <Component Id="cmp8DF195CD6AC063629EA7FF451CFE457D" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="02900AD0-E1DC-4A0A-9C41-EF6705638E64">
+            <Component Id="cmp8DF195CD6AC063629EA7FF451CFE457D" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="42E44231-6102-414C-A8AD-D07791083B36">
                 <File Id="fil31AA3EA69463397280A58EC4C4FDB73E" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\it\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmpE22681EC9B1817278651D8C46E226102" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="59065229-553A-4FBA-B385-112B6FBE77AF">
+            <Component Id="cmpE22681EC9B1817278651D8C46E226102" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="1B3C7346-7AD9-4432-A6D6-AF3F02A2FC12">
                 <File Id="fil3074809677F21F071AF9CB37581AC4B7" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\it\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmp206236A25947AE5BE0BDB452EA53830D" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="4463BD63-A7CE-45C3-B094-552AC437ECE0">
+            <Component Id="cmp206236A25947AE5BE0BDB452EA53830D" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="EC31A2C9-3460-416D-AF78-64D031FD2C61">
                 <File Id="fil056DA2BBA1FE864C8F217365A61AA7B3" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\it\treeDiM.PLMPack.DBClient.resources.dll" />
             </Component>
-            <Component Id="cmp91B0130C7495BBA31126A504280C28E5" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="4733E5CA-AF53-4B61-BBC9-C07FE28C1C4A">
+            <Component Id="cmp91B0130C7495BBA31126A504280C28E5" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="DF348DC7-9905-4F4D-825E-1650A1B59D32">
                 <File Id="fil948F57A50D66A73338BD8921D3560230" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\it\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmp1B715F40C8A5C2308DC38223E8C35CF4" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="73F1E251-92B4-451E-864F-CFF8F9051B09">
+            <Component Id="cmp1B715F40C8A5C2308DC38223E8C35CF4" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="9EA2235C-2FD5-4A5B-B894-E3C5B2E33E44">
                 <File Id="filF3BCDC8E629C135D37064D537858B189" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\it\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmpA9F5F48CB1155A2F133967AD79497F87" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="24A89FCD-3FBB-4C16-A724-C4BE75C7584F">
+            <Component Id="cmpA9F5F48CB1155A2F133967AD79497F87" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="197F08A9-4CF7-4BAA-91D0-B03855E28AB9">
                 <File Id="filBA38A1BF2EC7225E514629EE952EDE46" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\it\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmp351E57A2C2F516511F99A5E99803443E" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="722EC9A1-C9A0-42C2-AD0F-0B699CBB7CBF">
+            <Component Id="cmp351E57A2C2F516511F99A5E99803443E" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="9C1E36C7-79B9-4954-B262-78727480D808">
                 <File Id="fil067C774DA8D51FEC8FF89808A009F770" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\it\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmpB5708E66A6660C78FCF789686FAACBB3" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="892453C9-3AAA-491C-B610-857AA2F914E0">
+            <Component Id="cmpB5708E66A6660C78FCF789686FAACBB3" Directory="dirDC80E2C98BFA6A946C23A92CDA674B13" Guid="06A6C266-29C3-4677-A7B7-4DA8CFB1A7B5">
                 <File Id="filF46742C7193835BF4090E52A1AB13EDF" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\it\treeDiM.UserControls.resources.dll" />
             </Component>
-            <Component Id="cmp11A7EF23ED6CC7C97B04B036A8F83D41" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="7445B772-228F-45BB-874A-38496781E74D">
+            <Component Id="cmp11A7EF23ED6CC7C97B04B036A8F83D41" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="8F17E50D-02AE-4F59-A394-48E5A1B9111A">
                 <File Id="fil3BC553F7E1BFA96E53A8E4DA25E73ECC" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ja\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmpF69941D6623337E3DD9DEDC95148FFA9" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="735614ED-5EF9-40A3-BC9A-C9941FD2E884">
+            <Component Id="cmpF69941D6623337E3DD9DEDC95148FFA9" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="71D73868-1219-44A1-91DC-3B3ED46F9652">
                 <File Id="fil74A42BD9217491A59CA396889B4C7664" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ja\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmp5B2353717BF084622ED8FDC1681E98A5" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="4FA80790-DA65-4A10-86DE-5C656A6F29D5">
+            <Component Id="cmp5B2353717BF084622ED8FDC1681E98A5" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="87A62378-98B7-4665-A69B-B6CEC94040CD">
                 <File Id="fil457300AB757877234A5176444FC27452" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ja\treeDiM.PLMPack.DBClient.resources.dll" />
             </Component>
-            <Component Id="cmp0E92D147C40ED6CCA39D17124B8AABCF" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="4BCFE520-E0DB-4426-BF00-46A36B60D071">
+            <Component Id="cmp0E92D147C40ED6CCA39D17124B8AABCF" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="887D6F5C-AF45-4A22-9985-3C0B326F9E42">
                 <File Id="fil3A469D73BE170713B809EE7AADB2BEF5" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ja\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmpF77513E95202ABC6E9275C8784DF207B" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="97D0F73B-7468-4F4B-8076-BF25BAFBA68C">
+            <Component Id="cmpF77513E95202ABC6E9275C8784DF207B" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="ABC9EF7F-59F3-41E7-A11F-274621654819">
                 <File Id="fil3A7647530CDBD57021B9B7AC08A6C466" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ja\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmp62ACB4D0DC885360C898F48EDA0B6EF4" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="AE6AF394-575B-465B-A123-8C3D1402562A">
+            <Component Id="cmp62ACB4D0DC885360C898F48EDA0B6EF4" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="1E17BAC9-F6CA-45C8-A2C9-7698826F67C9">
                 <File Id="fil1829527993D85A952DDF4AFA1A7585BD" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ja\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmpB5F58706B3A604993E902788003A5CA8" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="E46EB9F6-7140-48FF-B35D-8CE3CD9A875D">
+            <Component Id="cmpB5F58706B3A604993E902788003A5CA8" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="4BBACBD0-305B-4FED-9F3C-A8316D0CCEDF">
                 <File Id="fil8F1339605FD7C6754F0DA8CCD232C040" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ja\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmp6B667B08D677FFD7C43C33F3AE823B5D" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="5A0FA0B8-2A59-42E7-BE71-B756A4D6FCA1">
+            <Component Id="cmp6B667B08D677FFD7C43C33F3AE823B5D" Directory="dirC599F0E5E003445D58AF6D5842D39DA5" Guid="8F38214B-019C-4424-92E1-166A2D279365">
                 <File Id="fil7675BBB17D6570E7944315B933972EBE" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ja\treeDiM.UserControls.resources.dll" />
             </Component>
-            <Component Id="cmpB95C2089CFB5463BE4F3B5F78BE4BFA4" Directory="dirD90F2CC06E32745B63665C0C307AB93A" Guid="F72BF2EC-85E8-4262-B9C6-980B084A9DAF">
+            <Component Id="cmpB95C2089CFB5463BE4F3B5F78BE4BFA4" Directory="dirD90F2CC06E32745B63665C0C307AB93A" Guid="7B7E72E6-47DE-49D5-A76A-AFCD0ADDF7F7">
                 <File Id="fil06842D67CB18E4FBDFA585817A1AF270" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ko\CrashReporter.NET.resources.dll" />
             </Component>
-            <Component Id="cmpE9531B7147380478F94F0E7EB261D3BD" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="20FAC3F8-91F1-4570-AB6B-F5DD443F3CDA">
+            <Component Id="cmpE9531B7147380478F94F0E7EB261D3BD" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="662CBC66-14DE-44E7-98B9-8BE38B68BF93">
                 <File Id="fil4CA95ACE1B8AAC875F765C3DAF6C30A9" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\nl\CrashReporter.NET.resources.dll" />
             </Component>
-            <Component Id="cmp71531843E95A2EBF9365617BAF33702B" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="CC9A35C5-89A1-46F6-B4A3-7A0313637EFC">
+            <Component Id="cmp71531843E95A2EBF9365617BAF33702B" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="232E12B5-9CFD-40B5-82E5-4BE9CCE117DD">
                 <File Id="fil40EC002E08D1BE57815FE4566C2E8F51" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\nl\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmp9060976897A780877B1BB483A2793432" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="B67B285D-833D-454C-8990-4FA361679241">
+            <Component Id="cmp9060976897A780877B1BB483A2793432" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="AD1F0CF6-3DE2-4DEC-93F9-BAFBF4800FC4">
                 <File Id="fil7635476B54CDCB74B585F7212BCC7307" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\nl\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmp553C1E7C1D0BDBBDCE7872436A45BE97" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="D02DB68B-D078-41E0-A774-DD427E303B91">
+            <Component Id="cmp553C1E7C1D0BDBBDCE7872436A45BE97" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="B770D93B-0648-43A9-807D-8068B8DCAD03">
                 <File Id="fil903734B0A3B2692E6010F0876F9C9D47" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\nl\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmpF0C4A725A7CFAC2651BD5BCE42D211EB" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="99EDFC13-EEA0-42B0-BAF4-C89B5F587D04">
+            <Component Id="cmpF0C4A725A7CFAC2651BD5BCE42D211EB" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="9A7AADCF-9372-44DC-8C53-5726C5D8D7CA">
                 <File Id="filD49573CB8F1762D4BAD488A699257A73" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\nl\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmpD2847328587EC94F96E2CF514C00208A" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="02F64A5B-EA2D-4A04-A6A9-410B6202EC24">
+            <Component Id="cmpD2847328587EC94F96E2CF514C00208A" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="35DDAD89-6297-4D80-A79A-94CEE6561C5D">
                 <File Id="fil3F020A93E560124425225F4850CA6F66" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\nl\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmp0B39D46778567B921CFAA01741A2A252" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="CE59B4BA-7BE2-47E2-9CF0-CAD9C1BA4E38">
+            <Component Id="cmp0B39D46778567B921CFAA01741A2A252" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="7605A348-DA25-49CA-8213-4D0029A87B8E">
                 <File Id="fil1C3F9F3B0DAF621F00C5284C4CEF1C95" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\nl\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmp28771CB222993EFF334B8741491FD899" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="24A7D373-1F5A-4927-8463-7BAD97775B70">
+            <Component Id="cmp28771CB222993EFF334B8741491FD899" Directory="dir19B6F3264CAEE877E4D90915789014AA" Guid="94141137-87B1-45B0-809E-EDA7C273669C">
                 <File Id="fil8961C3B5A1388EF5705DB6509FE8F1BD" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\nl\treeDiM.UserControls.resources.dll" />
             </Component>
-            <Component Id="cmpFE8046E713B1D1A96AEE189F8E7D70E3" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="860A02DF-3B2D-48B9-9837-CE46C8DEA847">
+            <Component Id="cmpFE8046E713B1D1A96AEE189F8E7D70E3" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="F5D4903A-2C8D-48DC-855D-D764D2C86D2E">
                 <File Id="fil2802E9FA187D530C49241A14A9D0B1FD" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pl\CrashReporter.NET.resources.dll" />
             </Component>
-            <Component Id="cmpEFC5D800861CF3C2D35746AA1C26D064" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="E469E144-DD27-4213-BCAC-3D35283BDC9D">
+            <Component Id="cmpEFC5D800861CF3C2D35746AA1C26D064" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="4E85334E-4D6C-4473-A77D-0D908852C10D">
                 <File Id="fil395F8B1D39BA1DCDBB657C81B3F02750" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pl\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmpB1EF8188E349156982DD190761950A3B" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="5E581E60-B00F-4A28-B6A6-39153E12CD87">
+            <Component Id="cmpB1EF8188E349156982DD190761950A3B" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="FFE2A36A-96A9-4C90-984E-A7D964081DE0">
                 <File Id="fil1C75D7F87E2C73CCE0E0B511EFE6A68B" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pl\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmp8B1988D62241D2CA8811240ECD393166" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="38DC8062-50C5-4F79-BB7A-CD6D9B7DF773">
+            <Component Id="cmp8B1988D62241D2CA8811240ECD393166" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="91A1C088-0552-4F63-9C78-B93B02F07420">
                 <File Id="fil6F32EAA763BC36E5FCBB329770F503FC" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pl\treeDiM.PLMPack.DBClient.resources.dll" />
             </Component>
-            <Component Id="cmpE2F525B69C4A18485CA2BD5882BE0C17" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="3D9E9AAD-1D56-4E41-A167-F1CE60BECAD7">
+            <Component Id="cmpE2F525B69C4A18485CA2BD5882BE0C17" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="EFE00D69-5D58-4898-9C31-2E3FBE1FB01F">
                 <File Id="filB471FD28C65E4C5AABAA0DEAFC1FC5E2" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pl\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmpFAB9AFA2922186D80C7F4AB8E350981E" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="8EAD76AE-3762-4801-A08B-6EBD80D91BF2">
+            <Component Id="cmpFAB9AFA2922186D80C7F4AB8E350981E" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="A3BC89DC-62F2-458B-ACFA-62C8459788E9">
                 <File Id="filD11A5BEBC0FA35DB00F2940BC969E103" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pl\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmp8CFDB9E0CC5ADB4AC00D2CB56D02D0C5" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="44198D20-3FB7-4857-9407-E38FCB386FB5">
+            <Component Id="cmp8CFDB9E0CC5ADB4AC00D2CB56D02D0C5" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="CD6359CA-555C-4E55-A048-BF23E3ADC682">
                 <File Id="fil58641B8A522BD05992C84FA85353833C" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pl\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmp4C102A2AF2C39D293BECF97890C1FB78" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="90F92C08-4CB9-44A8-98CF-61EC853DAABC">
+            <Component Id="cmp4C102A2AF2C39D293BECF97890C1FB78" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="B3025EAB-5269-4C71-BA6D-DEFB88A36153">
                 <File Id="filF0D3C8961179D5A68C42B2362F738D50" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pl\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmp706FBB711FCEE3DD896E661A8232AE1D" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="0C22EBFA-11C8-40A0-849B-E8214E3DBCB5">
+            <Component Id="cmp706FBB711FCEE3DD896E661A8232AE1D" Directory="dirCAF6B5BF0CD9C7D84B4D4372E6488FE6" Guid="54ABAA74-64BC-4312-8EC5-6CD94D2F8807">
                 <File Id="fil0E424B70F66BF17C18B71968166362BC" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pl\treeDiM.UserControls.resources.dll" />
             </Component>
-            <Component Id="cmp77CBEBB0693309FEFB30B54705C11529" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="CE794E35-F830-4942-8B15-6EB2ACD4D640">
+            <Component Id="cmp77CBEBB0693309FEFB30B54705C11529" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="10DD0750-528C-455A-977C-F0ABC8F45573">
                 <File Id="fil1927D7E7803BA1DD8112F186F8CB478F" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pt\OfficePickers.resources.dll" />
             </Component>
-            <Component Id="cmpD7368B5F07AD24B0730502D4612AFCD1" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="3336DA4D-1E8D-4608-9747-470E0CA4DE66">
+            <Component Id="cmpD7368B5F07AD24B0730502D4612AFCD1" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="F20EAE50-6270-49E5-9C3B-80E43CCC2C4F">
                 <File Id="fil9ED39095693E9A3F78BFE33814B2FC78" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pt\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmp8975819856E14DBAE8BFD33D192B532D" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="E71EE77E-03C0-47B1-AAEB-945D4DBCE4A4">
+            <Component Id="cmp8975819856E14DBAE8BFD33D192B532D" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="DD2888D7-06DD-4B4D-80AF-8D024A1B3B43">
                 <File Id="fil9499B5B4560ADABA2DEBD443EED7EAB2" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pt\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmp3ED934E0C2F34A4FD158CD1E83B87047" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="938022F1-F75C-4D48-8092-D90CC70D0C60">
+            <Component Id="cmp3ED934E0C2F34A4FD158CD1E83B87047" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="672B0C06-398E-4E1E-AB9E-9B3B4D253435">
                 <File Id="filFED837A7DC7B17472795475EFE1CB5EA" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pt\treeDiM.PLMPack.DBClient.resources.dll" />
             </Component>
-            <Component Id="cmp53748A06CED2016E25C16F38580AE223" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="34F5402D-F516-4010-BD6E-9A44688F2045">
+            <Component Id="cmp53748A06CED2016E25C16F38580AE223" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="50E3E16B-4F0D-4E55-A88E-DDDDEB6D7676">
                 <File Id="fil1B856DF9CF2D4F374556F7E55A3755D1" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pt\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmp0D438270C8C9AF3A845F3CAEC0A60AF9" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="FBE5D6F2-D2CC-409C-837E-ED18338CD2D0">
+            <Component Id="cmp0D438270C8C9AF3A845F3CAEC0A60AF9" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="014C8164-BDD7-4609-A154-D644E1239582">
                 <File Id="fil21FEED57C25F0BCEB136317E3D1CD114" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pt\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmp4F2CE0F12C718E4D1FCB0EF4ACD9171C" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="B65FF554-0531-4BB3-88A6-D767E9BDA6F9">
+            <Component Id="cmp4F2CE0F12C718E4D1FCB0EF4ACD9171C" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="81901354-6EE9-41FB-9CE5-7F28E7D06600">
                 <File Id="fil958E5FADB0938677DD2DE828F41F6D32" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pt\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmp9F18C7390FBFB8C66929EFB6EB5509CB" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="493F7EF6-82AD-4A70-8B47-9152F4C49F23">
+            <Component Id="cmp9F18C7390FBFB8C66929EFB6EB5509CB" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="B8B91AF6-92C1-4AE6-92D2-A829714D174F">
                 <File Id="fil0B98A9631FBED5FF924BE2F308D5760F" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pt\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmp7CAEB5E48DCF97C82AADF86E4B9E1286" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="85917EB2-FB57-4941-AF6F-C9FB2DEF3A75">
+            <Component Id="cmp7CAEB5E48DCF97C82AADF86E4B9E1286" Directory="dirD1888EFD334C55EDDF43AB200F44D98B" Guid="7B27BD15-4135-41F0-A4EF-457BCFE21C73">
                 <File Id="fil59DDE61F3DE6C44B093D343C186C6142" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\pt\treeDiM.UserControls.resources.dll" />
             </Component>
-            <Component Id="cmp37B11B6909F7297484F76A3927466B4D" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="DF485B4A-1775-4629-9A8D-E9259D617BA3">
+            <Component Id="cmp37B11B6909F7297484F76A3927466B4D" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="3615F5EA-01AA-4521-8773-1472D1A8B4FE">
                 <File Id="filBA9B5815C6A7BC0B1CDB1997C5C88648" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ru\CrashReporter.NET.resources.dll" />
             </Component>
-            <Component Id="cmp4C0AA8B32B7AD6D293EC99A9A54EC9EB" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="CF38369A-B79B-4C9D-863E-9F1D85865201">
+            <Component Id="cmp4C0AA8B32B7AD6D293EC99A9A54EC9EB" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="EED90077-9E57-443D-A456-2976C90F1C77">
                 <File Id="filB17E6B7F503C8E8F79B7948517E35825" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ru\OfficePickers.resources.dll" />
             </Component>
-            <Component Id="cmpBBAD19E6FE8BD6735A3C151AA9B29351" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="5409CEDE-6760-4A4B-95E7-76EDF9136886">
+            <Component Id="cmpBBAD19E6FE8BD6735A3C151AA9B29351" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="9C3821CC-A673-41A4-A909-2FB65ADAD0DB">
                 <File Id="fil597E8E924A5B35DF4E21EBA057649C0E" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ru\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmp4F0C6D846AD3926FCACC8BF1772C89B5" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="5DCFEEDA-A787-4598-A80A-A52EB28A10F5">
+            <Component Id="cmp4F0C6D846AD3926FCACC8BF1772C89B5" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="8891844B-9640-4505-A3BF-B270DFD68C59">
                 <File Id="fil30D8E99B0B6F0F60E4DBE8E7141218F4" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ru\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmp406CD2F0AE98DCDD17DA16CB527C06A9" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="BC9F303D-A5C6-4943-8669-45CD0F5725D8">
+            <Component Id="cmp406CD2F0AE98DCDD17DA16CB527C06A9" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="AF295FFC-8642-47DD-BB6F-AFFCEDFDA982">
                 <File Id="fil40C1642F33E7190B248D502A9BF1E3EC" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ru\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmp8FFC3128696434B4BA0CE64293D925FE" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="69A192F7-A56F-4BB3-97B5-11F52B738BBA">
+            <Component Id="cmp8FFC3128696434B4BA0CE64293D925FE" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="6B2DEC92-2125-41E2-BDFA-9F2DDCD0E913">
                 <File Id="filACF5561FC094CC83DB308F7812DF8C95" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ru\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmpBEE4DB007E83B65B09E62FD37941152D" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="D65AC768-F2FF-4F0B-85FA-8F181E93205D">
+            <Component Id="cmpBEE4DB007E83B65B09E62FD37941152D" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="39E49F14-4178-44E7-83D1-0BDF6F83CD44">
                 <File Id="fil0D790CD9409D054F12AE33987407E8AC" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ru\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmpF546FEC1E6681B45B1CEEF7D278FE267" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="8EDCFE2D-6017-42F3-AF99-40D22B07B342">
+            <Component Id="cmpF546FEC1E6681B45B1CEEF7D278FE267" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="BCA66F3F-271E-42B6-87F7-CC7478FD36E2">
                 <File Id="filBCBD8D939B97C54ED83AE506BF390013" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ru\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmp3F9BBD94A90FEC71DE960E3891D0105F" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="76B7E883-8770-4B25-B45E-2D214A292B32">
+            <Component Id="cmp3F9BBD94A90FEC71DE960E3891D0105F" Directory="dir4E0D8F33BCE029AC60ECF953B16FF093" Guid="8BF91055-3C09-49D0-9A3B-C1B594AE68B7">
                 <File Id="filF8EF4F3D043E71407F313274828F4EE3" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\ru\treeDiM.UserControls.resources.dll" />
             </Component>
-            <Component Id="cmp28A65FDFD26A3DFDAD227B0933EFE6AB" Directory="dirE905FCD608B371EB97793F44FA5509A1" Guid="0A902160-028A-4439-8325-ABAF47177B34">
+            <Component Id="cmp1AB49BEE1B88BDD9E7CE8035B8313CC8" Directory="dirF8BB03ECE07366F91B9C7362E378E7E9" Guid="4C7BDF4B-9955-4A84-A72F-20A9D4C93410">
+                <File Id="filEBCAB3F59FCAEDF7178E3618D69E9887" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\runtimes\win-arm64\native\WebView2Loader.dll" />
+            </Component>
+            <Component Id="cmp4C82A17EE0D5FBD952DF830726C07EC6" Directory="dir48C6CC51BC295A3F87ABBD9829D22E85" Guid="F854BFD4-7DFF-4671-B360-EA4B98CD9AB5">
+                <File Id="fil8F0EFF607880ABEDCB05E6F91E4F708C" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\runtimes\win-x64\native\WebView2Loader.dll" />
+            </Component>
+            <Component Id="cmp28A65FDFD26A3DFDAD227B0933EFE6AB" Directory="dirE905FCD608B371EB97793F44FA5509A1" Guid="A320CBCA-464C-485A-A9AA-1E08138E7EF8">
                 <File Id="fil5BDE027CDED1A0FA8E9E9269E8027C95" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\runtimes\win-x86\native\WebView2Loader.dll" />
             </Component>
-            <Component Id="cmp55E0E44CC46F5B8F049867E41DB61846" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="92D87208-5594-4199-8633-762A28DEC43A">
+            <Component Id="cmp55E0E44CC46F5B8F049867E41DB61846" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="6EBB9DF5-21B9-4F72-8C01-027E3D630651">
                 <File Id="filA915D63956FDE44BD14468029DCD155E" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sl\OfficePickers.resources.dll" />
             </Component>
-            <Component Id="cmp4D26B72558C839F9FF1C9304F678335A" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="DBE250D2-37B6-4008-B496-CBF63155F998">
+            <Component Id="cmp4D26B72558C839F9FF1C9304F678335A" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="EFBC4F4F-A9D7-4BF9-891B-6ED7CF2D45FB">
                 <File Id="fil1FAA2DE2CCFFDA5FB214CCE2D38520B6" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sl\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmpE55028AB143C202AA5429974AB18F91C" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="2A9B7FA6-C821-4369-8237-A5B6110F0E95">
+            <Component Id="cmpE55028AB143C202AA5429974AB18F91C" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="668CD57E-D051-4394-AE02-12B9AF2C2B55">
                 <File Id="fil12729A3A3320A0260BC1A7AED607AD58" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sl\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmp623BF3014FFC8C35D167E8295BF77533" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="D3C76E9C-B02C-4891-A33B-6D245DACFC85">
+            <Component Id="cmp623BF3014FFC8C35D167E8295BF77533" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="99E25E0F-99D5-4065-85AA-86BA85387B23">
                 <File Id="filE78509741F79EFDDA8784B09ABF5839F" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sl\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmp7C10B4AD1D72F3B98940762CCB6CF681" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="0794420A-B160-432E-BC8F-43C043535A06">
+            <Component Id="cmp7C10B4AD1D72F3B98940762CCB6CF681" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="51CC57F2-50CF-4B88-A195-A58EE712CE64">
                 <File Id="fil8CB95A1860DD7FF101912029D6E3BD51" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sl\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmpC1ECE3BF295083896E36B47DA1416844" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="D7296196-ABE2-4B6B-8A6B-C9B4F29C37EA">
+            <Component Id="cmpC1ECE3BF295083896E36B47DA1416844" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="FD9EA081-EA8F-4CF3-8FE5-38990854079B">
                 <File Id="filBEDD39B944821DFC1E4DBBB4912E0EFC" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sl\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmp28B9F189BC800F5AA075E0F383E688B9" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="AE047B14-255D-4DAF-A413-81A501856C4D">
+            <Component Id="cmp28B9F189BC800F5AA075E0F383E688B9" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="18F8080D-DA0B-49FB-B601-13DC95DDB3A9">
                 <File Id="fil439D6E128022026699B0F9097C84EC24" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sl\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmp60BB2C894C2C1E1FED4DFE5A9F6A66FB" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="F7DB2DB4-1D0F-4927-8C66-D0E365A2D881">
+            <Component Id="cmp60BB2C894C2C1E1FED4DFE5A9F6A66FB" Directory="dir67614FF64E67EDE130358A29977EEE99" Guid="CF559680-12F4-43B6-9397-D30D669FEE78">
                 <File Id="fil76FE01C191964B22F29867BAE547AE56" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sl\treeDiM.UserControls.resources.dll" />
             </Component>
-            <Component Id="cmp16582DA22F463E94485E4BED67A1901E" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="68D1D056-48BE-4125-ABFD-59A6C221F939">
+            <Component Id="cmp16582DA22F463E94485E4BED67A1901E" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="34D7D3DE-5B2B-4060-8A98-BDAA44F02432">
                 <File Id="filB6F5C848806AAA0C4DF11B3B32C84B88" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sv\CrashReporter.NET.resources.dll" />
             </Component>
-            <Component Id="cmp6B59D31724E8F13ED4006BBA1E62246B" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="115BA9DD-17F2-471B-8713-BAA1583AF01A">
+            <Component Id="cmp6B59D31724E8F13ED4006BBA1E62246B" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="98FB8EF2-00D1-4E78-835E-9B978B8C55F8">
                 <File Id="fil0684659FF36C57970E7E8E0B1F4A4236" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sv\OfficePickers.resources.dll" />
             </Component>
-            <Component Id="cmp276ACD2CD2E360458EB3E91212FB612B" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="0661B9BE-9F5F-4BEA-974E-D1FA96288040">
+            <Component Id="cmp276ACD2CD2E360458EB3E91212FB612B" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="F8752D82-8BDB-4819-A175-478A07E98E0D">
                 <File Id="fil7D766CB26704BFCAD2BE7741FC7BDA5D" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sv\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmp86F47C08FD9653E8725A303E8779EA0B" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="4E79A71E-BC83-4CD8-8A6D-D454BF2E0213">
+            <Component Id="cmp86F47C08FD9653E8725A303E8779EA0B" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="9AD87602-BD5B-4C45-B3A7-CA7CE99CD6F6">
                 <File Id="fil9ABB3EEEB2E8034F6C063DE8031A8E28" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sv\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmp650A3F2EFCDD6F78F7696A312B5B7110" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="388D9F87-ECD8-4F0D-B26A-70B91E9461FF">
+            <Component Id="cmp650A3F2EFCDD6F78F7696A312B5B7110" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="CCE750AB-5E1B-4008-9EBC-EA097AFE8F05">
                 <File Id="filB181709B504E3F741DB0A79A676326B6" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sv\treeDiM.PLMPack.DBClient.resources.dll" />
             </Component>
-            <Component Id="cmp4CBA0E14C7BED654E55183DFA5F38B06" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="7A45C03D-360D-4F3E-8B8D-61DB8712925A">
+            <Component Id="cmp4CBA0E14C7BED654E55183DFA5F38B06" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="29C2CA05-49C1-4FA5-81CC-1D4581366E45">
                 <File Id="fil2C866710AE84D65BF4CEEBC3FA2D4F89" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sv\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmpDFA0DAD9F26417D2EBC648DE27F6F35B" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="84195944-30D9-45E1-9AC3-92AB743BDEA4">
+            <Component Id="cmpDFA0DAD9F26417D2EBC648DE27F6F35B" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="72F3FC35-1B4A-43AB-A8CB-B69650F43BBD">
                 <File Id="filAD2D834BB26ED6F69C6E1E053509E647" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sv\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmp3DF462BEA9614E8A7CA67CE5AF369B5F" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="BC4DE8BB-79BB-41E8-A490-D41899395A42">
+            <Component Id="cmp3DF462BEA9614E8A7CA67CE5AF369B5F" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="B822EDA9-7248-4DF1-897E-0D37E40B3FF4">
                 <File Id="fil10E001525B584BAAF692B4F3A0EF33C7" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sv\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmp79987DC2EBE49C12F2085585517BE166" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="53FC2ADA-09ED-4A78-86BF-DD1FD14AEFDC">
+            <Component Id="cmp79987DC2EBE49C12F2085585517BE166" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="BD806509-0C7B-497B-8A56-094CE46A9DAE">
                 <File Id="fil0E854EB601B6AA150C6A5D8AD0D08677" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sv\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmp975A471A0E273D6C0B2454F2866E6CF8" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="67EAEDCE-0B62-49AA-A177-89B3F7E658AD">
+            <Component Id="cmp975A471A0E273D6C0B2454F2866E6CF8" Directory="dir84C8A788551B0E152E3B315FA38A9074" Guid="A8D6294B-F4EC-4067-B250-F69A6143D942">
                 <File Id="filE6320B1FE872FF0F17ED55A9F59A26E0" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\sv\treeDiM.UserControls.resources.dll" />
             </Component>
-            <Component Id="cmp89D69EBE75175CF2DEDA9FBCDCF25734" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="01B6E035-DE5A-4448-8C0B-D39F0B505450">
+            <Component Id="cmp89D69EBE75175CF2DEDA9FBCDCF25734" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="DE574BE2-9F71-4B29-B44F-8CD5292434A0">
                 <File Id="fil43F35C444ADD1304E9F52CDA0AB63C4F" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\tr\CrashReporter.NET.resources.dll" />
             </Component>
-            <Component Id="cmpF4E2F4568F8ED6525696103BD5CE14A8" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="E97A9272-081F-471E-A118-0153284C8989">
+            <Component Id="cmpF4E2F4568F8ED6525696103BD5CE14A8" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="4E2A61A4-3F61-4F6C-B044-7B255AA5FFFB">
                 <File Id="filA413E8726D98049D53A77D8413DF2B38" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\tr\OfficePickers.resources.dll" />
             </Component>
-            <Component Id="cmpAE9E1DDB91EB02CDFA70E46B7D92FB5E" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="E385918D-31D6-4A0A-A15C-22F260D5F401">
+            <Component Id="cmpAE9E1DDB91EB02CDFA70E46B7D92FB5E" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="D12AC945-CFD6-4601-8F05-81BEF4E4D865">
                 <File Id="filEE924A0330186B91213BC91D5F6D005F" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\tr\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmp3D659EF83A24139D2841F5A8827667F7" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="7F29335D-1B61-4D1F-88CC-799433CD7AB3">
+            <Component Id="cmp3D659EF83A24139D2841F5A8827667F7" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="8F0FDE83-CEAF-49A4-9B1F-51FF6460B17D">
                 <File Id="filE34620A0D7C0F1B72D56078176C28704" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\tr\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmp45C6BAD71087F5AEFE82F444FF06A568" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="75535A56-7A06-4818-AED1-B12A8BFF2CDA">
+            <Component Id="cmp45C6BAD71087F5AEFE82F444FF06A568" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="C5E4B5B9-0729-4B31-9F84-9BB15F262C62">
                 <File Id="fil081250FA98B9BDD8757150FE940B81B2" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\tr\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmp5DA63BB2B194B7721FFA734C0E3F5A89" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="59D0FFCA-310A-49EA-9323-AC745CD4D2A2">
+            <Component Id="cmp5DA63BB2B194B7721FFA734C0E3F5A89" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="95E108BE-3E23-4ACA-9FCE-17EA6A199951">
                 <File Id="fil45CB8517E309124A42A17048591968A9" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\tr\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmp19567645FB986D7E26C93F533BBE6352" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="76793D64-34C8-4A50-B647-E467022ACC9D">
+            <Component Id="cmp19567645FB986D7E26C93F533BBE6352" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="CE9DFE83-7241-4A92-8BEA-48E1410B4F72">
                 <File Id="filBCD2EA4D926899D3D5AB39340126DE26" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\tr\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmpDF3E6D872A40B6D5E303412648874DCC" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="9730D4A7-13F3-471E-9B57-1FB906C65C4A">
+            <Component Id="cmpDF3E6D872A40B6D5E303412648874DCC" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="8A67DE3C-496C-47A4-B881-2D49F37D1974">
                 <File Id="fil5413ED7F037B2FEA9C18414E3D6C4C65" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\tr\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmp63C0EFDC11687EFCE525A1133078EEAD" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="42E8F65C-52F5-4F01-A89C-E7A8E069F640">
+            <Component Id="cmp63C0EFDC11687EFCE525A1133078EEAD" Directory="dir6882BECEB897DD8DB8AA872AF840D7AB" Guid="D95D2750-7013-4ECE-9254-5B480CB28044">
                 <File Id="fil5C015D3BE5ED4460AABA3FA68BDD8D0A" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\tr\treeDiM.UserControls.resources.dll" />
             </Component>
-            <Component Id="cmpF0F7202D466B0D26725C75F3363C890D" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="DBCBB861-FBFA-4EEE-84E8-184F1391BE4E">
+            <Component Id="cmpF0F7202D466B0D26725C75F3363C890D" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="20AF2538-EC58-4970-AE1E-0C178173A1D7">
                 <File Id="fil35EABDB162FFC998D2A0B7E788110871" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\zh\OfficePickers.resources.dll" />
             </Component>
-            <Component Id="cmp38922FBB880F21900A10495389FC07EA" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="38001B62-68F2-491D-94EF-56D93DA5F896">
+            <Component Id="cmp38922FBB880F21900A10495389FC07EA" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="6B3F6123-FDDE-4F2C-89BE-03E0CF66AB61">
                 <File Id="filF92D48B46C9D8CCED3A431EED6757CB0" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\zh\OptionsLib.resources.dll" />
             </Component>
-            <Component Id="cmp5010378A8119D23ECD29CD5BF2969D1E" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="DB06981B-F83B-4785-BFF9-58DC90B7B0B9">
+            <Component Id="cmp5010378A8119D23ECD29CD5BF2969D1E" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="95707992-F2A3-44F4-B2C9-72D9BCC83C8C">
                 <File Id="filA25349AFD21941EA17FE575ACB288D88" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\zh\treeDiM.EdgeCrushTest.resources.dll" />
             </Component>
-            <Component Id="cmp8E46C9AD0C1B1EF5DB406035BD3D6DE4" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="BB39287A-F306-4F36-AE39-C56DCB700728">
+            <Component Id="cmp8E46C9AD0C1B1EF5DB406035BD3D6DE4" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="FD641103-4917-41B4-8A4B-B6CEE2CDD376">
                 <File Id="filF23F4250A04088DD92EE78CB1A4BD430" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\zh\treeDiM.PLMPack.DBClient.resources.dll" />
             </Component>
-            <Component Id="cmpD214476833BD578E3DB3F555A65F5F57" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="1F03C4E3-11D9-436B-A213-2D170F48EBBD">
+            <Component Id="cmpD214476833BD578E3DB3F555A65F5F57" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="B510FC05-D54C-432D-A9DD-DE3225481FB3">
                 <File Id="filBFF9348E28EA5FF3C7559C8C93F5D8EE" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\zh\treeDiM.StackBuilder.Basics.resources.dll" />
             </Component>
-            <Component Id="cmp66B98FE4FF10D1811D29AB610E4E75B4" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="A7C404C8-599B-496F-94DA-00ED1EC9DFEE">
+            <Component Id="cmp66B98FE4FF10D1811D29AB610E4E75B4" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="148ADFB0-A17D-46D2-95C9-9C22ED3AF9BB">
                 <File Id="fil74143C41080F38781D07023F9CCF0557" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\zh\treeDiM.StackBuilder.Desktop.resources.dll" />
             </Component>
-            <Component Id="cmp30345CAC694B7DB52349A0906B02BC01" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="4D6A115F-D1BA-499D-9308-67DB06D77CFF">
+            <Component Id="cmp30345CAC694B7DB52349A0906B02BC01" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="D743B07F-9A03-469F-A305-4261A5FAA168">
                 <File Id="fil02BA5F71F536D01CF94D071DEE4D8361" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\zh\treeDiM.StackBuilder.Graphics.resources.dll" />
             </Component>
-            <Component Id="cmpD993486F46A321476AD3DEBE820416A9" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="483089AA-6141-458A-AD46-B2D6F49EC637">
+            <Component Id="cmpD993486F46A321476AD3DEBE820416A9" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="D88D1503-D57B-475D-93FB-C2F870C4AD74">
                 <File Id="fil5C3DB63F946300ED859BBA5FFFCB6690" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\zh\treeDiM.StackBuilder.Reporting.resources.dll" />
             </Component>
-            <Component Id="cmp7CE2AC0DF8C610782FE31934373FC520" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="C2D8DFE5-8F18-42A2-A181-437932BEEC04">
+            <Component Id="cmp7CE2AC0DF8C610782FE31934373FC520" Directory="dir1B5911377ED2778D0E4A974030CF8220" Guid="5FB71ECB-980E-4AC9-9487-4BCF9A2FDF37">
                 <File Id="fil9B2C0B6F6C8C257DDAAEAC9DEFABF1CB" KeyPath="yes" Source="$(var.StackBuilderDesktopSourceDir)\zh\treeDiM.UserControls.resources.dll" />
             </Component>
         </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dirDC39BF22151F24BA69AFB79016F2D004">
+            <Directory Id="dir48C6CC51BC295A3F87ABBD9829D22E85" Name="native" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir1D889F134865EE0D33A494AF2B84D4D3">
+            <Directory Id="dir90262277ABF29B81156BE867D18E3776" Name="win-arm64" />
+        </DirectoryRef>
     </Fragment>
     <Fragment>
         <DirectoryRef Id="dir1D889F134865EE0D33A494AF2B84D4D3">
@@ -603,8 +616,18 @@
         </DirectoryRef>
     </Fragment>
     <Fragment>
+        <DirectoryRef Id="dir1D889F134865EE0D33A494AF2B84D4D3">
+            <Directory Id="dirDC39BF22151F24BA69AFB79016F2D004" Name="win-x64" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
         <DirectoryRef Id="dirCC5FC99AD0DFCB22BBAADF3008963A09">
             <Directory Id="dirE905FCD608B371EB97793F44FA5509A1" Name="native" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir90262277ABF29B81156BE867D18E3776">
+            <Directory Id="dirF8BB03ECE07366F91B9C7362E378E7E9" Name="native" />
         </DirectoryRef>
     </Fragment>
 </Wix>

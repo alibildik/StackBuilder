@@ -503,5 +503,17 @@ namespace treeDiM.StackBuilder.Desktop
         }
         private bool UseAdmissibleLoadWeight { get => chkbPalletAdmissibleLoadWeight.Checked; set => chkbPalletAdmissibleLoadWeight.Checked = value; }
         #endregion
+        #region Event handlers
+        private void OnPalletsUncheckAll(object sender, EventArgs e) => CheckAll(sender, false);
+        private void OnPalletsCheckAll(object sender, EventArgs e) => CheckAll(sender, true);
+        #endregion
+        #region Helpers
+        private void CheckAll(object sender, bool bChecked)
+        {
+            for (int i = 0; i < lbPallets.Items.Count; ++i)
+                lbPallets.SetItemChecked(i, bChecked);
+            UpdateStatus(sender, null);
+        }
+        #endregion
     }
 }

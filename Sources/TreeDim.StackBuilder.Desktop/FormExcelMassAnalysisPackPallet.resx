@@ -474,6 +474,54 @@
   <data name="&gt;&gt;tpOutputs.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="bnUncheckAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 159</value>
+  </data>
+  <data name="bnUncheckAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 19</value>
+  </data>
+  <data name="bnUncheckAll.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="bnUncheckAll.Text" xml:space="preserve">
+    <value>Unckeck all</value>
+  </data>
+  <data name="&gt;&gt;bnUncheckAll.Name" xml:space="preserve">
+    <value>bnUncheckAll</value>
+  </data>
+  <data name="&gt;&gt;bnUncheckAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnUncheckAll.Parent" xml:space="preserve">
+    <value>tpConstraints</value>
+  </data>
+  <data name="&gt;&gt;bnUncheckAll.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="bnCheckAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 159</value>
+  </data>
+  <data name="bnCheckAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 19</value>
+  </data>
+  <data name="bnCheckAll.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="bnCheckAll.Text" xml:space="preserve">
+    <value>Check all</value>
+  </data>
+  <data name="&gt;&gt;bnCheckAll.Name" xml:space="preserve">
+    <value>bnCheckAll</value>
+  </data>
+  <data name="&gt;&gt;bnCheckAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnCheckAll.Parent" xml:space="preserve">
+    <value>tpConstraints</value>
+  </data>
+  <data name="&gt;&gt;bnCheckAll.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="chkbPalletAdmissibleLoadWeight.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -499,7 +547,7 @@
     <value>tpConstraints</value>
   </data>
   <data name="&gt;&gt;chkbPalletAdmissibleLoadWeight.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="uCtrlNumberOfWalls.Location" type="System.Drawing.Point, System.Drawing">
     <value>192, 136</value>
@@ -517,13 +565,13 @@
     <value>uCtrlNumberOfWalls</value>
   </data>
   <data name="&gt;&gt;uCtrlNumberOfWalls.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.58, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlTriInt, treeDiM.Basics, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlNumberOfWalls.Parent" xml:space="preserve">
     <value>tpConstraints</value>
   </data>
   <data name="&gt;&gt;uCtrlNumberOfWalls.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="uCtrlWrapperThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>192, 110</value>
@@ -544,13 +592,13 @@
     <value>uCtrlWrapperThickness</value>
   </data>
   <data name="&gt;&gt;uCtrlWrapperThickness.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.58, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlWrapperThickness.Parent" xml:space="preserve">
     <value>tpConstraints</value>
   </data>
   <data name="&gt;&gt;uCtrlWrapperThickness.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="uCtrlMaxPalletHeight.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 23</value>
@@ -571,13 +619,13 @@
     <value>uCtrlMaxPalletHeight</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.58, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.Parent" xml:space="preserve">
     <value>tpConstraints</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="uCtrlOverhang.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 49</value>
@@ -595,16 +643,16 @@
     <value>uCtrlOverhang</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.58, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Parent" xml:space="preserve">
     <value>tpConstraints</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="lbPallets.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 22</value>
+    <value>5, 19</value>
   </data>
   <data name="lbPallets.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 139</value>
@@ -622,7 +670,7 @@
     <value>tpConstraints</value>
   </data>
   <data name="&gt;&gt;lbPallets.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="lPallets.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -649,7 +697,7 @@
     <value>tpConstraints</value>
   </data>
   <data name="&gt;&gt;lPallets.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="tpConstraints.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -1315,6 +1363,6 @@
     <value>FormExcelMassAnalysisPackPallet</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Desktop.FormExcelMassAnalysis, treeDiM.StackBuilder.Desktop, Version=3.0.2.57, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Desktop.FormExcelMassAnalysis, treeDiM.StackBuilder.Desktop, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

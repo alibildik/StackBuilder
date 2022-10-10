@@ -144,7 +144,7 @@
     <value>tpPalletsAndConstraints</value>
   </data>
   <data name="&gt;&gt;chkbAllowCombinations.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="chkbOnlyZOrientation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -175,7 +175,7 @@
     <value>tpPalletsAndConstraints</value>
   </data>
   <data name="&gt;&gt;chkbOnlyZOrientation.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="uCtrlOverhang.Location" type="System.Drawing.Point, System.Drawing">
     <value>217, 50</value>
@@ -193,13 +193,13 @@
     <value>uCtrlOverhang</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.58, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Parent" xml:space="preserve">
     <value>tpPalletsAndConstraints</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="uCtrlMaxPalletHeight.Location" type="System.Drawing.Point, System.Drawing">
     <value>217, 24</value>
@@ -220,16 +220,16 @@
     <value>uCtrlMaxPalletHeight</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.58, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.Parent" xml:space="preserve">
     <value>tpPalletsAndConstraints</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="lbPallets.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 22</value>
+    <value>3, 18</value>
   </data>
   <data name="lbPallets.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 139</value>
@@ -247,7 +247,7 @@
     <value>tpPalletsAndConstraints</value>
   </data>
   <data name="&gt;&gt;lbPallets.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="cbWeight.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 135</value>
@@ -595,7 +595,7 @@
     <value>fsFolderReports</value>
   </data>
   <data name="&gt;&gt;fsFolderReports.Type" xml:space="preserve">
-    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.58, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fsFolderReports.Parent" xml:space="preserve">
     <value>tpOutputs</value>
@@ -616,7 +616,7 @@
     <value>fsFolderImages</value>
   </data>
   <data name="&gt;&gt;fsFolderImages.Type" xml:space="preserve">
-    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.58, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fsFolderImages.Parent" xml:space="preserve">
     <value>tpOutputs</value>
@@ -843,6 +843,54 @@
   <data name="&gt;&gt;tpOutputs.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="bnUncheckAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 160</value>
+  </data>
+  <data name="bnUncheckAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 19</value>
+  </data>
+  <data name="bnUncheckAll.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="bnUncheckAll.Text" xml:space="preserve">
+    <value>Uncheck all</value>
+  </data>
+  <data name="&gt;&gt;bnUncheckAll.Name" xml:space="preserve">
+    <value>bnUncheckAll</value>
+  </data>
+  <data name="&gt;&gt;bnUncheckAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnUncheckAll.Parent" xml:space="preserve">
+    <value>tpPalletsAndConstraints</value>
+  </data>
+  <data name="&gt;&gt;bnUncheckAll.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="bnCheckAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 160</value>
+  </data>
+  <data name="bnCheckAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 19</value>
+  </data>
+  <data name="bnCheckAll.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="bnCheckAll.Text" xml:space="preserve">
+    <value>Check all</value>
+  </data>
+  <data name="&gt;&gt;bnCheckAll.Name" xml:space="preserve">
+    <value>bnCheckAll</value>
+  </data>
+  <data name="&gt;&gt;bnCheckAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnCheckAll.Parent" xml:space="preserve">
+    <value>tpPalletsAndConstraints</value>
+  </data>
+  <data name="&gt;&gt;bnCheckAll.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="chkbPalletAdmissibleLoadWeight.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -868,7 +916,7 @@
     <value>tpPalletsAndConstraints</value>
   </data>
   <data name="&gt;&gt;chkbPalletAdmissibleLoadWeight.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="lPallets.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -898,7 +946,7 @@
     <value>tpPalletsAndConstraints</value>
   </data>
   <data name="&gt;&gt;lPallets.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="tpPalletsAndConstraints.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -961,6 +1009,6 @@
     <value>FormExcelMassAnalysisCasePallet</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Desktop.FormExcelMassAnalysis, treeDiM.StackBuilder.Desktop, Version=3.0.2.58, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Desktop.FormExcelMassAnalysis, treeDiM.StackBuilder.Desktop, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

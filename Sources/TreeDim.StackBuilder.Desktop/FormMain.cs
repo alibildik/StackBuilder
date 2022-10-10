@@ -369,6 +369,8 @@ namespace treeDiM.StackBuilder.Desktop
                 CreateOrActivateViewAnalysis(eventArg.Analysis);
             else if (null != eventArg.AnalysisPalletsOnPallet)
                 CreateOrActivateViewAnalysis(eventArg.AnalysisPalletsOnPallet);
+            else if (null != eventArg.AnalysisPalletColumn)
+                CreateOrActivateViewAnalysis(eventArg.AnalysisPalletColumn);
             else if (null != eventArg.HAnalysis)
                 CreateOrActivateViewHAnalysis(eventArg.HAnalysis);
             else if (null != eventArg.ItemBase)
@@ -530,6 +532,7 @@ namespace treeDiM.StackBuilder.Desktop
                         pallet.Width = form.PalletWidth;
                         pallet.Height = form.PalletHeight;
                         pallet.Weight = form.Weight;
+                        pallet.AdmissibleLoadWeight = form.AdmissibleLoad;
                         pallet.TypeName = form.PalletTypeName;
                         pallet.Color = form.PalletColor;
                         pallet.EndUpdate();
@@ -697,6 +700,16 @@ namespace treeDiM.StackBuilder.Desktop
                     {
                         doc.EditAnalysis(eventArg.HAnalysis);
                         CreateOrActivateViewHAnalysis(eventArg.HAnalysis);
+                    }
+                    else if (null != eventArg.AnalysisPalletsOnPallet)
+                    {
+                        doc.EditAnalysis(eventArg.AnalysisPalletsOnPallet);
+                        CreateOrActivateViewAnalysis(eventArg.AnalysisPalletsOnPallet);
+                    }
+                    else if (null != eventArg.AnalysisPalletColumn)
+                    {
+                        doc.EditAnalysis(eventArg.AnalysisPalletColumn);
+                        CreateOrActivateViewAnalysis(eventArg.AnalysisPalletColumn);
                     }
                 }
             }
@@ -1352,6 +1365,11 @@ namespace treeDiM.StackBuilder.Desktop
             try { ActiveDocumentSB?.CreateNewPalletsOnPalletUI(); }
             catch (Exception ex) { _log.Error(ex.ToString()); Program.SendCrashReport(ex); }
         }
+        private void OnNewPalletOnPalletVertical(object sender, EventArgs e)
+        {
+            try { ActiveDocumentSB?.CreateNewPalletOnPalletUI(); }
+            catch (Exception ex) { _log.Error(ex.ToString()); Program.SendCrashReport(ex); }
+        }
         #endregion
         #region Optimisation
         private void OnOptiPack(object sender, EventArgs e)
@@ -1557,6 +1575,14 @@ namespace treeDiM.StackBuilder.Desktop
                         if (analysisPalletsOnPallet == dockContentAnalysisPalletsOnPallet.Analysis)
                         {
                             dockContentAnalysisPalletsOnPallet.Activate();
+                            return;
+                        }
+                    }
+                    if (view is DockContentAnalysisPalletColumn dockContentAnalysisPalletColumn && analysis is AnalysisPalletColumn analysisPalletColumn)
+                    {
+                        if (analysisPalletColumn == dockContentAnalysisPalletColumn.Analysis)
+                        {
+                            dockContentAnalysisPalletColumn.Activate();
                             return;
                         }
                     }

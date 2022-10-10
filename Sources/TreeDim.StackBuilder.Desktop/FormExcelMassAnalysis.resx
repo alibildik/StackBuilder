@@ -157,7 +157,7 @@
     <value>True</value>
   </data>
   <data name="&gt;&gt;fileSelectExcel.Type" xml:space="preserve">
-    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.61, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.62, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
     <value>7</value>

@@ -95,6 +95,7 @@
     <Compile Include="Analyses\AnalysisPackableCase.cs" />
     <Compile Include="Analyses\AnalysisPackablePallet.cs" />
     <Compile Include="Analyses\AnalysisPackableTruck.cs" />
+    <Compile Include="Analyses\AnalysisPalletColumn.cs" />
     <Compile Include="Analyses\AnalysisPalletsOnPallet.cs" />
     <Compile Include="Analyses\AnalysisPalletTruck.cs" />
     <Compile Include="Analyses\AnalysisComparer.cs" />

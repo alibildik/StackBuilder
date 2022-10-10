@@ -133,7 +133,7 @@ namespace treeDiM.StackBuilder.Basics
                     int iCount = _dependancies.Count;
                     while (_dependancies.Count > 0)
                     {
-                        _parentDocument.RemoveItem(_dependancies[0]);
+                        try { _parentDocument.RemoveItem(_dependancies[0]); } catch (Exception ex) { _log.Error(ex.ToString()); }
                         if (_dependancies.Count == iCount)
                         {
                             _log.Warn(string.Format("Failed to remove correctly dependancy {0} ", _dependancies[0].ID.Name));

@@ -27,19 +27,22 @@ namespace treeDiM.StackBuilder.Basics
                 SetQuarterPallets(loadedPallet0, loadedPallet1, loadedPallet2, loadedPallet3);
         }
         #endregion
-
         #region Analysis override
         public override bool HasValidSolution => null != PalletAnalyses[0] && null != PalletAnalyses[1]
             && ((null != PalletAnalyses[2] && null != PalletAnalyses[3])
             || (null == PalletAnalyses[2] && null == PalletAnalyses[3]));
+         protected override void RemoveItselfFromDependancies()
+        {
+            base.RemoveItselfFromDependancies();
+            foreach (var p in PalletAnalyses)
+                p?.RemoveDependancy(this);
+        }
         #endregion
-
         #region Public properties
         public SolutionPalletsOnPallet Solution { get; set; }
         public PalletProperties PalletProperties { get; set; }
         public ItemBase Container => PalletProperties;
         #endregion
-
         #region Mode
         public enum EMode { PALLET_HALF, PALLET_QUARTER }
         public EMode Mode { get; set; } = EMode.PALLET_HALF;
@@ -62,7 +65,8 @@ namespace treeDiM.StackBuilder.Basics
             SetPalletAnalysis(2, loadedPallet2);
             SetPalletAnalysis(3, loadedPallet3);
         }
-
+        #endregion
+        #region Content accessing methods
         private void SetPalletAnalysis(int index, LoadedPallet loadedPallet)
         {
             if (null != loadedPallet)
@@ -128,12 +132,10 @@ namespace treeDiM.StackBuilder.Basics
             }
         }
         #endregion
-
         #region Enums
         public enum EMasterPalletSplit          { HORIZONTAL, VERTICAL };
         public enum ELoadedPalletOrientation    { DEFAULT, ROTATED };
         #endregion
-
         #region Public data members
         public readonly LoadedPallet[] PalletAnalyses = new LoadedPallet[4];
         public EMasterPalletSplit MasterPalletSplit { get; set; } = EMasterPalletSplit.VERTICAL;
@@ -141,15 +143,6 @@ namespace treeDiM.StackBuilder.Basics
 
         public HalfAxis.HAxis Axis0 => LoadedPalletOrientation == ELoadedPalletOrientation.DEFAULT ? HalfAxis.HAxis.AXIS_X_P : HalfAxis.HAxis.AXIS_Y_P;
         public HalfAxis.HAxis Axis1 => LoadedPalletOrientation == ELoadedPalletOrientation.DEFAULT ? HalfAxis.HAxis.AXIS_Y_P : HalfAxis.HAxis.AXIS_X_N;
-        #endregion
-
-        #region Non-public members
-        protected override void RemoveItselfFromDependancies()
-        {
-            base.RemoveItselfFromDependancies();
-            foreach (var p in PalletAnalyses)
-                p?.RemoveDependancy(this);
-        }
         #endregion
     }
 
@@ -235,7 +228,6 @@ namespace treeDiM.StackBuilder.Basics
             get
             {
                 var bbox = new BBox3D();
-
                 foreach (var solElt in ContainedElements)
                 {
                     LoadedPallet loadedPallet = Analysis.PalletAnalyses[solElt.ContentType];
@@ -255,7 +247,6 @@ namespace treeDiM.StackBuilder.Basics
             }
         }
         public BBox3D BBoxLoadWDeco => BBoxLoad;
-
         public double LoadWeight => ContainedElements.Sum(ce => Analysis.PalletAnalyses[ce.ContentType].Weight);
         public double Weight => LoadWeight + Analysis.PalletProperties.Weight;
     }

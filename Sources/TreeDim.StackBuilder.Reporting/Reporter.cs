@@ -599,6 +599,8 @@ namespace treeDiM.StackBuilder.Reporting
                 AppendAnalysisHeterogeneousElement(analysisHetero, rnAnalysis, elemDocument, xmlDoc);
             else if (analysis is AnalysisPalletsOnPallet analysisPalletsOnPallet)
                 AppendAnalysisPalletsOnPalletElement(analysisPalletsOnPallet, rnAnalysis, elemDocument, xmlDoc);
+            else if (analysis is AnalysisPalletColumn analysisPalletColumn)
+                AppendAnalysisPalletColumnElement(analysisPalletColumn, rnAnalysis, elemDocument, xmlDoc);
         }
         private void AppendAnalysisHomoElement(AnalysisHomo analysis, ReportNode rnAnalysis, XmlElement elemDocument, XmlDocument xmlDoc)
         { 
@@ -741,7 +743,39 @@ namespace treeDiM.StackBuilder.Reporting
                 AppendSolutionElement(analysis.Solution, rnSolution, eltAnalysis, xmlDoc);        
         }
 
+        private void AppendAnalysisPalletColumnElement(AnalysisPalletColumn analysis, ReportNode rnAnalysis, XmlElement elemDocument, XmlDocument xmlDoc)
+        {
+            // check for inner analysis
+            List<AnalysisHomo> innerAnalyses = new List<AnalysisHomo>();
+            analysis.InnerAnalyses(ref innerAnalyses);
+            foreach (var innerAnalysis in innerAnalyses)
+            {
+                // -> proceed recursively
+                ReportNode rnInnerAnalysis = rnAnalysis.GetChildByName(string.Format(Resources.ID_RN_ANALYSIS, innerAnalysis.Name));
+                if (rnInnerAnalysis.Activated)
+                    AppendAnalysisHomoElement(innerAnalysis as AnalysisHomo, rnInnerAnalysis, elemDocument, xmlDoc);
+            }
+            // ### 0. ANALYSIS ELT
+            string ns = xmlDoc.DocumentElement.NamespaceURI;
+            XmlElement eltAnalysis = xmlDoc.CreateElement("analysisPalletColumn", ns);
+            elemDocument.AppendChild(eltAnalysis);
+            // name
+            XmlElement elemName = xmlDoc.CreateElement("name", ns);
+            elemName.InnerText = analysis.Name;
+            eltAnalysis.AppendChild(elemName);
+            // description
+            if (rnAnalysis.GetChildByName(Resources.ID_RN_DESCRIPTION).Activated)
+            {
+                XmlElement elemDescription = xmlDoc.CreateElement("description", ns);
+                elemDescription.InnerText = analysis.Description;
+                eltAnalysis.AppendChild(elemDescription);
+            }
 
+            // ### SOLUTION
+            ReportNode rnSolution = rnAnalysis.GetChildByName(Resources.ID_RN_SOLUTION);
+            if (rnSolution.Activated)
+                AppendSolutionElement(analysis.Solution, rnSolution, eltAnalysis, xmlDoc);
+        }
         private string PackableType(ItemBase itemBase)
         {
             if (itemBase is BoxProperties)
@@ -1085,6 +1119,97 @@ namespace treeDiM.StackBuilder.Reporting
                     {
                         // instantiate solution viewer
                         using (var sv = new ViewerSolutionPalletsOnPallet(solPalletsOnPallet))
+                            sv.Draw(graphics, Transform3D.Identity);
+                    }
+                    graphics.Flush();
+                }
+                catch (Exception ex)
+                {
+                    _log.Error(ex.ToString());
+                }
+                // image path
+                string imagePath = SaveImageAs(graphics.Bitmap);
+
+                // ---
+                XmlElement elemImage = xmlDoc.CreateElement(viewName, ns);
+                elemSolution.AppendChild(elemImage);
+                XmlElement elemImagePath = xmlDoc.CreateElement("imagePath");
+                elemImage.AppendChild(elemImagePath);
+                elemImagePath.InnerText = imagePath;
+                XmlElement elemWidth = xmlDoc.CreateElement("width");
+                elemImage.AppendChild(elemWidth);
+                elemWidth.InnerText = imgHTMLWidth.ToString();
+                XmlElement elemHeight = xmlDoc.CreateElement("height");
+                elemImage.AppendChild(elemHeight);
+                elemHeight.InnerText = imgHTMLWidth.ToString();
+            }
+        }
+
+        private void AppendSolutionElement(SolutionPalletColumn sol, ReportNode rnSolution, XmlElement elemAnalysis, XmlDocument xmlDoc)
+        {
+            string ns = xmlDoc.DocumentElement.NamespaceURI;
+            XmlElement elemSolution = xmlDoc.CreateElement("solutionPalletColumn", ns);
+            elemAnalysis.AppendChild(elemSolution);
+
+            // *** Item # (Recursive count)
+            var analysis = sol.Analysis;
+
+            List<Pair<Packable, int>> listInnerPackables = new List<Pair<Packable, int>>();
+            analysis.InnerContent(ref listInnerPackables);
+            foreach (var p in listInnerPackables)
+            {
+                RecurAppendContentItem(xmlDoc, elemSolution, p.first, p.second);
+            }
+
+            AppendElementValue(xmlDoc, elemSolution, "weightLoad", UnitsManager.UnitType.UT_MASS, sol.LoadWeight);
+            AppendElementValue(xmlDoc, elemSolution, "weightTotal", UnitsManager.UnitType.UT_MASS, sol.Weight);
+            if (rnSolution.GetChildByName(Resources.ID_RN_OVERALLDIMENSIONS).Activated)
+                AppendVector3(xmlDoc, elemSolution, "bboxTotal", UnitsManager.UnitType.UT_LENGTH
+                    , new double[3] { sol.BBoxGlobal.Length, sol.BBoxGlobal.Width, sol.BBoxGlobal.Height });
+
+
+            ReportNode rnViews = rnSolution.GetChildByName(Resources.ID_RN_VIEWS);
+            ReportNode rnViewIso = rnSolution.GetChildByName(Resources.ID_RN_VIEWISO);
+
+            // ---  images
+            for (int i = 0; i < 5; ++i)
+            {
+                if (i < 4 && !rnViews.Activated) continue;
+                if (i == 4 && !rnViewIso.Activated) continue;
+
+                // initialize drawing values
+                string viewName = string.Empty;
+                Vector3D cameraPos = Vector3D.Zero;
+                int imageWidth = ImageSizeDetail, imgHTMLWidth = ImageHTMLSizeDetail;
+                bool showDimLocal = false;
+                switch (i)
+                {
+                    case 0: viewName = "view_solution_front"; cameraPos = Graphics3D.Front; break;
+                    case 1: viewName = "view_solution_left"; cameraPos = Graphics3D.Left; break;
+                    case 2: viewName = "view_solution_right"; cameraPos = Graphics3D.Right; break;
+                    case 3: viewName = "view_solution_back"; cameraPos = Graphics3D.Back; break;
+                    case 4:
+                        viewName = "view_solution_iso"; cameraPos = Graphics3D.Corner_0;
+                        imageWidth = ImageSizeLarge;
+                        imgHTMLWidth = ImageHTMLSizeLarge;
+                        showDimLocal = true;
+                        break;
+                    default: break;
+                }
+                // instantiate graphics
+                Graphics3DImage graphics = new Graphics3DImage(new Size(imageWidth, imageWidth))
+                {
+                    FontSizeRatio = FontSizeRatioLarge,
+                    CameraPosition = cameraPos,
+                    ShowDimensions = showDimLocal && ShowDimensions
+                };
+
+                try
+                {
+                    if (sol is SolutionPalletColumn solPalletColumn)
+                    {
+                        // instantiate solution viewer
+                        using (var sv = new ViewerSolutionPalletColumn(solPalletColumn))
                             sv.Draw(graphics, Transform3D.Identity);
                     }
                     graphics.Flush();
