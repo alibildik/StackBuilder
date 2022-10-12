@@ -14,6 +14,7 @@ using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Engine;
 using treeDiM.StackBuilder.Graphics;
 using System.ServiceModel;
+using System.ComponentModel;
 #endregion
 
 namespace treeDiM.StackBuilder.WCFAppServ
@@ -1065,7 +1066,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
             return loadResultsPallets;
         }
         public DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(DCSBDim3D dimensions, double weight, int pcb
-            , DCSBContainer container, DCSBConfigId configId
+            , DCSBContainer container, DCSBConfigId configId, int orientation
             , DCCompFormat expectedFormat)
         {
             var lErrors = new List<string>();
@@ -1093,15 +1094,25 @@ namespace treeDiM.StackBuilder.WCFAppServ
 
             // --- checking validity
             DCSBStatusEnu statusValidity = DCSBStatusEnu.Success;
+            string errorMessage = string.Empty;
             if (boxProperties.Height >= containerProperties.Height)
+            {
                 statusValidity = DCSBStatusEnu.FailureHeightExceeded;
+                errorMessage = $"Container height exceeded: {boxProperties.Height} > {containerProperties.Height}";
+            }
             if (
                 (boxProperties.Length > containerProperties.Length || boxProperties.Width > containerProperties.Width)
                 && (boxProperties.Length > containerProperties.Width || boxProperties.Width > containerProperties.Length)
                 )
+            {
                 statusValidity = DCSBStatusEnu.FailureLengthOrWidthExceeded;
+                errorMessage = $"Length and/or width exceeded";
+            }
             if (container.MaxLoadWeight.HasValue && boxProperties.Weight > container.MaxLoadWeight.Value)
+            {
                 statusValidity = DCSBStatusEnu.FailureWeightExceeded;
+                errorMessage = $"Maximum load weight exceeded: {boxProperties.Weight} > {container.MaxLoadWeight.Value}";
+            }
 
             if (statusValidity != DCSBStatusEnu.Success)
                 return new DCSBLoadResultSingleContainer()
@@ -1109,7 +1120,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     Status = new DCSBStatus()
                     {
                         Status = statusValidity,
-                        Error = string.Empty
+                        Error = errorMessage
                     },
                     Result = null,
                     OutFile = null
@@ -1118,7 +1129,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
 
             // constraint set
             var constraintSet = new ConstraintSetCaseTruck(containerProperties) { };
-            constraintSet.SetAllowedOrientations(new bool[] { false, false, true });
+            constraintSet.SetAllowedOrientations(new bool[] { 0 == orientation, 1 == orientation, 2 == orientation });
 
             int casePerLayerCount = 0, layerCount = 0, caseCount = 0, interlayerCount = 0;
             double weightTotal = 0.0, weightLoad = 0.0, volumeEfficiency = 0.0;
@@ -1200,7 +1211,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
         }
         public DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(
             DCSBDim3D dimensions, double weight, int pcb
-            , DCSBPalletWHeight sbPallet, DCSBConfigId configId
+            , DCSBPalletWHeight sbPallet, DCSBConfigId configId, int orientation
             , DCCompFormat expectedFormat)
         {
             var lErrors = new List<string>();
@@ -1238,20 +1249,48 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 OptMaxNumber = OptInt.Zero
             };
             constraintSet.SetMaxHeight(new OptDouble(true, sbPallet.MaxPalletHeight));
-            constraintSet.SetAllowedOrientations(new bool[] { false, false, true });
+            constraintSet.SetAllowedOrientations(new bool[] { 0 == orientation, 1 == orientation, 2 == orientation });
             if (!constraintSet.Valid) throw new Exception("Invalid constraint set");
-
+            double boxLength, boxWidth, boxHeight;
+            switch (orientation)
+            {
+                case 0:
+                    boxLength = Math.Max(boxProperties.Width, boxProperties.Height);
+                    boxWidth = Math.Min(boxProperties.Width, boxProperties.Height);
+                    boxHeight = boxProperties.Length;
+                    break;
+                case 1:
+                    boxLength = Math.Max(boxProperties.Length, boxProperties.Height);
+                    boxWidth = Math.Min(boxProperties.Length, boxProperties.Height);
+                    boxHeight = boxProperties.Width;
+                    break;
+                default:
+                    boxLength = boxProperties.Length;
+                    boxWidth = boxProperties.Width;
+                    boxHeight = boxProperties.Height;
+                    break;
+            }
             // --- checking validity
             DCSBStatusEnu statusValidity = DCSBStatusEnu.Success;
-            if (boxProperties.Height + palletProperties.Height >= sbPallet.MaxPalletHeight)
+            string errorMessage = string.Empty;
+            if (boxHeight + palletProperties.Height >= sbPallet.MaxPalletHeight)
+            {
                 statusValidity = DCSBStatusEnu.FailureHeightExceeded;
+                errorMessage = $"Maximum height exceeded: {boxHeight + palletProperties.Height} > {sbPallet.MaxPalletHeight}";
+            }
             if (
-                (boxProperties.Length > palletProperties.Length || boxProperties.Width > palletProperties.Width)
-                && (boxProperties.Length > palletProperties.Width || boxProperties.Width > palletProperties.Length)
+                (boxLength > palletProperties.Length || boxWidth > palletProperties.Width)
+                && (boxLength > palletProperties.Width || boxWidth > palletProperties.Length)
                 )
+            {
                 statusValidity = DCSBStatusEnu.FailureLengthOrWidthExceeded;
+                errorMessage = $"Length and/or width exceeded";
+            }
             if (boxProperties.Weight > sbPallet.MaxPalletLoad)
+            {
                 statusValidity = DCSBStatusEnu.FailureWeightExceeded;
+                errorMessage = $"Maximum load weight exceeded: {boxProperties.Weight} > {sbPallet.MaxPalletLoad}";
+            }
 
             if (statusValidity != DCSBStatusEnu.Success)
                 return new DCSBLoadResultSinglePallet()
@@ -1259,7 +1298,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     Status = new DCSBStatus()
                     {
                         Status = statusValidity,
-                        Error = string.Empty
+                        Error = errorMessage
                     },
                     Result = null,
                     OutFile = null

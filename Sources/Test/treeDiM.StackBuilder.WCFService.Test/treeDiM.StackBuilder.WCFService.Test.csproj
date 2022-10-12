@@ -95,6 +95,7 @@
     <Compile Include="..\..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="CellBackColorAlternate.cs" />
     <Compile Include="Connected Services\SB_SR\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
