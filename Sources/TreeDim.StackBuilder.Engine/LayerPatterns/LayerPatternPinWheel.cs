@@ -108,9 +108,6 @@ namespace treeDiM.StackBuilder.Engine.LayerPatterns
                     wheelSize = sizeLength * boxLength + sizeWidth * boxWidth;
                 }
             }
-            if (wheelSize > smallestDist)
-                throw new Exception("Invalid pin wheel!");
-
 
             if (Math.Abs(palletLength - largestDist) < 1.0E-03)
             {
