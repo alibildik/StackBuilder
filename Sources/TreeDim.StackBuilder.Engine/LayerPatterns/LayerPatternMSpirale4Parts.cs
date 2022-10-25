@@ -14,15 +14,14 @@ namespace treeDiM.StackBuilder.Engine
         public override bool IsSymetric => false;
         public override bool CanBeSwapped => true;
         public override bool CanBeInverted => true;
-
         public override void GenerateLayer(ILayer2D layer, double actualLength, double actualWidth)
         {
             layer.Clear();
-
             double palletLength = GetPalletLength(layer);
             double palletWidth = GetPalletWidth(layer);
             double boxLength = GetBoxLength(layer);
             double boxWidth = GetBoxWidth(layer);
+
             double spiraleLength = boxLength + boxWidth;
 
             GetSizeXY(boxLength, boxWidth, palletLength, palletWidth

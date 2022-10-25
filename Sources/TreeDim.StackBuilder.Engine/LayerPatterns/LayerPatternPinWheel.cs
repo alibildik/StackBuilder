@@ -67,7 +67,6 @@ namespace treeDiM.StackBuilder.Engine.LayerPatterns
         }
         public override bool GetLayerDimensions(ILayer2D layer, out double actualLength, out double actualWidth)
         {
-            actualLength = 0.0; actualWidth = 0.0;
             double palletLength = GetPalletLength(layer);
             double palletWidth = GetPalletWidth(layer);
             double boxLength = GetBoxLength(layer);
@@ -79,7 +78,7 @@ namespace treeDiM.StackBuilder.Engine.LayerPatterns
                 , out int i1, out int j1, out int i2, out int j2);
 
             actualLength = wheelLength + i1 * boxLength + i2 * boxWidth;
-            actualWidth = wheelLength + Math.Max(j1 * boxWidth, j2 * boxLength);
+            actualWidth = Math.Max(wheelLength, Math.Max(j1 * boxWidth, j2 * boxLength));
 
             return sizeLength > 0 && sizeWidth > 0;
         }
@@ -94,6 +93,7 @@ namespace treeDiM.StackBuilder.Engine.LayerPatterns
             double smallestDist = Math.Min(palletLength, palletWidth);
             double largestDist = Math.Max(palletLength, palletWidth);
 
+            // can a single wheel fit ?
             if (boxLength + boxWidth > smallestDist) return;
 
             int iTmpWidth = (int)Math.Floor((smallestDist - boxLength) / boxWidth);
@@ -108,6 +108,9 @@ namespace treeDiM.StackBuilder.Engine.LayerPatterns
                     wheelSize = sizeLength * boxLength + sizeWidth * boxWidth;
                 }
             }
+            if (wheelSize > smallestDist)
+                throw new Exception("Invalid pin wheel!");
+
 
             if (Math.Abs(palletLength - largestDist) < 1.0E-03)
             {
@@ -119,7 +122,7 @@ namespace treeDiM.StackBuilder.Engine.LayerPatterns
                 if (i1 == 0 || j1 == 0) { i1 = j1 = 0; }
 
                 i2 = (int)Math.Floor((rectLength - i1 * boxLength) / boxWidth);
-                j2 = (int)Math.Floor(rectWidth / boxWidth);
+                j2 = (int)Math.Floor(rectWidth / boxLength);
                 if (i2 == 0 || j2 == 0) { i2 = j2 = 0; }
             }
         }
