@@ -183,9 +183,9 @@ namespace treeDiM.StackBuilder.Reporting
                 SaveFileDialog dlg = new SaveFileDialog
                 {
                     InitialDirectory = Settings.Default.ReportInitialDirectory,
-                    FileName = Path.ChangeExtension(CleanString(Data.SuggestedFileName), "doc"),
+                    FileName = Path.ChangeExtension(CleanString(Data.SuggestedFileName), "docx"),
                     Filter = Resources.ID_FILTER_MSWORD,
-                    DefaultExt = "doc",
+                    DefaultExt = "docx",
                     ValidateNames = true
                 };
 

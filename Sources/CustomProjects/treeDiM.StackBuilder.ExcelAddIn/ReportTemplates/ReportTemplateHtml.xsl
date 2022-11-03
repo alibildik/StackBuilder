@@ -756,9 +756,9 @@
   </xsl:template>
   <!--#### SOLITEM ####-->
   <xsl:template match="solItem">
-    <h4>
+    <h3>
       <xsl:value-of select="$loc/str[@name='Part']"/> : <xsl:value-of select="index"/>
-    </h4>
+    </h3>
     <xsl:apply-templates select="itemQuantities"/>
     <table class="style1">
       <xsl:if test="weightLoad">
@@ -808,9 +808,9 @@
   </xsl:template>
   <!--#### ITEMQUANTITIES-->
   <xsl:template match="itemQuantities">
-    <h4>
+    <h3>
       <xsl:value-of select="$loc/str[@name='Items']"/>
-    </h4>
+    </h3>
     <table class="style1">
       <tr>
         <td class="style2" colspan="1">

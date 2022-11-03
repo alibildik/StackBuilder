@@ -154,7 +154,14 @@
     <Content Include="ReportTemplates\FRA.xml" />
     <Content Include="ReportTemplates\ITA.xml" />
     <Content Include="ReportTemplates\JPN.xml" />
-    <Content Include="ReportTemplates\ReportTemplateHtml_DESJARDIN.xsl" />
+    <Content Include="ReportTemplates\ReportTemplateHtml_CARGOLOG.xsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ReportTemplates\ReportTemplateHtml_DESJARDIN.xsl">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ReportTemplates\ReportTemplateHtml_MAPASPONTEX.xsl" />
     <Content Include="ReportTemplates\ReportTemplateHtml_MENASHA.xsl">
       <SubType>Designer</SubType>
@@ -287,10 +294,10 @@
       <Version>15.0.4797.1004</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Web.WebView2">
-      <Version>1.0.1343.22</Version>
+      <Version>1.0.1418.22</Version>
     </PackageReference>
     <PackageReference Include="NuGet.Build.Tasks.Pack">
-      <Version>6.3.0</Version>
+      <Version>6.3.1</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

@@ -1301,7 +1301,13 @@ namespace treeDiM.StackBuilder.WCFAppServ
                         Error = errorMessage
                     },
                     Result = null,
-                    OutFile = null
+                    OutFile = null,                     
+                    SuggestPalletLength = null,
+                    SuggestPalletWidth = null,
+                    SuggestPalletDim = null,
+                    SuggestPalletHeight = null,
+                    SuggestCaseDim1 = null,
+                    SuggestCaseDim2 = null
                 };
             // ---
 
@@ -1334,14 +1340,118 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 ref palletMapPhrase,
                 ref imageBytes, ref errors))
             {
-                foreach (string err in errors)
-                    lErrors.Add(err);
+                // build suggestions
+                var dimBox = new Vector3D(jjaConfig.Length, jjaConfig.Width, jjaConfig.Height);
+                var dimContainer = new Vector2D(palletProperties.Length + 2.0 * constraintSet.Overhang.X, palletProperties.Width + 2.0 * constraintSet.Overhang.Y);
+                var layerSolver = new LayerSolver();
+                int perLayerCountFrom = 0, perLayerCountTo = 0;
+                var dimContainerTo = Vector2D.Zero;
+
+                // increase pallet dimensions
+                DCSBSuggestIncreasePalletXY suggestPalletLength = null;
+                int iDir = 0;
+                if (layerSolver.FindMinPalletDimXYIncreaseForGain(dimBox, dimContainer, palletProperties.Height, constraintSet, iDir, ref perLayerCountFrom, ref perLayerCountTo, ref dimContainerTo))
+                    suggestPalletLength = new DCSBSuggestIncreasePalletXY()
+                    {
+                        Success = true,
+                        Dim = iDir,
+                        PalletDimFrom = new DCSBDim2D(dimContainer.X, dimContainer.Y),
+                        PalletDimTo = new DCSBDim2D(dimContainerTo.X, dimContainerTo.Y),
+                        PerLayerCountFrom = perLayerCountFrom,
+                        PerLayerCountTo = perLayerCountTo,
+                        CaseCountFrom = perLayerCountFrom * layerCount,
+                        CaseCountTo = perLayerCountTo * layerCount
+                    };
+
+                DCSBSuggestIncreasePalletXY suggestPalletWidth = null;
+                iDir = 1;
+                if (layerSolver.FindMinPalletDimXYIncreaseForGain(dimBox, dimContainer, palletProperties.Height, constraintSet, iDir, ref perLayerCountFrom, ref perLayerCountTo, ref dimContainerTo))
+                    suggestPalletWidth = new DCSBSuggestIncreasePalletXY()
+                    {
+                        Success = true,
+                        Dim = iDir,
+                        PalletDimFrom = new DCSBDim2D(dimContainer.X, dimContainer.Y),
+                        PalletDimTo = new DCSBDim2D(dimContainerTo.X, dimContainerTo.Y),
+                        PerLayerCountFrom = perLayerCountFrom,
+                        PerLayerCountTo = perLayerCountTo,
+                        CaseCountFrom = perLayerCountFrom * layerCount,
+                        CaseCountTo = perLayerCountTo * layerCount
+                    };
+
+                DCSBSuggestIncreasePalletXY suggestPalletDim= null;
+                iDir = -1;
+                if (layerSolver.FindMinPalletDimXYIncreaseForGain(dimBox, dimContainer, palletProperties.Height, constraintSet, iDir, ref perLayerCountFrom, ref perLayerCountTo, ref dimContainerTo))
+                    suggestPalletDim = new DCSBSuggestIncreasePalletXY()
+                    {
+                        Success = true,
+                        Dim = iDir,
+                        PalletDimFrom = new DCSBDim2D(dimContainer.X, dimContainer.Y),
+                        PalletDimTo = new DCSBDim2D(dimContainerTo.X, dimContainerTo.Y),
+                        PerLayerCountFrom = perLayerCountFrom,
+                        PerLayerCountTo = perLayerCountTo,
+                        CaseCountFrom = perLayerCountFrom * layerCount,
+                        CaseCountTo = perLayerCountTo * layerCount
+                    };
+
+                int layerCountFrom = 0, layerCountTo = 0;
+                int caseCountFrom = 0, caseCountTo = 0;
+                double heightFrom = 0.0, heightTo = 0.0;
+                DCSBSuggestIncreasePalletZ suggestPalletZ = null;
+                if (layerSolver.FindMinDimZIncreaseForGain(dimBox, dimContainer, palletProperties.Height, constraintSet
+                    , ref layerCountFrom, ref layerCountTo
+                    , ref caseCountFrom, ref caseCountTo
+                    , ref heightFrom, ref heightTo))
+                    suggestPalletZ = new DCSBSuggestIncreasePalletZ()
+                    {
+                        Success = true,
+                        LayerCountFrom = layerCountFrom,
+                        LayerCountTo = layerCountTo,
+                        CaseCountFrom = caseCountFrom,
+                        CaseCountTo = caseCountTo,
+                        HeightFrom = heightFrom,
+                        HeightTo = heightTo
+                    };
+                // decrease box dim1
+                DCSBSuggestDecreaseCaseXY suggestCaseDim1 = null;
+                var dimBoxTo = Vector3D.Zero;
+                iDir = 0;
+                if (layerSolver.FindMinDimXYBoxDecreaseForGain(dimBox, dimContainer, palletProperties.Height, constraintSet, iDir
+                    , ref perLayerCountFrom, ref perLayerCountTo, ref dimBoxTo))
+                {
+                    suggestCaseDim1 = new DCSBSuggestDecreaseCaseXY()
+                    {
+                        Success = true,
+                        PerLayerCountFrom = perLayerCountFrom,
+                        PerLayerCountTo = perLayerCountTo,
+                        CaseCountFrom = caseCountFrom,
+                        CaseCountTo = caseCountTo,
+                        CaseDimFrom = new DCSBDim3D(dimBox.X, dimBox.Y, dimBox.Z),
+                        CaseDimTo = new DCSBDim3D(dimBoxTo.X, dimBoxTo.Y, dimBoxTo.Z)
+                    };
+                }
+                DCSBSuggestDecreaseCaseXY suggestCaseDim2 = null;
+                iDir = 1;
+                if (layerSolver.FindMinDimXYBoxDecreaseForGain(dimBox, dimContainer, palletProperties.Height, constraintSet, iDir
+                    , ref perLayerCountFrom, ref perLayerCountTo, ref dimBoxTo))
+                {
+                    suggestCaseDim2 = new DCSBSuggestDecreaseCaseXY()
+                    {
+                        Success = true,
+                        PerLayerCountFrom = perLayerCountFrom,
+                        PerLayerCountTo = perLayerCountTo,
+                        CaseCountFrom = caseCountFrom,
+                        CaseCountTo = caseCountTo,
+                        CaseDimFrom = new DCSBDim3D(dimBox.X, dimBox.Y, dimBox.Z),
+                        CaseDimTo = new DCSBDim3D(dimBoxTo.X, dimBoxTo.Y, dimBoxTo.Z)
+                    };
+                }
+
                 return new DCSBLoadResultSinglePallet()
                 {
                     Status = new DCSBStatus()
                     {
                         Status = DCSBStatusEnu.Success,
-                        Error = string.Empty
+                        Error = string.Join(" | ", errors)
                     },
                     Result = new DCSBLoadResultPallet()
                     {
@@ -1370,20 +1480,36 @@ namespace treeDiM.StackBuilder.WCFAppServ
                                 CY = expectedFormat.Size.CY
                             }
                         }
-                    }
+                    },
+                    SuggestPalletLength = suggestPalletLength,
+                    SuggestPalletWidth = suggestPalletWidth,
+                    SuggestPalletDim = suggestPalletDim,
+                    SuggestPalletHeight = suggestPalletZ,
+                    SuggestCaseDim1 = suggestCaseDim1,
+                    SuggestCaseDim2 = suggestCaseDim2
                 };
             }
+
+    
+
             return new DCSBLoadResultSinglePallet()
             {
                 Status = new DCSBStatus()
                 {
                     Status = DCSBStatusEnu.FailureLengthOrWidthExceeded,
-                    Error = string.Empty
+                    Error = string.Join(" | ", errors)
                 },
                 Result = new DCSBLoadResultPallet()
                 {
                 },
-                OutFile = null
+                OutFile = null,
+                SuggestPalletLength = null,
+                SuggestPalletWidth = null,
+                SuggestPalletDim = null,
+                SuggestPalletHeight = null,
+                SuggestCaseDim1 = null,
+                SuggestCaseDim2 = null
+
             };
         }
         #endregion

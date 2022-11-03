@@ -1,15 +1,152 @@
-﻿using System;
+﻿#region Using directives
+using System;
 using System.Collections.Generic;
 
 using log4net;
+using Sharp3D.Boxologic;
 using Sharp3D.Math.Core;
 
 using treeDiM.StackBuilder.Basics;
+#endregion
 
 namespace treeDiM.StackBuilder.Engine
 {
     public class LayerSolver : ILayerSolver
     {
+        public bool FindMinPalletDimXYIncreaseForGain(Vector3D dimBox, Vector2D dimContainer, double offsetZ, ConstraintSetAbstract constraintSet, int direction
+            , ref int countFrom, ref int countTo, ref Vector2D dimContainerTo)
+        {
+            // get current number
+            var layers = BuildLayers(dimBox, Vector3D.Zero, dimContainer, offsetZ, constraintSet, true);
+            if (layers.Count < 1) return false;
+            countFrom = layers[0].Count;
+
+            Vector2D dimContainerExtended = dimContainer;
+            double dimMax = Math.Max(dimBox.X, dimBox.Y);
+            // dim increase
+            if (0 == direction)
+                dimContainerExtended += new Vector2D(dimMax, 0.0);
+            else if (1 == direction)
+                dimContainerExtended += new Vector2D(0.0, dimMax);
+            else if (-1 == direction)
+            {
+                int countFrom1 = 0, countTo1 = 0;
+                Vector2D dimContainerTo1 = Vector2D.Zero;
+                if (FindMinPalletDimXYIncreaseForGain(dimBox, dimContainer, offsetZ, constraintSet, 0, ref countFrom1, ref countTo1, ref dimContainerTo1))
+                {}
+                int countFrom2 = 0, countTo2 = 0;
+                Vector2D dimContainerTo2 = Vector2D.Zero;
+                if (FindMinPalletDimXYIncreaseForGain(dimBox, dimContainer, offsetZ, constraintSet, 1, ref countFrom2, ref countTo2, ref dimContainerTo2))
+                {}
+                dimContainerExtended += new Vector2D((dimContainerTo1 - dimContainer).X, (dimContainerTo2 - dimContainer).Y);
+            }
+
+            int iterMax = 10, iter = 0;
+            var dimContainerTemp = dimContainerExtended;
+            var dimContainerPrev = dimContainerExtended;
+            do
+            {
+                var layersTemp = BuildLayers(dimBox, Vector3D.Zero, dimContainerTemp, offsetZ, constraintSet, true);
+                if (layersTemp.Count < 1) return false;
+                int countToTemp = layersTemp[0].Count;
+                var layerDim = layersTemp[0].BBox.ToBBox2D().Dimensions;
+
+                if (countToTemp > countFrom)
+                {
+                    dimContainerPrev = layerDim;
+                    dimContainerTemp = 0.5 * (dimContainerPrev + dimContainer);
+
+                    countTo = countToTemp;
+                    dimContainerTo = dimContainerPrev;
+                }
+                else
+                {
+                    dimContainerTemp = 0.5 * (dimContainerPrev + dimContainerTemp);
+                }
+                // reset alternative dimension
+                if (direction == 0)
+                    dimContainerTemp.Y = dimContainer.Y;
+                else if (direction == 1)
+                    dimContainerTemp.X = dimContainer.X;
+
+                // increment
+                ++iter;
+            }
+            while (iter < iterMax);
+            return countTo > countFrom;
+        }
+        public bool FindMinDimZIncreaseForGain(Vector3D dimBox, Vector2D dimContainer, double offsetZ, ConstraintSetAbstract constraintSet
+            , ref int layerCountFrom, ref int layerCountTo, ref int caseCountFrom, ref int caseCountTo, ref double heightFrom, ref double heightTo)
+        {
+            // get best layer
+            var layers = BuildLayers(dimBox, Vector3D.Zero, dimContainer, offsetZ, constraintSet, true);
+            if (layers.Count < 1) return false;
+            var layer = layers[0];
+
+            // get heightFrom -> layerCount -> countFrom -> countTo & heightTo 
+            heightFrom = constraintSet.OptMaxHeight.Value;
+            layerCountFrom = layer.NoLayers(heightFrom - offsetZ);
+            layerCountTo = layerCountFrom + 1;
+            caseCountFrom = layerCountFrom * layer.Count;
+            caseCountTo = layerCountTo * layer.Count;
+            heightTo = offsetZ + layer.LayerHeight * layerCountTo;
+
+            // success?
+            return caseCountTo > caseCountFrom;
+        }
+
+        public bool FindMinDimXYBoxDecreaseForGain(Vector3D dimBox, Vector2D dimContainer, double offsetZ, ConstraintSetAbstract constraintSet, int direction, ref int countFrom, ref int countTo, ref Vector3D dimBoxTo)
+        {
+            // get current number
+            var layers = BuildLayers(dimBox, Vector3D.Zero, dimContainer, offsetZ, constraintSet, true);
+            if (layers.Count < 1) return false;
+            countFrom = layers[0].Count;
+
+            // get dimensions to shorten
+            short dimIndex0 = 0, dimIndex1 = 0;
+            if (constraintSet.AllowOrientation(HalfAxis.HAxis.AXIS_X_P))        { dimIndex0 = 1; dimIndex1 = 2;   }
+            else if (constraintSet.AllowOrientation(HalfAxis.HAxis.AXIS_Y_P))   { dimIndex0 = 0; dimIndex1 = 2;   }
+            else if (constraintSet.AllowOrientation(HalfAxis.HAxis.AXIS_Z_P))   { dimIndex0 = 0; dimIndex1 = 1;   }
+
+            Vector3D dimBoxReduced = dimBox;
+            if (0 == direction)
+                dimBoxReduced -= 0.5 * new Vector3D(dimBox[0] * (dimIndex0 == 0 ? 1.0 : 0.0), dimBox[1] * (dimIndex0 == 1 ? 1.0 : 0.0), dimBox[2] * (dimIndex0 == 2 ? 1.0 : 0.0));
+            else if (1 == direction)
+                dimBoxReduced -= 0.5 * new Vector3D(dimBox[0] * (dimIndex1 == 0 ? 1.0 : 0.0), dimBox[1] * (dimIndex1 == 1 ? 1.0 : 0.0), dimBox[2] * (dimIndex1 == 2 ? 1.0 : 0.0));
+            else if (-1 == direction)
+            { 
+            }
+            int iterMax = 100, iter = 0;
+            var dimBoxTemp = dimBoxReduced;
+            var dimBoxPrev = dimBoxReduced;
+
+            do
+            {
+                var layersTemp = BuildLayers(dimBoxTemp, Vector3D.Zero, dimContainer, offsetZ, constraintSet, true);
+                if (layersTemp.Count < 1) return false;
+                int countToTemp = layersTemp[0].Count;
+
+                if (countToTemp > countFrom)
+                {
+                    dimBoxPrev = dimBoxTemp;
+                    dimBoxTemp = 0.5 * (dimBoxTemp + dimBox);
+
+                    countTo = countToTemp;
+                    dimBoxTo = new Vector3D( Math.Round(dimBoxPrev.X, 2), Math.Round(dimBoxPrev.Y, 2), Math.Round(dimBoxPrev.Z, 2));
+                }
+                else
+                {
+                    dimBoxTemp = 0.5 * (dimBoxTemp + dimBoxPrev);
+                }
+
+                // increment
+                ++iter;
+            }
+            while (iter < iterMax);
+
+            return true;
+        }
+
         public LayerDesc BestLayerDesc(Vector3D dimBox, Vector3D bulge, Vector2D dimContainer, double offsetZ, ConstraintSetAbstract constraintSet)
         {
             var layers = BuildLayers(dimBox, bulge, dimContainer, offsetZ, constraintSet, true);
@@ -325,7 +462,7 @@ namespace treeDiM.StackBuilder.Engine
             return layer;
         }
         /// <summary>
-        /// Used to compute load dimension
+        /// Get global length x width of loading from list of layers
         /// </summary>
         public bool GetDimensions(List<LayerDesc> layers, Packable packable, Vector2D dimContainer, double minSpace, ref Vector2D actualDimensions)
         {
@@ -375,6 +512,9 @@ namespace treeDiM.StackBuilder.Engine
             }
             return true;
         }
+        /// <summary>
+        /// Get best combination of a set of layers
+        /// </summary>
         public static bool GetBestCombination(Vector3D dimBox, Vector3D bulge, Vector3D dimContainer
             , ConstraintSetAbstract constraintSet
             , ref List<KeyValuePair<LayerEncap, int>> listLayer)
@@ -528,63 +668,6 @@ namespace treeDiM.StackBuilder.Engine
             }
             return listLayers0;
         }
-        #region Helpers
-        private bool GetFacingPosition(BoxPosition bPos, Vector3D dims, int iFacing, bool opposite, ref Vector3D posFacing, ref HalfAxis.HAxis hAxis)
-        {
-            if (bPos.DirectionHeight != HalfAxis.HAxis.AXIS_Z_P)
-                return false;
-            posFacing = bPos.Position + dims.Z * Vector3D.ZAxis;
-            if (!opposite)
-            {
-                switch (iFacing)
-                {
-                    case 0:
-                        posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(bPos.DirectionLength);
-                        hAxis = bPos.DirectionLength;
-                        break;
-                    case 1:
-                        posFacing += dims.X * HalfAxis.ToVector3D(bPos.DirectionLength) + 0.5 * dims.Y * HalfAxis.ToVector3D(bPos.DirectionWidth);
-                        hAxis = bPos.DirectionWidth;
-                        break;
-                    case 2:
-                        posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(bPos.DirectionLength) + dims.Y * HalfAxis.ToVector3D(bPos.DirectionWidth);
-                        hAxis = HalfAxis.Opposite(bPos.DirectionLength);
-                        break;
-                    case 3:
-                        posFacing += 0.5 * dims.Y * HalfAxis.ToVector3D(bPos.DirectionWidth);
-                        hAxis = HalfAxis.Opposite(bPos.DirectionWidth);
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                switch (iFacing)
-                {
-                    case 0:
-                        posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(bPos.DirectionLength) + dims.Y * HalfAxis.ToVector3D(bPos.DirectionWidth);
-                        hAxis = HalfAxis.Opposite(bPos.DirectionLength);
-                        break;
-                    case 1:
-                        posFacing += 0.5 * dims.Y * HalfAxis.ToVector3D(bPos.DirectionWidth);
-                        hAxis = HalfAxis.Opposite(bPos.DirectionWidth);
-                        break;
-                    case 2:
-                        posFacing += 0.5 * dims.X * HalfAxis.ToVector3D(bPos.DirectionLength);
-                        hAxis = bPos.DirectionLength;
-                        break;
-                    case 3:
-                        posFacing += dims.X * HalfAxis.ToVector3D(bPos.DirectionLength) + 0.5 * dims.Y * HalfAxis.ToVector3D(bPos.DirectionWidth);
-                        hAxis = bPos.DirectionWidth;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            return true;
-        }
-        #endregion
         #region Non-Public Members
         public int Facing { get; set; } = -1;
         protected static readonly ILog _log = LogManager.GetLogger(typeof(LayerSolver));

@@ -2280,6 +2280,24 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultPallet ResultField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestDecreaseCaseXY SuggestCaseDim1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestDecreaseCaseXY SuggestCaseDim2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestIncreasePalletXY SuggestPalletDimField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestIncreasePalletZ SuggestPalletHeightField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestIncreasePalletXY SuggestPalletLengthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestIncreasePalletXY SuggestPalletWidthField;
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
         public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultPallet Result {
             get {
@@ -2289,6 +2307,84 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
                 if ((object.ReferenceEquals(this.ResultField, value) != true)) {
                     this.ResultField = value;
                     this.RaisePropertyChanged("Result");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestDecreaseCaseXY SuggestCaseDim1 {
+            get {
+                return this.SuggestCaseDim1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SuggestCaseDim1Field, value) != true)) {
+                    this.SuggestCaseDim1Field = value;
+                    this.RaisePropertyChanged("SuggestCaseDim1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestDecreaseCaseXY SuggestCaseDim2 {
+            get {
+                return this.SuggestCaseDim2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SuggestCaseDim2Field, value) != true)) {
+                    this.SuggestCaseDim2Field = value;
+                    this.RaisePropertyChanged("SuggestCaseDim2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestIncreasePalletXY SuggestPalletDim {
+            get {
+                return this.SuggestPalletDimField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SuggestPalletDimField, value) != true)) {
+                    this.SuggestPalletDimField = value;
+                    this.RaisePropertyChanged("SuggestPalletDim");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestIncreasePalletZ SuggestPalletHeight {
+            get {
+                return this.SuggestPalletHeightField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SuggestPalletHeightField, value) != true)) {
+                    this.SuggestPalletHeightField = value;
+                    this.RaisePropertyChanged("SuggestPalletHeight");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestIncreasePalletXY SuggestPalletLength {
+            get {
+                return this.SuggestPalletLengthField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SuggestPalletLengthField, value) != true)) {
+                    this.SuggestPalletLengthField = value;
+                    this.RaisePropertyChanged("SuggestPalletLength");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestIncreasePalletXY SuggestPalletWidth {
+            get {
+                return this.SuggestPalletWidthField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SuggestPalletWidthField, value) != true)) {
+                    this.SuggestPalletWidthField = value;
+                    this.RaisePropertyChanged("SuggestPalletWidth");
                 }
             }
         }
@@ -2313,6 +2409,331 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
                     this.ResultField = value;
                     this.RaisePropertyChanged("Result");
                 }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DCSBSuggestDecreaseCaseXY", Namespace="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ")]
+    [System.SerializableAttribute()]
+    public partial class DCSBSuggestDecreaseCaseXY : treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D CaseDimFromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D CaseDimToField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DimField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PerLayerCountFromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PerLayerCountToField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D CaseDimFrom {
+            get {
+                return this.CaseDimFromField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CaseDimFromField, value) != true)) {
+                    this.CaseDimFromField = value;
+                    this.RaisePropertyChanged("CaseDimFrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D CaseDimTo {
+            get {
+                return this.CaseDimToField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CaseDimToField, value) != true)) {
+                    this.CaseDimToField = value;
+                    this.RaisePropertyChanged("CaseDimTo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Dim {
+            get {
+                return this.DimField;
+            }
+            set {
+                if ((this.DimField.Equals(value) != true)) {
+                    this.DimField = value;
+                    this.RaisePropertyChanged("Dim");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PerLayerCountFrom {
+            get {
+                return this.PerLayerCountFromField;
+            }
+            set {
+                if ((this.PerLayerCountFromField.Equals(value) != true)) {
+                    this.PerLayerCountFromField = value;
+                    this.RaisePropertyChanged("PerLayerCountFrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PerLayerCountTo {
+            get {
+                return this.PerLayerCountToField;
+            }
+            set {
+                if ((this.PerLayerCountToField.Equals(value) != true)) {
+                    this.PerLayerCountToField = value;
+                    this.RaisePropertyChanged("PerLayerCountTo");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DCSBSuggestIncreasePalletXY", Namespace="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ")]
+    [System.SerializableAttribute()]
+    public partial class DCSBSuggestIncreasePalletXY : treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DimField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim2D PalletDimFromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim2D PalletDimToField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PerLayerCountFromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PerLayerCountToField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Dim {
+            get {
+                return this.DimField;
+            }
+            set {
+                if ((this.DimField.Equals(value) != true)) {
+                    this.DimField = value;
+                    this.RaisePropertyChanged("Dim");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim2D PalletDimFrom {
+            get {
+                return this.PalletDimFromField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PalletDimFromField, value) != true)) {
+                    this.PalletDimFromField = value;
+                    this.RaisePropertyChanged("PalletDimFrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim2D PalletDimTo {
+            get {
+                return this.PalletDimToField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PalletDimToField, value) != true)) {
+                    this.PalletDimToField = value;
+                    this.RaisePropertyChanged("PalletDimTo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PerLayerCountFrom {
+            get {
+                return this.PerLayerCountFromField;
+            }
+            set {
+                if ((this.PerLayerCountFromField.Equals(value) != true)) {
+                    this.PerLayerCountFromField = value;
+                    this.RaisePropertyChanged("PerLayerCountFrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PerLayerCountTo {
+            get {
+                return this.PerLayerCountToField;
+            }
+            set {
+                if ((this.PerLayerCountToField.Equals(value) != true)) {
+                    this.PerLayerCountToField = value;
+                    this.RaisePropertyChanged("PerLayerCountTo");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DCSBSuggestIncreasePalletZ", Namespace="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ")]
+    [System.SerializableAttribute()]
+    public partial class DCSBSuggestIncreasePalletZ : treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double HeightFromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double HeightToField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LayerCountFromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LayerCountToField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double HeightFrom {
+            get {
+                return this.HeightFromField;
+            }
+            set {
+                if ((this.HeightFromField.Equals(value) != true)) {
+                    this.HeightFromField = value;
+                    this.RaisePropertyChanged("HeightFrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double HeightTo {
+            get {
+                return this.HeightToField;
+            }
+            set {
+                if ((this.HeightToField.Equals(value) != true)) {
+                    this.HeightToField = value;
+                    this.RaisePropertyChanged("HeightTo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LayerCountFrom {
+            get {
+                return this.LayerCountFromField;
+            }
+            set {
+                if ((this.LayerCountFromField.Equals(value) != true)) {
+                    this.LayerCountFromField = value;
+                    this.RaisePropertyChanged("LayerCountFrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LayerCountTo {
+            get {
+                return this.LayerCountToField;
+            }
+            set {
+                if ((this.LayerCountToField.Equals(value) != true)) {
+                    this.LayerCountToField = value;
+                    this.RaisePropertyChanged("LayerCountTo");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DCSBSuggest", Namespace="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestIncreasePalletXY))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestIncreasePalletZ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBSuggestDecreaseCaseXY))]
+    public partial class DCSBSuggest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CaseCountFromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CaseCountToField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool SuccessField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CaseCountFrom {
+            get {
+                return this.CaseCountFromField;
+            }
+            set {
+                if ((this.CaseCountFromField.Equals(value) != true)) {
+                    this.CaseCountFromField = value;
+                    this.RaisePropertyChanged("CaseCountFrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CaseCountTo {
+            get {
+                return this.CaseCountToField;
+            }
+            set {
+                if ((this.CaseCountToField.Equals(value) != true)) {
+                    this.CaseCountToField = value;
+                    this.RaisePropertyChanged("CaseCountTo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Success {
+            get {
+                return this.SuccessField;
+            }
+            set {
+                if ((this.SuccessField.Equals(value) != true)) {
+                    this.SuccessField = value;
+                    this.RaisePropertyChanged("Success");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }

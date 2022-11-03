@@ -63,6 +63,7 @@
       </head>
       <body lang="FR" style='word-wrap: break-word'>
         <xsl:apply-templates select="analysis"/>
+        <xsl:apply-templates select="hAnalysis"/>
       </body>
     </html>
   </xsl:template>
@@ -82,6 +83,22 @@
     <xsl:apply-templates select="pallet"/> 
     <xsl:apply-templates select="solution"/>
   </xsl:template>
+  <xsl:template match="hAnalysis">
+    <table class="style1" cellpadding="4">
+      <tr>
+        <td colspan="3">
+          <xsl:value-of select="name"/>
+        </td>
+        <td colspan="1">
+          <img width="84" height="84" src="images\logo_CARGOLOG.jpg"/>
+        </td>        
+      </tr>
+    </table>
+    <br/>
+    <br/>
+    <xsl:apply-templates select="pallet"/>
+    <xsl:apply-templates select="hSolution"/>
+  </xsl:template>
   <xsl:template match="pallet">
     <table class="style2" cellpadding="4">
       <tr>
@@ -96,7 +113,7 @@
     <br/>
     <br/>
   </xsl:template>
-
+  <!--#### SOLUTION ####-->
   <xsl:template match="solution">
     <table class="style2" cellpadding="4">
       <tr>
@@ -145,17 +162,97 @@
     </table>
   </xsl:template>
 
+  <!--#### HSOLUTION ####-->
+  <xsl:template match="hSolution">
+    <xsl:apply-templates select="solItem"/>
+  </xsl:template>
+  <xsl:template match="solItem">
+    <br/>
+    <br/>
+    <xsl:apply-templates select="itemQuantities"/>
+    <table cellpadding="2">
+      <tr>
+        <td colspan="1">
+          <xsl:apply-templates select="view_solution_front"/>
+        </td>
+        <td colspan="1">
+          <xsl:apply-templates select="view_solution_left"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1"/>
+        <td colspan="1">
+          <img width="274" height="94" src="images\arrow_right.jpg"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1">
+          <xsl:apply-templates select="view_solution_right"/>
+        </td>
+        <td colspan="1">
+          <xsl:apply-templates select="view_solution_back"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <xsl:apply-templates select="view_solution_iso"/>
+        </td>
+      </tr>
+    </table>    
+  </xsl:template>
+  <!--#### ITEMQUANTITIES-->
+  <xsl:template match="itemQuantities">
+    <xsl:apply-templates select="itemQuantity"/>
+  </xsl:template>
+  <xsl:template match="itemQuantity">
+    <table class="style2" cellpadding="4">
+      <tr>
+        <td colspan="4" >
+          <p class="MsoNormal" align="center" style='text-align:center'>
+            <span style='font-size:24pt; color:black;'>Nombre de colis total : </span>
+            <span style='font-size:48pt; color:CornflowerBlue;'>
+              <xsl:value-of select="count"/>
+            </span>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <br/>
+    <br/>
+    <table class="style2" cellpadding="4">
+      <tr>
+        <td colspan="4">
+          <p class="MsoNormal" align="center" style='text-align:center'>
+            <span style ='font-size:24.0pt;'>Valeur en Colis / couche : </span>
+            <span style='font-size:26.0pt'>MULTI-FACE</span>
+          </p>
+        </td>
+      </tr>
+    </table>
+  </xsl:template>
   <!--#### IMAGEGENERIC ####-->
   <xsl:template match="imageThumbSize">
-    <img width="100" height="100" align="middle">
+    <img align="middle">
       <xsl:attribute name="src">
         <xsl:value-of select="imagePath"/>
+      </xsl:attribute>
+      <xsl:attribute name="width">
+        <xsl:value-of select="width"/>
+      </xsl:attribute>
+      <xsl:attribute name="height">
+        <xsl:value-of select="height"/>
       </xsl:attribute>
     </img>
   </xsl:template>
   <!--#### VIEW_SOLUTION_FRONT-->
   <xsl:template match="view_solution_front">
-    <img width="150" height="150" align="middle">
+    <img align="middle">
+      <xsl:attribute name="width">
+        <xsl:value-of select="width"/>
+      </xsl:attribute>
+      <xsl:attribute name="height">
+        <xsl:value-of select="height"/>
+      </xsl:attribute>
       <xsl:attribute name="src">
         <xsl:value-of select="imagePath"/>
       </xsl:attribute>
@@ -163,7 +260,13 @@
   </xsl:template>
   <!--#### VIEW_SOLUTION_LEFT-->
   <xsl:template match="view_solution_left">
-    <img width="150" height="150" align="middle">
+    <img align="middle">
+      <xsl:attribute name="width">
+        <xsl:value-of select="width"/>
+      </xsl:attribute>
+      <xsl:attribute name="height">
+        <xsl:value-of select="height"/>
+      </xsl:attribute>
       <xsl:attribute name="src">
         <xsl:value-of select="imagePath"/>
       </xsl:attribute>
@@ -171,7 +274,13 @@
   </xsl:template>
   <!--#### VIEW_SOLUTION_RIGHT-->
   <xsl:template match="view_solution_right">
-    <img width="150" height="150" align="middle">
+    <img align="middle">
+      <xsl:attribute name="width">
+        <xsl:value-of select="width"/>
+      </xsl:attribute>
+      <xsl:attribute name="height">
+        <xsl:value-of select="height"/>
+      </xsl:attribute>
       <xsl:attribute name="src">
         <xsl:value-of select="imagePath"/>
       </xsl:attribute>
@@ -179,7 +288,13 @@
   </xsl:template>
   <!--#### VIEW_SOLUTION_BACK-->
   <xsl:template match="view_solution_back">
-    <img width="150" height="150" align="middle">
+    <img align="middle">
+      <xsl:attribute name="width">
+        <xsl:value-of select="width"/>
+      </xsl:attribute>
+      <xsl:attribute name="height">
+        <xsl:value-of select="height"/>
+      </xsl:attribute>
       <xsl:attribute name="src">
         <xsl:value-of select="imagePath"/>
       </xsl:attribute>
@@ -187,11 +302,16 @@
   </xsl:template>
   <!--#### VIEW_SOLUTION_ISO-->
   <xsl:template match="view_solution_iso">
-    <img width="400" height="400" align="middle">
+    <img align="middle">
+      <xsl:attribute name="width">
+        <xsl:value-of select="width"/>
+      </xsl:attribute>
+      <xsl:attribute name="height">
+        <xsl:value-of select="height"/>
+      </xsl:attribute>
       <xsl:attribute name="src">
         <xsl:value-of select="imagePath"/>
       </xsl:attribute>
     </img>
   </xsl:template>
-
-</xsl:stylesheet>
+ </xsl:stylesheet>

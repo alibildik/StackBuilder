@@ -62,6 +62,11 @@ namespace treeDiM.StackBuilder.Reporting
                 Visible = true
             };
             Document wordDoc = wordApp.Documents.Open(htmlFilePath, false, true, NoEncodingDialog: true);
+            // set print view 
+            wordApp.ActiveWindow.ActivePane.View.Type = WdViewType.wdPrintView;
+            wordDoc.SaveAs(absOutputFilePath, WdSaveFormat.wdFormatDocumentDefault);
+            _log.Info(string.Format("Saved doc report to {0}", outputFilePath));
+
             // embed pictures (unlinking images)
             for (int i = 1; i <= wordDoc.InlineShapes.Count; ++i)
             {
@@ -74,17 +79,15 @@ namespace treeDiM.StackBuilder.Reporting
                 if (null != field && field.Type == WdFieldType.wdFieldIncludePicture)
                     field.LinkFormat.SavePictureWithDocument = true;
             }
+ 
             // set margins (unit?)
             wordDoc.PageSetup.TopMargin = wordApp.CentimetersToPoints(margins.Top);
             wordDoc.PageSetup.BottomMargin = wordApp.CentimetersToPoints(margins.Bottom);
             wordDoc.PageSetup.RightMargin = wordApp.CentimetersToPoints(margins.Right);
             wordDoc.PageSetup.LeftMargin = wordApp.CentimetersToPoints(margins.Left);
-            // set print view 
-            wordApp.ActiveWindow.ActivePane.View.Type = WdViewType.wdPrintView;
-            wordDoc.SaveAs(absOutputFilePath, WdSaveFormat.wdFormatDocumentDefault);
-            _log.Info(string.Format("Saved doc report to {0}", outputFilePath));
-            if (Properties.Settings.Default.WordDeleteImage)
-            {
+
+           if (Properties.Settings.Default.WordDeleteImage)
+           {
                 // wait before deleting image
                 int timeBeforeDeletion = Properties.Settings.Default.WordDeleteImageDelay;
                 System.Threading.Thread.Sleep(timeBeforeDeletion * 1000);

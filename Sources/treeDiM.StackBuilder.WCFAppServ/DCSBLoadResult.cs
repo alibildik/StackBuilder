@@ -67,4 +67,66 @@ namespace treeDiM.StackBuilder.WCFAppServ
         [DataMember]
         public string PalletMapPhrase { get; set; }
     }
+    [DataContract]
+    public class DCSBSuggest
+    {
+        [DataMember]
+        public bool Success { get; set; }
+        [DataMember]
+        public int CaseCountFrom { get; set; }
+        [DataMember]
+        public int CaseCountTo { get; set; }
+    }
+    [DataContract]
+    public class DCSBSuggestIncreasePalletXY : DCSBSuggest
+    {
+        [DataMember]
+        public int Dim { get; set; }
+        [DataMember]
+        public DCSBDim2D PalletDimFrom { get; set; }
+        [DataMember]
+        public DCSBDim2D PalletDimTo { get; set; }
+        [DataMember]
+        public int PerLayerCountFrom { get; set; }
+        [DataMember]
+        public int PerLayerCountTo { get; set; }
+    }
+    [DataContract]
+    public class DCSBSuggestIncreasePalletZ : DCSBSuggest
+    {
+        [DataMember]
+        public double HeightFrom { get; set; }
+        [DataMember]
+        public double HeightTo { get; set; }
+        [DataMember]
+        public int LayerCountFrom {get; set;}
+        [DataMember]
+        public int LayerCountTo { get; set; }
+    }
+    [DataContract]
+    public class DCSBSuggestDecreaseCaseXY : DCSBSuggest
+    {
+        [DataMember]
+        public int Dim { get; set; }
+        [DataMember]
+        public DCSBDim3D CaseDimFrom { get; set; }
+        [DataMember]
+        public DCSBDim3D CaseDimTo { get; set; }
+        [DataMember]
+        public int PerLayerCountFrom { get; set; }
+        [DataMember]
+        public int PerLayerCountTo { get; set; }
+    }
+    [DataContract]
+    public class DCSBSuggestDecreaseLayerHeight : DCSBSuggest
+    {
+        [DataMember]
+        public int Dim { get; set; }
+        public double HeightFrom { get; set; }
+        [DataMember]
+        public int LayerCountFrom { get; set; }
+        [DataMember]
+        public int LayerCountTo { get; set; }
+    }
+
 }

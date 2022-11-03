@@ -8,7 +8,7 @@
     <html>
       <head>
         <title>
-          <xsl:value-of select="name"></xsl:value-of>
+          <xsl:value-of select="name"/>
           <xsl:value-of select="$loc/str[@name='report']"/>
         </title>
         <style type="text/css">
@@ -29,6 +29,13 @@
           color:black;
           font-family:Arial;
           font-size:10px;
+          }
+          .style4
+          {
+          color:blue;
+          font-family:Arial;
+          font-size:11px;
+          font-style: bold;
           }
           body
           {
@@ -104,96 +111,89 @@
       <body lang="FR" style='word-wrap: break-word'>
 
         <div class="WordSection1">
-          <p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 0cm'/>
-          <table class="TableGrid" border="0" cellspacing="0" cellpadding="0" width="1126" style='width: 700pt; margin-left: 0pt; border-collapse: collapse'>
-            <tr style='height: 391.55pt'>
-              <td width="600" colspan="4" valign="top" style='width: 700pt; border: solid black 1.0pt; border-bottom: none; padding: 0cm 0cm 0cm 0cm; height: 600pt'>
-                <p class="MsoNormal" style='margin-top: 0cm; margin-right: -.1pt; margin-bottom: 0cm; margin-left: 0cm'>
+          <table class="TableGrid" border="0" border-collapse="collapse=">
+            <tr>
+              <td colspan="4" style='border: solid black 1.0pt;'>
+                <p>
                   <xsl:apply-templates select="analysis" />
                 </p>
               </td>
             </tr>
-            <tr style='height: 33.35pt'>
+            <tr>
               <td width="150" rowspan="5" valign="bottom" style='width: 200pt; border: solid black 1.0pt; border-top: none; padding: 0cm 0cm 0cm 0cm; height: 33.35pt'>
-                <p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 2.1pt'>
+                <p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 0cm'>
                   <span style='font-size: 8.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
                     This drawing belongs to DESJARDIN and cannot be transferred to anyone without DESJARDIN authorization.
                   </span>
                 </p>
-                <p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 2.1pt'>
+                <p>
                   <span style='font-size: 8.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
                     Les poids sont donn&#233;s &#224; titre indicatif avec +/-5%.
                   </span>
                 </p>
               </td>
-              <td width="400" colspan="3" style='width: 300pt; border: solid black 1.0pt; border-left: none; padding: 0cm 0cm 0cm 0cm; height: 33.35pt'>
-                <p class="MsoNormal" align="center" style='margin-top: 0cm; margin-right: 5.7pt; margin-bottom: 0cm; margin-left: 0cm; text-align: center'>
-                  <span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+              <td colspan="3" style='border: solid black 1.0pt; border-left: none; padding: 0cm 0cm 0cm 0cm; height: 15.0pt'>
+                <p class="MsoNormal" align="center" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 0cm; text-align: center'>
+                  <span>
                     PLAN DE PALETTISATION
                   </span>
                 </p>
               </td>
             </tr>
-            <tr style='height: 23.8pt'>
-              <td width="297" colspan="2" rowspan="3" valign="top" style='width: 222.0pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
-                <p class="MsoNormal" style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm; margin-left: 7.05pt'>
+            <tr>
+              <td colspan="2" rowspan="3" valign="top" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
+                <p class="MsoNormal">
                   <img width="250" height="65" src="images\logo_DESJARDIN.gif"/>
                 </p>
               </td>
-              <td width="200" style='width: 200.0pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
-                <p class="MsoNormal" style='margin-bottom: 0cm'>
+              <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 0cm;'>
+                <p class="MsoNormal">
                   <span style='font-size: 10.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
                     Drawned by: <xsl:apply-templates select="/report/author"/>
                   </span>
                 </p>
               </td>
             </tr>
-            <tr style='height: 23.8pt'>
-              <td width="200" style='width: 200.0pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 23.8pt'>
-                <p class="MsoNormal" style='margin-bottom: 0cm'>
+            <tr>
+              <td style='border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 0cm;'>
+                <p class="MsoNormal">
                   <span style='font-size: 9.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
                     Checked by:
                   </span>
                 </p>
               </td>
             </tr>
-            <tr style='height: 22.15pt'>
-              <td width="200" style='width: 200.0pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 22.15pt'>
-                <p class="MsoNormal" style='margin-bottom: 0cm'>
-                  <span style='font-size: 9.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+            <tr>
+              <td style='width: 200.0pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 0cm;'>
+                <p class="MsoNormal">
+                  <span  style='font-size: 9.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
                     Date: <xsl:apply-templates select="/report/dateOfCreation"/>
                   </span>
                 </p>
               </td>
             </tr>
-            <tr style='height: 28.4pt'>
-              <td width="173" style='width: 130.1pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
-                <p class="MsoNormal" align="center" style='margin-top: 0cm; margin-right: 3.2pt; margin-bottom: 0cm; margin-left: 0cm; text-align: center'>
+            <tr>
+              <td  style='border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 0cm;'>
+                <p class="MsoNormal">
                   <span style='font-size: 9.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
                     PAPER FORMAT: A4
                   </span>
                 </p>
               </td>
-              <td width="174" style='width: 200.0pt; border: solid black 1.0pt; border-left: none; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
-                <p class="MsoNormal" style='margin-bottom: 0cm'>
+              <td style='border: solid black 1.0pt; border-left: none; padding: 0cm 0cm 0cm 0cm;'>
+                <p class="MsoNormal">
                   <span style='font-size: 9.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
-                    Ref.:
+                    Ref.: <xsl:apply-templates select='/report/analysis/name'/>
                   </span>
                 </p>
               </td>
-              <td width="174" valign="top" style='width: 200.0pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 3.15pt; height: 28.4pt'>
-                <p class="MsoNormal" align="center" style='margin-top: 0cm; margin-right: 3.15pt; margin-bottom: 0cm; margin-left: 0cm; text-align: center'>
-                  <span style='font-size: 18.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
+              <td valign="top" style='border-top: none; border-left: none; border-bottom: solid black 1.0pt; border-right: solid black 1.0pt; padding: 0cm 0cm 0cm 0cm;'>
+                <p class="MsoNormal" align="center">
+                  <span  style='font-size: 9.0pt; line-height: 107%; font-family: "Times New Roman",serif'>
                     1/1
                   </span>
                 </p>
               </td>
-            </tr>
-            <tr height="0">
-              <td width="506" style='border: none'></td>
-              <td width="173" style='border: none'></td>
-              <td width="174" style='border: none'></td>
-              <td width="174" style='border: none'></td>
             </tr>
           </table>
         </div>
@@ -241,7 +241,11 @@
   </xsl:template>
   <!--#### SOLUTION ####-->
   <xsl:template match="solution">
-    <b class="style2">Solution</b>
+    <table>
+      <tr>
+        <td class="style4">Solution</td>
+      </tr>
+    </table>
     <table class="style1">
       <tr>
         <td rowspan="2" align="middle">
@@ -456,7 +460,11 @@
 
   <!--#### CASE ####-->
   <xsl:template match="case">
-    <b class="style2">Carton</b>
+    <table>
+      <tr>
+        <td class="style4">Carton</td>
+      </tr>
+    </table>
     <table class="style1" cellpadding="4">
       <tr>
         <td class="style2" colspan="1">Nom</td>
@@ -489,10 +497,14 @@
   </xsl:template>
   <!--#### CASE WITH INNER DIMS #### -->
   <xsl:template match="caseWithInnerDims">
-    <b class="style2">Carton</b>
-    <table class="style1" cellpadding="4">
+    <table>
       <tr>
-        <td class="style2" colspan="1">Nom</td>
+        <td class="style4">Carton</td>
+      </tr>
+    </table>
+    <table class="style1" cellpadding="4">      
+      <tr>      
+      <td class="style2" colspan="1"><b>Nom</b></td>
         <td class="style3" colspan="1" width="300">
           <xsl:value-of select="name"/>
         </td>
@@ -503,14 +515,14 @@
         </xsl:if>
       </tr>
       <tr>
-        <td class="style2" colspan="1">Nombre de pi&#232;ces par carton</td>
+        <td class="style2" colspan="1"><b>Nombre de pi&#232;ces par carton</b></td>
         <td class="style3" colspan="1" width="300">
           <xsl:value-of select="description"/>
         </td>
       </tr>
       <tr>
         <xsl:if test="dimensions">
-          <td class="style2" colspan="1">Dimensions (LxlxH)</td>
+          <td class="style2" colspan="1"><b>Dimensions (LxlxH)</b></td>
           <td class="style3" colspan="1" width="300">
             <xsl:apply-templates select="dimensions/unitVector3"/>
           </td>
@@ -518,7 +530,7 @@
       </tr>
       <tr>
         <xsl:if test="weight">
-          <td class="style2" colspan="1">Poids d'un carton</td>
+          <td class="style2" colspan="1"><b>Poids d'un carton</b></td>
           <td class="style3" colspan="1" width="300">
             <xsl:apply-templates select="weight/unitValue"/>
           </td>
@@ -528,7 +540,11 @@
   </xsl:template>
   <!--#### PALLET ####-->
   <xsl:template match="pallet">
-    <b class="style2">Palette</b>
+    <table>
+      <tr>
+        <td class="style4">Palette</td>
+      </tr>
+    </table>
     <table class="style1" cellpadding="4">
       <tr>
         <td class="style2" colspan="1"><b>Nom</b></td>
@@ -545,7 +561,7 @@
       </tr>
       <tr>
         <xsl:if test="dimensions">
-          <td class="style2" colspan="1"><b>Dimensions  (LxlxH)</b></td>
+          <td class="style2" colspan="1"><b>Dimensions (LxlxH)</b></td>
           <td class="style3" colspan="1" width="300"><xsl:apply-templates select="dimensions/unitVector3"/></td>
         </xsl:if>
       </tr>
@@ -559,7 +575,11 @@
   </xsl:template>
   <!--#### BOX ####-->
   <xsl:template match="box">
-    <b class="style2">Carton</b>
+    <table class="style4">
+      <tr>
+        <td>Carton</td>
+      </tr>
+    </table>
     <table class="style1">
       <tr>
         <td class="style2" colspan="1"><b>Nom</b></td>
@@ -586,7 +606,7 @@
   </xsl:template>
   <!--#### BAG ####-->
   <xsl:template match ="bag">
-    <b class="style2">Sac</b>
+    <b class="style4">Sac</b>
     <table class="style1">
       <tr>
         <td class="style2" colspan="1">
@@ -641,7 +661,13 @@
   </xsl:template>
   <!--#### INTERLAYER ####-->
   <xsl:template match="interlayer">
-    <b><xsl:value-of select="$loc/str[@name='Interlayer']"/></b>
+    <table>
+      <tr>
+        <td class="style4">
+          <xsl:value-of select="$loc/str[@name='Interlayer']"/>
+        </td>
+      </tr>
+    </table>
     <table class="style1">
       <tr>
         <td class="style2">

@@ -323,6 +323,54 @@ namespace treeDiM.StackBuilder.WCFService.Test
                                             ++iIndex;
                                             if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Image") { View = viewNormal }; }
                                             gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Image(ByteArrayToImage(loadResult.OutFile.Bytes));
+                                            // suggestion pallet length
+                                            ++iIndex;
+                                            if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Increase pallet length") { View = viewNormal }; }
+                                            DCSBSuggestIncreasePalletXY suggestionPalletLength = loadResult.SuggestPalletLength;
+                                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(
+                                                $"length: from {suggestionPalletLength.PalletDimFrom.M0} to {suggestionPalletLength.PalletDimTo.M0}\n" +
+                                                $"per layer count: from {suggestionPalletLength.PerLayerCountFrom} to {suggestionPalletLength.PerLayerCountTo}\n" +
+                                                $" case count : from {suggestionPalletLength.CaseCountFrom} to {suggestionPalletLength.CaseCountTo}");
+                                            // suggestion pallet width
+                                            ++iIndex;
+                                            if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Increase pallet width") { View = viewNormal }; }
+                                            DCSBSuggestIncreasePalletXY suggestionPalletWidth = loadResult.SuggestPalletWidth;
+                                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(
+                                                $"width: from {suggestionPalletWidth.PalletDimFrom.M1} to {suggestionPalletWidth.PalletDimTo.M1}\n" +
+                                                $"per layer count: from {suggestionPalletWidth.PerLayerCountFrom} to {suggestionPalletWidth.PerLayerCountTo}\n" +
+                                                $" case count : from {suggestionPalletWidth.CaseCountFrom} to {suggestionPalletWidth.CaseCountTo}");
+                                            // suggestion pallet dim
+                                            ++iIndex;
+                                            if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Increase pallet dim") { View = viewNormal }; }
+                                            DCSBSuggestIncreasePalletXY suggestionPalletDim = loadResult.SuggestPalletDim;
+                                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(
+                                                $"dims: from ({suggestionPalletWidth.PalletDimFrom.M0}, {suggestionPalletDim.PalletDimFrom.M1}) to ({suggestionPalletWidth.PalletDimTo.M0}, {suggestionPalletWidth.PalletDimTo.M1})\n" +
+                                                $"per layer count: from {suggestionPalletDim.PerLayerCountFrom} to {suggestionPalletDim.PerLayerCountTo}\n" +
+                                                $" case count : from {suggestionPalletDim.CaseCountFrom} to {suggestionPalletDim.CaseCountTo}");
+                                            // suggestion pallet height
+                                            ++iIndex;
+                                            if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Increase pallet height") { View = viewNormal }; }
+                                            DCSBSuggestIncreasePalletZ suggestionPalletHeight = loadResult.SuggestPalletHeight;
+                                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(
+                                                $"height: from {suggestionPalletHeight.HeightFrom} to {suggestionPalletHeight.HeightTo}\n" +
+                                                $" layer count: from  {suggestionPalletHeight.LayerCountFrom} to {suggestionPalletHeight.LayerCountTo}\n" + 
+                                                $" case count : from {suggestionPalletHeight.CaseCountFrom} to {suggestionPalletHeight.CaseCountTo}");
+                                            // suggestion box dim1
+                                            ++iIndex;
+                                            if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Decrease box dim1") { View = viewNormal }; }
+                                            DCSBSuggestDecreaseCaseXY suggestionCaseDim1 = loadResult.SuggestCaseDim1;
+                                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(
+                                                $"dim: from ({suggestionCaseDim1.CaseDimFrom.M0}, {suggestionCaseDim1.CaseDimFrom.M1}, {suggestionCaseDim1.CaseDimFrom.M2}) to ({suggestionCaseDim1.CaseDimTo.M0}, {suggestionCaseDim1.CaseDimTo.M1}, {suggestionCaseDim1.CaseDimTo.M2})\n" +
+                                                $" per layer count: from  {suggestionCaseDim1.PerLayerCountFrom} to {suggestionCaseDim1.PerLayerCountTo}\n" +
+                                                $" case count : from {suggestionCaseDim1.CaseCountFrom} to {suggestionCaseDim1.CaseCountTo}");
+                                            // suggestion box dim2
+                                            ++iIndex;
+                                            if (firstSuccessfull) { gridPallets.Rows.Insert(iIndex); gridPallets[iIndex, 0] = new SourceGrid.Cells.Cell($"Decrease box dim2") { View = viewNormal }; }
+                                            DCSBSuggestDecreaseCaseXY suggestionCaseDim2 = loadResult.SuggestCaseDim2;
+                                            gridPallets[iIndex, configId + 1] = new SourceGrid.Cells.Cell(
+                                                $"dim: from ({suggestionCaseDim2.CaseDimFrom.M0}, {suggestionCaseDim2.CaseDimFrom.M1}, {suggestionCaseDim2.CaseDimFrom.M2}) to ({suggestionCaseDim2.CaseDimTo.M0}, {suggestionCaseDim2.CaseDimTo.M1}, {suggestionCaseDim2.CaseDimTo.M2})\n" +
+                                                $" per layer count: from  {suggestionCaseDim2.PerLayerCountFrom} to {suggestionCaseDim2.PerLayerCountTo}\n" +
+                                                $" case count : from {suggestionCaseDim2.CaseCountFrom} to {suggestionCaseDim2.CaseCountTo}");
 
                                             firstSuccessfull = false;
                                         }

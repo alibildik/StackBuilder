@@ -395,11 +395,66 @@
       <xs:extension base="tns:DCSBLoadResultSingle">
         <xs:sequence>
           <xs:element minOccurs="0" name="Result" nillable="true" type="tns:DCSBLoadResultPallet" />
+          <xs:element minOccurs="0" name="SuggestCaseDim1" nillable="true" type="tns:DCSBSuggestDecreaseCaseXY" />
+          <xs:element minOccurs="0" name="SuggestCaseDim2" nillable="true" type="tns:DCSBSuggestDecreaseCaseXY" />
+          <xs:element minOccurs="0" name="SuggestPalletDim" nillable="true" type="tns:DCSBSuggestIncreasePalletXY" />
+          <xs:element minOccurs="0" name="SuggestPalletHeight" nillable="true" type="tns:DCSBSuggestIncreasePalletZ" />
+          <xs:element minOccurs="0" name="SuggestPalletLength" nillable="true" type="tns:DCSBSuggestIncreasePalletXY" />
+          <xs:element minOccurs="0" name="SuggestPalletWidth" nillable="true" type="tns:DCSBSuggestIncreasePalletXY" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="DCSBLoadResultSinglePallet" nillable="true" type="tns:DCSBLoadResultSinglePallet" />
+  <xs:complexType name="DCSBSuggestDecreaseCaseXY">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DCSBSuggest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CaseDimFrom" nillable="true" type="tns:DCSBDim3D" />
+          <xs:element minOccurs="0" name="CaseDimTo" nillable="true" type="tns:DCSBDim3D" />
+          <xs:element minOccurs="0" name="Dim" type="xs:int" />
+          <xs:element minOccurs="0" name="PerLayerCountFrom" type="xs:int" />
+          <xs:element minOccurs="0" name="PerLayerCountTo" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DCSBSuggestDecreaseCaseXY" nillable="true" type="tns:DCSBSuggestDecreaseCaseXY" />
+  <xs:complexType name="DCSBSuggest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CaseCountFrom" type="xs:int" />
+      <xs:element minOccurs="0" name="CaseCountTo" type="xs:int" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DCSBSuggest" nillable="true" type="tns:DCSBSuggest" />
+  <xs:complexType name="DCSBSuggestIncreasePalletXY">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DCSBSuggest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Dim" type="xs:int" />
+          <xs:element minOccurs="0" name="PalletDimFrom" nillable="true" type="tns:DCSBDim2D" />
+          <xs:element minOccurs="0" name="PalletDimTo" nillable="true" type="tns:DCSBDim2D" />
+          <xs:element minOccurs="0" name="PerLayerCountFrom" type="xs:int" />
+          <xs:element minOccurs="0" name="PerLayerCountTo" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DCSBSuggestIncreasePalletXY" nillable="true" type="tns:DCSBSuggestIncreasePalletXY" />
+  <xs:complexType name="DCSBSuggestIncreasePalletZ">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DCSBSuggest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HeightFrom" type="xs:double" />
+          <xs:element minOccurs="0" name="HeightTo" type="xs:double" />
+          <xs:element minOccurs="0" name="LayerCountFrom" type="xs:int" />
+          <xs:element minOccurs="0" name="LayerCountTo" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DCSBSuggestIncreasePalletZ" nillable="true" type="tns:DCSBSuggestIncreasePalletZ" />
   <xs:complexType name="ArrayOfDCSBContentItem">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DCSBContentItem" nillable="true" type="tns:DCSBContentItem" />

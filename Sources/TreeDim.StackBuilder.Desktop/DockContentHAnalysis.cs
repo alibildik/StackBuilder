@@ -69,7 +69,6 @@ namespace treeDiM.StackBuilder.Desktop
                 Analysis.RemoveListener(this);
         }
         #endregion
-
         #region IDrawingContainer
         public void Draw(Graphics3DControl ctrl, Graphics3D graphics)
         {
@@ -77,7 +76,6 @@ namespace treeDiM.StackBuilder.Desktop
             sv.Draw(graphics, Transform3D.Identity);
         }
         #endregion
-
         #region Public properties
         public AnalysisHetero Analysis { get; set; } = null;
         public HSolution Solution { get; set; }
@@ -89,7 +87,6 @@ namespace treeDiM.StackBuilder.Desktop
         #region Private properties
         private int SolItemIndex { get; set; } = 0;
         #endregion
-
         #region Grid methods
         public virtual void FillGrid()
         {
@@ -256,6 +253,7 @@ namespace treeDiM.StackBuilder.Desktop
                 }
                 // ### sol items : end
                 gridSolutions.AutoSizeCells();
+                gridSolutions.Columns.StretchToFit();
                 gridSolutions.AutoStretchColumnsToFitWidth = true;
                 gridSolutions.Invalidate();
             }
@@ -265,7 +263,6 @@ namespace treeDiM.StackBuilder.Desktop
             }
         }
         #endregion
-
         #region Event handlers
         private void OnSolItemIndexUp(object sender, EventArgs e)
         {
