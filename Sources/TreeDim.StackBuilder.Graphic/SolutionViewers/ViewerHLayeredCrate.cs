@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 
 using Sharp3D.Math.Core;
 
@@ -37,8 +36,23 @@ namespace treeDiM.StackBuilder.Graphics
             }
             crate.DrawEnd(graphics);
             if (showOuterDimensions)
-                graphics.AddDimensions(new DimensionCube(Dimensions));
-
+            {
+                graphics.AddDimensions(
+                    new DimensionCube(Vector3D.Zero, bbox.Length, bbox.Width, bbox.Height, Color.Red, false)
+                    {
+                        ShowArrow = new bool[] { true, false, false } 
+                    }
+                    );
+                graphics.AddDimensions(
+                    new DimensionCube(new Vector3D(bbox.Length, 0.0, 0.0), Dimensions.X-bbox.Length, bbox.Width, bbox.Height, Color.Red, false)
+                    {
+                        ShowArrow = new bool[] { true, false, false }
+                    }
+                    );
+                graphics.AddDimensions(
+                    new DimensionCube(Vector3D.Zero, Dimensions.X, Dimensions.Y, Dimensions.Z, Color.Black, true)
+                    );
+            }
             graphics.Flush();
             // add marker ?
             ThumbnailMarker.Annotate(graphics.Graphics, graphics.Size, text);
