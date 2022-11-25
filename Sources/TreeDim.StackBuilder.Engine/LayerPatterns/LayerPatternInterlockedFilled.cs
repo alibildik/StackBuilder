@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Diagnostics;
 using Sharp3D.Math.Core;
 using treeDiM.StackBuilder.Basics;
 
@@ -13,7 +13,6 @@ namespace treeDiM.StackBuilder.Engine
         public override bool IsSymetric => false;
         public override bool CanBeSwapped => true;
         public override bool CanBeInverted => true;
-
         public override void GenerateLayer(ILayer2D layer, double actualLength, double actualWidth)
         {
             layer.Clear();
@@ -32,8 +31,10 @@ namespace treeDiM.StackBuilder.Engine
             double l1 = Math.Max(maxSizeXLength * boxLength, fillSizeXLength * boxWidth);
             double l2 = Math.Max(maxSizeXWidth * boxWidth, fillSizeXWidth * boxLength);
             double remainingSpaceX = actualLength - l1 - l2;
-            l1 = l1 + 0.5 * remainingSpaceX;
-            l2 = l2 + 0.5 * remainingSpaceX;
+            Debug.Assert(remainingSpaceX >= 0);
+
+            l1 += 0.5 * remainingSpaceX;
+            l2 += 0.5 * remainingSpaceX;
 
             double spaceXLength = (l1 - maxSizeXLength * boxLength) / ((double)maxSizeXLength - 0.5);
             double spaceXWidth = (l2 - maxSizeXWidth * boxWidth) / ((double) maxSizeXWidth - 0.5);
@@ -162,6 +163,9 @@ namespace treeDiM.StackBuilder.Engine
             actualLength = Math.Max(maxSizeXLength * boxLength, fillSizeXLength * boxWidth) + Math.Max(maxSizeXWidth * boxWidth, fillSizeXWidth * boxLength);
             actualWidth = Math.Max(maxSizeYLength * boxWidth + fillSizeYLength * boxLength, maxSizeYWidth * boxLength + fillSizeYWidth * boxWidth);
 
+            //Debug.Assert(actualLength <= palletLength);
+            //Debug.Assert(actualWidth <= palletWidth);
+
             return maxSizeXLength > 0 && maxSizeYLength > 0
                 && maxSizeXWidth > 0 && maxSizeYWidth > 0
                 && (
@@ -179,11 +183,11 @@ namespace treeDiM.StackBuilder.Engine
             ┌─────────────┬─────────┐
             |             |         |
             |             |         |
-   YLength  |             |         | YWidth
+   YLength  |     1       |    2    | YWidth
             |             |         |
             |             |         |
             └─────────────┴─────────┘
-                XLength     XWidth
+                X1            X2
             */
             int optFound = 0;
             optSizeXLength = 0; optSizeXWidth = 0;
@@ -192,55 +196,63 @@ namespace treeDiM.StackBuilder.Engine
             optFillSizeXWidth = 0; optFillSizeYWidth = 0;
 
             // get maximum number of box in length
-            int sizeXLength = (int)Math.Floor(palletLength / boxLength);
+            int sizeX1 = (int)Math.Floor(palletLength / boxLength);
             // make sure that we can actually add one column of turned boxes
-            if (palletLength < sizeXLength * boxLength + boxWidth)
-                --sizeXLength;
-            while (sizeXLength >= 1)
+            while (palletLength < sizeX1 * boxLength + boxWidth)
+                --sizeX1;
+            while (sizeX1 >= 1)
             {
                 // get number of column of turned boxes
-                int sizeXWidth = (int)Math.Floor((palletLength - sizeXLength * boxLength) / boxWidth);
+                int sizeX2 = (int)Math.Floor((palletLength - sizeX1 * boxLength) / boxWidth);
                 // get maximum number in width
                 // for boxes with length aligned with pallet length
-                int sizeYLength = (int)Math.Floor(palletWidth / boxWidth);
+                int sizeY1 = (int)Math.Floor(palletWidth / boxWidth);
                 // for turned boxes
-                int sizeYWidth = (int)Math.Floor(palletWidth / boxLength);
-                while (sizeYWidth > 0)
+                int sizeY2 = (int)Math.Floor(palletWidth / boxLength);
+                while (sizeY2 > 0)
                 {
                     // ensure symetry
-                    if (sizeYWidth % 2 != 0)
-                        --sizeYWidth;
+                    if (sizeY2 % 2 != 0)
+                        --sizeY2;
 
-                    double spaceXLength = palletLength - sizeXWidth * boxWidth;
-                    int fillSizeXLength = (int)Math.Floor(spaceXLength / boxWidth);
-                    double spaceYLength = palletWidth - sizeYLength * boxWidth;
-                    int fillSizeYLength = (int)Math.Floor(spaceYLength / boxLength);
+                    double spaceX1 = palletLength - sizeX2 * boxWidth;
+                    int fillSizeX1 = (int)Math.Floor(spaceX1 / boxWidth);
+                    double spaceY1 = palletWidth - sizeY1 * boxWidth;
+                    int fillSizeY1 = (int)Math.Floor(spaceY1 / boxLength);
 
-                    double spaceXWidth = palletLength - sizeXLength * boxLength;
-                    int fillSizeXWidth = (int)Math.Floor(spaceXWidth / boxLength);
-                    double spaceYWidth = palletWidth - sizeYWidth * boxLength;
-                    int fillSizeYWidth = (int)Math.Floor(spaceYWidth / boxWidth);
+                    if (fillSizeX1 * fillSizeY1 == 0) { fillSizeX1 = 0;  fillSizeY1 = 0; }
 
-                    int countLayer = sizeXLength * sizeYLength + sizeXWidth * sizeYWidth;
-                    if (countLayer > optFound)
+                    double spaceX2 = palletLength - sizeX1 * boxLength;
+                    int fillSizeX2 = (int)Math.Floor(spaceX2 / boxLength);
+                    double spaceY2 = palletWidth - sizeY2 * boxLength;
+                    int fillSizeY2 = (int)Math.Floor(spaceY2 / boxWidth);
+
+                    if (fillSizeX2 * fillSizeY2 == 0) { fillSizeX2 = 0; fillSizeY2 = 0; }
+
+                    int countLayer = sizeX1 * sizeY1 + sizeX2 * sizeY2;
+
+                    double actualLength = Math.Max(sizeX1 * boxLength, fillSizeX1 * boxWidth) + Math.Max(sizeX2 * boxWidth, fillSizeX2 * boxLength);
+                    double actualWidth = Math.Max(sizeY1 * boxWidth + fillSizeY1 * boxLength, sizeY2 * boxLength + fillSizeY2 * boxWidth);
+
+                    if (countLayer > optFound && actualLength <= palletLength && actualWidth <= palletWidth)
                     {
                         optFound = countLayer;
-                        optSizeXLength = sizeXLength;
-                        optSizeXWidth = sizeXWidth;
-                        optSizeYLength = sizeYLength;
-                        optSizeYWidth = sizeYWidth;
+                        optSizeXLength = sizeX1;
+                        optSizeXWidth = sizeX2;
+                        optSizeYLength = sizeY1;
+                        optSizeYWidth = sizeY2;
 
-                        bool filledLength = (fillSizeXLength * fillSizeYLength > 0);
-                        optFillSizeXLength = filledLength ? fillSizeXLength : 0;
-                        optFillSizeYLength = filledLength ? fillSizeYLength : 0;
-                        bool filledWidth = (fillSizeXWidth * fillSizeYWidth > 0);
-                        optFillSizeXWidth = filledWidth ? fillSizeXWidth : 0;
-                        optFillSizeYWidth = filledWidth ? fillSizeYWidth : 0;
+                        bool filledLength = (fillSizeX1 * fillSizeY1 > 0);
+                        optFillSizeXLength = filledLength ? fillSizeX1 : 0;
+                        optFillSizeYLength = filledLength ? fillSizeY1 : 0;
+                        bool filledWidth = (fillSizeX2 * fillSizeY2 > 0);
+                        optFillSizeXWidth = filledWidth ? fillSizeX2 : 0;
+                        optFillSizeYWidth = filledWidth ? fillSizeY2 : 0;
                     }
-                    --sizeYWidth;
+                    --sizeY2;
                 }
                 // decrement
-                --sizeXLength;
+                --sizeX1;
             }
         }
         #endregion

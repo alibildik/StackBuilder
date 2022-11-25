@@ -115,6 +115,7 @@ namespace treeDiM.StackBuilder.Desktop
             resources.ApplyResources(this.lbPallets, "lbPallets");
             this.lbPallets.Name = "lbPallets";
             this.lbPallets.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.OnItemChecked);
+            this.lbPallets.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLBPalletsMouseDown);
             // 
             // cbWeight
             // 

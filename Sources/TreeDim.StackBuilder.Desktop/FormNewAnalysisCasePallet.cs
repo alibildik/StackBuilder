@@ -216,16 +216,34 @@ namespace treeDiM.StackBuilder.Desktop
             try { FillLayerList(); FillEditedLayerList(); } catch (Exception ex) { _log.Error(ex.ToString()); }
         }
         private void FillLayerList()
-        { 
+        {
             // get case /pallet
             if (!(cbCases.SelectedType is PackableBrick packable) || !(cbPallets.SelectedType is PalletProperties palletProperties))
                 return;
+
+            var dimContainerFrom = new Vector2D(palletProperties.Length + 2.0 * uCtrlOverhang.ValueX, palletProperties.Width + 2.0 * uCtrlOverhang.ValueY);
+            
+            // suggestion ?
+            lbSuggestion.Text = string.Empty;
+            var layerSolver = new LayerSolver();
+            int countFrom = 0, countTo = 0;
+            Vector2D dimContainerTo = new Vector2D();
+            layerSolver.FindMinPalletDimXYIncreaseForGain(packable.OuterDimensions, dimContainerFrom, palletProperties.Height, BuildConstraintSet(), -1
+                , ref countFrom, ref countTo, ref dimContainerTo);
+            double tolerance = UnitsManager.ConvertLengthFrom(100.0, UnitsManager.UnitSystem.UNIT_METRIC1);
+            if (dimContainerTo.X < dimContainerFrom.X + tolerance
+                && dimContainerTo.Y < dimContainerFrom.Y + tolerance)
+            {
+                Vector2D dimPallet = new Vector2D(palletProperties.Length, palletProperties.Width);
+                Vector2D dimOverhang = (dimContainerTo - dimPallet) * 0.5;
+                lbSuggestion.Text = string.Format(Resources.ID_OVERHANGSUGGESTION, dimOverhang.X, dimOverhang.Y, countFrom, countTo);
+            }
             // compute
             LayerSolver solver = new LayerSolver { Facing = packable.Facing };
             List<Layer2DBrickImp> layers = solver.BuildLayers(
                 packable.OuterDimensions
                 , packable.Bulge
-                , new Vector2D(palletProperties.Length + 2.0 * uCtrlOverhang.ValueX, palletProperties.Width + 2.0 * uCtrlOverhang.ValueY)
+                , dimContainerFrom
                 , palletProperties.Height
                 , BuildConstraintSet()
                 , checkBoxBestLayersOnly.Checked);

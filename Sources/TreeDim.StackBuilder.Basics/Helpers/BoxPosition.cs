@@ -95,6 +95,13 @@ namespace treeDiM.StackBuilder.Basics
             Vector3D centerOfRotation = Center(dim);
             return Transform(this, Transform3D.Translation(centerOfRotation) * Transform3D.RotationZ(90.0) * Transform3D.Translation(-centerOfRotation));
         }
+        /*
+        public BoxPosition RotateZ180(Vector3D dim)
+        {
+            Vector3D centerOfRotation = Center(dim);
+            return Transform(this, Transform3D.Translation(centerOfRotation) * Transform3D.RotationZ(180.0) * Transform3D.Translation(-centerOfRotation));
+        }
+        */
         public BoxPosition RotateZ180(Vector3D dim)
         {
             Vector3D v = Position;

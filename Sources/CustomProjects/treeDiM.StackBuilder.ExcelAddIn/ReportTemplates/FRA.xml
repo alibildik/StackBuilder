@@ -133,7 +133,7 @@
   <str name="Spaces">Espace</str>
   <str name="Layer Indexes">Indexes couche</str>
   <str name="Number of cases per layer">Caisses par couche</str>
-  <str name="Layers x Cases">Nb de couches x Caisses par couche</str>
+  <str name="Cases x Layers">Nb de couches x Caisses par couche</str>
   <str name="Layers">Couches</str>
   <str name="Part">Partie</str>
   <str name="Count">Nombre</str>

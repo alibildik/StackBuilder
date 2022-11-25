@@ -130,6 +130,24 @@ namespace treeDiM.StackBuilder.Graphics
             Brush brushSolid = new SolidBrush(color);
             Graphics.FillEllipse(brushSolid, rectButton);
         }
+        public void DrawArcArrow180(Vector2D v, int length, int radius, Color color, out Rectangle rectButton)
+        {
+            Pen pen = new Pen(color, 5)
+            {
+                StartCap = LineCap.Flat,
+                EndCap = LineCap.ArrowAnchor
+            };
+            Point[] pt = TransformPoint(new Vector2D[] { v });
+
+            Graphics.DrawArc(pen, pt[0].X - length, pt[0].Y - length, 2 * length, 2 * length, -10.0F, -170.0F);
+
+            Point ptMiddle = new Point(pt[0].X + (int)(length * Math.Cos(0.25 * Math.PI)) - radius, pt[0].Y - (int)(length * Math.Sin(0.25 * Math.PI)) - radius);
+            rectButton = new Rectangle(ptMiddle, new Size(2 * radius, 2 * radius));
+
+            Brush brushSolid = new SolidBrush(color);
+            Graphics.FillEllipse(brushSolid, rectButton);
+        }
+
         public void DrawText(string sText, int size, Vector2D v, Color color, TexpPos textPos = TexpPos.TEXT_CENTER)
         {
             Point[] pt = TransformPoint(new Vector2D[] { v });

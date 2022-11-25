@@ -78,7 +78,7 @@ namespace treeDiM.StackBuilder.Engine
                 for (int i = 0; i < noWidthInLength; ++i)
                 {
                     AddPosition(layer
-                        , offset + internalOffset + new Vector2D(boxWidth, boxWidth + i * boxLength)
+                        , offset + internalOffset + new Vector2D((i+1) * boxWidth, 0.0)
                         , HalfAxis.HAxis.AXIS_Y_P, HalfAxis.HAxis.AXIS_X_N);
                 }
             }

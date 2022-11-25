@@ -20,6 +20,7 @@ using treeDiM.Basics;
 using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Graphics.Controls;
 using treeDiM.StackBuilder.Desktop.Properties;
+using treeDiM.StackBuilder.Engine;
 #endregion
 
 namespace treeDiM.StackBuilder.Desktop
@@ -36,6 +37,8 @@ namespace treeDiM.StackBuilder.Desktop
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            SolutionLayered.SetSolver(new LayerSolver());
             InitializeInputFields();
             LoadSettings();
         }
@@ -124,6 +127,7 @@ namespace treeDiM.StackBuilder.Desktop
             }
             finally
             {
+                _log.Error(sbErrors.ToString());
                 Cursor.Current = Cursors.Arrow;
             }
         }
@@ -187,6 +191,7 @@ namespace treeDiM.StackBuilder.Desktop
                         };
                         palletProperties.ID.SetNameDesc(dcsbPallet.Name, dcsbPallet.Description);
 
+                        
                         listBoxPallets.Items.Add(new ItemBaseWrapper(palletProperties), true);
                     }
                 }

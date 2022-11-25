@@ -192,6 +192,9 @@ namespace treeDiM.StackBuilder.Desktop
         }
         private void RobotPreparationModified()
         {
+            textEditorControl.Text = string.Empty;
+            textEditorControl.Refresh();
+
             if (null == RobotPreparation)
                 return;
             try

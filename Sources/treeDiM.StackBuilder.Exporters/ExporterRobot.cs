@@ -157,6 +157,7 @@ namespace treeDiM.StackBuilder.Exporters
                 new ExporterXML(),
                 new ExporterCSV(),
                 new ExporterCSV_Angle(),
+                new ExporterCSV_Advanced(),
                 new ExporterCSV_ABB_France(),
                 new ExporterCSV_FMLogistic(),
                 new ExporterCSV_TechBSA()

@@ -18,7 +18,7 @@ namespace treeDiM.StackBuilder.Exporters
         #region Static members
         public static string FormatName => "csv (ABB France)";
         #endregion
-        #region Override RobotExporter
+        #region Override ExporterRobot
         public override string Name => FormatName;
         public override string Filter => "Comma Separated Values (*.csv) | *.csv";
         public override string Extension => "csv";

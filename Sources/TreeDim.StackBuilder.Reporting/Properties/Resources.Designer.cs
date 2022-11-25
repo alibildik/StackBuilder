@@ -394,7 +394,7 @@ namespace treeDiM.StackBuilder.Reporting.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Layers x Cases.
+        ///   Looks up a localized string similar to Cases x Layers.
         /// </summary>
         internal static string ID_RN_NOLAYERSBYNOCASES {
             get {

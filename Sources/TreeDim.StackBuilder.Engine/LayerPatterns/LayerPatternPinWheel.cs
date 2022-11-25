@@ -50,6 +50,7 @@ namespace treeDiM.StackBuilder.Engine.LayerPatterns
                         , HalfAxis.HAxis.AXIS_Y_N, HalfAxis.HAxis.AXIS_X_P
                         );
                 }
+            
             for (int i = 0; i < i1; ++i)
                 for (int j = 0; j < j1; ++j)
                     AddPosition(
@@ -62,8 +63,9 @@ namespace treeDiM.StackBuilder.Engine.LayerPatterns
                 for (int j = 0; j < j2; ++j)
                     AddPosition(
                         layer
-                        , new Vector2D()
+                        , new Vector2D(offsetX + wheelSize + i1 * boxLength + i * boxWidth, offsetY + j * boxLength)
                         , HalfAxis.HAxis.AXIS_Y_P, HalfAxis.HAxis.AXIS_X_N);
+            
         }
         public override bool GetLayerDimensions(ILayer2D layer, out double actualLength, out double actualWidth)
         {
@@ -79,6 +81,11 @@ namespace treeDiM.StackBuilder.Engine.LayerPatterns
 
             actualLength = wheelLength + i1 * boxLength + i2 * boxWidth;
             actualWidth = Math.Max(wheelLength, Math.Max(j1 * boxWidth, j2 * boxLength));
+
+            if (actualLength > palletLength)
+                throw new EngineException($"Pin wheel -> {actualLength} > {palletLength}");
+            if (actualWidth > palletWidth)
+                throw new EngineException($"Pin wheel -> {actualWidth} > {palletWidth}");
 
             return sizeLength > 0 && sizeWidth > 0;
         }
@@ -102,13 +109,16 @@ namespace treeDiM.StackBuilder.Engine.LayerPatterns
             for (int i = iTmpWidth; i >= 1; --i)
             { 
                 int iTmpLength = (int)Math.Floor((smallestDist - i * boxWidth) / boxLength);
-                if (iTmpLength * iTmpWidth >= sizeLength * sizeWidth)
+                if (iTmpLength * i >= sizeLength * sizeWidth)
                 {
-                    sizeLength = iTmpLength; sizeWidth = iTmpWidth;
+                    sizeLength = iTmpLength; sizeWidth = i;
                     wheelSize = sizeLength * boxLength + sizeWidth * boxWidth;
+
+                    if (wheelSize > smallestDist)
+                        throw new EngineException($"{wheelSize} > {smallestDist}");
                 }
             }
-
+            
             if (Math.Abs(palletLength - largestDist) < 1.0E-03)
             {
                 double rectLength = palletLength - wheelSize;

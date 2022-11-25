@@ -24,6 +24,7 @@ namespace treeDiM.StackBuilder.Exporters
         public override string Extension => "csv";
         public override string Filter => "Comma Separated Values (*.csv) |*.csv";
         public override bool UseCoordinateSelector => false;
+        public override bool UseAngleSelector => true;
         public override bool UseRobotPreparation => true;
         public override System.Drawing.Bitmap BrandLogo => Properties.Resources.FM_Logistic;
         public override int MaxLayerIndexExporter(AnalysisLayered analysis) => Math.Min(analysis.SolutionLay.LayerCount, 2);

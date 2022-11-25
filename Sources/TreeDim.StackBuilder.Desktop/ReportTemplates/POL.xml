@@ -132,10 +132,8 @@
   <str name="Spaces">Spaces</str>
   <str name="Layer Indexes">Layer Indexes</str>
   <str name="Number of cases per layer">Number of cases per layer</str>
-  <str name="Layers x Cases">Layers x Cases</str>
+  <str name="Cases x Layers">Cases x Layers</str>
   <str name="Layers">Layers</str>
   <str name="Layer Indexes">Layer Indexes</str>
   <str name="Number of cases per layer">Number of cases per layer</str>
-  <str name="Layers x Cases">Layers x Cases</str>
-  <str name="Layers">Layers</str>
 </strings>

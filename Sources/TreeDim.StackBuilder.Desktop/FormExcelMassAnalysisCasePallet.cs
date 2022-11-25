@@ -17,6 +17,7 @@ using treeDiM.StackBuilder.Graphics;
 using treeDiM.StackBuilder.Reporting;
 using treeDiM.StackBuilder.Engine;
 using treeDiM.StackBuilder.Desktop.Properties;
+using treeDiM.StackBuilder.Graphics.Controls;
 #endregion
 
 namespace treeDiM.StackBuilder.Desktop
@@ -129,6 +130,7 @@ namespace treeDiM.StackBuilder.Desktop
             var pallets = SelectedPallets(lbPallets);
             foreach (var palletProperties in pallets)
             {
+                _log.Info($"Pallet : {palletProperties.Name}");
                 int iOutputFieldCount = palletColStartIndex;
                 int iNoCols = 0;
                 // ### header : begin
@@ -232,8 +234,13 @@ namespace treeDiM.StackBuilder.Desktop
                         double height = (double)xlSheet.Range[colHeight + iRow, colHeight + iRow].Value;
 
                         double maxDimension = Math.Max(Math.Max(length, width), height);
-                        if (maxDimension < LargestDimensionMinimum) continue;
-
+                        if (maxDimension < LargestDimensionMinimum)
+                        {
+                            _log.Warn($"Ignoring row {iRow} -> ({length},{width},{height})");
+                            continue;
+                        }
+                        else
+                            _log.Info($"Processing row {iRow} -> ({length},{width},{height})");
                         // get weight
                         double? weight = null;
                         if (!string.IsNullOrEmpty(colWeight)
@@ -302,20 +309,39 @@ namespace treeDiM.StackBuilder.Desktop
                                 );
                         }
                     }
-                    catch (OutOfMemoryException ex) { sbErrors.Append($"{ex.Message}"); }
-                    catch (EngineException ex) { sbErrors.Append($"{ex.Message} (row={iRow})"); }
-                    catch (InvalidCastException /*ex*/) { sbErrors.Append($"Invalid cast exception (row={iRow})"); }
-                    catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException /*ex*/)
+                    catch (OutOfMemoryException ex)
                     {
+                        _log.Error($"{ex.Message} (row={iRow})");
+                        sbErrors.Append($"{ex.Message}"); 
+                    }
+                    catch (EngineException ex)
+                    {
+                        _log.Error($"{ex.Message} (row={iRow})");
+                        sbErrors.Append($"{ex.Message} (row={iRow})"); 
+                    }
+                    catch (InvalidCastException ex)
+                    {
+                        _log.Error( $"{ex.Message} (row={iRow})" );
+                        sbErrors.Append($"Invalid cast exception (row={iRow})"); 
+                    }
+                    catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException ex)
+                    {
+                        _log.Error($"{ex.Message}");
                         iOutputFieldCount = ExcelHelpers.ColumnLetterToColumnIndex(ColumnLetterOutputStart) - 1; ;
                         var countCel = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
                         countCel.Value = string.Format($"ERROR : Invalid input data!");
                     }
-                    catch (Exception ex) { sbErrors.Append($"{ex.Message} (row={iRow})"); }
+                    catch (Exception ex)
+                    {
+                        _log.Error( $"{ex.Message} (row={iRow})" );
+                        sbErrors.Append($"{ex.Message} (row={iRow})"); 
+                    }
                 } // loop row
                   // ### rows : end
                   // increment palletColStartIndex
                 palletColStartIndex += iNoCols;
+
+                _log.Info($"End pallet: {palletProperties.Name}");
             } // loop pallets
         }
         private void GenerateResult(
@@ -484,17 +510,44 @@ namespace treeDiM.StackBuilder.Desktop
         #region Event handlers
         private void OnGenerateImagesInFolderChanged(object sender, EventArgs e) => fsFolderImages.Enabled = chkbGenerateImageInFolder.Checked;
         private void OnGenerateReportsInFolderChanged(object sender, EventArgs e) => fsFolderReports.Enabled = chkbGenerateReportInFolder.Checked;
-        private void OnItemChecked(object sender, ItemCheckEventArgs e) => UpdateStatus(sender, null);
+        private void OnItemChecked(object sender, ItemCheckEventArgs e)
+        {
+            if (!AuthorizeCheck)
+                e.NewValue = e.CurrentValue; //check state change was not through authorized actions
+            UpdateStatus(sender, null);
+        }
+        private void OnLBPalletsMouseDown(object sender, MouseEventArgs e)
+        {
+            Point loc = lbPallets.PointToClient(Cursor.Position);
+            for (int i = 0; i < lbPallets.Items.Count; i++)
+            {
+                Rectangle rec = lbPallets.GetItemRectangle(i);
+                rec.Width = 16; //checkbox itself has a default width of about 16 pixels
+
+                if (rec.Contains(loc))
+                {
+                    AuthorizeCheck = true;
+                    bool newValue = !lbPallets.GetItemChecked(i);
+                    lbPallets.SetItemChecked(i, newValue);//check 
+                    AuthorizeCheck = false;
+                    return;
+                }
+            }
+        }
+        protected bool AuthorizeCheck { get; set; } = true;
         private void OnCheckAllPallets(object sender, EventArgs e) => CheckAll(sender, true);
         private void OnUncheckAllPallets(object sender, EventArgs e) => CheckAll(sender, false);
         #endregion
         #region Helpers
         private void CheckAll(object sender, bool bChecked)
         {
-            for(int i=0; i<lbPallets.Items.Count; ++i)
+            AuthorizeCheck = true;
+            for (int i=0; i<lbPallets.Items.Count; ++i)
                 lbPallets.SetItemChecked(i, bChecked);
+            AuthorizeCheck= false;
             UpdateStatus(sender, null);
         }
         #endregion
+
     }
 }

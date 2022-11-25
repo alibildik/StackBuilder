@@ -22,7 +22,7 @@ namespace treeDiM.StackBuilder.Engine
             countFrom = layers[0].Count;
 
             Vector2D dimContainerExtended = dimContainer;
-            double dimMax = Math.Max(dimBox.X, dimBox.Y);
+            double dimMax = Math.Min(dimBox.X, dimBox.Y);
             // dim increase
             if (0 == direction)
                 dimContainerExtended += new Vector2D(dimMax, 0.0);
@@ -198,7 +198,7 @@ namespace treeDiM.StackBuilder.Engine
                         catch (Exception ex)
                         {
                             string sSwapped = iSwapped == 1 ? "true" : "false";
-                            _log.ErrorFormat($"Pattern: {pattern.Name} Orient: {axisOrtho} Swapped: {sSwapped} Message: {ex.Message}");
+                            _log.Error($"Pattern: {pattern.Name} - Orient: {axisOrtho} - Swapped: {sSwapped} - Message: {ex.Message}");
                         }
                     }
                 }
@@ -284,11 +284,7 @@ namespace treeDiM.StackBuilder.Engine
                             }
                             catch (Exception ex)
                             {
-                                _log.ErrorFormat("Pattern: {0} Orient: {1} Swapped: {2} Message: {3}"
-                                    , pattern.Name
-                                    , axisOrtho.ToString()
-                                    , iSwapped == 1 ? "True" : "False"
-                                    , ex.Message);
+                                _log.Error($"Pattern: {pattern.Name} - Orient: {axisOrtho} - Swapped: {iSwapped == 1} - Message: {ex.Message}");
                             }
                         }
                     }
@@ -314,10 +310,7 @@ namespace treeDiM.StackBuilder.Engine
                         }
                         catch (Exception ex)
                         {
-                            _log.ErrorFormat("Pattern: {0} Swapped: {1} Message: {2}"
-                                , pattern.Name
-                                , iSwapped == 1 ? "True" : "False"
-                                , ex.Message);
+                            _log.ErrorFormat($"Pattern: {pattern.Name} - Swapped: {iSwapped==1} - Message: {ex.Message}");
                         }
                     }
                 }
@@ -564,7 +557,7 @@ namespace treeDiM.StackBuilder.Engine
                         }
                         catch (Exception ex)
                         {
-                            _log.Error($"Pattern: {pattern.Name} Orient: {axisOrtho} Swapped: {iSwapped == 1} Message: {ex.Message}");
+                            _log.Error($"Pattern: {pattern.Name} - Orient: {axisOrtho} - Swapped: {iSwapped == 1} - Message: {ex.Message}");
                         }
                     }
                 }

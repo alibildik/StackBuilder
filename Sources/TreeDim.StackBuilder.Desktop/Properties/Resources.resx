@@ -738,6 +738,9 @@ Continue?</value>
   <data name="ID_OUTERDIMENSIONS" xml:space="preserve">
     <value>Outer dimensions ({0})</value>
   </data>
+  <data name="ID_OVERHANGSUGGESTION" xml:space="preserve">
+    <value>If you could increase overhang to ({0}, {1}) the number of items per layer would increase from {2} to {3}.</value>
+  </data>
   <data name="ID_PACK" xml:space="preserve">
     <value>Pack</value>
   </data>

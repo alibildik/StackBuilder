@@ -229,7 +229,7 @@
     <value>Number of interlayers</value>
   </data>
   <data name="ID_RN_NOLAYERSBYNOCASES" xml:space="preserve">
-    <value>Layers x Cases</value>
+    <value>Cases x Layers</value>
   </data>
   <data name="ID_RN_OVERALLDIMENSIONS" xml:space="preserve">
     <value>Overall dimensions</value>

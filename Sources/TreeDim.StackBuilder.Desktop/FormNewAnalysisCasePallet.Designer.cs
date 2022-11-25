@@ -28,13 +28,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNewAnalysisCasePallet));
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.uCtrlLayerList = new treeDiM.StackBuilder.Graphics.UCtrlLayerList();
+            this.checkBoxBestLayersOnly = new System.Windows.Forms.CheckBox();
+            this.bnEditLayerRight = new System.Windows.Forms.Button();
+            this.bnEditLayer = new System.Windows.Forms.Button();
+            this.uCtrlLayerListEdited = new treeDiM.StackBuilder.Graphics.UCtrlLayerList();
             this.cbPallets = new treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered();
             this.cbCases = new treeDiM.StackBuilder.Graphics.Controls.CCtrlComboFiltered();
             this.lbBox = new System.Windows.Forms.Label();
             this.uCtrlOverhang = new treeDiM.Basics.UCtrlDualDouble();
             this.lbPallet = new System.Windows.Forms.Label();
-            this.uCtrlLayerList = new treeDiM.StackBuilder.Graphics.UCtrlLayerList();
-            this.checkBoxBestLayersOnly = new System.Windows.Forms.CheckBox();
             this.bnBestCombination = new System.Windows.Forms.Button();
             this.uCtrlCaseOrientation = new treeDiM.StackBuilder.Graphics.UCtrlCaseOrientation();
             this.tabCtrlConstraints = new System.Windows.Forms.TabControl();
@@ -46,23 +50,73 @@
             this.tabPageSpaces = new System.Windows.Forms.TabPage();
             this.uCtrlOptSpace = new treeDiM.Basics.UCtrlOptDouble();
             this.lbSelect = new System.Windows.Forms.Label();
-            this.uCtrlLayerListEdited = new treeDiM.StackBuilder.Graphics.UCtrlLayerList();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.bnEditLayerRight = new System.Windows.Forms.Button();
-            this.bnEditLayer = new System.Windows.Forms.Button();
-            this.tabCtrlConstraints.SuspendLayout();
-            this.tabPageStopCriterions.SuspendLayout();
-            this.tabPageOverhang.SuspendLayout();
-            this.tabPageSpaces.SuspendLayout();
+            this.lbSuggestion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tabCtrlConstraints.SuspendLayout();
+            this.tabPageStopCriterions.SuspendLayout();
+            this.tabPageOverhang.SuspendLayout();
+            this.tabPageSpaces.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbDescription
             // 
             resources.ApplyResources(this.tbDescription, "tbDescription");
+            // 
+            // splitContainer1
+            // 
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.uCtrlLayerList);
+            this.splitContainer1.Panel1.Controls.Add(this.checkBoxBestLayersOnly);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.bnEditLayerRight);
+            this.splitContainer1.Panel2.Controls.Add(this.bnEditLayer);
+            this.splitContainer1.Panel2.Controls.Add(this.uCtrlLayerListEdited);
+            // 
+            // uCtrlLayerList
+            // 
+            resources.ApplyResources(this.uCtrlLayerList, "uCtrlLayerList");
+            this.uCtrlLayerList.ButtonSizes = new System.Drawing.Size(150, 150);
+            this.uCtrlLayerList.Name = "uCtrlLayerList";
+            this.uCtrlLayerList.Show3D = true;
+            this.uCtrlLayerList.SingleSelection = false;
+            // 
+            // checkBoxBestLayersOnly
+            // 
+            resources.ApplyResources(this.checkBoxBestLayersOnly, "checkBoxBestLayersOnly");
+            this.checkBoxBestLayersOnly.Name = "checkBoxBestLayersOnly";
+            this.checkBoxBestLayersOnly.UseVisualStyleBackColor = true;
+            this.checkBoxBestLayersOnly.CheckedChanged += new System.EventHandler(this.OnInputChanged);
+            // 
+            // bnEditLayerRight
+            // 
+            resources.ApplyResources(this.bnEditLayerRight, "bnEditLayerRight");
+            this.bnEditLayerRight.Name = "bnEditLayerRight";
+            this.bnEditLayerRight.UseVisualStyleBackColor = true;
+            this.bnEditLayerRight.Click += new System.EventHandler(this.OnEditLayerRight);
+            // 
+            // bnEditLayer
+            // 
+            resources.ApplyResources(this.bnEditLayer, "bnEditLayer");
+            this.bnEditLayer.Name = "bnEditLayer";
+            this.bnEditLayer.UseVisualStyleBackColor = true;
+            this.bnEditLayer.Click += new System.EventHandler(this.OnEditLayer);
+            // 
+            // uCtrlLayerListEdited
+            // 
+            resources.ApplyResources(this.uCtrlLayerListEdited, "uCtrlLayerListEdited");
+            this.uCtrlLayerListEdited.ButtonSizes = new System.Drawing.Size(150, 150);
+            this.uCtrlLayerListEdited.Name = "uCtrlLayerListEdited";
+            this.uCtrlLayerListEdited.Show3D = true;
+            this.uCtrlLayerListEdited.SingleSelection = false;
             // 
             // cbPallets
             // 
@@ -99,21 +153,6 @@
             // 
             resources.ApplyResources(this.lbPallet, "lbPallet");
             this.lbPallet.Name = "lbPallet";
-            // 
-            // uCtrlLayerList
-            // 
-            resources.ApplyResources(this.uCtrlLayerList, "uCtrlLayerList");
-            this.uCtrlLayerList.ButtonSizes = new System.Drawing.Size(150, 150);
-            this.uCtrlLayerList.Name = "uCtrlLayerList";
-            this.uCtrlLayerList.Show3D = true;
-            this.uCtrlLayerList.SingleSelection = false;
-            // 
-            // checkBoxBestLayersOnly
-            // 
-            resources.ApplyResources(this.checkBoxBestLayersOnly, "checkBoxBestLayersOnly");
-            this.checkBoxBestLayersOnly.Name = "checkBoxBestLayersOnly";
-            this.checkBoxBestLayersOnly.UseVisualStyleBackColor = true;
-            this.checkBoxBestLayersOnly.CheckedChanged += new System.EventHandler(this.OnInputChanged);
             // 
             // bnBestCombination
             // 
@@ -188,6 +227,7 @@
             // 
             // tabPageOverhang
             // 
+            this.tabPageOverhang.Controls.Add(this.lbSuggestion);
             this.tabPageOverhang.Controls.Add(this.uCtrlOverhang);
             resources.ApplyResources(this.tabPageOverhang, "tabPageOverhang");
             this.tabPageOverhang.Name = "tabPageOverhang";
@@ -217,43 +257,10 @@
             resources.ApplyResources(this.lbSelect, "lbSelect");
             this.lbSelect.Name = "lbSelect";
             // 
-            // uCtrlLayerListEdited
+            // lbSuggestion
             // 
-            resources.ApplyResources(this.uCtrlLayerListEdited, "uCtrlLayerListEdited");
-            this.uCtrlLayerListEdited.ButtonSizes = new System.Drawing.Size(150, 150);
-            this.uCtrlLayerListEdited.Name = "uCtrlLayerListEdited";
-            this.uCtrlLayerListEdited.Show3D = true;
-            this.uCtrlLayerListEdited.SingleSelection = false;
-            // 
-            // splitContainer1
-            // 
-            resources.ApplyResources(this.splitContainer1, "splitContainer1");
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.uCtrlLayerList);
-            this.splitContainer1.Panel1.Controls.Add(this.checkBoxBestLayersOnly);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.bnEditLayerRight);
-            this.splitContainer1.Panel2.Controls.Add(this.bnEditLayer);
-            this.splitContainer1.Panel2.Controls.Add(this.uCtrlLayerListEdited);
-            // 
-            // bnEditLayerRight
-            // 
-            resources.ApplyResources(this.bnEditLayerRight, "bnEditLayerRight");
-            this.bnEditLayerRight.Name = "bnEditLayerRight";
-            this.bnEditLayerRight.UseVisualStyleBackColor = true;
-            this.bnEditLayerRight.Click += new System.EventHandler(this.OnEditLayerRight);
-            // 
-            // bnEditLayer
-            // 
-            resources.ApplyResources(this.bnEditLayer, "bnEditLayer");
-            this.bnEditLayer.Name = "bnEditLayer";
-            this.bnEditLayer.UseVisualStyleBackColor = true;
-            this.bnEditLayer.Click += new System.EventHandler(this.OnEditLayer);
+            resources.ApplyResources(this.lbSuggestion, "lbSuggestion");
+            this.lbSuggestion.Name = "lbSuggestion";
             // 
             // FormNewAnalysisCasePallet
             // 
@@ -283,15 +290,16 @@
             this.Controls.SetChildIndex(this.tabCtrlConstraints, 0);
             this.Controls.SetChildIndex(this.lbSelect, 0);
             this.Controls.SetChildIndex(this.splitContainer1, 0);
-            this.tabCtrlConstraints.ResumeLayout(false);
-            this.tabPageStopCriterions.ResumeLayout(false);
-            this.tabPageOverhang.ResumeLayout(false);
-            this.tabPageSpaces.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tabCtrlConstraints.ResumeLayout(false);
+            this.tabPageStopCriterions.ResumeLayout(false);
+            this.tabPageOverhang.ResumeLayout(false);
+            this.tabPageOverhang.PerformLayout();
+            this.tabPageSpaces.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,5 +329,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button bnEditLayer;
         private System.Windows.Forms.Button bnEditLayerRight;
+        private System.Windows.Forms.Label lbSuggestion;
     }
 }

@@ -1929,6 +1929,15 @@ namespace treeDiM.StackBuilder.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If you could increase overhang to ({0}, {1}) the number of items per layer would increase from {2} to {3}..
+        /// </summary>
+        internal static string ID_OVERHANGSUGGESTION {
+            get {
+                return ResourceManager.GetString("ID_OVERHANGSUGGESTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pack.
         /// </summary>
         internal static string ID_PACK {

@@ -126,7 +126,9 @@ namespace treeDiM.StackBuilder.Graphics
                     }
                     // draw rotation arrows
                     if (ArrowRotate)
-                        Graphics.DrawArcArrow(ptCenter, 75, 10, Color.Red, out _rotateRectangle);
+                        Graphics.DrawArcArrow(ptCenter, 75, 10, Color.Red, out _rotate90Rect);
+
+                    Graphics.DrawArcArrow180(ptCenter, 37, 10, Color.Green, out _rotate180Rect);
 
                     // draw position
                     Graphics.DrawText($"({bp.Position.X:0.##}, {bp.Position.Y:0.##}, {bp.Position.Z:0.##}), {HalfAxis.ToString(bp.DirectionLength)}, {HalfAxis.ToString(bp.DirectionWidth)}", 16);
@@ -148,7 +150,7 @@ namespace treeDiM.StackBuilder.Graphics
                 return;
             }
             if (e.KeyCode == Keys.R)
-                Rotate();
+                Rotate90();
         }
         private void OnKeyUp(object sender, KeyEventArgs e)
         {
@@ -165,9 +167,14 @@ namespace treeDiM.StackBuilder.Graphics
                     return;
                 }
             }
-            if (null != _rotateRectangle && _rotateRectangle.Contains(e.Location))
+            if (null != _rotate90Rect && _rotate90Rect.Contains(e.Location))
             {
-                Rotate();
+                Rotate90();
+                Moving = true;
+            }
+            if (null != _rotate180Rect && _rotate180Rect.Contains(e.Location))
+            {
+                Rotate180();
                 Moving = true;
             }
 
@@ -255,7 +262,7 @@ namespace treeDiM.StackBuilder.Graphics
             timerMove.Stop();
             EnableDisableAddRemoveButtons(); 
         }
-        private void Rotate()
+        private void Rotate90()
         {
             if (ArrowRotate)
             {
@@ -263,6 +270,14 @@ namespace treeDiM.StackBuilder.Graphics
                 Layer.Positions[SelectedIndex] = pos;
             }
             UpdateArrows();
+            EnableDisableAddRemoveButtons();
+            Invalidate();
+        }
+        private void Rotate180()
+        {
+            BoxPosition pos = Layer.Positions[SelectedIndex].RotateZ180(Dimensions);
+            Layer.Positions[SelectedIndex] = pos;
+
             EnableDisableAddRemoveButtons();
             Invalidate();
         }
@@ -354,7 +369,8 @@ namespace treeDiM.StackBuilder.Graphics
         private bool Moving { get; set; } = false;
         private Dictionary<int, Rectangle> ArrowButtons { get; set; } = new Dictionary<int, Rectangle>();
         public bool AllBoxesInside { get; private set; } = true;
-        private Rectangle _rotateRectangle;
+        private Rectangle _rotate90Rect;
+        private Rectangle _rotate180Rect;
         private static readonly ILog _log = LogManager.GetLogger(typeof(Graphics2DLayerEditor));
         #endregion
     }

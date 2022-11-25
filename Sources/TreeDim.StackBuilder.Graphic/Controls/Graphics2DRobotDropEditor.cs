@@ -130,7 +130,14 @@ namespace treeDiM.StackBuilder.Graphics
         }
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
-            OnStateMouseDown(ClickToIndex(e.Location));
+            if (e.Button == MouseButtons.Left)
+            {
+                OnStateMouseDown(ClickToIndex(e.Location));
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip context = new ContextMenuStrip();
+            }
             Invalidate();
         }
         private void OnMouseUp(object sender, MouseEventArgs e)

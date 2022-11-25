@@ -505,7 +505,7 @@
         <tr>
           <td class="style2" cellspan="1">
             <b>
-              <xsl:value-of select="$loc/str[@name='Layers x Cases']"/>
+              <xsl:value-of select="$loc/str[@name='Cases x Layers']"/>
             </b>
           </td>
           <td class="style3" cellspan="1">
@@ -683,7 +683,7 @@
         <tr>
           <td class="style2" colspan="1">
             <b>
-              <xsl:value-of select="$loc/str[@name='Layers x Cases']"/>
+              <xsl:value-of select="$loc/str[@name='Cases x Layers']"/>
             </b>
           </td>
           <td class="style3" colspan="3">
