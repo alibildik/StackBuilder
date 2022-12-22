@@ -61,8 +61,9 @@ internal class JJAConfig
             switch (ConfigIndex)
             {
                 case 1: return Dimensions[0];
-                case 2: return Dimensions[2];
-                default: return Dimensions[0];
+                case 2: return Math.Max(Dimensions[1], Dimensions[2]);
+                case 3: return Math.Max(Dimensions[0], Dimensions[2]);
+                default: throw new InvalidOperationException($"Invalid Config index: {ConfigIndex}");
             }
         }
     }
@@ -73,8 +74,9 @@ internal class JJAConfig
             switch (ConfigIndex)
             {
                 case 1: return Dimensions[1];
-                case 2: return Dimensions[1];
-                default: return Dimensions[2];
+                case 2: return Math.Min(Dimensions[1], Dimensions[2]);
+                case 3: return Math.Min(Dimensions[0], Dimensions[2]);
+                default: throw new InvalidOperationException($"Invalid Config index: {ConfigIndex}");
             }
         }
     }
@@ -87,7 +89,8 @@ internal class JJAConfig
             {
                 case 1: return Dimensions[2];
                 case 2: return Dimensions[0];
-                default: return Dimensions[1];
+                case 3: return Dimensions[1];
+                default: throw new InvalidOperationException($"Invalid Config index: {ConfigIndex}");
             }
         }
     }

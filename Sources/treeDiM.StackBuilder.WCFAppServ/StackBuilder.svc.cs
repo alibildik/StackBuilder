@@ -15,6 +15,7 @@ using treeDiM.StackBuilder.Engine;
 using treeDiM.StackBuilder.Graphics;
 using System.ServiceModel;
 using System.ComponentModel;
+using System.Web.UI.WebControls;
 #endregion
 
 namespace treeDiM.StackBuilder.WCFAppServ
@@ -968,8 +969,72 @@ namespace treeDiM.StackBuilder.WCFAppServ
         }
         public DCSBLoadResultContainer[] JJA_GetMultiContainerResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBContainer[] containers)
         {
+            var lErrors = new List<string>();
             DCSBLoadResultContainer[] loadResultsContainers = new DCSBLoadResultContainer[3 * containers.Length];
-            return loadResultsContainers;
+
+            for (int iContainer = 0; iContainer < containers.Length; ++iContainer)
+            {
+                var dcsbContainer = containers[iContainer];
+                // build container
+                var containerProperties = new TruckProperties(null, dcsbContainer.Dimensions.M0, dcsbContainer.Dimensions.M1, dcsbContainer.Dimensions.M2)
+                {
+                    Color = Color.FromArgb(dcsbContainer.Color),
+                    AdmissibleLoadWeight = dcsbContainer.MaxLoadWeight.HasValue ? dcsbContainer.MaxLoadWeight.Value : 0.0
+                };
+                // build constraint set
+                // constraint set
+                var constraintSet = new ConstraintSetCaseTruck(containerProperties) { };
+                constraintSet.SetAllowedOrientations(new bool[] { false, false, true });
+                if (!constraintSet.Valid)
+                {
+                    lErrors.Add($"Invalid constraint set");
+                    continue;
+                }
+
+                for (int iConfig = 0; iConfig < 3; ++iConfig)
+                {
+                    var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, noItemPerCase, iConfig + 1);
+                    // build box
+                    var boxProperties = new BoxProperties(null, jjaConfig.Length, jjaConfig.Width, jjaConfig.Height)
+                    {
+                        InsideLength = 0.0,
+                        InsideWidth = 0.0,
+                        InsideHeight = 0.0,
+                        TapeColor = Color.Beige,
+                        TapeWidth = new OptDouble(true, 50.0)
+                    };
+                    boxProperties.SetWeight(weight);
+                    boxProperties.SetNetWeight(new OptDouble(false, 0.0));
+                    boxProperties.SetAllColors(Enumerable.Repeat(Color.Chocolate, 6).ToArray());
+
+                    if (StackBuilderProcessor.GetBestSolution(
+                        boxProperties, containerProperties,
+                        constraintSet, false,
+                        new ImageDefinition() { ShowImage = false },
+                        ref casePerLayerCount, ref layerCount,
+                        ref caseCount, ref interlayerCount,
+                        ref weightTotal, ref weightLoad, ref weightNet,
+                        ref bbLoad, ref bbGlob,
+                        ref areaEfficiency, ref volumeEfficiency, ref weightEfficiency,
+                        ref palletMapPhrase,
+                        ref imageBytes, ref errors
+                        )
+                        )
+                    {
+
+                    }
+
+
+
+
+
+
+                }
+
+
+
+            }
+                return loadResultsContainers;
         }
         public DCSBLoadResultPallet[] JJA_GetMultiPalletResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBPalletWHeight[] pallets)
         {
