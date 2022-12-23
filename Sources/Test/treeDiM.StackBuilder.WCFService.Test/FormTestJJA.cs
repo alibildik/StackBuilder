@@ -767,9 +767,112 @@ namespace treeDiM.StackBuilder.WCFService.Test
         }
         private void FillGridContainer2()
         {
+            try
+            {
+                gridContainers.Rows.Clear();
+                // *** viewColumnHeader
+                SourceGrid.Cells.Views.ColumnHeader viewColumnHeader = new SourceGrid.Cells.Views.ColumnHeader()
+                {
+                    Background = new DevAge.Drawing.VisualElements.ColumnHeader()
+                    {
+                        BackColor = Color.LightGray,
+                        Border = DevAge.Drawing.RectangleBorder.NoBorder
+                    },
+                    ForeColor = Color.Black,
+                    Font = new Font("Arial", 10, FontStyle.Regular)
+                };
+                viewColumnHeader.ElementSort.SortStyle = DevAge.Drawing.HeaderSortStyle.None;
+                // *** viewColumnHeader
+                // *** viewNormal
+                var viewNormal = new CellBackColorAlternate(Color.LightBlue, Color.White);
+                // ***
+                // set first row
+                gridContainers.BorderStyle = BorderStyle.FixedSingle;
+                gridContainers.ColumnsCount = 2;
+                gridContainers.FixedRows = 1;
 
+                // *** header : begin
+                int iCol = 0;
+                gridContainers.Rows.Insert(0);
+                gridContainers[0, iCol] = new SourceGrid.Cells.ColumnHeader("")
+                {
+                    AutomaticSortEnabled = false,
+                    View = viewColumnHeader
+                };
+                // *** header : end
+
+                // build pallet array
+                var dcsbContainers = new DCSBContainer[Containers.Count];
+                for (int i = 0; i < Containers.Count; i++)
+                {
+                    var container = Containers[i];
+                    dcsbContainers[i] = new DCSBContainer()
+                    {
+                        Name = container.name,
+                        Color = container.color,
+                        Dimensions = new DCSBDim3D() { M0 = container.dimensions[0], M1 = container.dimensions[1], M2 = container.dimensions[2] },
+                        MaxLoadWeight = container.maxLoadWeight,
+                    };
+                }
+                int iIndex = 0;
+                // *** proceed with each crate
+                for (int iCase = 0; iCase < Cases.Count; ++iCase)
+                {
+                    var crate = Cases[iCase];
+
+                    using (StackBuilderClient client = new StackBuilderClient())
+                    {
+                        var loadResults = client.JJA_GetMultiContainerResults(
+                            new DCSBDim3D()
+                            {
+                                M0 = crate.dimensions[0],
+                                M1 = crate.dimensions[1],
+                                M2 = crate.dimensions[2]
+                            }, crate.weight, crate.pcb, dcsbContainers);
+
+                        foreach (var loadResult in loadResults)
+                        {
+                            if (null == loadResult)
+                                continue;
+                            if (loadResult.Status.Status != DCSBStatusEnu.Success)
+                                continue;
+
+                            int configId = (int)loadResult.ConfigId;
+
+                            // name
+                            gridContainers.Rows.Insert(++iIndex);
+                            gridContainers[iIndex, 0] = new SourceGrid.Cells.RowHeader($"{crate.name} on {loadResult.Container.Name} ({configId})")
+                            {
+                                View = viewColumnHeader,
+                                ColumnSpan = 2,
+                                Tag = $"{crate.name} on {loadResult.Container.Name} ({configId})"
+                            };
+                            // config id
+                            gridContainers.Rows.Insert(++iIndex);
+                            gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Config Id") { View = viewNormal };
+                            gridContainers[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.ConfigId) { View = viewNormal };
+                            // number of case per layer
+                            gridContainers.Rows.Insert(++iIndex);
+                            gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of case per layer") { View = viewNormal };
+                            gridContainers[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.NumberPerLayer) { View = viewNormal };
+                            // no of layers
+                            gridContainers.Rows.Insert(++iIndex);
+                            gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of layers") { View = viewNormal };
+                            gridContainers[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.NumberOfLayers) { View = viewNormal };
+                            // 
+                        }
+                    }
+                }
+                gridContainers.AutoSizeCells();
+                gridContainers.Columns.StretchToFit();
+                gridContainers.AutoStretchColumnsToFitWidth = true;
+                gridContainers.Invalidate();
+            }
+            catch (Exception ex)
+            {
+                _log.Warn(ex.ToString());
+            }
         }
-
         public Image ByteArrayToImage(byte[] byteArrayIn)
         {
             Image img = null;

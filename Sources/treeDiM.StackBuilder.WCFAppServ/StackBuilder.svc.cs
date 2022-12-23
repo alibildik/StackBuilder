@@ -990,7 +990,6 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     lErrors.Add($"Invalid constraint set");
                     continue;
                 }
-
                 for (int iConfig = 0; iConfig < 3; ++iConfig)
                 {
                     var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, noItemPerCase, iConfig + 1);
@@ -1007,34 +1006,92 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     boxProperties.SetNetWeight(new OptDouble(false, 0.0));
                     boxProperties.SetAllColors(Enumerable.Repeat(Color.Chocolate, 6).ToArray());
 
-                    if (StackBuilderProcessor.GetBestSolution(
-                        boxProperties, containerProperties,
-                        constraintSet, false,
-                        new ImageDefinition() { ShowImage = false },
-                        ref casePerLayerCount, ref layerCount,
-                        ref caseCount, ref interlayerCount,
-                        ref weightTotal, ref weightLoad, ref weightNet,
-                        ref bbLoad, ref bbGlob,
-                        ref areaEfficiency, ref volumeEfficiency, ref weightEfficiency,
-                        ref palletMapPhrase,
-                        ref imageBytes, ref errors
-                        )
+                    // --- checking validity
+                    DCSBStatusEnu statusValidity = DCSBStatusEnu.Success;
+                    string errorMessage = string.Empty;
+                    if (boxProperties.Height >= containerProperties.Height)
+                    {
+                        statusValidity = DCSBStatusEnu.FailureHeightExceeded;
+                        errorMessage = $"Container height exceeded: {boxProperties.Height} > {containerProperties.Height}";
+                    }
+                    if (
+                        (boxProperties.Length > containerProperties.Length || boxProperties.Width > containerProperties.Width)
+                        && (boxProperties.Length > containerProperties.Width || boxProperties.Width > containerProperties.Length)
                         )
                     {
-
+                        statusValidity = DCSBStatusEnu.FailureLengthOrWidthExceeded;
+                        errorMessage = $"Length and/or width exceeded";
                     }
+                    if (dcsbContainer.MaxLoadWeight.HasValue && boxProperties.Weight > dcsbContainer.MaxLoadWeight.Value)
+                    {
+                        statusValidity = DCSBStatusEnu.FailureWeightExceeded;
+                        errorMessage = $"Maximum load weight exceeded: {boxProperties.Weight} > {dcsbContainer.MaxLoadWeight.Value}";
+                    }
+                    if (DCSBStatusEnu.Success != statusValidity)
+                    {
+                        loadResultsContainers[3 * iContainer + iConfig] = new DCSBLoadResultContainer()
+                        {
+                            ConfigId = (DCSBConfigId)(iConfig + 1),
+                            Status = new DCSBStatus() { Status = DCSBStatusEnu.FailureHeightExceeded, Error = errorMessage }
+                        };
+                    }
+                    else // we are valid : compute
+                    {
+                        int casePerLayerCount = 0, layerCount = 0;
+                        int caseCount = 0; int interlayerCount = 0;
+                        double weightTotal = 0, weightLoad = 0;
+                        double? weightNet = null;
+                        var bbLoad = Vector3D.Zero;
+                        var bbGlob = Vector3D.Zero;
+                        double areaEfficiency = 0, volumeEfficiency = 0;
+                        double? weightEfficiency = null;
+                        string palletMapPhrase = string.Empty;
+                        byte[] imageBytes = null;
+                        string[] errors = null;
 
-
-
-
-
-
+                        if (StackBuilderProcessor.GetBestSolution(
+                            boxProperties, containerProperties,
+                            constraintSet, false,
+                            ImageDefinition.NoImage,
+                            ref casePerLayerCount, ref layerCount,
+                            ref caseCount, ref interlayerCount,
+                            ref weightTotal, ref weightLoad, ref weightNet,
+                            ref bbLoad, ref bbGlob,
+                            ref areaEfficiency, ref volumeEfficiency, ref weightEfficiency,
+                            ref palletMapPhrase,
+                            ref imageBytes, ref errors)
+                            )
+                        {
+                            foreach (string err in errors)
+                                lErrors.Add(err);
+                            loadResultsContainers[3 * iContainer + iConfig] = new DCSBLoadResultContainer()
+                            {
+                                Status = new DCSBStatus() { Status = DCSBStatusEnu.Success },
+                                ConfigId = (DCSBConfigId)(iConfig + 1),
+                                Container = dcsbContainer,
+                                NumberOfLayers = layerCount,
+                                NumberPerLayer = casePerLayerCount,
+                                TotalWeight = weightTotal,
+                                LoadWeight = weightLoad,
+                                IsoBasePercentage = areaEfficiency,
+                                IsoVolPercentage = volumeEfficiency,
+                                MaxLoadValidity = weightLoad < dcsbContainer.MaxLoadWeight,
+                                UpalItem = casePerLayerCount * noItemPerCase,
+                                UpalCase = caseCount
+                            };
+                        }
+                        else
+                        {
+                            loadResultsContainers[3 * iContainer + iConfig] = new DCSBLoadResultContainer()
+                            {
+                                ConfigId = (DCSBConfigId)(iConfig + 1),
+                                Status = new DCSBStatus() { Status = DCSBStatusEnu.FailureHeightExceeded, Error = string.Join("|", errors.ToArray()) }
+                            };
+                        }
+                    }
                 }
-
-
-
             }
-                return loadResultsContainers;
+            return loadResultsContainers;
         }
         public DCSBLoadResultPallet[] JJA_GetMultiPalletResults(DCSBDim3D dimensions, double weight, int noItemPerCase, DCSBPalletWHeight[] pallets)
         {
