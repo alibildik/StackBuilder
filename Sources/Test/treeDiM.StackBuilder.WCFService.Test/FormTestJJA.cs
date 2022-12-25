@@ -716,11 +716,11 @@ namespace treeDiM.StackBuilder.WCFService.Test
                                         gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.NumberOfLayers) { View = viewNormal };
                                         // no of case/pallet
                                         ++iIndex;
-                                        if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of case per pallet") { View = viewNormal }; }
+                                        if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of case per container") { View = viewNormal }; }
                                         gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.UpalCase) { View = viewNormal };
                                         // no of items/pallet
                                         ++iIndex;
-                                        if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of items per pallet") { View = viewNormal }; }
+                                        if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of items per container") { View = viewNormal }; }
                                         gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.UpalItem) { View = viewNormal };
                                         // iso base
                                         ++iIndex;
@@ -728,7 +728,7 @@ namespace treeDiM.StackBuilder.WCFService.Test
                                         gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.IsoBasePercentage.ToString("0.##")) { View = viewNormal };
                                         // iso pallet
                                         ++iIndex;
-                                        if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Pallet volume efficiency (%)") { View = viewNormal }; }
+                                        if (firstSuccessfull) { gridContainers.Rows.Insert(iIndex); gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Container volume efficiency (%)") { View = viewNormal }; }
                                         gridContainers[iIndex, configId + 1] = new SourceGrid.Cells.Cell(loadResult.Result.IsoVolPercentage.ToString("0.##")) { View = viewNormal };
                                         // load weight
                                         ++iIndex;
@@ -859,7 +859,30 @@ namespace treeDiM.StackBuilder.WCFService.Test
                             gridContainers.Rows.Insert(++iIndex);
                             gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of layers") { View = viewNormal };
                             gridContainers[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.NumberOfLayers) { View = viewNormal };
-                            // 
+                            // no of items/pallet
+                            gridContainers.Rows.Insert(++iIndex);
+                            gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Number of items per container") { View = viewNormal }; 
+                            gridContainers[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.UpalItem) { View = viewNormal };
+                            // iso base
+                            gridContainers.Rows.Insert(++iIndex);
+                            gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Area efficiency (1st layer)") { View = viewNormal }; 
+                            gridContainers[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.IsoBasePercentage.ToString("0.##")) { View = viewNormal };
+                            // iso pallet
+                            gridContainers.Rows.Insert(++iIndex);
+                            gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Container volume efficiency (%)") { View = viewNormal }; 
+                            gridContainers[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.IsoVolPercentage.ToString("0.##")) { View = viewNormal };
+                            // load weight
+                            gridContainers.Rows.Insert(++iIndex);
+                            gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Load weight (kg)") { View = viewNormal };
+                            gridContainers[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.LoadWeight) { View = viewNormal };
+                            // total weight
+                            gridContainers.Rows.Insert(++iIndex);
+                            gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Total weight (kg)") { View = viewNormal }; 
+                            gridContainers[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.TotalWeight) { View = viewNormal };
+                            // OK / NOK
+                            gridContainers.Rows.Insert(++iIndex);
+                            gridContainers[iIndex, 0] = new SourceGrid.Cells.Cell($"Max load validity") { View = viewNormal }; 
+                            gridContainers[iIndex, 1] = new SourceGrid.Cells.Cell(loadResult.MaxLoadValidity ? "OK" : "NOK") { View = viewNormal };
                         }
                     }
                 }

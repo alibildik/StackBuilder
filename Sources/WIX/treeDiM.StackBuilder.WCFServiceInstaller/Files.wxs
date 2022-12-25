@@ -39,14 +39,11 @@
         <File Source="$(var.BinDir)Sharp3D.Boxologic.dll"/>
       </Component>
       <Component Id="Microsoft.WindowsAzure" Guid="{A81001AA-7F67-4AE0-B7A6-8621527F1B44}">
-        <File Source="$(var.BinDir)Microsoft.Azure.KeyVault.Core.dll"/>
         <File Source="$(var.BinDir)Microsoft.Data.Edm.dll"/>
         <File Source="$(var.BinDir)Microsoft.Data.OData.dll"/>
         <File Source="$(var.BinDir)Microsoft.Data.Services.Client.dll"/>
   	    <File Source="$(var.BinDir)Microsoft.Rest.ClientRuntime.Azure.dll"/>
 		<File Source="$(var.BinDir)Microsoft.Rest.ClientRuntime.dll"/>  
-		<File Source="$(var.BinDir)Microsoft.WindowsAzure.Diagnostics.dll"/>
-        <File Source="$(var.BinDir)Microsoft.WindowsAzure.Storage.dll"/>
         <File Source="$(var.BinDir)MonAgentListener.dll"/>
         <File Source="$(var.BinDir)Newtonsoft.Json.dll"/>
 		<File Source="$(var.BinDir)System.Buffers.dll"/>  
