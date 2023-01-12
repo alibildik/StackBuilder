@@ -20,7 +20,9 @@ namespace treeDiM.StackBuilder.Graphics
         }
         #endregion
         #region Drawing
-        public void Draw(Graphics3D graphics, IEnumerable<Box> boxes, bool selected, bool showOuterDimensions, string text)
+        public void Draw(Graphics3D graphics, IEnumerable<Box> boxes, bool selected,
+            bool[] showInnerDimensions, bool[] showOuterDimensions, bool[] showRemainingDimensions,
+            string text)
         {
             graphics.BackgroundColor = selected ? Color.LightBlue : Color.White;
             graphics.CameraPosition = Graphics3D.Corner_0;
@@ -35,24 +37,15 @@ namespace treeDiM.StackBuilder.Graphics
                 bbox.Extend(b.BBox);
             }
             crate.DrawEnd(graphics);
-            if (showOuterDimensions)
-            {
+            if (showInnerDimensions[0] || showInnerDimensions[1] || showInnerDimensions[2])
                 graphics.AddDimensions(
-                    new DimensionCube(Vector3D.Zero, bbox.Length, bbox.Width, bbox.Height, Color.Red, false)
-                    {
-                        ShowArrow = new bool[] { true, false, false } 
-                    }
-                    );
+                    new DimensionCube(bbox, Color.Red, false) { ShowArrow = showInnerDimensions } );
+            if (showRemainingDimensions[0] || showRemainingDimensions[1] || showRemainingDimensions[2])
                 graphics.AddDimensions(
-                    new DimensionCube(new Vector3D(bbox.Length, 0.0, 0.0), Dimensions.X-bbox.Length, bbox.Width, bbox.Height, Color.Red, false)
-                    {
-                        ShowArrow = new bool[] { true, false, false }
-                    }
-                    );
+                    new DimensionCube(new Vector3D(bbox.Length, 0.0, 0.0), Dimensions.X-bbox.Length, bbox.Width, bbox.Height, Color.Red, false) { ShowArrow = showRemainingDimensions } );
+            if (showOuterDimensions[0] || showOuterDimensions[1] || showOuterDimensions[2])
                 graphics.AddDimensions(
-                    new DimensionCube(Vector3D.Zero, Dimensions.X, Dimensions.Y, Dimensions.Z, Color.Black, true)
-                    );
-            }
+                    new DimensionCube(Vector3D.Zero, Dimensions.X, Dimensions.Y, Dimensions.Z, Color.Black, true) { ShowArrow = showOuterDimensions } );
             graphics.Flush();
             // add marker ?
             ThumbnailMarker.Annotate(graphics.Graphics, graphics.Size, text);

@@ -9,6 +9,7 @@ using Sharp3D.Math.Core;
 using log4net;
 
 using treeDiM.StackBuilder.Basics;
+using System.Linq;
 #endregion
 
 namespace treeDiM.StackBuilder.Graphics
@@ -496,14 +497,10 @@ namespace treeDiM.StackBuilder.Graphics
             // images inst
             if (ListImageInst.Count > 0)
             {
-                // --- sort image inst
-                List<ImageInst> listImageInstSorted = new List<ImageInst>();
-                foreach (Box b in boxesImage1)
-                {
-                    var imageInst = ListImageInst.Find(i => i.PickId == b.PickId);
-                    listImageInstSorted.Add(new ImageInst(b.PickId, imageInst.Content, b.Dimensions, b.BoxPosition));
-                }
-                
+                // sort image inst
+                List<ImageInst> listImageInstSorted = (from Box b in boxesImage1
+                                                       let imageInst = ListImageInst.Find(i => i.PickId == b.PickId)
+                                                       select new ImageInst(b.PickId, imageInst.Content, b.Dimensions, b.BoxPosition)).ToList();
                 // draw image inst
                 foreach (ImageInst im in listImageInstSorted)
                     Draw(im);

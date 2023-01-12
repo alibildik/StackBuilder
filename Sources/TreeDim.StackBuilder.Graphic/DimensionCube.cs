@@ -54,9 +54,9 @@ namespace treeDiM.StackBuilder.Graphics
         {
             ArrowPoints(graphics, out int[] arrow0, out int[] arrow1, out int[] arrow2);
 
-            DrawArrow(arrow0, graphics);
-            DrawArrow(arrow1, graphics);
-            DrawArrow(arrow2, graphics);
+            if (ShowArrow[0])   DrawArrow(arrow0, graphics);
+            if (ShowArrow[1])   DrawArrow(arrow1, graphics);
+            if (ShowArrow[2])   DrawArrow(arrow2, graphics);
         }
 
         public Vector3D[] DrawingPoints(Graphics3D graphics)
@@ -112,54 +112,54 @@ namespace treeDiM.StackBuilder.Graphics
             {
                 if (viewDir.X < 0.0 && viewDir.Y >= 0.0)
                 {
-                    arrow0 = new int[] { 0, 4, 1, 5 };
-                    arrow1 = new int[] { 0, 1, 3, 2 };
-                    arrow2 = new int[] { 1, 2, 0, 3 };
+                    arrow2 = new int[] { 0, 4, 1, 5 };
+                    arrow0 = new int[] { 0, 1, 3, 2 };
+                    arrow1 = new int[] { 1, 2, 0, 3 };
                 }
                 else if (viewDir.X < 0.0 && viewDir.Y < 0.0)
                 {
-                    arrow0 = new int[] { 1, 5, 2, 6 };
+                    arrow2 = new int[] { 1, 5, 2, 6 };
                     arrow1 = new int[] { 1, 2, 0, 3 };
-                    arrow2 = new int[] { 2, 3, 1, 0 };
+                    arrow0 = new int[] { 2, 3, 1, 0 };
                 }
                 else if (viewDir.X >= 0.0 && viewDir.Y < 0.0)
                 {
-                    arrow0 = new int[] { 2, 6, 3, 7 };
-                    arrow1 = new int[] { 2, 3, 1, 0 };
-                    arrow2 = new int[] { 3, 0, 2, 1 };
+                    arrow2 = new int[] { 2, 6, 3, 7 };
+                    arrow0 = new int[] { 2, 3, 1, 0 };
+                    arrow1 = new int[] { 3, 0, 2, 1 };
                 }
                 else if (viewDir.X >= 0.0 && viewDir.Y >= 0.0)
                 {
-                    arrow0 = new int[] { 3, 7, 0, 4 };
+                    arrow2 = new int[] { 3, 7, 0, 4 };
                     arrow1 = new int[] { 3, 0, 2, 1 };
-                    arrow2 = new int[] { 0, 1, 3, 2 };
+                    arrow0 = new int[] { 0, 1, 3, 2 };
                 }
             }
             else
             {
                 if (viewDir.X < 0.0 && viewDir.Y >= 0.0)
                 {
-                    arrow0 = new int[] { 2, 6, 3, 7 };
-                    arrow1 = new int[] { 7, 6, 4, 5 };
-                    arrow2 = new int[] { 4, 7, 5, 6 };
+                    arrow2 = new int[] { 2, 6, 3, 7 };
+                    arrow0 = new int[] { 7, 6, 4, 5 };
+                    arrow1 = new int[] { 4, 7, 5, 6 };
                 }
                 else if (viewDir.X < 0.0 && viewDir.Y < 0.0)
                 {
-                    arrow0 = new int[] { 3, 7, 0, 4 };
-                    arrow1 = new int[] { 4, 7, 5, 6 };
-                    arrow2 = new int[] { 4, 5, 7, 6 };
+                    arrow2 = new int[] { 3, 7, 0, 4 };
+                    arrow0 = new int[] { 4, 7, 5, 6 };
+                    arrow1 = new int[] { 4, 5, 7, 6 };
                 }
                 else if (viewDir.X >= 0.0 && viewDir.Y < 0.0)
                 {
-                    arrow0 = new int[] { 4, 0, 5, 1 };
-                    arrow1 = new int[] { 4, 5, 7, 6 };
-                    arrow2 = new int[] { 6, 5, 7, 4 };
+                    arrow2 = new int[] { 4, 0, 5, 1 };
+                    arrow0 = new int[] { 4, 5, 7, 6 };
+                    arrow1 = new int[] { 6, 5, 7, 4 };
                 }
                 else if (viewDir.X >= 0.0 && viewDir.Y >= 0.0)
                 {
-                    arrow0 = new int[] { 1, 5, 2, 6 };
+                    arrow2 = new int[] { 1, 5, 2, 6 };
                     arrow1 = new int[] { 5, 6, 4, 7 };
-                    arrow2 = new int[] { 7, 6, 4, 5 };
+                    arrow0 = new int[] { 7, 6, 4, 5 };
                 }
             }
         }
@@ -187,9 +187,9 @@ namespace treeDiM.StackBuilder.Graphics
         #endregion
 
         #region Data members
-        private double[] Dimensions = new double[3];
+        private readonly double[] Dimensions = new double[3];
         private double OffsetPerc { get; set; } = 0.2;
-        private Vector3D[] Points = new Vector3D[8];
+        private readonly Vector3D[] Points = new Vector3D[8];
         #endregion
     }
 }
