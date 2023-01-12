@@ -269,7 +269,8 @@ namespace treeDiM.StackBuilder.GUIExtension
                     packProperties, palletProperties,
                     interlayers, null, null, null,
                     BuildConstraintSet(),
-                    analysisSel.SolutionLay.LayerEncaps);
+                    analysisSel.SolutionLay.LayerEncaps,
+                    new List<ConveyorSetting>());
                 FormBrowseSolution form = new FormBrowseSolution(_doc, analysis as AnalysisLayered);
                 if (DialogResult.OK == form.ShowDialog()) { }
             }

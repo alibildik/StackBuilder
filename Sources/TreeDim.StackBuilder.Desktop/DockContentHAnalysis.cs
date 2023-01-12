@@ -334,7 +334,7 @@ namespace treeDiM.StackBuilder.Desktop
         #endregion
 
         #region Data members
-        private static ILog _log = LogManager.GetLogger(typeof(DockContentHAnalysis));
+        private static readonly ILog _log = LogManager.GetLogger(typeof(DockContentHAnalysis));
         #endregion
     }
 }

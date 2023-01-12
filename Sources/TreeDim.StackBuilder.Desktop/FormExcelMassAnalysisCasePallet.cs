@@ -266,6 +266,7 @@ namespace treeDiM.StackBuilder.Desktop
                             , ref loadLength, ref loadWidth, ref loadHeight
                             , ref stackEfficiency
                             , ref stackImagePath);
+
                         // insert count
                         var countCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
                         countCell.Value = stackCount;
@@ -333,7 +334,7 @@ namespace treeDiM.StackBuilder.Desktop
                     }
                     catch (Exception ex)
                     {
-                        _log.Error( $"{ex.Message} (row={iRow})" );
+                        _log.Error( $"{ex} (row={iRow})" );
                         sbErrors.Append($"{ex.Message} (row={iRow})"); 
                     }
                 } // loop row

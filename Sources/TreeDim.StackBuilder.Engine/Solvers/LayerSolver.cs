@@ -18,16 +18,17 @@ namespace treeDiM.StackBuilder.Engine
         {
             // get current number
             var layers = BuildLayers(dimBox, Vector3D.Zero, dimContainer, offsetZ, constraintSet, true);
-            if (layers.Count < 1) return false;
+            if (layers.Count < 1)
+                return false;
             countFrom = layers[0].Count;
 
             Vector2D dimContainerExtended = dimContainer;
-            double dimMax = Math.Min(dimBox.X, dimBox.Y);
+            double dimMin = Math.Min(dimBox.X, dimBox.Y);
             // dim increase
             if (0 == direction)
-                dimContainerExtended += new Vector2D(dimMax, 0.0);
+                dimContainerExtended += new Vector2D(dimMin, 0.0);
             else if (1 == direction)
-                dimContainerExtended += new Vector2D(0.0, dimMax);
+                dimContainerExtended += new Vector2D(0.0, dimMin);
             else if (-1 == direction)
             {
                 int countFrom1 = 0, countTo1 = 0;
@@ -73,6 +74,9 @@ namespace treeDiM.StackBuilder.Engine
                 ++iter;
             }
             while (iter < iterMax);
+            if (countFrom >= countTo)
+            { 
+            }
             return countTo > countFrom;
         }
         public bool FindMinDimZIncreaseForGain(Vector3D dimBox, Vector2D dimContainer, double offsetZ, ConstraintSetAbstract constraintSet

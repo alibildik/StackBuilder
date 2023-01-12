@@ -294,7 +294,7 @@
       <Version>15.0.4797.1004</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Web.WebView2">
-      <Version>1.0.1418.22</Version>
+      <Version>1.0.1462.37</Version>
     </PackageReference>
     <PackageReference Include="NuGet.Build.Tasks.Pack">
       <Version>6.4.0</Version>
