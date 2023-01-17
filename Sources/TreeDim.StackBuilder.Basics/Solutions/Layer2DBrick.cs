@@ -45,7 +45,7 @@ namespace treeDiM.StackBuilder.Basics
                 return bb;
             }
         }
-        public double AreaEfficiency => 100.0 * Count * DimBox.X * DimBox.Y / (DimContainer.X * DimContainer.Y);
+        public double AreaEfficiency => 100.0 * Count * BoxLength * BoxWidth / (DimContainer.X * DimContainer.Y); 
         #endregion
         #region Layer2DBrick specific
         public HalfAxis.HAxis AxisOrtho { get; private set; } = HalfAxis.HAxis.AXIS_Z_P;
