@@ -130,8 +130,7 @@
         <xs:element minOccurs="0" name="weight" type="xs:double" />
         <xs:element minOccurs="0" name="noItemPerCase" type="xs:int" />
         <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="container" nillable="true" type="q34:DCSBContainer" />
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="configId" type="q35:DCSBConfigId" />
-        <xs:element minOccurs="0" name="orientation" type="xs:int" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="orientation" type="q35:DCSBOrientation" />
         <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="imageFormat" nillable="true" type="q36:DCCompFormat" />
       </xs:sequence>
     </xs:complexType>
@@ -150,8 +149,7 @@
         <xs:element minOccurs="0" name="weight" type="xs:double" />
         <xs:element minOccurs="0" name="noItemPerCase" type="xs:int" />
         <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="pallet" nillable="true" type="q39:DCSBPalletWHeight" />
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="configId" type="q40:DCSBConfigId" />
-        <xs:element minOccurs="0" name="orientation" type="xs:int" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="orientation" type="q40:DCSBOrientation" />
         <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ" minOccurs="0" name="imageFormat" nillable="true" type="q41:DCCompFormat" />
       </xs:sequence>
     </xs:complexType>

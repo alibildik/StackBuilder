@@ -1501,9 +1501,6 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
         private double AreaLeftRightField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBConfigId ConfigIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientationName ConveyFaceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1523,6 +1520,9 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double LengthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientation OrientationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PcbField;
@@ -1587,19 +1587,6 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
                 if ((this.AreaLeftRightField.Equals(value) != true)) {
                     this.AreaLeftRightField = value;
                     this.RaisePropertyChanged("AreaLeftRight");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBConfigId ConfigId {
-            get {
-                return this.ConfigIdField;
-            }
-            set {
-                if ((this.ConfigIdField.Equals(value) != true)) {
-                    this.ConfigIdField = value;
-                    this.RaisePropertyChanged("ConfigId");
                 }
             }
         }
@@ -1696,6 +1683,19 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientation Orientation {
+            get {
+                return this.OrientationField;
+            }
+            set {
+                if ((this.OrientationField.Equals(value) != true)) {
+                    this.OrientationField = value;
+                    this.RaisePropertyChanged("Orientation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Pcb {
             get {
                 return this.PcbField;
@@ -1784,20 +1784,6 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DCSBConfigId", Namespace="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ")]
-    public enum DCSBConfigId : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Config1 = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Config2 = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Config3 = 3,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DCSBOrientationName", Namespace="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ")]
     public enum DCSBOrientationName : int {
         
@@ -1837,6 +1823,20 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         NonConveyableWeight = 2,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DCSBOrientation", Namespace="http://schemas.datacontract.org/2004/07/treeDiM.StackBuilder.WCFAppServ")]
+    public enum DCSBOrientation : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        FrontBack = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        LeftRight = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        BottomTop = 2,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -1896,9 +1896,6 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBConfigId ConfigIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double IsoBasePercentageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1915,6 +1912,9 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int NumberPerLayerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientation OrientationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBStatus StatusField;
@@ -1935,19 +1935,6 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBConfigId ConfigId {
-            get {
-                return this.ConfigIdField;
-            }
-            set {
-                if ((this.ConfigIdField.Equals(value) != true)) {
-                    this.ConfigIdField = value;
-                    this.RaisePropertyChanged("ConfigId");
-                }
             }
         }
         
@@ -2025,6 +2012,19 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
                 if ((this.NumberPerLayerField.Equals(value) != true)) {
                     this.NumberPerLayerField = value;
                     this.RaisePropertyChanged("NumberPerLayer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientation Orientation {
+            get {
+                return this.OrientationField;
+            }
+            set {
+                if ((this.OrientationField.Equals(value) != true)) {
+                    this.OrientationField = value;
+                    this.RaisePropertyChanged("Orientation");
                 }
             }
         }
@@ -3237,16 +3237,16 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
         System.Threading.Tasks.Task<treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultPallet[]> JJA_GetMultiPalletResultsAsync(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBPalletWHeight[] pallets);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSingleContainer", ReplyAction="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSingleContainerResponse")]
-        treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBContainer container, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBConfigId configId, int orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat);
+        treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBContainer container, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientation orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSingleContainer", ReplyAction="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSingleContainerResponse")]
-        System.Threading.Tasks.Task<treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSingleContainer> JJA_GetLoadResultSingleContainerAsync(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBContainer container, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBConfigId configId, int orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat);
+        System.Threading.Tasks.Task<treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSingleContainer> JJA_GetLoadResultSingleContainerAsync(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBContainer container, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientation orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSinglePallet", ReplyAction="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSinglePalletResponse")]
-        treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBPalletWHeight pallet, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBConfigId configId, int orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat);
+        treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBPalletWHeight pallet, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientation orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSinglePallet", ReplyAction="http://tempuri.org/IStackBuilder/JJA_GetLoadResultSinglePalletResponse")]
-        System.Threading.Tasks.Task<treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSinglePallet> JJA_GetLoadResultSinglePalletAsync(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBPalletWHeight pallet, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBConfigId configId, int orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat);
+        System.Threading.Tasks.Task<treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSinglePallet> JJA_GetLoadResultSinglePalletAsync(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBPalletWHeight pallet, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientation orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStackBuilder/SB_GetHSolutionBestCasePallet", ReplyAction="http://tempuri.org/IStackBuilder/SB_GetHSolutionBestCasePalletResponse")]
         treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBHSolution SB_GetHSolutionBestCasePallet(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBContentItem[] sbConstentItems, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBPallet sbPallet, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBHConstraintSet sbConstraintSet, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat expectedFormat);
@@ -3344,20 +3344,20 @@ namespace treeDiM.StackBuilder.WCFService.Test.SB_SR {
             return base.Channel.JJA_GetMultiPalletResultsAsync(dimensions, weight, noItemPerCase, pallets);
         }
         
-        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBContainer container, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBConfigId configId, int orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat) {
-            return base.Channel.JJA_GetLoadResultSingleContainer(dimensions, weight, noItemPerCase, container, configId, orientation, imageFormat);
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBContainer container, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientation orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat) {
+            return base.Channel.JJA_GetLoadResultSingleContainer(dimensions, weight, noItemPerCase, container, orientation, imageFormat);
         }
         
-        public System.Threading.Tasks.Task<treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSingleContainer> JJA_GetLoadResultSingleContainerAsync(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBContainer container, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBConfigId configId, int orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat) {
-            return base.Channel.JJA_GetLoadResultSingleContainerAsync(dimensions, weight, noItemPerCase, container, configId, orientation, imageFormat);
+        public System.Threading.Tasks.Task<treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSingleContainer> JJA_GetLoadResultSingleContainerAsync(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBContainer container, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientation orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat) {
+            return base.Channel.JJA_GetLoadResultSingleContainerAsync(dimensions, weight, noItemPerCase, container, orientation, imageFormat);
         }
         
-        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBPalletWHeight pallet, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBConfigId configId, int orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat) {
-            return base.Channel.JJA_GetLoadResultSinglePallet(dimensions, weight, noItemPerCase, pallet, configId, orientation, imageFormat);
+        public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBPalletWHeight pallet, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientation orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat) {
+            return base.Channel.JJA_GetLoadResultSinglePallet(dimensions, weight, noItemPerCase, pallet, orientation, imageFormat);
         }
         
-        public System.Threading.Tasks.Task<treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSinglePallet> JJA_GetLoadResultSinglePalletAsync(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBPalletWHeight pallet, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBConfigId configId, int orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat) {
-            return base.Channel.JJA_GetLoadResultSinglePalletAsync(dimensions, weight, noItemPerCase, pallet, configId, orientation, imageFormat);
+        public System.Threading.Tasks.Task<treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBLoadResultSinglePallet> JJA_GetLoadResultSinglePalletAsync(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBDim3D dimensions, double weight, int noItemPerCase, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBPalletWHeight pallet, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBOrientation orientation, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat imageFormat) {
+            return base.Channel.JJA_GetLoadResultSinglePalletAsync(dimensions, weight, noItemPerCase, pallet, orientation, imageFormat);
         }
         
         public treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBHSolution SB_GetHSolutionBestCasePallet(treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBContentItem[] sbConstentItems, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBPallet sbPallet, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCSBHConstraintSet sbConstraintSet, treeDiM.StackBuilder.WCFService.Test.SB_SR.DCCompFormat expectedFormat) {

@@ -5,14 +5,14 @@ using System.Runtime.Serialization;
 namespace treeDiM.StackBuilder.WCFAppServ
 {
     [DataContract]
-    public enum DCSBConfigId
+    public enum DCSBOrientation
     {
         [EnumMember]
-        Config1 = 1,
+        FrontBack = 0,
         [EnumMember]
-        Config2 = 2,
+        LeftRight = 1,
         [EnumMember]
-        Config3 = 3
+        BottomTop = 2
     }
     [DataContract]
     public enum DCSBStabilityEnum
@@ -76,7 +76,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
         [DataMember]
         public int Pcb { get; set; }
         [DataMember]
-        public DCSBConfigId ConfigId { get; set; }
+        public DCSBOrientation Orientation { get; set; }
         [DataMember]
         public DCSBDim3D Dim3D { get; set; }
         [DataMember]

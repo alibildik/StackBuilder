@@ -938,13 +938,12 @@ namespace treeDiM.StackBuilder.WCFAppServ
         public DCSBCaseConfig[] JJA_GetCaseConfigs(DCSBDim3D dimensions, double weight, int pcb, DCCompFormat format)
         {
             DCSBCaseConfig[] caseConfigs = new DCSBCaseConfig[3];
-
-            for (int i = 0; i < 3; ++i)
+            for (int iAxis = 0; iAxis < 3; ++iAxis)
             {
-                var jjaconfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, pcb, i + 1);
-                caseConfigs[i] = new DCSBCaseConfig
+                var jjaconfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, pcb, JJAConfig.Axis(iAxis));
+                caseConfigs[iAxis] = new DCSBCaseConfig
                 {
-                    ConfigId = (DCSBConfigId)i + 1,
+                    Orientation = (DCSBOrientation)iAxis,
                     Length = jjaconfig.Length,
                     Width = jjaconfig.Width,
                     Height = jjaconfig.Height,
@@ -960,7 +959,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     ConveyFace = (DCSBOrientationName)jjaconfig.ConveyFace,
                     Image = new DCCompFileOutput()
                     {
-                        Bytes = jjaconfig.GetImageBytes(format.Size.CX, format.Size.CY, format.FontSizeRatio, format.ShowCotations),
+                        Bytes = jjaconfig.GetImageBytes(iAxis, format.Size.CX, format.Size.CY, format.FontSizeRatio, format.ShowCotations),
                         Format = format
                     }
                 };
@@ -981,20 +980,10 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     Color = Color.FromArgb(dcsbContainer.Color),
                     AdmissibleLoadWeight = dcsbContainer.MaxLoadWeight.HasValue ? dcsbContainer.MaxLoadWeight.Value : 0.0
                 };
-                // build constraint set
-                // constraint set
-                var constraintSet = new ConstraintSetCaseTruck(containerProperties) { };
-                constraintSet.SetAllowedOrientations(new bool[] { false, false, true });
-                if (!constraintSet.Valid)
+                for (int iOrientation = 0; iOrientation < 3; ++iOrientation)
                 {
-                    lErrors.Add($"Invalid constraint set");
-                    continue;
-                }
-                for (int iConfig = 0; iConfig < 3; ++iConfig)
-                {
-                    var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, noItemPerCase, iConfig + 1);
                     // build box
-                    var boxProperties = new BoxProperties(null, jjaConfig.Length, jjaConfig.Width, jjaConfig.Height)
+                    var boxProperties = new BoxProperties(null, dimensions.M0, dimensions.M1, dimensions.M2)
                     {
                         InsideLength = 0.0,
                         InsideWidth = 0.0,
@@ -1005,6 +994,15 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     boxProperties.SetWeight(weight);
                     boxProperties.SetNetWeight(new OptDouble(false, 0.0));
                     boxProperties.SetAllColors(Enumerable.Repeat(Color.Chocolate, 6).ToArray());
+
+                    // constraint set
+                    var constraintSet = new ConstraintSetCaseTruck(containerProperties) { };
+                    constraintSet.SetAllowedOrientations(new bool[] { iOrientation == 0, iOrientation == 1, iOrientation == 2 });
+                    if (!constraintSet.Valid)
+                    {
+                        lErrors.Add($"Invalid constraint set");
+                        continue;
+                    }
 
                     // --- checking validity
                     DCSBStatusEnu statusValidity = DCSBStatusEnu.Success;
@@ -1029,9 +1027,9 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     }
                     if (DCSBStatusEnu.Success != statusValidity)
                     {
-                        loadResultsContainers[3 * iContainer + iConfig] = new DCSBLoadResultContainer()
+                        loadResultsContainers[3 * iContainer + iOrientation] = new DCSBLoadResultContainer()
                         {
-                            ConfigId = (DCSBConfigId)(iConfig + 1),
+                            Orientation = (DCSBOrientation)iOrientation,
                             Status = new DCSBStatus() { Status = DCSBStatusEnu.FailureHeightExceeded, Error = errorMessage }
                         };
                     }
@@ -1064,10 +1062,10 @@ namespace treeDiM.StackBuilder.WCFAppServ
                         {
                             foreach (string err in errors)
                                 lErrors.Add(err);
-                            loadResultsContainers[3 * iContainer + iConfig] = new DCSBLoadResultContainer()
+                            loadResultsContainers[3 * iContainer + iOrientation] = new DCSBLoadResultContainer()
                             {
                                 Status = new DCSBStatus() { Status = DCSBStatusEnu.Success },
-                                ConfigId = (DCSBConfigId)(iConfig + 1),
+                                Orientation = (DCSBOrientation)iOrientation,
                                 Container = dcsbContainer,
                                 NumberOfLayers = layerCount,
                                 NumberPerLayer = casePerLayerCount,
@@ -1082,9 +1080,9 @@ namespace treeDiM.StackBuilder.WCFAppServ
                         }
                         else
                         {
-                            loadResultsContainers[3 * iContainer + iConfig] = new DCSBLoadResultContainer()
+                            loadResultsContainers[3 * iContainer + iOrientation] = new DCSBLoadResultContainer()
                             {
-                                ConfigId = (DCSBConfigId)(iConfig + 1),
+                                Orientation = (DCSBOrientation)iOrientation,
                                 Status = new DCSBStatus() { Status = DCSBStatusEnu.FailureHeightExceeded, Error = string.Join("|", errors.ToArray()) }
                             };
                         }
@@ -1108,22 +1106,11 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     Weight = dcsbPallet.Weight,
                     Color = Color.FromArgb(dcsbPallet.Color)
                 };
-                // build constraint set
-                ConstraintSetCasePallet constraintSet = new ConstraintSetCasePallet()
-                {
-                    Overhang = Vector2D.Zero,
-                    OptMaxWeight = new OptDouble(false, dcsbPallet.MaxPalletLoad),
-                    OptMaxNumber = OptInt.Zero
-                };
-                constraintSet.SetMaxHeight(new OptDouble() { Activated = true, Value = dcsbPallet.MaxPalletHeight });
-                constraintSet.SetAllowedOrientations(new bool[] { false, false, true });
-                if (!constraintSet.Valid) throw new Exception("Invalid constraint set");
 
-                for (int iConfig = 0; iConfig < 3; ++iConfig)
+                for (int iOrientation = 0; iOrientation < 3; ++iOrientation)
                 {
-                    var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, noItemPerCase, iConfig + 1);
                     // build box
-                    var boxProperties = new BoxProperties(null, jjaConfig.Length, jjaConfig.Width, jjaConfig.Height)
+                    var boxProperties = new BoxProperties(null, dimensions.M0, dimensions.M1, dimensions.M2)
                     {
                         InsideLength = 0.0,
                         InsideWidth = 0.0,
@@ -1135,6 +1122,17 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     boxProperties.SetNetWeight(new OptDouble(false, 0.0));
                     boxProperties.SetAllColors(Enumerable.Repeat(Color.Chocolate, 6).ToArray());
 
+                    // build constraint set
+                    ConstraintSetCasePallet constraintSet = new ConstraintSetCasePallet()
+                    {
+                        Overhang = Vector2D.Zero,
+                        OptMaxWeight = new OptDouble(false, dcsbPallet.MaxPalletLoad),
+                        OptMaxNumber = OptInt.Zero
+                    };
+                    constraintSet.SetMaxHeight(new OptDouble() { Activated = true, Value = dcsbPallet.MaxPalletHeight });
+                    constraintSet.SetAllowedOrientations(new bool[] { iOrientation == 0, iOrientation == 1, iOrientation == 2 });
+
+                if (!constraintSet.Valid) throw new Exception("Invalid constraint set");
                     int casePerLayerCount = 0, layerCount = 0, caseCount = 0, interlayerCount = 0;
                     double weightTotal = 0.0, weightLoad = 0.0;
                     double areaEfficiency = 0.0, volumeEfficiency = 0.0;
@@ -1160,10 +1158,10 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     {
                         foreach (string err in errors)
                             lErrors.Add(err);
-                        loadResultsPallets[3 * iPallet + iConfig] = new DCSBLoadResultPallet()
+                        loadResultsPallets[3 * iPallet + iOrientation] = new DCSBLoadResultPallet()
                         {
                             Status = new DCSBStatus() { Status = DCSBStatusEnu.Success },
-                            ConfigId = (DCSBConfigId)(iConfig + 1),
+                            Orientation = (DCSBOrientation)iOrientation,
                             Pallet = dcsbPallet,
                             PalletMapPhrase = palletMapPhrase,
                             NumberOfLayers = layerCount,
@@ -1178,9 +1176,9 @@ namespace treeDiM.StackBuilder.WCFAppServ
                         };
                     }
                     else
-                        loadResultsPallets[3 * iPallet + iConfig] = new DCSBLoadResultPallet()
+                        loadResultsPallets[3 * iPallet + iOrientation] = new DCSBLoadResultPallet()
                         {
-                            ConfigId = (DCSBConfigId)(iConfig + 1),
+                            Orientation = (DCSBOrientation)iOrientation,
                             Status = new DCSBStatus() { Status = DCSBStatusEnu.FailureHeightExceeded, Error = string.Join("|", errors.ToArray()) }
                         };
                 }
@@ -1188,14 +1186,13 @@ namespace treeDiM.StackBuilder.WCFAppServ
             return loadResultsPallets;
         }
         public DCSBLoadResultSingleContainer JJA_GetLoadResultSingleContainer(DCSBDim3D dimensions, double weight, int pcb
-            , DCSBContainer container, DCSBConfigId configId, int orientation
+            , DCSBContainer container, DCSBOrientation orientation
             , DCCompFormat expectedFormat)
         {
-            var lErrors = new List<string>();
-            var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, pcb, (int)configId);
+            //var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, pcb, JJAConfig.Axis((int)orientation));
 
             // build boxProperties
-            var boxProperties = new BoxProperties(null, jjaConfig.Length, jjaConfig.Width, jjaConfig.Height)
+            var boxProperties = new BoxProperties(null, dimensions.M0, dimensions.M1, dimensions.M2)
             {
                 InsideLength = 0.0,
                 InsideWidth = 0.0,
@@ -1251,7 +1248,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
 
             // constraint set
             var constraintSet = new ConstraintSetCaseTruck(containerProperties) { };
-            constraintSet.SetAllowedOrientations(new bool[] { 0 == orientation, 1 == orientation, 2 == orientation });
+            constraintSet.SetAllowedOrientations(new bool[] { DCSBOrientation.FrontBack == orientation, DCSBOrientation.LeftRight == orientation, DCSBOrientation.BottomTop == orientation });
 
             int casePerLayerCount = 0, layerCount = 0, caseCount = 0, interlayerCount = 0;
             double weightTotal = 0.0, weightLoad = 0.0, volumeEfficiency = 0.0;
@@ -1292,7 +1289,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     },
                     Result = new DCSBLoadResultContainer()
                     {
-                        ConfigId = configId,
+                        Orientation = orientation,
                         Container = container,
                         NumberOfLayers = layerCount,
                         NumberPerLayer = casePerLayerCount,
@@ -1333,14 +1330,11 @@ namespace treeDiM.StackBuilder.WCFAppServ
         }
         public DCSBLoadResultSinglePallet JJA_GetLoadResultSinglePallet(
             DCSBDim3D dimensions, double weight, int pcb
-            , DCSBPalletWHeight sbPallet, DCSBConfigId configId, int orientation
+            , DCSBPalletWHeight sbPallet, DCSBOrientation orientation
             , DCCompFormat expectedFormat)
         {
-            var lErrors = new List<string>();
-            var jjaConfig = new JJAConfig(new double[] { dimensions.M0, dimensions.M1, dimensions.M2 }, weight, pcb, (int)configId);
-
             // build boxProperties
-            var boxProperties = new BoxProperties(null, jjaConfig.Length, jjaConfig.Width, jjaConfig.Height)
+            var boxProperties = new BoxProperties(null, dimensions.M0, dimensions.M1, dimensions.M2)
             {
                 InsideLength = 0.0,
                 InsideWidth = 0.0,
@@ -1371,17 +1365,17 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 OptMaxNumber = OptInt.Zero
             };
             constraintSet.SetMaxHeight(new OptDouble(true, sbPallet.MaxPalletHeight));
-            constraintSet.SetAllowedOrientations(new bool[] { 0 == orientation, 1 == orientation, 2 == orientation });
+            constraintSet.SetAllowedOrientations(new bool[] { DCSBOrientation.FrontBack == orientation, DCSBOrientation.LeftRight == orientation, DCSBOrientation.BottomTop == orientation });
             if (!constraintSet.Valid) throw new Exception("Invalid constraint set");
             double boxLength, boxWidth, boxHeight;
             switch (orientation)
             {
-                case 0:
+                case DCSBOrientation.FrontBack:
                     boxLength = Math.Max(boxProperties.Width, boxProperties.Height);
                     boxWidth = Math.Min(boxProperties.Width, boxProperties.Height);
                     boxHeight = boxProperties.Length;
                     break;
-                case 1:
+                case DCSBOrientation.LeftRight:
                     boxLength = Math.Max(boxProperties.Length, boxProperties.Height);
                     boxWidth = Math.Min(boxProperties.Length, boxProperties.Height);
                     boxHeight = boxProperties.Width;
@@ -1463,7 +1457,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                 ref imageBytes, ref errors))
             {
                 // build suggestions
-                var dimBox = new Vector3D(jjaConfig.Length, jjaConfig.Width, jjaConfig.Height);
+                var dimBox = new Vector3D(dimensions.M0, dimensions.M1, dimensions.M2);
                 var dimContainer = new Vector2D(palletProperties.Length + 2.0 * constraintSet.Overhang.X, palletProperties.Width + 2.0 * constraintSet.Overhang.Y);
                 var layerSolver = new LayerSolver();
                 int perLayerCountFrom = 0, perLayerCountTo = 0;
@@ -1577,7 +1571,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
                     },
                     Result = new DCSBLoadResultPallet()
                     {
-                        ConfigId = configId,
+                        Orientation = (DCSBOrientation)orientation,
                         Pallet = sbPallet,
                         PalletMapPhrase = palletMapPhrase,
                         NumberOfLayers = layerCount,

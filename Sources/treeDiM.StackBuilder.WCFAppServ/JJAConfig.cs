@@ -7,6 +7,7 @@ using Sharp3D.Math.Core;
 using treeDiM.StackBuilder.Basics;
 using treeDiM.StackBuilder.Graphics;
 using System.Diagnostics;
+using System.Web.UI;
 #endregion
 
 internal class JJAConfig
@@ -42,13 +43,12 @@ internal class JJAConfig
     }
     #endregion
     #region Constructor
-    public JJAConfig(double[] dimensions, double weight, int pcb, int configIndex)
+    public JJAConfig(double[] dimensions, double weight, int pcb, HalfAxis.HAxis axisOrtho)
     {
-        Debug.Assert( 1 <= configIndex && configIndex <= 3 );
         Debug.Assert( dimensions.Length == 3 );
 
         Dimensions = dimensions;
-        ConfigIndex = configIndex;
+        AxisOrtho = axisOrtho;
         Weight = weight;
         Pcb = pcb;
     }
@@ -58,12 +58,12 @@ internal class JJAConfig
     {
         get
         {
-            switch (ConfigIndex)
+            switch (AxisOrtho)
             {
-                case 1: return Dimensions[0];
-                case 2: return Math.Max(Dimensions[1], Dimensions[2]);
-                case 3: return Math.Max(Dimensions[0], Dimensions[2]);
-                default: throw new InvalidOperationException($"Invalid Config index: {ConfigIndex}");
+                case HalfAxis.HAxis.AXIS_Z_P: return Dimensions[0];
+                case HalfAxis.HAxis.AXIS_X_P: return Math.Max(Dimensions[1], Dimensions[2]);
+                case HalfAxis.HAxis.AXIS_Y_P: return Math.Max(Dimensions[0], Dimensions[2]);
+                default: throw new InvalidOperationException($"Invalid Config index: {AxisOrtho}");
             }
         }
     }
@@ -71,12 +71,12 @@ internal class JJAConfig
     {
         get
         {
-            switch (ConfigIndex)
+            switch (AxisOrtho)
             {
-                case 1: return Dimensions[1];
-                case 2: return Math.Min(Dimensions[1], Dimensions[2]);
-                case 3: return Math.Min(Dimensions[0], Dimensions[2]);
-                default: throw new InvalidOperationException($"Invalid Config index: {ConfigIndex}");
+                case HalfAxis.HAxis.AXIS_Z_P: return Dimensions[1];
+                case HalfAxis.HAxis.AXIS_X_P: return Math.Min(Dimensions[1], Dimensions[2]);
+                case HalfAxis.HAxis.AXIS_Y_P: return Math.Min(Dimensions[0], Dimensions[2]);
+                default: throw new InvalidOperationException($"Invalid Config index: {AxisOrtho}");
             }
         }
     }
@@ -85,12 +85,12 @@ internal class JJAConfig
     {
         get
         {
-            switch (ConfigIndex)
+            switch (AxisOrtho)
             {
-                case 1: return Dimensions[2];
-                case 2: return Dimensions[0];
-                case 3: return Dimensions[1];
-                default: throw new InvalidOperationException($"Invalid Config index: {ConfigIndex}");
+                case HalfAxis.HAxis.AXIS_Z_P: return Dimensions[2];
+                case HalfAxis.HAxis.AXIS_X_P: return Dimensions[0];
+                case HalfAxis.HAxis.AXIS_Y_P: return Dimensions[1];
+                default: throw new InvalidOperationException($"Invalid AxisOrtho index: {HalfAxis.ToAbbrev(AxisOrtho)}");
             }
         }
     }
@@ -103,16 +103,18 @@ internal class JJAConfig
     {
         get
         {
-            for (int i = 1; i < 4; ++i)
+            HalfAxis.HAxis[] axes = new HalfAxis.HAxis[] { HalfAxis.HAxis.AXIS_Z_P, HalfAxis.HAxis.AXIS_Y_P, HalfAxis.HAxis.AXIS_X_P };
+            for (int i = 0; i < 3; ++i)
             {
-                var jjaconfig = new JJAConfig(Dimensions, Weight, Pcb, i);
+
+                var jjaconfig = new JJAConfig(Dimensions, Weight, Pcb, axes[i]);
                 if (jjaconfig.Stability == eStable.STABLE && jjaconfig.Conveyability == eConveyability.CONVEYABLE)
                 {
                     switch (i)
                     {
-                        case 1: return eConveyFace.BOTTOMTOP;
-                        case 2: return eConveyFace.FRONTBACK;
-                        case 3: return eConveyFace.LEFTRIGHT;
+                        case 0: return eConveyFace.BOTTOMTOP;
+                        case 1: return eConveyFace.FRONTBACK;
+                        case 2: return eConveyFace.LEFTRIGHT;
                         default: break;
                     }
                 }
@@ -176,7 +178,7 @@ internal class JJAConfig
     }
     #endregion
     #region Image
-    public Bitmap GetImage(int sizeX = 150, int sizeY = 150, float fontSizeRatio = 0.02f, bool showCotations = true)
+    public Bitmap GetImage(int orientation, int sizeX = 150, int sizeY = 150, float fontSizeRatio = 0.02f, bool showCotations = true)
     {
         Graphics3DImage graphics = new Graphics3DImage(new Size(sizeX, sizeY))
         {
@@ -184,26 +186,51 @@ internal class JJAConfig
             CameraPosition = Graphics3D.Corner_0,
             Target = Vector3D.Zero
         };
-        BoxProperties boxProperties = new BoxProperties(null, Length, Width, Height, Weight, ColorCase);
-        Box box = new Box(0, boxProperties);
+        BoxPosition bp = new BoxPosition();
+        Vector3D vDim = Vector3D.Zero;
+        switch (orientation)
+        {
+            case 0:
+                bp = new BoxPosition(new Vector3D(0.0, 0.0, 0.0),  HalfAxis.HAxis.AXIS_Z_P, HalfAxis.HAxis.AXIS_X_P);
+                vDim = new Vector3D(Dimensions[1], Dimensions[2], Dimensions[0]);
+                break;
+            case 1:
+                bp = new BoxPosition(new Vector3D(0.0, 0.0, Dimensions[1]), HalfAxis.HAxis.AXIS_X_P, HalfAxis.HAxis.AXIS_Z_N);
+                vDim = new Vector3D(Dimensions[0], Dimensions[2], Dimensions[1]);
+                break;
+            case 2:
+                bp = new BoxPosition(Vector3D.Zero, HalfAxis.HAxis.AXIS_X_P, HalfAxis.HAxis.AXIS_Y_P);
+                vDim = new Vector3D(Dimensions[0], Dimensions[1], Dimensions[2]); 
+                break;
+            default: break;
+        }
+
+        BoxProperties boxProperties = new BoxProperties(null, Dimensions[0], Dimensions[1], Dimensions[2], Weight, ColorCase);
+        Box box = new Box(0, boxProperties, bp);
         graphics.AddBox(box);
         if (showCotations)
-            graphics.AddDimensions(new DimensionCube(box.Length, box.Width, box.Height));
+            graphics.AddDimensions(new DimensionCube(vDim));
         graphics.Flush();
         return graphics.Bitmap;
     }
-    public byte[] GetImageBytes(int sizeX = 150, int sizeY = 150, float fontSizeRatio = 0.02f, bool showCotations = true)
+    public byte[] GetImageBytes(int orientation, int sizeX = 150, int sizeY = 150, float fontSizeRatio = 0.02f, bool showCotations = true)
     {
-        Bitmap bmp = GetImage(sizeX, sizeY, fontSizeRatio, showCotations);
+        Bitmap bmp = GetImage(orientation, sizeX, sizeY, fontSizeRatio, showCotations);
         ImageConverter converter = new ImageConverter();
         return (byte[])converter.ConvertTo(bmp, typeof(byte[]));
+    }
+    public static HalfAxis.HAxis Axis(int orientation)
+    {
+        var axes = new HalfAxis.HAxis[] { HalfAxis.HAxis.AXIS_X_P, HalfAxis.HAxis.AXIS_Y_P, HalfAxis.HAxis.AXIS_Z_P };
+        if (orientation < 0 || orientation > 2) throw new Exception($"Invalid orientation value {orientation}");
+        return axes[orientation];
     }
     #endregion
     #region Data members
     public double[] Dimensions { get; }
     public double Weight { get; }
     public int Pcb { get; }
-    public int ConfigIndex { get; set; }
+    public HalfAxis.HAxis AxisOrtho { get; set; }
     public Color ColorCase { get; set; } = Color.Chocolate;
     public Color ColorTape { get; set; } = Color.Beige;
     #endregion

@@ -2,7 +2,7 @@
 <!-- Product manufacturer -->
 <?define Manufacturer = "treeDiM"?>
 <!-- Product version -->
-<?define ProductVersion = "3.0.2.66"?>
+<?define ProductVersion = "3.0.2.68"?>
 <!-- Company URL -->
 <?define CompanyURL = "http://www.treedim.com/" ?>
 <Include>

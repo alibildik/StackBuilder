@@ -4,7 +4,6 @@ using System.Runtime.Serialization;
 
 namespace treeDiM.StackBuilder.WCFAppServ
 {
-
     [DataContract]
     public enum DCSBStatusEnu
     {
@@ -30,7 +29,7 @@ namespace treeDiM.StackBuilder.WCFAppServ
     public class DCSBLoadResult
     {
         [DataMember]
-        public DCSBConfigId ConfigId { get; set; }
+        public DCSBOrientation Orientation { get; set; }
         [DataMember]
         public DCSBStatus Status { get; set; }
         [DataMember]
