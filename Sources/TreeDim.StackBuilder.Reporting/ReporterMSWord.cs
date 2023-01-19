@@ -28,7 +28,7 @@ namespace treeDiM.StackBuilder.Reporting
     {
         #region Constructor
         public ReporterMSWord(ReportData inputData, ref ReportNode rnRoot
-            , string templatePath, string outputFilePath, Margins margins)
+            , string templatePath, string outputFilePath, Margins margins, bool quit = false)
         {
             // absolute output file path
             string absOutputFilePath;
@@ -96,6 +96,11 @@ namespace treeDiM.StackBuilder.Reporting
                 // delete html report
                 File.Delete(htmlFilePath);
            }
+            if (quit)
+            {
+                wordDoc.Close();
+                wordApp.Quit(true);
+            }
         }
         #endregion
         #region Override Reporter

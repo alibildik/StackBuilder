@@ -50,6 +50,8 @@ namespace treeDiM.StackBuilder.Desktop
             this.tabCtrl = new System.Windows.Forms.TabControl();
             this.tpInputColumns = new System.Windows.Forms.TabPage();
             this.tpOutputs = new System.Windows.Forms.TabPage();
+            this.rbExport2 = new System.Windows.Forms.RadioButton();
+            this.rbExport1 = new System.Windows.Forms.RadioButton();
             this.fsFolderReports = new treeDiM.UserControls.FileSelect();
             this.fsFolderImages = new treeDiM.UserControls.FileSelect();
             this.chkbGenerateReportInFolder = new System.Windows.Forms.CheckBox();
@@ -219,6 +221,8 @@ namespace treeDiM.StackBuilder.Desktop
             // 
             // tpOutputs
             // 
+            this.tpOutputs.Controls.Add(this.rbExport2);
+            this.tpOutputs.Controls.Add(this.rbExport1);
             this.tpOutputs.Controls.Add(this.fsFolderReports);
             this.tpOutputs.Controls.Add(this.fsFolderImages);
             this.tpOutputs.Controls.Add(this.chkbGenerateReportInFolder);
@@ -231,6 +235,20 @@ namespace treeDiM.StackBuilder.Desktop
             resources.ApplyResources(this.tpOutputs, "tpOutputs");
             this.tpOutputs.Name = "tpOutputs";
             this.tpOutputs.UseVisualStyleBackColor = true;
+            // 
+            // rbExport2
+            // 
+            resources.ApplyResources(this.rbExport2, "rbExport2");
+            this.rbExport2.Name = "rbExport2";
+            this.rbExport2.TabStop = true;
+            this.rbExport2.UseVisualStyleBackColor = true;
+            // 
+            // rbExport1
+            // 
+            resources.ApplyResources(this.rbExport1, "rbExport1");
+            this.rbExport1.Name = "rbExport1";
+            this.rbExport1.TabStop = true;
+            this.rbExport1.UseVisualStyleBackColor = true;
             // 
             // fsFolderReports
             // 
@@ -389,5 +407,7 @@ namespace treeDiM.StackBuilder.Desktop
         private System.Windows.Forms.CheckBox chkbPalletAdmissibleLoadWeight;
         private System.Windows.Forms.Button bnUncheckAll;
         private System.Windows.Forms.Button bnCheckAll;
+        private System.Windows.Forms.RadioButton rbExport2;
+        private System.Windows.Forms.RadioButton rbExport1;
     }
 }

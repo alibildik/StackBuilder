@@ -17,7 +17,8 @@ using treeDiM.StackBuilder.Graphics;
 using treeDiM.StackBuilder.Reporting;
 using treeDiM.StackBuilder.Engine;
 using treeDiM.StackBuilder.Desktop.Properties;
-using treeDiM.StackBuilder.Graphics.Controls;
+using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Tools.Excel;
 #endregion
 
 namespace treeDiM.StackBuilder.Desktop
@@ -38,6 +39,8 @@ namespace treeDiM.StackBuilder.Desktop
             uCtrlMaxPalletHeight.Value = Settings.Default.MaximumPalletHeight;
             uCtrlOverhang.ValueX = Settings.Default.OverhangX;
             uCtrlOverhang.ValueY = Settings.Default.OverhangY;
+
+            rbExport1.Checked = true;
 
             OnGenerateImagesInFolderChanged(this, null);
             OnGenerateReportsInFolderChanged(this, null);
@@ -173,6 +176,13 @@ namespace treeDiM.StackBuilder.Desktop
                     imageHeaderCell.Value = Resources.ID_RESULT_IMAGE;
                     ++iNoCols;
                 }
+                if (ReportWORD || ReportPDF)
+                {
+                    Excel.Range imageHeaderCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + 1];
+                    imageHeaderCell.Value = Resources.ID_RESULT_REPORT;
+                    ++iNoCols;
+                }
+
                 // set bold font for all header row
                 Excel.Range headerRange = xlSheet.Range["a" + 1, ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + 1];
                 headerRange.Font.Bold = true;
@@ -254,6 +264,7 @@ namespace treeDiM.StackBuilder.Desktop
                         string stackImagePath = string.Empty;
                         int iTIcount = 0;
                         string sTiHi = string.Empty;
+                        string reportPath = string.Empty;
                         // generate result
                         GenerateResult(name, description
                             , length, width, height, weight
@@ -265,7 +276,8 @@ namespace treeDiM.StackBuilder.Desktop
                             , ref palletLength, ref palletWidth, ref palletHeight
                             , ref loadLength, ref loadWidth, ref loadHeight
                             , ref stackEfficiency
-                            , ref stackImagePath);
+                            , ref stackImagePath
+                            , ref reportPath);
 
                         // insert count
                         var countCell = xlSheet.Range[ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
@@ -308,6 +320,13 @@ namespace treeDiM.StackBuilder.Desktop
                                 (float)Convert.ToDecimal(imageCell.Width) - 2.0f,
                                 (float)Convert.ToDecimal(imageCell.Height) - 2.0f
                                 );
+                        }
+                        if (ReportWORD || ReportPDF)
+                        {
+                            var cell = xlSheet.Range[
+                                ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount) + iRow,
+                                ExcelHelpers.ColumnIndexToColumnLetter(iOutputFieldCount++) + iRow];
+                            xlSheet.Hyperlinks.Add(cell, reportPath, Type.Missing, "Report", "Report");
                         }
                     }
                     catch (OutOfMemoryException ex)
@@ -356,7 +375,8 @@ namespace treeDiM.StackBuilder.Desktop
             , ref double palletLength, ref double palletWidth, ref double palletHeight
             , ref double loadLength, ref double loadWidth, ref double loadHeight
             , ref double stackEfficiency
-            , ref string stackImagePath)
+            , ref string stackImagePath
+            , ref string reportPath)
         {
             stackCount = 0;
             totalWeight = 0.0;
@@ -456,12 +476,16 @@ namespace treeDiM.StackBuilder.Desktop
                     if (GenerateReport)
                     {
                         var inputData = new ReportDataAnalysis(analysis);
-                        string outputFilePath = Path.ChangeExtension(Path.Combine(DirectoryPathReports,
-                            $"Report_{analysis.Content.Name}_on_{analysis.Container.Name}"), "pdf");
 
+                        reportPath = Path.ChangeExtension(Path.Combine(DirectoryPathReports,
+                            $"Report_{analysis.Content.Name}_on_{analysis.Container.Name}"), ReportExtension);
                         var rnRoot = new ReportNode(Resources.ID_REPORT);
                         Reporter.SetFontSizeRatios(0.015F, 0.05F);
-                        Reporter reporter = new ReporterPDF(inputData, ref rnRoot, Reporter.TemplatePath, outputFilePath);
+                        Reporter reporter = null;
+                        if (ReportPDF)
+                             reporter = new ReporterPDF(inputData, ref rnRoot, Reporter.TemplatePath, reportPath);
+                        if (ReportWORD)
+                            reporter = new ReporterMSWord(inputData, ref rnRoot, Reporter.TemplatePath, reportPath, new Margins(), true);
                     }
                 }
             }
@@ -485,6 +509,9 @@ namespace treeDiM.StackBuilder.Desktop
         private bool GenerateImage { get => chkbGenerateImageInRow.Checked; set => chkbGenerateImageInRow.Checked = value; }
         private bool GenerateImageInFolder { get => chkbGenerateImageInFolder.Checked; set => chkbGenerateImageInFolder.Checked = value; }
         private bool GenerateReport { get => chkbGenerateReportInFolder.Checked; set => chkbGenerateReportInFolder.Checked = value; }
+        private bool ReportPDF => chkbGenerateReportInFolder.Checked && rbExport2.Checked;
+        private bool ReportWORD => chkbGenerateReportInFolder.Checked && rbExport1.Checked;
+        private string ReportExtension => rbExport1.Checked ? "docx" : "pdf";
         private string DirectoryPathImages { get => fsFolderImages.FileName; set => fsFolderImages.FileName = value; } 
         private string DirectoryPathReports { get => fsFolderReports.FileName; set => fsFolderReports.FileName = value; }
         private int ImageSize { get => (int)nudImageSize.Value; set => nudImageSize.Value = value; }
@@ -510,7 +537,12 @@ namespace treeDiM.StackBuilder.Desktop
         #endregion
         #region Event handlers
         private void OnGenerateImagesInFolderChanged(object sender, EventArgs e) => fsFolderImages.Enabled = chkbGenerateImageInFolder.Checked;
-        private void OnGenerateReportsInFolderChanged(object sender, EventArgs e) => fsFolderReports.Enabled = chkbGenerateReportInFolder.Checked;
+        private void OnGenerateReportsInFolderChanged(object sender, EventArgs e)
+        {
+            fsFolderReports.Enabled = chkbGenerateReportInFolder.Checked;
+            rbExport1.Enabled = chkbGenerateImageInFolder.Checked;
+            rbExport2.Enabled = chkbGenerateImageInFolder.Checked;
+        }
         private void OnItemChecked(object sender, ItemCheckEventArgs e)
         {
             if (!AuthorizeCheck)
@@ -519,10 +551,10 @@ namespace treeDiM.StackBuilder.Desktop
         }
         private void OnLBPalletsMouseDown(object sender, MouseEventArgs e)
         {
-            Point loc = lbPallets.PointToClient(Cursor.Position);
+            System.Drawing.Point loc = lbPallets.PointToClient(Cursor.Position);
             for (int i = 0; i < lbPallets.Items.Count; i++)
             {
-                Rectangle rec = lbPallets.GetItemRectangle(i);
+                System.Drawing.Rectangle rec = lbPallets.GetItemRectangle(i);
                 rec.Width = 16; //checkbox itself has a default width of about 16 pixels
 
                 if (rec.Contains(loc))

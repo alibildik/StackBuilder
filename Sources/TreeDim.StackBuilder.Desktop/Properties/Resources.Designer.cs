@@ -2354,6 +2354,15 @@ namespace treeDiM.StackBuilder.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report link.
+        /// </summary>
+        internal static string ID_RESULT_REPORT {
+            get {
+                return ResourceManager.GetString("ID_RESULT_REPORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total pallet weight.
         /// </summary>
         internal static string ID_RESULT_TOTALPALLETWEIGHT {

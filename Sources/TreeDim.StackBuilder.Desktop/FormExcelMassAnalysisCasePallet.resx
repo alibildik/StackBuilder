@@ -193,7 +193,7 @@
     <value>uCtrlOverhang</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDualDouble, treeDiM.Basics, Version=3.0.2.67, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlOverhang.Parent" xml:space="preserve">
     <value>tpPalletsAndConstraints</value>
@@ -220,7 +220,7 @@
     <value>uCtrlMaxPalletHeight</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.Type" xml:space="preserve">
-    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.Basics.UCtrlDouble, treeDiM.Basics, Version=3.0.2.67, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrlMaxPalletHeight.Parent" xml:space="preserve">
     <value>tpPalletsAndConstraints</value>
@@ -582,6 +582,60 @@
   <data name="&gt;&gt;tpInputColumns.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="rbExport2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbExport2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>297, 140</value>
+  </data>
+  <data name="rbExport2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 17</value>
+  </data>
+  <data name="rbExport2.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="rbExport2.Text" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="&gt;&gt;rbExport2.Name" xml:space="preserve">
+    <value>rbExport2</value>
+  </data>
+  <data name="&gt;&gt;rbExport2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbExport2.Parent" xml:space="preserve">
+    <value>tpOutputs</value>
+  </data>
+  <data name="&gt;&gt;rbExport2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="rbExport1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbExport1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>180, 140</value>
+  </data>
+  <data name="rbExport1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 17</value>
+  </data>
+  <data name="rbExport1.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="rbExport1.Text" xml:space="preserve">
+    <value>MS Word</value>
+  </data>
+  <data name="&gt;&gt;rbExport1.Name" xml:space="preserve">
+    <value>rbExport1</value>
+  </data>
+  <data name="&gt;&gt;rbExport1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbExport1.Parent" xml:space="preserve">
+    <value>tpOutputs</value>
+  </data>
+  <data name="&gt;&gt;rbExport1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="fsFolderReports.Location" type="System.Drawing.Point, System.Drawing">
     <value>180, 113</value>
   </data>
@@ -595,13 +649,13 @@
     <value>fsFolderReports</value>
   </data>
   <data name="&gt;&gt;fsFolderReports.Type" xml:space="preserve">
-    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.67, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fsFolderReports.Parent" xml:space="preserve">
     <value>tpOutputs</value>
   </data>
   <data name="&gt;&gt;fsFolderReports.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="fsFolderImages.Location" type="System.Drawing.Point, System.Drawing">
     <value>180, 87</value>
@@ -616,13 +670,13 @@
     <value>fsFolderImages</value>
   </data>
   <data name="&gt;&gt;fsFolderImages.Type" xml:space="preserve">
-    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.UserControls.FileSelect, treeDiM.UserControls, Version=3.0.2.67, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fsFolderImages.Parent" xml:space="preserve">
     <value>tpOutputs</value>
   </data>
   <data name="&gt;&gt;fsFolderImages.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="chkbGenerateReportInFolder.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -634,13 +688,13 @@
     <value>8, 113</value>
   </data>
   <data name="chkbGenerateReportInFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 17</value>
+    <value>145, 17</value>
   </data>
   <data name="chkbGenerateReportInFolder.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
   </data>
   <data name="chkbGenerateReportInFolder.Text" xml:space="preserve">
-    <value>Generate report in folder</value>
+    <value>Generate reports in folder</value>
   </data>
   <data name="&gt;&gt;chkbGenerateReportInFolder.Name" xml:space="preserve">
     <value>chkbGenerateReportInFolder</value>
@@ -652,7 +706,7 @@
     <value>tpOutputs</value>
   </data>
   <data name="&gt;&gt;chkbGenerateReportInFolder.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="chkbGenerateImageInFolder.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -682,7 +736,7 @@
     <value>tpOutputs</value>
   </data>
   <data name="&gt;&gt;chkbGenerateImageInFolder.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="chkbGenerateImageInRow.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -712,7 +766,7 @@
     <value>tpOutputs</value>
   </data>
   <data name="&gt;&gt;chkbGenerateImageInRow.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="nudImageSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>180, 34</value>
@@ -733,7 +787,7 @@
     <value>tpOutputs</value>
   </data>
   <data name="&gt;&gt;nudImageSize.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -763,7 +817,7 @@
     <value>tpOutputs</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="cbOutputStart.Location" type="System.Drawing.Point, System.Drawing">
     <value>180, 7</value>
@@ -784,7 +838,7 @@
     <value>tpOutputs</value>
   </data>
   <data name="&gt;&gt;cbOutputStart.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="lbStartOutput.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -814,7 +868,7 @@
     <value>tpOutputs</value>
   </data>
   <data name="&gt;&gt;lbStartOutput.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="tpOutputs.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -842,6 +896,99 @@
   </data>
   <data name="&gt;&gt;tpOutputs.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;bnUncheckAll.Name" xml:space="preserve">
+    <value>bnUncheckAll</value>
+  </data>
+  <data name="&gt;&gt;bnUncheckAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnUncheckAll.Parent" xml:space="preserve">
+    <value>tpPalletsAndConstraints</value>
+  </data>
+  <data name="&gt;&gt;bnUncheckAll.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;bnCheckAll.Name" xml:space="preserve">
+    <value>bnCheckAll</value>
+  </data>
+  <data name="&gt;&gt;bnCheckAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bnCheckAll.Parent" xml:space="preserve">
+    <value>tpPalletsAndConstraints</value>
+  </data>
+  <data name="&gt;&gt;bnCheckAll.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkbPalletAdmissibleLoadWeight.Name" xml:space="preserve">
+    <value>chkbPalletAdmissibleLoadWeight</value>
+  </data>
+  <data name="&gt;&gt;chkbPalletAdmissibleLoadWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkbPalletAdmissibleLoadWeight.Parent" xml:space="preserve">
+    <value>tpPalletsAndConstraints</value>
+  </data>
+  <data name="&gt;&gt;chkbPalletAdmissibleLoadWeight.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lPallets.Name" xml:space="preserve">
+    <value>lPallets</value>
+  </data>
+  <data name="&gt;&gt;lPallets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lPallets.Parent" xml:space="preserve">
+    <value>tpPalletsAndConstraints</value>
+  </data>
+  <data name="&gt;&gt;lPallets.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tpPalletsAndConstraints.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tpPalletsAndConstraints.Size" type="System.Drawing.Size, System.Drawing">
+    <value>580, 182</value>
+  </data>
+  <data name="tpPalletsAndConstraints.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tpPalletsAndConstraints.Text" xml:space="preserve">
+    <value>Pallets and constraints</value>
+  </data>
+  <data name="&gt;&gt;tpPalletsAndConstraints.Name" xml:space="preserve">
+    <value>tpPalletsAndConstraints</value>
+  </data>
+  <data name="&gt;&gt;tpPalletsAndConstraints.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpPalletsAndConstraints.Parent" xml:space="preserve">
+    <value>tabCtrl</value>
+  </data>
+  <data name="&gt;&gt;tpPalletsAndConstraints.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabCtrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 58</value>
+  </data>
+  <data name="tabCtrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>588, 208</value>
+  </data>
+  <data name="tabCtrl.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;tabCtrl.Name" xml:space="preserve">
+    <value>tabCtrl</value>
+  </data>
+  <data name="&gt;&gt;tabCtrl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabCtrl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabCtrl.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="bnUncheckAll.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 160</value>
@@ -948,51 +1095,6 @@
   <data name="&gt;&gt;lPallets.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tpPalletsAndConstraints.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tpPalletsAndConstraints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>580, 182</value>
-  </data>
-  <data name="tpPalletsAndConstraints.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tpPalletsAndConstraints.Text" xml:space="preserve">
-    <value>Pallets and constraints</value>
-  </data>
-  <data name="&gt;&gt;tpPalletsAndConstraints.Name" xml:space="preserve">
-    <value>tpPalletsAndConstraints</value>
-  </data>
-  <data name="&gt;&gt;tpPalletsAndConstraints.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tpPalletsAndConstraints.Parent" xml:space="preserve">
-    <value>tabCtrl</value>
-  </data>
-  <data name="&gt;&gt;tpPalletsAndConstraints.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 58</value>
-  </data>
-  <data name="tabCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>588, 208</value>
-  </data>
-  <data name="tabCtrl.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;tabCtrl.Name" xml:space="preserve">
-    <value>tabCtrl</value>
-  </data>
-  <data name="&gt;&gt;tabCtrl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabCtrl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabCtrl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1009,6 +1111,6 @@
     <value>FormExcelMassAnalysisCasePallet</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>treeDiM.StackBuilder.Desktop.FormExcelMassAnalysis, treeDiM.StackBuilder.Desktop, Version=3.0.2.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>treeDiM.StackBuilder.Desktop.FormExcelMassAnalysis, treeDiM.StackBuilder.Desktop, Version=3.0.2.67, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

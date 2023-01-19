@@ -881,6 +881,9 @@ Continue?</value>
   <data name="ID_RESULT_PERLAYERCOUNT" xml:space="preserve">
     <value>N. per layer</value>
   </data>
+  <data name="ID_RESULT_REPORT" xml:space="preserve">
+    <value>Report link</value>
+  </data>
   <data name="ID_RESULT_TOTALPALLETWEIGHT" xml:space="preserve">
     <value>Total pallet weight</value>
   </data>
