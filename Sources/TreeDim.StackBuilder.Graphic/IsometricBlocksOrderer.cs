@@ -45,7 +45,7 @@ namespace treeDiM.StackBuilder.Graphics.IsometricBlocks
     {
         #region Data members
         private Vector3D _origin;
-        private double _scale;
+        private readonly double _scale;
         #endregion
 
         #region Constructor
@@ -308,7 +308,7 @@ namespace treeDiM.StackBuilder.Graphics.IsometricBlocks
             return boxesDrawn;
         }
 
-        Camera camera = new Camera(Vector3D.Zero, 1.0);
+        readonly Camera camera = new Camera(Vector3D.Zero, 1.0);
     }
     #endregion
 }

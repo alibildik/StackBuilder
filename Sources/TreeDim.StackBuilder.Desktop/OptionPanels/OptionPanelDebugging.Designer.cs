@@ -34,6 +34,7 @@
             this.chkbDisconnected = new System.Windows.Forms.CheckBox();
             this.chkbShowStartPage = new System.Windows.Forms.CheckBox();
             this.chkShowLogConsole = new System.Windows.Forms.CheckBox();
+            this.chkbShowBoxNumbers = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // bnShowAppFolder
@@ -76,11 +77,18 @@
             this.chkShowLogConsole.UseVisualStyleBackColor = true;
             this.chkShowLogConsole.CheckedChanged += new System.EventHandler(this.OnShowLogConsoleCheckChanged);
             // 
+            // chkbShowBoxNumbers
+            // 
+            resources.ApplyResources(this.chkbShowBoxNumbers, "chkbShowBoxNumbers");
+            this.chkbShowBoxNumbers.Name = "chkbShowBoxNumbers";
+            this.chkbShowBoxNumbers.UseVisualStyleBackColor = true;
+            // 
             // OptionPanelDebugging
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CategoryPath = "Options\\\\Debugging";
+            this.Controls.Add(this.chkbShowBoxNumbers);
             this.Controls.Add(this.bnResetDefaultSettings);
             this.Controls.Add(this.chkbDisconnected);
             this.Controls.Add(this.chkbShowStartPage);
@@ -101,5 +109,6 @@
         private System.Windows.Forms.CheckBox chkbShowStartPage;
         private System.Windows.Forms.CheckBox chkbDisconnected;
         private System.Windows.Forms.Button bnResetDefaultSettings;
+        private System.Windows.Forms.CheckBox chkbShowBoxNumbers;
     }
 }

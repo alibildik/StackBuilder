@@ -30,6 +30,7 @@ namespace treeDiM.StackBuilder.Desktop
 
             // initialize controls
             chkShowLogConsole.Checked = Settings.Default.ShowLogConsole;
+            chkbShowBoxNumbers.Checked = Settings.Default.ShowBoxIds;
             // events
             OptionsForm.OptionsSaving += new EventHandler(OnOptionsSaving);
         }
@@ -61,6 +62,7 @@ namespace treeDiM.StackBuilder.Desktop
         }
         private void OnOptionsSaving(object sender, EventArgs e)
         {
+            Settings.Default.ShowBoxIds = chkbShowBoxNumbers.Checked;
             Settings.Default.ShowLogConsole = chkShowLogConsole.Checked;
             Settings.Default.Save();
         }

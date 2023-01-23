@@ -128,6 +128,7 @@ namespace treeDiM.StackBuilder.Reporting
                 Reporter.SetFontSizeRatios(cbFontSizeDetail.FontSizeRatio, cbFontSizeLarge.FontSizeRatio);
                 Reporter.ShowMetricValues = cbUnit.SelectedIndex == 0 || cbUnit.SelectedIndex == 2;
                 Reporter.ShowImperialValues = cbUnit.SelectedIndex == 1 || cbUnit.SelectedIndex == 2;
+                Reporter.ShowBoxIds = ShowBoxIds;
 
                 // reporter
                 ReporterHtml reporter = new ReporterHtml(Data, ref _rnRoot, Reporter.TemplatePath, htmlFilePath);
@@ -194,6 +195,7 @@ namespace treeDiM.StackBuilder.Reporting
                     // save directory
                     Settings.Default.ReportInitialDirectory = Path.GetDirectoryName(dlg.FileName);
                     // generate report
+                    Reporter.ShowBoxIds = ShowBoxIds;
                     ReporterMSWord reporter = new ReporterMSWord(
                         Data
                         , ref _rnRoot
@@ -336,6 +338,7 @@ namespace treeDiM.StackBuilder.Reporting
         protected string _outputFilePath;
         protected Analysis _analysis;
         protected ReportNode _rnRoot;
+        public bool ShowBoxIds { get; set; } = false;
         protected static ILog _log = LogManager.GetLogger(typeof(FormReportDesign));
         #endregion
     }

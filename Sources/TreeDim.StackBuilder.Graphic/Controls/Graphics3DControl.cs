@@ -88,6 +88,7 @@ namespace treeDiM.StackBuilder.Graphics
         public Viewer Viewer { get; set; }
         protected bool ShowDimensions { get; set; } = true;
         protected bool ShowFacing { get; set; } = true;
+        public bool ShowBoxIds { get; set; } = false;
         private bool Dragging { get; set; } = false;
         public bool ShowToolBar { get; private set; } = false;
         public double AngleHoriz { get; set; } = 45.0 + 180.0;
@@ -100,7 +101,7 @@ namespace treeDiM.StackBuilder.Graphics
             base.OnPaint(e);
             try
             {
-                Graphics3DForm graphics = new Graphics3DForm(this, e.Graphics);
+                Graphics3DForm graphics = new Graphics3DForm(this, e.Graphics) { ShowBoxIds = ShowBoxIds };
                 double angleHorizRad = AngleHoriz * Math.PI / 180.0;
                 double angleVertRad = AngleVert * Math.PI / 180.0;
                 double cameraDistance = 100000.0;

@@ -37,6 +37,7 @@ namespace treeDiM.StackBuilder.Desktop
             graphCtrlSolution.Viewer = new ViewerSolution(_solution);
             graphCtrlSolution.Invalidate();
             graphCtrlSolution.VolumeSelected += OnLayerSelected;
+            graphCtrlSolution.ShowBoxIds = Settings.Default.ShowBoxIds;
             // ---
 
             // --- initialize layer controls

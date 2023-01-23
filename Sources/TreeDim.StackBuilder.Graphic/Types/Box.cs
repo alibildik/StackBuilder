@@ -487,7 +487,7 @@ namespace treeDiM.StackBuilder.Graphics
             var viewDir = graphics.ViewDirection;
 
             Face[] faces = Faces;
-            for (int i = 0; i < 6; ++i)
+            for (int i = 0; i < faces.Length; ++i)
             {
                 // Face
                 Face face = faces[i];
@@ -578,16 +578,24 @@ namespace treeDiM.StackBuilder.Graphics
                     g.DrawLine(penBlack, pts[ptCount - 1], pts[0]);
                 }
             }
-            if (graphics.ShowBoxIds)
+            // show box id
+            if (graphics.ShowBoxIds && PickId > 0)
             {
-                // draw box id
-                Point ptId = graphics.TransformPoint(TopFace.Center);
-                g.DrawString(
-                    PickId.ToString()
-                    , new Font("Arial", graphics.GridFontSize)
-                    , Brushes.Black
-                    , new Rectangle(ptId.X - 15, ptId.Y - 10, 30, 20)
-                    , StringFormat.GenericDefault);
+                for (int i = 0; i < faces.Length; ++i)
+                {
+                    // Face
+                    Face face = faces[i];
+                    // visible ?
+                    if (!face.IsVisible(viewDir)) continue;
+                    // draw box id
+                    Point ptId = graphics.TransformPoint(face.Center);
+                    g.DrawString(
+                        $"{PickId}"
+                        , new Font("Arial", graphics.GridFontSize)
+                        , Brushes.Red
+                        , new Rectangle(ptId.X - 15, ptId.Y - 10, 30, 20)
+                        , StringFormat.GenericDefault);
+                }
             }
         }
         public override void DrawWireframe(Graphics3D graphics)

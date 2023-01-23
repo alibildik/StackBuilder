@@ -911,7 +911,7 @@ namespace treeDiM.StackBuilder.Graphics
             double coefX = dimensions.X / Dimensions.X;
             double coefY = dimensions.Y / Dimensions.Y;
             double coefZ = dimensions.Z / Dimensions.Z;
-            uint pickId = 0;
+            uint pickId = 0; // not incremented
             foreach (Position pos in Positions)
             {
                 double coef0 = coefX, coef1 = coefY, coef2 = coefZ;
@@ -920,7 +920,7 @@ namespace treeDiM.StackBuilder.Graphics
                 else if (pos.Axis1 == HalfAxis.HAxis.AXIS_Y_P && pos.Axis2 == HalfAxis.HAxis.AXIS_X_N)
                 { coef0 = coefY; coef1 = coefX; }
                 Vector3D dim = Lumbers[pos.Index];
-                Box box = new Box(pickId++, dim.X * coef0, dim.Y * coef1, dim.Z * coef2
+                Box box = new Box(pickId, dim.X * coef0, dim.Y * coef1, dim.Z * coef2
                     , new BoxPosition(
                         t.transform(
                             new Vector3D(pos.XYZ.X * coefX, pos.XYZ.Y * coefY, pos.XYZ.Z * coefZ))

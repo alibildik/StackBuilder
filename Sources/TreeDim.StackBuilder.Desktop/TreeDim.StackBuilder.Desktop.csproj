@@ -40,8 +40,8 @@
     <MinimumRequiredVersion>3.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>65</ApplicationRevision>
-    <ApplicationVersion>3.0.2.65</ApplicationVersion>
+    <ApplicationRevision>67</ApplicationRevision>
+    <ApplicationVersion>3.0.2.67</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>

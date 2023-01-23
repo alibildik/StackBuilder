@@ -156,6 +156,7 @@ namespace treeDiM.StackBuilder.Reporting
         public static float FontSizeRatioLarge { get; set; } = 10.0f;
         protected static bool ValidateAgainstSchema { get; set; } = false;
         protected static int ImageIndex { get; set; } = 0;
+        public static bool ShowBoxIds { get; set; } = false;
         #endregion
 
         #region Report generation
@@ -878,7 +879,6 @@ namespace treeDiM.StackBuilder.Reporting
                 }
             }
         }
-
         private void AppendSolutionElement(SolutionHomo sol, ReportNode rnSolution, XmlElement elemAnalysis, XmlDocument xmlDoc)
         {
             string ns = xmlDoc.DocumentElement.NamespaceURI;
@@ -955,7 +955,8 @@ namespace treeDiM.StackBuilder.Reporting
                 {
                     FontSizeRatio = FontSizeRatioLarge,
                     CameraPosition = cameraPos,
-                    ShowDimensions = showDimLocal && ShowDimensions
+                    ShowDimensions = showDimLocal && ShowDimensions,
+                    ShowBoxIds = Reporter.ShowBoxIds
                 };
 
                 try

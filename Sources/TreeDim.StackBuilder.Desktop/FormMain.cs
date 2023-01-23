@@ -646,7 +646,7 @@ namespace treeDiM.StackBuilder.Desktop
         {
             try
             {
-                var form = new FormReportDesign(new ReportDataAnalysis(analysis));
+                var form = new FormReportDesign(new ReportDataAnalysis(analysis)) { ShowBoxIds = Settings.Default.ShowBoxIds};
                 if (DialogResult.OK == form.ShowDialog()) {}
             }
             catch (Exception ex)
